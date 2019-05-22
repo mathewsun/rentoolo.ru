@@ -1,0 +1,42 @@
+﻿.logo-text {
+    /*font-size: 25px;*/
+}
+
+.logo-img {
+    width: 45px !important;
+    padding-bottom: 2px !important;
+}
+
+.favorite {
+    height: 25px;
+}
+
+.login {
+    color: #fff;
+    padding-left: 0px;
+}
+
+    .login:hover {
+        color: #fff;
+        text-decoration: underline;
+    }
+
+.create-advertisement {
+    margin-bottom: 5px;
+}
+
+@media (min-width: 768px) {
+    .login {
+        padding-left: 10px;
+    }
+
+    .create-advertisement {
+        margin-bottom: 0px;
+    }
+}
+
+.setting-img {
+    width: 25px;
+    padding-top: 8px;
+    padding-left: 5px;
+}
