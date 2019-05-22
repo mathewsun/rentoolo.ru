@@ -1,0 +1,80 @@
+/*
+ * Application level styles
+ * (things that dont make sense in a toolkit :)
+ * copyright @colossal 2018
+ */
+
+/* docs overrides */
+.a {
+  background-color: #fff;
+  border-color: #d3e0e9;
+}
+
+
+/* general overrides */
+.b .c {
+  line-height: 1.4;
+}
+.d .close {
+  padding-top: 1.4rem;
+}
+strong {
+  font-weight: bold;
+}
+
+
+/* navbar */
+.app-navbar {
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+.app-navbar .form-control {
+  box-shadow: none;
+}
+.app-navbar .e img {
+  width: 85px;
+}
+.app-navbar .f {
+  max-height: inherit;
+}
+.app-navbar .f:after {
+  height: 100vh;
+}
+.app-navbar .form-control {
+  border-color: #1C73A5;
+}
+.app-navbar .g {
+  margin-left: 1rem;
+  padding-bottom: 4px !important;
+  padding-top: 4px !important;
+}
+.g .h:before {
+  font-size: 20px;
+}
+@media (min-width: 768px) {
+  .app-navbar .f:after {
+    height: auto;
+  }
+}
+@media (max-width: 768px) {
+  .i {
+    margin-top: -1px;
+  }
+}
+
+
+/* misc */
+.j {
+  max-width: 280px;
+  margin-top: -60px;
+}
+.k {
+  margin-right: 10px;
+}
+.l {
+  width: 40%;
+  display: inline-block;
+}
+.l img {
+  width: 100%;
+}

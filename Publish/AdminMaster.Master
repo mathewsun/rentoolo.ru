@@ -1,0 +1,226 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Rentoolo.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head id="Head1" runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/images/yellow-green.ico">
+
+    <title>Rentoolo - Ваши объявления</title>
+    <link href='/content/css.css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <link href="/content/toolkit.css" rel="stylesheet">
+
+    <link href="/content/application.css" rel="stylesheet">
+
+    <style>
+        /* note: this is a hack for ios iframe for bootstrap themes shopify page */
+        /* this chunk of css is not part of the toolkit :) */
+        body {
+            width: 1px;
+            min-width: 100%;
+            *width: 100%;
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</head>
+
+<body class="bob">
+    <form id="Form1" class="main-form" runat="server">
+
+        <div class="bon" id="app-growl"></div>
+
+        <nav class="ck pt adq py tk app-navbar">
+
+            <a class="e" href="/">
+                <span class="logo-text" style="margin-right: -3px;">Rent</span>
+                <img src="/images/yellow-green.png" alt="brand">
+                <span class="logo-text" style="margin-left: -3px;">lo</span>
+            </a>
+
+            <button
+                class="pp bpn vm"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="pq"></span>
+            </button>
+
+            <div class="collapse f" id="navbarResponsive">
+                <ul class="navbar-nav ahq">
+                    <li class="pi active">
+                        <a class="pg" href="index.html">Купить/Продать</a>
+                    </li>
+                    <li class="pi">
+                        <a class="pg" href="profile/index.html">Снять/Сдать</a>
+                    </li>
+                    <li class="pi">
+                        <a class="pg" href="/Help.aspx">Помощь</a>
+                    </li>
+                </ul>
+
+                <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
+                    <AnonymousTemplate>
+                        <ul class="navbar-nav ahq">
+                            <li class="pi"><a id="loginLink" class="login" runat="server" href="~/Account/Login.aspx">Вход</a></li>
+                        </ul>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        <ul id="#js-popoverContent" class="nav navbar-nav acx aek d-none vt">
+
+                            <% if (Page.User.IsInRole("Administrator")
+                                                                                                                            || Page.User.IsInRole("CashOutManager"))
+                                { %>
+                            <li><a id="A1" runat="server" href="~/Admin/Admin.aspx">
+                                <img class="setting-img" src="/images/settings-icon-50.png" title="Управление" /></a></li>
+                            <% } %>
+
+                            <li class="pi">
+                                <a class="g pg" href="/Favorites.aspx">
+                                    <img title="Избранное" class="favorite" src="/images/favorite_2.png"
+                                        onmouseover="this.src='/images/favorite_2_blue.png'"
+                                        onmouseout="this.src='/images/favorite_2.png'" />
+                                </a>
+                            </li>
+                            <li class="pi">
+                                <a class="g pg" href="notifications/index.html">
+                                    <span class="h azy"></span>
+                                </a>
+                            </li>
+                            <li class="pi afb">
+                                <button class="cg bpo bpp boi" data-toggle="popover">
+                                    <img class="us" src="/images/avatar-dhg.png">
+                                </button>
+                            </li>
+                        </ul>
+
+                        <ul class="nav navbar-nav d-none" id="js-popoverContent">
+                            <li class="pi"><a class="pg" href="#" data-action="growl">Growl</a></li>
+                            <li class="pi"><a class="pg" href="login/index.html">Logout</a></li>
+                        </ul>
+
+
+                        <ul class="nav navbar-nav d-none">
+                            <li><a id="CabinetLink" runat="server" class="username" href="~/Account/Cabinet.aspx" title="Личный кабинет">Кабинет (<asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
+                                )
+                            </a></li>
+                            <li>
+                                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
+                            </li>
+                        </ul>
+                    </LoggedInTemplate>
+                </asp:LoginView>
+
+
+
+
+            </div>
+        </nav>
+
+        <div class="cd fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="bpr" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="d">
+                        <h4 class="modal-title">Users</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+
+                    <div class="modal-body afx">
+                        <div class="axw">
+                            <ul class="bow cj ca">
+                                <li class="b">
+                                    <div class="rv ady">
+                                        <img class="bos vb yb aff" src="images/avatar-fat.jpg">
+                                        <div class="rw">
+                                            <button class="cg ns ok acx">
+                                                <span class="c bps"></span>Follow
+                                            </button>
+                                            <strong>Jacob Thornton</strong>
+                                            <p>@fat - San Francisco</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="b">
+                                    <div class="rv ady">
+                                        <img class="bos vb yb aff" src="images/avatar-dhg.png">
+                                        <div class="rw">
+                                            <button class="cg ns ok acx">
+                                                <span class="c bps"></span>Follow
+                                            </button>
+                                            <strong>Dave Gamache</strong>
+                                            <p>@dhg - Palo Alto</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="b">
+                                    <div class="rv ady">
+                                        <img class="bos vb yb aff" src="images/avatar-mdo.png">
+                                        <div class="rw">
+                                            <button class="cg ns ok acx">
+                                                <span class="c bps"></span>Follow
+                                            </button>
+                                            <strong>Mark Otto</strong>
+                                            <p>@mdo - San Francisco</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="by aha ahl">
+            <div class="dp">
+
+
+                <div class="fmm">
+
+                    <ul class="ca bow box afo">
+
+
+
+                        <li class="rv b agz">
+
+                            <div class="rw">
+
+                                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </form>
+
+
+    <script src="/Scripts/jquery.min.js"></script>
+    <script src="/Scripts/popper.min.js"></script>
+    <script src="/Scripts/chart.js"></script>
+    <script src="/Scripts/toolkit.js"></script>
+    <script src="/Scripts/application.js"></script>
+    <script>
+        // execute/clear BS loaders for docs
+        $(function () { while (window.BS && window.BS.loader && window.BS.loader.length) { (window.BS.loader.pop())() } })
+    </script>
+</body>
+</html>
+
