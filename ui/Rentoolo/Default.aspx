@@ -421,68 +421,16 @@
 
     <div class="container pt-4 pb-5">
         <div class="row">
-            <div class="col-lg-3">
-
-                <div class="card d-md-block d-lg-block mb-4">
-                    <div class="card-body">
-                        <h6 class="mb-3">Категории:</h6>
-                        <ul class="list-unstyled list-spaced">
-                            <li><span class="text-muted icon icon-location-pin mr-3"></span><a href="#">Авто</a>
-                            <li><span class="text-muted icon icon-home mr-3"></span><a href="#">Недвижимость</a>
-                            <li><span class="text-muted icon icon-users mr-3"></span><a href="#">Работа</a>
-                            <li><span class="text-muted icon icon-location-pin mr-3"></span><a href="#">Услуги</a>
-                            <li><span class="text-muted icon icon-location-pin mr-3"></span><a href="#">Личные вещи</a>
-                            <li><span class="text-muted icon icon-location-pin mr-3"></span><a href="#">Для дома и дачи</a>
-                            <li><span class="text-muted icon icon-location-pin mr-3"></span><a href="#">Бытовая электроника</a>
-                            <li><span class="text-muted icon icon-calendar mr-3"></span><a href="#">Хобби и отдых</a>
-                            <li><span class="text-muted icon icon-github mr-3"></span><a href="#">Животные</a>
-                            <li><span class="text-muted icon icon-location-pin mr-3"></span><a href="#">Бизнес</a>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="card d-md-block d-lg-block mb-4">
-                    <div class="card-body">
-                        <h6 class="mb-3">Похожие товары</h6>
-                        <div data-grid="images" data-target-height="150">
-                            <div>
-                                <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_5.jpg">
-                            </div>
-
-                            <div>
-                                <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_6.jpg">
-                            </div>
-
-                            <div>
-                                <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_7.jpg">
-                            </div>
-
-                            <div>
-                                <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_8.jpg">
-                            </div>
-
-                            <div>
-                                <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_9.jpg">
-                            </div>
-
-                            <div>
-                                <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_10.jpg">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="col-lg-6">
 
                 <ul class="list-group media-list media-list-stream mb-4">
 
                     <li class="media list-group-item p-4">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Message">
+                            <input type="text" class="form-control" placeholder="Поиск по объявлениям">
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-secondary align-self-stretch">
-                                    <span class="icon icon-camera"></span>
+                                    <span>Найти</span>
                                 </button>
                             </div>
                         </div>

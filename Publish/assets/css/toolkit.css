@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 @media print {
   *,
   *::before,
@@ -1096,9 +1096,9 @@ pre {
     max-width: 41.66667%; }
   .col-lg-6 {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 50%;
-            flex: 0 0 50%;
-    max-width: 50%; }
+        -ms-flex: 0 0 75%;
+            flex: 0 0 75%;
+    max-width: 75%; }
   .col-lg-7 {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 58.33333%;
