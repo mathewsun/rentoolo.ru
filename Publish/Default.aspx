@@ -73,6 +73,12 @@
                     <a class="nav-link" href="/">Снять/Сдать</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/">Аукционы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Тендеры</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" href="#msgModal">Messages</a>
                 </li>
                 <li class="nav-item">
@@ -243,7 +249,7 @@
                                         <div class="media-footer">
                                             <small class="text-muted">
                                                 <a href="#">Dave Gamache</a> at 4:20PM
-                    </small>
+                                            </small>
                                         </div>
                                     </div>
                                     <img class="rounded-circle media-object d-flex align-self-start ml-3" src="assets/img/avatar-dhg.png">
@@ -267,7 +273,7 @@
                                         <div class="media-footer">
                                             <small class="text-muted">
                                                 <a href="#">Fat</a> at 4:28PM
-                    </small>
+                                            </small>
                                         </div>
                                     </div>
                                 </li>
@@ -286,7 +292,7 @@
                                         <div class="media-footer">
                                             <small class="text-muted">
                                                 <a href="#">Mark Otto</a> at 4:20PM
-                    </small>
+                                            </small>
                                         </div>
                                     </div>
                                 </li>
@@ -300,7 +306,7 @@
                                         <div class="media-footer">
                                             <small class="text-muted">
                                                 <a href="#">Dave Gamache</a> at 4:20PM
-                    </small>
+                                            </small>
                                         </div>
                                     </div>
                                     <img class="rounded-circle media-object d-flex align-self-start ml-3" src="assets/img/avatar-dhg.png">
@@ -324,7 +330,7 @@
                                         <div class="media-footer">
                                             <small class="text-muted">
                                                 <a href="#">Fat</a> at 4:28PM
-                    </small>
+                                            </small>
                                         </div>
                                     </div>
                                 </li>
@@ -343,7 +349,7 @@
                                         <div class="media-footer">
                                             <small class="text-muted">
                                                 <a href="#">Mark Otto</a> at 4:20PM
-                    </small>
+                                            </small>
                                         </div>
                                     </div>
                                 </li>
@@ -483,7 +489,7 @@
                     </li>
 
                     <li class="media list-group-item p-4">
-                        
+
                         <div class="media-body">
                             <div class="media-heading">
                                 <small class="float-right text-muted">15 025 объявлений</small>
