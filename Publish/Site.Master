@@ -151,7 +151,7 @@
                             <div class="media-list media-list-users list-group js-msgGroup">
                                 <a href="#" class="list-group-item list-group-item-action">
                                     <div class="media">
-                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="assets/img/avatar-fat.jpg">
+                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="/assets/img/avatar-fat.jpg">
                                         <div class="media-body">
                                             <strong>Jacob Thornton</strong> and <strong>1 other</strong>
                                             <div class="media-body-secondary">
@@ -163,7 +163,7 @@
                                 </a>
                                 <a href="#" class="list-group-item list-group-item-action">
                                     <div class="media">
-                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="assets/img/avatar-mdo.png">
+                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="/assets/img/avatar-mdo.png">
                                         <div class="media-body">
                                             <strong>Mark Otto</strong> and <strong>3 others</strong>
                                             <div class="media-body-secondary">
@@ -175,7 +175,7 @@
                                 </a>
                                 <a href="#" class="list-group-item list-group-item-action">
                                     <div class="media">
-                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="assets/img/avatar-dhg.png">
+                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="/assets/img/avatar-dhg.png">
                                         <div class="media-body">
                                             <strong>Dave Gamache</strong>
                                             <div class="media-body-secondary">
@@ -187,7 +187,7 @@
                                 </a>
                                 <a href="#" class="list-group-item list-group-item-action">
                                     <div class="media">
-                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="assets/img/avatar-fat.jpg">
+                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="/assets/img/avatar-fat.jpg">
                                         <div class="media-body">
                                             <strong>Jacob Thornton</strong> and <strong>1 other</strong>
                                             <div class="media-body-secondary">
@@ -199,7 +199,7 @@
                                 </a>
                                 <a href="#" class="list-group-item list-group-item-action">
                                     <div class="media">
-                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="assets/img/avatar-mdo.png">
+                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="/assets/img/avatar-mdo.png">
                                         <div class="media-body">
                                             <strong>Mark Otto</strong> and <strong>3 others</strong>
                                             <div class="media-body-secondary">
@@ -211,7 +211,7 @@
                                 </a>
                                 <a href="#" class="list-group-item list-group-item-action">
                                     <div class="media">
-                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="assets/img/avatar-dhg.png">
+                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="/assets/img/avatar-dhg.png">
                                         <div class="media-body">
                                             <strong>Dave Gamache</strong>
                                             <div class="media-body-secondary">
@@ -223,7 +223,7 @@
                                 </a>
                                 <a href="#" class="list-group-item list-group-item-action">
                                     <div class="media">
-                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="assets/img/avatar-fat.jpg">
+                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="/assets/img/avatar-fat.jpg">
                                         <div class="media-body">
                                             <strong>Jacob Thornton</strong> and <strong>1 other</strong>
                                             <div class="media-body-secondary">
@@ -235,7 +235,7 @@
                                 </a>
                                 <a href="#" class="list-group-item list-group-item-action">
                                     <div class="media">
-                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="assets/img/avatar-mdo.png">
+                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="/assets/img/avatar-mdo.png">
                                         <div class="media-body">
                                             <strong>Mark Otto</strong> and <strong>3 others</strong>
                                             <div class="media-body-secondary">
@@ -247,7 +247,7 @@
                                 </a>
                                 <a href="#" class="list-group-item list-group-item-action">
                                     <div class="media">
-                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="assets/img/avatar-dhg.png">
+                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="/assets/img/avatar-dhg.png">
                                         <div class="media-body">
                                             <strong>Dave Gamache</strong>
                                             <div class="media-body-secondary">
@@ -273,11 +273,11 @@
                                                 </small>
                                             </div>
                                         </div>
-                                        <img class="rounded-circle media-object d-flex align-self-start ml-3" src="assets/img/avatar-dhg.png">
+                                        <img class="rounded-circle media-object d-flex align-self-start ml-3" src="/assets/img/avatar-dhg.png">
                                     </li>
 
                                     <li class="media mb-4">
-                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="assets/img/avatar-fat.jpg">
+                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="/assets/img/avatar-fat.jpg">
                                         <div class="media-body">
                                             <div class="media-body-text">
                                                 Cras justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
@@ -300,7 +300,7 @@
                                     </li>
 
                                     <li class="media mb-4">
-                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="assets/img/avatar-mdo.png">
+                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="/assets/img/avatar-mdo.png">
                                         <div class="media-body">
                                             <div class="media-body-text">
                                                 Etiam porta sem malesuada magna mollis euismod. Donec id elit non mi porta gravida at eget metus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur.
@@ -330,11 +330,11 @@
                                                 </small>
                                             </div>
                                         </div>
-                                        <img class="rounded-circle media-object d-flex align-self-start ml-3" src="assets/img/avatar-dhg.png">
+                                        <img class="rounded-circle media-object d-flex align-self-start ml-3" src="/assets/img/avatar-dhg.png">
                                     </li>
 
                                     <li class="media mb-4">
-                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="assets/img/avatar-fat.jpg">
+                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="/assets/img/avatar-fat.jpg">
                                         <div class="media-body">
                                             <div class="media-body-text">
                                                 Cras justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
@@ -357,7 +357,7 @@
                                     </li>
 
                                     <li class="media mb-4">
-                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="assets/img/avatar-mdo.png">
+                                        <img class="rounded-circle media-object d-flex align-self-start mr-3" src="/assets/img/avatar-mdo.png">
                                         <div class="media-body">
                                             <div class="media-body-text">
                                                 Etiam porta sem malesuada magna mollis euismod. Donec id elit non mi porta gravida at eget metus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur.
@@ -395,7 +395,7 @@
                             <ul class="media-list media-list-users list-group">
                                 <li class="list-group-item">
                                     <div class="media w-100">
-                                        <img class="media-object d-flex align-self-start mr-3" src="assets/img/avatar-fat.jpg">
+                                        <img class="media-object d-flex align-self-start mr-3" src="/assets/img/avatar-fat.jpg">
                                         <div class="media-body">
                                             <button class="btn btn-secondary btn-sm float-right">
                                                 <span class="glyphicon glyphicon-user"></span>Follow
@@ -408,7 +408,7 @@
                                 </li>
                                 <li class="list-group-item">
                                     <div class="media w-100">
-                                        <img class="media-object d-flex align-self-start mr-3" src="assets/img/avatar-dhg.png">
+                                        <img class="media-object d-flex align-self-start mr-3" src="/assets/img/avatar-dhg.png">
                                         <div class="media-body">
                                             <button class="btn btn-secondary btn-sm float-right">
                                                 <span class="glyphicon glyphicon-user"></span>Follow
@@ -421,7 +421,7 @@
                                 </li>
                                 <li class="list-group-item">
                                     <div class="media w-100">
-                                        <img class="media-object d-flex align-self-start mr-3" src="assets/img/avatar-mdo.png">
+                                        <img class="media-object d-flex align-self-start mr-3" src="/assets/img/avatar-mdo.png">
                                         <div class="media-body">
                                             <button class="btn btn-secondary btn-sm float-right">
                                                 <span class="glyphicon glyphicon-user"></span>Follow
@@ -458,7 +458,7 @@
                         <div class="card-body">
                             <h6 class="mb-3">Вы смотрели: <small>· <a href="#">Показать все</a></small></h6>
                             <div data-grid="images" data-target-height="150">
-                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_2.jpg">
+                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="/assets/img/instagram_2.jpg">
                             </div>
                             <p><strong>It might be time to visit Iceland.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                             <button class="btn btn-outline-primary btn-sm">Buy a ticket</button>
@@ -472,7 +472,7 @@
                                 <li class="media mb-2">
                                     <img
                                         class="media-object d-flex align-self-start mr-3"
-                                        src="assets/img/avatar-fat.jpg">
+                                        src="/assets/img/avatar-fat.jpg">
                                     <div class="media-body">
                                         <strong>Jacob Thornton</strong> @fat
              
@@ -486,7 +486,7 @@
                                     <a class="media-left" href="#">
                                         <img
                                             class="media-object d-flex align-self-start mr-3"
-                                            src="assets/img/avatar-mdo.png">
+                                            src="/assets/img/avatar-mdo.png">
                                     </a>
                                     <div class="media-body">
                                         <strong>Mark Otto</strong> @mdo
