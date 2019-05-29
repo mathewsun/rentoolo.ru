@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Перевод средств" Language="C#" MasterPageFile="~/SiteBalance.Master" AutoEventWireup="true" CodeBehind="Payment.aspx.cs" Inherits="Rentoolo.Account.Payment" %>
+﻿<%@ Page Title="Перевод средств" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Payment.aspx.cs" Inherits="Rentoolo.Account.Payment" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>

@@ -107,8 +107,6 @@ namespace Rentoolo.Account
 
             #endregion
 
-            (Master as SiteBalance).UpdateBalance();
-
             ResultOrder = 1;
 
             TextBoxPaymentAddress.Text = string.Empty;

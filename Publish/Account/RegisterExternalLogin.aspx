@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Title="Register an external login" MasterPageFile="~/SiteBalance.Master" AutoEventWireup="true" CodeBehind="RegisterExternalLogin.aspx.cs" Inherits="Rentoolo.Account.RegisterExternalLogin" %>
+﻿<%@ Page Language="C#" Title="Register an external login" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegisterExternalLogin.aspx.cs" Inherits="Rentoolo.Account.RegisterExternalLogin" %>
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
     <hgroup class="title">
         <h1>Register with your <%: ProviderDisplayName %> account</h1>

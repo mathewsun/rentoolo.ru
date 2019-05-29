@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Настройки" Language="C#" MasterPageFile="~/SiteBalance.Master" AutoEventWireup="true" CodeBehind="Settings.aspx.cs" Inherits="Rentoolo.Account.Settings" %>
+﻿<%@ Page Title="Настройки" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Settings.aspx.cs" Inherits="Rentoolo.Account.Settings" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript">

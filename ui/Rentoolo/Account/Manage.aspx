@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Смена пароля" Language="C#" MasterPageFile="~/SiteBalance.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="Rentoolo.Account.Manage" %>
+﻿<%@ Page Title="Смена пароля" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="Rentoolo.Account.Manage" %>
 
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 

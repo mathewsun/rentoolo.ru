@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Кабинет" Language="C#" MasterPageFile="~/SiteBalance.Master" AutoEventWireup="true" CodeBehind="Cabinet.aspx.cs" Inherits="Rentoolo.Account.Cabinet" %>
+﻿<%@ Page Title="Кабинет" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cabinet.aspx.cs" Inherits="Rentoolo.Account.Cabinet" %>
 
 <%@ Import Namespace="Rentoolo.Model" %>
 
@@ -30,12 +30,6 @@
     </div>
 
     <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            var topMenu = $("#top-navigation"),
-            menuItems = topMenu.find("a");
-            menuItems.parent().removeClass("active");
-            menuItems.filter("[id*='CabinetLink']").parent().addClass("active");
-        });
 
         function copyToClipboardUrl() {
             var copyText = document.getElementById("refferalLink");

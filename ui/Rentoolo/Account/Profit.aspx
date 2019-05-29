@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Заработок" Language="C#" MasterPageFile="~/SiteBalance.Master" AutoEventWireup="true" CodeBehind="Profit.aspx.cs" Inherits="Rentoolo.Account.Profit" %>
+﻿<%@ Page Title="Заработок" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Profit.aspx.cs" Inherits="Rentoolo.Account.Profit" %>
 
 <%@ Register Src="Menu.ascx" TagName="AccountMenu" TagPrefix="uc1" %>
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Обмен" Language="C#" MasterPageFile="~/SiteBalance.Master" AutoEventWireup="true" CodeBehind="Exchange.aspx.cs" Inherits="Rentoolo.Account.Exchange" %>
+﻿<%@ Page Title="Обмен" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Exchange.aspx.cs" Inherits="Rentoolo.Account.Exchange" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

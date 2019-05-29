@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Рефералы" Language="C#" MasterPageFile="~/SiteBalance.Master" AutoEventWireup="true" CodeBehind="Referrals.aspx.cs" Inherits="Rentoolo.Account.Referrals" %>
+﻿<%@ Page Title="Рефералы" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Referrals.aspx.cs" Inherits="Rentoolo.Account.Referrals" %>
 
 <%@ Import Namespace="Rentoolo.Model" %>
 
