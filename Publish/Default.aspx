@@ -70,7 +70,7 @@
                     <a class="nav-link" href="/">Купить/Продать</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Снять/Сдать</a>
+                    <a class="nav-link" href="/">Аренда</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/">Аукционы</a>
@@ -79,10 +79,7 @@
                     <a class="nav-link" href="/">Тендеры</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" href="#msgModal">Messages</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Помощь</a>
+                    <a class="nav-link" href="/">Магазины</a>
                 </li>
 
                 <li class="nav-item d-md-none">
