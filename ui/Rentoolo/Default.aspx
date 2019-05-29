@@ -96,7 +96,7 @@
 
                 <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 d-none d-md-flex">
                     <li class="nav-item">
-                        <a class="app-notifications nav-link" title="Избранное" href="/">
+                        <a class="app-notifications nav-link" title="Избранное" href="/Favorites.aspx">
                             <div class="icon icon-favorite"></div>
                         </a>
                     </li>
@@ -595,7 +595,7 @@
              
                                     <div class="media-body-actions">
                                         <button class="btn btn-outline-primary btn-sm">
-                                            <span class="icon icon-add-user"></span>Follow</button></button>
+                                            <span class="icon icon-add-user"></span>Follow</button>
              
                                     </div>
                                     </div>
