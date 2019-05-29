@@ -26,7 +26,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="assets/css/toolkit.css" rel="stylesheet">
     <link href="assets/css/application.css" rel="stylesheet">
-    <link href="assets/css/additional.css" rel="stylesheet">
+    <link href="assets/css/additional.css?1" rel="stylesheet">
 
     <style>
         /* note: this is a hack for ios iframe for bootstrap themes shopify page */
@@ -96,7 +96,12 @@
 
             <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 d-none d-md-flex">
                 <li class="nav-item">
-                    <a class="app-notifications nav-link" href="notifications/index.html">
+                    <a class="app-notifications nav-link" title="Избранное" href="/">
+                        <div class="icon icon-favorite"></div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="app-notifications nav-link" href="/">
                         <span class="icon icon-bell"></span>
                     </a>
                 </li>
@@ -443,26 +448,26 @@
 
                             <div class="media-body-inline-grid" data-grid="images">
                                 <div style="display: none">
-                                    <img data-action="zoom" data-width="500" data-height="500" src="images/unsplash_1.jpg">
+                                    <img data-action="zoom" data-width="500" data-height="500" src="assets/img/unsplash_1.jpg">
                                 </div>
 
                                 <div style="display: none">
-                                    <img data-action="zoom" data-width="500" data-height="500" src="images/instagram_1.jpg">
+                                    <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_1.jpg">
                                 </div>
 
                                 <div style="display: none">
-                                    <img data-action="zoom" data-width="500" data-height="500" src="images/instagram_13.jpg">
+                                    <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_13.jpg">
                                 </div>
 
                                 <div style="display: none">
-                                    <img data-action="zoom" data-width="500" data-height="500" src="images/unsplash_2.jpg">
+                                    <img data-action="zoom" data-width="500" data-height="500" src="assets/img/unsplash_2.jpg">
                                 </div>
                                 <div style="display: none">
-                                    <img data-action="zoom" data-width="500" data-height="500" src="images/instagram_1.jpg">
+                                    <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_1.jpg">
                                 </div>
 
                                 <div style="display: none">
-                                    <img data-action="zoom" data-width="500" data-height="500" src="images/instagram_13.jpg">
+                                    <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_13.jpg">
                                 </div>
                             </div>
 
