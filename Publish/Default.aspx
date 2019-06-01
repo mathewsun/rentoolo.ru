@@ -81,58 +81,66 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/">Магазины</a>
                     </li>
-                </ul>
 
-                <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
-                    <AnonymousTemplate>
+                    <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <li class="nav-item d-md-none">
+                                <a class="nav-link" href="/Account/Login.aspx">Вход</a>
+                            </li>
+                            </ul>
                         <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 d-none d-md-flex">
-                            <li class="nav-item"><a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login.aspx">Вход</a></li>
-                        </ul>
-                    </AnonymousTemplate>
-                    <LoggedInTemplate>
-                        <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 d-none d-md-flex">
-                            <% if (Page.User.IsInRole("Administrator"))
-                                { %>
-                            <li><a id="A1" runat="server" href="~/Admin/Admin.aspx">
-                                <img class="setting-img" src="/images/settings-icon-50.png" title="Управление" /></a></li>
-                            <% } %>
-
                             <li class="nav-item">
-                                <a class="nav-link" title="Избранное" href="/Favorites.aspx">
-                                    <div class="icon icon-favorite"></div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="app-notifications nav-link" href="/">
-                                    <span class="icon icon-bell"></span>
-                                </a>
-                            </li>
-                            <li class="nav-item ml-2">
-                                <div class="btn btn-default navbar-btn navbar-btn-avatar" data-toggle="popover">
-                                    <img class="rounded-circle" src="assets/img/avatar-dhg.png">
-                                </div>
+                                <a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login.aspx">Вход</a>
                             </li>
                         </ul>
-
-                        <ul class="nav navbar-nav d-none" id="js-popoverContent">
-                            <li class="nav-item"><a class="nav-link" href="#" data-action="growl">Growl</a></li>
-                            <li class="nav-item">
-                                <asp:LoginStatus CssClass="nav-link" ID="LoginStatus2" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <li class="nav-item d-md-none">
+                                <asp:LoginStatus ID="LoginStatus3" CssClass="nav-link" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
                             </li>
-                        </ul>
+                            </ul>
+                            <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 d-none d-md-flex">
+                                <% if (Page.User.IsInRole("Administrator"))
+                                    { %>
+                                <li><a id="A1" runat="server" href="~/Admin/Admin.aspx">
+                                    <img class="setting-img" src="/images/settings-icon-50.png" title="Управление" /></a></li>
+                                <% } %>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" title="Избранное" href="/Favorites.aspx">
+                                        <div class="icon icon-favorite"></div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="app-notifications nav-link" href="/">
+                                        <span class="icon icon-bell"></span>
+                                    </a>
+                                </li>
+                                <li class="nav-item ml-2">
+                                    <div class="btn btn-default navbar-btn navbar-btn-avatar" data-toggle="popover">
+                                        <img class="rounded-circle" src="assets/img/avatar-dhg.png">
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <ul class="nav navbar-nav d-none" id="js-popoverContent">
+                                <li class="nav-item"><a class="nav-link" href="#" data-action="growl">Growl</a></li>
+                                <li class="nav-item">
+                                    <asp:LoginStatus CssClass="nav-link" ID="LoginStatus2" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
+                                </li>
+                            </ul>
 
 
-                        <ul class="nav navbar-nav d-none">
-                            <li><a id="CabinetLink" runat="server" class="username" href="~/Account/Cabinet.aspx" title="Личный кабинет">Кабинет (<asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
-                                )
-                            </a></li>
-                            <li>
-                                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
-                            </li>
-                        </ul>
-                    </LoggedInTemplate>
-                </asp:LoginView>
-
+                            <ul class="nav navbar-nav d-none">
+                                <li><a id="CabinetLink" runat="server" class="username" href="~/Account/Cabinet.aspx" title="Личный кабинет">Кабинет (<asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
+                                    )
+                                </a></li>
+                                <li>
+                                    <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
             </div>
         </nav>
 

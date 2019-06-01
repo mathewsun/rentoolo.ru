@@ -83,15 +83,25 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/">Магазины</a>
                     </li>
-                </ul>
 
-                <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
-                    <AnonymousTemplate>
-                        <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 d-none d-md-flex">
-                            <li class="nav-item"><a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login.aspx">Вход</a></li>
-                        </ul>
-                    </AnonymousTemplate>
-                    <LoggedInTemplate>
+
+                    <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <li class="nav-item d-md-none">
+                                <a class="nav-link" href="/Account/Login.aspx">Вход</a>
+                            </li>
+                            </ul>
+                            <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 d-none d-md-flex">
+                                <li class="nav-item">
+                                    <a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login.aspx">Вход</a>
+                                </li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <li class="nav-item d-md-none">
+                                <asp:LoginStatus ID="LoginStatus3" CssClass="nav-link" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
+                            </li>
+                            </ul>
                         <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 d-none d-md-flex">
                             <% if (Page.User.IsInRole("Administrator"))
                                 { %>
@@ -116,25 +126,24 @@
                             </li>
                         </ul>
 
-                        <ul class="nav navbar-nav d-none" id="js-popoverContent">
-                            <li class="nav-item"><a class="nav-link" href="#" data-action="growl">Growl</a></li>
-                            <li class="nav-item">
-                                <asp:LoginStatus CssClass="nav-link" ID="LoginStatus2" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
-                            </li>
-                        </ul>
+                            <ul class="nav navbar-nav d-none" id="js-popoverContent">
+                                <li class="nav-item"><a class="nav-link" href="#" data-action="growl">Growl</a></li>
+                                <li class="nav-item">
+                                    <asp:LoginStatus CssClass="nav-link" ID="LoginStatus2" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
+                                </li>
+                            </ul>
 
 
-                        <ul class="nav navbar-nav d-none">
-                            <li><a id="CabinetLink" runat="server" class="username" href="~/Account/Cabinet.aspx" title="Личный кабинет">Кабинет (<asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
-                                )
-                            </a></li>
-                            <li>
-                                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
-                            </li>
-                        </ul>
-                    </LoggedInTemplate>
-                </asp:LoginView>
-
+                            <ul class="nav navbar-nav d-none">
+                                <li><a id="CabinetLink" runat="server" class="username" href="~/Account/Cabinet.aspx" title="Личный кабинет">Кабинет (<asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
+                                    )
+                                </a></li>
+                                <li>
+                                    <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
             </div>
         </nav>
 
