@@ -154,6 +154,20 @@
       <Association Name="Users_Memberships" Member="Memberships" ThisKey="UserId" OtherKey="UserId" Type="Memberships" Cardinality="One" />
     </Type>
   </Table>
+  <Table Name="dbo.Adverts" Member="Adverts">
+    <Type Name="Adverts">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Category" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedUserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MessageType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.fnGetAllCashOuts" Method="fnGetAllCashOuts" IsComposable="true">
     <Parameter Name="userId" Type="System.Guid" DbType="UniqueIdentifier" />
     <ElementType Name="fnGetAllCashOutsResult">
