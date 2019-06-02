@@ -208,6 +208,34 @@
 
                     <ul class="list-group media-list media-list-stream mb-4">
 
+                        <li class="media list-group-item p-4 li-header-categories-group">
+                            <div class="header-categories-group">
+                                <ul class="ul-header-categories">
+                                    <li>
+                                        <a class="link-header-categories" href="/">Авто</a>
+                                    </li>
+                                    <li>
+                                        <a class="link-header-categories" href="/">Недвижимость</a>
+                                    </li>
+                                    <li>
+                                        <a class="link-header-categories" href="/">Работа</a>
+                                    </li>
+                                    <li>
+                                        <a class="link-header-categories" href="/">Услуги</a>
+                                    </li>
+                                    <li>
+                                        <a class="link-header-categories" href="/">Хобби и отдых</a>
+                                    </li>
+                                    <li>
+                                        <a class="link-header-categories" href="/">Личные вещи</a>
+                                    </li>
+                                    <li>
+                                        <a class="link-header-categories" href="/">еще..</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
                         <li class="media list-group-item p-4">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Поиск по объявлениям">

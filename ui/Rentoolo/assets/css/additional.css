@@ -40,10 +40,41 @@
 .icon-favorite {
     height: 20px !important;
     background: url("/assets/img/favorite_dark_20.png") no-repeat;
-    padding-right:25px;
+    padding-right: 25px;
 }
 
     .icon-favorite:hover {
         height: 20px !important;
         background: url("/assets/img/favorite_20.png") no-repeat;
     }
+
+.header-categories-group {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+
+.ul-header-categories {
+    padding-inline-start: 0px !important;
+    flex-direction: row;
+    display: flex;
+    list-style: none;
+}
+
+.link-header-categories {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .li-header-categories-group {
+        display: none !important;
+    }
+}
