@@ -210,16 +210,21 @@
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\popper.min.js" />
     <Content Include="assets\js\toolkit.js" />
+    <Content Include="bootstrap\index.html" />
+    <Content Include="Business.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="DataBase\spGetLoginStatisticLastDayActive.sql" />
     <Content Include="DataBase\spGetLoginStatisticLastHourActive.sql" />
     <Content Include="DataBase\fnGetTablesRows.sql" />
     <Content Include="DataBase\fnGetAllUsers.sql" />
+    <Content Include="docs\index.html" />
     <Content Include="Fail.aspx" />
     <Content Include="FAQ.aspx" />
     <Content Include="Favorites.aspx" />
     <Content Include="Help.aspx" />
+    <Content Include="login\index.html" />
     <Content Include="News.aspx" />
+    <Content Include="notifications\index.html" />
     <Content Include="packages.config" />
     <Content Include="Model\DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -229,7 +234,9 @@
     <Content Include="Admin\Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="profile\index.html" />
     <Content Include="Success.aspx" />
+    <Content Include="Template.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="Admin\Result.ashx" />
     <Content Include="Account\Result.ashx" />
@@ -522,6 +529,13 @@
     <Compile Include="Articles.aspx.designer.cs">
       <DependentUpon>Articles.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Business.aspx.cs">
+      <DependentUpon>Business.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Business.aspx.designer.cs">
+      <DependentUpon>Business.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -612,6 +626,13 @@
     </Compile>
     <Compile Include="Success.aspx.designer.cs">
       <DependentUpon>Success.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Template.aspx.cs">
+      <DependentUpon>Template.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Template.aspx.designer.cs">
+      <DependentUpon>Template.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>

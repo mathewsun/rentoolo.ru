@@ -45,7 +45,7 @@
                             class="media-object d-flex align-self-start mr-3"
                             src="assets/img/avatar-fat.jpg">
                         <div class="media-body">
-                            <strong>Jacon Thornton: </strong>
+                            <strong>Майк Браун: </strong>
                             Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
                
                         </div>
@@ -55,7 +55,7 @@
                             class="media-object d-flex align-self-start mr-3"
                             src="assets/img/avatar-mdo.png">
                         <div class="media-body">
-                            <strong>Mark Otto: </strong>
+                            <strong>Виктория Золотова: </strong>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
                
                         </div>
@@ -72,7 +72,7 @@
                 <div class="media-body-text">
                     <div class="media-heading">
                         <small class="float-right text-muted">12 min</small>
-                        <h6>Jacob Thornton</h6>
+                        <h6>Майк Браун</h6>
                     </div>
                     <p>
                         Donec id elit non mi porta gravida at eget metus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit.

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Избранное" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Favorites.aspx.cs" Inherits="Rentoolo.Favorites" %>
+﻿<%@ Page Title="Бизнес" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Business.aspx.cs" Inherits="Rentoolo.Business" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -6,12 +6,54 @@
 
     <ul class="list-group media-list media-list-stream mb-4">
 
+        <li class="media list-group-item p-4 li-header-categories-group">
+            <div class="header-categories-group">
+                <ul class="ul-header-categories">
+                    <li>
+                        <a class="link-header-categories" href="/">Авто</a>
+                    </li>
+                    <li>
+                        <a class="link-header-categories" href="/">Недвижимость</a>
+                    </li>
+                    <li>
+                        <a class="link-header-categories" href="/">Работа</a>
+                    </li>
+                    <li>
+                        <a class="link-header-categories" href="/">Услуги</a>
+                    </li>
+                    <li>
+                        <a class="link-header-categories" href="/">Хобби и отдых</a>
+                    </li>
+                    <li>
+                        <a class="link-header-categories" href="/">Личные вещи</a>
+                    </li>
+                    <li>
+                        <a class="link-header-categories" href="/Business.aspx">Бизнес</a>
+                    </li>
+                    <li>
+                        <a class="link-header-categories" href="/">еще..</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="media list-group-item p-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Поиск по объявлениям">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-secondary align-self-stretch">
+                        <span>Найти</span>
+                    </button>
+                </div>
+            </div>
+        </li>
+
         <li class="media list-group-item p-4">
 
             <div class="media-body">
                 <div class="media-heading">
-                    <small class="float-right text-muted">28 объявлений</small>
-                    <h6>Избранное:</h6>
+                    <small class="float-right text-muted">2 842 объявлений</small>
+                    <h6>Бизнес:</h6>
                 </div>
 
                 <div class="media-body-inline-grid" data-grid="images">
@@ -24,18 +66,18 @@
                     </div>
 
                     <div style="display: none">
-                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_13.jpg">
+                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_11.jpg">
                     </div>
 
                     <div style="display: none">
                         <img data-action="zoom" data-width="500" data-height="500" src="assets/img/unsplash_2.jpg">
                     </div>
                     <div style="display: none">
-                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_1.jpg">
+                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_2.jpg">
                     </div>
 
                     <div style="display: none">
-                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_13.jpg">
+                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_4.jpg">
                     </div>
                 </div>
 
