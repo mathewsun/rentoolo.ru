@@ -38,6 +38,8 @@
         }
     </style>
 
+    <script src="/assets/js/jquery-2.2.4.js"></script>
+
 </head>
 
 
@@ -444,7 +446,6 @@
         </div>
 
 
-        <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/popper.min.js"></script>
         <script src="assets/js/chart.js"></script>
         <script src="assets/js/toolkit.js"></script>

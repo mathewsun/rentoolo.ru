@@ -16,6 +16,8 @@ namespace Rentoolo
             // Code that runs on application startup
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterOpenAuth();
+
+            RegisterRoutes(RouteTable.Routes);
         }
 
         void Application_End(object sender, EventArgs e)
@@ -27,6 +29,14 @@ namespace Rentoolo
         void Application_Error(object sender, EventArgs e)
         {
             // Code that runs when an unhandled error occurs
+
+        }
+
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+
+
+
 
         }
     }

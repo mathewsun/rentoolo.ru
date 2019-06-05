@@ -207,6 +207,7 @@
     <Content Include="assets\img\yellow-green.png" />
     <Content Include="assets\js\application.js" />
     <Content Include="assets\js\chart.js" />
+    <Content Include="assets\js\jquery-2.2.4.js" />
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\popper.min.js" />
     <Content Include="assets\js\toolkit.js" />
