@@ -10,7 +10,7 @@
     <meta name="description" content="rentoolo">
     <meta name="keywords" content="rentoolo">
     <meta name="author" content="rentoolo">
-    <link rel="shortcut icon" href="/assets/img/yellow-green.ico">
+    <link rel="shortcut icon" href="assets/img/yellow-green.ico">
 
     <title>Rentoolo - Ваши объявления
       
@@ -19,10 +19,10 @@
     <meta property="og:title" content="Rentoolo - Ваши объявления" />
     <meta property="mrc__share_title" content="Rentoolo - Ваши объявления" />
     <meta property="twitter:title" content="Rentoolo - Ваши объявления" />
-    <meta property="vk:image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
-    <meta property="og:image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
-    <meta property="twitter:image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
-    <meta property="image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
+    <meta property="vk:image" content="assets/img/banner_1.jpg" />
+    <meta property="og:image" content="assets/img/banner_1.jpg" />
+    <meta property="twitter:image" content="assets/img/banner_1.jpg" />
+    <meta property="image" content="assets/img/banner_1.jpg" />
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="assets/css/toolkit.css" rel="stylesheet">
@@ -39,7 +39,13 @@
         }
     </style>
 
-    <script src="/assets/js/jquery-2.2.4.js"></script>
+    <script src="assets/js/jquery-2.2.4.js"></script>
+
+	<script>
+		$(function() {
+			$('#allCategorieslist').click( function() { alert('clicked'); });
+		});
+	</script>
 
 </head>
 
@@ -196,7 +202,7 @@
                                         <a class="link-header-categories" href="/Business.aspx">Бизнес</a>
                                     </li>
                                     <li>
-                                        <a class="link-header-categories" href="/">еще..</a>
+                                        <a id="allCategorieslist" class="link-header-categories" href="#">еще..</a>
                                     </li>
                                 </ul>
                             </div>
