@@ -215,6 +215,7 @@
 
     .item-wrap__like:hover {
         cursor: pointer;
+        background-image: url(../img/favorite_20.png);
     }
 
 .item-wrap__like-active {
@@ -222,6 +223,10 @@
     height: 20px;
     width: 20px;
 }
+
+    .item-wrap__like-active:hover {
+        background-image: url(../img/favorite_dark_20.png);
+    }
 
 .item-wrap__wrap {
     min-height: 200px;

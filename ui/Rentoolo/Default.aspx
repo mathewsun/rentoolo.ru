@@ -99,6 +99,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/">Магазины</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Работа</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Услуги</a>
+                    </li>
 
                     <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
@@ -234,12 +240,6 @@
                                     </li>
                                     <li>
                                         <a class="link-header-categories" href="/">Недвижимость</a>
-                                    </li>
-                                    <li>
-                                        <a class="link-header-categories" href="/">Работа</a>
-                                    </li>
-                                    <li>
-                                        <a class="link-header-categories" href="/">Услуги</a>
                                     </li>
                                     <li>
                                         <a class="link-header-categories" href="/">Хобби и отдых</a>
