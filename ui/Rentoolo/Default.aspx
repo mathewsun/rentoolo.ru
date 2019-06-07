@@ -26,7 +26,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="assets/css/toolkit.css" rel="stylesheet">
     <link href="assets/css/application.css" rel="stylesheet">
-    <link href="assets/css/additional.css?1" rel="stylesheet">
+    <link href="assets/css/additional.css?2" rel="stylesheet">
 
     <style>
         /* note: this is a hack for ios iframe for bootstrap themes shopify page */
@@ -39,6 +39,19 @@
     </style>
 
     <script src="/assets/js/jquery-2.2.4.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#allCategorieslist").click(function () {
+                if ($(".more-popup").is(":visible")) {
+                    $(".more-popup").fadeOut(300);
+
+                } else {
+                    $(".more-popup").fadeIn(300);
+                };
+            });
+        });
+    </script>
 
 </head>
 
@@ -235,9 +248,107 @@
                                         <a class="link-header-categories" href="/Business.aspx">Бизнес</a>
                                     </li>
                                     <li>
-                                        <a class="link-header-categories" href="/">еще..</a>
+                                        <span id="allCategorieslist" class="link-header-categories more-link">еще..</span>
                                     </li>
                                 </ul>
+                                <div class="more-popup">
+                                    <div class="more-popup__arrow">
+                                    </div>
+                                    <div class="popup__wrapper">
+                                        <div class="popup__title">
+                                            <a href="#">Все категории</a>
+                                        </div>
+                                        <div class="popup__wrap">
+                                            <div class="popup__column">
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="">Транспорт</a></li>
+                                                    <li><a href="">Автомобили</a></li>
+                                                    <li><a href="">Мотоциклы и мототехника</a></li>
+                                                    <li><a href="">Грузовики и спецтехника</a></li>
+                                                    <li><a href="">Водный транспорт</a></li>
+                                                    <li><a href="">Запчасти и аксессуары</a></li>
+                                                </ul>
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="">Для дома и дачи</a></li>
+                                                    <li><a href="">Бытовая техника</a></li>
+                                                    <li><a href="">Мебель и интерьер</a></li>
+                                                    <li><a href="">Посуда и товары для кухни</a></li>
+                                                    <li><a href="">Продукты питания</a></li>
+                                                    <li><a href="">Ремонт и строительство</a></li>
+                                                    <li><a href="">Растения</a></li>
+                                                </ul>
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="">Для бизнеса</a></li>
+                                                    <li><a href="">Готовый бизнес</a></li>
+                                                    <li><a href="">Оборудование для бизнеса</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="popup__column">
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="">Недвижимость</a></li>
+                                                    <li><a href="">Квартиры</a></li>
+                                                    <li><a href="">Комнаты</a></li>
+                                                    <li><a href="">Дома, дачи, коттеджи</a></li>
+                                                    <li><a href="">Земельные участки</a></li>
+                                                    <li><a href="">Гаражи и машиноместа</a></li>
+                                                    <li><a href="">Коммерческая недвижимость</a></li>
+                                                    <li><a href="">Недвижимость за рубежом</a></li>
+                                                </ul>
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="">Бытовая электроника</a></li>
+                                                    <li><a href="">Аудио и видео</a></li>
+                                                    <li><a href="">Игры, приставки и программы</a></li>
+                                                    <li><a href="">Настольные компьютеры</a></li>
+                                                    <li><a href="">Ноутбуки</a></li>
+                                                    <li><a href="">Оргтехника и расходники</a></li>
+                                                    <li><a href="">Планшеты и электронные книги</a></li>
+                                                    <li><a href="">Телефоны</a></li>
+                                                    <li><a href="">Товары для компьютера</a></li>
+                                                    <li><a href="">Фототехника</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="popup__column">
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="">Работа</a></li>
+                                                    <li><a href="">Вакансии</a></li>
+                                                    <li><a href="">Резюме</a></li>
+                                                </ul>
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="">Услуги</a></li>
+                                                </ul>
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="">Хобби и отдых</a></li>
+                                                    <li><a href="">Билеты и путешествия</a></li>
+                                                    <li><a href="">Велосипеды</a></li>
+                                                    <li><a href="">Книги и журналы</a></li>
+                                                    <li><a href="">Коллекционирование</a></li>
+                                                    <li><a href="">Музыкальные инструменты</a></li>
+                                                    <li><a href="">Охота и рыбалка</a></li>
+                                                    <li><a href="">Спорт и отдых</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="popup__column">
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="">Личные вещи</a></li>
+                                                    <li><a href="">Одежда, обувь, аксессуары</a></li>
+                                                    <li><a href="">Детская одежда и обувь</a></li>
+                                                    <li><a href="">Товары для детей и игрушки</a></li>
+                                                    <li><a href="">Часы и украшения</a></li>
+                                                    <li><a href="">Красота и здоровье</a></li>
+                                                </ul>
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="">Животные</a></li>
+                                                    <li><a href="">Собаки</a></li>
+                                                    <li><a href="">Кошки</a></li>
+                                                    <li><a href="">Птицы</a></li>
+                                                    <li><a href="">Аквариум</a></li>
+                                                    <li><a href="">Другие животные</a></li>
+                                                    <li><a href="">Товары для животных</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </li>
 
