@@ -109,13 +109,24 @@
                     <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <li class="nav-item d-md-none">
-                                <a class="nav-link" href="/Account/Login.aspx">Вход</a>
+                                <a class="nav-link" href="/Account/Login.aspx">Вход и регистрация</a>
                             </li>
                             </ul>
                         <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 d-none d-md-flex">
                             <li class="nav-item">
-                                <a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login.aspx">Вход</a>
+                                <a class="nav-link" href="/Favorites.aspx">
+                                    <div class="favorite-top" title="Избранное"></div>
+                                </a>
                             </li>
+                            <li class="nav-item">
+                                <a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login.aspx">Вход и регистрация</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">
+                                    <span class="btn btn-sm btn-pill btn-primary">Подать объявление</span>
+                                </a>
+                            </li>
+
                         </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
@@ -127,7 +138,7 @@
                                 <% if (Page.User.IsInRole("Administrator"))
                                     { %>
                                 <li><a id="A1" runat="server" href="~/Admin/Admin.aspx">
-                                    <img class="setting-img" src="/images/settings-icon-50.png" title="Управление" /></a></li>
+                                    <img class="setting-img" src="assets/img/settings-icon-50.png" title="Управление" /></a></li>
                                 <% } %>
 
                                 <li class="nav-item">
@@ -153,7 +164,6 @@
                                     <asp:LoginStatus CssClass="nav-link" ID="LoginStatus2" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
                                 </li>
                             </ul>
-
 
                             <ul class="nav navbar-nav d-none">
                                 <li><a id="CabinetLink" runat="server" class="username" href="~/Account/Cabinet.aspx" title="Личный кабинет">Кабинет (<asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
@@ -386,7 +396,7 @@
                                                 <div class="item-wrap__data">Вчера 14:15</div>
                                             </div>
                                         </div>
-                                        <div class="item-wrap__like"></div>
+                                        <div class="item-wrap__like" title="Добавить в избранное"></div>
                                     </div>
 
                                     <div class="item-wrap" style="display: none">
@@ -400,7 +410,7 @@
                                                 <div class="item-wrap__data">Вчера 12:15</div>
                                             </div>
                                         </div>
-                                        <div class="item-wrap__like"></div>
+                                        <div class="item-wrap__like" title="Добавить в избранное"></div>
                                     </div>
 
                                     <div class="item-wrap" style="display: none">
@@ -414,7 +424,7 @@
                                                 <div class="item-wrap__data">Вчера 11:15</div>
                                             </div>
                                         </div>
-                                        <div class="item-wrap__like"></div>
+                                        <div class="item-wrap__like" title="Добавить в избранное"></div>
                                     </div>
 
                                     <div class="item-wrap" style="display: none">
@@ -428,7 +438,7 @@
                                                 <div class="item-wrap__data">Вчера 10:15</div>
                                             </div>
                                         </div>
-                                        <div class="item-wrap__like"></div>
+                                        <div class="item-wrap__like" title="Добавить в избранное"></div>
                                     </div>
                                     <div class="item-wrap" style="display: none">
                                         <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_2.jpg">
@@ -441,7 +451,7 @@
                                                 <div class="item-wrap__data">Вчера 9:15</div>
                                             </div>
                                         </div>
-                                        <div class="item-wrap__like"></div>
+                                        <div class="item-wrap__like" title="Добавить в избранное"></div>
                                     </div>
 
                                     <div class="item-wrap" style="display: none">
@@ -455,7 +465,7 @@
                                                 <div class="item-wrap__data">Вчера 14:15</div>
                                             </div>
                                         </div>
-                                        <div class="item-wrap__like"></div>
+                                        <div class="item-wrap__like" title="Добавить в избранное"></div>
                                     </div>
                                 </div>
 

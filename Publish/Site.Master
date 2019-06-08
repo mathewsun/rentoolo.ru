@@ -95,12 +95,22 @@
                     <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <li class="nav-item d-md-none">
-                                <a class="nav-link" href="/Account/Login.aspx">Вход</a>
+                                <a class="nav-link" href="/Account/Login.aspx">Вход и регистрация</a>
                             </li>
                             </ul>
                             <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 d-none d-md-flex">
                                 <li class="nav-item">
-                                    <a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login.aspx">Вход</a>
+                                    <a class="nav-link" href="/Favorites.aspx">
+                                        <div class="favorite-top" title="Избранное"></div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login.aspx">Вход и регистрация</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">
+                                        <span class="btn btn-sm btn-pill btn-primary">Подать объявление</span>
+                                    </a>
                                 </li>
                             </ul>
                         </AnonymousTemplate>

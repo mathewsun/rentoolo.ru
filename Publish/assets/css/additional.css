@@ -14,7 +14,7 @@
 
     .login:hover {
         color: #fff;
-        text-decoration: underline;
+        text-decoration: none;
     }
 
 .create-advertisement {
@@ -206,7 +206,7 @@
     position: absolute;
     height: 20px;
     width: 20px;
-    background-image: url(../img/favorite_20_light.png);
+    background-image: url(/assets/img/favorite_20_light.png);
     top: 6px;
     background-size: contain;
     background-repeat: no-repeat;
@@ -215,17 +215,17 @@
 
     .item-wrap__like:hover {
         cursor: pointer;
-        background-image: url(../img/favorite_20.png);
+        background-image: url(/assets/img/favorite_20.png);
     }
 
 .item-wrap__like-active {
-    background-image: url(../img/favorite_dark_20.png);
+    background-image: url(/assets/img/favorite_dark_20.png);
     height: 20px;
     width: 20px;
 }
 
     .item-wrap__like-active:hover {
-        background-image: url(../img/favorite_dark_20.png);
+        background-image: url(/assets/img/favorite_dark_20.png);
     }
 
 .item-wrap__wrap {
@@ -368,3 +368,14 @@
         width: 20px;
     }
 }
+
+.favorite-top {
+    height: 20px;
+    width: 23px;
+    background-image: url(/assets/img/favorite_20.png);
+    background-repeat: no-repeat;
+}
+
+    .favorite-top:hover {
+        background-image: url(/assets/img/favorite_light_20.png);
+    }

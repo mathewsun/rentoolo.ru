@@ -178,8 +178,8 @@
     <Content Include="assets\img\brand-white.png" />
     <Content Include="assets\img\brand.png" />
     <Content Include="assets\img\favorite_20.png" />
-    <Content Include="assets\img\favorite_20_light.png" />
     <Content Include="assets\img\favorite_dark_20.png" />
+    <Content Include="assets\img\favorite_light_20.png" />
     <Content Include="assets\img\iceland.jpg" />
     <Content Include="assets\img\instagram_1.jpg" />
     <Content Include="assets\img\instagram_10.jpg" />

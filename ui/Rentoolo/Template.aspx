@@ -244,7 +244,7 @@
                                         <div class="media-footer">
                                             <small class="text-muted">
                                                 <a href="#">Dave Gamache</a> at 4:20PM
-                    </small>
+                                            </small>
                                         </div>
                                     </div>
                                     <img class="rounded-circle media-object d-flex align-self-start ml-3" src="assets/img/avatar-dhg.png">
@@ -268,7 +268,7 @@
                                         <div class="media-footer">
                                             <small class="text-muted">
                                                 <a href="#">Fat</a> at 4:28PM
-                    </small>
+                                            </small>
                                         </div>
                                     </div>
                                 </li>
@@ -287,7 +287,7 @@
                                         <div class="media-footer">
                                             <small class="text-muted">
                                                 <a href="#">Mark Otto</a> at 4:20PM
-                    </small>
+                                            </small>
                                         </div>
                                     </div>
                                 </li>
@@ -301,7 +301,7 @@
                                         <div class="media-footer">
                                             <small class="text-muted">
                                                 <a href="#">Dave Gamache</a> at 4:20PM
-                    </small>
+                                            </small>
                                         </div>
                                     </div>
                                     <img class="rounded-circle media-object d-flex align-self-start ml-3" src="assets/img/avatar-dhg.png">
@@ -325,7 +325,7 @@
                                         <div class="media-footer">
                                             <small class="text-muted">
                                                 <a href="#">Fat</a> at 4:28PM
-                    </small>
+                                            </small>
                                         </div>
                                     </div>
                                 </li>
@@ -344,7 +344,7 @@
                                         <div class="media-footer">
                                             <small class="text-muted">
                                                 <a href="#">Mark Otto</a> at 4:20PM
-                    </small>
+                                            </small>
                                         </div>
                                     </div>
                                 </li>
