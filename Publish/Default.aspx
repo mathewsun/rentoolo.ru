@@ -396,7 +396,7 @@
                                                 <div class="item-wrap__data">Вчера 14:15</div>
                                             </div>
                                         </div>
-                                        <div class="item-wrap__like" title="Добавить в избранное"></div>
+                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
                                     </div>
 
                                     <div class="item-wrap" style="display: none">
@@ -410,7 +410,7 @@
                                                 <div class="item-wrap__data">Вчера 12:15</div>
                                             </div>
                                         </div>
-                                        <div class="item-wrap__like" title="Добавить в избранное"></div>
+                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
                                     </div>
 
                                     <div class="item-wrap" style="display: none">
@@ -424,7 +424,7 @@
                                                 <div class="item-wrap__data">Вчера 11:15</div>
                                             </div>
                                         </div>
-                                        <div class="item-wrap__like" title="Добавить в избранное"></div>
+                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
                                     </div>
 
                                     <div class="item-wrap" style="display: none">
@@ -438,7 +438,7 @@
                                                 <div class="item-wrap__data">Вчера 10:15</div>
                                             </div>
                                         </div>
-                                        <div class="item-wrap__like" title="Добавить в избранное"></div>
+                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
                                     </div>
                                     <div class="item-wrap" style="display: none">
                                         <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_2.jpg">
@@ -451,7 +451,7 @@
                                                 <div class="item-wrap__data">Вчера 9:15</div>
                                             </div>
                                         </div>
-                                        <div class="item-wrap__like" title="Добавить в избранное"></div>
+                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
                                     </div>
 
                                     <div class="item-wrap" style="display: none">
@@ -465,7 +465,7 @@
                                                 <div class="item-wrap__data">Вчера 14:15</div>
                                             </div>
                                         </div>
-                                        <div class="item-wrap__like" title="Добавить в избранное"></div>
+                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
                                     </div>
                                 </div>
 
