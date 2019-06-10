@@ -117,7 +117,8 @@
     position: absolute;
     overflow: hidden;
     bottom: 100%;
-    left: 66%;
+    left: 50%;
+    transform: translateX(-50%);
     width: 20px;
     height: 10px;
     top: -10;
@@ -255,17 +256,7 @@
         margin: 0;
     }
 
-@media (max-width: 1199px) {
-    .more-popup__arrow {
-        left: 84%;
-    }
-}
 
-@media (max-width: 992px) {
-    .more-popup__arrow {
-        left: 50%;
-    }
-}
 
 @media (max-width: 693px) {
     .item-wrap {
