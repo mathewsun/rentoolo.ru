@@ -15,106 +15,93 @@
                 </div>
 
                 <div class="media-body-inline-grid" data-grid="images">
-                    <div style="display: none">
+                    <div class="item-wrap" style="display: none">
                         <img data-action="zoom" data-width="500" data-height="500" src="assets/img/unsplash_1.jpg">
+                        <div class="item-wrap__wrap ">
+                            <div class="item-wrap__name"><a href="#">Холодильник Indesit 90l / 40l </a></div>
+                            <div class="item-wrap__cost">11 000 ₽</div>
+                            <div class="item-wrap__description">
+                                <p>Бытовая техника</p>
+                                <p>р-н Торговая сторона</p>
+                                <div class="item-wrap__data">Вчера 14:15</div>
+                            </div>
+                        </div>
+                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
                     </div>
 
-                    <div style="display: none">
+                    <div class="item-wrap" style="display: none">
                         <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_1.jpg">
+                        <div class="item-wrap__wrap">
+                            <div class="item-wrap__name"><a href="#">Кофемашина Tefal l400</a></div>
+                            <div class="item-wrap__cost">13 000 ₽</div>
+                            <div class="item-wrap__description">
+                                <p>Техника для кухни</p>
+                                <p>р-н Торговая сторона</p>
+                                <div class="item-wrap__data">Вчера 12:15</div>
+                            </div>
+                        </div>
+                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
                     </div>
 
-                    <div style="display: none">
-                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_13.jpg">
+                    <div class="item-wrap" style="display: none">
+                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_11.jpg">
+                        <div class="item-wrap__wrap">
+                            <div class="item-wrap__name"><a href="#">Наушники проводные</a></div>
+                            <div class="item-wrap__cost">2 000 ₽</div>
+                            <div class="item-wrap__description">
+                                <p></p>
+                                <p>р-н Торговая сторона</p>
+                                <div class="item-wrap__data">Вчера 11:15</div>
+                            </div>
+                        </div>
+                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
                     </div>
 
-                    <div style="display: none">
+                    <div class="item-wrap" style="display: none">
                         <img data-action="zoom" data-width="500" data-height="500" src="assets/img/unsplash_2.jpg">
-                    </div>
-                    <div style="display: none">
-                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_1.jpg">
-                    </div>
-
-                    <div style="display: none">
-                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_13.jpg">
-                    </div>
-                </div>
-
-                <ul class="media-list mb-2">
-                    <li class="media mb-3">
-                        <img
-                            class="media-object d-flex align-self-start mr-3"
-                            src="assets/img/avatar-fat.jpg">
-                        <div class="media-body">
-                            <strong>Майк Браун: </strong>
-                            Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
-               
+                        <div class="item-wrap__wrap">
+                            <div class="item-wrap__name"><a href="#">Копьютер в сборке intel core i7, nvidia 2080rtx, 1tb hdd, 128gb ssd, 16gb</a></div>
+                            <div class="item-wrap__cost">41 000 ₽</div>
+                            <div class="item-wrap__description">
+                                <p>Компьютеры</p>
+                                <p>р-н Торговая сторона</p>
+                                <div class="item-wrap__data">Вчера 10:15</div>
+                            </div>
                         </div>
-                    </li>
-                    <li class="media">
-                        <img
-                            class="media-object d-flex align-self-start mr-3"
-                            src="assets/img/avatar-mdo.png">
-                        <div class="media-body">
-                            <strong>Виктория Золотова: </strong>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-               
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </li>
-
-        <li class="media list-group-item p-4">
-            <img
-                class="media-object d-flex align-self-start mr-3"
-                src="assets/img/avatar-fat.jpg">
-            <div class="media-body">
-                <div class="media-body-text">
-                    <div class="media-heading">
-                        <small class="float-right text-muted">12 min</small>
-                        <h6>Майк Браун</h6>
+                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
                     </div>
-                    <p>
-                        Donec id elit non mi porta gravida at eget metus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-             
-                    </p>
+                    <div class="item-wrap" style="display: none">
+                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_2.jpg">
+                        <div class="item-wrap__wrap">
+                            <div class="item-wrap__name"><a href="#">Ноутбук Acer Predator Heliios-300</a></div>
+                            <div class="item-wrap__cost">61 000 ₽</div>
+                            <div class="item-wrap__description">
+                                <p>Компьютеры</p>
+                                <p>р-н Торговая сторона</p>
+                                <div class="item-wrap__data">Вчера 9:15</div>
+                            </div>
+                        </div>
+                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
+                    </div>
+
+                    <div class="item-wrap" style="display: none">
+                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_4.jpg">
+                        <div class="item-wrap__wrap">
+                            <div class="item-wrap__name"><a href="#">Колонка bluetooth v4.3 18w</a></div>
+                            <div class="item-wrap__cost">4 000 ₽</div>
+                            <div class="item-wrap__description">
+                                <p></p>
+                                <p>р-н Торговая сторона</p>
+                                <div class="item-wrap__data">Вчера 14:15</div>
+                            </div>
+                        </div>
+                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
+                    </div>
                 </div>
             </div>
         </li>
 
-        <li class="media list-group-item p-4">
-            <img
-                class="media-object d-flex align-self-start mr-3"
-                src="assets/img/avatar-mdo.png">
-            <div class="media-body">
-                <div class="media-heading">
-                    <small class="float-right text-muted">78 объявлений</small>
-                    <h6>Недвижимость:</h6>
-                </div>
 
-                <p>
-                    Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-           
-                </p>
-
-                <div class="media-body-inline-grid" data-grid="images">
-                    <img style="display: none" data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_3.jpg">
-                </div>
-
-                <ul class="media-list">
-                    <li class="media">
-                        <img
-                            class="media-object d-flex align-self-start mr-3"
-                            src="assets/img/avatar-dhg.png">
-                        <div class="media-body">
-                            <strong>Dave Gamache: </strong>
-                            Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
-               
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </li>
     </ul>
 
 </asp:Content>

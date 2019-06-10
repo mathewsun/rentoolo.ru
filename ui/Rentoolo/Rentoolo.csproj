@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Account\AddItem.aspx" />
     <Content Include="Account\Cabinet.aspx" />
     <Content Include="Account\Exchange.aspx" />
     <Content Include="Account\Login.aspx" />
@@ -199,9 +200,11 @@
     <Content Include="assets\img\instagram_7.jpg" />
     <Content Include="assets\img\instagram_8.jpg" />
     <Content Include="assets\img\instagram_9.jpg" />
+    <Content Include="assets\img\kurier-piter.jpg" />
     <Content Include="assets\img\settings-icon-50.png" />
     <Content Include="assets\img\unsplash_1.jpg" />
     <Content Include="assets\img\unsplash_2.jpg" />
+    <Content Include="assets\img\varianty-planirovki-3-h-komnatnoj-kvartiry-v-hrushchevke-7.jpg" />
     <Content Include="assets\img\vk_black.png" />
     <Content Include="assets\img\vk_white.png" />
     <Content Include="assets\img\yellow-green.ico" />
@@ -257,6 +260,13 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\AddItem.aspx.cs">
+      <DependentUpon>AddItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AddItem.aspx.designer.cs">
+      <DependentUpon>AddItem.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Cabinet.aspx.cs">
       <DependentUpon>Cabinet.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
