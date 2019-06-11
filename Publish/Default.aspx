@@ -122,11 +122,10 @@
                                 <a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login.aspx">Вход и регистрация</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/">
+                                <a class="nav-link" href="/Account/AddItem.aspx">
                                     <span class="btn btn-sm btn-pill btn-primary">Подать объявление</span>
                                 </a>
                             </li>
-
                         </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
@@ -144,6 +143,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" title="Избранное" href="/Favorites.aspx">
                                         <div class="icon icon-favorite"></div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Account/AddItem.aspx">
+                                        <span class="btn btn-sm btn-pill btn-primary">Подать объявление</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -548,81 +552,42 @@
                     </ul>
                 </div>
                 <div class="col-lg-3">
-                    <div class="alert alert-warning alert-dismissible d-none d-lg-block" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <a class="alert-link" href="profile/index.html">Visit your profile!</a> Check your self, you aren't looking well.
-     
-                    </div>
-
                     <div class="card mb-4 d-none d-lg-block">
                         <div class="card-body">
                             <h6 class="mb-3">Вы смотрели: <small>· <a href="#">Показать все</a></small></h6>
                             <div data-grid="images" data-target-height="150">
                                 <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_2.jpg">
                             </div>
-                            <p><strong>It might be time to visit Iceland.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
-                            <button class="btn btn-outline-primary btn-sm">Buy a ticket</button>
+                            <p><strong>Ноутбук Acer Predator Heliios-300.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                         </div>
                     </div>
-
                     <div class="card mb-4 d-none d-lg-block">
                         <div class="card-body">
-                            <h6 class="mb-3">Избранное:</h6>
-                            <ul class="media-list media-list-stream">
-                                <li class="media mb-2">
-                                    <img
-                                        class="media-object d-flex align-self-start mr-3"
-                                        src="assets/img/avatar-fat.jpg">
-                                    <div class="media-body">
-                                        <strong>Майк Браун</strong> @fat
-             
-                                    <div class="media-body-actions">
-                                        <button class="btn btn-outline-primary btn-sm">
-                                            <span class="icon icon-add-user"></span>Follow</button>
-                                    </div>
-                                    </div>
-                                </li>
-                                <li class="media">
-                                    <a class="media-left" href="#">
-                                        <img
-                                            class="media-object d-flex align-self-start mr-3"
-                                            src="assets/img/avatar-mdo.png">
-                                    </a>
-                                    <div class="media-body">
-                                        <strong>Виктория Золотова</strong> @mdo
-             
-                                    <div class="media-body-actions">
-                                        <button class="btn btn-outline-primary btn-sm">
-                                            <span class="icon icon-add-user"></span>Follow</button>
-
-                                    </div>
-                                    </div>
-                                </li>
-                            </ul>
+                            <h6 class="mb-3">Ваши объявления: <small>· <a href="#">Показать все</a></small></h6>
+                            <div data-grid="images" data-target-height="150">
+                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/varianty-planirovki-3-h-komnatnoj-kvartiry-v-hrushchevke-7.jpg">
+                            </div>
+                            <p><strong>3х комнатная квартира СЗАО Москва</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                         </div>
-                        <div class="card-footer">
-                            Dave really likes these nerds, no one knows why though.
-       
+                    </div>
+                    <div class="card mb-4 d-none d-lg-block">
+                        <div class="card-body">
+                            <h6 class="mb-3">Избранное: <small>· <a href="#">Показать все</a></small></h6>
+                            <div data-grid="images" data-target-height="150">
+                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/kurier-piter.jpg">
+                            </div>
+                            <p><strong>Курьер. Курьерские услуги. Санкт-Петербург.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                         </div>
                     </div>
 
                     <div class="card card-link-list">
                         <div class="card-body">
-                            © 2018 Bootstrap
-         
-                        <a href="#">About</a>
+                            © Rentoolo
                             <a href="#">Help</a>
                             <a href="#">Terms</a>
                             <a href="#">Privacy</a>
                             <a href="#">Cookies</a>
-                            <a href="#">Ads </a>
-                            <a href="#">Info</a>
-                            <a href="#">Brand</a>
-                            <a href="#">Blog</a>
-                            <a href="#">Status</a>
-                            <a href="#">Apps</a>
                             <a href="#">Jobs</a>
-                            <a href="#">Advertise</a>
                         </div>
                     </div>
                 </div>
