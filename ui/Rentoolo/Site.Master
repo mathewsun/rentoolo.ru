@@ -239,7 +239,7 @@
                         <div class="card-body">
                             <h6 class="mb-3">Вы смотрели: <small>· <a href="#">Показать все</a></small></h6>
                             <div data-grid="images" data-target-height="150">
-                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="/assets/img/instagram_2.jpg">
+                                <img class="media-object" data-width="250" data-height="250" data-action="zoom" src="/assets/img/instagram_2.jpg">
                             </div>
                             <p><strong>It might be time to visit Iceland.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                         </div>
@@ -248,7 +248,7 @@
                         <div class="card-body">
                             <h6 class="mb-3">Ваши объявления: <small>· <a href="#">Показать все</a></small></h6>
                             <div data-grid="images" data-target-height="150">
-                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="/assets/img/varianty-planirovki-3-h-komnatnoj-kvartiry-v-hrushchevke-7.jpg">
+                                <img class="media-object" data-width="250" data-height="250" data-action="zoom" src="/assets/img/varianty-planirovki-3-h-komnatnoj-kvartiry-v-hrushchevke-7.jpg">
                             </div>
                             <p><strong>3х комнатная квартира СЗАО Москва</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                         </div>
@@ -257,7 +257,7 @@
                         <div class="card-body">
                             <h6 class="mb-3">Избранное: <small>· <a href="#">Показать все</a></small></h6>
                             <div data-grid="images" data-target-height="150">
-                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="/assets/img/kurier-piter.jpg">
+                                <img class="media-object" data-width="250" data-height="250" data-action="zoom" src="/assets/img/kurier-piter.jpg">
                             </div>
                             <p><strong>Курьер. Курьерские услуги. Санкт-Петербург.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                         </div>

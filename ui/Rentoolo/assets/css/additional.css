@@ -370,3 +370,25 @@
     .favorite-top:hover {
         background-image: url(/assets/img/favorite_light_20.png);
     }
+
+
+.list-item-wrap {
+    display: flex !important;
+    width: 100%;
+    border-radius: 3px;
+    vertical-align: top !important;
+    position: relative;
+    margin-bottom: 0 !important;
+    margin-top: 10px !important;
+    box-sizing: border-box;
+}
+
+.list-item-wrap-img {
+    width: 200px;
+    height: 200px;
+}
+
+/*.right-panel-img{
+    width: 233px;
+    height: 219px;
+}*/

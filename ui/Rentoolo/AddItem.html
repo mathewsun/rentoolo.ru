@@ -1,4 +1,5 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Rentoolo.SiteMaster" %>
+﻿
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,12 +41,36 @@
 
     <script src="/assets/js/jquery-2.2.4.js"></script>
 
-    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+    
+
 </head>
 
 
 <body class="with-top-navbar">
-    <form id="Form1" runat="server">
+    <form method="post" action="./AddItem.aspx" id="Form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTY1NDU2MTA1Mg9kFgJmDw8WBB4PX19BbnRpWHNyZlRva2VuBSBlNTk3NzU2YmI1MGI0MDIxOWYwMDM0NTU1YWFjZTMyNh4SX19BbnRpWHNyZlVzZXJOYW1lBQNtbW1kZBgCBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WBgUjY3RsMDAkTG9naW5WaWV3MSRMb2dpblN0YXR1czMkY3RsMDEFI2N0bDAwJExvZ2luVmlldzEkTG9naW5TdGF0dXMzJGN0bDAzBSNjdGwwMCRMb2dpblZpZXcxJExvZ2luU3RhdHVzMiRjdGwwMQUjY3RsMDAkTG9naW5WaWV3MSRMb2dpblN0YXR1czIkY3RsMDMFI2N0bDAwJExvZ2luVmlldzEkTG9naW5TdGF0dXMxJGN0bDAxBSNjdGwwMCRMb2dpblZpZXcxJExvZ2luU3RhdHVzMSRjdGwwMwUQY3RsMDAkTG9naW5WaWV3MQ8PZAIBZOGFofHfaR1DRJXrmEXIoKLR+b5BwjvbP+txmiT8EZrL" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
 
         <div class="growl" id="app-growl"></div>
 
@@ -92,39 +117,16 @@
                         <a class="nav-link" href="/">Услуги</a>
                     </li>
 
-                    <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
+                    
                             <li class="nav-item d-md-none">
-                                <a class="nav-link" href="/Account/Login.aspx">Вход и регистрация</a>
-                            </li>
-                            </ul>
-                            <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 d-none d-md-flex">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/Favorites.aspx">
-                                        <div class="favorite-top" title="Избранное"></div>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login.aspx">Вход и регистрация</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/">
-                                        <span class="btn btn-sm btn-pill btn-primary">Подать объявление</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <li class="nav-item d-md-none">
-                                <asp:LoginStatus ID="LoginStatus3" CssClass="nav-link" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
+                                <a id="LoginView1_LoginStatus3" class="nav-link" href="javascript:__doPostBack(&#39;ctl00$LoginView1$LoginStatus3$ctl00&#39;,&#39;&#39;)">Выйти</a>
                             </li>
                             </ul>
                         <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 d-none d-md-flex">
-                            <% if (Page.User.IsInRole("Administrator"))
-                                { %>
-                            <li><a id="A1" runat="server" href="~/Admin/Admin.aspx">
+                            
+                            <li><a href="../Admin/Admin.aspx" id="LoginView1_A1">
                                 <img class="setting-img" src="/images/settings-icon-50.png" title="Управление" /></a></li>
-                            <% } %>
+                            
 
                             <li class="nav-item">
                                 <a class="nav-link" title="Избранное" href="/Favorites.aspx">
@@ -151,21 +153,20 @@
                             <ul class="nav navbar-nav d-none" id="js-popoverContent">
                                 <li class="nav-item"><a class="nav-link" href="#" data-action="growl">Growl</a></li>
                                 <li class="nav-item">
-                                    <asp:LoginStatus CssClass="nav-link" ID="LoginStatus2" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
+                                    <a id="LoginView1_LoginStatus2" class="nav-link" href="javascript:__doPostBack(&#39;ctl00$LoginView1$LoginStatus2$ctl00&#39;,&#39;&#39;)">Выйти</a>
                                 </li>
                             </ul>
 
 
                             <ul class="nav navbar-nav d-none">
-                                <li><a id="CabinetLink" runat="server" class="username" href="~/Account/Cabinet.aspx" title="Личный кабинет">Кабинет (<asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
+                                <li><a href="Cabinet.aspx" id="LoginView1_CabinetLink" class="username" title="Личный кабинет">Кабинет (<span id="LoginView1_LoginName1" class="username">mmm</span>
                                     )
                                 </a></li>
                                 <li>
-                                    <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
+                                    <a id="LoginView1_LoginStatus1" href="javascript:__doPostBack(&#39;ctl00$LoginView1$LoginStatus1$ctl00&#39;,&#39;&#39;)">Выйти</a>
                                 </li>
                             </ul>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
+                        
             </div>
         </nav>
 
@@ -231,7 +232,9 @@
             <div class="row">
                 <div class="col-lg-9">
 
-                    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                    
+
+
 
                 </div>
                 <div class="col-lg-3">
@@ -239,7 +242,7 @@
                         <div class="card-body">
                             <h6 class="mb-3">Вы смотрели: <small>· <a href="#">Показать все</a></small></h6>
                             <div data-grid="images" data-target-height="150">
-                                <img class="media-object" data-width="250" data-height="250" data-action="zoom" src="/assets/img/instagram_2.jpg">
+                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="/assets/img/instagram_2.jpg">
                             </div>
                             <p><strong>It might be time to visit Iceland.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                         </div>
@@ -248,7 +251,7 @@
                         <div class="card-body">
                             <h6 class="mb-3">Ваши объявления: <small>· <a href="#">Показать все</a></small></h6>
                             <div data-grid="images" data-target-height="150">
-                                <img class="media-object" data-width="250" data-height="250" data-action="zoom" src="/assets/img/varianty-planirovki-3-h-komnatnoj-kvartiry-v-hrushchevke-7.jpg">
+                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="/assets/img/varianty-planirovki-3-h-komnatnoj-kvartiry-v-hrushchevke-7.jpg">
                             </div>
                             <p><strong>3х комнатная квартира СЗАО Москва</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                         </div>
@@ -257,7 +260,7 @@
                         <div class="card-body">
                             <h6 class="mb-3">Избранное: <small>· <a href="#">Показать все</a></small></h6>
                             <div data-grid="images" data-target-height="150">
-                                <img class="media-object" data-width="250" data-height="250" data-action="zoom" src="/assets/img/kurier-piter.jpg">
+                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="/assets/img/kurier-piter.jpg">
                             </div>
                             <p><strong>Курьер. Курьерские услуги. Санкт-Петербург.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                         </div>
@@ -287,7 +290,20 @@
             // execute/clear BS loaders for docs
             $(function () { while (window.BS && window.BS.loader && window.BS.loader.length) { (window.BS.loader.pop())() } })
         </script>
-    </form>
+    
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="0F599264" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAS1J7R2afbUgjLhWGtE29KaqpQGuCHHl9sDhMqk9e7kP4PAn1BGeMeiRBa7uZ7lnYz7teRC7h3ucrgQGJF6bT1JJzvhvFUEZ4UFmdvaJzlKHWvq5JV52vEwD/ddbD9n1WI=" />
+</div></form>
+
+<!-- Visual Studio Browser Link -->
+<script type="application/json" id="__browserLink_initializationData">
+    {"appName":"Chrome","requestId":"b6c61f5007a0492796c4a0fcc5ebb5d4"}
+</script>
+<script type="text/javascript" src="http://localhost:1424/6ac11007f60b49d69a7e5a1ad42c5839/browserLink" async="async"></script>
+<!-- End Browser Link -->
+
 </body>
 </html>
 
