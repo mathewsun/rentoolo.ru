@@ -172,6 +172,8 @@
     <Content Include="assets\css\application.css" />
     <Content Include="assets\css\docs.css" />
     <Content Include="assets\css\toolkit.css" />
+    <Content Include="assets\img\addphoto.png" />
+    <Content Include="assets\img\addphoto.svg" />
     <Content Include="assets\img\avatar-dhg.png" />
     <Content Include="assets\img\avatar-fat.jpg" />
     <Content Include="assets\img\avatar-mdo.png" />
