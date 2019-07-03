@@ -14,7 +14,8 @@ namespace Rentoolo.Account
         {
             //RegisterHyperLink.NavigateUrl = "~/Account/Cabinet.aspx";
 
-            //var returnUrl = "~/Account/Cabinet.aspx"; //HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+            var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+
             //if (String.IsNullOrEmpty(returnUrl))
             //{
             //    RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
