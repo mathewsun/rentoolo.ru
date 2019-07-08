@@ -11,7 +11,7 @@
     <meta name="author" content="rentoolo">
     <link rel="shortcut icon" href="/assets/img/yellow-green.ico">
 
-    <title>Rentoolo - Ваши объявления
+    <title>Rentoolo - Ваши объявления ___ PASHA COMMIT 
       
     </title>
 
