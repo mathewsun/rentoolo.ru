@@ -17,6 +17,23 @@
         text-decoration: none;
     }
 
+.login-input {
+    width: 304px;
+    float: left;
+    margin-right: 10px;
+}
+
+.field-validation-error {
+}
+
+.div-validation-error {
+    overflow: hidden;
+}
+
+.login-confirm {
+    padding-bottom: 35px;
+}
+
 .create-advertisement {
     margin-bottom: 5px;
 }

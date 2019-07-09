@@ -44,11 +44,15 @@
                         </a>
 
                         <div class="form-group">
-                            <asp:TextBox runat="server" CssClass="form-control" ID="UserName" placeholder="Пользователь" />
+                            <asp:TextBox runat="server" CssClass="form-control login-input" ID="UserName" placeholder="Username" />
+                            <div class="div-validation-error">
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorUserName" runat="server" ControlToValidate="UserName" CssClass="field-validation-error" ErrorMessage="*" /></div>
                         </div>
 
                         <div class="form-group mb-3">
-                            <asp:TextBox runat="server" CssClass="form-control" ID="Password" TextMode="Password" placeholder="Пароль" />
+                            <asp:TextBox runat="server" CssClass="form-control login-input" ID="Password" TextMode="Password" placeholder="Пароль" />
+                            <div class="div-validation-error">
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ControlToValidate="Password" CssClass="field-validation-error" ErrorMessage="*" /></div>
                         </div>
 
                         <div class="form-group">
@@ -57,7 +61,7 @@
 
                         <div class="mb-5">
                             <asp:Button ID="ButtonLogin" runat="server" CssClass="btn btn-primary" CommandName="Login" Text="Вход" />
-                            <button type="button" class="btn btn-secondary" onclick="location.href='/Account/Register.aspx'">Регистрация</button>
+                            <button type="button" class="btn btn-secondary" onclick="location.href='/Account/SignUp.aspx'">Регистрация</button>
                         </div>
 
                         <footer class="screen-login">

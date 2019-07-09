@@ -2345,6 +2345,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .form-group {
     margin-bottom: 1rem;
+    width: 322px;
+    padding-bottom: 10px;
 }
 
 .form-text {
