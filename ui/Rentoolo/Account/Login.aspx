@@ -10,9 +10,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
 
-    <title>Login &middot; 
-      
-    </title>
+    <title>Вход - Rentoolo</title>
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
@@ -58,8 +56,8 @@
                         </div>
 
                         <div class="mb-5">
-                            <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" CommandName="Login" Text="Вход" />
-                            <button class="btn btn-secondary" onclick="location.href='/Account/Register.aspx'">Регистрация</button>
+                            <asp:Button ID="ButtonLogin" runat="server" CssClass="btn btn-primary" CommandName="Login" Text="Вход" />
+                            <button type="button" class="btn btn-secondary" onclick="location.href='/Account/Register.aspx'">Регистрация</button>
                         </div>
 
                         <footer class="screen-login">
