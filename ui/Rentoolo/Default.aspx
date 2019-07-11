@@ -66,8 +66,12 @@
                     var innerHTMLgeo = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
 
                     alert(innerHTMLgeo);
-
-                });
+                },
+                function (error) {
+                    // On error code..
+                },
+                { timeout: 30000, enableHighAccuracy: true, maximumAge: 75000 }
+            );
             } else {
                 x.innerHTML = "Geolocation is not supported by this browser.";
             }
