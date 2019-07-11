@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="Подать объявление" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddItem.aspx.cs" Inherits="Rentoolo.Account.AddItem" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style>
+        #map {
+            height: 300px;
+            width: 100%;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="additem">
@@ -57,7 +63,7 @@
             </div>
             <div class="additem-right">
                 <label for="file" class="label__file">
-                    <img src="/assets/img/addphoto.svg" width="100px" alt="Добавить фотографию"></label>
+                    <img src="/assets/img/addphoto.png" width="100px" alt="Добавить фотографию"></label>
                 <input class="additem-input additem__input-photo" name="file" id="file" type="file" accept="image/gif,image/png,image/jpeg,image/pjpeg">
             </div>
         </div>
@@ -87,7 +93,22 @@
             <div class="additem-left ">
             </div>
             <div class="additem-right additem-map">
-                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A877125111ad65104c6d5637b07b64b6a62ee325e975f67a8df120a2740017f7e&amp;source=constructor" width="500" height="208" frameborder="0.6px"></iframe>
+                <div class="additem-map">
+                    <div id="map"></div>
+                    <script>
+                        // Initialize and add the map
+                        function initMap() {
+                            // The location of Uluru
+                            var uluru = { lat: 55.751244, lng: 37.618423 };
+                            // The map, centered at Uluru
+                            var map = new google.maps.Map(
+                                document.getElementById('map'), { zoom: 16, center: uluru });
+                            // The marker, positioned at Uluru
+                            var marker = new google.maps.Marker({ position: uluru, map: map });
+                        }
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo&callback=initMap" async defer></script>
+                </div>
             </div>
         </div>
         <div class="additem-category">

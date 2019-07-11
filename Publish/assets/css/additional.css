@@ -544,6 +544,10 @@
     position: relative;
 }
 
+.additem-map {
+    width: 80%;
+}
+
 .price__value {
     position: absolute;
     z-index: 2;
