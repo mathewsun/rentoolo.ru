@@ -123,7 +123,7 @@
                             <% if (Page.User.IsInRole("Administrator"))
                                 { %>
                             <li><a id="A1" runat="server" href="~/Admin/Admin.aspx">
-                                <img class="setting-img" src="/images/settings-icon-50.png" title="Управление" /></a></li>
+                                <img class="setting-img" src="/assets/img/settings-icon-50.png" title="Управление" /></a></li>
                             <% } %>
 
                             <li class="nav-item">
@@ -149,9 +149,9 @@
                         </ul>
 
                             <ul class="nav navbar-nav d-none" id="js-popoverContent">
-                                <li class="nav-item"><a class="nav-link" href="#" data-action="growl">Growl</a></li>
+                                <li class="nav-item"><a class="nav-link blue-color" href="#" data-action="growl">Growl</a></li>
                                 <li class="nav-item">
-                                    <asp:LoginStatus CssClass="nav-link" ID="LoginStatus2" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
+                                    <asp:LoginStatus CssClass="nav-link blue-color" ID="LoginStatus2" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
                                 </li>
                             </ul>
 

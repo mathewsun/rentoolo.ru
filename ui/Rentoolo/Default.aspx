@@ -65,7 +65,7 @@
 
                     var innerHTMLgeo = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
 
-                    alert(innerHTMLgeo);
+                    //alert(innerHTMLgeo);
                 },
                 function (error) {
                     // On error code..
@@ -202,9 +202,9 @@
                             </ul>
 
                             <ul class="nav navbar-nav d-none" id="js-popoverContent">
-                                <li class="nav-item"><a class="nav-link" href="#" data-action="growl">Growl</a></li>
+                                <li class="nav-item"><a class="nav-link blue-color" href="#" data-action="growl">Growl</a></li>
                                 <li class="nav-item">
-                                    <asp:LoginStatus CssClass="nav-link" ID="LoginStatus2" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
+                                    <asp:LoginStatus CssClass="nav-link blue-color" ID="LoginStatus2" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
                                 </li>
                             </ul>
 

@@ -845,3 +845,7 @@ input::-webkit-inner-spin-button {
         margin-top: 25px;
     }
 }
+
+.blue-color {
+    color: #216a94 !important;
+}
