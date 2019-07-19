@@ -604,6 +604,7 @@
       <DependentUpon>Help.aspx</DependentUpon>
     </Compile>
     <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\AdvertDataHelper.cs" />
     <Compile Include="Model\AdvertsDataHelper.cs" />
     <Compile Include="Model\BasicPage.cs">
       <SubType>ASPXCodeBehind</SubType>
