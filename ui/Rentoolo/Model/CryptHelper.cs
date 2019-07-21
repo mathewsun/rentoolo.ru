@@ -101,24 +101,6 @@ namespace Rentoolo.Model
             return encryptedData;
         }
 
-        public static string DeCryptString(byte[] value)
-        {
-            string result;
-
-            using (RSACryptoServiceProvider RSAxml = new RSACryptoServiceProvider())
-            {
-                byte[] decryptedData;
-
-                RSAxml.FromXmlString(SettingsDbConnection.PrivateKeyXml);
-
-                decryptedData = CryptHelper.RSADecrypt(value, RSAxml.ExportParameters(true), false);
-
-                result = CryptHelper.GetString(decryptedData);
-            }
-
-            return result;
-        }
-
         public static string Sha256(string value)
         {
             SHA256Managed crypt = new SHA256Managed();

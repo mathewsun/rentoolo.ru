@@ -11,11 +11,21 @@ namespace Rentoolo.Model
 
         public static List<Adverts> GetAdverts()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
-                var list = ctx.Adverts.OrderByDescending(x => x.CreateDate).ToList();
+                var list = ctx.Adverts.OrderByDescending(x => x.Created).ToList();
 
                 return list;
+            }
+        }
+
+        public static Adverts GetAdvert(long id)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Adverts item = dc.Adverts.FirstOrDefault(x => x.Id == id);
+
+                return item;
             }
         }
 

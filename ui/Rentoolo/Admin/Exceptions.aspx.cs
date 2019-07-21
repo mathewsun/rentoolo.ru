@@ -6,7 +6,7 @@ namespace Rentoolo.Admin
 {
     public partial class Exceptions : System.Web.UI.Page
     {
-        public List<Model.Exception> ListItems;
+        public List<Model.Exceptions> ListItems;
 
         protected void Page_Load(object sender, EventArgs e)
         {

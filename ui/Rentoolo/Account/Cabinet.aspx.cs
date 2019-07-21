@@ -13,7 +13,7 @@ namespace Rentoolo.Account
             {
                 this.UpdateSession();
 
-                Users user = DataHelper.GetUser(User.UserId);
+                Users user = DataHelper.GetUser(User.Id);
                 
             }
         }

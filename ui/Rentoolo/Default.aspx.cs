@@ -8,7 +8,7 @@ namespace Rentoolo
 {
     public partial class _Default : Page
     {
-        public List<New> ListNews;
+        public List<Rentoolo.Model.News> ListNews;
 
         public string UsercCount;
 

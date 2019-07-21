@@ -8,9 +8,9 @@ namespace Rentoolo.Account
     {
         public List<Model.Referrals> ListItemsFirstLevel;
 
-        public List<Model.fnGetUserReferralsSecondLevelResult> ListItemsSecondLevel;
+        public List<Model.fnGetUserReferralsSecondLevel_Result> ListItemsSecondLevel;
 
-        public List<Model.fnGetUserReferralsThirdLevelResult> ListItemsThirdLevel;
+        public List<Model.fnGetUserReferralsThirdLevel_Result> ListItemsThirdLevel;
 
         public int HoursDifference;
 
@@ -32,11 +32,11 @@ namespace Rentoolo.Account
 
             if (!IsPostBack)
             {
-                ListItemsFirstLevel = DataHelper.GetUserReferrals(User.UserId);
+                ListItemsFirstLevel = DataHelper.GetUserReferrals(User.Id);
 
-                ListItemsSecondLevel = DataHelper.GetUserReferralsSecondLevel(User.UserId);
+                ListItemsSecondLevel = DataHelper.GetUserReferralsSecondLevel(User.Id);
 
-                ListItemsThirdLevel = DataHelper.GetUserReferralsThirdLevel(User.UserId);
+                ListItemsThirdLevel = DataHelper.GetUserReferralsThirdLevel(User.Id);
             }
         }
     }

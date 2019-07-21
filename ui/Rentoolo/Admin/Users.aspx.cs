@@ -6,7 +6,7 @@ namespace Rentoolo.Admin
 {
     public partial class Users : System.Web.UI.Page
     {
-        public List<Model.fnGetAllUsersResult> List;
+        public List<Model.fnGetAllUsers_Result> List;
 
         public int HoursDifference;
 

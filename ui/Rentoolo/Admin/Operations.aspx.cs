@@ -6,7 +6,7 @@ namespace Rentoolo.Admin
 {
     public partial class Operations : System.Web.UI.Page
     {
-        public List<Model.Operation> List;
+        public List<Model.Operations> List;
 
         public int HoursDifference;
 

@@ -48,24 +48,24 @@ namespace Rentoolo.Admin
 
                 if (UserItem != null)
                 {
-                    MembershipUser = DataHelper.GetUserMembership(UserItem.UserId);
+                    MembershipUser = DataHelper.GetUserMembership(UserItem.Id);
 
-                    LabelUserName.Text = UserItem.UserName;
+                    LabelUserName.Text = UserItem.Name;
 
                     LabelRegistered.Text = MembershipUser.CreateDate.ToString("dd.MM.yyyy HH:mm");
 
                     LabelEmail.Text = MembershipUser.Email;
 
-                    Referer = DataHelper.GetReferral(UserItem.UserId);
+                    Referer = DataHelper.GetReferral(UserItem.Id);
 
                     LabelUserIsBlocked.Text = MembershipUser.IsLockedOut ? "Да" : "Нет";
 
                     if (Referer != null)
                     {
-                        LabelReferal.Text = DataHelper.GetUser(Referer.ReferrerUserId).UserName;
+                        LabelReferal.Text = DataHelper.GetUser(Referer.ReferrerUserId).Name;
                     }
 
-                    ListLoginStatistics = DataHelper.GetLoginStatistics(UserItem.UserName);
+                    ListLoginStatistics = DataHelper.GetLoginStatistics(UserItem.Name);
                 }
             }
         }

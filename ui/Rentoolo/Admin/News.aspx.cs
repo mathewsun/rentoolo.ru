@@ -6,7 +6,7 @@ namespace Rentoolo.Admin
 {
     public partial class News : System.Web.UI.Page
     {
-        public List<Model.New> list;
+        public List<Model.News> list;
 
         protected void Page_Load(object sender, EventArgs e)
         {

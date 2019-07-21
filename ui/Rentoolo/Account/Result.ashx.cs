@@ -37,23 +37,23 @@ namespace Rentoolo.Account
 
                     //сделать проверку что не является рефералом реферера и на уровень выше тоже
 
-                    if(referer.UserId == referal.UserId) return;
+                    if(referer.Id == referal.Id) return;
 
-                    Model.Referrals upperReferal = DataHelper.GetReferral(referer.UserId);
+                    Model.Referrals upperReferal = DataHelper.GetReferral(referer.Id);
 
-                    if (upperReferal != null && upperReferal.ReferrerUserId == referal.UserId) return;
+                    if (upperReferal != null && upperReferal.ReferrerUserId == referal.Id) return;
 
                     if (upperReferal != null)
                     {
                         Model.Referrals upper2Referal = DataHelper.GetReferral(upperReferal.ReferrerUserId);
 
-                        if (upper2Referal != null && upper2Referal.ReferrerUserId == referal.UserId) return;
+                        if (upper2Referal != null && upper2Referal.ReferrerUserId == referal.Id) return;
                     }
 
                     Model.Referrals referralItem = new Model.Referrals
                     {
-                        ReferralUserId = referal.UserId,
-                        ReferrerUserId = referer.UserId,
+                        ReferralUserId = referal.Id,
+                        ReferrerUserId = referer.Id,
                         WhenDate = DateTime.Now
                     };
 

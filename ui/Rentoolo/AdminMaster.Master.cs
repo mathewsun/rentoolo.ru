@@ -16,7 +16,7 @@ namespace Rentoolo
         public double Balance;
         public double Percent;
 
-        public List<New> ListNews;
+        public List<Rentoolo.Model.News> ListNews;
 
         protected void Page_Init(object sender, EventArgs e)
         {

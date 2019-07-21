@@ -5,7 +5,7 @@ namespace Rentoolo
 {
     public partial class Article : System.Web.UI.Page
     {
-        public Model.Article ArticleItem;
+        public Model.Articles ArticleItem;
 
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -15,7 +15,7 @@ namespace Rentoolo
 
         public double Balance;
 
-        public List<New> ListNews;
+        public List<Rentoolo.Model.News> ListNews;
 
         protected void Page_Init(object sender, EventArgs e)
         {

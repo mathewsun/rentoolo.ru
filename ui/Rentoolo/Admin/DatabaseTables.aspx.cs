@@ -6,7 +6,7 @@ namespace Rentoolo.Admin
 {
     public partial class DatabaseTables : System.Web.UI.Page
     {
-        public List<fnGetTablesRowsResult> ListCounts;
+        public List<fnGetTablesRows_Result> ListCounts;
 
         protected void Page_Load(object sender, EventArgs e)
         {

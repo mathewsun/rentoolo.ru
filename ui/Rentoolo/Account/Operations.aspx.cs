@@ -7,7 +7,7 @@ namespace Rentoolo.Account
 {
     public partial class Operations : BasicPage
     {
-        public List<Model.Operation> List;
+        public List<Model.Operations> List;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +25,7 @@ namespace Rentoolo.Account
 
             if (!IsPostBack)
             {
-                List = DataHelper.GetUserOperationsLast100(User.UserId);
+                List = DataHelper.GetUserOperationsLast100(User.Id);
             }
         }
     }

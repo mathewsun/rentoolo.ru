@@ -13,7 +13,7 @@ namespace Rentoolo.Admin
 
                 if (itemId != 0)
                 {
-                    Model.Article item = DataHelper.GetOneArticle(itemId);
+                    Model.Articles item = DataHelper.GetOneArticle(itemId);
 
                     TextBoxDate.Text = item.WhenDate.ToString("dd.MM.yyyy");
 
@@ -21,11 +21,11 @@ namespace Rentoolo.Admin
 
                     NewsText.Text = item.Text;
 
-                    LabelAuthor.Text = DataHelper.GetUser(item.UserId).UserName;
+                    LabelAuthor.Text = DataHelper.GetUser(item.UserId).Name;
                 }
                 else
                 {
-                    LabelAuthor.Text = User.UserName;
+                    LabelAuthor.Text = User.Name;
 
                     TextBoxDate.Text = DateTime.Now.ToString("dd.MM.yyyy");
                 }
@@ -34,7 +34,7 @@ namespace Rentoolo.Admin
 
         protected void ButtonSave_Click(object sender, EventArgs e)
         {
-            Model.Article item = new Model.Article();
+            Model.Articles item = new Model.Articles();
 
             int itemId = 0;
 
@@ -59,7 +59,7 @@ namespace Rentoolo.Admin
                 item.WhenDate = myDate;
                 item.Head = TextBoxHead.Text;
                 item.Text = NewsText.Text;
-                item.UserId = User.UserId;
+                item.UserId = User.Id;
 
                 DataHelper.SubmitArticle(item);
             }

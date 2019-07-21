@@ -6,21 +6,13 @@ namespace Rentoolo.Model
 {
     public static class WalletsHelper
     {
-        public static List<fnGetUserWalletsResult> GetUserWallets(Guid userId)
+        public static List<fnGetUserWallets_Result> GetUserWallets(Guid userId)
         {
-            using (var dc = new DataClasses1DataContext())
+            using (var dc = new RentooloEntities())
             {
-                List<fnGetUserWalletsResult> list = dc.fnGetUserWallets(userId).OrderByDescending(x=>x.Value).ToList();
+                List<fnGetUserWallets_Result> list = dc.fnGetUserWallets(userId).OrderByDescending(x=>x.Value).ToList();
 
                 return list;
-            }
-        }
-
-        public static void AddWalletForUser(Guid userId, int currencyId, double startBallance)
-        {
-            using (var dc = new DataClasses1DataContext())
-            {
-                dc.spAddWalletForUser(userId, currencyId, startBallance);
             }
         }
     }

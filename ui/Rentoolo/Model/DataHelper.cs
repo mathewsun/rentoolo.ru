@@ -12,9 +12,9 @@ namespace Rentoolo.Model
 
         public static Users GetUser(Guid userId)
         {
-            using (var dc = new DataClasses1DataContext())
+            using (var dc = new RentooloEntities())
             {
-                Users user = dc.Users.FirstOrDefault(x => x.UserId == userId);
+                Users user = dc.Users.FirstOrDefault(x => x.Id == userId);
 
                 return user;
             }
@@ -22,9 +22,9 @@ namespace Rentoolo.Model
 
         public static Guid GetUserId(string userName)
         {
-            using (var dc = new DataClasses1DataContext())
+            using (var dc = new RentooloEntities())
             {
-                Guid userId = dc.Users.Where(x => x.UserName == userName).Select(e => e.UserId).FirstOrDefault();
+                Guid userId = dc.Users.Where(x => x.Name == userName).Select(e => e.Id).FirstOrDefault();
 
                 return userId;
             }
@@ -32,9 +32,9 @@ namespace Rentoolo.Model
 
         public static Users GetUserByName(string userName)
         {
-            using (var dc = new DataClasses1DataContext())
+            using (var dc = new RentooloEntities())
             {
-                Users user = dc.Users.FirstOrDefault(x => x.UserName == userName);
+                Users user = dc.Users.FirstOrDefault(x => x.Name == userName);
 
                 return user;
             }
@@ -42,7 +42,7 @@ namespace Rentoolo.Model
 
         public static Memberships GetUserMembership(Guid userId)
         {
-            using (var dc = new DataClasses1DataContext())
+            using (var dc = new RentooloEntities())
             {
                 Memberships membership = dc.Memberships.FirstOrDefault(x => x.UserId == userId);
 
@@ -52,7 +52,7 @@ namespace Rentoolo.Model
 
         public static Users GetUserByRefId(int refId)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Users.FirstOrDefault(x => x.PublicId == refId);
                 return obj;
@@ -61,50 +61,50 @@ namespace Rentoolo.Model
 
         public static void UpdateUser(Users user)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
-                var obj = ctx.Users.FirstOrDefault(x => x.UserId == user.UserId);
+                var obj = ctx.Users.FirstOrDefault(x => x.Id == user.Id);
                 obj.Pwd = user.Pwd;
                 obj.PublicId = user.PublicId;
                 obj.Communication = user.Communication;
-                ctx.SubmitChanges();
+                ctx.SaveChanges();
             }
         }
 
         public static void UpdateUserParametr(string userName, string parametr, String parametrValue)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
-                var obj = ctx.Users.FirstOrDefault(x => x.UserName == userName);
+                var obj = ctx.Users.FirstOrDefault(x => x.Name == userName);
 
                 if (obj != null)
                 {
                     if (parametr == "Communication") obj.Communication = parametrValue;
 
-                    ctx.SubmitChanges();
+                    ctx.SaveChanges();
                 }
             }
         }
 
         public static void UpdateUserEmail(string userName, string email)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
-                var item = ctx.Users.FirstOrDefault(x => x.UserName == userName);
-                var member = ctx.Memberships.FirstOrDefault(x => x.UserId == item.UserId);
+                var item = ctx.Users.FirstOrDefault(x => x.Name == userName);
+                var member = ctx.Memberships.FirstOrDefault(x => x.UserId == item.Id);
                 if (member != null)
                 {
                     member.Email = email;
-                    ctx.SubmitChanges();
+                    ctx.SaveChanges();
                 }
             }
         }
 
-        public static List<fnGetAllUsersResult> GetAllUsers()
+        public static List<fnGetAllUsers_Result> GetAllUsers()
         {
-            using (var dc = new DataClasses1DataContext())
+            using (var dc = new RentooloEntities())
             {
-                List<fnGetAllUsersResult> list = dc.fnGetAllUsers().OrderByDescending(x => x.CreateDate).ToList();
+                List<fnGetAllUsers_Result> list = dc.fnGetAllUsers().OrderByDescending(x => x.CreateDate).ToList();
 
                 return list;
             }
@@ -112,7 +112,7 @@ namespace Rentoolo.Model
 
         public static int GetAllUsersCount()
         {
-            using (var dc = new DataClasses1DataContext())
+            using (var dc = new RentooloEntities())
             {
                 int count = dc.Users.Count();
 
@@ -120,15 +120,15 @@ namespace Rentoolo.Model
             }
         }
 
-        public static bool CheckUserInRole(string roleName)
-        {
-            using (var ctx = new DataClasses1DataContext())
-            {
-                var role = ctx.Roles.FirstOrDefault(x => x.RoleName == roleName);
+        //public static bool CheckUserInRole(string roleName)
+        //{
+        //    using (var ctx = new RentooloEntities())
+        //    {
+        //        var role = ctx.Roles.FirstOrDefault(x => x.Name == roleName);
 
-                return ctx.UsersInRoles.Any(x => x.Role == role);
-            }
-        }
+        //        return ctx.UsersInRole.Any(x => x.Id == role.RoleId);
+        //    }
+        //}
 
         public static bool CheckUserAuthorization(string login, string password, string ip, string version)
         {
@@ -153,49 +153,49 @@ namespace Rentoolo.Model
 
         public static bool CheckUserAuthorization(string login, string password)
         {
-            using (var dc = new DataClasses1DataContext())
+            using (var dc = new RentooloEntities())
             {
-                return dc.Users.Any(x => x.UserName == login && x.Pwd == password);
+                return dc.Users.Any(x => x.Name == login && x.Pwd == password);
             }
         }
 
         public static void SetUserLastActivityDate(Guid userId)
         {
-            using (var dc = new DataClasses1DataContext())
+            using (var dc = new RentooloEntities())
             {
-                Users obj = dc.Users.Single(x => x.UserId == userId);
+                Users obj = dc.Users.Single(x => x.Id == userId);
                 obj.LastActivityDate = DateTime.Now;
-                dc.SubmitChanges();
+                dc.SaveChanges();
             }
         }
 
         public static void SetUserLastActivityDateByUserName(string userName)
         {
-            using (var dc = new DataClasses1DataContext())
+            using (var dc = new RentooloEntities())
             {
-                Users obj = dc.Users.Single(x => x.UserName == userName);
+                Users obj = dc.Users.Single(x => x.Name == userName);
                 obj.LastActivityDate = DateTime.Now;
-                dc.SubmitChanges();
+                dc.SaveChanges();
             }
         }
 
         public static void BlockUser(Guid userId)
         {
-            using (var dc = new DataClasses1DataContext())
+            using (var dc = new RentooloEntities())
             {
                 Memberships obj = dc.Memberships.Single(x => x.UserId == userId);
                 obj.IsLockedOut = true;
-                dc.SubmitChanges();
+                dc.SaveChanges();
             }
         }
 
         public static void UnBlockUser(Guid userId)
         {
-            using (var dc = new DataClasses1DataContext())
+            using (var dc = new RentooloEntities())
             {
                 Memberships obj = dc.Memberships.Single(x => x.UserId == userId);
                 obj.IsLockedOut = false;
-                dc.SubmitChanges();
+                dc.SaveChanges();
             }
         }
 
@@ -210,7 +210,7 @@ namespace Rentoolo.Model
         /// </summary>
         public static void AddLoginStatistic(LoginStatistics item)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 if (string.IsNullOrEmpty(item.Version)) item.Version = string.Empty;
 
@@ -223,12 +223,12 @@ namespace Rentoolo.Model
                 }
                 else
                 {
-                    ctx.LoginStatistics.InsertOnSubmit(item);
+                    ctx.LoginStatistics.Add(item);
                 }
 
                 try
                 {
-                    ctx.SubmitChanges();
+                    ctx.SaveChanges();
                 }
                 catch (System.Exception ex)
                 {
@@ -239,7 +239,7 @@ namespace Rentoolo.Model
 
         public static LoginStatistics GetLoginStatistic(LoginStatistics item)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.LoginStatistics.FirstOrDefault(x => x.UserName == item.UserName && x.Ip == item.Ip);
                 return obj;
@@ -248,7 +248,7 @@ namespace Rentoolo.Model
 
         public static List<LoginStatistics> GetLoginStatistics(string userName)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 return ctx.LoginStatistics.Where(x => x.UserName == userName).OrderByDescending(x => x.WhenLastDate).ToList();
             }
@@ -256,7 +256,7 @@ namespace Rentoolo.Model
 
         public static int GetLoginStatisticByIp(string ip)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.LoginStatistics.Where(x => x.Ip == ip).GroupBy(o => o.UserName).Count();
                 return obj;
@@ -265,7 +265,7 @@ namespace Rentoolo.Model
 
         public static List<LoginStatistics> GetUsersLoginStatisticsByIp(string ip)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.LoginStatistics.Where(x => x.Ip == ip).ToList();
                 return obj;
@@ -274,7 +274,7 @@ namespace Rentoolo.Model
 
         public static List<LoginStatistics> GetLoginStatisticByClient(int clientId)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.LoginStatistics.Where(x => x.Client == clientId).OrderBy(x => x.UserName).ToList();
                 return obj;
@@ -283,7 +283,7 @@ namespace Rentoolo.Model
 
         public static List<LoginStatistics> GetLoginStatisticByClientToday(int clientId)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.LoginStatistics.Where(x => x.Client == clientId && x.WhenLastDate >= DateTime.Now.AddDays(-1)).OrderByDescending(x => x.WhenLastDate).ToList();
                 return obj;
@@ -299,7 +299,7 @@ namespace Rentoolo.Model
         /// </summary>
         public static List<Settings> GetAllSettings()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var list = ctx.Settings.OrderBy(x => x.Order).ToList();
 
@@ -312,7 +312,7 @@ namespace Rentoolo.Model
         /// </summary>
         public static Settings GetSetting(int id)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Settings.FirstOrDefault(x => x.Id == id);
                 return obj;
@@ -324,7 +324,7 @@ namespace Rentoolo.Model
         /// </summary>
         public static Settings GetSettingByName(string name)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Settings.FirstOrDefault(x => x.Name == name);
                 return obj;
@@ -336,11 +336,11 @@ namespace Rentoolo.Model
         /// </summary>
         public static void UpdateSetting(Settings item)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Settings.FirstOrDefault(x => x.Id == item.Id);
                 obj.Value = item.Value;
-                ctx.SubmitChanges();
+                ctx.SaveChanges();
             }
         }
 
@@ -350,13 +350,13 @@ namespace Rentoolo.Model
 
         public static void AddCashIn(CashIns item)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
-                ctx.CashIns.InsertOnSubmit(item);
+                ctx.CashIns.Add(item);
 
                 try
                 {
-                    ctx.SubmitChanges();
+                    ctx.SaveChanges();
                 }
                 catch (System.Exception ex)
                 {
@@ -367,7 +367,7 @@ namespace Rentoolo.Model
 
         public static bool CheckExistCashIn(CashIns item)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 return ctx.CashIns.Any(x => x.UserId == item.UserId
                 && x.Value == item.Value
@@ -377,7 +377,7 @@ namespace Rentoolo.Model
 
         public static List<CashIns> GetAllCashIns()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var list = ctx.CashIns.Select(x => x).OrderByDescending(x => x.Id).ToList();
 
@@ -387,7 +387,7 @@ namespace Rentoolo.Model
 
         public static List<CashIns> GetLast50CashIns()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var list = ctx.CashIns.Select(x => x).OrderByDescending(x => x.Id).Take(50).ToList();
 
@@ -397,7 +397,7 @@ namespace Rentoolo.Model
 
         public static List<CashIns> GetUserCashIns(Guid userId)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var list = ctx.CashIns.Where(x => x.UserId == userId).ToList();
 
@@ -407,7 +407,7 @@ namespace Rentoolo.Model
 
         public static CashIns GetCashIn(int id)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.CashIns.FirstOrDefault(x => x.Id == id);
                 return obj;
@@ -416,11 +416,11 @@ namespace Rentoolo.Model
 
         public static void UpdateCashIn(int Id, int state)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.CashIns.Single(x => x.Id == Id);
                 obj.WhenDate = DateTime.Now;
-                ctx.SubmitChanges();
+                ctx.SaveChanges();
             }
         }
 
@@ -431,27 +431,27 @@ namespace Rentoolo.Model
         /// <summary>
         /// Проведение операции
         /// </summary>
-        public static void AddOperation(Operation operation)
+        public static void AddOperation(Operations operation)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
-                ctx.Operations.InsertOnSubmit(operation);
-                ctx.SubmitChanges();
+                ctx.Operations.Add(operation);
+                ctx.SaveChanges();
             }
         }
 
-        public static List<Operation> GetAllOperations()
+        public static List<Operations> GetAllOperations()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Operations.OrderByDescending(x => x.Id).ToList();
                 return obj;
             }
         }
 
-        public static List<Operation> GetLast100Operations()
+        public static List<Operations> GetLast100Operations()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Operations.OrderByDescending(x => x.Id).Take(100).ToList();
                 return obj;
@@ -461,9 +461,9 @@ namespace Rentoolo.Model
         /// <summary>
         /// Получение операций пользователя
         /// </summary>
-        public static List<Operation> GetUserOperations(Guid userId)
+        public static List<Operations> GetUserOperations(Guid userId)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Operations.Where(x => x.UserId == userId).OrderByDescending(x => x.Id).ToList();
                 return obj;
@@ -473,9 +473,9 @@ namespace Rentoolo.Model
         /// <summary>
         /// Получение операций пользователя
         /// </summary>
-        public static List<Operation> GetUserOperationsLast100(Guid userId)
+        public static List<Operations> GetUserOperationsLast100(Guid userId)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Operations.Where(x => x.UserId == userId).OrderByDescending(x => x.Id).Take(100).ToList();
                 return obj;
@@ -488,16 +488,16 @@ namespace Rentoolo.Model
 
         public static void AddReferral(Referrals item)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
-                ctx.Referrals.InsertOnSubmit(item);
-                ctx.SubmitChanges();
+                ctx.Referrals.Add(item);
+                ctx.SaveChanges();
             }
         }
 
         public static List<Referrals> GetAllReferrals()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Referrals.OrderByDescending(x => x.WhenDate).ToList();
                 return obj;
@@ -506,25 +506,25 @@ namespace Rentoolo.Model
 
         public static List<Referrals> GetUserReferrals(Guid userId)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Referrals.Where(x => x.ReferrerUserId == userId).ToList();
                 return obj;
             }
         }
 
-        public static List<fnGetUserReferralsSecondLevelResult> GetUserReferralsSecondLevel(Guid userId)
+        public static List<fnGetUserReferralsSecondLevel_Result> GetUserReferralsSecondLevel(Guid userId)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.fnGetUserReferralsSecondLevel(userId).ToList();
                 return obj;
             }
         }
 
-        public static List<fnGetUserReferralsThirdLevelResult> GetUserReferralsThirdLevel(Guid userId)
+        public static List<fnGetUserReferralsThirdLevel_Result> GetUserReferralsThirdLevel(Guid userId)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.fnGetUserReferralsThirdLevel(userId).ToList();
                 return obj;
@@ -533,7 +533,7 @@ namespace Rentoolo.Model
 
         public static int GetUserReferralsCountFirsLavel(Guid userId)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Referrals.Count(x => x.ReferrerUserId == userId);
                 return obj;
@@ -542,7 +542,7 @@ namespace Rentoolo.Model
 
         public static double GetUserReferralsPercentFirstLevel()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 double result = 0;
                 Settings obj = ctx.Settings.FirstOrDefault(x => x.Name == "ReferralPercent");
@@ -553,7 +553,7 @@ namespace Rentoolo.Model
 
         public static string GetUserReferralsPercentSecondLevel()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 Settings obj = ctx.Settings.FirstOrDefault(x => x.Name == "ReferralPercent2");
                 return obj.Value;
@@ -562,25 +562,25 @@ namespace Rentoolo.Model
 
         public static string GetUserReferralsPercentThirdLevel()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 Settings obj = ctx.Settings.FirstOrDefault(x => x.Name == "ReferralPercent3");
                 return obj.Value;
             }
         }
 
-        public static double GetUserReferralsBonus(Guid userId)
-        {
-            using (var ctx = new DataClasses1DataContext())
-            {
-                var obj = ctx.fnGetReferralBonus(userId);
-                return obj.HasValue ? obj.Value : 0;
-            }
-        }
+        //public static double GetUserReferralsBonus(Guid userId)
+        //{
+        //    using (var ctx = new RentooloEntities())
+        //    {
+        //        var obj = ctx.fnGetReferralBonus(userId);
+        //        return obj.HasValue ? obj.Value : 0;
+        //    }
+        //}
 
         public static Referrals GetReferral(Guid referralId)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Referrals.SingleOrDefault(x => x.ReferralUserId == referralId);
                 return obj;
@@ -589,7 +589,7 @@ namespace Rentoolo.Model
 
         public static Users GetUserByPublicId(int publicId)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Users.FirstOrDefault(x => x.PublicId == publicId);
                 return obj;
@@ -618,9 +618,9 @@ namespace Rentoolo.Model
 
         #region Новости
 
-        public static List<New> GetNews()
+        public static List<News> GetNews()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var list = ctx.News.Where(x => x.Date <= DateTime.Now).OrderByDescending(x => x.Date).ToList();
 
@@ -628,9 +628,9 @@ namespace Rentoolo.Model
             }
         }
 
-        public static List<New> GetActiveNews()
+        public static List<News> GetActiveNews()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var list = ctx.News.Where(x => x.Active.HasValue && x.Active.Value).OrderByDescending(x => x.Date).ToList();
 
@@ -638,9 +638,9 @@ namespace Rentoolo.Model
             }
         }
 
-        public static List<New> GetActiveNewsLast5()
+        public static List<News> GetActiveNewsLast5()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var list = ctx.News.Where(x => x.Active.HasValue && x.Active.Value).OrderByDescending(x => x.Date).Take(5).ToList();
 
@@ -648,22 +648,22 @@ namespace Rentoolo.Model
             }
         }
 
-        public static New GetOneNews(int id)
+        public static News GetOneNews(int id)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.News.FirstOrDefault(x => x.Id == id);
                 return obj;
             }
         }
 
-        public static void SubmitNews(New item)
+        public static void SubmitNews(News item)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 if (item.Id == 0)
                 {
-                    ctx.News.InsertOnSubmit(item);
+                    ctx.News.Add(item);
                 }
                 else
                 {
@@ -677,7 +677,7 @@ namespace Rentoolo.Model
 
                 try
                 {
-                    ctx.SubmitChanges();
+                    ctx.SaveChanges();
                 }
                 catch (System.Exception ex)
                 {
@@ -687,15 +687,15 @@ namespace Rentoolo.Model
         }
         public static void DeleteNews(int id)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
-                New obj = ctx.News.Single(x => x.Id == id);
+                News obj = ctx.News.Single(x => x.Id == id);
 
-                ctx.News.DeleteOnSubmit(obj);
+                ctx.News.Remove(obj);
 
                 try
                 {
-                    ctx.SubmitChanges();
+                    ctx.SaveChanges();
                 }
                 catch (System.Exception ex)
                 {
@@ -708,9 +708,9 @@ namespace Rentoolo.Model
 
         #region Статьи
 
-        public static List<Article> GetArticles()
+        public static List<Articles> GetArticles()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var list = ctx.Articles.OrderByDescending(x => x.WhenDate).ToList();
 
@@ -718,22 +718,22 @@ namespace Rentoolo.Model
             }
         }
 
-        public static Article GetOneArticle(int id)
+        public static Articles GetOneArticle(int id)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Articles.FirstOrDefault(x => x.Id == id);
                 return obj;
             }
         }
 
-        public static void SubmitArticle(Article item)
+        public static void SubmitArticle(Articles item)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 if (item.Id == 0)
                 {
-                    ctx.Articles.InsertOnSubmit(item);
+                    ctx.Articles.Add(item);
                 }
                 else
                 {
@@ -746,7 +746,7 @@ namespace Rentoolo.Model
 
                 try
                 {
-                    ctx.SubmitChanges();
+                    ctx.SaveChanges();
                 }
                 catch (System.Exception ex)
                 {
@@ -757,15 +757,15 @@ namespace Rentoolo.Model
 
         public static void DeleteArticle(int id)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
-                Article obj = ctx.Articles.Single(x => x.Id == id);
+                Articles obj = ctx.Articles.Single(x => x.Id == id);
 
-                ctx.Articles.DeleteOnSubmit(obj);
+                ctx.Articles.Remove(obj);
 
                 try
                 {
-                    ctx.SubmitChanges();
+                    ctx.SaveChanges();
                 }
                 catch (System.Exception ex)
                 {
@@ -778,9 +778,9 @@ namespace Rentoolo.Model
 
         #region Исключения
 
-        public static List<Exception> GetExceptions()
+        public static List<Exceptions> GetExceptions()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var list = ctx.Exceptions.OrderByDescending(x => x.Id).ToList();
 
@@ -788,9 +788,9 @@ namespace Rentoolo.Model
             }
         }
 
-        public static List<Exception> GetExceptionsLast100()
+        public static List<Exceptions> GetExceptionsLast100()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var list = ctx.Exceptions.OrderByDescending(x => x.Id).Take(100).ToList();
 
@@ -800,74 +800,21 @@ namespace Rentoolo.Model
 
         public static void AddException(System.Exception ex)
         {
-            Exception exception = new Exception();
+            Exceptions exception = new Exceptions();
 
             exception.Value = ex.Message;
             exception.WhenDate = DateTime.Now;
 
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
-                ctx.Exceptions.InsertOnSubmit(exception);
-                ctx.SubmitChanges();
+                ctx.Exceptions.Add(exception);
+                ctx.SaveChanges();
             }
         }
 
         #endregion
 
         #region Пополнения баланса
-
-        public static void AddQiwiBalanceUpdatePerMonth(string login, double amount)
-        {
-            using (var dc = new DataClasses1DataContext())
-            {
-                dc.spAddQiwiBalanceUpdatePerMonth(login, amount);
-            }
-        }
-
-        public static void AddQiwiPayment(int userPublicId, double amount, DateTime date, string acceptedAccount)
-        {
-            try
-            {
-                CashIns cashIn = new CashIns
-                {
-                    UserId = DataHelper.GetUserByPublicId(userPublicId).UserId,
-                    Value = amount,
-                    Sposob = "Qiwi",
-                    WhenDate = date,
-                    AcceptedAccount = acceptedAccount
-                };
-
-                if (!CheckExistCashIn(cashIn))
-                {
-                    AddCashIn(cashIn);
-
-                    DataHelper.AddQiwiBalanceUpdatePerMonth(acceptedAccount, amount);
-
-                    #region Логирование операции
-
-                    {
-                        Operation operation = new Operation
-                        {
-                            UserId = cashIn.UserId,
-                            Value = cashIn.Value,
-                            Type = (int)OperationTypesEnum.AddBalance,
-                            Comment =
-                                string.Format("Пополнение RURT на сумму {0} р. Способ: 'Qiwi'.",
-                                    cashIn.Value),
-                            WhenDate = cashIn.WhenDate
-                        };
-
-                        AddOperation(operation);
-                    }
-
-                    #endregion
-                }
-            }
-            catch (System.Exception ex)
-            {
-                AddException(ex);
-            }
-        }
 
         public static string GetHash(string val)
         {
@@ -887,9 +834,9 @@ namespace Rentoolo.Model
 
         #region Администрирование
 
-        public static List<fnGetTablesRowsResult> GetTablesRowsCount()
+        public static List<fnGetTablesRows_Result> GetTablesRowsCount()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var list = ctx.fnGetTablesRows().OrderByDescending(x => x.RowCount).ToList();
 
@@ -899,7 +846,7 @@ namespace Rentoolo.Model
 
         public static int GetLoginStatisticLastHourActive()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 int result = ctx.spGetLoginStatisticLastHourActive();
                 return result;
@@ -908,7 +855,7 @@ namespace Rentoolo.Model
 
         public static int GetLoginStatisticLastDayActive()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 int result = ctx.spGetLoginStatisticLastDayActive();
                 return result;
@@ -920,16 +867,16 @@ namespace Rentoolo.Model
 
         public static void AddPayment(Payments item)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
-                ctx.Payments.InsertOnSubmit(item);
-                ctx.SubmitChanges();
+                ctx.Payments.Add(item);
+                ctx.SaveChanges();
             }
         }
 
         public static List<Payments> GetLast100Payments()
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Payments.OrderByDescending(x => x.Id).Take(100).ToList();
                 return obj;
@@ -938,7 +885,7 @@ namespace Rentoolo.Model
 
         public static List<Payments> GetUserSenderPayments(Guid userId)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Payments.Where(x => x.UserIdSender == userId).OrderByDescending(x => x.Id).ToList();
                 return obj;
@@ -947,7 +894,7 @@ namespace Rentoolo.Model
 
         public static List<Payments> GetUserRecepientPayments(Guid userId)
         {
-            using (var ctx = new DataClasses1DataContext())
+            using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Payments.Where(x => x.UserIdRecepient == userId).OrderByDescending(x => x.Id).ToList();
                 return obj;

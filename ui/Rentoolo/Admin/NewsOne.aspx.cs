@@ -13,7 +13,7 @@ namespace Rentoolo.Admin
 
                 if (itemId != 0)
                 {
-                    Model.New item = DataHelper.GetOneNews(itemId);
+                    Model.News item = DataHelper.GetOneNews(itemId);
 
                     TextBoxDate.Text = item.Date.ToString("dd.MM.yyyy");
 
@@ -22,14 +22,14 @@ namespace Rentoolo.Admin
 
                     LabelChangesDate.Text = item.CreateDate.ToString("dd.MM.yyyy HH:mm");
 
-                    LabelAuthor.Text = DataHelper.GetUser(item.AuthorId).UserName;
+                    LabelAuthor.Text = DataHelper.GetUser(item.AuthorId).Name;
 
                     CheckBoxActive.Checked = item.Active.HasValue && item.Active.Value;
                 }
                 else
                 {
                     LabelChangesDate.Text = DateTime.Now.ToString("dd.MM.yyyy");
-                    LabelAuthor.Text = User.UserName;
+                    LabelAuthor.Text = User.Name;
 
                     CheckBoxActive.Checked = true;
                     TextBoxDate.Text = DateTime.Now.ToString("dd.MM.yyyy");
@@ -39,7 +39,7 @@ namespace Rentoolo.Admin
 
         protected void ButtonSave_Click(object sender, EventArgs e)
         {
-            Model.New item = new Model.New();
+            Model.News item = new Model.News();
 
             int itemId = 0;
 
@@ -68,7 +68,7 @@ namespace Rentoolo.Admin
                 item.Date = myDate;
                 item.Text = NewsText.Text;
                 item.CreateDate = DateTime.Now;
-                item.AuthorId = User.UserId;
+                item.AuthorId = User.Id;
                 item.Active = CheckBoxActive.Checked;
 
                 DataHelper.SubmitNews(item);
