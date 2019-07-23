@@ -50,8 +50,8 @@ namespace Rentoolo.Account
 
             Model.Payments payment = new Model.Payments
             {
-                UserIdSender = User.Id,
-                UserIdRecepient = userRecepient.Id,
+                UserIdSender = User.UserId,
+                UserIdRecepient = userRecepient.UserId,
                 Value = value,
                 Comment = TextBoxPaymentComment.Text,
                 WhenDate = DateTime.Now
@@ -68,7 +68,7 @@ namespace Rentoolo.Account
             {
                 Rentoolo.Model.Operations operation = new Rentoolo.Model.Operations();
 
-                operation.UserId = User.Id;
+                operation.UserId = User.UserId;
                 operation.Value = -value;
                 operation.Type = (int)OperationTypesEnum.PaymentOut;
                 operation.Comment = string.Format("Перевод на счёт {0} на сумму {1} р.", TextBoxPaymentAddress.Text, value);
@@ -90,7 +90,7 @@ namespace Rentoolo.Account
             {
                 Rentoolo.Model.Operations operation = new Rentoolo.Model.Operations();
 
-                operation.UserId = userRecepient.Id;
+                operation.UserId = userRecepient.UserId;
                 operation.Value = value;
                 operation.Type = (int)OperationTypesEnum.PaymentIn;
                 operation.Comment = string.Format("Получен перевод от пользователя на сумму {0} р.", value);

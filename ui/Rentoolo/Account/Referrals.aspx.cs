@@ -32,11 +32,11 @@ namespace Rentoolo.Account
 
             if (!IsPostBack)
             {
-                ListItemsFirstLevel = DataHelper.GetUserReferrals(User.Id);
+                ListItemsFirstLevel = DataHelper.GetUserReferrals(User.UserId);
 
-                ListItemsSecondLevel = DataHelper.GetUserReferralsSecondLevel(User.Id);
+                ListItemsSecondLevel = DataHelper.GetUserReferralsSecondLevel(User.UserId);
 
-                ListItemsThirdLevel = DataHelper.GetUserReferralsThirdLevel(User.Id);
+                ListItemsThirdLevel = DataHelper.GetUserReferralsThirdLevel(User.UserId);
             }
         }
     }

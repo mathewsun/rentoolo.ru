@@ -13,9 +13,9 @@ namespace Rentoolo.Account
             {
                 this.UpdateSession();
 
-                MembershipUserMembership = DataHelper.GetUserMembership(User.Id);
+                MembershipUserMembership = DataHelper.GetUserMembership(User.UserId);
 
-                Model.Referrals referal = DataHelper.GetReferral(User.Id);
+                Model.Referrals referal = DataHelper.GetReferral(User.UserId);
 
                 if (referal != null)
                 {

@@ -21,11 +21,11 @@ namespace Rentoolo.Admin
 
                     NewsText.Text = item.Text;
 
-                    LabelAuthor.Text = DataHelper.GetUser(item.UserId).Name;
+                    LabelAuthor.Text = DataHelper.GetUser(item.UserId).UserName;
                 }
                 else
                 {
-                    LabelAuthor.Text = User.Name;
+                    LabelAuthor.Text = User.UserName;
 
                     TextBoxDate.Text = DateTime.Now.ToString("dd.MM.yyyy");
                 }
@@ -59,7 +59,7 @@ namespace Rentoolo.Admin
                 item.WhenDate = myDate;
                 item.Head = TextBoxHead.Text;
                 item.Text = NewsText.Text;
-                item.UserId = User.Id;
+                item.UserId = User.UserId;
 
                 DataHelper.SubmitArticle(item);
             }

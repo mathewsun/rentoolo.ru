@@ -25,7 +25,7 @@ namespace Rentoolo.Account
 
             if (!IsPostBack)
             {
-                List = DataHelper.GetUserOperationsLast100(User.Id);
+                List = DataHelper.GetUserOperationsLast100(User.UserId);
             }
         }
     }

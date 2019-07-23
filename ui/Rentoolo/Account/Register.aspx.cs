@@ -134,8 +134,8 @@ namespace Rentoolo.Account
             {
                 DataHelper.AddReferral(new Rentoolo.Model.Referrals
                 {
-                    ReferrerUserId = DataHelper.GetUserByRefId(_refid).Id,
-                    ReferralUserId = user.Id,
+                    ReferrerUserId = DataHelper.GetUserByRefId(_refid).UserId,
+                    ReferralUserId = user.UserId,
                     WhenDate = DateTime.Now
                 });
             }
@@ -145,7 +145,7 @@ namespace Rentoolo.Account
             {
                 Rentoolo.Model.Operations operation = new Rentoolo.Model.Operations
                 {
-                    UserId = user.Id,
+                    UserId = user.UserId,
                     Value = 0,
                     Type = (int)OperationTypesEnum.Registration,
                     Comment = string.Format("Учетная запись создана."),

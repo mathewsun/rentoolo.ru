@@ -14,7 +14,7 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                Users user = dc.Users.FirstOrDefault(x => x.Id == userId);
+                Users user = dc.Users.FirstOrDefault(x => x.UserId == userId);
 
                 return user;
             }
@@ -24,7 +24,7 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                Guid userId = dc.Users.Where(x => x.Name == userName).Select(e => e.Id).FirstOrDefault();
+                Guid userId = dc.Users.Where(x => x.UserName == userName).Select(e => e.UserId).FirstOrDefault();
 
                 return userId;
             }
@@ -34,7 +34,7 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                Users user = dc.Users.FirstOrDefault(x => x.Name == userName);
+                Users user = dc.Users.FirstOrDefault(x => x.UserName == userName);
 
                 return user;
             }
@@ -63,7 +63,7 @@ namespace Rentoolo.Model
         {
             using (var ctx = new RentooloEntities())
             {
-                var obj = ctx.Users.FirstOrDefault(x => x.Id == user.Id);
+                var obj = ctx.Users.FirstOrDefault(x => x.UserId == user.UserId);
                 obj.Pwd = user.Pwd;
                 obj.PublicId = user.PublicId;
                 obj.Communication = user.Communication;
@@ -75,7 +75,7 @@ namespace Rentoolo.Model
         {
             using (var ctx = new RentooloEntities())
             {
-                var obj = ctx.Users.FirstOrDefault(x => x.Name == userName);
+                var obj = ctx.Users.FirstOrDefault(x => x.UserName == userName);
 
                 if (obj != null)
                 {
@@ -90,8 +90,8 @@ namespace Rentoolo.Model
         {
             using (var ctx = new RentooloEntities())
             {
-                var item = ctx.Users.FirstOrDefault(x => x.Name == userName);
-                var member = ctx.Memberships.FirstOrDefault(x => x.UserId == item.Id);
+                var item = ctx.Users.FirstOrDefault(x => x.UserName == userName);
+                var member = ctx.Memberships.FirstOrDefault(x => x.UserId == item.UserId);
                 if (member != null)
                 {
                     member.Email = email;
@@ -155,7 +155,7 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                return dc.Users.Any(x => x.Name == login && x.Pwd == password);
+                return dc.Users.Any(x => x.UserName == login && x.Pwd == password);
             }
         }
 
@@ -163,7 +163,7 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                Users obj = dc.Users.Single(x => x.Id == userId);
+                Users obj = dc.Users.Single(x => x.UserId == userId);
                 obj.LastActivityDate = DateTime.Now;
                 dc.SaveChanges();
             }
@@ -173,7 +173,7 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                Users obj = dc.Users.Single(x => x.Name == userName);
+                Users obj = dc.Users.Single(x => x.UserName == userName);
                 obj.LastActivityDate = DateTime.Now;
                 dc.SaveChanges();
             }

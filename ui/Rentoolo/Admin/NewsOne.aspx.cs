@@ -22,14 +22,14 @@ namespace Rentoolo.Admin
 
                     LabelChangesDate.Text = item.CreateDate.ToString("dd.MM.yyyy HH:mm");
 
-                    LabelAuthor.Text = DataHelper.GetUser(item.AuthorId).Name;
+                    LabelAuthor.Text = DataHelper.GetUser(item.AuthorId).UserName;
 
                     CheckBoxActive.Checked = item.Active.HasValue && item.Active.Value;
                 }
                 else
                 {
                     LabelChangesDate.Text = DateTime.Now.ToString("dd.MM.yyyy");
-                    LabelAuthor.Text = User.Name;
+                    LabelAuthor.Text = User.UserName;
 
                     CheckBoxActive.Checked = true;
                     TextBoxDate.Text = DateTime.Now.ToString("dd.MM.yyyy");
@@ -68,7 +68,7 @@ namespace Rentoolo.Admin
                 item.Date = myDate;
                 item.Text = NewsText.Text;
                 item.CreateDate = DateTime.Now;
-                item.AuthorId = User.Id;
+                item.AuthorId = User.UserId;
                 item.Active = CheckBoxActive.Checked;
 
                 DataHelper.SubmitNews(item);
