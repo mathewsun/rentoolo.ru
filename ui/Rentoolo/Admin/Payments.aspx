@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Переводы" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Payments.aspx.cs" Inherits="Rentoolo.Admin.Payments" %>
+﻿<%@ Page Title="Переводы" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Payments.aspx.cs" Inherits="Rentoolo.Admin.Payments" %>
 
 <%@ Import Namespace="Rentoolo.Model" %>
 

@@ -11,9 +11,7 @@
     <meta name="author" content="rentoolo">
     <link rel="shortcut icon" href="/assets/img/yellow-green.ico">
 
-    <title>Rentoolo - Ваши объявления
-      
-    </title>
+    <title>Rentoolo - Ваши объявления</title>
 
     <meta property="og:title" content="Rentoolo - Ваши объявления" />
     <meta property="mrc__share_title" content="Rentoolo - Ваши объявления" />
@@ -39,6 +37,8 @@
     </style>
 
     <script src="/assets/js/jquery-2.2.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="/assets/js/utils.js?1"></script>
 
     <script>
         $(document).ready(function () {

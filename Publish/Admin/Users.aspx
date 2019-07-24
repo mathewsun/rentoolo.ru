@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Пользователи" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="Rentoolo.Admin.Users" %>
+﻿<%@ Page Title="Пользователи" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="Rentoolo.Admin.Users" %>
 
 <%@ Register Src="AdminMenu.ascx" TagName="AdminMenu" TagPrefix="uc1" %>
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Статьи" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Articles.aspx.cs" Inherits="Rentoolo.Admin.Articles" %>
+﻿<%@ Page Title="Статьи" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Articles.aspx.cs" Inherits="Rentoolo.Admin.Articles" %>
 
 <%@ Import Namespace="Rentoolo.Model" %>
 <%@ Register Src="AdminMenu.ascx" TagName="AdminMenu" TagPrefix="uc1" %>
@@ -25,7 +25,7 @@
             <th></th>
             <th></th>
         </tr>
-        <% foreach (Article item in ListItems)
+        <% foreach (Articles item in ListItems)
            {%>
         <tr>
             <td style="vertical-align: top;">

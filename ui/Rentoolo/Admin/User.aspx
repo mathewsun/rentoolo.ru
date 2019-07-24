@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Пользователь" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="Rentoolo.Admin.User" %>
+﻿<%@ Page Title="Пользователь" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="Rentoolo.Admin.User" %>
 
 <%@ Import Namespace="Rentoolo.Model" %>
 

@@ -27,7 +27,7 @@
             <th></th>
             <th></th>
         </tr>
-        <% foreach (New item in list)
+        <% foreach (News item in list)
             {%>
         <tr>
             <td style="vertical-align: top;">

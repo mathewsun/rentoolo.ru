@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Статья" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" ValidateRequest="false" CodeBehind="ArticleOne.aspx.cs" Inherits="Rentoolo.Admin.ArticleOne" %>
+﻿<%@ Page Title="Статья" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" ValidateRequest="false" CodeBehind="ArticleOne.aspx.cs" Inherits="Rentoolo.Admin.ArticleOne" %>
 
 <%@ Register Src="AdminMenu.ascx" TagName="AdminMenu" TagPrefix="uc1" %>
 

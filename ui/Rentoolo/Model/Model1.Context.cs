@@ -50,6 +50,9 @@ namespace Rentoolo.Model
         public DbSet<UsersOpenAuthData> UsersOpenAuthData { get; set; }
         public DbSet<Wallets> Wallets { get; set; }
         public DbSet<Categories> Categories { get; set; }
+        public DbSet<Cookies> Cookies { get; set; }
+        public DbSet<Favorites> Favorites { get; set; }
+        public DbSet<FavoritesByCookies> FavoritesByCookies { get; set; }
     
         [EdmFunction("RentooloEntities", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()

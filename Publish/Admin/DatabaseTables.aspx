@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Таблицы базы данных" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="DatabaseTables.aspx.cs" Inherits="Rentoolo.Admin.DatabaseTables" %>
+﻿<%@ Page Title="Таблицы базы данных" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DatabaseTables.aspx.cs" Inherits="Rentoolo.Admin.DatabaseTables" %>
 
 <%@ Register Src="AdminMenu.ascx" TagName="AdminMenu" TagPrefix="uc1" %>
 
