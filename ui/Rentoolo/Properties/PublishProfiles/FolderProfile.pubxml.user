@@ -394,7 +394,7 @@
       <publishTime>04/17/2019 04:57:20</publishTime>
     </File>
     <File Include="bin/Rentoolo.dll">
-      <publishTime>07/24/2019 20:30:47</publishTime>
+      <publishTime>07/24/2019 21:02:54</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
       <publishTime>07/12/2019 20:19:50</publishTime>
@@ -516,11 +516,14 @@
     <File Include="DataBase/spGetActiveQiwiAccount.sql">
       <publishTime>03/25/2019 23:16:22</publishTime>
     </File>
+    <File Include="DataBase/spGetFavorites.sql">
+      <publishTime>07/24/2019 20:58:36</publishTime>
+    </File>
     <File Include="DataBase/spGetLoginStatisticLastDayActive.sql">
       <publishTime>07/12/2019 20:19:50</publishTime>
     </File>
     <File Include="DataBase/spGetLoginStatisticLastHourActive.sql">
-      <publishTime>07/12/2019 20:19:50</publishTime>
+      <publishTime>07/24/2019 20:58:18</publishTime>
     </File>
     <File Include="DataBase/spGetUserBalanceByName.sql">
       <publishTime>12/12/2018 14:21:57</publishTime>
@@ -856,7 +859,7 @@
       <publishTime>07/09/2019 20:36:14</publishTime>
     </File>
     <File Include="Model/Model1.edmx.diagram">
-      <publishTime>07/24/2019 20:03:26</publishTime>
+      <publishTime>07/24/2019 20:44:27</publishTime>
     </File>
     <File Include="News.aspx">
       <publishTime>07/12/2019 20:19:50</publishTime>
@@ -952,7 +955,7 @@
       <publishTime>07/12/2019 20:19:50</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/24/2019 20:30:47</publishTime>
+      <publishTime>07/24/2019 21:02:54</publishTime>
     </File>
     <File Include="WebForm1.aspx">
       <publishTime>07/03/2019 22:00:51</publishTime>

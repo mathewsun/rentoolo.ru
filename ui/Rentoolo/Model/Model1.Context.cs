@@ -105,5 +105,14 @@ namespace Rentoolo.Model
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spGetLoginStatisticLastHourActive");
         }
+    
+        public virtual ObjectResult<Nullable<long>> spGetFavorites(string uid)
+        {
+            var uidParameter = uid != null ?
+                new ObjectParameter("uid", uid) :
+                new ObjectParameter("uid", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<long>>("spGetFavorites", uidParameter);
+        }
     }
 }

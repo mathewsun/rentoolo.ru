@@ -7,6 +7,15 @@ namespace Rentoolo.Model
 {
     public static class FavoritesHelper
     {
+        public static void AddFavorites(Favorites item)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                ctx.Favorites.Add(item);
+                ctx.SaveChanges();
+            }
+        }
+
         public static List<Favorites> GetFavoritesByUser(Guid userId)
         {
             using (var ctx = new RentooloEntities())
@@ -14,6 +23,34 @@ namespace Rentoolo.Model
                 var list = ctx.Favorites.Where(x => x.UserId == userId).ToList();
 
                 return list;
+            }
+        }
+
+        public static void DeleteFavorites(long id)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                Favorites obj = ctx.Favorites.Single(x => x.Id == id);
+
+                ctx.Favorites.Remove(obj);
+
+                try
+                {
+                    ctx.SaveChanges();
+                }
+                catch (System.Exception ex)
+                {
+                    DataHelper.AddException(ex);
+                }
+            }
+        }
+
+        public static void AddFavoritesByCookies(FavoritesByCookies item)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                ctx.FavoritesByCookies.Add(item);
+                ctx.SaveChanges();
             }
         }
 
@@ -43,6 +80,25 @@ namespace Rentoolo.Model
             }
 
             return favoritesList;
+        }
+
+        public static void DeleteFavoritesByCookies(long id)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                FavoritesByCookies obj = ctx.FavoritesByCookies.Single(x => x.Id == id);
+
+                ctx.FavoritesByCookies.Remove(obj);
+
+                try
+                {
+                    ctx.SaveChanges();
+                }
+                catch (System.Exception ex)
+                {
+                    DataHelper.AddException(ex);
+                }
+            }
         }
     }
 }

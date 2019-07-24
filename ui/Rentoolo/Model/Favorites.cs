@@ -14,7 +14,7 @@ namespace Rentoolo.Model
     
     public partial class Favorites
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public System.Guid UserId { get; set; }
         public long AdvertId { get; set; }
         public System.DateTime Created { get; set; }

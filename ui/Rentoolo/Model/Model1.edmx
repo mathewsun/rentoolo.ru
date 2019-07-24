@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RentooloModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RentooloModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adverts">
           <Key>
             <PropertyRef Name="Id" />
@@ -126,7 +126,7 @@ warning 6002: The table/view 'RentooloN.dbo.Favorites' does not have a primary k
             <PropertyRef Name="AdvertId" />
             <PropertyRef Name="Created" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="bigint" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="AdvertId" Type="bigint" Nullable="false" />
           <Property Name="Created" Type="datetime" Nullable="false" />
@@ -553,6 +553,9 @@ warning 6002: The table/view 'RentooloN.dbo.FavoritesByCookies' does not have a 
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="spGetFavorites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uid" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="spGetLoginStatisticLastDayActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetLoginStatisticLastHourActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="RentooloModelStoreContainer">
@@ -662,8 +665,7 @@ FROM [dbo].[FavoritesByCookies] AS [FavoritesByCookies]</DefiningQuery>
             <End Role="UsersInRoles" EntitySet="UsersInRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RentooloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1007,7 +1009,7 @@ FROM [dbo].[FavoritesByCookies] AS [FavoritesByCookies]</DefiningQuery>
             <PropertyRef Name="AdvertId" />
             <PropertyRef Name="Created" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int64" Nullable="false" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="AdvertId" Type="Int64" Nullable="false" />
           <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
@@ -1241,16 +1243,19 @@ FROM [dbo].[FavoritesByCookies] AS [FavoritesByCookies]</DefiningQuery>
           <FunctionImport Name="fnGetAllUsers" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetAllUsers_Result)" />
           <FunctionImport Name="fnGetTablesRows" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetTablesRows_Result)" />
           <FunctionImport Name="fnGetUserReferralsSecondLevel" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserReferralsSecondLevel_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="fnGetUserReferralsThirdLevel" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserReferralsThirdLevel_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="fnGetUserWallets" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserWallets_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spGetLoginStatisticLastDayActive" />
           <FunctionImport Name="spGetLoginStatisticLastHourActive" />
+          <FunctionImport Name="spGetFavorites" ReturnType="Collection(Int64)">
+            <Parameter Name="uid" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1632,6 +1637,7 @@ FROM [dbo].[FavoritesByCookies] AS [FavoritesByCookies]</DefiningQuery>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastDayActive" FunctionName="RentooloModel.Store.spGetLoginStatisticLastDayActive" />
           <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastHourActive" FunctionName="RentooloModel.Store.spGetLoginStatisticLastHourActive" />
+          <FunctionImportMapping FunctionImportName="spGetFavorites" FunctionName="RentooloModel.Store.spGetFavorites" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

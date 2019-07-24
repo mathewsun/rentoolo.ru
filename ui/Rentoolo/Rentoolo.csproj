@@ -225,6 +225,7 @@
     <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="DataBase\spGetFavorites.sql" />
     <Content Include="DataBase\spGetLoginStatisticLastDayActive.sql" />
     <Content Include="DataBase\spGetLoginStatisticLastHourActive.sql" />
     <Content Include="DataBase\fnGetTablesRows.sql" />
