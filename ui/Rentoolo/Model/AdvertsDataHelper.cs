@@ -28,6 +28,16 @@ namespace Rentoolo.Model
                 return item;
             }
         }
+		
+		public static long AddAdvert(Adverts item)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var result = dc.Adverts.Add(item);
+
+                return 0;
+            }
+        }
 
         #endregion
     }
