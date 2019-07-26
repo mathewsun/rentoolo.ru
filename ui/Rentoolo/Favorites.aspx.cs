@@ -10,7 +10,7 @@ namespace Rentoolo
 {
     public partial class Favorites : BasicPage
     {
-        public List<Model.Favorites> ListItems;
+        public List<FavoritesForPage> ListItems;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,7 +27,7 @@ namespace Rentoolo
                     {
                         string value = Request.Cookies["uid"].Value;
 
-                        ListItems = FavoritesHelper.GetFavoritesListByCookies(value);
+                        ListItems = FavoritesHelper.GetFavoritesByCookies(value);
                     }
                 }
             }

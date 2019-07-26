@@ -54,33 +54,50 @@ namespace Rentoolo.Model
             }
         }
 
-        public static List<FavoritesByCookies> GetFavoritesByCookies(string uid)
+        public static List<FavoritesForPage> GetFavoritesByCookies(string uid)
         {
             using (var ctx = new RentooloEntities())
             {
-                var list = ctx.FavoritesByCookies.Where(x => x.Value == uid).ToList();
+                System.Data.Objects.ObjectResult<spGetFavoritesByCookies_Result> result = ctx.spGetFavoritesByCookies(uid);
+
+                List<FavoritesForPage> list = new List<FavoritesForPage>();
+
+                foreach (var item in result)
+                {
+                    list.Add(new FavoritesForPage
+                    {
+                        Id = item.Id,
+                        AdvertId = item.AdvertId,
+                        Created = item.Created,
+                        Category = item.Category,
+                        Name = item.Name,
+                        Description = item.Description,
+                        CreatedAdvert = item.CreatedAdvert,
+
+                    });
+                }
 
                 return list;
             }
         }
 
-        public static List<Favorites> GetFavoritesListByCookies(string uid)
-        {
-            var list = GetFavoritesByCookies(uid);
+        //public static List<Favorites> GetFavoritesListByCookies(string uid)
+        //{
+        //    var list = GetFavoritesByCookies(uid);
 
-            List<Favorites> favoritesList = new List<Favorites>();
+        //    List<Favorites> favoritesList = new List<Favorites>();
 
-            foreach (var item in list)
-            {
-                favoritesList.Add(new Favorites
-                {
-                    AdvertId = item.AdvertId,
-                    Created = item.Created
-                });
-            }
+        //    foreach (var item in list)
+        //    {
+        //        favoritesList.Add(new Favorites
+        //        {
+        //            AdvertId = item.AdvertId,
+        //            Created = item.Created
+        //        });
+        //    }
 
-            return favoritesList;
-        }
+        //    return favoritesList;
+        //}
 
         public static void DeleteFavoritesByCookies(long id)
         {

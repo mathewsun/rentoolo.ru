@@ -39,6 +39,16 @@ namespace Rentoolo.Model
             }
         }
 
+        public static List<Adverts> GetAdvertsForMainPage  ()
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var list = ctx.Adverts.OrderByDescending(x => x.Created).ToList();
+
+                return list;
+            }
+        }
+
         #endregion
     }
 }
