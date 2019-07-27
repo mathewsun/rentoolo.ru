@@ -1,0 +1,1536 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище RentooloModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adverts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="150" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="MessageType" Type="int" Nullable="false" />
+          <Property Name="Position" Type="geography" />
+        </EntityType>
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationName" Type="nvarchar" MaxLength="235" Nullable="false" />
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Articles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Head" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WhenDate" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Business">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Header" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Cost" Type="float" />
+          <Property Name="NoCost" Type="bit" Nullable="false" />
+          <Property Name="PaybackPeriod" Type="float" />
+          <Property Name="MonthlyIncome" Type="float" />
+        </EntityType>
+        <EntityType Name="CashIns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Value" Type="float" Nullable="false" />
+          <Property Name="Sposob" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WhenDate" Type="datetime" Nullable="false" />
+          <Property Name="AcceptedAccount" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SendAccount" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "rentoolo.dbo.Categories" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Name(Ru)" />
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name(Ru)" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Acronim" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateAdd" Type="datetime" Nullable="false" />
+          <Property Name="IsValid" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DailyStatistics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="UserAdded" Type="int" Nullable="false" />
+          <Property Name="DepositeAdded" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exceptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WhenDate" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Cost" Type="float" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="150" />
+          <Property Name="CoordinateX" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="CoordinateY" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="Coordinate" Type="geography" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="CommunicationType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoginStatistics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ip" Type="nvarchar(max)" />
+          <Property Name="WhenLastDate" Type="datetime" Nullable="false" />
+          <Property Name="Count" Type="bigint" Nullable="false" />
+          <Property Name="Client" Type="int" Nullable="false" />
+          <Property Name="Version" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Memberships">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordFormat" Type="int" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+          <Property Name="LastPasswordChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLockoutDate" Type="datetime" Nullable="false" />
+          <Property Name="FailedPasswordAttemptCount" Type="int" Nullable="false" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="datetime" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="int" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptWindowsStart" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="AuthorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Operations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Value" Type="float" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WhenDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserIdSender" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserIdRecepient" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Value" Type="float" Nullable="false" />
+          <Property Name="WhenDate" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Referrals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReferrerUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReferralUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WhenDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+          <Property Name="Pwd" Type="nvarchar(max)" />
+          <Property Name="PublicId" Type="int" Nullable="false" />
+          <Property Name="Communication" Type="nvarchar(max)" />
+          <Property Name="ReffAdd" Type="float" Nullable="false" />
+          <Property Name="Icq" Type="nvarchar" MaxLength="50" />
+          <Property Name="VkontakteId" Type="nvarchar" MaxLength="100" />
+          <Property Name="Skype" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersOpenAuthAccounts">
+          <Key>
+            <PropertyRef Name="ApplicationName" />
+            <PropertyRef Name="ProviderName" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="ApplicationName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderUserName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MembershipUserName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LastUsedUtc" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UsersOpenAuthData">
+          <Key>
+            <PropertyRef Name="ApplicationName" />
+            <PropertyRef Name="MembershipUserName" />
+          </Key>
+          <Property Name="ApplicationName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="MembershipUserName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="HasLocalPassword" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wallets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="float" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CashIns_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="CashIns" Type="Self.CashIns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CashIns">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName">
+          <End Role="UsersOpenAuthData" Type="Self.UsersOpenAuthData" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersOpenAuthAccounts" Type="Self.UsersOpenAuthAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersOpenAuthData">
+              <PropertyRef Name="ApplicationName" />
+              <PropertyRef Name="MembershipUserName" />
+            </Principal>
+            <Dependent Role="UsersOpenAuthAccounts">
+              <PropertyRef Name="ApplicationName" />
+              <PropertyRef Name="MembershipUserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Referrals_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Referrals">
+              <PropertyRef Name="ReferralUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Referrals_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Referrals">
+              <PropertyRef Name="ReferrerUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallets_Cryptocurrencies">
+          <End Role="Currencies" Type="Self.Currencies" Multiplicity="1" />
+          <End Role="Wallets" Type="Self.Wallets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currencies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wallets">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallets_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Wallets" Type="Self.Wallets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Wallets">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MembershipApplication">
+          <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
+          <End Role="Memberships" Type="Self.Memberships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="Memberships">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MembershipUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Memberships" Type="Self.Memberships" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Memberships">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoleApplication">
+          <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserApplication">
+          <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsersInRoleRole">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UsersInRoles" Type="Self.UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsersInRoleUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UsersInRoles" Type="Self.UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fnGetAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+                <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+                <Property Name="Pwd" Type="nvarchar(max)" />
+                <Property Name="PublicId" Type="int" Nullable="false" />
+                <Property Name="Communication" Type="nvarchar(max)" />
+                <Property Name="CreateDate" Type="datetime" />
+                <Property Name="Email" Type="nvarchar" MaxLength="256" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fnGetTablesRows" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="TableName" Type="nvarchar" MaxLength="517" />
+                <Property Name="RowCount" Type="bigint" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fnGetUserBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="fnGetUserBalanceByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="fnGetUserReferralsSecondLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" Nullable="false" />
+                <Property Name="ReferrerUserId" Type="uniqueidentifier" Nullable="false" />
+                <Property Name="ReferralUserId" Type="uniqueidentifier" Nullable="false" />
+                <Property Name="WhenDate" Type="datetime" Nullable="false" />
+                <Property Name="PublicId" Type="int" />
+                <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+                <Property Name="refererUp1Lvl" Type="uniqueidentifier" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fnGetUserReferralsThirdLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" Nullable="false" />
+                <Property Name="ReferrerUserId" Type="uniqueidentifier" Nullable="false" />
+                <Property Name="ReferralUserId" Type="uniqueidentifier" Nullable="false" />
+                <Property Name="WhenDate" Type="datetime" Nullable="false" />
+                <Property Name="PublicId" Type="int" />
+                <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+                <Property Name="refererUp2Lvl" Type="uniqueidentifier" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fnGetUserWallets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" Nullable="false" />
+                <Property Name="CurrencyId" Type="int" Nullable="false" />
+                <Property Name="Value" Type="float" Nullable="false" />
+                <Property Name="Name" Type="nvarchar(max)" />
+                <Property Name="Acronim" Type="nvarchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="spGetFavoritesByCookies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uid" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spGetLoginStatisticLastDayActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetLoginStatisticLastHourActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Хранилище RentooloModelContainer">
+          <EntitySet Name="Adverts" EntityType="Self.Adverts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Business" EntityType="Self.Business" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CashIns" EntityType="Self.CashIns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exceptions" EntityType="Self.Exceptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginStatistics" EntityType="Self.LoginStatistics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Memberships" EntityType="Self.Memberships" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Referrals" EntityType="Self.Referrals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wallets" EntityType="Self.Wallets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Categories].[Id] AS [Id], 
+[Categories].[Name] AS [Name], 
+[Categories].[Name(Ru)] AS [Name(Ru)], 
+[Categories].[OrderId] AS [OrderId]
+FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CashIns_Users" Association="Self.FK_CashIns_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CashIns" EntitySet="CashIns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName" Association="Self.FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName">
+            <End Role="UsersOpenAuthData" EntitySet="UsersOpenAuthData" />
+            <End Role="UsersOpenAuthAccounts" EntitySet="UsersOpenAuthAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Users" Association="Self.FK_News_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Referrals_Users" Association="Self.FK_Referrals_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Referrals" EntitySet="Referrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Referrals_Users1" Association="Self.FK_Referrals_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Referrals" EntitySet="Referrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallets_Cryptocurrencies" Association="Self.FK_Wallets_Cryptocurrencies">
+            <End Role="Currencies" EntitySet="Currencies" />
+            <End Role="Wallets" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallets_Users" Association="Self.FK_Wallets_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Wallets" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="MembershipApplication" Association="Self.MembershipApplication">
+            <End Role="Applications" EntitySet="Applications" />
+            <End Role="Memberships" EntitySet="Memberships" />
+          </AssociationSet>
+          <AssociationSet Name="MembershipUser" Association="Self.MembershipUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Memberships" EntitySet="Memberships" />
+          </AssociationSet>
+          <AssociationSet Name="RoleApplication" Association="Self.RoleApplication">
+            <End Role="Applications" EntitySet="Applications" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="UserApplication" Association="Self.UserApplication">
+            <End Role="Applications" EntitySet="Applications" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UsersInRoleRole" Association="Self.UsersInRoleRole">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="UsersInRoleUser" Association="Self.UsersInRoleUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RentooloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="fnGetAllUsers_Result">
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" />
+          <Property Name="Pwd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PublicId" Type="Int32" Nullable="false" />
+          <Property Name="Communication" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <ComplexType Name="fnGetTablesRows_Result">
+          <Property Name="TableName" Type="String" MaxLength="517" FixedLength="false" Unicode="true" />
+          <Property Name="RowCount" Type="Int64" />
+        </ComplexType>
+        <ComplexType Name="fnGetUserReferralsSecondLevel_Result">
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ReferrerUserId" Type="Guid" Nullable="false" />
+          <Property Name="ReferralUserId" Type="Guid" Nullable="false" />
+          <Property Name="WhenDate" Type="DateTime" Nullable="false" />
+          <Property Name="PublicId" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="refererUp1Lvl" Type="Guid" />
+        </ComplexType>
+        <ComplexType Name="fnGetUserReferralsThirdLevel_Result">
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ReferrerUserId" Type="Guid" Nullable="false" />
+          <Property Name="ReferralUserId" Type="Guid" Nullable="false" />
+          <Property Name="WhenDate" Type="DateTime" Nullable="false" />
+          <Property Name="PublicId" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="refererUp2Lvl" Type="Guid" />
+        </ComplexType>
+        <ComplexType Name="fnGetUserWallets_Result">
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="Double" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Acronim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <EntityType Name="Adverts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedUserId" Type="Guid" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MessageType" Type="Int32" Nullable="false" />
+          <Property Name="Position" Type="Geography" />
+        </EntityType>
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationName" Type="String" MaxLength="235" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Memberships" Relationship="Self.MembershipApplication" FromRole="Applications" ToRole="Memberships" />
+          <NavigationProperty Name="Roles" Relationship="Self.RoleApplication" FromRole="Applications" ToRole="Roles" />
+          <NavigationProperty Name="Users" Relationship="Self.UserApplication" FromRole="Applications" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Articles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Head" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Business">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Header" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cost" Type="Double" />
+          <Property Name="NoCost" Type="Boolean" Nullable="false" />
+          <Property Name="PaybackPeriod" Type="Double" />
+          <Property Name="MonthlyIncome" Type="Double" />
+        </EntityType>
+        <EntityType Name="CashIns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Value" Type="Double" Nullable="false" />
+          <Property Name="Sposob" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AcceptedAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SendAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_CashIns_Users" FromRole="CashIns" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Currencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Acronim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateAdd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsValid" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Wallets" Relationship="Self.FK_Wallets_Cryptocurrencies" FromRole="Currencies" ToRole="Wallets" />
+        </EntityType>
+        <EntityType Name="DailyStatistics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserAdded" Type="Int32" Nullable="false" />
+          <Property Name="DepositeAdded" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exceptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="Guid" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cost" Type="Double" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CoordinateX" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="CoordinateY" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="Coordinate" Type="Geography" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CommunicationType" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoginStatistics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WhenLastDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Count" Type="Int64" Nullable="false" />
+          <Property Name="Client" Type="Int32" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Memberships">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordFormat" Type="Int32" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordQuestion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordAnswer" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptWindowsStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Applications" Relationship="Self.MembershipApplication" FromRole="Memberships" ToRole="Applications" />
+          <NavigationProperty Name="Users" Relationship="Self.MembershipUser" FromRole="Memberships" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuthorId" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_News_Users" FromRole="News" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Operations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Value" Type="Double" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserIdSender" Type="Guid" Nullable="false" />
+          <Property Name="UserIdRecepient" Type="Guid" Nullable="false" />
+          <Property Name="Value" Type="Double" Nullable="false" />
+          <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Referrals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReferrerUserId" Type="Guid" Nullable="false" />
+          <Property Name="ReferralUserId" Type="Guid" Nullable="false" />
+          <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Referrals_Users" FromRole="Referrals" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK_Referrals_Users1" FromRole="Referrals" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Applications" Relationship="Self.RoleApplication" FromRole="Roles" ToRole="Applications" />
+          <NavigationProperty Name="Users" Relationship="Self.UsersInRoles" FromRole="Roles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Pwd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PublicId" Type="Int32" Nullable="false" />
+          <Property Name="Communication" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReffAdd" Type="Double" Nullable="false" />
+          <Property Name="Icq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VkontakteId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Skype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Applications" Relationship="Self.UserApplication" FromRole="Users" ToRole="Applications" />
+          <NavigationProperty Name="CashIns" Relationship="Self.FK_CashIns_Users" FromRole="Users" ToRole="CashIns" />
+          <NavigationProperty Name="Memberships" Relationship="Self.MembershipUser" FromRole="Users" ToRole="Memberships" />
+          <NavigationProperty Name="News" Relationship="Self.FK_News_Users" FromRole="Users" ToRole="News" />
+          <NavigationProperty Name="Referrals" Relationship="Self.FK_Referrals_Users" FromRole="Users" ToRole="Referrals" />
+          <NavigationProperty Name="Referrals1" Relationship="Self.FK_Referrals_Users1" FromRole="Users" ToRole="Referrals" />
+          <NavigationProperty Name="Wallets" Relationship="Self.FK_Wallets_Users" FromRole="Users" ToRole="Wallets" />
+          <NavigationProperty Name="Roles" Relationship="Self.UsersInRoles" FromRole="Users" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="UsersOpenAuthAccounts">
+          <Key>
+            <PropertyRef Name="ApplicationName" />
+            <PropertyRef Name="ProviderName" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="ApplicationName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderUserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MembershipUserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastUsedUtc" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UsersOpenAuthData" Relationship="Self.FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName" FromRole="UsersOpenAuthAccounts" ToRole="UsersOpenAuthData" />
+        </EntityType>
+        <EntityType Name="UsersOpenAuthData">
+          <Key>
+            <PropertyRef Name="ApplicationName" />
+            <PropertyRef Name="MembershipUserName" />
+          </Key>
+          <Property Name="ApplicationName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MembershipUserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HasLocalPassword" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UsersOpenAuthAccounts" Relationship="Self.FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName" FromRole="UsersOpenAuthData" ToRole="UsersOpenAuthAccounts" />
+        </EntityType>
+        <EntityType Name="Wallets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="Double" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Currencies" Relationship="Self.FK_Wallets_Cryptocurrencies" FromRole="Wallets" ToRole="Currencies" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Wallets_Users" FromRole="Wallets" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Name_Ru_" />
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name_Ru_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="MembershipApplication">
+          <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
+          <End Role="Memberships" Type="Self.Memberships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="Memberships">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoleApplication">
+          <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserApplication">
+          <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CashIns_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="CashIns" Type="Self.CashIns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CashIns">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallets_Cryptocurrencies">
+          <End Role="Currencies" Type="Self.Currencies" Multiplicity="1" />
+          <End Role="Wallets" Type="Self.Wallets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currencies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wallets">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MembershipUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Memberships" Type="Self.Memberships" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Memberships">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Referrals_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Referrals">
+              <PropertyRef Name="ReferralUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Referrals_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Referrals">
+              <PropertyRef Name="ReferrerUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallets_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Wallets" Type="Self.Wallets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Wallets">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName">
+          <End Role="UsersOpenAuthData" Type="Self.UsersOpenAuthData" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersOpenAuthAccounts" Type="Self.UsersOpenAuthAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersOpenAuthData">
+              <PropertyRef Name="ApplicationName" />
+              <PropertyRef Name="MembershipUserName" />
+            </Principal>
+            <Dependent Role="UsersOpenAuthAccounts">
+              <PropertyRef Name="ApplicationName" />
+              <PropertyRef Name="MembershipUserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsersInRoles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="RentooloEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adverts" EntityType="Self.Adverts" />
+          <EntitySet Name="Applications" EntityType="Self.Applications" />
+          <EntitySet Name="Articles" EntityType="Self.Articles" />
+          <EntitySet Name="Business" EntityType="Self.Business" />
+          <EntitySet Name="CashIns" EntityType="Self.CashIns" />
+          <EntitySet Name="Currencies" EntityType="Self.Currencies" />
+          <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" />
+          <EntitySet Name="Exceptions" EntityType="Self.Exceptions" />
+          <EntitySet Name="Items" EntityType="Self.Items" />
+          <EntitySet Name="LoginStatistics" EntityType="Self.LoginStatistics" />
+          <EntitySet Name="Memberships" EntityType="Self.Memberships" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="Operations" EntityType="Self.Operations" />
+          <EntitySet Name="Payments" EntityType="Self.Payments" />
+          <EntitySet Name="Referrals" EntityType="Self.Referrals" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" />
+          <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" />
+          <EntitySet Name="Wallets" EntityType="Self.Wallets" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <AssociationSet Name="MembershipApplication" Association="Self.MembershipApplication">
+            <End Role="Applications" EntitySet="Applications" />
+            <End Role="Memberships" EntitySet="Memberships" />
+          </AssociationSet>
+          <AssociationSet Name="RoleApplication" Association="Self.RoleApplication">
+            <End Role="Applications" EntitySet="Applications" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="UserApplication" Association="Self.UserApplication">
+            <End Role="Applications" EntitySet="Applications" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CashIns_Users" Association="Self.FK_CashIns_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CashIns" EntitySet="CashIns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallets_Cryptocurrencies" Association="Self.FK_Wallets_Cryptocurrencies">
+            <End Role="Currencies" EntitySet="Currencies" />
+            <End Role="Wallets" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="MembershipUser" Association="Self.MembershipUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Memberships" EntitySet="Memberships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Users" Association="Self.FK_News_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Referrals_Users" Association="Self.FK_Referrals_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Referrals" EntitySet="Referrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Referrals_Users1" Association="Self.FK_Referrals_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Referrals" EntitySet="Referrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallets_Users" Association="Self.FK_Wallets_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Wallets" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName" Association="Self.FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName">
+            <End Role="UsersOpenAuthData" EntitySet="UsersOpenAuthData" />
+            <End Role="UsersOpenAuthAccounts" EntitySet="UsersOpenAuthAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="UsersInRoles" Association="Self.UsersInRoles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <FunctionImport Name="fnGetAllUsers" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetAllUsers_Result)" />
+          <FunctionImport Name="fnGetTablesRows" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetTablesRows_Result)" />
+          <FunctionImport Name="fnGetUserReferralsSecondLevel" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserReferralsSecondLevel_Result)">
+            <Parameter Name="userId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="fnGetUserReferralsThirdLevel" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserReferralsThirdLevel_Result)">
+            <Parameter Name="userId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="fnGetUserWallets" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserWallets_Result)">
+            <Parameter Name="userId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="spGetFavoritesByCookies">
+            <Parameter Name="uid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetLoginStatisticLastDayActive" />
+          <FunctionImport Name="spGetLoginStatisticLastHourActive" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities">
+          <EntitySetMapping Name="Adverts">
+            <EntityTypeMapping TypeName="RentooloModel.Adverts">
+              <MappingFragment StoreEntitySet="Adverts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="RentooloModel.Applications">
+              <MappingFragment StoreEntitySet="Applications">
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="RentooloModel.Articles">
+              <MappingFragment StoreEntitySet="Articles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Head" ColumnName="Head" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Business">
+            <EntityTypeMapping TypeName="RentooloModel.Business">
+              <MappingFragment StoreEntitySet="Business">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Header" ColumnName="Header" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="NoCost" ColumnName="NoCost" />
+                <ScalarProperty Name="PaybackPeriod" ColumnName="PaybackPeriod" />
+                <ScalarProperty Name="MonthlyIncome" ColumnName="MonthlyIncome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CashIns">
+            <EntityTypeMapping TypeName="RentooloModel.CashIns">
+              <MappingFragment StoreEntitySet="CashIns">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Sposob" ColumnName="Sposob" />
+                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
+                <ScalarProperty Name="AcceptedAccount" ColumnName="AcceptedAccount" />
+                <ScalarProperty Name="SendAccount" ColumnName="SendAccount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="RentooloModel.Currencies">
+              <MappingFragment StoreEntitySet="Currencies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Acronim" ColumnName="Acronim" />
+                <ScalarProperty Name="DateAdd" ColumnName="DateAdd" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DailyStatistics">
+            <EntityTypeMapping TypeName="RentooloModel.DailyStatistics">
+              <MappingFragment StoreEntitySet="DailyStatistics">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserAdded" ColumnName="UserAdded" />
+                <ScalarProperty Name="DepositeAdded" ColumnName="DepositeAdded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exceptions">
+            <EntityTypeMapping TypeName="RentooloModel.Exceptions">
+              <MappingFragment StoreEntitySet="Exceptions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="RentooloModel.Items">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CoordinateX" ColumnName="CoordinateX" />
+                <ScalarProperty Name="CoordinateY" ColumnName="CoordinateY" />
+                <ScalarProperty Name="Coordinate" ColumnName="Coordinate" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CommunicationType" ColumnName="CommunicationType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginStatistics">
+            <EntityTypeMapping TypeName="RentooloModel.LoginStatistics">
+              <MappingFragment StoreEntitySet="LoginStatistics">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="WhenLastDate" ColumnName="WhenLastDate" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Memberships">
+            <EntityTypeMapping TypeName="RentooloModel.Memberships">
+              <MappingFragment StoreEntitySet="Memberships">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+                <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+                <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
+                <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
+                <ScalarProperty Name="FailedPasswordAnswerAttemptWindowsStart" ColumnName="FailedPasswordAnswerAttemptWindowsStart" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="RentooloModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operations">
+            <EntityTypeMapping TypeName="RentooloModel.Operations">
+              <MappingFragment StoreEntitySet="Operations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="RentooloModel.Payments">
+              <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserIdSender" ColumnName="UserIdSender" />
+                <ScalarProperty Name="UserIdRecepient" ColumnName="UserIdRecepient" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Referrals">
+            <EntityTypeMapping TypeName="RentooloModel.Referrals">
+              <MappingFragment StoreEntitySet="Referrals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReferrerUserId" ColumnName="ReferrerUserId" />
+                <ScalarProperty Name="ReferralUserId" ColumnName="ReferralUserId" />
+                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="RentooloModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="RentooloModel.Settings">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="RentooloModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="PublicId" ColumnName="PublicId" />
+                <ScalarProperty Name="Communication" ColumnName="Communication" />
+                <ScalarProperty Name="ReffAdd" ColumnName="ReffAdd" />
+                <ScalarProperty Name="Icq" ColumnName="Icq" />
+                <ScalarProperty Name="VkontakteId" ColumnName="VkontakteId" />
+                <ScalarProperty Name="Skype" ColumnName="Skype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersOpenAuthAccounts">
+            <EntityTypeMapping TypeName="RentooloModel.UsersOpenAuthAccounts">
+              <MappingFragment StoreEntitySet="UsersOpenAuthAccounts">
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+                <ScalarProperty Name="ProviderUserName" ColumnName="ProviderUserName" />
+                <ScalarProperty Name="MembershipUserName" ColumnName="MembershipUserName" />
+                <ScalarProperty Name="LastUsedUtc" ColumnName="LastUsedUtc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersOpenAuthData">
+            <EntityTypeMapping TypeName="RentooloModel.UsersOpenAuthData">
+              <MappingFragment StoreEntitySet="UsersOpenAuthData">
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="MembershipUserName" ColumnName="MembershipUserName" />
+                <ScalarProperty Name="HasLocalPassword" ColumnName="HasLocalPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wallets">
+            <EntityTypeMapping TypeName="RentooloModel.Wallets">
+              <MappingFragment StoreEntitySet="Wallets">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="RentooloModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Name_Ru_" ColumnName="Name(Ru)" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UsersInRoles" TypeName="RentooloModel.UsersInRoles" StoreEntitySet="UsersInRoles">
+            <EndProperty Name="Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetAllUsers" FunctionImportName="fnGetAllUsers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.fnGetAllUsers_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="PublicId" ColumnName="PublicId" />
+                <ScalarProperty Name="Communication" ColumnName="Communication" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetTablesRows" FunctionImportName="fnGetTablesRows">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.fnGetTablesRows_Result">
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="RowCount" ColumnName="RowCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserReferralsSecondLevel" FunctionImportName="fnGetUserReferralsSecondLevel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.fnGetUserReferralsSecondLevel_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReferrerUserId" ColumnName="ReferrerUserId" />
+                <ScalarProperty Name="ReferralUserId" ColumnName="ReferralUserId" />
+                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
+                <ScalarProperty Name="PublicId" ColumnName="PublicId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="refererUp1Lvl" ColumnName="refererUp1Lvl" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserReferralsThirdLevel" FunctionImportName="fnGetUserReferralsThirdLevel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.fnGetUserReferralsThirdLevel_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReferrerUserId" ColumnName="ReferrerUserId" />
+                <ScalarProperty Name="ReferralUserId" ColumnName="ReferralUserId" />
+                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
+                <ScalarProperty Name="PublicId" ColumnName="PublicId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="refererUp2Lvl" ColumnName="refererUp2Lvl" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserWallets" FunctionImportName="fnGetUserWallets">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.fnGetUserWallets_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Acronim" ColumnName="Acronim" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetFavoritesByCookies" FunctionName="Хранилище RentooloModel.spGetFavoritesByCookies" />
+          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastDayActive" FunctionName="Хранилище RentooloModel.spGetLoginStatisticLastDayActive" />
+          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastHourActive" FunctionName="Хранилище RentooloModel.spGetLoginStatisticLastHourActive" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
