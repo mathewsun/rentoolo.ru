@@ -77,7 +77,7 @@ namespace Rentoolo.Account
             }
             else
             {
-                Response.Redirect(string.Format("~/{0}", returnUrl));
+                Response.Redirect(string.Format("~/{0}", returnUrl.Replace("%2f", "/")));
             }
 
         }
