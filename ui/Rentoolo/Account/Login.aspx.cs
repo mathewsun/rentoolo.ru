@@ -69,7 +69,17 @@ namespace Rentoolo.Account
 
         protected void Unnamed1_LoggedIn(object sender, EventArgs e)
         {
-            Response.Redirect("~/Account/Cabinet.aspx");
+            var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+
+            if (string.IsNullOrEmpty(returnUrl))
+            {
+                Response.Redirect("~/Account/Cabinet.aspx");
+            }
+            else
+            {
+                Response.Redirect(string.Format("~/{0}", returnUrl));
+            }
+
         }
     }
 }
