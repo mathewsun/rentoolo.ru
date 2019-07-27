@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace Rentoolo.Model
 {
@@ -30,12 +29,17 @@ namespace Rentoolo.Model
                     {
                         Id = item.Id,
                         AdvertId = item.AdvertId,
-                        CreatedAdverts = item.CreatedAdverts.Value,
+                        CreatedFavorites = item.CreatedFavorites,
                         Category = item.Category,
                         Name = item.Name,
                         Description = item.Description,
-                        CreatedFavorites = item.CreatedFavorites,
-
+                        CreatedAdverts = item.CreatedAdverts.Value,
+                        CreatedUserId = item.CreatedUserId.Value,
+                        Price = item.Price.Value,
+                        Address = item.Address,
+                        Phone = item.Phone,
+                        MessageType = item.MessageType.Value,
+                        Position = item.PositionString
                     });
                 }
 
@@ -94,7 +98,8 @@ namespace Rentoolo.Model
                         Price = item.Price.Value,
                         Address = item.Address,
                         Phone = item.Phone,
-                        MessageType = item.MessageType.Value
+                        MessageType = item.MessageType.Value,
+                        Position = item.PositionString
                     });
                 }
 

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE  [dbo].[spGetFavorites]
+﻿ALTER PROCEDURE  [dbo].[spGetFavorites]
 @userId uniqueidentifier
 AS
 BEGIN
@@ -14,7 +14,7 @@ BEGIN
       ,a.[Address]
       ,a.[Phone]
       ,a.[MessageType]
-      ,a.[Position]
+      ,cast(a.[Position] as varchar(max)) PositionString
 	FROM [dbo].[Favorites] f
 	LEFT JOIN [Adverts] a
 	on f.[AdvertId] = a.[Id]

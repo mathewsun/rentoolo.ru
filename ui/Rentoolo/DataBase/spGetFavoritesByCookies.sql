@@ -14,7 +14,7 @@ BEGIN
       ,a.[Address]
       ,a.[Phone]
       ,a.[MessageType]
-      ,a.[Position]
+      ,cast(a.[Position] as varchar(max)) PositionString
 	FROM [dbo].[FavoritesByCookies] f
 	LEFT JOIN [Adverts] a
 	on f.[AdvertId] = a.[Id]
