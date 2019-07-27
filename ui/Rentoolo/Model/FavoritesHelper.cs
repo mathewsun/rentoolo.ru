@@ -16,11 +16,28 @@ namespace Rentoolo.Model
             }
         }
 
-        public static List<Favorites> GetFavoritesByUser(Guid userId)
+        public static List<FavoritesForPage> GetFavoritesByUser(Guid userId)
         {
             using (var ctx = new RentooloEntities())
             {
-                var list = ctx.Favorites.Where(x => x.UserId == userId).ToList();
+                var result = ctx.spGetFavorites(userId);
+
+                List<FavoritesForPage> list = new List<FavoritesForPage>();
+
+                foreach (var item in result)
+                {
+                    list.Add(new FavoritesForPage
+                    {
+                        Id = item.Id,
+                        AdvertId = item.AdvertId,
+                        CreatedAdverts = item.CreatedAdverts.Value,
+                        Category = item.Category,
+                        Name = item.Name,
+                        Description = item.Description,
+                        CreatedFavorites = item.CreatedFavorites,
+
+                    });
+                }
 
                 return list;
             }
@@ -68,12 +85,16 @@ namespace Rentoolo.Model
                     {
                         Id = item.Id,
                         AdvertId = item.AdvertId,
-                        Created = item.Created,
+                        CreatedFavorites = item.CreatedFavorites,
                         Category = item.Category,
                         Name = item.Name,
                         Description = item.Description,
-                        CreatedAdvert = item.CreatedAdvert,
-
+                        CreatedAdverts = item.CreatedAdverts.Value,
+                        CreatedUserId = item.CreatedUserId.Value,
+                        Price = item.Price.Value,
+                        Address = item.Address,
+                        Phone = item.Phone,
+                        MessageType = item.MessageType.Value
                     });
                 }
 

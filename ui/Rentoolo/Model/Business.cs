@@ -14,7 +14,7 @@ namespace Rentoolo.Model
     
     public partial class Business
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Header { get; set; }
         public string Description { get; set; }
         public Nullable<double> Cost { get; set; }

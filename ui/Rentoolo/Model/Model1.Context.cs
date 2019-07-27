@@ -50,6 +50,8 @@ namespace Rentoolo.Model
         public DbSet<UsersOpenAuthData> UsersOpenAuthData { get; set; }
         public DbSet<Wallets> Wallets { get; set; }
         public DbSet<Categories> Categories { get; set; }
+        public DbSet<Favorites> Favorites { get; set; }
+        public DbSet<FavoritesByCookies> FavoritesByCookies { get; set; }
     
         [EdmFunction("RentooloEntities", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()
@@ -93,13 +95,22 @@ namespace Rentoolo.Model
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserWallets_Result>("[RentooloEntities].[fnGetUserWallets](@userId)", userIdParameter);
         }
     
-        public virtual int spGetFavoritesByCookies(string uid)
+        public virtual ObjectResult<spGetFavorites_Result> spGetFavorites(Nullable<System.Guid> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetFavorites_Result>("spGetFavorites", userIdParameter);
+        }
+    
+        public virtual ObjectResult<spGetFavoritesByCookies_Result> spGetFavoritesByCookies(string uid)
         {
             var uidParameter = uid != null ?
                 new ObjectParameter("uid", uid) :
                 new ObjectParameter("uid", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spGetFavoritesByCookies", uidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetFavoritesByCookies_Result>("spGetFavoritesByCookies", uidParameter);
         }
     
         public virtual int spGetLoginStatisticLastDayActive()
