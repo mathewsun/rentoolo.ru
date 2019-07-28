@@ -3,6 +3,10 @@
     } else {
         setCookie('uid', uuidv4(), 365);
     }
+
+    $(".item-wrap__like").click(function () {
+        addF($(this).parent().attr("aid"));
+    });
 });
 
 function uuidv4() {
@@ -26,4 +30,8 @@ function setCookie(name, value, days) {
         expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function addF(aId) {
+    $.get("/Events.ashx?e=af&id=" + aId);
 }
