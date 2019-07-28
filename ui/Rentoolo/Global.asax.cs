@@ -6,6 +6,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using Rentoolo;
+using System.Web.Http;
 
 namespace Rentoolo
 {
@@ -18,6 +19,7 @@ namespace Rentoolo
             AuthConfig.RegisterOpenAuth();
 
             RegisterRoutes(RouteTable.Routes);
+
         }
 
         void Application_End(object sender, EventArgs e)
@@ -34,7 +36,11 @@ namespace Rentoolo
 
         public static void RegisterRoutes(RouteCollection routes)
         {
-
+            routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = System.Web.Http.RouteParameter.Optional }
+            );
 
 
 

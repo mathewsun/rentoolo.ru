@@ -428,7 +428,7 @@
                                 </div>
 
                                 <div class="media-body-inline-grid" data-grid="images">
-                                    <div class="item-wrap" style="display: none">
+                                    <div class="item-wrap" style="display: none" aid="222">
                                         <img data-action="zoom" data-width="500" data-height="500" src="assets/img/unsplash_1.jpg">
                                         <div class="item-wrap__wrap ">
                                             <div class="item-wrap__name"><a href="#">Холодильник Indesit 90l / 40l </a></div>
