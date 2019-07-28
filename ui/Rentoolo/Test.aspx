@@ -9,6 +9,13 @@
     <html>
     <head>
         <title>TEST</title>
+        <script>
+            $(document).ready(function () {
+                $.get("Events.ashx?e=af&b&id=222", function (data) {
+                    var ttt = 10;
+                });
+            });
+        </script>
     </head>
 
     <body class="first id1 www">

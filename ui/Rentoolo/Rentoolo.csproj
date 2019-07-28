@@ -226,8 +226,10 @@
     <Content Include="Business.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="DataBase\Init\Init.sql" />
+    <Content Include="DataBase\spAddFavorites.sql" />
     <Content Include="DataBase\spGetAdverts.sql" />
     <Content Include="DataBase\spGetFavorites.sql" />
+    <Content Include="DataBase\spAddFavoritesByCookies.sql" />
     <Content Include="DataBase\spGetFavoritesByCookies.sql" />
     <Content Include="DataBase\spGetLoginStatisticLastDayActive.sql" />
     <Content Include="DataBase\spGetLoginStatisticLastHourActive.sql" />
@@ -271,6 +273,7 @@
     <Content Include="assets\fonts\toolkit-entypo.ttf" />
     <Content Include="assets\fonts\toolkit-entypo.woff" />
     <Content Include="assets\fonts\toolkit-entypo.woff2" />
+    <Content Include="Events.ashx" />
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -596,6 +599,9 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Events.ashx.cs">
+      <DependentUpon>Events.ashx</DependentUpon>
     </Compile>
     <Compile Include="Fail.aspx.cs">
       <DependentUpon>Fail.aspx</DependentUpon>

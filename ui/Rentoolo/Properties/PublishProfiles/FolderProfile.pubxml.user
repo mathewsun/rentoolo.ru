@@ -394,7 +394,7 @@
       <publishTime>04/17/2019 04:57:20</publishTime>
     </File>
     <File Include="bin/Rentoolo.dll">
-      <publishTime>07/27/2019 21:02:42</publishTime>
+      <publishTime>07/28/2019 03:59:03</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
       <publishTime>06/15/2019 17:56:24</publishTime>
@@ -510,6 +510,12 @@
     <File Include="DataBase/Init/Init.sql">
       <publishTime>07/27/2019 17:15:42</publishTime>
     </File>
+    <File Include="DataBase/spAddFavorites.sql">
+      <publishTime>07/28/2019 03:50:11</publishTime>
+    </File>
+    <File Include="DataBase/spAddFavoritesByCookies.sql">
+      <publishTime>07/28/2019 03:39:43</publishTime>
+    </File>
     <File Include="DataBase/spAddQiwiBalanceUpdatePerMonth.sql">
       <publishTime>03/25/2019 23:16:22</publishTime>
     </File>
@@ -526,7 +532,7 @@
       <publishTime>07/27/2019 20:48:56</publishTime>
     </File>
     <File Include="DataBase/spGetFavoritesByCookies.sql">
-      <publishTime>07/27/2019 20:49:00</publishTime>
+      <publishTime>07/28/2019 03:03:42</publishTime>
     </File>
     <File Include="DataBase/spGetLoginStatisticLastDayActive.sql">
       <publishTime>06/15/2019 17:56:24</publishTime>
@@ -559,16 +565,19 @@
       <publishTime>07/27/2019 17:42:26</publishTime>
     </File>
     <File Include="DataBase/tables/Favorites.sql">
-      <publishTime>07/27/2019 17:39:27</publishTime>
+      <publishTime>07/28/2019 03:58:18</publishTime>
     </File>
     <File Include="DataBase/tables/FavoritesByCookies.sql">
-      <publishTime>07/27/2019 17:39:27</publishTime>
+      <publishTime>07/28/2019 03:11:03</publishTime>
     </File>
     <File Include="Default.aspx">
       <publishTime>07/27/2019 17:15:42</publishTime>
     </File>
     <File Include="docs/index.html">
       <publishTime>06/15/2019 17:56:24</publishTime>
+    </File>
+    <File Include="Events.ashx">
+      <publishTime>07/27/2019 21:11:45</publishTime>
     </File>
     <File Include="Fail.aspx">
       <publishTime>06/15/2019 17:56:24</publishTime>
@@ -883,7 +892,7 @@
       <publishTime>07/09/2019 20:36:14</publishTime>
     </File>
     <File Include="Model/Model1.edmx.diagram">
-      <publishTime>07/27/2019 20:50:44</publishTime>
+      <publishTime>07/28/2019 03:51:17</publishTime>
     </File>
     <File Include="News.aspx">
       <publishTime>06/15/2019 17:56:24</publishTime>
@@ -976,10 +985,10 @@
       <publishTime>06/15/2019 17:56:24</publishTime>
     </File>
     <File Include="Test.aspx">
-      <publishTime>06/15/2019 17:56:24</publishTime>
+      <publishTime>07/28/2019 02:50:13</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/27/2019 20:51:26</publishTime>
+      <publishTime>07/28/2019 03:59:03</publishTime>
     </File>
     <File Include="WebForm1.aspx">
       <publishTime>07/03/2019 22:00:51</publishTime>

@@ -18,7 +18,7 @@ BEGIN
 	FROM [dbo].[FavoritesByCookies] f
 	LEFT JOIN [Adverts] a
 	on f.[AdvertId] = a.[Id]
-	where f.[Value] = @uid
+	where f.[UserCookiesId] = @uid
 END
 GO
 

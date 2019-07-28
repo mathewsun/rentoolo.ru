@@ -10,8 +10,7 @@ namespace Rentoolo.Model
         {
             using (var ctx = new RentooloEntities())
             {
-                ctx.Favorites.Add(item);
-                ctx.SaveChanges();
+                ctx.spAddFavorites(item.UserId, item.AdvertId);
             }
         }
 
@@ -70,8 +69,7 @@ namespace Rentoolo.Model
         {
             using (var ctx = new RentooloEntities())
             {
-                ctx.FavoritesByCookies.Add(item);
-                ctx.SaveChanges();
+                ctx.spAddFavoritesByCookies(item.UserCookiesId, item.AdvertId);
             }
         }
 

@@ -15,7 +15,7 @@ namespace Rentoolo.Model
     public partial class FavoritesByCookies
     {
         public long Id { get; set; }
-        public string Value { get; set; }
+        public string UserCookiesId { get; set; }
         public long AdvertId { get; set; }
         public System.DateTime Created { get; set; }
     }

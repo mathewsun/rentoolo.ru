@@ -36,6 +36,8 @@ namespace Rentoolo.Model
         public DbSet<Currencies> Currencies { get; set; }
         public DbSet<DailyStatistics> DailyStatistics { get; set; }
         public DbSet<Exceptions> Exceptions { get; set; }
+        public DbSet<Favorites> Favorites { get; set; }
+        public DbSet<FavoritesByCookies> FavoritesByCookies { get; set; }
         public DbSet<Items> Items { get; set; }
         public DbSet<LoginStatistics> LoginStatistics { get; set; }
         public DbSet<Memberships> Memberships { get; set; }
@@ -50,8 +52,6 @@ namespace Rentoolo.Model
         public DbSet<UsersOpenAuthData> UsersOpenAuthData { get; set; }
         public DbSet<Wallets> Wallets { get; set; }
         public DbSet<Categories> Categories { get; set; }
-        public DbSet<Favorites> Favorites { get; set; }
-        public DbSet<FavoritesByCookies> FavoritesByCookies { get; set; }
     
         [EdmFunction("RentooloEntities", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()
@@ -93,6 +93,32 @@ namespace Rentoolo.Model
                 new ObjectParameter("userId", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserWallets_Result>("[RentooloEntities].[fnGetUserWallets](@userId)", userIdParameter);
+        }
+    
+        public virtual int spAddFavorites(Nullable<System.Guid> userId, Nullable<long> advertId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(System.Guid));
+    
+            var advertIdParameter = advertId.HasValue ?
+                new ObjectParameter("advertId", advertId) :
+                new ObjectParameter("advertId", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddFavorites", userIdParameter, advertIdParameter);
+        }
+    
+        public virtual int spAddFavoritesByCookies(string uid, Nullable<long> advertId)
+        {
+            var uidParameter = uid != null ?
+                new ObjectParameter("uid", uid) :
+                new ObjectParameter("uid", typeof(string));
+    
+            var advertIdParameter = advertId.HasValue ?
+                new ObjectParameter("advertId", advertId) :
+                new ObjectParameter("advertId", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddFavoritesByCookies", uidParameter, advertIdParameter);
         }
     
         public virtual ObjectResult<spGetFavorites_Result> spGetFavorites(Nullable<System.Guid> userId)

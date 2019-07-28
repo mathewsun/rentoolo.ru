@@ -105,31 +105,21 @@
           <Property Name="WhenDate" Type="datetime" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "rentoolo.dbo.Favorites" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Favorites">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="AdvertId" />
-            <PropertyRef Name="Created" />
           </Key>
           <Property Name="Id" Type="bigint" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="AdvertId" Type="bigint" Nullable="false" />
           <Property Name="Created" Type="datetime" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "rentoolo.dbo.FavoritesByCookies" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="FavoritesByCookies">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="Value" />
-            <PropertyRef Name="AdvertId" />
-            <PropertyRef Name="Created" />
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserCookiesId" Type="nvarchar" MaxLength="36" Nullable="false" />
           <Property Name="AdvertId" Type="bigint" Nullable="false" />
           <Property Name="Created" Type="datetime" Nullable="false" />
         </EntityType>
@@ -541,6 +531,14 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="spAddFavorites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="advertId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="spAddFavoritesByCookies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uid" Type="nvarchar" Mode="In" />
+          <Parameter Name="advertId" Type="bigint" Mode="In" />
+        </Function>
         <Function Name="spGetFavorites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
         </Function>
@@ -558,6 +556,8 @@
           <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Exceptions" EntityType="Self.Exceptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Favorites" EntityType="Self.Favorites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoritesByCookies" EntityType="Self.FavoritesByCookies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginStatistics" EntityType="Self.LoginStatistics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Memberships" EntityType="Self.Memberships" Schema="dbo" store:Type="Tables" />
@@ -579,22 +579,6 @@
 [Categories].[Name(Ru)] AS [Name(Ru)], 
 [Categories].[OrderId] AS [OrderId]
 FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Favorites" EntityType="Self.Favorites" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[Favorites].[Id] AS [Id], 
-[Favorites].[UserId] AS [UserId], 
-[Favorites].[AdvertId] AS [AdvertId], 
-[Favorites].[Created] AS [Created]
-FROM [dbo].[Favorites] AS [Favorites]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="FavoritesByCookies" EntityType="Self.FavoritesByCookies" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[FavoritesByCookies].[Id] AS [Id], 
-[FavoritesByCookies].[Value] AS [Value], 
-[FavoritesByCookies].[AdvertId] AS [AdvertId], 
-[FavoritesByCookies].[Created] AS [Created]
-FROM [dbo].[FavoritesByCookies] AS [FavoritesByCookies]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CashIns_Users" Association="Self.FK_CashIns_Users">
             <End Role="Users" EntitySet="Users" />
@@ -783,6 +767,24 @@ FROM [dbo].[FavoritesByCookies] AS [FavoritesByCookies]</DefiningQuery>
           <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UserId" Type="Guid" />
+        </EntityType>
+        <EntityType Name="Favorites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="AdvertId" Type="Int64" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FavoritesByCookies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserCookiesId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdvertId" Type="Int64" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Items">
           <Key>
@@ -977,30 +979,6 @@ FROM [dbo].[FavoritesByCookies] AS [FavoritesByCookies]</DefiningQuery>
           <Property Name="Name_Ru_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OrderId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Favorites">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="AdvertId" />
-            <PropertyRef Name="Created" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="AdvertId" Type="Int64" Nullable="false" />
-          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="FavoritesByCookies">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Value" />
-            <PropertyRef Name="AdvertId" />
-            <PropertyRef Name="Created" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AdvertId" Type="Int64" Nullable="false" />
-          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
         <Association Name="MembershipApplication">
           <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
           <End Role="Memberships" Type="Self.Memberships" Multiplicity="*" />
@@ -1150,6 +1128,8 @@ FROM [dbo].[FavoritesByCookies] AS [FavoritesByCookies]</DefiningQuery>
           <EntitySet Name="Currencies" EntityType="Self.Currencies" />
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" />
           <EntitySet Name="Exceptions" EntityType="Self.Exceptions" />
+          <EntitySet Name="Favorites" EntityType="Self.Favorites" />
+          <EntitySet Name="FavoritesByCookies" EntityType="Self.FavoritesByCookies" />
           <EntitySet Name="Items" EntityType="Self.Items" />
           <EntitySet Name="LoginStatistics" EntityType="Self.LoginStatistics" />
           <EntitySet Name="Memberships" EntityType="Self.Memberships" />
@@ -1164,8 +1144,6 @@ FROM [dbo].[FavoritesByCookies] AS [FavoritesByCookies]</DefiningQuery>
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
-          <EntitySet Name="Favorites" EntityType="Self.Favorites" />
-          <EntitySet Name="FavoritesByCookies" EntityType="Self.FavoritesByCookies" />
           <AssociationSet Name="MembershipApplication" Association="Self.MembershipApplication">
             <End Role="Applications" EntitySet="Applications" />
             <End Role="Memberships" EntitySet="Memberships" />
@@ -1224,6 +1202,14 @@ FROM [dbo].[FavoritesByCookies] AS [FavoritesByCookies]</DefiningQuery>
           </FunctionImport>
           <FunctionImport Name="fnGetUserWallets" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserWallets_Result)">
             <Parameter Name="userId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="spAddFavorites">
+            <Parameter Name="UserId" Mode="In" Type="Guid" />
+            <Parameter Name="advertId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="spAddFavoritesByCookies">
+            <Parameter Name="uid" Mode="In" Type="String" />
+            <Parameter Name="advertId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="spGetFavorites" ReturnType="Collection(RentooloModel.spGetFavorites_Result)">
             <Parameter Name="userId" Mode="In" Type="Guid" />
@@ -1361,6 +1347,26 @@ FROM [dbo].[FavoritesByCookies] AS [FavoritesByCookies]</DefiningQuery>
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Favorites">
+            <EntityTypeMapping TypeName="RentooloModel.Favorites">
+              <MappingFragment StoreEntitySet="Favorites">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavoritesByCookies">
+            <EntityTypeMapping TypeName="RentooloModel.FavoritesByCookies">
+              <MappingFragment StoreEntitySet="FavoritesByCookies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserCookiesId" ColumnName="UserCookiesId" />
+                <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1546,26 +1552,6 @@ FROM [dbo].[FavoritesByCookies] AS [FavoritesByCookies]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Favorites">
-            <EntityTypeMapping TypeName="RentooloModel.Favorites">
-              <MappingFragment StoreEntitySet="Favorites">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FavoritesByCookies">
-            <EntityTypeMapping TypeName="RentooloModel.FavoritesByCookies">
-              <MappingFragment StoreEntitySet="FavoritesByCookies">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="UsersInRoles" TypeName="RentooloModel.UsersInRoles" StoreEntitySet="UsersInRoles">
             <EndProperty Name="Roles">
               <ScalarProperty Name="RoleId" ColumnName="RoleId" />
@@ -1633,6 +1619,8 @@ FROM [dbo].[FavoritesByCookies] AS [FavoritesByCookies]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spAddFavorites" FunctionName="Хранилище RentooloModel.spAddFavorites" />
+          <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="Хранилище RentooloModel.spAddFavoritesByCookies" />
           <FunctionImportMapping FunctionImportName="spGetFavorites" FunctionName="Хранилище RentooloModel.spGetFavorites">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetFavorites_Result">
