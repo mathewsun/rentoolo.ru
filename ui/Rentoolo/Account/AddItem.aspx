@@ -146,10 +146,8 @@
         </div>
         <div class="additem-category">
             <div class="additem-right additem-go">
-                <asp:Button ID="ButtonAddItem" runat="server" CssClass="additem-button" Text="Продолжить" />
+                <asp:Button ID="ButtonAddItem" runat="server" CssClass="additem-button" Text="Продолжить" OnClick="ButtonAddItem_Click" />
             </div>
         </div>
-
-
     </div>
 </asp:Content>

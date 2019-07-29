@@ -13,5 +13,10 @@ namespace Rentoolo.Account
         {
 
         }
+
+        protected void ButtonAddItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
