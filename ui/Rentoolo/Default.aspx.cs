@@ -10,6 +10,8 @@ namespace Rentoolo
     {
         public List<Rentoolo.Model.News> ListNews;
 
+        public List<Adverts> ListAdverts;
+
         public string UsercCount;
 
         public string UsersCountRegisteredToday;
@@ -26,24 +28,23 @@ namespace Rentoolo
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Test();
-
-
             ListNews = DataHelper.GetActiveNewsLast5();
+
+            ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage();
 
             if (!IsPostBack)
             {
-                Random rnd = new Random();
+                //Random rnd = new Random();
 
-                RandomInt = rnd.Next(-2, 2);
+                //RandomInt = rnd.Next(-2, 2);
 
-                UsercCount = DataHelper.GetSettingByName("UsersCount").Value;
+                //UsercCount = DataHelper.GetSettingByName("UsersCount").Value;
 
-                UsersCountRegisteredToday = DataHelper.GetSettingByName("UsersCountRegisteredToday").Value;
+                //UsersCountRegisteredToday = DataHelper.GetSettingByName("UsersCountRegisteredToday").Value;
 
-                UsersCountOnline = DataHelper.GetSettingByName("UsersCountOnline").Value;
+                //UsersCountOnline = DataHelper.GetSettingByName("UsersCountOnline").Value;
 
-                UsersCountOnline = (Convert.ToInt32(UsersCountOnline) + RandomInt).ToString();
+                //UsersCountOnline = (Convert.ToInt32(UsersCountOnline) + RandomInt).ToString();
 
             }
         }
