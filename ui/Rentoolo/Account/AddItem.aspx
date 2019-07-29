@@ -17,8 +17,9 @@
             <div class="additem-left">
                 <span>Категория</span>
             </div>
-            <div class="additem-right additem__way">
+            <div class="additem-right additem__way" cid="1001">
                 <a href="#">Для бизнеса / Готовый бизнес / Другое</a>
+                <input type="hidden" id="category_hidden" value="1001" runat="server" />
             </div>
         </div>
         <div class="additem-category">
@@ -26,7 +27,7 @@
                 <span class="additem-title">Название объявления</span>
             </div>
             <div class="additem-right additem__input-name">
-                <input type="text" class="additem-input" required>
+                <input type="text" class="additem-input" required runat="server">
             </div>
         </div>
 
@@ -35,8 +36,7 @@
                 <span class="additem-title">Описание объявления</span>
             </div>
             <div class="additem-right additem-input__text">
-                <textarea type="textarea" class="additem-input additem-input__text"></textarea>
-
+                <textarea type="textarea" class="additem-input additem-input__text" runat="server"></textarea>
             </div>
         </div>
 
@@ -45,7 +45,7 @@
                 <span class="additem-title">Цена</span>
             </div>
             <div class="additem-right">
-                <input type="number" class="additem-input additem__input-price" maxlength="14" required>
+                <input type="number" class="additem-input additem__input-price" maxlength="14" required runat="server">
                 <span class="price__value">₽</span>
                 <div class="price__popup">
                     Какую цену указать
@@ -64,7 +64,7 @@
             <div class="additem-right">
                 <label for="file" class="label__file">
                     <img src="/assets/img/addphoto.png" width="100px" alt="Добавить фотографию"></label>
-                <input class="additem-input additem__input-photo" name="file" id="file" type="file" accept="image/gif,image/png,image/jpeg,image/pjpeg">
+                <input class="additem-input additem__input-photo" name="file" id="file" type="file" accept="image/gif,image/png,image/jpeg,image/pjpeg" runat="server">
             </div>
         </div>
         <div class="additem-category">
@@ -72,7 +72,7 @@
                 <span class="additem-title">Видео с Youtube</span>
             </div>
             <div class="additem-right additem__video">
-                <input type="text" class="additem-input additem__input-video" placeholder=" Например: https://www.youtube.com/watch?v=vMad0HvQ0k">
+                <input type="text" class="additem-input additem__input-video" placeholder=" Например: https://www.youtube.com/watch?v=vMad0HvQ0k" runat="server">
             </div>
         </div>
         <div class="additem-category">
@@ -86,7 +86,7 @@
                 <span class="additem-title">Место сделки</span>
             </div>
             <div class="additem-right additem-place">
-                <input type="text" class="additem-input" required>
+                <input type="text" class="additem-input" required runat="server">
             </div>
         </div>
         <div class="additem-category">
@@ -116,7 +116,7 @@
                 <span class="additem-title">Телефон</span>
             </div>
             <div class="additem-right additem-phone">
-                <input id="phonenum" type="text" class="additem-input" placeholder="+7(___)___-__-__" required>
+                <input id="phonenum" type="text" class="additem-input" placeholder="+7(___)___-__-__" required runat="server">
             </div>
         </div>
         <div class="additem-category additem-check__wrap">
@@ -125,19 +125,19 @@
             </div>
             <div class="additem-right">
                 <div class="additem-checkbox">
-                    <input type="radio" class="checkbox" id="phoneandmess" name="contact" checked>
+                    <input type="radio" class="checkbox" id="phoneandmess" name="contact" checked runat="server">
                     <label class="checkbox-label" for="phoneandmess">
                         По телефону и в сообщениях
                     </label>
                 </div>
                 <div class="additem-checkbox">
-                    <input type="radio" class="checkbox" id="onlyphone" name="contact">
+                    <input type="radio" class="checkbox" id="onlyphone" name="contact" runat="server">
                     <label class="checkbox-label" for="onlyphone">
                         Только по телефону
                     </label>
                 </div>
                 <div class="additem-checkbox">
-                    <input type="radio" class="checkbox" id="message" name="contact">
+                    <input type="radio" class="checkbox" id="message" name="contact" runat="server">
                     <label class="checkbox-label" for="message">
                         Только в сообщениях
                     </label>
@@ -146,7 +146,7 @@
         </div>
         <div class="additem-category">
             <div class="additem-right additem-go">
-                <button type="#" class="additem-button">Продолжить</button>
+                <asp:Button ID="ButtonAddItem" runat="server" CssClass="additem-button" Text="Продолжить" />
             </div>
         </div>
 

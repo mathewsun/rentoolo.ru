@@ -658,7 +658,7 @@ input::-webkit-inner-spin-button {
 }
 
 #phonenum {
-    width: 125px;
+    width: 140px;
 }
 
 .additem-phone {
@@ -852,4 +852,14 @@ input::-webkit-inner-spin-button {
 
 .blue-color {
     color: #216a94 !important;
+}
+
+.additem-button {
+    border: none;
+    background-color: #0091d9;
+    padding: 7px 16px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 3px;
 }
