@@ -1,12 +1,14 @@
-﻿using Chat.Dal.Dto;
+﻿using System.Collections.Generic;
+using Chat.Dal.Dto;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Chat.Dal.Repository
 {
     public interface IRoomRepository
     {
-        void CreateRooms(params Room[] rooms);
+        IEnumerable<EntityEntry<Dto.Room>> CreateRooms(params Dto.Room[] rooms);
         Message[] ReadRooms(params int[] roomId);
-        void UpdateRooms(params Room[] rooms);
-        void DeleteRooms(params int[] roomsIds);
+        void UpdateRooms(params Dto.Room[] rooms);
+        void DeleteRooms(params Room[] roomsIds);
     }
 }

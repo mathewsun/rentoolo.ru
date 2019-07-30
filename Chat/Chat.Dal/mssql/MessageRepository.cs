@@ -1,28 +1,37 @@
-﻿using Chat.Dal.Dto;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Chat.Dal.Dto;
 using Chat.Dal.Repository;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Chat.Dal.mssql
 {
-    public class MessageRepository:IMessageRepository
+    public class MessageRepository : IMessageRepository
     {
-        public void CreateMessages(params Message[] messages)
+        public ChattingContext Context { get; set; }
+
+        public IEnumerable<EntityEntry<Message>> CreateMessages(params Message[] messages)
         {
-            throw new System.NotImplementedException();
+            foreach (var message in messages)
+            {
+                var res = Context.Messages.Add(message);
+                yield return res;
+            }
         }
 
-        public Message[] ReadMessages(params int[] userId)
+        public List<Message> ReadMessages(int userId)
         {
-            throw new System.NotImplementedException();
+            return Context.Messages.Where(x => x.UserId == userId).ToList();
         }
 
         public void UpdateMessages(params Message[] messages)
         {
-            throw new System.NotImplementedException();
+            Context.Messages.UpdateRange(messages);
         }
 
-        public void DeleteMessages(params int[] messageIds)
+        public void DeleteMessages(params Message[] messageIds)
         {
-            throw new System.NotImplementedException();
+            Context.Messages.RemoveRange(messageIds);
         }
     }
 }
