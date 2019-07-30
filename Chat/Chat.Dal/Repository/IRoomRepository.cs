@@ -7,8 +7,8 @@ namespace Chat.Dal.Repository
     public interface IRoomRepository
     {
         IEnumerable<EntityEntry<Dto.Room>> CreateRooms(params Dto.Room[] rooms);
-        Message[] ReadRooms(params int[] roomId);
+        List<Dto.Room> ReadRooms(params int[] roomId);
         void UpdateRooms(params Dto.Room[] rooms);
-        void DeleteRooms(params Room[] roomsIds);
+        void DeleteRooms(params Dto.Room[] roomsIds);
     }
 }

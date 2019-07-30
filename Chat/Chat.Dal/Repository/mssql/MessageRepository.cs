@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Chat.Dal.Dto;
-using Chat.Dal.Repository;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Chat.Dal.mssql
+namespace Chat.Dal.Repository.mssql
 {
     public class MessageRepository : IMessageRepository
     {

@@ -1,7 +1,7 @@
 ﻿using Chat.Dal.Dto;
 using Microsoft.EntityFrameworkCore;
 
-namespace Chat.Dal.mssql
+namespace Chat.Dal.Repository.mssql
 {
     public class ChattingContext : DbContext
     {
