@@ -15,19 +15,22 @@
                 </div>
 
                 <div class="media-body-inline-grid">
+                    <%foreach (var item in ListItems)
+                        { %>
                     <div class="list-item-wrap" style="display: none">
                         <img class="list-item-wrap-img" src="assets/img/unsplash_1.jpg">
                         <div class="item-wrap-content">
-                            <div class="item-wrap-name"><a href="#">Холодильник Indesit 90l / 40l </a></div>
-                            <div class="item-wrap-cost">11 000 ₽</div>
+                            <div class="item-wrap-name"><a href="#"><%=item.Name%></a></div>
+                            <div class="item-wrap-cost"><%=item.Price%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
                             <div class="item-wrap__description">
-                                <p>Бытовая техника</p>
-                                <p>р-н Торговая сторона</p>
-                                <div class="item-wrap__data">Вчера 14:15</div>
+                                <p><%=item.Category%></p>
+                                <p><%=item.Address%></p>
+                                <div class="item-wrap__data"><%=item.CreatedAdverts.ToString("dd.MM.YYYY HH:mm:ss")%></div>
                             </div>
                         </div>
-                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
+                        <div class="item-wrap__like" title="Удалить из Избранного"></div>
                     </div>
+                    <%} %>
 
                     <div class="list-item-wrap" style="display: none">
                         <img class="list-item-wrap-img" src="assets/img/instagram_1.jpg">
