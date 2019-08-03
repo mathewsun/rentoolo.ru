@@ -4,14 +4,16 @@ using Chat.Dal.Repository.mssql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Chat.Dal.Migrations
 {
     [DbContext(typeof(ChattingContext))]
-    partial class ChattingContextModelSnapshot : ModelSnapshot
+    [Migration("20190803143954_RoomFieldAdded")]
+    partial class RoomFieldAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
