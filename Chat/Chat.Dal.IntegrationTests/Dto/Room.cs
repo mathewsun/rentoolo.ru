@@ -52,7 +52,7 @@ namespace Chat.Dal.IntegrationTests.Dto
 
         public static IEnumerable<T> CreateMany<T>(int count)
         {
-            var rangeList = Enumerable.Range(1, 2).ToList();
+            var rangeList = Enumerable.Range(0, count).ToList();
             var result = rangeList.Select(x => Create<T>(x));
             return result;
         }

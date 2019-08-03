@@ -31,7 +31,19 @@ namespace Chat.Dal.IntegrationTests.Repository.Mssql
             var createdRooms = _roomRepository.CreateRooms(newRoom).ToList();
             //a
             var receivedRooms = _roomRepository.ReadRooms(createdRooms.Select(x => x.Id).ToArray()).ToList();
+            Xunit.Assert.Equal(createdRooms, receivedRooms);
+            _roomRepository.DeleteRooms(createdRooms.Select(x => new Room {Id = x.Id}).ToArray());
+        }
 
+        [Fact]
+        public void UpdateRooms()
+        {
+            //a
+            var newRoom = TestObjectBuilder.CreateMany<Room>(3).ToArray();
+            //a
+            var createdRooms = _roomRepository.CreateRooms(newRoom).ToList();
+            //a
+            var receivedRooms = _roomRepository.ReadRooms(createdRooms.Select(x => x.Id).ToArray()).ToList();
             Xunit.Assert.Equal(createdRooms, receivedRooms);
         }
 
