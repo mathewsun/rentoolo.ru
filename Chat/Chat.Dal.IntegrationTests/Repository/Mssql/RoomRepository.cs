@@ -8,9 +8,7 @@ using Chat.Dal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Chat.Dal.IntegrationTests.Dto;
-using ObjectsComparer;
 using Xunit;
-using Comparer = ObjectsComparer.Comparer;
 
 namespace Chat.Dal.IntegrationTests.Repository.Mssql
 {
@@ -32,35 +30,10 @@ namespace Chat.Dal.IntegrationTests.Repository.Mssql
             //a
             var createdRooms = _roomRepository.CreateRooms(newRoom).ToList();
             //a
-            var receivedRooms = _roomRepository.ReadRooms(createdRooms.Select(x=>x.Id).ToArray()).ToList();
+            var receivedRooms = _roomRepository.ReadRooms(createdRooms.Select(x => x.Id).ToArray()).ToList();
 
-            var comparer = new Comparer();
-            comparer.AddComparerOverride("Id",DoNotCompareValueComparer.Instance);
-
-            Xunit.Assert.Equal(createdRooms, receivedRooms/*, new ComparerWithoutId<Room>(comparer)*/);
-            //Xunit.Assert.Collection(receivedRooms, x => Xunit.Assert.Equal(x,newRoom) );
-            //Xunit.Assert.eq);
+            Xunit.Assert.Equal(createdRooms, receivedRooms);
         }
 
-    }
-
-    public class ComparerWithoutId<T> : IEqualityComparer<T>
-    {
-        private Comparer _cmp;
-
-        public ComparerWithoutId(Comparer cmp)
-        {
-            _cmp = cmp;
-        }
-
-        public bool Equals(T x, T y)
-        {
-            return _cmp.Compare(x, y);
-        }
-
-        public int GetHashCode(T obj)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
