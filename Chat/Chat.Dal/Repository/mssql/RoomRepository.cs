@@ -13,13 +13,13 @@ namespace Chat.Dal.Repository.mssql
             _context = context;
         }
 
-        public IEnumerable<EntityEntry<Chat.Dal.Dto.Room>> CreateRooms(params Chat.Dal.Dto.Room[] rooms)
+        public IEnumerable<Chat.Dal.Dto.Room> CreateRooms(params Chat.Dal.Dto.Room[] rooms)
         {
-            var res = new List<EntityEntry<Chat.Dal.Dto.Room>>();
+            var res = new List<Chat.Dal.Dto.Room>();
             foreach (var room in rooms)
             {
                 var temp = _context.Rooms.Add(room);
-                res.Add(temp);
+                res.Add(temp.Entity);
             }
 
             _context.SaveChanges();

@@ -6,7 +6,7 @@ namespace Chat.Dal.Repository
 {
     public interface IRoomRepository
     {
-        IEnumerable<EntityEntry<Dto.Room>> CreateRooms(params Dto.Room[] rooms);
+        IEnumerable<Dto.Room> CreateRooms(params Dto.Room[] rooms);
         List<Dto.Room> ReadRooms(params int[] roomId);
         void UpdateRooms(params Dto.Room[] rooms);
         void DeleteRooms(params Dto.Room[] roomsIds);
