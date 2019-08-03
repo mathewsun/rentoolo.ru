@@ -23,7 +23,7 @@ namespace Chat.Dal.IntegrationTests.Repository.Mssql
         public void CreateRooms()
         {
             //a
-            var newRoom = TestObjectBuilder.CreateRoom();
+            var newRoom = TestObjectBuilder.Create<Room>();
             //a
             var createdRooms = _roomRepository.CreateRooms(newRoom);
             //a
