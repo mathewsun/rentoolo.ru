@@ -45,6 +45,11 @@ namespace Chat.Dal.IntegrationTests.Dto
                     var value = DateTime.UtcNow.AddSeconds(-1d * salt);
                     propertyInfo.SetValue(instance, value, null);
                 }
+                else if (propertyInfo.PropertyType == typeof(DateTimeOffset))
+                {
+                    var value = DateTimeOffset.UtcNow.AddSeconds(-1d * salt);
+                    propertyInfo.SetValue(instance, value, null);
+                }
             }
 
             return instance;

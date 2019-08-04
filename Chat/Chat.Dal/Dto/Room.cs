@@ -7,7 +7,7 @@ namespace Chat.Dal.Dto
         public int Id { get; set; }
         public int CreatorUserId { get; set; }
         public string Name { get; set; }
-        public DateTime CreatedTime { get; set; }
+        public DateTimeOffset CreatedTime { get; set; }
         public bool Softdelete { get; set; }
     }
 }

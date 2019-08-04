@@ -8,7 +8,7 @@ namespace Chat.Dal.Dto
         public int UserId { get; set; }
         public int RoomId { get; set; }
         public string Text { get; set; }
-        public DateTime CreatedTime{ get; set; }
+        public DateTimeOffset CreatedTime{ get; set; }
         public bool Softdelete { get; set; }
     }
 }
