@@ -22,6 +22,33 @@ namespace Rentoolo.Account {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden category_hidden;
         
         /// <summary>
+        /// input_name элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText input_name;
+        
+        /// <summary>
+        /// input_text элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea input_text;
+        
+        /// <summary>
+        /// price_value элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl price_value;
+        
+        /// <summary>
         /// file элемент управления.
         /// </summary>
         /// <remarks>
@@ -29,6 +56,24 @@ namespace Rentoolo.Account {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputFile file;
+        
+        /// <summary>
+        /// input_video элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText input_video;
+        
+        /// <summary>
+        /// additem_place элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText additem_place;
         
         /// <summary>
         /// phonenum элемент управления.

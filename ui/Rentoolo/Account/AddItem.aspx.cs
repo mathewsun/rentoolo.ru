@@ -16,6 +16,14 @@ namespace Rentoolo.Account
 
         protected void ButtonAddItem_Click(object sender, EventArgs e)
         {
+            string category = String.Format("{0}", Request.Form["ctl00$MainContent$category_hidden"]);
+            string name = String.Format("{0}", Request.Form["ctl00$MainContent$input_name"]);
+            string description = String.Format("{0}", Request.Form["ctl00$MainContent$input_text"]);
+            string price = String.Format("{0}", Request.Form["ctl00$MainContent$price_value"]);
+            string video = String.Format("{0}", Request.Form["ctl00$MainContent$input_video"]);
+            string place = String.Format("{0}", Request.Form["ctl00$MainContent$additem_place"]);
+            string phone = String.Format("{0}", Request.Form["ctl00$MainContent$phonenum"]);
+            string messageType = String.Format("{0}", Request.Form["ctl00$MainContent$contact"]);
 
         }
     }
