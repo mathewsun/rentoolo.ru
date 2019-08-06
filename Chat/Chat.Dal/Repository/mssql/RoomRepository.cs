@@ -11,6 +11,12 @@ namespace Chat.Dal.Repository.mssql
     {
         private readonly ChattingContext _context;
 
+        //todo remove
+        public ChattingContext Context
+        {
+            get { return _context; }
+        }
+
         public RoomRepository(ChattingContext context)
         {
             _context = context;
@@ -32,14 +38,20 @@ namespace Chat.Dal.Repository.mssql
 
         public List<Chat.Dal.Dto.Room> ReadRooms(params int[] ids)
         {
-            var rooms = _context.Rooms.Where(r => ids.Contains(r.Id));
+            var rooms = _context.Rooms.AsNoTracking().Where(r => ids.Contains(r.Id));
             return rooms.ToList();
         }
 
         public void UpdateRooms(params Chat.Dal.Dto.Room[] rooms)
         {
-            _context.Rooms.UpdateRange(rooms);
+            var res = new List<EntityEntry<Room>>();
+            foreach (var room in rooms)
+            {
+                var temp = _context.Rooms.Update(room);
+                res.Add(temp);
+            }
             _context.SaveChanges();
+            res.ForEach(x => x.State = EntityState.Detached);
         }
 
         public void DeleteRooms(params Chat.Dal.Dto.Room[] roomIds)
