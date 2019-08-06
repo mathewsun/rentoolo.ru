@@ -11,7 +11,5 @@ namespace Chat.Dal.Repository
         List<Dto.Room> ReadRooms(params int[] roomId);
         void UpdateRooms(params Dto.Room[] rooms);
         void DeleteRooms(params Dto.Room[] roomsIds);
-
-        ChattingContext Context { get; }
     }
 }

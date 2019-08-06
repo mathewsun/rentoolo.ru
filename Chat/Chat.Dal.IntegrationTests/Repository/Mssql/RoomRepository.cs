@@ -40,18 +40,18 @@ namespace Chat.Dal.IntegrationTests.Repository.Mssql
         {
             //a
             var newRoom = TestObjectBuilder.CreateMany<Room>(3).ToArray();
-            var t1 = _roomRepository.Context.ChangeTracker.Entries().Count();
+            //var t1 = _roomRepository.Context.ChangeTracker.Entries().Count();
             var createdRooms = _roomRepository.CreateRooms(newRoom).ToArray();
-            var t2 = _roomRepository.Context.ChangeTracker.Entries().Count();
+            //var t2 = _roomRepository.Context.ChangeTracker.Entries().Count();
             var updatedRooms = TestObjectBuilder.UpdateMany<Room>(100, createdRooms).ToArray();
             //a
-            var t3 = _roomRepository.Context.ChangeTracker.Entries().Count();
+            //var t3 = _roomRepository.Context.ChangeTracker.Entries().Count();
             _roomRepository.UpdateRooms(updatedRooms);
-            var t4 = _roomRepository.Context.ChangeTracker.Entries().Count();
+            //var t4 = _roomRepository.Context.ChangeTracker.Entries().Count();
             //a
-            var t5 = _roomRepository.Context.ChangeTracker.Entries().Count();
+            //var t5 = _roomRepository.Context.ChangeTracker.Entries().Count();
             var receivedRooms = _roomRepository.ReadRooms(createdRooms.Select(x => x.Id).ToArray()).ToArray();
-            var t6 = _roomRepository.Context.ChangeTracker.Entries().Count();
+            //var t6 = _roomRepository.Context.ChangeTracker.Entries().Count();
             _roomRepository.DeleteRooms(createdRooms.Select(x => new Room { Id = x.Id }).ToArray());
             Xunit.Assert.Equal(updatedRooms, receivedRooms);
         }

@@ -11,12 +11,6 @@ namespace Chat.Dal.Repository.mssql
     {
         private readonly ChattingContext _context;
 
-        //todo remove
-        public ChattingContext Context
-        {
-            get { return _context; }
-        }
-
         public RoomRepository(ChattingContext context)
         {
             _context = context;
