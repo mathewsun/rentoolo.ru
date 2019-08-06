@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Chat.Dal.Repository.mssql
 {
-    public class MessageRepository : IMessageRepository
+    public partial class MessageRepository : IMessageRepository
     {
         public ChattingContext Context { get; set; }
 

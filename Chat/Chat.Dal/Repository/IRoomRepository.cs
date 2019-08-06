@@ -9,6 +9,7 @@ namespace Chat.Dal.Repository
     {
         IEnumerable<Dto.Room> CreateRooms(params Dto.Room[] rooms);
         List<Dto.Room> ReadRooms(params int[] roomId);
+        List<Dto.Room> FindRooms(string name);
         void UpdateRooms(params Dto.Room[] rooms);
         void DeleteRooms(params Dto.Room[] roomsIds);
     }

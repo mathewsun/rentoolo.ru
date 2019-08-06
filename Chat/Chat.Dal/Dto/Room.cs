@@ -9,6 +9,7 @@ namespace Chat.Dal.Dto
         public string Name { get; set; }
         public DateTimeOffset CreatedTime { get; set; }
         public bool Softdelete { get; set; }
+        public const int BlankId = -1;
 
         public bool Equals(Room other)
         {
@@ -40,6 +41,11 @@ namespace Chat.Dal.Dto
                 hashCode = (hashCode * 397) ^ Softdelete.GetHashCode();
                 return hashCode;
             }
+        }
+
+        public static Room CreateBlank()
+        {
+            return new Room() {Id = BlankId};
         }
     }
 }

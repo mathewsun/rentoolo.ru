@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Chat.Dal.Repository.mssql
 {
-    public class RoomRepository : IRoomRepository
+    public partial class RoomRepository : IRoomRepository
     {
         private readonly ChattingContext _context;
 
