@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Rentoolo.Model;
 
 namespace Rentoolo.Account
 {
-    public partial class AddItem : System.Web.UI.Page
+    public partial class AddItem : BasicPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,6 +26,35 @@ namespace Rentoolo.Account
             string phone = String.Format("{0}", Request.Form["ctl00$MainContent$phonenum"]);
             string messageType = String.Format("{0}", Request.Form["ctl00$MainContent$contact"]);
 
+            Rentoolo.Model.Adverts advert = new Model.Adverts();
+
+            try
+            {
+                advert.Category = Int32.Parse(category);
+            }
+            catch { }
+
+            advert.Name = name;
+
+            advert.Description = description;
+
+            try
+            {
+                advert.Price = double.Parse(price);
+            }
+            catch { }
+
+            //advert.video = video;
+
+            advert.Address = place;
+
+            advert.Phone = phone;
+
+            advert.CreatedUserId = User.UserId;
+
+            advert.Created = DateTime.Now;
+
+            AdvertsDataHelper.AddAdvert(advert);
         }
     }
 }

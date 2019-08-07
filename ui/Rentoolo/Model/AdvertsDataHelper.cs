@@ -35,7 +35,9 @@ namespace Rentoolo.Model
             {
                 var result = dc.Adverts.Add(item);
 
-                return 0;
+                var res = dc.SaveChanges();
+
+                return result.Id;
             }
         }
 

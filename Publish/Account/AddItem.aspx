@@ -27,7 +27,7 @@
                 <span class="additem-title">Название объявления</span>
             </div>
             <div class="additem-right additem__input-name">
-                <input type="text" class="additem-input" required runat="server">
+                <input type="text" id="input_name" class="additem-input" required runat="server">
             </div>
         </div>
 
@@ -36,7 +36,7 @@
                 <span class="additem-title">Описание объявления</span>
             </div>
             <div class="additem-right additem-input__text">
-                <textarea type="textarea" class="additem-input additem-input__text" runat="server"></textarea>
+                <textarea type="textarea" id="input_text" class="additem-input additem-input__text" runat="server"></textarea>
             </div>
         </div>
 
@@ -45,7 +45,7 @@
                 <span class="additem-title">Цена</span>
             </div>
             <div class="additem-right">
-                <input type="number" class="additem-input additem__input-price" maxlength="14" required runat="server">
+                <input type="number" id="price_value" class="additem-input additem__input-price" maxlength="14" required runat="server">
                 <span class="price__value">₽</span>
                 <div class="price__popup">
                     Какую цену указать
@@ -72,7 +72,7 @@
                 <span class="additem-title">Видео с Youtube</span>
             </div>
             <div class="additem-right additem__video">
-                <input type="text" class="additem-input additem__input-video" placeholder=" Например: https://www.youtube.com/watch?v=vMad0HvQ0k" runat="server">
+                <input type="text" id="input_video" class="additem-input additem__input-video" placeholder=" Например: https://www.youtube.com/watch?v=vMad0HvQ0k" runat="server">
             </div>
         </div>
         <div class="additem-category">
@@ -86,7 +86,7 @@
                 <span class="additem-title">Место сделки</span>
             </div>
             <div class="additem-right additem-place">
-                <input type="text" class="additem-input" required runat="server">
+                <input type="text" id="additem_place" class="additem-input" required runat="server">
             </div>
         </div>
         <div class="additem-category">
