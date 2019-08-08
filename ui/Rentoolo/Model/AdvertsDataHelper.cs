@@ -51,6 +51,16 @@ namespace Rentoolo.Model
             }
         }
 
+        public static List<spGetUserAdverts_Result> GetUserAdverts(Guid userId)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var list = ctx.spGetUserAdverts(userId).ToList();
+
+                return list;
+            }
+        }
+
         #endregion
     }
 }

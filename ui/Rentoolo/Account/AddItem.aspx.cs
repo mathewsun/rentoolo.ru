@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Rentoolo.Model;
@@ -54,7 +55,16 @@ namespace Rentoolo.Account
 
             advert.Created = DateTime.Now;
 
+            List<string> imgUrlList = new List<string>();
+
+            var jsonSerialiser = new JavaScriptSerializer();
+            string jsonImgUrlList = jsonSerialiser.Serialize(imgUrlList);
+
+            advert.ImgUrls = jsonImgUrlList;
+
             AdvertsDataHelper.AddAdvert(advert);
+
+            Response.Redirect("MyAdverts.aspx");
         }
     }
 }

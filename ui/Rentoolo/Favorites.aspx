@@ -25,7 +25,7 @@
                             <div class="item-wrap__description">
                                 <p><%=item.Category%></p>
                                 <p><%=item.Address%></p>
-                                <div class="item-wrap__data"><%=item.CreatedAdverts.ToString("dd.MM.YYYY HH:mm:ss")%></div>
+                                <div class="item-wrap__data"><%=item.CreatedAdverts.ToString("dd.MM.yyyy HH:mm")%></div>
                             </div>
                         </div>
                         <div class="item-wrap__like" title="Удалить из Избранного"></div>

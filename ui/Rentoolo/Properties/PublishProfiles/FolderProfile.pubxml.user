@@ -39,6 +39,9 @@
     <File Include="Account/Menu.ascx">
       <publishTime>07/12/2019 20:19:49</publishTime>
     </File>
+    <File Include="Account/MyAdverts.aspx">
+      <publishTime>08/08/2019 16:52:40</publishTime>
+    </File>
     <File Include="Account/OpenAuthProviders.ascx">
       <publishTime>07/12/2019 20:19:49</publishTime>
     </File>
@@ -70,7 +73,7 @@
       <publishTime>07/12/2019 20:19:50</publishTime>
     </File>
     <File Include="Account/Web.config">
-      <publishTime>07/12/2019 20:19:50</publishTime>
+      <publishTime>08/08/2019 13:32:32</publishTime>
     </File>
     <File Include="Admin/Admin.aspx">
       <publishTime>07/23/2019 21:25:06</publishTime>
@@ -394,7 +397,7 @@
       <publishTime>04/17/2019 04:57:20</publishTime>
     </File>
     <File Include="bin/Rentoolo.dll">
-      <publishTime>08/07/2019 23:56:01</publishTime>
+      <publishTime>08/08/2019 16:53:50</publishTime>
     </File>
     <File Include="bin/ru/System.Net.Http.Formatting.resources.dll">
       <publishTime>07/30/2019 19:37:08</publishTime>
@@ -547,16 +550,19 @@
       <publishTime>07/26/2019 19:56:17</publishTime>
     </File>
     <File Include="DataBase/spGetFavorites.sql">
-      <publishTime>07/30/2019 19:37:08</publishTime>
+      <publishTime>08/08/2019 16:29:49</publishTime>
     </File>
     <File Include="DataBase/spGetFavoritesByCookies.sql">
-      <publishTime>07/30/2019 19:37:08</publishTime>
+      <publishTime>08/08/2019 16:33:56</publishTime>
     </File>
     <File Include="DataBase/spGetLoginStatisticLastDayActive.sql">
       <publishTime>07/12/2019 20:19:50</publishTime>
     </File>
     <File Include="DataBase/spGetLoginStatisticLastHourActive.sql">
       <publishTime>07/24/2019 20:58:18</publishTime>
+    </File>
+    <File Include="DataBase/spGetUserAdverts.sql">
+      <publishTime>08/08/2019 16:16:22</publishTime>
     </File>
     <File Include="DataBase/spGetUserBalanceByName.sql">
       <publishTime>12/12/2018 14:21:57</publishTime>
@@ -604,7 +610,7 @@
       <publishTime>07/12/2019 20:19:50</publishTime>
     </File>
     <File Include="Favorites.aspx">
-      <publishTime>07/31/2019 20:52:38</publishTime>
+      <publishTime>08/08/2019 16:29:19</publishTime>
     </File>
     <File Include="fonts/pluton.eot">
       <publishTime>03/25/2019 23:16:23</publishTime>
@@ -910,7 +916,7 @@
       <publishTime>07/09/2019 20:36:14</publishTime>
     </File>
     <File Include="Model/Model1.edmx.diagram">
-      <publishTime>07/30/2019 19:37:08</publishTime>
+      <publishTime>08/08/2019 15:42:57</publishTime>
     </File>
     <File Include="News.aspx">
       <publishTime>07/12/2019 20:19:50</publishTime>
@@ -1006,7 +1012,7 @@
       <publishTime>07/30/2019 19:37:08</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/07/2019 23:56:01</publishTime>
+      <publishTime>08/08/2019 16:53:51</publishTime>
     </File>
     <File Include="WebForm1.aspx">
       <publishTime>07/03/2019 22:00:51</publishTime>
