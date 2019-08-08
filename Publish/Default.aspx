@@ -434,12 +434,12 @@
                                     <div class="item-wrap" style="display: none" aid="<%=item.Id%>">
                                         <img data-action="zoom" data-width="500" data-height="500" src="assets/img/unsplash_1.jpg">
                                         <div class="item-wrap__wrap ">
-                                            <div class="item-wrap__name"><a href="#">"<%=item.Name%></a></div>
-                                            <div class="item-wrap__cost">"<%=item.Price%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
+                                            <div class="item-wrap__name"><a href="#"><%=item.Name%></a></div>
+                                            <div class="item-wrap__cost"><%=item.Price%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
                                             <div class="item-wrap__description">
                                                 <p><%=item.Category%></p>
                                                 <p><%=item.Address%></p>
-                                                <div class="item-wrap__data"><%=item.Created.ToString("dd.MM.YYYY HH:mm:ss")%></div>
+                                                <div class="item-wrap__data"><%=item.Created.ToString("dd.MM.yyyy HH:mm")%></div>
                                             </div>
                                         </div>
                                         <div class="item-wrap__like" title="Добавить в Избранное"></div>
