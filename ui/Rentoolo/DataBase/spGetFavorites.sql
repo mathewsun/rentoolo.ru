@@ -19,6 +19,7 @@ BEGIN
 	LEFT JOIN [Adverts] a
 	on f.[AdvertId] = a.[Id]
 	where f.[UserId] = @userId
+	ORDER BY CreatedFavorites DESC
 END
 GO
 
