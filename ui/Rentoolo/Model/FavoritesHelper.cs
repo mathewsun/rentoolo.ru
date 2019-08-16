@@ -46,6 +46,72 @@ namespace Rentoolo.Model
             }
         }
 
+        public static List<FavoritesForPage> GetFavoritesByUserEF(Guid userId)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                List<Favorites> result = ctx.Favorites.Where(x => x.UserId == userId).ToList();
+
+                List<FavoritesForPage> list = new List<FavoritesForPage>();
+
+                foreach (var item in result)
+                {
+                    list.Add(new FavoritesForPage
+                    {
+                        Id = item.Id,
+                        AdvertId = item.AdvertId,
+                        //CreatedFavorites = item.CreatedFavorites,
+                        //Category = item.Category,
+                        //Name = item.Name,
+                        //Description = item.Description,
+                        //CreatedAdverts = item.CreatedAdverts.Value,
+                        //CreatedUserId = item.CreatedUserId.Value,
+                        //Price = item.Price.Value,
+                        //Address = item.Address,
+                        //Phone = item.Phone,
+                        //MessageType = item.MessageType.Value,
+                        //Position = item.PositionString
+                    });
+                }
+
+                return list;
+            }
+        }
+
+        public static List<FavoritesForPage> GetFavoritesByUserSqlQuery(Guid userId)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                string query = string.Format("SELECT * FROM Favorites WHERE UserId = '{0}'", userId);
+
+                var result = ctx.Database.SqlQuery<FavoritesForPage>(query).ToList();
+
+                List<FavoritesForPage> list = new List<FavoritesForPage>();
+
+                foreach (var item in result)
+                {
+                    list.Add(new FavoritesForPage
+                    {
+                        Id = item.Id,
+                        AdvertId = item.AdvertId,
+                        //CreatedFavorites = item.CreatedFavorites,
+                        //Category = item.Category,
+                        //Name = item.Name,
+                        //Description = item.Description,
+                        //CreatedAdverts = item.CreatedAdverts.Value,
+                        //CreatedUserId = item.CreatedUserId.Value,
+                        //Price = item.Price.Value,
+                        //Address = item.Address,
+                        //Phone = item.Phone,
+                        //MessageType = item.MessageType.Value,
+                        //Position = item.PositionString
+                    });
+                }
+
+                return list;
+            }
+        }
+
         public static void DeleteFavorites(long id)
         {
             using (var ctx = new RentooloEntities())
