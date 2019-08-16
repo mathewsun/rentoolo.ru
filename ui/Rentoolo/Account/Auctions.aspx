@@ -1,0 +1,43 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Auctions.aspx.cs" Inherits="Rentoolo.Account.Auctions" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h4>UVAZHAEMYI, PROYDEMTE</h4>
+
+    <ul class="list-group media-list media-list-stream mb-4">
+
+        <li class="media list-group-item p-4">
+
+            <div class="media-body">
+                <div class="media-heading">
+                    <small class="float-right text-muted">28 объявлений</small>
+                    <h6>Аукционы:</h6>
+                </div>
+                <div class="media-body-inline-grid">
+                    <%foreach (var item in ListItems)
+                        { %>
+                    <div class="list-item-wrap" style="display: none">
+                        <img class="list-item-wrap-img" src="assets/img/unsplash_1.jpg">
+                        <div class="item-wrap-content">
+                            <div class="item-wrap-name"><a href="#"><%=item.Name%></a></div>
+                            <div class="item-wrap-cost"><%=item.StartPrice%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
+                            <div class="item-wrap__description">
+                                <p><%=item.Id%></p>
+                                <p><%=item.Name%></p>
+                                <div class="item-wrap__data"><%=item.Created.ToString("dd.MM.yyyy HH:mm")%></div>
+                            </div>
+                        </div>
+                        <div class="item-wrap__like" title="Удалить из Избранного"></div>
+                    </div>
+                    <%} %>
+
+                </div>
+            </div>
+        </li>
+
+
+    </ul>
+
+</asp:Content>
+
+

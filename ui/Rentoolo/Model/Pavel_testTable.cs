@@ -12,17 +12,10 @@ namespace Rentoolo.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class UsersOpenAuthData
+    public partial class Pavel_testTable
     {
-        public UsersOpenAuthData()
-        {
-            this.UsersOpenAuthAccounts = new HashSet<UsersOpenAuthAccounts>();
-        }
-    
-        public string ApplicationName { get; set; }
-        public string MembershipUserName { get; set; }
-        public bool HasLocalPassword { get; set; }
-    
-        public virtual ICollection<UsersOpenAuthAccounts> UsersOpenAuthAccounts { get; set; }
+        public int Id { get; set; }
+        public string ModelName { get; set; }
+        public string Manufacturer { get; set; }
     }
 }

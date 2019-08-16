@@ -150,6 +150,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Account\AddItem.aspx" />
+    <Content Include="Account\Auctions.aspx" />
     <Content Include="Account\Cabinet.aspx" />
     <Content Include="Account\Exchange.aspx" />
     <Content Include="Account\Login.aspx" />
@@ -254,6 +255,7 @@
     <Content Include="DataBase\fnGetTablesRows.sql" />
     <Content Include="DataBase\fnGetAllUsers.sql" />
     <Content Include="DataBase\start\stqrt_sql_script.sql" />
+    <Content Include="DataBase\tables\Auctions.sql" />
     <Content Include="DataBase\tables\Business.sql" />
     <Content Include="DataBase\tables\Adverts.sql" />
     <Content Include="DataBase\tables\Favorites.sql" />
@@ -315,6 +317,13 @@
     </Compile>
     <Compile Include="Account\AddItem.aspx.designer.cs">
       <DependentUpon>AddItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Auctions.aspx.cs">
+      <DependentUpon>Auctions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Auctions.aspx.designer.cs">
+      <DependentUpon>Auctions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Cabinet.aspx.cs">
       <DependentUpon>Cabinet.aspx</DependentUpon>
@@ -671,6 +680,10 @@
     <Compile Include="Model\Articles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Auctions.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AuctionsForPage.cs" />
     <Compile Include="Model\BasicPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -686,9 +699,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CategoriesEnum.cs" />
-    <Compile Include="Model\Cookies.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Model\AuctionsHelper.cs" />
     <Compile Include="Model\Currencies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -751,6 +762,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Operations.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Pavel_testTable.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Payments.cs">
