@@ -234,6 +234,14 @@
     <Content Include="assets\img\yellow-green.png" />
     <Content Include="assets\js\application.js" />
     <Content Include="assets\js\chart.js" />
+    <Content Include="assets\js\dropzone\basic.css" />
+    <Content Include="assets\js\dropzone\dropzone-amd-module.js" />
+    <Content Include="assets\js\dropzone\dropzone.css" />
+    <Content Include="assets\js\dropzone\dropzone.js" />
+    <Content Include="assets\js\dropzone\min\basic.min.css" />
+    <Content Include="assets\js\dropzone\min\dropzone-amd-module.min.js" />
+    <Content Include="assets\js\dropzone\min\dropzone.min.css" />
+    <Content Include="assets\js\dropzone\min\dropzone.min.js" />
     <Content Include="assets\js\jquery-2.2.4.js" />
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\js.cookie.js" />
@@ -734,6 +742,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Helper.cs" />
+    <Compile Include="Model\ImgUploadResult.cs" />
     <Compile Include="Model\Items.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -841,10 +850,12 @@
     <Compile Include="Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UpiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
+    <Folder Include="img\a\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config">
