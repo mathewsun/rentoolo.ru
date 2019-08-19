@@ -33,6 +33,7 @@ namespace Rentoolo
 
                     var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
                     string base64Guid = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+                    base64Guid = base64Guid.Substring(0, base64Guid.Length - 2).Replace("_", "").Replace("/", "").Replace("-", "").Replace("+", "");
                     string filePath = HttpContext.Current.Server.MapPath("~/img/a/" + base64Guid + ext);
 
                     if (postedFile != null && postedFile.ContentLength > 0)

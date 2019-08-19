@@ -424,7 +424,7 @@
       <publishTime>04/17/2019 04:57:20</publishTime>
     </File>
     <File Include="bin/Rentoolo.dll">
-      <publishTime>08/19/2019 22:38:33</publishTime>
+      <publishTime>08/19/2019 22:54:27</publishTime>
     </File>
     <File Include="bin/ru/System.Net.Http.Formatting.resources.dll">
       <publishTime>01/28/2015 04:02:52</publishTime>
@@ -938,6 +938,9 @@
     </File>
     <File Include="Images/yobit.jpg">
       <publishTime>03/25/2019 23:16:23</publishTime>
+    </File>
+    <File Include="img/a/test.html">
+      <publishTime>08/19/2019 22:44:53</publishTime>
     </File>
     <File Include="login/index.html">
       <publishTime>06/15/2019 17:56:24</publishTime>

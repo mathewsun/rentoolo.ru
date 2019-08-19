@@ -273,6 +273,7 @@
     <Content Include="FAQ.aspx" />
     <Content Include="Favorites.aspx" />
     <Content Include="Help.aspx" />
+    <Content Include="img\a\test.html" />
     <Content Include="login\index.html" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -855,7 +856,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
-    <Folder Include="img\a\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config">
