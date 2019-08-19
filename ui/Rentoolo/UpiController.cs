@@ -30,12 +30,17 @@ namespace Rentoolo
                     HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
 
                     var postedFile = httpRequest.Files[file];
+
+                    var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
+                    string base64Guid = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+                    string filePath = HttpContext.Current.Server.MapPath("~/img/a/" + base64Guid + ext);
+
                     if (postedFile != null && postedFile.ContentLength > 0)
                     {
                         int MaxContentLength = 1024 * 1024 * 4; //Size = 4 MB
 
                         IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
-                        var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
+
                         var extension = ext.ToLower();
                         if (!AllowedFileExtensions.Contains(extension))
                         {
@@ -55,14 +60,12 @@ namespace Rentoolo
                         {
                             //if needed write the code to update the table
 
-                            var filePath = HttpContext.Current.Server.MapPath("~/img/a/" + postedFile.FileName);
                             //Userimage myfolder name where i want to save my image
                             postedFile.SaveAs(filePath);
-
                         }
                     }
 
-                    return Request.CreateErrorResponse(HttpStatusCode.Created, HttpContext.Current.Server.MapPath("~/img/a/" + postedFile.FileName)); ;
+                    return Request.CreateErrorResponse(HttpStatusCode.Created, filePath); ;
                 }
                 var res = string.Format("Please Upload a image.");
                 dict.Add("error", res);
@@ -74,6 +77,18 @@ namespace Rentoolo
                 dict.Add("error", res);
                 return Request.CreateResponse(HttpStatusCode.NotFound, dict);
             }
+        }
+
+        // PUT api/<controller>/5
+        public void Put(int id, [FromBody]string value)
+        {
+            int ttt = 10;
+        }
+
+        // DELETE api/<controller>/5
+        public void Delete(int id)
+        {
+            int ttt = 10;
         }
     }
 }
