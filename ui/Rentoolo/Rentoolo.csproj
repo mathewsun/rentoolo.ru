@@ -269,6 +269,7 @@
     <Content Include="DataBase\tables\Favorites.sql" />
     <Content Include="DataBase\tables\FavoritesByCookies.sql" />
     <Content Include="docs\index.html" />
+    <Content Include="Empty.aspx" />
     <Content Include="Fail.aspx" />
     <Content Include="FAQ.aspx" />
     <Content Include="Favorites.aspx" />
@@ -642,6 +643,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Empty.aspx.cs">
+      <DependentUpon>Empty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Empty.aspx.designer.cs">
+      <DependentUpon>Empty.aspx</DependentUpon>
     </Compile>
     <Compile Include="Events.ashx.cs">
       <DependentUpon>Events.ashx</DependentUpon>
