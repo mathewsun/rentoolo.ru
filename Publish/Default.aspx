@@ -317,89 +317,89 @@
                                         <div class="popup__wrap">
                                             <div class="popup__column">
                                                 <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Транспорт</a></li>
-                                                    <li><a href="">Автомобили</a></li>
-                                                    <li><a href="">Мотоциклы и мототехника</a></li>
-                                                    <li><a href="">Грузовики и спецтехника</a></li>
-                                                    <li><a href="">Водный транспорт</a></li>
-                                                    <li><a href="">Запчасти и аксессуары</a></li>
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Транспорт</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Автомобили</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Мотоциклы и мототехника</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Грузовики и спецтехника</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Водный транспорт</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Запчасти и аксессуары</a></li>
                                                 </ul>
                                                 <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Для дома и дачи</a></li>
-                                                    <li><a href="">Бытовая техника</a></li>
-                                                    <li><a href="">Мебель и интерьер</a></li>
-                                                    <li><a href="">Посуда и товары для кухни</a></li>
-                                                    <li><a href="">Продукты питания</a></li>
-                                                    <li><a href="">Ремонт и строительство</a></li>
-                                                    <li><a href="">Растения</a></li>
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Для дома и дачи</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Бытовая техника</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Мебель и интерьер</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Посуда и товары для кухни</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Продукты питания</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Ремонт и строительство</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Растения</a></li>
                                                 </ul>
                                                 <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Для бизнеса</a></li>
-                                                    <li><a href="">Готовый бизнес</a></li>
-                                                    <li><a href="">Оборудование для бизнеса</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="popup__column">
-                                                <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Недвижимость</a></li>
-                                                    <li><a href="">Квартиры</a></li>
-                                                    <li><a href="">Комнаты</a></li>
-                                                    <li><a href="">Дома, дачи, коттеджи</a></li>
-                                                    <li><a href="">Земельные участки</a></li>
-                                                    <li><a href="">Гаражи и машиноместа</a></li>
-                                                    <li><a href="">Коммерческая недвижимость</a></li>
-                                                    <li><a href="">Недвижимость за рубежом</a></li>
-                                                </ul>
-                                                <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Бытовая электроника</a></li>
-                                                    <li><a href="">Аудио и видео</a></li>
-                                                    <li><a href="">Игры, приставки и программы</a></li>
-                                                    <li><a href="">Настольные компьютеры</a></li>
-                                                    <li><a href="">Ноутбуки</a></li>
-                                                    <li><a href="">Оргтехника и расходники</a></li>
-                                                    <li><a href="">Планшеты и электронные книги</a></li>
-                                                    <li><a href="">Телефоны</a></li>
-                                                    <li><a href="">Товары для компьютера</a></li>
-                                                    <li><a href="">Фототехника</a></li>
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Для бизнеса</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Готовый бизнес</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Оборудование для бизнеса</a></li>
                                                 </ul>
                                             </div>
                                             <div class="popup__column">
                                                 <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Работа</a></li>
-                                                    <li><a href="">Вакансии</a></li>
-                                                    <li><a href="">Резюме</a></li>
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Недвижимость</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Квартиры</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Комнаты</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Дома, дачи, коттеджи</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Земельные участки</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Гаражи и машиноместа</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Коммерческая недвижимость</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Недвижимость за рубежом</a></li>
                                                 </ul>
                                                 <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Услуги</a></li>
-                                                </ul>
-                                                <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Хобби и отдых</a></li>
-                                                    <li><a href="">Билеты и путешествия</a></li>
-                                                    <li><a href="">Велосипеды</a></li>
-                                                    <li><a href="">Книги и журналы</a></li>
-                                                    <li><a href="">Коллекционирование</a></li>
-                                                    <li><a href="">Музыкальные инструменты</a></li>
-                                                    <li><a href="">Охота и рыбалка</a></li>
-                                                    <li><a href="">Спорт и отдых</a></li>
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Бытовая электроника</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Аудио и видео</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Игры, приставки и программы</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Настольные компьютеры</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Ноутбуки</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Оргтехника и расходники</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Планшеты и электронные книги</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Телефоны</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Товары для компьютера</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Фототехника</a></li>
                                                 </ul>
                                             </div>
                                             <div class="popup__column">
                                                 <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Личные вещи</a></li>
-                                                    <li><a href="">Одежда, обувь, аксессуары</a></li>
-                                                    <li><a href="">Детская одежда и обувь</a></li>
-                                                    <li><a href="">Товары для детей и игрушки</a></li>
-                                                    <li><a href="">Часы и украшения</a></li>
-                                                    <li><a href="">Красота и здоровье</a></li>
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Работа</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Вакансии</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Резюме</a></li>
+                                                </ul>
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Услуги</a></li>
+                                                </ul>
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Хобби и отдых</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Билеты и путешествия</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Велосипеды</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Книги и журналы</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Коллекционирование</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Музыкальные инструменты</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Охота и рыбалка</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Спорт и отдых</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="popup__column">
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Личные вещи</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Одежда, обувь, аксессуары</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Детская одежда и обувь</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Товары для детей и игрушки</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Часы и украшения</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Красота и здоровье</a></li>
                                                 </ul>
                                                 <ul class="popup__list">
                                                     <li class="popup__first-list"><a href="">Животные</a></li>
-                                                    <li><a href="">Собаки</a></li>
-                                                    <li><a href="">Кошки</a></li>
-                                                    <li><a href="">Птицы</a></li>
-                                                    <li><a href="">Аквариум</a></li>
-                                                    <li><a href="">Другие животные</a></li>
-                                                    <li><a href="">Товары для животных</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Собаки</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Кошки</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Птицы</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Аквариум</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Другие животные</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Товары для животных</a></li>
                                                 </ul>
                                             </div>
                                         </div>
