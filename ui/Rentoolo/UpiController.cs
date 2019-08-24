@@ -42,7 +42,7 @@ namespace Rentoolo
                     {
                         int MaxContentLength = 1024 * 1024 * 4; //Size = 4 MB
 
-                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
+                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".jpeg", ".gif", ".png" };
 
                         var extension = ext.ToLower();
                         if (!AllowedFileExtensions.Contains(extension))
