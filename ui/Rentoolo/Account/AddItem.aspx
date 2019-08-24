@@ -20,7 +20,12 @@
                 resizeHeight: 600,
                 resizeMethod: 'contain',
                 resizeQuality: 1.0,
-                dictDefaultMessage: "Add photos"
+                dictDefaultMessage: "Add photos",
+                success: function (file, response) {
+                    var filaName = response.Message;
+                    file.previewElement.classList.add("dz-success");
+                    $("#my-dropzone").append($('<input type="hidden" ' + 'value="' + filaName + '">'));
+                }
             });
         });
     </script>
@@ -80,6 +85,7 @@
             </div>
             <div class="additem-right">
                 <div id="mdropzone" class="dropzone"></div>
+                <div id="my-dropzone" style="display: none;"></div>
             </div>
         </div>
         <div class="additem-category">
