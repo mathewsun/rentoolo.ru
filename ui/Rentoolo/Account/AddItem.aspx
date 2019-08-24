@@ -19,7 +19,8 @@
                 resizeWidth: 800,
                 resizeHeight: 600,
                 resizeMethod: 'contain',
-                resizeQuality: 1.0
+                resizeQuality: 1.0,
+                dictDefaultMessage: "Add photos"
             });
         });
     </script>
