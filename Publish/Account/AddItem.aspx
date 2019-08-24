@@ -15,7 +15,11 @@
         $(document).ready(function () {
             $("div#mdropzone").dropzone({
                 url: "/api/upi",
-                addRemoveLinks: true
+                addRemoveLinks: true,
+                resizeWidth: 800,
+                resizeHeight: 600,
+                resizeMethod: 'contain',
+                resizeQuality: 1.0
             });
         });
     </script>

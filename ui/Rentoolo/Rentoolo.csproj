@@ -261,7 +261,6 @@
     <Content Include="DataBase\spGetLoginStatisticLastHourActive.sql" />
     <Content Include="DataBase\fnGetTablesRows.sql" />
     <Content Include="DataBase\fnGetAllUsers.sql" />
-    <Content Include="DataBase\start\stqrt_sql_script.sql" />
     <Content Include="DataBase\tables\Auctions.sql" />
     <Content Include="DataBase\tables\Business.sql" />
     <Content Include="DataBase\tables\Adverts.sql" />
