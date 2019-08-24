@@ -63,7 +63,7 @@ namespace Rentoolo.Account
             {
                 try
                 {
-                    user.Pwd = ((TextBox)ctl).Text;
+                    //user.Pwd = ((TextBox)ctl).Text;
                 }
                 catch (System.Exception ex)
                 {
