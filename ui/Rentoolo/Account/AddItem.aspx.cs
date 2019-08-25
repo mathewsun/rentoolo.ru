@@ -6,6 +6,7 @@ using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Rentoolo.Model;
+using Newtonsoft.Json;
 
 namespace Rentoolo.Account
 {
@@ -26,6 +27,12 @@ namespace Rentoolo.Account
             string place = String.Format("{0}", Request.Form["ctl00$MainContent$additem_place"]);
             string phone = String.Format("{0}", Request.Form["ctl00$MainContent$phonenum"]);
             string messageType = String.Format("{0}", Request.Form["ctl00$MainContent$contact"]);
+
+            var objPhotos = Request.Form["AdvertPhotos"];
+
+            String[] listPhotos = objPhotos.Split(',');
+
+            var jsonPhotos = JsonConvert.SerializeObject(listPhotos);
 
             Rentoolo.Model.Adverts advert = new Model.Adverts();
 
@@ -55,12 +62,7 @@ namespace Rentoolo.Account
 
             advert.Created = DateTime.Now;
 
-            List<string> imgUrlList = new List<string>();
-
-            var jsonSerialiser = new JavaScriptSerializer();
-            string jsonImgUrlList = jsonSerialiser.Serialize(imgUrlList);
-
-            advert.ImgUrls = jsonImgUrlList;
+            advert.ImgUrls = jsonPhotos;
 
             AdvertsDataHelper.AddAdvert(advert);
 
