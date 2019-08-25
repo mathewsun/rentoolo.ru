@@ -313,6 +313,7 @@
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Tokens.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -849,6 +850,13 @@
     </Compile>
     <Compile Include="Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tokens.aspx.cs">
+      <DependentUpon>Tokens.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tokens.aspx.designer.cs">
+      <DependentUpon>Tokens.aspx</DependentUpon>
     </Compile>
     <Compile Include="UpiController.cs" />
   </ItemGroup>

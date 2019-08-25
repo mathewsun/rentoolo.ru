@@ -863,3 +863,28 @@ input::-webkit-inner-spin-button {
     font-size: 16px;
     margin: 3px;
 }
+
+.buy-tokens {
+    color: #fff;
+    background-color: #3097D1;
+    border-radius: 0.25rem;
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+}
+
+.buy-tokens:hover {
+    color: #fff;
+    background-color: #2881b3;
+    border-color: #2579a9;
+}
+
+/* Firefox, Chrome, Opera */ 
+/*.placeholder-right::placeholder{
+    text-align: right; 
+}*/
+
+/* Internet Explorer 10-11 */ 
+/*.placeholder-right:-ms-input-placeholder{
+    text-align: right; 
+}*/

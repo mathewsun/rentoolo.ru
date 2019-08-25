@@ -19,7 +19,7 @@
       <publishTime>08/18/2019 02:00:03</publishTime>
     </File>
     <File Include="Account/Cabinet.aspx">
-      <publishTime>06/15/2019 17:56:23</publishTime>
+      <publishTime>08/25/2019 04:50:45</publishTime>
     </File>
     <File Include="Account/CashIn.aspx">
       <publishTime>04/17/2019 05:01:10</publishTime>
@@ -166,7 +166,7 @@
       <publishTime>06/15/2019 17:56:24</publishTime>
     </File>
     <File Include="assets/css/additional.css">
-      <publishTime>07/29/2019 23:11:37</publishTime>
+      <publishTime>08/25/2019 05:37:43</publishTime>
     </File>
     <File Include="assets/css/application.css">
       <publishTime>07/09/2019 21:08:47</publishTime>
@@ -424,7 +424,7 @@
       <publishTime>04/17/2019 04:57:20</publishTime>
     </File>
     <File Include="bin/Rentoolo.dll">
-      <publishTime>08/24/2019 21:05:59</publishTime>
+      <publishTime>08/25/2019 05:40:10</publishTime>
     </File>
     <File Include="bin/ru/System.Net.Http.Formatting.resources.dll">
       <publishTime>01/28/2015 04:02:52</publishTime>
@@ -1046,6 +1046,9 @@
     </File>
     <File Include="Test.aspx">
       <publishTime>07/28/2019 02:50:13</publishTime>
+    </File>
+    <File Include="Tokens.aspx">
+      <publishTime>08/25/2019 05:39:39</publishTime>
     </File>
     <File Include="Web.config">
       <publishTime>08/24/2019 04:21:04</publishTime>
