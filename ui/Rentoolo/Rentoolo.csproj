@@ -272,7 +272,7 @@
     <Content Include="FAQ.aspx" />
     <Content Include="Favorites.aspx" />
     <Content Include="Help.aspx" />
-    <Content Include="img\a\test.html" />
+    <Content Include="img\a\noPhoto.png" />
     <Content Include="login\index.html" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
