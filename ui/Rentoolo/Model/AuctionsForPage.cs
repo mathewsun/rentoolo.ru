@@ -15,5 +15,10 @@ namespace Rentoolo.Model
 
         public decimal StartPrice { get; set; }
 
+        public string UserName { get; set; }
+
+        //Сюда добавить столбец из Users  public string Username (leftjoin)
+
+
     }
 }

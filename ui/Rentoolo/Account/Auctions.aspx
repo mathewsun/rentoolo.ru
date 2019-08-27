@@ -22,8 +22,11 @@
                             <div class="item-wrap-name"><a href="#"><%=item.Name%></a></div>
                             <div class="item-wrap-cost"><%=item.StartPrice%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
                             <div class="item-wrap__description">
-                                <p><%=item.Id%></p>
-                                <p><%=item.Name%></p>
+                                <p>ID аукциона: <%=item.Id%></p>
+                                <p>Имя владельца аукциона: <%=item.Name%> рублей</p>
+                                <p>Стартовая цена аукциона: <%=item.StartPrice%></p>
+                                <p>Дата и время создания аукциона: <%=item.Created %></p>
+                                <p>Текущий пользователь: <%=item.UserName %></p>  <!--Нужно разобраться -->
                                 <div class="item-wrap__data"><%=item.Created.ToString("dd.MM.yyyy HH:mm")%></div>
                             </div>
                         </div>
