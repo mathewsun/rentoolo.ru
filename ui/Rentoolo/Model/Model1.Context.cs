@@ -159,5 +159,14 @@ namespace Rentoolo.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserAdverts_Result>("spGetUserAdverts", userIdParameter);
         }
+    
+        public virtual ObjectResult<spGetUserAuctions_Result> spGetUserAuctions(Nullable<System.Guid> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserAuctions_Result>("spGetUserAuctions", userIdParameter);
+        }
     }
 }

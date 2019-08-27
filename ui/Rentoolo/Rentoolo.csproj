@@ -244,6 +244,7 @@
     <Content Include="Business.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="DataBase\Init\Init.sql" />
+    <Content Include="DataBase\spGetAuctions.sql" />
     <Content Include="DataBase\spAddFavorites.sql" />
     <Content Include="DataBase\spGetUserAdverts.sql" />
     <Content Include="DataBase\spGetAdverts.sql" />
@@ -786,6 +787,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetUserAdverts_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetUserAuctions_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UpdateBalanceType.cs" />
