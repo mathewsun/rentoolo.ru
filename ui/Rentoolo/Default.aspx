@@ -50,11 +50,19 @@
                     $(".more-popup").fadeIn(300);
                 };
             });
+
             $(".item-wrap__like").click(function () {
                 $(this).toggleClass('item-wrap__like-active');
             });
 
             getLocation();
+
+            $(".imgSlider").each(function (index) {
+                var imgUrls = $(this).attr("data");
+                var imgUrlsParsed = JSON.parse(imgUrls);
+                console.log(index + ": " + $(this).text());
+            });
+
         });
     </script>
 
@@ -432,7 +440,48 @@
                                     <%foreach (var item in ListAdverts)
                                         { %>
                                     <div class="item-wrap" style="display: none" aid="<%=item.Id%>">
-                                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/unsplash_1.jpg">
+                                        <div class="imgSlider" data='<%=item.ImgUrls%>'>
+                                            <ul class="slides">
+                                                <input type="radio" name="radio-btn" id="img-1" checked />
+                                                <li class="slide-container">
+                                                    <div class="slide">
+                                                        <img src="http://farm9.staticflickr.com/8072/8346734966_f9cd7d0941_z.jpg" />
+                                                    </div>
+                                                    <div class="nav">
+                                                        <label for="img-3" class="prev">&#x2039;</label>
+                                                        <label for="img-2" class="next">&#x203a;</label>
+                                                    </div>
+                                                </li>
+
+                                                <input type="radio" name="radio-btn" id="img-2" />
+                                                <li class="slide-container">
+                                                    <div class="slide">
+                                                        <img src="http://farm9.staticflickr.com/8504/8365873811_d32571df3d_z.jpg" />
+                                                    </div>
+                                                    <div class="nav">
+                                                        <label for="img-1" class="prev">&#x2039;</label>
+                                                        <label for="img-3" class="next">&#x203a;</label>
+                                                    </div>
+                                                </li>
+
+                                                <input type="radio" name="radio-btn" id="img-3" />
+                                                <li class="slide-container">
+                                                    <div class="slide">
+                                                        <img src="http://farm9.staticflickr.com/8504/8365873811_d32571df3d_z.jpg" />
+                                                    </div>
+                                                    <div class="nav">
+                                                        <label for="img-2" class="prev">&#x2039;</label>
+                                                        <label for="img-1" class="next">&#x203a;</label>
+                                                    </div>
+                                                </li>
+
+                                                <li class="nav-dots">
+                                                    <label for="img-1" class="nav-dot" id="img-dot-1"></label>
+                                                    <label for="img-2" class="nav-dot" id="img-dot-2"></label>
+                                                    <label for="img-3" class="nav-dot" id="img-dot-3"></label>
+                                                </li>
+                                            </ul>
+                                        </div>
                                         <div class="item-wrap__wrap ">
                                             <div class="item-wrap__name"><a href="#"><%=item.Name%></a></div>
                                             <div class="item-wrap__cost"><%=item.Price%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
