@@ -25,7 +25,7 @@
     <link href="assets/css/toolkit.css" rel="stylesheet">
     <link href="assets/css/application.css" rel="stylesheet">
     <link href="assets/css/additional.css?2" rel="stylesheet">
-    
+
     <link href="assets/css/photoSlider.css?2" rel="stylesheet">
 
     <style>
@@ -59,19 +59,28 @@
 
             getLocation();
 
-            $(".imgSlider").each(function (index) {
+            $(".photoContainer").each(function (index) {
                 var imgUrls = $(this).attr("data");
                 var imgUrlsParsed = JSON.parse(imgUrls);
 
-                JSON.parse(imgUrls, function (k, v) {
-                    if (k != "") {
-                        //$(this).append($("h2"));
-                        console.log(k);
-                    }
-                    console.log(k); // пишем имя текущего свойства, последним именем будет ""
-                    return v;       // возвращаем неизменённое значение свойства
-                });
-
+                if (imgUrlsParsed.length == 1) {
+                    $(this).append("<img src='" + imgUrlsParsed[0] + "' style='height: 275px; width: 275px;' alt='' />");
+                } else {
+                    var divContainer = $(this);
+                    divContainer.append("<ul class='slides'>");
+                    JSON.parse(imgUrls,
+                        function (k, v) {
+                            if (k != "") {
+                                divContainer.append("<input type='radio' name='radio-btn' id='img-" + k +
+                                    "' checked /><li class= 'slide-container' ><div class='slide'><img src='" + v + "' /></div>" +
+                                    "<div class='nav'><label for='img-3' class='prev'>&#x2039;</label><label for='img-2' class='next'>&#x203a;</label>" +
+                                    "</div></li>");
+                            }
+                            console.log(k); // пишем имя текущего свойства, последним именем будет ""
+                            return v; // возвращаем неизменённое значение свойства
+                        });
+                    divContainer.append("</ul>");
+                }
 
                 console.log(index + ": " + $(this).text());
             });
@@ -453,47 +462,7 @@
                                     <%foreach (var item in ListAdverts)
                                         { %>
                                     <div class="item-wrap" style="display: none" aid="<%=item.Id%>">
-                                        <div class="imgSlider" data='<%=item.ImgUrls%>'>
-                                            <ul class="slides">
-                                                <input type="radio" name="radio-btn" id="img-1" checked />
-                                                <li class="slide-container">
-                                                    <div class="slide">
-                                                        <img src="http://farm9.staticflickr.com/8072/8346734966_f9cd7d0941_z.jpg" />
-                                                    </div>
-                                                    <div class="nav">
-                                                        <label for="img-3" class="prev">&#x2039;</label>
-                                                        <label for="img-2" class="next">&#x203a;</label>
-                                                    </div>
-                                                </li>
-
-                                                <input type="radio" name="radio-btn" id="img-2" />
-                                                <li class="slide-container">
-                                                    <div class="slide">
-                                                        <img src="http://farm9.staticflickr.com/8504/8365873811_d32571df3d_z.jpg" />
-                                                    </div>
-                                                    <div class="nav">
-                                                        <label for="img-1" class="prev">&#x2039;</label>
-                                                        <label for="img-3" class="next">&#x203a;</label>
-                                                    </div>
-                                                </li>
-
-                                                <input type="radio" name="radio-btn" id="img-3" />
-                                                <li class="slide-container">
-                                                    <div class="slide">
-                                                        <img src="http://farm9.staticflickr.com/8504/8365873811_d32571df3d_z.jpg" />
-                                                    </div>
-                                                    <div class="nav">
-                                                        <label for="img-2" class="prev">&#x2039;</label>
-                                                        <label for="img-1" class="next">&#x203a;</label>
-                                                    </div>
-                                                </li>
-
-                                                <li class="nav-dots">
-                                                    <label for="img-1" class="nav-dot" id="img-dot-1"></label>
-                                                    <label for="img-2" class="nav-dot" id="img-dot-2"></label>
-                                                    <label for="img-3" class="nav-dot" id="img-dot-3"></label>
-                                                </li>
-                                            </ul>
+                                        <div class="photoContainer" data='<%=item.ImgUrls%>'>
                                         </div>
                                         <div class="item-wrap__wrap ">
                                             <div class="item-wrap__name"><a href="#"><%=item.Name%></a></div>
@@ -509,7 +478,7 @@
                                     <%} %>
 
                                     <div class="item-wrap" style="display: none" aid="222">
-                                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/unsplash_1.jpg">
+                                        <img style="height: 275px; width: 275px;" src="assets/img/unsplash_1.jpg">
                                         <div class="item-wrap__wrap ">
                                             <div class="item-wrap__name"><a href="#">Холодильник Indesit 90l / 40l </a></div>
                                             <div class="item-wrap__cost">11 000 ₽</div>

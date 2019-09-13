@@ -36,7 +36,7 @@ namespace Rentoolo
                     base64Guid = base64Guid.Substring(0, base64Guid.Length - 2).Replace("_", "").Replace("/", "").Replace("-", "").Replace("+", "");
                     string filePath = HttpContext.Current.Server.MapPath("~/img/a/" + base64Guid + ext);
 
-                    string fileUrl = string.Format("http://www.rentoolo.ru/img/a/{0}{1}", base64Guid, ext);
+                    string fileUrl = string.Format("/img/a/{0}{1}", base64Guid, ext);
 
                     if (postedFile != null && postedFile.ContentLength > 0)
                     {
