@@ -25,6 +25,8 @@
     <link href="assets/css/toolkit.css" rel="stylesheet">
     <link href="assets/css/application.css" rel="stylesheet">
     <link href="assets/css/additional.css?2" rel="stylesheet">
+    
+    <link href="assets/css/photoSlider.css?2" rel="stylesheet">
 
     <style>
         /* note: this is a hack for ios iframe for bootstrap themes shopify page */
@@ -60,6 +62,17 @@
             $(".imgSlider").each(function (index) {
                 var imgUrls = $(this).attr("data");
                 var imgUrlsParsed = JSON.parse(imgUrls);
+
+                JSON.parse(imgUrls, function (k, v) {
+                    if (k != "") {
+                        //$(this).append($("h2"));
+                        console.log(k);
+                    }
+                    console.log(k); // пишем имя текущего свойства, последним именем будет ""
+                    return v;       // возвращаем неизменённое значение свойства
+                });
+
+
                 console.log(index + ": " + $(this).text());
             });
 

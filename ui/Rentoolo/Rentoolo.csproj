@@ -191,6 +191,7 @@
     <Content Include="assets\css\additional.css" />
     <Content Include="assets\css\application.css" />
     <Content Include="assets\css\docs.css" />
+    <Content Include="assets\css\photoSlider.css" />
     <Content Include="assets\css\toolkit.css" />
     <Content Include="assets\img\addphoto.png" />
     <Content Include="assets\img\addphoto.svg" />

@@ -2,8 +2,8 @@
 
 .slides {
     padding: 0;
-    width: 609px;
-    height: 420px;
+    width: 275px;
+    height: 275px;
     display: block;
     margin: 0 auto;
     position: relative;
@@ -25,8 +25,8 @@
 .slide {
     top: 0;
     opacity: 0;
-    width: 609px;
-    height: 420px;
+    width: 275px;
+    height: 275px;
     display: block;
     position: absolute;
 
@@ -41,21 +41,18 @@
 }
 
 .nav label {
-    width: 200px;
+    width: 125px;
     height: 100%;
     display: none;
     position: absolute;
-
-	  opacity: 0;
+    opacity: 0;
     z-index: 9;
     cursor: pointer;
-
     transition: opacity .2s;
-
     color: #FFF;
     font-size: 156pt;
     text-align: center;
-    line-height: 380px;
+    line-height: 250px;
     font-family: "Varela Round", sans-serif;
     background-color: rgba(255, 255, 255, .3);
     text-shadow: 0px 0px 15px rgb(119, 119, 119);
