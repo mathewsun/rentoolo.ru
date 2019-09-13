@@ -30,11 +30,20 @@ namespace Rentoolo.Account
 
             var objPhotos = Request.Form["AdvertPhotos"];
 
-            String[] listPhotos = objPhotos.Split(',');
-
-            var jsonPhotos = JsonConvert.SerializeObject(listPhotos);
-
             Rentoolo.Model.Adverts advert = new Model.Adverts();
+
+            if (objPhotos != null)
+            {
+                String[] listPhotos = objPhotos.Split(',');
+
+                var jsonPhotos = JsonConvert.SerializeObject(listPhotos);
+
+                advert.ImgUrls = jsonPhotos;
+            }
+            else
+            {
+                advert.ImgUrls = "/img/a/noPhoto.png";
+            }
 
             try
             {
@@ -61,8 +70,6 @@ namespace Rentoolo.Account
             advert.CreatedUserId = User.UserId;
 
             advert.Created = DateTime.Now;
-
-            advert.ImgUrls = jsonPhotos;
 
             AdvertsDataHelper.AddAdvert(advert);
 
