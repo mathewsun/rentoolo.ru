@@ -66,20 +66,54 @@
                 if (imgUrlsParsed.length == 1) {
                     $(this).append("<img src='" + imgUrlsParsed[0] + "' style='height: 275px; width: 275px;' alt='' />");
                 } else {
-                    var divContainer = $(this);
-                    divContainer.append("<ul class='slides'>");
+                    var htmlString = '<ul class="slides">';
+
+                    var listIds = [];
+
                     JSON.parse(imgUrls,
                         function (k, v) {
                             if (k != "") {
-                                divContainer.append("<input type='radio' name='radio-btn' id='img-" + k +
-                                    "' checked /><li class= 'slide-container' ><div class='slide'><img src='" + v + "' /></div>" +
-                                    "<div class='nav'><label for='img-3' class='prev'>&#x2039;</label><label for='img-2' class='next'>&#x203a;</label>" +
-                                    "</div></li>");
+                                var id = v.slice(7);
+                                id = id.slice(0, -5);
+                                listIds.push(id);
+                            }
+                        });
+
+                    var listt = listIds;
+
+                    JSON.parse(imgUrls,
+                        function (k, v) {
+                            if (k != "") {
+                                var id = v.slice(7);
+                                id = id.slice(0, -5);
+                                if (k == "0") {
+                                    
+                                    htmlString += "<input type='radio' name='radio-btn' id='img-1" + "-" + id +
+                                        "' checked /><li class= 'slide-container' ><div class='slide'><img src='" + v + "' /></div>" +
+                                        "<div class='nav'><label for='img-" + listIds.length + "-" + listIds[listIds.length - 1] + "' class='prev'>&#x2039;</label><label for='img-2-" + listIds[1] + "' class='next'>&#x203a;</label></div>" +
+                                        "</li>";
+                                }
+                                else {
+                                    if (k != (listIds.length - 1)) {
+                                       
+                                        htmlString += "<input type='radio' name='radio-btn' id='img-" + (parseInt(k) + 1) + "-" + id +
+                                            "' checked /><li class= 'slide-container' ><div class='slide'><img src='" + v + "' /></div>" +
+                                            "<div class='nav'><label for='img-" + k + "-" + listIds[parseInt(k) - 1] + "' class='prev'>&#x2039;</label><label for='img-" + (parseInt(k) + 2) + "-" + listIds[parseInt(k) + 1] + "' class='next'>&#x203a;</label></div>" +
+                                            "</li>";
+                                    }
+                                    else {
+                                        htmlString += "<input type='radio' name='radio-btn' id='img-" + (parseInt(k) + 1) + "-" + id +
+                                            "' checked /><li class= 'slide-container' ><div class='slide'><img src='" + v + "' /></div>" +
+                                            "<div class='nav'><label for='img-" + k + "-" + listIds[parseInt(k) - 1] + "' class='prev'>&#x2039;</label><label for='img-1" + "-" + listIds[0] + "' class='next'>&#x203a;</label></div>" +
+                                            "</li>";
+                                    }
+                                }
                             }
                             console.log(k); // пишем имя текущего свойства, последним именем будет ""
                             return v; // возвращаем неизменённое значение свойства
                         });
-                    divContainer.append("</ul>");
+                    htmlString += "</ul>";
+                    $(this).append(htmlString);
                 }
 
                 console.log(index + ": " + $(this).text());
@@ -308,7 +342,6 @@
             </div>
         </div>
 
-
         <div class="container pt-4 pb-5">
             <div class="row">
                 <div class="col-lg-9">
@@ -462,8 +495,7 @@
                                     <%foreach (var item in ListAdverts)
                                         { %>
                                     <div class="item-wrap" style="display: none" aid="<%=item.Id%>">
-                                        <div class="photoContainer" data='<%=item.ImgUrls%>'>
-                                        </div>
+                                        <div class="photoContainer" data='<%=item.ImgUrls%>'></div>
                                         <div class="item-wrap__wrap ">
                                             <div class="item-wrap__name"><a href="#"><%=item.Name%></a></div>
                                             <div class="item-wrap__cost"><%=item.Price%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
