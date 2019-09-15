@@ -42,7 +42,7 @@ namespace Rentoolo.Account
             }
             else
             {
-                advert.ImgUrls = "/img/a/noPhoto.png";
+                advert.ImgUrls = "[\"/img/a/noPhoto.png\"]";
             }
 
             try
