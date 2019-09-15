@@ -16,7 +16,7 @@
       <publishTime>08/25/2019 15:53:09</publishTime>
     </File>
     <File Include="Account/Auctions.aspx">
-      <publishTime>08/18/2019 02:00:03</publishTime>
+      <publishTime>08/29/2019 20:58:52</publishTime>
     </File>
     <File Include="Account/Cabinet.aspx">
       <publishTime>08/25/2019 04:50:45</publishTime>
@@ -169,10 +169,13 @@
       <publishTime>08/25/2019 05:37:43</publishTime>
     </File>
     <File Include="assets/css/application.css">
-      <publishTime>07/09/2019 21:08:47</publishTime>
+      <publishTime>09/15/2019 23:54:56</publishTime>
     </File>
     <File Include="assets/css/docs.css">
       <publishTime>06/15/2019 17:56:24</publishTime>
+    </File>
+    <File Include="assets/css/photoSlider.css">
+      <publishTime>09/13/2019 19:05:55</publishTime>
     </File>
     <File Include="assets/css/toolkit.css">
       <publishTime>07/09/2019 21:33:06</publishTime>
@@ -424,7 +427,7 @@
       <publishTime>04/17/2019 04:57:20</publishTime>
     </File>
     <File Include="bin/Rentoolo.dll">
-      <publishTime>08/25/2019 17:02:41</publishTime>
+      <publishTime>09/16/2019 01:17:04</publishTime>
     </File>
     <File Include="bin/ru/System.Net.Http.Formatting.resources.dll">
       <publishTime>01/28/2015 04:02:52</publishTime>
@@ -454,7 +457,7 @@
       <publishTime>06/15/2019 17:56:24</publishTime>
     </File>
     <File Include="bin/xNet.dll">
-      <publishTime>08/18/2019 18:08:21</publishTime>
+      <publishTime>09/13/2019 19:11:17</publishTime>
     </File>
     <File Include="bin/xNet.pdb">
       <publishTime>01/09/2019 00:19:25</publishTime>
@@ -576,6 +579,9 @@
     <File Include="DataBase/spGetAdverts.sql">
       <publishTime>07/27/2019 17:15:42</publishTime>
     </File>
+    <File Include="DataBase/spGetAuctions.sql">
+      <publishTime>08/29/2019 20:58:52</publishTime>
+    </File>
     <File Include="DataBase/spGetFavorites.sql">
       <publishTime>08/11/2019 14:31:53</publishTime>
     </File>
@@ -625,7 +631,7 @@
       <publishTime>07/28/2019 03:11:03</publishTime>
     </File>
     <File Include="Default.aspx">
-      <publishTime>08/24/2019 21:46:34</publishTime>
+      <publishTime>09/16/2019 00:44:59</publishTime>
     </File>
     <File Include="docs/index.html">
       <publishTime>06/15/2019 17:56:24</publishTime>
@@ -943,7 +949,7 @@
       <publishTime>03/25/2019 23:16:23</publishTime>
     </File>
     <File Include="img/a/noPhoto.png">
-      <publishTime>08/25/2019 17:01:48</publishTime>
+      <publishTime>09/14/2019 16:22:49</publishTime>
     </File>
     <File Include="img/a/test.html">
       <publishTime>08/19/2019 22:44:53</publishTime>
@@ -974,6 +980,9 @@
     </File>
     <File Include="profile/index.html">
       <publishTime>06/15/2019 17:56:24</publishTime>
+    </File>
+    <File Include="Rent.aspx">
+      <publishTime>09/16/2019 00:09:18</publishTime>
     </File>
     <File Include="Scripts/app.js">
       <publishTime>03/25/2019 23:16:23</publishTime>
@@ -1036,7 +1045,7 @@
       <publishTime>05/22/2019 01:02:09</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>08/14/2019 06:58:47</publishTime>
+      <publishTime>09/16/2019 00:05:25</publishTime>
     </File>
     <File Include="SiteBalance.Master">
       <publishTime>05/22/2019 00:30:25</publishTime>
