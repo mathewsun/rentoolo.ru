@@ -13,6 +13,7 @@ BEGIN
       ,a.[Phone]
       ,a.[MessageType]
       ,a.[Position]
+	  ,a.[ImgUrls]
 	FROM [Adverts] a
 	WHERE a.[CreatedUserId] = @UserId
 	ORDER BY a.[Created] DESC
