@@ -191,6 +191,7 @@
     <Content Include="assets\css\additional.css" />
     <Content Include="assets\css\application.css" />
     <Content Include="assets\css\docs.css" />
+    <Content Include="assets\css\jQuery.Brazzers-Carousel.css" />
     <Content Include="assets\css\photoSlider.css" />
     <Content Include="assets\css\toolkit.css" />
     <Content Include="assets\img\addphoto.png" />
@@ -243,6 +244,7 @@
     <Content Include="assets\js\dropzone\min\dropzone.min.css" />
     <Content Include="assets\js\dropzone\min\dropzone.min.js" />
     <Content Include="assets\js\jquery-2.2.4.js" />
+    <Content Include="assets\js\jQuery.Brazzers-Carousel.js" />
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\js.cookie.js" />
     <Content Include="assets\js\popper.min.js" />
