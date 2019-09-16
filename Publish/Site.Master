@@ -149,7 +149,7 @@
                         </ul>
 
                             <ul class="nav navbar-nav d-none" id="js-popoverContent">
-                                <li class="nav-item"><a class="nav-link blue-color" href="#" data-action="growl">Growl</a></li>
+                                <li class="nav-item"><a class="nav-link blue-color" href="/Account/MyAdverts.aspx">My Adverts</a></li>
                                 <li class="nav-item">
                                     <asp:LoginStatus CssClass="nav-link blue-color" ID="LoginStatus2" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
                                 </li>

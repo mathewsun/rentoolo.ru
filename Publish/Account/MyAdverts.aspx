@@ -30,7 +30,7 @@
         <li class="media list-group-item p-4">
             <div class="media-body">
                 <div class="media-heading">
-                    <small class="float-right text-muted">14 объявлений</small>
+                    <small class="float-right text-muted"><%=ListItems.Count %> adverts</small>
                     <h6>Мои объявления:</h6>
                 </div>
                 <div class="media-body-inline-grid">
