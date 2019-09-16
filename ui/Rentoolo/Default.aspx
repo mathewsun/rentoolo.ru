@@ -63,7 +63,7 @@
 
             $(".photoContainer").each(function (index) {
                 var htmlString = '';
-
+                var imgUrls = $(this).attr("data");
                 JSON.parse(imgUrls,
                     function (k, v) {
                         if (k != "") {
