@@ -186,6 +186,7 @@
     <Content Include="Admin\Statistics.aspx" />
     <Content Include="Admin\User.aspx" />
     <Content Include="Admin\Users.aspx" />
+    <Content Include="Advert.aspx" />
     <Content Include="Article.aspx" />
     <Content Include="Articles.aspx" />
     <Content Include="assets\css\additional.css" />
@@ -568,6 +569,13 @@
     </Compile>
     <Compile Include="Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Advert.aspx.cs">
+      <DependentUpon>Advert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Advert.aspx.designer.cs">
+      <DependentUpon>Advert.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
