@@ -448,7 +448,6 @@
                                 </div>
 
                                 <div class="media-body-inline-grid" data-grid="images">
-
                                     <%foreach (var item in ListAdverts)
                                         { %>
                                     <div class="item-wrap" style="display: none" aid="<%=item.Id%>">
@@ -465,21 +464,6 @@
                                         <div class="item-wrap__like" title="Добавить в Избранное"></div>
                                     </div>
                                     <%} %>
-
-                                    <div class="item-wrap" style="display: none" aid="222">
-                                        <img style="height: 275px; width: 275px;" src="assets/img/unsplash_1.jpg">
-                                        <div class="item-wrap__wrap ">
-                                            <div class="item-wrap__name"><a href="#">Холодильник Indesit 90l / 40l </a></div>
-                                            <div class="item-wrap__cost">11 000 ₽</div>
-                                            <div class="item-wrap__description">
-                                                <p>Бытовая техника</p>
-                                                <p>р-н Торговая сторона</p>
-                                                <div class="item-wrap__data">Вчера 14:15</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
-                                    </div>
-                                    
                                 </div>
 
                                 <ul class="media-list mb-2">

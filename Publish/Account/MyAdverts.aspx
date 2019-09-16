@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="Мои объявления" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyAdverts.aspx.cs" Inherits="Rentoolo.Account.MyAdverts" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script src="/assets/js/jquery-2.2.4.js"></script>
     <link href="/assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
     <script src="/assets/js/jQuery.Brazzers-Carousel.js"></script>
 
-<script>
+    <script>
         $(document).ready(function () {
             $(".photoContainer").each(function (index) {
                 var htmlString = '';
@@ -25,17 +26,13 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
     <ul class="list-group media-list media-list-stream mb-4">
-
         <li class="media list-group-item p-4">
-
             <div class="media-body">
                 <div class="media-heading">
                     <small class="float-right text-muted">14 объявлений</small>
                     <h6>Мои объявления:</h6>
                 </div>
-
                 <div class="media-body-inline-grid">
                     <%foreach (var item in ListItems)
                         { %>
@@ -55,8 +52,5 @@
                 </div>
             </div>
         </li>
-
-
     </ul>
-
 </asp:Content>
