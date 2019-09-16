@@ -62,9 +62,6 @@
             getLocation();
 
             $(".photoContainer").each(function (index) {
-                var imgUrls = $(this).attr("data");
-                var imgUrlsParsed = JSON.parse(imgUrls);
-
                 var htmlString = '';
 
                 JSON.parse(imgUrls,
@@ -75,8 +72,6 @@
                     });
 
                 $(this).html(htmlString);
-
-                console.log(index + ": " + $(this).text());
             });
 
             $(".photoContainer").brazzersCarousel();
