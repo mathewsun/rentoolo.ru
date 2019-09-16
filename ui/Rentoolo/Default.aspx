@@ -479,26 +479,6 @@
                                         </div>
                                         <div class="item-wrap__like" title="Добавить в Избранное"></div>
                                     </div>
-
-                                    <div class="item-wrap" style="display: none">
-                                                                                
-                                        <div class="item-wrap__wrap">
-                                            <div class="item-wrap__name"><a href="#">Кофемашина Tefal l400</a></div>
-                                            <div class="item-wrap__cost">13 000 ₽</div>
-                                            <div class="item-wrap__description">
-                                                <p>Техника для кухни</p>
-                                                <p>р-н Торговая сторона</p>
-                                                <div class="item-wrap__data">Вчера 12:15</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
-                                    </div>
-
-                                    
-
-                                    
-                                    
-
                                     
                                 </div>
 

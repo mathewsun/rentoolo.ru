@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище RentooloModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище RentooloModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adverts">
           <Key>
             <PropertyRef Name="Id" />
@@ -21,6 +21,7 @@
           <Property Name="MessageType" Type="int" Nullable="false" />
           <Property Name="Position" Type="geography" />
           <Property Name="ImgUrls" Type="nvarchar(max)" />
+          <Property Name="YouTubeUrl" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Applications">
           <Key>
@@ -332,6 +333,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_News_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Referrals_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
@@ -437,6 +450,18 @@
             </Principal>
             <Dependent Role="UsersInRoles">
               <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsersInRoleUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UsersInRoles" Type="Self.UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersInRoles">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -579,6 +604,10 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             <End Role="UsersOpenAuthData" EntitySet="UsersOpenAuthData" />
             <End Role="UsersOpenAuthAccounts" EntitySet="UsersOpenAuthAccounts" />
           </AssociationSet>
+          <AssociationSet Name="FK_News_Users" Association="Self.FK_News_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
           <AssociationSet Name="FK_Referrals_Users" Association="Self.FK_Referrals_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Referrals" EntitySet="Referrals" />
@@ -615,8 +644,13 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             <End Role="Roles" EntitySet="Roles" />
             <End Role="UsersInRoles" EntitySet="UsersInRoles" />
           </AssociationSet>
+          <AssociationSet Name="UsersInRoleUser" Association="Self.UsersInRoleUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RentooloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -675,6 +709,7 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <Property Name="MessageType" Type="Int32" Nullable="false" />
           <Property Name="Position" Type="Geography" />
           <Property Name="ImgUrls" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="YouTubeUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Applications">
           <Key>
@@ -695,6 +730,16 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <Property Name="Head" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Auctions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
         </EntityType>
         <EntityType Name="Business">
@@ -832,6 +877,7 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <Property Name="AuthorId" Type="Guid" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_News_Users" FromRole="News" ToRole="Users" />
         </EntityType>
         <EntityType Name="Operations">
           <Key>
@@ -875,7 +921,7 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Applications" Relationship="Self.RoleApplication" FromRole="Roles" ToRole="Applications" />
-          <NavigationProperty Name="UsersInRoles" Relationship="Self.UsersInRoleRole" FromRole="Roles" ToRole="UsersInRoles" />
+          <NavigationProperty Name="Users" Relationship="Self.UsersInRoles" FromRole="Roles" ToRole="Users" />
         </EntityType>
         <EntityType Name="Settings">
           <Key>
@@ -907,18 +953,11 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <NavigationProperty Name="Applications" Relationship="Self.UserApplication" FromRole="Users" ToRole="Applications" />
           <NavigationProperty Name="CashIns" Relationship="Self.FK_CashIns_Users" FromRole="Users" ToRole="CashIns" />
           <NavigationProperty Name="Memberships" Relationship="Self.MembershipUser" FromRole="Users" ToRole="Memberships" />
+          <NavigationProperty Name="News" Relationship="Self.FK_News_Users" FromRole="Users" ToRole="News" />
           <NavigationProperty Name="Referrals" Relationship="Self.FK_Referrals_Users" FromRole="Users" ToRole="Referrals" />
           <NavigationProperty Name="Referrals1" Relationship="Self.FK_Referrals_Users1" FromRole="Users" ToRole="Referrals" />
           <NavigationProperty Name="Wallets" Relationship="Self.FK_Wallets_Users" FromRole="Users" ToRole="Wallets" />
-        </EntityType>
-        <EntityType Name="UsersInRoles">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="RoleId" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Roles" Relationship="Self.UsersInRoleRole" FromRole="UsersInRoles" ToRole="Roles" />
+          <NavigationProperty Name="Roles" Relationship="Self.UsersInRoles" FromRole="Users" ToRole="Roles" />
         </EntityType>
         <EntityType Name="UsersOpenAuthAccounts">
           <Key>
@@ -1040,6 +1079,18 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_News_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Referrals_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
@@ -1061,18 +1112,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             </Principal>
             <Dependent Role="Referrals">
               <PropertyRef Name="ReferrerUserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="UsersInRoleRole">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="UsersInRoles" Type="Self.UsersInRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="RoleId" />
-            </Principal>
-            <Dependent Role="UsersInRoles">
-              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1104,10 +1143,15 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="UsersInRoles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="RentooloEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
+          <EntitySet Name="Auctions" EntityType="Self.Auctions" />
           <EntitySet Name="Business" EntityType="Self.Business" />
           <EntitySet Name="CashIns" EntityType="Self.CashIns" />
           <EntitySet Name="Currencies" EntityType="Self.Currencies" />
@@ -1125,7 +1169,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Settings" EntityType="Self.Settings" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRoles" />
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" />
@@ -1154,6 +1197,10 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             <End Role="Users" EntitySet="Users" />
             <End Role="Memberships" EntitySet="Memberships" />
           </AssociationSet>
+          <AssociationSet Name="FK_News_Users" Association="Self.FK_News_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
           <AssociationSet Name="FK_Referrals_Users" Association="Self.FK_Referrals_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Referrals" EntitySet="Referrals" />
@@ -1161,10 +1208,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <AssociationSet Name="FK_Referrals_Users1" Association="Self.FK_Referrals_Users1">
             <End Role="Users" EntitySet="Users" />
             <End Role="Referrals" EntitySet="Referrals" />
-          </AssociationSet>
-          <AssociationSet Name="UsersInRoleRole" Association="Self.UsersInRoleRole">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
           </AssociationSet>
           <AssociationSet Name="FK_Wallets_Users" Association="Self.FK_Wallets_Users">
             <End Role="Users" EntitySet="Users" />
@@ -1174,16 +1217,20 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             <End Role="UsersOpenAuthData" EntitySet="UsersOpenAuthData" />
             <End Role="UsersOpenAuthAccounts" EntitySet="UsersOpenAuthAccounts" />
           </AssociationSet>
+          <AssociationSet Name="UsersInRoles" Association="Self.UsersInRoles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
           <FunctionImport Name="fnGetAllUsers" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetAllUsers_Result)" />
           <FunctionImport Name="fnGetTablesRows" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetTablesRows_Result)" />
           <FunctionImport Name="fnGetUserReferralsSecondLevel" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserReferralsSecondLevel_Result)">
-          <Parameter Name="userId" Mode="In" Type="Guid" />
+            <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="fnGetUserReferralsThirdLevel" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserReferralsThirdLevel_Result)">
-          <Parameter Name="userId" Mode="In" Type="Guid" />
+            <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="fnGetUserWallets" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserWallets_Result)">
-          <Parameter Name="userId" Mode="In" Type="Guid" />
+            <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spAddFavorites">
             <Parameter Name="UserId" Mode="In" Type="Guid" />
@@ -1194,17 +1241,16 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             <Parameter Name="advertId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="spGetFavorites" ReturnType="Collection(RentooloModel.spGetFavorites_Result)">
-          <Parameter Name="userId" Mode="In" Type="Guid" />
+            <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spGetFavoritesByCookies" ReturnType="Collection(RentooloModel.spGetFavoritesByCookies_Result)">
-          <Parameter Name="uid" Mode="In" Type="String" />
+            <Parameter Name="uid" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spGetLoginStatisticLastDayActive" />
           <FunctionImport Name="spGetLoginStatisticLastHourActive" />
           <FunctionImport Name="spGetUserAdverts" ReturnType="Collection(RentooloModel.spGetUserAdverts_Result)">
-          <Parameter Name="UserId" Mode="In" Type="Guid" />
+            <Parameter Name="UserId" Mode="In" Type="Guid" />
           </FunctionImport>
-          <EntitySet Name="Auctions" EntityType="RentooloModel.Auctions" />
         </EntityContainer>
         <ComplexType Name="spGetFavorites_Result">
           <Property Type="Int64" Name="Id" Nullable="false" />
@@ -1249,16 +1295,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <Property Type="Int32" Name="MessageType" Nullable="false" />
           <Property Type="String" Name="ImgUrls" Nullable="true" />
         </ComplexType>
-        <EntityType Name="Auctions">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="StartPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1280,6 +1316,7 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
                 <ScalarProperty Name="MessageType" ColumnName="MessageType" />
                 <ScalarProperty Name="Position" ColumnName="Position" />
                 <ScalarProperty Name="ImgUrls" ColumnName="ImgUrls" />
+                <ScalarProperty Name="YouTubeUrl" ColumnName="YouTubeUrl" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1299,6 +1336,17 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
                 <ScalarProperty Name="Head" ColumnName="Head" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Auctions">
+            <EntityTypeMapping TypeName="RentooloModel.Auctions">
+              <MappingFragment StoreEntitySet="Auctions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StartPrice" ColumnName="StartPrice" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1520,14 +1568,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UsersInRoles">
-            <EntityTypeMapping TypeName="RentooloModel.UsersInRoles">
-              <MappingFragment StoreEntitySet="UsersInRoles">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UsersOpenAuthAccounts">
             <EntityTypeMapping TypeName="RentooloModel.UsersOpenAuthAccounts">
               <MappingFragment StoreEntitySet="UsersOpenAuthAccounts">
@@ -1570,6 +1610,14 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="UsersInRoles" TypeName="RentooloModel.UsersInRoles" StoreEntitySet="UsersInRoles">
+            <EndProperty Name="Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
           <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetAllUsers" FunctionImportName="fnGetAllUsers">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetAllUsers_Result">
@@ -1688,17 +1736,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Auctions">
-            <EntityTypeMapping TypeName="RentooloModel.Auctions">
-              <MappingFragment StoreEntitySet="Auctions">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-                <ScalarProperty Name="StartPrice" ColumnName="StartPrice" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

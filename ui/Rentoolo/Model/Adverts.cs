@@ -26,5 +26,6 @@ namespace Rentoolo.Model
         public int MessageType { get; set; }
         public System.Data.Spatial.DbGeography Position { get; set; }
         public string ImgUrls { get; set; }
+        public string YouTubeUrl { get; set; }
     }
 }

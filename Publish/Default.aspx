@@ -26,7 +26,7 @@
     <link href="assets/css/application.css" rel="stylesheet">
     <link href="assets/css/additional.css?2" rel="stylesheet">
 
-    <link href="assets/css/photoSlider.css?2" rel="stylesheet">
+    <link href="assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
 
     <style>
         /* note: this is a hack for ios iframe for bootstrap themes shopify page */
@@ -41,6 +41,8 @@
     <script src="/assets/js/jquery-2.2.4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src="/assets/js/utils.js?1"></script>
+    <script src="/assets/js/jQuery.Brazzers-Carousel.js"></script>
+
 
     <script>
         $(document).ready(function () {
@@ -60,64 +62,19 @@
             getLocation();
 
             $(".photoContainer").each(function (index) {
+                var htmlString = '';
                 var imgUrls = $(this).attr("data");
-                var imgUrlsParsed = JSON.parse(imgUrls);
+                JSON.parse(imgUrls,
+                    function (k, v) {
+                        if (k != "") {
+                            htmlString += "<img src='" + v + "' style='height: 275px; width: 275px;' alt='' />";
+                        }
+                    });
 
-                if (imgUrlsParsed.length == 1) {
-                    $(this).append("<img src='" + imgUrlsParsed[0] + "' style='height: 275px; width: 275px;' alt='' />");
-                } else {
-                    var htmlString = '<ul class="slides">';
-
-                    var listIds = [];
-
-                    JSON.parse(imgUrls,
-                        function (k, v) {
-                            if (k != "") {
-                                var id = v.slice(7);
-                                id = id.slice(0, -5);
-                                listIds.push(id);
-                            }
-                        });
-
-                    var listt = listIds;
-
-                    JSON.parse(imgUrls,
-                        function (k, v) {
-                            if (k != "") {
-                                var id = v.slice(7);
-                                id = id.slice(0, -5);
-                                if (k == "0") {
-                                    
-                                    htmlString += "<input type='radio' name='radio-btn' id='img-1" + "-" + id +
-                                        "' checked /><li class= 'slide-container' ><div class='slide'><img src='" + v + "' /></div>" +
-                                        "<div class='nav'><label for='img-" + listIds.length + "-" + listIds[listIds.length - 1] + "' class='prev'>&#x2039;</label><label for='img-2-" + listIds[1] + "' class='next'>&#x203a;</label></div>" +
-                                        "</li>";
-                                }
-                                else {
-                                    if (k != (listIds.length - 1)) {
-                                       
-                                        htmlString += "<input type='radio' name='radio-btn' id='img-" + (parseInt(k) + 1) + "-" + id +
-                                            "' checked /><li class= 'slide-container' ><div class='slide'><img src='" + v + "' /></div>" +
-                                            "<div class='nav'><label for='img-" + k + "-" + listIds[parseInt(k) - 1] + "' class='prev'>&#x2039;</label><label for='img-" + (parseInt(k) + 2) + "-" + listIds[parseInt(k) + 1] + "' class='next'>&#x203a;</label></div>" +
-                                            "</li>";
-                                    }
-                                    else {
-                                        htmlString += "<input type='radio' name='radio-btn' id='img-" + (parseInt(k) + 1) + "-" + id +
-                                            "' checked /><li class= 'slide-container' ><div class='slide'><img src='" + v + "' /></div>" +
-                                            "<div class='nav'><label for='img-" + k + "-" + listIds[parseInt(k) - 1] + "' class='prev'>&#x2039;</label><label for='img-1" + "-" + listIds[0] + "' class='next'>&#x203a;</label></div>" +
-                                            "</li>";
-                                    }
-                                }
-                            }
-                            console.log(k); // пишем имя текущего свойства, последним именем будет ""
-                            return v; // возвращаем неизменённое значение свойства
-                        });
-                    htmlString += "</ul>";
-                    $(this).append(htmlString);
-                }
-
-                console.log(index + ": " + $(this).text());
+                $(this).html(htmlString);
             });
+
+            $(".photoContainer").brazzersCarousel();
 
         });
     </script>
@@ -495,7 +452,7 @@
                                     <%foreach (var item in ListAdverts)
                                         { %>
                                     <div class="item-wrap" style="display: none" aid="<%=item.Id%>">
-                                        <div class="photoContainer" data='<%=item.ImgUrls%>'></div>
+                                        <a href ="Advert.aspx?id=<%=item.Id%>" title="<%=item.Name%>"><div class="photoContainer" data='<%=item.ImgUrls%>'></div></a>
                                         <div class="item-wrap__wrap ">
                                             <div class="item-wrap__name"><a href="#"><%=item.Name%></a></div>
                                             <div class="item-wrap__cost"><%=item.Price%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
@@ -522,75 +479,7 @@
                                         </div>
                                         <div class="item-wrap__like" title="Добавить в Избранное"></div>
                                     </div>
-
-                                    <div class="item-wrap" style="display: none">
-                                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_1.jpg">
-                                        <div class="item-wrap__wrap">
-                                            <div class="item-wrap__name"><a href="#">Кофемашина Tefal l400</a></div>
-                                            <div class="item-wrap__cost">13 000 ₽</div>
-                                            <div class="item-wrap__description">
-                                                <p>Техника для кухни</p>
-                                                <p>р-н Торговая сторона</p>
-                                                <div class="item-wrap__data">Вчера 12:15</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
-                                    </div>
-
-                                    <div class="item-wrap" style="display: none">
-                                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_11.jpg">
-                                        <div class="item-wrap__wrap">
-                                            <div class="item-wrap__name"><a href="#">Наушники проводные</a></div>
-                                            <div class="item-wrap__cost">2 000 ₽</div>
-                                            <div class="item-wrap__description">
-                                                <p></p>
-                                                <p>р-н Торговая сторона</p>
-                                                <div class="item-wrap__data">Вчера 11:15</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
-                                    </div>
-
-                                    <div class="item-wrap" style="display: none">
-                                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/unsplash_2.jpg">
-                                        <div class="item-wrap__wrap">
-                                            <div class="item-wrap__name"><a href="#">Копьютер в сборке intel core i7, nvidia 2080rtx, 1tb hdd, 128gb ssd, 16gb</a></div>
-                                            <div class="item-wrap__cost">41 000 ₽</div>
-                                            <div class="item-wrap__description">
-                                                <p>Компьютеры</p>
-                                                <p>р-н Торговая сторона</p>
-                                                <div class="item-wrap__data">Вчера 10:15</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
-                                    </div>
-                                    <div class="item-wrap" style="display: none">
-                                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_2.jpg">
-                                        <div class="item-wrap__wrap">
-                                            <div class="item-wrap__name"><a href="#">Ноутбук Acer Predator Heliios-300</a></div>
-                                            <div class="item-wrap__cost">61 000 ₽</div>
-                                            <div class="item-wrap__description">
-                                                <p>Компьютеры</p>
-                                                <p>р-н Торговая сторона</p>
-                                                <div class="item-wrap__data">Вчера 9:15</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
-                                    </div>
-
-                                    <div class="item-wrap" style="display: none">
-                                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_4.jpg">
-                                        <div class="item-wrap__wrap">
-                                            <div class="item-wrap__name"><a href="#">Колонка bluetooth v4.3 18w</a></div>
-                                            <div class="item-wrap__cost">4 000 ₽</div>
-                                            <div class="item-wrap__description">
-                                                <p></p>
-                                                <p>р-н Торговая сторона</p>
-                                                <div class="item-wrap__data">Вчера 14:15</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
-                                    </div>
+                                    
                                 </div>
 
                                 <ul class="media-list mb-2">

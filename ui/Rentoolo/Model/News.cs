@@ -20,5 +20,7 @@ namespace Rentoolo.Model
         public System.Guid AuthorId { get; set; }
         public System.DateTime CreateDate { get; set; }
         public Nullable<bool> Active { get; set; }
+    
+        public virtual Users Users { get; set; }
     }
 }

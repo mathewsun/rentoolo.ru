@@ -67,6 +67,8 @@ namespace Rentoolo.Account
 
             advert.Phone = phone;
 
+            advert.YouTubeUrl = video;
+
             advert.CreatedUserId = User.UserId;
 
             advert.Created = DateTime.Now;
