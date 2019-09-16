@@ -1,5 +1,9 @@
 ﻿<%@ Page Title="Мои объявления" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyAdverts.aspx.cs" Inherits="Rentoolo.Account.MyAdverts" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <script src="/assets/js/jquery-2.2.4.js"></script>
+    <link href="/assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
+    <script src="/assets/js/jQuery.Brazzers-Carousel.js"></script>
+
 <script>
         $(document).ready(function () {
             $(".photoContainer").each(function (index) {
