@@ -31,7 +31,6 @@ namespace Rentoolo.Model
         public DbSet<Adverts> Adverts { get; set; }
         public DbSet<Applications> Applications { get; set; }
         public DbSet<Articles> Articles { get; set; }
-        public DbSet<Auctions> Auctions { get; set; }
         public DbSet<Business> Business { get; set; }
         public DbSet<CashIns> CashIns { get; set; }
         public DbSet<Currencies> Currencies { get; set; }
@@ -44,16 +43,17 @@ namespace Rentoolo.Model
         public DbSet<Memberships> Memberships { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<Operations> Operations { get; set; }
-        public DbSet<Pavel_testTable> Pavel_testTable { get; set; }
         public DbSet<Payments> Payments { get; set; }
         public DbSet<Referrals> Referrals { get; set; }
         public DbSet<Roles> Roles { get; set; }
         public DbSet<Settings> Settings { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<UsersInRoles> UsersInRoles { get; set; }
         public DbSet<UsersOpenAuthAccounts> UsersOpenAuthAccounts { get; set; }
         public DbSet<UsersOpenAuthData> UsersOpenAuthData { get; set; }
         public DbSet<Wallets> Wallets { get; set; }
         public DbSet<Categories> Categories { get; set; }
+        public DbSet<Auctions> Auctions { get; set; }
     
         [EdmFunction("RentooloEntities", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()
@@ -158,15 +158,6 @@ namespace Rentoolo.Model
                 new ObjectParameter("UserId", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserAdverts_Result>("spGetUserAdverts", userIdParameter);
-        }
-    
-        public virtual ObjectResult<spGetUserAuctions_Result> spGetUserAuctions(Nullable<System.Guid> userId)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserAuctions_Result>("spGetUserAuctions", userIdParameter);
         }
     }
 }

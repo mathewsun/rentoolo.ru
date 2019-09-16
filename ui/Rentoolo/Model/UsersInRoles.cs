@@ -12,10 +12,11 @@ namespace Rentoolo.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Pavel_testTable
+    public partial class UsersInRoles
     {
-        public int Id { get; set; }
-        public string ModelName { get; set; }
-        public string Manufacturer { get; set; }
+        public System.Guid UserId { get; set; }
+        public System.Guid RoleId { get; set; }
+    
+        public virtual Roles Roles { get; set; }
     }
 }

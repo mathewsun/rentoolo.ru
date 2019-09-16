@@ -20,5 +20,6 @@ namespace Rentoolo.Model
         public System.DateTime WhenDate { get; set; }
     
         public virtual Users Users { get; set; }
+        public virtual Users Users1 { get; set; }
     }
 }

@@ -18,8 +18,8 @@ namespace Rentoolo.Model
         {
             this.CashIns = new HashSet<CashIns>();
             this.Referrals = new HashSet<Referrals>();
+            this.Referrals1 = new HashSet<Referrals>();
             this.Wallets = new HashSet<Wallets>();
-            this.Roles = new HashSet<Roles>();
         }
     
         public System.Guid ApplicationId { get; set; }
@@ -39,7 +39,7 @@ namespace Rentoolo.Model
         public virtual ICollection<CashIns> CashIns { get; set; }
         public virtual Memberships Memberships { get; set; }
         public virtual ICollection<Referrals> Referrals { get; set; }
+        public virtual ICollection<Referrals> Referrals1 { get; set; }
         public virtual ICollection<Wallets> Wallets { get; set; }
-        public virtual ICollection<Roles> Roles { get; set; }
     }
 }
