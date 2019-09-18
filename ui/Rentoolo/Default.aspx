@@ -24,7 +24,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="assets/css/toolkit.css" rel="stylesheet">
     <link href="assets/css/application.css" rel="stylesheet">
-    <link href="assets/css/additional.css?2" rel="stylesheet">
+    <link href="assets/css/additional.css?8" rel="stylesheet">
 
     <link href="assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
 
@@ -46,6 +46,22 @@
 
     <script>
         $(document).ready(function () {
+
+            // Size of browser viewport.
+            var height1 = $(window).height();
+            var width1 = $(window).width();
+
+            // Size of HTML document (same as pageHeight/pageWidth in screenshot).
+            var height2 = $(document).height();
+            var width2 = $(document).width();
+
+            // Screen size
+            var height3 = window.screen.height;
+            var width3 = window.screen.width;
+
+            //alert("height1 = " + height1 + "; width1 = " + width1 + "; height2 = " + height2 + "; width2 = " + width2 + "; height3 = " + height3 + "; width3 = " + width3);
+
+
             $("#allCategorieslist").click(function () {
                 if ($(".more-popup").is(":visible")) {
                     $(".more-popup").fadeOut(300);
@@ -67,7 +83,12 @@
                 JSON.parse(imgUrls,
                     function (k, v) {
                         if (k != "") {
-                            htmlString += "<img src='" + v + "' style='height: 275px; width: 275px;' alt='' />";
+                            if (width1 < 512 || width2 < 512 || width3 < 512) {
+                                htmlString += "<img src='" + v + "' style='height: 150px; width: 150px;' alt='' />";
+                            }
+                            else {
+                                htmlString += "<img src='" + v + "' style='height: 275px; width: 275px;' alt='' />";
+                            }
                         }
                     });
 
@@ -76,6 +97,36 @@
 
             $(".photoContainer").brazzersCarousel();
 
+            if (width1 < 512 || width2 < 512 || width3 < 512) {
+                $(".href-photoContainer").attr("href", "#");
+            }
+
+            $(".item-wrap__description-description").each(function (index) {
+                var innerHtml = $(this).html();
+                var length = 70;
+                var trimmedHtml = innerHtml.length > length ?
+                    innerHtml.substring(0, length - 3) + "..." :
+                    innerHtml;
+                $(this).html(trimmedHtml);
+            });
+        });
+
+        $(window).resize(function () {
+            // Size of browser viewport.
+            var height1 = $(window).height();
+            var width1 = $(window).width();
+
+            // Size of HTML document (same as pageHeight/pageWidth in screenshot).
+            var height2 = $(document).height();
+            var width2 = $(document).width();
+
+            // Screen size
+            var height3 = window.screen.height;
+            var width3 = window.screen.width;
+
+            if (width1 < 512 || width2 < 512 || width3 < 512) {
+                $(".href-photoContainer").attr("href", "#");
+            }
         });
     </script>
 
@@ -443,7 +494,7 @@
 
                             <div class="media-body">
                                 <div class="media-heading">
-                                    <small class="float-right text-muted">15 025 объявлений</small>
+                                    <small class="float-right text-muted"><%=AdvertsCount %> объявлений</small>
                                     <h6>Бытовая электроника:</h6>
                                 </div>
 
@@ -451,11 +502,14 @@
                                     <%foreach (var item in ListAdverts)
                                         { %>
                                     <div class="item-wrap" style="display: none" aid="<%=item.Id%>">
-                                        <a href ="Advert.aspx?id=<%=item.Id%>" title="<%=item.Name%>"><div class="photoContainer" data='<%=item.ImgUrls%>'></div></a>
+                                        <a href="Advert.aspx?id=<%=item.Id%>" class="href-photoContainer" title="<%=item.Name%>">
+                                            <div class="photoContainer" data='<%=item.ImgUrls%>'></div>
+                                        </a>
                                         <div class="item-wrap__wrap ">
-                                            <div class="item-wrap__name"><a href="#"><%=item.Name%></a></div>
+                                            <div class="item-wrap__name"><a href="Advert.aspx?id=<%=item.Id%>"><%=item.Name%></a></div>
                                             <div class="item-wrap__cost"><%=item.Price%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
                                             <div class="item-wrap__description">
+                                                <p><span class="item-wrap__description-description" maxlength="20"><%=item.Description%></span></p>
                                                 <p><%=item.Category%></p>
                                                 <p><%=item.Address%></p>
                                                 <div class="item-wrap__data"><%=item.Created.ToString("dd.MM.yyyy HH:mm")%></div>
@@ -465,81 +519,6 @@
                                     </div>
                                     <%} %>
                                 </div>
-
-                                <ul class="media-list mb-2">
-                                    <li class="media mb-3">
-                                        <img
-                                            class="media-object d-flex align-self-start mr-3"
-                                            src="assets/img/avatar-fat.jpg">
-                                        <div class="media-body">
-                                            <strong>Майк Браун: </strong>
-                                            Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
-               
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <img
-                                            class="media-object d-flex align-self-start mr-3"
-                                            src="assets/img/avatar-mdo.png">
-                                        <div class="media-body">
-                                            <strong>Виктория Золотова: </strong>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-               
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="media list-group-item p-4">
-                            <img
-                                class="media-object d-flex align-self-start mr-3"
-                                src="assets/img/avatar-fat.jpg">
-                            <div class="media-body">
-                                <div class="media-body-text">
-                                    <div class="media-heading">
-                                        <small class="float-right text-muted">12 min</small>
-                                        <h6>Майк Браун</h6>
-                                    </div>
-                                    <p>
-                                        Donec id elit non mi porta gravida at eget metus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-             
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="media list-group-item p-4">
-                            <img
-                                class="media-object d-flex align-self-start mr-3"
-                                src="assets/img/avatar-mdo.png">
-                            <div class="media-body">
-                                <div class="media-heading">
-                                    <small class="float-right text-muted">78 объявлений</small>
-                                    <h6>Недвижимость:</h6>
-                                </div>
-
-                                <p>
-                                    Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-           
-                                </p>
-
-                                <div class="media-body-inline-grid" data-grid="images">
-                                    <img style="display: none" data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_3.jpg">
-                                </div>
-
-                                <ul class="media-list">
-                                    <li class="media">
-                                        <img
-                                            class="media-object d-flex align-self-start mr-3"
-                                            src="assets/img/avatar-dhg.png">
-                                        <div class="media-body">
-                                            <strong>Dave Gamache: </strong>
-                                            Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
-               
-                                        </div>
-                                    </li>
-                                </ul>
                             </div>
                         </li>
                     </ul>

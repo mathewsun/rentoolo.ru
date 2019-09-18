@@ -12,28 +12,18 @@ namespace Rentoolo
 
         public List<Adverts> ListAdverts;
 
-        public string UsercCount;
-
-        public string UsersCountRegisteredToday;
-
-        public string UsersCountOnline;
-
-        public string FullDeposite;
-
-        public string TodayDeposite;
-
-        public string SafetyDeposite;
-
-        public int RandomInt;
+        public string AdvertsCount;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ListNews = DataHelper.GetActiveNewsLast5();
-
-            ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage();
-
             if (!IsPostBack)
             {
+                ListNews = DataHelper.GetActiveNewsLast5();
+
+                ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage();
+
+                AdvertsCount = AdvertsDataHelper.GetAdvertsActiveCount().ToString("N0");
+
                 //Random rnd = new Random();
 
                 //RandomInt = rnd.Next(-2, 2);

@@ -24,8 +24,6 @@ namespace Rentoolo
             if (!IsPostBack)
             {
                 AdvertItem = AdvertsDataHelper.GetAdvert(id);
-
-
             }
 
             string tempId = Page.RouteData.Values["id"] as string;

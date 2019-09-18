@@ -260,8 +260,10 @@
 
 .item-wrap__cost {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 16px;
     padding: 10px 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .item-wrap__description {
@@ -310,8 +312,10 @@
     }
 
     .item-wrap img {
+        /*
         width: 40% !important;
         height: 55% !important;
+        */
     }
 
     .item-wrap__description p {
@@ -319,7 +323,7 @@
     }
 
     .item-wrap__name {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .item-wrap {
