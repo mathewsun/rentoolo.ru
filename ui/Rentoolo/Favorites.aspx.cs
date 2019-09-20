@@ -12,6 +12,8 @@ namespace Rentoolo
     {
         public List<FavoritesForPage> ListItems;
 
+        public int ListCount = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -30,6 +32,8 @@ namespace Rentoolo
                         ListItems = FavoritesHelper.GetFavoritesByCookies(value);
                     }
                 }
+
+                ListCount = ListItems.Count;
             }
         }
     }

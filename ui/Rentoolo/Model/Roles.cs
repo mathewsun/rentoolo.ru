@@ -16,7 +16,7 @@ namespace Rentoolo.Model
     {
         public Roles()
         {
-            this.Users = new HashSet<Users>();
+            this.UsersInRoles = new HashSet<UsersInRoles>();
         }
     
         public System.Guid ApplicationId { get; set; }
@@ -25,6 +25,6 @@ namespace Rentoolo.Model
         public string Description { get; set; }
     
         public virtual Applications Applications { get; set; }
-        public virtual ICollection<Users> Users { get; set; }
+        public virtual ICollection<UsersInRoles> UsersInRoles { get; set; }
     }
 }

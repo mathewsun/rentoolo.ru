@@ -22,7 +22,7 @@
     <meta property="image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <link href="assets/css/toolkit.css" rel="stylesheet">
+    <link href="assets/css/toolkit.css?2" rel="stylesheet">
     <link href="assets/css/application.css" rel="stylesheet">
     <link href="assets/css/additional.css?8" rel="stylesheet">
 
@@ -596,7 +596,7 @@
 
         <script src="assets/js/popper.min.js"></script>
         <script src="assets/js/chart.js"></script>
-        <script src="assets/js/toolkit.js"></script>
+        <script src="assets/js/toolkit.js?2"></script>
         <script src="assets/js/application.js"></script>
         <script>
             // execute/clear BS loaders for docs

@@ -12,13 +12,11 @@ namespace Rentoolo.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class News
+    public partial class UsersInRoles
     {
-        public int Id { get; set; }
-        public string Text { get; set; }
-        public System.DateTime Date { get; set; }
-        public System.Guid AuthorId { get; set; }
-        public System.DateTime CreateDate { get; set; }
-        public Nullable<bool> Active { get; set; }
+        public System.Guid UserId { get; set; }
+        public System.Guid RoleId { get; set; }
+    
+        public virtual Roles Roles { get; set; }
     }
 }

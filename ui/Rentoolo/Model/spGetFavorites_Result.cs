@@ -25,6 +25,7 @@ namespace Rentoolo.Model
         public string Address { get; set; }
         public string Phone { get; set; }
         public Nullable<int> MessageType { get; set; }
+        public string ImgUrls { get; set; }
         public string PositionString { get; set; }
     }
 }

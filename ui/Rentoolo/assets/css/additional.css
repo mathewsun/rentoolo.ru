@@ -229,6 +229,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     right: 6px;
+    z-index: 1000;
 }
 
     .item-wrap__like:hover {

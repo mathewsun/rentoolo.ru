@@ -4,44 +4,44 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3b635cbda6af4990a41ed9a9551fea68" Name="Diagram1">
-        <EntityTypeShape EntityType="RentooloModel.Adverts" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Applications" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Articles" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Auctions" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Business" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.CashIns" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Currencies" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.DailyStatistics" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Exceptions" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Favorites" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.FavoritesByCookies" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Items" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.LoginStatistics" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Memberships" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.News" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Operations" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Payments" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Referrals" Width="1.5" PointX="7.5" PointY="15.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Roles" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Settings" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Users" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+      <Diagram DiagramId="416a9ba5dc20412c8821e450a76e1807" Name="Diagram1">
+        <EntityTypeShape EntityType="RentooloModel.Adverts" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Applications" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Articles" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Auctions" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Business" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.CashIns" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Currencies" Width="1.5" PointX="6" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.DailyStatistics" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Exceptions" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Favorites" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.FavoritesByCookies" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Items" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.LoginStatistics" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Memberships" Width="1.5" PointX="8.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.News" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Operations" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Payments" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Referrals" Width="1.5" PointX="5.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Roles" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Settings" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Users" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.UsersInRoles" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.UsersOpenAuthAccounts" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.UsersOpenAuthData" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Wallets" Width="1.5" PointX="10.5" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Categories" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Wallets" Width="1.5" PointX="8.25" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Categories" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
         <AssociationConnector Association="RentooloModel.MembershipApplication" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.RoleApplication" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.UserApplication" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.FK_CashIns_Users" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.FK_Wallets_Cryptocurrencies" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.MembershipUser" ManuallyRouted="false" />
-        <AssociationConnector Association="RentooloModel.FK_News_Users" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.FK_Referrals_Users" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.FK_Referrals_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="RentooloModel.UsersInRoleRole" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.FK_Wallets_Users" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName" ManuallyRouted="false" />
-        <AssociationConnector Association="RentooloModel.UsersInRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

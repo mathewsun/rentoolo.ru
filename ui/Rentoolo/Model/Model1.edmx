@@ -333,18 +333,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_News_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="News" Type="Self.News" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="News">
-              <PropertyRef Name="AuthorId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Referrals_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
@@ -450,18 +438,6 @@
             </Principal>
             <Dependent Role="UsersInRoles">
               <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="UsersInRoleUser">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="UsersInRoles" Type="Self.UsersInRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UsersInRoles">
-              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -604,10 +580,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             <End Role="UsersOpenAuthData" EntitySet="UsersOpenAuthData" />
             <End Role="UsersOpenAuthAccounts" EntitySet="UsersOpenAuthAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK_News_Users" Association="Self.FK_News_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="News" EntitySet="News" />
-          </AssociationSet>
           <AssociationSet Name="FK_Referrals_Users" Association="Self.FK_Referrals_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Referrals" EntitySet="Referrals" />
@@ -642,10 +614,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           </AssociationSet>
           <AssociationSet Name="UsersInRoleRole" Association="Self.UsersInRoleRole">
             <End Role="Roles" EntitySet="Roles" />
-            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
-          </AssociationSet>
-          <AssociationSet Name="UsersInRoleUser" Association="Self.UsersInRoleUser">
-            <End Role="Users" EntitySet="Users" />
             <End Role="UsersInRoles" EntitySet="UsersInRoles" />
           </AssociationSet>
         </EntityContainer>
@@ -877,7 +845,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <Property Name="AuthorId" Type="Guid" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Active" Type="Boolean" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_News_Users" FromRole="News" ToRole="Users" />
         </EntityType>
         <EntityType Name="Operations">
           <Key>
@@ -921,7 +888,7 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Applications" Relationship="Self.RoleApplication" FromRole="Roles" ToRole="Applications" />
-          <NavigationProperty Name="Users" Relationship="Self.UsersInRoles" FromRole="Roles" ToRole="Users" />
+          <NavigationProperty Name="UsersInRoles" Relationship="Self.UsersInRoleRole" FromRole="Roles" ToRole="UsersInRoles" />
         </EntityType>
         <EntityType Name="Settings">
           <Key>
@@ -953,11 +920,18 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <NavigationProperty Name="Applications" Relationship="Self.UserApplication" FromRole="Users" ToRole="Applications" />
           <NavigationProperty Name="CashIns" Relationship="Self.FK_CashIns_Users" FromRole="Users" ToRole="CashIns" />
           <NavigationProperty Name="Memberships" Relationship="Self.MembershipUser" FromRole="Users" ToRole="Memberships" />
-          <NavigationProperty Name="News" Relationship="Self.FK_News_Users" FromRole="Users" ToRole="News" />
           <NavigationProperty Name="Referrals" Relationship="Self.FK_Referrals_Users" FromRole="Users" ToRole="Referrals" />
           <NavigationProperty Name="Referrals1" Relationship="Self.FK_Referrals_Users1" FromRole="Users" ToRole="Referrals" />
           <NavigationProperty Name="Wallets" Relationship="Self.FK_Wallets_Users" FromRole="Users" ToRole="Wallets" />
-          <NavigationProperty Name="Roles" Relationship="Self.UsersInRoles" FromRole="Users" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.UsersInRoleRole" FromRole="UsersInRoles" ToRole="Roles" />
         </EntityType>
         <EntityType Name="UsersOpenAuthAccounts">
           <Key>
@@ -1079,18 +1053,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_News_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="News" Type="Self.News" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="News">
-              <PropertyRef Name="AuthorId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Referrals_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
@@ -1112,6 +1074,18 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             </Principal>
             <Dependent Role="Referrals">
               <PropertyRef Name="ReferrerUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsersInRoleRole">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UsersInRoles" Type="Self.UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UsersInRoles">
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1143,10 +1117,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="UsersInRoles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="RentooloEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
@@ -1169,6 +1139,7 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Settings" EntityType="Self.Settings" />
           <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRoles" />
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" />
@@ -1197,10 +1168,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             <End Role="Users" EntitySet="Users" />
             <End Role="Memberships" EntitySet="Memberships" />
           </AssociationSet>
-          <AssociationSet Name="FK_News_Users" Association="Self.FK_News_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="News" EntitySet="News" />
-          </AssociationSet>
           <AssociationSet Name="FK_Referrals_Users" Association="Self.FK_Referrals_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Referrals" EntitySet="Referrals" />
@@ -1209,6 +1176,10 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             <End Role="Users" EntitySet="Users" />
             <End Role="Referrals" EntitySet="Referrals" />
           </AssociationSet>
+          <AssociationSet Name="UsersInRoleRole" Association="Self.UsersInRoleRole">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+          </AssociationSet>
           <AssociationSet Name="FK_Wallets_Users" Association="Self.FK_Wallets_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Wallets" EntitySet="Wallets" />
@@ -1216,10 +1187,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <AssociationSet Name="FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName" Association="Self.FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName">
             <End Role="UsersOpenAuthData" EntitySet="UsersOpenAuthData" />
             <End Role="UsersOpenAuthAccounts" EntitySet="UsersOpenAuthAccounts" />
-          </AssociationSet>
-          <AssociationSet Name="UsersInRoles" Association="Self.UsersInRoles">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <FunctionImport Name="fnGetAllUsers" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetAllUsers_Result)" />
           <FunctionImport Name="fnGetTablesRows" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetTablesRows_Result)" />
@@ -1265,6 +1232,7 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <Property Type="String" Name="Address" Nullable="true" MaxLength="150" />
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="MessageType" Nullable="true" />
+          <Property Type="String" Name="ImgUrls" Nullable="true" />
           <Property Type="String" Name="PositionString" Nullable="true" />
         </ComplexType>
         <ComplexType Name="spGetFavoritesByCookies_Result">
@@ -1280,6 +1248,7 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <Property Type="String" Name="Address" Nullable="true" MaxLength="150" />
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="MessageType" Nullable="true" />
+          <Property Type="String" Name="ImgUrls" Nullable="true" />
           <Property Type="String" Name="PositionString" Nullable="true" />
         </ComplexType>
         <ComplexType Name="spGetUserAdverts_Result">
@@ -1568,6 +1537,14 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UsersInRoles">
+            <EntityTypeMapping TypeName="RentooloModel.UsersInRoles">
+              <MappingFragment StoreEntitySet="UsersInRoles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UsersOpenAuthAccounts">
             <EntityTypeMapping TypeName="RentooloModel.UsersOpenAuthAccounts">
               <MappingFragment StoreEntitySet="UsersOpenAuthAccounts">
@@ -1610,14 +1587,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="UsersInRoles" TypeName="RentooloModel.UsersInRoles" StoreEntitySet="UsersInRoles">
-            <EndProperty Name="Roles">
-              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-            </EndProperty>
-            <EndProperty Name="Users">
-              <ScalarProperty Name="UserId" ColumnName="UserId" />
-            </EndProperty>
-          </AssociationSetMapping>
           <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetAllUsers" FunctionImportName="fnGetAllUsers">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetAllUsers_Result">
@@ -1694,6 +1663,7 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+                <ScalarProperty Name="ImgUrls" ColumnName="ImgUrls" />
                 <ScalarProperty Name="PositionString" ColumnName="PositionString" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -1713,6 +1683,7 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+                <ScalarProperty Name="ImgUrls" ColumnName="ImgUrls" />
                 <ScalarProperty Name="PositionString" ColumnName="PositionString" />
               </ComplexTypeMapping>
             </ResultMapping>

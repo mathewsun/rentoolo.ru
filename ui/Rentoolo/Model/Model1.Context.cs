@@ -49,6 +49,7 @@ namespace Rentoolo.Model
         public DbSet<Roles> Roles { get; set; }
         public DbSet<Settings> Settings { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<UsersInRoles> UsersInRoles { get; set; }
         public DbSet<UsersOpenAuthAccounts> UsersOpenAuthAccounts { get; set; }
         public DbSet<UsersOpenAuthData> UsersOpenAuthData { get; set; }
         public DbSet<Wallets> Wallets { get; set; }

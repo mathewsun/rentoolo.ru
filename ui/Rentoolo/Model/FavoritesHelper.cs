@@ -38,7 +38,8 @@ namespace Rentoolo.Model
                         Address = item.Address,
                         Phone = item.Phone,
                         MessageType = item.MessageType.Value,
-                        Position = item.PositionString
+                        Position = item.PositionString,
+                        ImgUrls = item.ImgUrls
                     });
                 }
 
@@ -163,7 +164,8 @@ namespace Rentoolo.Model
                         Address = item.Address,
                         Phone = item.Phone,
                         MessageType = item.MessageType.Value,
-                        Position = item.PositionString
+                        Position = item.PositionString,
+                        ImgUrls = item.ImgUrls
                     });
                 }
 

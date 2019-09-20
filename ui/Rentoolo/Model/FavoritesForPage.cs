@@ -32,5 +32,7 @@ namespace Rentoolo.Model
         public int MessageType { get; set; }
 
         public string Position { get; set; }
+
+        public string ImgUrls { get; set; }
     }
 }
