@@ -18,7 +18,47 @@
                     <div class="booking-change-wrap">
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>19:00</span>
+                                <span>10:00</span>
+                            </button>
+                        </div>
+                        <div class="booking-change">
+                            <button class="booking-change-time">
+                                <span>11:00</span>
+                            </button>
+                        </div>
+                        <div class="booking-change">
+                            <button class="booking-change-time">
+                                <span>12:00</span>
+                            </button>
+                        </div>
+                        <div class="booking-change">
+                            <button class="booking-change-time">
+                                <span>13:00</span>
+                            </button>
+                        </div>
+                        <div class="booking-change">
+                            <button class="booking-change-time">
+                                <span>14:00</span>
+                            </button>
+                        </div>
+                        <div class="booking-change">
+                            <button class="booking-change-time">
+                                <span>15:00</span>
+                            </button>
+                        </div>
+                        <div class="booking-change">
+                            <button class="booking-change-time">
+                                <span>16:00</span>
+                            </button>
+                        </div>
+                        <div class="booking-change">
+                            <button class="booking-change-time">
+                                <span>17:00</span>
+                            </button>
+                        </div>
+                        <div class="booking-change">
+                            <button class="booking-change-time">
+                                <span>18:00</span>
                             </button>
                         </div>
                         <div class="booking-change">
@@ -28,47 +68,7 @@
                         </div>
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>19:00</span>
-                            </button>
-                        </div>
-                        <div class="booking-change">
-                            <button class="booking-change-time">
-                                <span>19:00</span>
-                            </button>
-                        </div>
-                        <div class="booking-change">
-                            <button class="booking-change-time">
-                                <span>19:00</span>
-                            </button>
-                        </div>
-                        <div class="booking-change">
-                            <button class="booking-change-time">
-                                <span>19:00</span>
-                            </button>
-                        </div>
-                        <div class="booking-change">
-                            <button class="booking-change-time">
-                                <span>19:00</span>
-                            </button>
-                        </div>
-                        <div class="booking-change">
-                            <button class="booking-change-time">
-                                <span>19:00</span>
-                            </button>
-                        </div>
-                        <div class="booking-change">
-                            <button class="booking-change-time">
-                                <span>19:00</span>
-                            </button>
-                        </div>
-                        <div class="booking-change">
-                            <button class="booking-change-time">
-                                <span>19:00</span>
-                            </button>
-                        </div>
-                        <div class="booking-change">
-                            <button class="booking-change-time">
-                                <span>19:00</span>
+                                <span>20:00</span>
                             </button>
                         </div>
                     </div>
@@ -80,57 +80,57 @@
                     <div class="booking-change-wrap">
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>19:00</span>
+                                <span>8:00</span>
                             </button>
                         </div>
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>19:00</span>
+                                <span>9:00</span>
                             </button>
                         </div>
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>19:00</span>
+                                <span>10:00</span>
                             </button>
                         </div>
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>19:00</span>
+                                <span>11:00</span>
                             </button>
                         </div>
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>19:00</span>
+                                <span>12:00</span>
                             </button>
                         </div>
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>19:00</span>
+                                <span>13:00</span>
                             </button>
                         </div>
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>19:00</span>
+                                <span>14:00</span>
                             </button>
                         </div>
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>19:00</span>
+                                <span>15:00</span>
                             </button>
                         </div>
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>19:00</span>
+                                <span>16:00</span>
                             </button>
                         </div>
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>19:00</span>
+                                <span>17:00</span>
                             </button>
                         </div>
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>19:00</span>
+                                <span>18:00</span>
                             </button>
                         </div>
                     </div>

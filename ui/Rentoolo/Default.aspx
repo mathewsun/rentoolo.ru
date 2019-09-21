@@ -206,7 +206,7 @@
                         <a class="nav-link" href="/">Купить/Продать</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Аренда</a>
+                        <a class="nav-link" href="/Rent.aspx">Аренда</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/">Аукционы</a>
