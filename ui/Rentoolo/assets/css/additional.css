@@ -893,3 +893,21 @@ input::-webkit-inner-spin-button {
 /*.placeholder-right:-ms-input-placeholder{
     text-align: right; 
 }*/
+
+/* Advert.aspx */
+.advert {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+
+.advert-description {
+    margin-bottom: 30px;
+}

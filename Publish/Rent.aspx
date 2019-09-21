@@ -80,12 +80,12 @@
                     <div class="booking-change-wrap">
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>8:00</span>
+                                <span>08:00</span>
                             </button>
                         </div>
                         <div class="booking-change">
                             <button class="booking-change-time">
-                                <span>9:00</span>
+                                <span>09:00</span>
                             </button>
                         </div>
                         <div class="booking-change">

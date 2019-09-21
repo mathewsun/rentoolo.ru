@@ -24,10 +24,11 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="additem">
+    <div class="advert">
+        <div class="media-body-inline-grid" data-grid="images">
+            <div class="photoContainer" data='<%=AdvertItem.ImgUrls%>'></div>
+        </div>
         <div class="additem-category">
-            <div class="photoContainer" data='<%=AdvertItem.ImgUrls%>'>
-            </div>
         </div>
         <div class="additem-category">
             <div class="additem-left">
@@ -51,7 +52,7 @@
             <div class="additem-left">
                 <span class="additem-title">Описание объявления</span>
             </div>
-            <div class="additem-right additem-input__text">
+            <div class="additem-right advert-description">
                 <%=AdvertItem.Description %>
             </div>
         </div>
@@ -117,31 +118,6 @@
             </div>
             <div class="additem-right additem-phone">
                 <%=AdvertItem.Phone %>
-            </div>
-        </div>
-        <div class="additem-category additem-check__wrap">
-            <div class="additem-left">
-                <span class="additem-title">Способ связи</span>
-            </div>
-            <div class="additem-right">
-                <div class="additem-checkbox">
-                    <input type="radio" class="checkbox" id="phoneandmess" name="contact" checked runat="server">
-                    <label class="checkbox-label" for="phoneandmess">
-                        По телефону и в сообщениях
-                    </label>
-                </div>
-                <div class="additem-checkbox">
-                    <input type="radio" class="checkbox" id="onlyphone" name="contact" runat="server">
-                    <label class="checkbox-label" for="onlyphone">
-                        Только по телефону
-                    </label>
-                </div>
-                <div class="additem-checkbox">
-                    <input type="radio" class="checkbox" id="message" name="contact" runat="server">
-                    <label class="checkbox-label" for="message">
-                        Только в сообщениях
-                    </label>
-                </div>
             </div>
         </div>
     </div>
