@@ -24,7 +24,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="assets/css/toolkit.css?2" rel="stylesheet">
     <link href="assets/css/application.css" rel="stylesheet">
-    <link href="assets/css/additional.css?8" rel="stylesheet">
+    <link href="assets/css/additional.css?28" rel="stylesheet">
 
     <link href="assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
 
@@ -189,16 +189,21 @@
                 <span class="logo-text" style="margin-left: -3px;">lo</span>
             </a>
 
-            <button
-                class="navbar-toggler navbar-toggler-right d-md-none"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="d-md-none">
+                <a class="nav-link favorites-header-icon" title="Избранное" href="/Favorites.aspx">
+                    <div class="icon icon-favorite"></div>
+                </a>
+                <button
+                    class="navbar-toggler navbar-toggler-right "
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav mr-auto">

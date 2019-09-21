@@ -56,7 +56,7 @@
 
 .icon-favorite {
     height: 20px !important;
-    background: url("/assets/img/favorite_dark_20.png") no-repeat;
+    background: url("/assets/img/favorite_20.png") no-repeat;
     padding-right: 25px;
 }
 
@@ -878,18 +878,18 @@ input::-webkit-inner-spin-button {
     font-size: 14px;
 }
 
-.buy-tokens:hover {
-    color: #fff;
-    background-color: #2881b3;
-    border-color: #2579a9;
-}
+    .buy-tokens:hover {
+        color: #fff;
+        background-color: #2881b3;
+        border-color: #2579a9;
+    }
 
-/* Firefox, Chrome, Opera */ 
+/* Firefox, Chrome, Opera */
 /*.placeholder-right::placeholder{
     text-align: right; 
 }*/
 
-/* Internet Explorer 10-11 */ 
+/* Internet Explorer 10-11 */
 /*.placeholder-right:-ms-input-placeholder{
     text-align: right; 
 }*/
@@ -910,4 +910,10 @@ input::-webkit-inner-spin-button {
 
 .advert-description {
     margin-bottom: 30px;
+}
+
+.favorites-header-icon {
+    position: absolute;
+    right: 0;
+    margin-right: 70px;
 }
