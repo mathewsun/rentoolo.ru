@@ -113,11 +113,11 @@ namespace Rentoolo.Model
             }
         }
 
-        public static void DeleteFavorites(long id)
+        public static void DeleteFavorites(long favoritesId, Guid userId)
         {
             using (var ctx = new RentooloEntities())
             {
-                Favorites obj = ctx.Favorites.Single(x => x.Id == id);
+                Favorites obj = ctx.Favorites.Single(x => x.Id == favoritesId && x.UserId == userId);
 
                 ctx.Favorites.Remove(obj);
 
@@ -191,11 +191,11 @@ namespace Rentoolo.Model
         //    return favoritesList;
         //}
 
-        public static void DeleteFavoritesByCookies(long id)
+        public static void DeleteFavoritesByCookies(long favoritesId, string userCookieId)
         {
             using (var ctx = new RentooloEntities())
             {
-                FavoritesByCookies obj = ctx.FavoritesByCookies.Single(x => x.Id == id);
+                FavoritesByCookies obj = ctx.FavoritesByCookies.Single(x => x.Id == favoritesId && x.UserCookiesId == userCookieId);
 
                 ctx.FavoritesByCookies.Remove(obj);
 
