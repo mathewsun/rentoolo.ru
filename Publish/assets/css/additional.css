@@ -65,6 +65,17 @@
         background: url("/assets/img/favorite_20.png") no-repeat;
     }
 
+.icon-add-advert {
+    background: url("/assets/img/add_icon_1_8_1_40.png") no-repeat;
+    height: 40px !important;
+    width: 40px;
+}
+
+    .icon-add-advert:hover {
+        height: 40px !important;
+        background: url("/assets/img/add_icon_1_8_2_40.png") no-repeat;
+    }
+
 .header-categories-group {
     position: relative;
     display: -webkit-box;
@@ -916,4 +927,11 @@ input::-webkit-inner-spin-button {
     position: absolute;
     right: 0;
     margin-right: 70px;
+}
+
+.add-advert-header-icon {
+    position: absolute;
+    right: 0;
+    margin-right: 110px;
+    margin-top: -10px;
 }
