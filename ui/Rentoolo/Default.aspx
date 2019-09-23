@@ -24,7 +24,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="assets/css/toolkit.css?2" rel="stylesheet">
     <link href="assets/css/application.css" rel="stylesheet">
-    <link href="assets/css/additional.css?28" rel="stylesheet">
+    <link href="assets/css/additional.css?888" rel="stylesheet">
 
     <link href="assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
 
@@ -190,6 +190,9 @@
             </a>
 
             <div class="d-md-none">
+                <a class="nav-link add-advert-header-icon" title="Подать объявление" href="/Account/AddItem.aspx">
+                    <div class="icon icon-add-advert"></div>
+                </a>
                 <a class="nav-link favorites-header-icon" title="Избранное" href="/Favorites.aspx">
                     <div class="icon icon-favorite"></div>
                 </a>

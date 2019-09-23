@@ -197,6 +197,8 @@
     <Content Include="assets\css\toolkit.css" />
     <Content Include="assets\img\addphoto.png" />
     <Content Include="assets\img\addphoto.svg" />
+    <Content Include="assets\img\add_icon_1_8_1_40.png" />
+    <Content Include="assets\img\add_icon_1_8_2_40.png" />
     <Content Include="assets\img\avatar-dhg.png" />
     <Content Include="assets\img\avatar-fat.jpg" />
     <Content Include="assets\img\avatar-mdo.png" />

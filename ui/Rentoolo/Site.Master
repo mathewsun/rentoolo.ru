@@ -58,6 +58,9 @@
             </a>
 
             <div class="d-md-none">
+                <a class="nav-link add-advert-header-icon" title="Подать объявление" href="/Account/AddItem.aspx">
+                    <div class="icon icon-add-advert"></div>
+                </a>
                 <a class="nav-link favorites-header-icon" title="Избранное" href="/Favorites.aspx">
                     <div class="icon icon-favorite"></div>
                 </a>
