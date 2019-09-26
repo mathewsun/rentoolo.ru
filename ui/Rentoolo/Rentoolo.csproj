@@ -749,7 +749,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\FavoritesForPage.cs" />
-    <Compile Include="Model\FavoritesDataHelper.cs" />
+    <Compile Include="Model\FavoritesHelper.cs" />
     <Compile Include="Model\fnGetAllUsers_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
