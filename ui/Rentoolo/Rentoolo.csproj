@@ -274,6 +274,8 @@
     <Content Include="DataBase\tables\Adverts.sql" />
     <Content Include="DataBase\tables\Favorites.sql" />
     <Content Include="DataBase\tables\FavoritesByCookies.sql" />
+    <Content Include="DataBase\tables\TokensBuying.sql" />
+    <Content Include="DataBase\tables\TokensSelling.sql" />
     <Content Include="docs\index.html" />
     <Content Include="Empty.aspx" />
     <Content Include="Fail.aspx" />
