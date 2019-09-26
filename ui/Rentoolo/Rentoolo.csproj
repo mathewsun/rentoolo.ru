@@ -166,6 +166,7 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Account\Settings.aspx" />
     <Content Include="Account\SignUp.aspx" />
+    <Content Include="Account\Tenders.aspx" />
     <Content Include="Admin\Admin.aspx" />
     <Content Include="Admin\AdminMenu.ascx" />
     <Content Include="Admin\ArticleOne.aspx" />
@@ -395,6 +396,13 @@
     </Compile>
     <Compile Include="Account\SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Tenders.aspx.cs">
+      <DependentUpon>Tenders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Tenders.aspx.designer.cs">
+      <DependentUpon>Tenders.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminMaster.Master.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
@@ -706,7 +714,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\FavoritesForPage.cs" />
-    <Compile Include="Model\FavoritesHelper.cs" />
+    <Compile Include="Model\FavoritesDataHelper.cs" />
     <Compile Include="Model\fnGetAllUsers_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
