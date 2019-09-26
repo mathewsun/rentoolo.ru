@@ -56,13 +56,24 @@
 
 .icon-favorite {
     height: 20px !important;
-    background: url("/assets/img/favorite_dark_20.png") no-repeat;
+    background: url("/assets/img/favorite_20.png") no-repeat;
     padding-right: 25px;
 }
 
     .icon-favorite:hover {
         height: 20px !important;
         background: url("/assets/img/favorite_20.png") no-repeat;
+    }
+
+.icon-add-advert {
+    background: url("/assets/img/add_icon_1_8_1_40.png") no-repeat;
+    height: 40px !important;
+    width: 40px;
+}
+
+    .icon-add-advert:hover {
+        height: 40px !important;
+        background: url("/assets/img/add_icon_1_8_2_40.png") no-repeat;
     }
 
 .header-categories-group {
@@ -229,6 +240,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     right: 6px;
+    z-index: 1000;
 }
 
     .item-wrap__like:hover {
@@ -254,14 +266,16 @@
 
 .item-wrap__name {
     font-weight: 800;
-    font-size: 18px;
+    font-size: 16px;
     padding-right: 10px;
 }
 
 .item-wrap__cost {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 16px;
     padding: 10px 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .item-wrap__description {
@@ -310,8 +324,10 @@
     }
 
     .item-wrap img {
+        /*
         width: 40% !important;
         height: 55% !important;
+        */
     }
 
     .item-wrap__description p {
@@ -319,7 +335,7 @@
     }
 
     .item-wrap__name {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .item-wrap {
@@ -862,4 +878,60 @@ input::-webkit-inner-spin-button {
     border-radius: 5px;
     font-size: 16px;
     margin: 3px;
+}
+
+.buy-tokens {
+    color: #fff;
+    background-color: #3097D1;
+    border-radius: 0.25rem;
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+}
+
+    .buy-tokens:hover {
+        color: #fff;
+        background-color: #2881b3;
+        border-color: #2579a9;
+    }
+
+/* Firefox, Chrome, Opera */
+/*.placeholder-right::placeholder{
+    text-align: right; 
+}*/
+
+/* Internet Explorer 10-11 */
+/*.placeholder-right:-ms-input-placeholder{
+    text-align: right; 
+}*/
+
+/* Advert.aspx */
+.advert {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+
+.advert-description {
+    margin-bottom: 30px;
+}
+
+.favorites-header-icon {
+    position: absolute;
+    right: 0;
+    margin-right: 70px;
+}
+
+.add-advert-header-icon {
+    position: absolute;
+    right: 0;
+    margin-right: 110px;
+    margin-top: -10px;
 }

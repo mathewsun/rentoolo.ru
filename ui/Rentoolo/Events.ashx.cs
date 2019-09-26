@@ -60,6 +60,32 @@ namespace Rentoolo
                 }
             }
 
+            ///Remove favorites
+            if (eventName == "rf")
+            {
+                string userName = context.User.Identity.Name;
+
+                if (!string.IsNullOrEmpty(userName))
+                {
+                    Users user = DataHelper.GetUserByName(userName);
+
+                    long advertId = Convert.ToInt64(id);
+
+                    FavoritesHelper.DeleteFavorites(advertId, user.UserId);
+                }
+                else
+                {
+                    var uid = context.Request.Cookies["uid"];
+
+                    if (uid != null)
+                    {
+                        long advertId = Convert.ToInt64(id);
+
+                        FavoritesHelper.DeleteFavoritesByCookies(advertId, uid.Value);
+                    }
+                }
+            }
+
             if (eventName == "saveUserParam")
             {
                 if (id == "Referrer")

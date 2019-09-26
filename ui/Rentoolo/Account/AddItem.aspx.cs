@@ -6,6 +6,7 @@ using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Rentoolo.Model;
+using Newtonsoft.Json;
 
 namespace Rentoolo.Account
 {
@@ -27,7 +28,22 @@ namespace Rentoolo.Account
             string phone = String.Format("{0}", Request.Form["ctl00$MainContent$phonenum"]);
             string messageType = String.Format("{0}", Request.Form["ctl00$MainContent$contact"]);
 
+            var objPhotos = Request.Form["AdvertPhotos"];
+
             Rentoolo.Model.Adverts advert = new Model.Adverts();
+
+            if (objPhotos != null)
+            {
+                String[] listPhotos = objPhotos.Split(',');
+
+                var jsonPhotos = JsonConvert.SerializeObject(listPhotos);
+
+                advert.ImgUrls = jsonPhotos;
+            }
+            else
+            {
+                advert.ImgUrls = "[\"/img/a/noPhoto.png\"]";
+            }
 
             try
             {
@@ -51,16 +67,11 @@ namespace Rentoolo.Account
 
             advert.Phone = phone;
 
+            advert.YouTubeUrl = video;
+
             advert.CreatedUserId = User.UserId;
 
             advert.Created = DateTime.Now;
-
-            List<string> imgUrlList = new List<string>();
-
-            var jsonSerialiser = new JavaScriptSerializer();
-            string jsonImgUrlList = jsonSerialiser.Serialize(imgUrlList);
-
-            advert.ImgUrls = jsonImgUrlList;
 
             AdvertsDataHelper.AddAdvert(advert);
 

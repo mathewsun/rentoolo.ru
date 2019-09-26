@@ -28,8 +28,8 @@ namespace Rentoolo.Model
                 return item;
             }
         }
-		
-		public static long AddAdvert(Adverts item)
+
+        public static long AddAdvert(Adverts item)
         {
             using (var dc = new RentooloEntities())
             {
@@ -41,7 +41,7 @@ namespace Rentoolo.Model
             }
         }
 
-        public static List<Adverts> GetAdvertsForMainPage  ()
+        public static List<Adverts> GetAdvertsForMainPage()
         {
             using (var ctx = new RentooloEntities())
             {
@@ -58,6 +58,16 @@ namespace Rentoolo.Model
                 var list = ctx.spGetUserAdverts(userId).ToList();
 
                 return list;
+            }
+        }
+
+        public static int GetAdvertsActiveCount()
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                int count = ctx.Adverts.Count();
+
+                return count;
             }
         }
 

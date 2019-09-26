@@ -150,6 +150,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Account\AddItem.aspx" />
+    <Content Include="Account\Auctions.aspx" />
     <Content Include="Account\Cabinet.aspx" />
     <Content Include="Account\Exchange.aspx" />
     <Content Include="Account\Login.aspx" />
@@ -162,7 +163,6 @@
     <Content Include="Account\Payment.aspx" />
     <Content Include="Account\Profit.aspx" />
     <Content Include="Account\Referrals.aspx" />
-    <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Account\Settings.aspx" />
     <Content Include="Account\SignUp.aspx" />
@@ -187,14 +187,19 @@
     <Content Include="Admin\Statistics.aspx" />
     <Content Include="Admin\User.aspx" />
     <Content Include="Admin\Users.aspx" />
+    <Content Include="Advert.aspx" />
     <Content Include="Article.aspx" />
     <Content Include="Articles.aspx" />
     <Content Include="assets\css\additional.css" />
     <Content Include="assets\css\application.css" />
     <Content Include="assets\css\docs.css" />
+    <Content Include="assets\css\jQuery.Brazzers-Carousel.css" />
+    <Content Include="assets\css\photoSlider.css" />
     <Content Include="assets\css\toolkit.css" />
     <Content Include="assets\img\addphoto.png" />
     <Content Include="assets\img\addphoto.svg" />
+    <Content Include="assets\img\add_icon_1_8_1_40.png" />
+    <Content Include="assets\img\add_icon_1_8_2_40.png" />
     <Content Include="assets\img\avatar-dhg.png" />
     <Content Include="assets\img\avatar-fat.jpg" />
     <Content Include="assets\img\avatar-mdo.png" />
@@ -234,7 +239,16 @@
     <Content Include="assets\img\yellow-green.png" />
     <Content Include="assets\js\application.js" />
     <Content Include="assets\js\chart.js" />
+    <Content Include="assets\js\dropzone\basic.css" />
+    <Content Include="assets\js\dropzone\dropzone-amd-module.js" />
+    <Content Include="assets\js\dropzone\dropzone.css" />
+    <Content Include="assets\js\dropzone\dropzone.js" />
+    <Content Include="assets\js\dropzone\min\basic.min.css" />
+    <Content Include="assets\js\dropzone\min\dropzone-amd-module.min.js" />
+    <Content Include="assets\js\dropzone\min\dropzone.min.css" />
+    <Content Include="assets\js\dropzone\min\dropzone.min.js" />
     <Content Include="assets\js\jquery-2.2.4.js" />
+    <Content Include="assets\js\jQuery.Brazzers-Carousel.js" />
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\js.cookie.js" />
     <Content Include="assets\js\popper.min.js" />
@@ -244,6 +258,7 @@
     <Content Include="Business.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="DataBase\Init\Init.sql" />
+    <Content Include="DataBase\spGetAuctions.sql" />
     <Content Include="DataBase\spAddFavorites.sql" />
     <Content Include="DataBase\spGetUserAdverts.sql" />
     <Content Include="DataBase\spGetAdverts.sql" />
@@ -254,16 +269,18 @@
     <Content Include="DataBase\spGetLoginStatisticLastHourActive.sql" />
     <Content Include="DataBase\fnGetTablesRows.sql" />
     <Content Include="DataBase\fnGetAllUsers.sql" />
-    <Content Include="DataBase\start\stqrt_sql_script.sql" />
+    <Content Include="DataBase\tables\Auctions.sql" />
     <Content Include="DataBase\tables\Business.sql" />
     <Content Include="DataBase\tables\Adverts.sql" />
     <Content Include="DataBase\tables\Favorites.sql" />
     <Content Include="DataBase\tables\FavoritesByCookies.sql" />
     <Content Include="docs\index.html" />
+    <Content Include="Empty.aspx" />
     <Content Include="Fail.aspx" />
     <Content Include="FAQ.aspx" />
     <Content Include="Favorites.aspx" />
     <Content Include="Help.aspx" />
+    <Content Include="img\a\noPhoto.png" />
     <Content Include="login\index.html" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -282,6 +299,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="profile\index.html" />
+    <Content Include="Rent.aspx" />
     <Content Include="Success.aspx" />
     <Content Include="Template.aspx" />
     <Content Include="Test.aspx" />
@@ -304,6 +322,7 @@
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Tokens.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -316,6 +335,13 @@
     </Compile>
     <Compile Include="Account\AddItem.aspx.designer.cs">
       <DependentUpon>AddItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Auctions.aspx.cs">
+      <DependentUpon>Auctions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Auctions.aspx.designer.cs">
+      <DependentUpon>Auctions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Cabinet.aspx.cs">
       <DependentUpon>Cabinet.aspx</DependentUpon>
@@ -554,6 +580,13 @@
     <Compile Include="Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Advert.aspx.cs">
+      <DependentUpon>Advert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Advert.aspx.designer.cs">
+      <DependentUpon>Advert.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -583,13 +616,6 @@
     </Compile>
     <Compile Include="Account\OpenAuthProviders.ascx.designer.cs">
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\Register.aspx.designer.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\RegisterExternalLogin.aspx.cs">
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
@@ -632,6 +658,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Empty.aspx.cs">
+      <DependentUpon>Empty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Empty.aspx.designer.cs">
+      <DependentUpon>Empty.aspx</DependentUpon>
     </Compile>
     <Compile Include="Events.ashx.cs">
       <DependentUpon>Events.ashx</DependentUpon>
@@ -679,6 +712,10 @@
     <Compile Include="Model\Articles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Auctions.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AuctionsForPage.cs" />
     <Compile Include="Model\BasicPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -694,9 +731,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CategoriesEnum.cs" />
-    <Compile Include="Model\Cookies.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Model\AuctionsHelper.cs" />
     <Compile Include="Model\Currencies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -731,6 +766,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Helper.cs" />
+    <Compile Include="Model\ImgUploadResult.cs" />
     <Compile Include="Model\Items.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -789,6 +825,9 @@
     <Compile Include="Model\Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\UsersInRoles.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\UsersOpenAuthAccounts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -807,6 +846,13 @@
       <DependentUpon>News.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rent.aspx.cs">
+      <DependentUpon>Rent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Rent.aspx.designer.cs">
+      <DependentUpon>Rent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -835,6 +881,14 @@
     <Compile Include="Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Tokens.aspx.cs">
+      <DependentUpon>Tokens.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tokens.aspx.designer.cs">
+      <DependentUpon>Tokens.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

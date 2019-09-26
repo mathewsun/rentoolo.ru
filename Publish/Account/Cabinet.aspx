@@ -21,6 +21,14 @@
                 <input id="refferalLink" onclick="copyToClipboardUrl()" type="text" style="height: 20px; border: none; background: transparent; color: #181A1C; font-size: 17px; width: 400px; -webkit-appearance: none; box-shadow: inset 0px 0px 0px 0px red; cursor: pointer;" title="Скопировать" value="<%=Helper.GetRefferalLink(Request, this.User.PublicId) %>" />
             </td>
         </tr>
+         <tr>
+            <td>
+                Баланс:
+            </td>
+            <td>
+                0р. <a href="#" title="Пополнить">Пополнить</a>
+            </td>
+        </tr>
     </table>
     <div style="padding-top: 15px;">
         <a href="Settings.aspx" class="button-changePassword settingButton">Настройки</a>

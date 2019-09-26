@@ -1,23 +1,47 @@
 ﻿<%@ Page Title="Мои объявления" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyAdverts.aspx.cs" Inherits="Rentoolo.Account.MyAdverts" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <script src="/assets/js/jquery-2.2.4.js"></script>
+    <link href="/assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
+    <script src="/assets/js/jQuery.Brazzers-Carousel.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".photoContainer").each(function (index) {
+                var htmlString = '';
+                var imgUrls = $(this).attr("data");
+                JSON.parse(imgUrls,
+                    function (k, v) {
+                        if (k != "") {
+                            htmlString += "<img src='" + v + "' style='height: 275px; width: 275px;' alt='' />";
+                        }
+                    });
+
+                $(this).html(htmlString);
+            });
+
+            $(".photoContainer").brazzersCarousel();
+
+            if (width3 < 512) {
+                $(".href-photoContainer").attr("href", "#");
+            }
+
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
     <ul class="list-group media-list media-list-stream mb-4">
-
         <li class="media list-group-item p-4">
-
             <div class="media-body">
                 <div class="media-heading">
-                    <small class="float-right text-muted">14 объявлений</small>
+                    <small class="float-right text-muted"><%=ListItems.Count %> adverts</small>
                     <h6>Мои объявления:</h6>
                 </div>
-
                 <div class="media-body-inline-grid">
                     <%foreach (var item in ListItems)
                         { %>
                     <div class="list-item-wrap" style="display: none">
-                        <img class="list-item-wrap-img" src="/assets/img/unsplash_1.jpg">
+                        <a href ="/Advert.aspx?id=<%=item.Id%>" title="<%=item.Name%>"><div class="photoContainer" data='<%=item.ImgUrls%>'></div></a>
                         <div class="item-wrap-content">
                             <div class="item-wrap-name"><a href="#"><%=item.Name%></a></div>
                             <div class="item-wrap-cost"><%=item.Price%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
@@ -29,75 +53,8 @@
                         </div>
                     </div>
                     <%} %>
-
-                    <div class="list-item-wrap" style="display: none">
-                        <img class="list-item-wrap-img" src="/assets/img/instagram_1.jpg">
-                        <div class="item-wrap-content">
-                            <div class="item-wrap-name"><a href="#">Кофемашина Tefal l400</a></div>
-                            <div class="item-wrap-cost">13 000 ₽</div>
-                            <div class="item-wrap__description">
-                                <p>Техника для кухни</p>
-                                <p>р-н Торговая сторона</p>
-                                <div class="item-wrap__data">Вчера 12:15</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="list-item-wrap" style="display: none">
-                        <img class="list-item-wrap-img" src="/assets/img/instagram_11.jpg">
-                        <div class="item-wrap-content">
-                            <div class="item-wrap-name"><a href="#">Наушники проводные</a></div>
-                            <div class="item-wrap-cost">2 000 ₽</div>
-                            <div class="item-wrap__description">
-                                <p></p>
-                                <p>р-н Торговая сторона</p>
-                                <div class="item-wrap__data">Вчера 11:15</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="list-item-wrap" style="display: none">
-                        <img class="list-item-wrap-img" src="/assets/img/unsplash_2.jpg">
-                        <div class="item-wrap-content">
-                            <div class="item-wrap-name"><a href="#">Копьютер в сборке intel core i7, nvidia 2080rtx, 1tb hdd, 128gb ssd, 16gb</a></div>
-                            <div class="item-wrap-cost">41 000 ₽</div>
-                            <div class="item-wrap__description">
-                                <p>Компьютеры</p>
-                                <p>р-н Торговая сторона</p>
-                                <div class="item-wrap__data">Вчера 10:15</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-item-wrap" style="display: none">
-                        <img class="list-item-wrap-img" src="/assets/img/instagram_2.jpg">
-                        <div class="item-wrap-content">
-                            <div class="item-wrap-name"><a href="#">Ноутбук Acer Predator Heliios-300</a></div>
-                            <div class="item-wrap-cost">61 000 ₽</div>
-                            <div class="item-wrap__description">
-                                <p>Компьютеры</p>
-                                <p>р-н Торговая сторона</p>
-                                <div class="item-wrap__data">Вчера 9:15</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="list-item-wrap" style="display: none">
-                        <img class="list-item-wrap-img" src="/assets/img/instagram_4.jpg">
-                        <div class="item-wrap-content">
-                            <div class="item-wrap-name"><a href="#">Колонка bluetooth v4.3 18w</a></div>
-                            <div class="item-wrap-cost">4 000 ₽</div>
-                            <div class="item-wrap__description">
-                                <p></p>
-                                <p>р-н Торговая сторона</p>
-                                <div class="item-wrap__data">Вчера 14:15</div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </li>
-
-
     </ul>
-
 </asp:Content>

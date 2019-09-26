@@ -26,7 +26,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="/assets/css/toolkit.css" rel="stylesheet">
     <link href="/assets/css/application.css" rel="stylesheet">
-    <link href="/assets/css/additional.css?1" rel="stylesheet">
+    <link href="/assets/css/additional.css?8" rel="stylesheet">
 
     <style>
         /* note: this is a hack for ios iframe for bootstrap themes shopify page */
@@ -57,16 +57,24 @@
                 <span class="logo-text" style="margin-left: -3px;">lo</span>
             </a>
 
-            <button
-                class="navbar-toggler navbar-toggler-right d-md-none"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="d-md-none">
+                <a class="nav-link add-advert-header-icon" title="Подать объявление" href="/Account/AddItem.aspx">
+                    <div class="icon icon-add-advert"></div>
+                </a>
+                <a class="nav-link favorites-header-icon" title="Избранное" href="/Favorites.aspx">
+                    <div class="icon icon-favorite"></div>
+                </a>
+                <button
+                    class="navbar-toggler navbar-toggler-right "
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav mr-auto">
@@ -74,7 +82,7 @@
                         <a class="nav-link" href="/">Купить/Продать</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Аренда</a>
+                        <a class="nav-link" href="/Rent.aspx">Аренда</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/">Аукционы</a>
@@ -149,7 +157,7 @@
                         </ul>
 
                             <ul class="nav navbar-nav d-none" id="js-popoverContent">
-                                <li class="nav-item"><a class="nav-link blue-color" href="#" data-action="growl">Growl</a></li>
+                                <li class="nav-item"><a class="nav-link blue-color" href="/Account/MyAdverts.aspx">My Adverts</a></li>
                                 <li class="nav-item">
                                     <asp:LoginStatus CssClass="nav-link blue-color" ID="LoginStatus2" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
                                 </li>

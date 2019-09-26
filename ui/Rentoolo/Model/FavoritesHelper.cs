@@ -38,7 +38,8 @@ namespace Rentoolo.Model
                         Address = item.Address,
                         Phone = item.Phone,
                         MessageType = item.MessageType.Value,
-                        Position = item.PositionString
+                        Position = item.PositionString,
+                        ImgUrls = item.ImgUrls
                     });
                 }
 
@@ -46,11 +47,77 @@ namespace Rentoolo.Model
             }
         }
 
-        public static void DeleteFavorites(long id)
+        public static List<FavoritesForPage> GetFavoritesByUserEF(Guid userId)
         {
             using (var ctx = new RentooloEntities())
             {
-                Favorites obj = ctx.Favorites.Single(x => x.Id == id);
+                List<Favorites> result = ctx.Favorites.Where(x => x.UserId == userId).ToList();
+
+                List<FavoritesForPage> list = new List<FavoritesForPage>();
+
+                foreach (var item in result)
+                {
+                    list.Add(new FavoritesForPage
+                    {
+                        Id = item.Id,
+                        AdvertId = item.AdvertId,
+                        //CreatedFavorites = item.CreatedFavorites,
+                        //Category = item.Category,
+                        //Name = item.Name,
+                        //Description = item.Description,
+                        //CreatedAdverts = item.CreatedAdverts.Value,
+                        //CreatedUserId = item.CreatedUserId.Value,
+                        //Price = item.Price.Value,
+                        //Address = item.Address,
+                        //Phone = item.Phone,
+                        //MessageType = item.MessageType.Value,
+                        //Position = item.PositionString
+                    });
+                }
+
+                return list;
+            }
+        }
+
+        public static List<FavoritesForPage> GetFavoritesByUserSqlQuery(Guid userId)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                string query = string.Format("SELECT * FROM Favorites WHERE UserId = '{0}'", userId);
+
+                var result = ctx.Database.SqlQuery<FavoritesForPage>(query).ToList();
+
+                List<FavoritesForPage> list = new List<FavoritesForPage>();
+
+                foreach (var item in result)
+                {
+                    list.Add(new FavoritesForPage
+                    {
+                        Id = item.Id,
+                        AdvertId = item.AdvertId,
+                        //CreatedFavorites = item.CreatedFavorites,
+                        //Category = item.Category,
+                        //Name = item.Name,
+                        //Description = item.Description,
+                        //CreatedAdverts = item.CreatedAdverts.Value,
+                        //CreatedUserId = item.CreatedUserId.Value,
+                        //Price = item.Price.Value,
+                        //Address = item.Address,
+                        //Phone = item.Phone,
+                        //MessageType = item.MessageType.Value,
+                        //Position = item.PositionString
+                    });
+                }
+
+                return list;
+            }
+        }
+
+        public static void DeleteFavorites(long favoritesId, Guid userId)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                Favorites obj = ctx.Favorites.Single(x => x.Id == favoritesId && x.UserId == userId);
 
                 ctx.Favorites.Remove(obj);
 
@@ -97,7 +164,8 @@ namespace Rentoolo.Model
                         Address = item.Address,
                         Phone = item.Phone,
                         MessageType = item.MessageType.Value,
-                        Position = item.PositionString
+                        Position = item.PositionString,
+                        ImgUrls = item.ImgUrls
                     });
                 }
 
@@ -123,11 +191,11 @@ namespace Rentoolo.Model
         //    return favoritesList;
         //}
 
-        public static void DeleteFavoritesByCookies(long id)
+        public static void DeleteFavoritesByCookies(long favoritesId, string userCookieId)
         {
             using (var ctx = new RentooloEntities())
             {
-                FavoritesByCookies obj = ctx.FavoritesByCookies.Single(x => x.Id == id);
+                FavoritesByCookies obj = ctx.FavoritesByCookies.Single(x => x.Id == favoritesId && x.UserCookiesId == userCookieId);
 
                 ctx.FavoritesByCookies.Remove(obj);
 

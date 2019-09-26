@@ -7,6 +7,28 @@
             width: 100%;
         }
     </style>
+    <script src="/assets/js/dropzone/dropzone.js"></script>
+    <link href="/assets/js/dropzone/dropzone.css" rel="stylesheet">
+    <link href="/assets/js/dropzone/basic.css" rel="stylesheet">
+
+    <script>
+        $(document).ready(function () {
+            $("div#mdropzone").dropzone({
+                url: "/api/upi",
+                addRemoveLinks: true,
+                resizeWidth: 800,
+                resizeHeight: 600,
+                resizeMethod: 'contain',
+                resizeQuality: 1.0,
+                dictDefaultMessage: "Add photos",
+                success: function (file, response) {
+                    var filaName = response.Message;
+                    file.previewElement.classList.add("dz-success");
+                    $("#my-dropzone").append($('<input type="hidden" name="AdvertPhotos" ' + 'value="' + filaName + '">'));
+                }
+            });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="additem">
@@ -62,9 +84,8 @@
                 <span class="additem-title">Фотографии</span>
             </div>
             <div class="additem-right">
-                <label for="file" class="label__file">
-                    <img src="/assets/img/addphoto.png" width="100px" alt="Добавить фотографию"></label>
-                <input class="additem-input additem__input-photo" name="file" id="file" type="file" accept="image/gif,image/png,image/jpeg,image/pjpeg" runat="server">
+                <div id="mdropzone" class="dropzone"></div>
+                <div id="my-dropzone" style="display: none;"></div>
             </div>
         </div>
         <div class="additem-category">

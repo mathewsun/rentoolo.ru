@@ -22,9 +22,11 @@
     <meta property="image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <link href="assets/css/toolkit.css" rel="stylesheet">
+    <link href="assets/css/toolkit.css?2" rel="stylesheet">
     <link href="assets/css/application.css" rel="stylesheet">
-    <link href="assets/css/additional.css?2" rel="stylesheet">
+    <link href="assets/css/additional.css?888" rel="stylesheet">
+
+    <link href="assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
 
     <style>
         /* note: this is a hack for ios iframe for bootstrap themes shopify page */
@@ -39,9 +41,34 @@
     <script src="/assets/js/jquery-2.2.4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src="/assets/js/utils.js?1"></script>
+    <script src="/assets/js/jQuery.Brazzers-Carousel.js"></script>
+
 
     <script>
         $(document).ready(function () {
+
+            // Size of browser viewport.
+            var height1 = $(window).height();
+            var width1 = $(window).width();
+
+            // Size of HTML document (same as pageHeight/pageWidth in screenshot).
+            var height2 = $(document).height();
+            var width2 = $(document).width();
+
+            // Screen size
+            var height3 = window.screen.height;
+            var width3 = window.screen.width;
+
+            $('#window_height').text(height1);
+            $('#window_width').text(width1);
+            $('#document_height').text(height2);
+            $('#document_width').text(width2);
+            $('#window_screen_height').text(height3);
+            $('#window_screen_width').text(width3);
+
+            //alert("height1 = " + height1 + "; width1 = " + width1 + "; height2 = " + height2 + "; width2 = " + width2 + "; height3 = " + height3 + "; width3 = " + width3);
+
+
             $("#allCategorieslist").click(function () {
                 if ($(".more-popup").is(":visible")) {
                     $(".more-popup").fadeOut(300);
@@ -50,11 +77,63 @@
                     $(".more-popup").fadeIn(300);
                 };
             });
+
             $(".item-wrap__like").click(function () {
                 $(this).toggleClass('item-wrap__like-active');
             });
 
             getLocation();
+
+            $(".photoContainer").each(function (index) {
+                var htmlString = '';
+                var imgUrls = $(this).attr("data");
+                JSON.parse(imgUrls,
+                    function (k, v) {
+                        if (k != "") {
+                            if (width1 < 512 || width2 < 512 || width3 < 512) {
+                                htmlString += "<img src='" + v + "' style='height: 150px; width: 150px;' alt='' />";
+                            }
+                            else {
+                                htmlString += "<img src='" + v + "' style='height: 275px; width: 275px;' alt='' />";
+                            }
+                        }
+                    });
+
+                $(this).html(htmlString);
+            });
+
+            $(".photoContainer").brazzersCarousel();
+
+            if (width1 < 512 || width2 < 512 || width3 < 512) {
+                $(".href-photoContainer").attr("href", "#");
+            }
+
+            $(".item-wrap__description-description").each(function (index) {
+                var innerHtml = $(this).html();
+                var length = 70;
+                var trimmedHtml = innerHtml.length > length ?
+                    innerHtml.substring(0, length - 3) + "..." :
+                    innerHtml;
+                $(this).html(trimmedHtml);
+            });
+        });
+
+        $(window).resize(function () {
+            // Size of browser viewport.
+            var height1 = $(window).height();
+            var width1 = $(window).width();
+
+            // Size of HTML document (same as pageHeight/pageWidth in screenshot).
+            var height2 = $(document).height();
+            var width2 = $(document).width();
+
+            // Screen size
+            var height3 = window.screen.height;
+            var width3 = window.screen.width;
+
+            if (width1 < 512 || width2 < 512 || width3 < 512) {
+                $(".href-photoContainer").attr("href", "#");
+            }
         });
     </script>
 
@@ -110,16 +189,24 @@
                 <span class="logo-text" style="margin-left: -3px;">lo</span>
             </a>
 
-            <button
-                class="navbar-toggler navbar-toggler-right d-md-none"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="d-md-none">
+                <a class="nav-link add-advert-header-icon" title="Подать объявление" href="/Account/AddItem.aspx">
+                    <div class="icon icon-add-advert"></div>
+                </a>
+                <a class="nav-link favorites-header-icon" title="Избранное" href="/Favorites.aspx">
+                    <div class="icon icon-favorite"></div>
+                </a>
+                <button
+                    class="navbar-toggler navbar-toggler-right "
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav mr-auto">
@@ -127,7 +214,7 @@
                         <a class="nav-link" href="/">Купить/Продать</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Аренда</a>
+                        <a class="nav-link" href="/Rent.aspx">Аренда</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/">Аукционы</a>
@@ -202,7 +289,7 @@
                             </ul>
 
                             <ul class="nav navbar-nav d-none" id="js-popoverContent">
-                                <li class="nav-item"><a class="nav-link blue-color" href="#" data-action="growl">Growl</a></li>
+                                <li class="nav-item"><a class="nav-link blue-color" href="/Account/MyAdverts.aspx">My Adverts</a></li>
                                 <li class="nav-item">
                                     <asp:LoginStatus CssClass="nav-link blue-color" ID="LoginStatus2" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
                                 </li>
@@ -278,7 +365,6 @@
             </div>
         </div>
 
-
         <div class="container pt-4 pb-5">
             <div class="row">
                 <div class="col-lg-9">
@@ -317,89 +403,89 @@
                                         <div class="popup__wrap">
                                             <div class="popup__column">
                                                 <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Транспорт</a></li>
-                                                    <li><a href="">Автомобили</a></li>
-                                                    <li><a href="">Мотоциклы и мототехника</a></li>
-                                                    <li><a href="">Грузовики и спецтехника</a></li>
-                                                    <li><a href="">Водный транспорт</a></li>
-                                                    <li><a href="">Запчасти и аксессуары</a></li>
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Транспорт</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Автомобили</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Мотоциклы и мототехника</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Грузовики и спецтехника</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Водный транспорт</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Запчасти и аксессуары</a></li>
                                                 </ul>
                                                 <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Для дома и дачи</a></li>
-                                                    <li><a href="">Бытовая техника</a></li>
-                                                    <li><a href="">Мебель и интерьер</a></li>
-                                                    <li><a href="">Посуда и товары для кухни</a></li>
-                                                    <li><a href="">Продукты питания</a></li>
-                                                    <li><a href="">Ремонт и строительство</a></li>
-                                                    <li><a href="">Растения</a></li>
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Для дома и дачи</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Бытовая техника</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Мебель и интерьер</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Посуда и товары для кухни</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Продукты питания</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Ремонт и строительство</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Растения</a></li>
                                                 </ul>
                                                 <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Для бизнеса</a></li>
-                                                    <li><a href="">Готовый бизнес</a></li>
-                                                    <li><a href="">Оборудование для бизнеса</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="popup__column">
-                                                <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Недвижимость</a></li>
-                                                    <li><a href="">Квартиры</a></li>
-                                                    <li><a href="">Комнаты</a></li>
-                                                    <li><a href="">Дома, дачи, коттеджи</a></li>
-                                                    <li><a href="">Земельные участки</a></li>
-                                                    <li><a href="">Гаражи и машиноместа</a></li>
-                                                    <li><a href="">Коммерческая недвижимость</a></li>
-                                                    <li><a href="">Недвижимость за рубежом</a></li>
-                                                </ul>
-                                                <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Бытовая электроника</a></li>
-                                                    <li><a href="">Аудио и видео</a></li>
-                                                    <li><a href="">Игры, приставки и программы</a></li>
-                                                    <li><a href="">Настольные компьютеры</a></li>
-                                                    <li><a href="">Ноутбуки</a></li>
-                                                    <li><a href="">Оргтехника и расходники</a></li>
-                                                    <li><a href="">Планшеты и электронные книги</a></li>
-                                                    <li><a href="">Телефоны</a></li>
-                                                    <li><a href="">Товары для компьютера</a></li>
-                                                    <li><a href="">Фототехника</a></li>
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Для бизнеса</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Готовый бизнес</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Оборудование для бизнеса</a></li>
                                                 </ul>
                                             </div>
                                             <div class="popup__column">
                                                 <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Работа</a></li>
-                                                    <li><a href="">Вакансии</a></li>
-                                                    <li><a href="">Резюме</a></li>
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Недвижимость</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Квартиры</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Комнаты</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Дома, дачи, коттеджи</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Земельные участки</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Гаражи и машиноместа</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Коммерческая недвижимость</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Недвижимость за рубежом</a></li>
                                                 </ul>
                                                 <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Услуги</a></li>
-                                                </ul>
-                                                <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Хобби и отдых</a></li>
-                                                    <li><a href="">Билеты и путешествия</a></li>
-                                                    <li><a href="">Велосипеды</a></li>
-                                                    <li><a href="">Книги и журналы</a></li>
-                                                    <li><a href="">Коллекционирование</a></li>
-                                                    <li><a href="">Музыкальные инструменты</a></li>
-                                                    <li><a href="">Охота и рыбалка</a></li>
-                                                    <li><a href="">Спорт и отдых</a></li>
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Бытовая электроника</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Аудио и видео</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Игры, приставки и программы</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Настольные компьютеры</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Ноутбуки</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Оргтехника и расходники</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Планшеты и электронные книги</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Телефоны</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Товары для компьютера</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Фототехника</a></li>
                                                 </ul>
                                             </div>
                                             <div class="popup__column">
                                                 <ul class="popup__list">
-                                                    <li class="popup__first-list"><a href="">Личные вещи</a></li>
-                                                    <li><a href="">Одежда, обувь, аксессуары</a></li>
-                                                    <li><a href="">Детская одежда и обувь</a></li>
-                                                    <li><a href="">Товары для детей и игрушки</a></li>
-                                                    <li><a href="">Часы и украшения</a></li>
-                                                    <li><a href="">Красота и здоровье</a></li>
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Работа</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Вакансии</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Резюме</a></li>
+                                                </ul>
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Услуги</a></li>
+                                                </ul>
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Хобби и отдых</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Билеты и путешествия</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Велосипеды</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Книги и журналы</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Коллекционирование</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Музыкальные инструменты</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Охота и рыбалка</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Спорт и отдых</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="popup__column">
+                                                <ul class="popup__list">
+                                                    <li class="popup__first-list"><a href="/Account/AddItem.aspx">Личные вещи</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Одежда, обувь, аксессуары</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Детская одежда и обувь</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Товары для детей и игрушки</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Часы и украшения</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Красота и здоровье</a></li>
                                                 </ul>
                                                 <ul class="popup__list">
                                                     <li class="popup__first-list"><a href="">Животные</a></li>
-                                                    <li><a href="">Собаки</a></li>
-                                                    <li><a href="">Кошки</a></li>
-                                                    <li><a href="">Птицы</a></li>
-                                                    <li><a href="">Аквариум</a></li>
-                                                    <li><a href="">Другие животные</a></li>
-                                                    <li><a href="">Товары для животных</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Собаки</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Кошки</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Птицы</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Аквариум</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Другие животные</a></li>
+                                                    <li><a href="/Account/AddItem.aspx">Товары для животных</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -423,20 +509,22 @@
 
                             <div class="media-body">
                                 <div class="media-heading">
-                                    <small class="float-right text-muted">15 025 объявлений</small>
+                                    <small class="float-right text-muted"><%=AdvertsCount %> объявлений</small>
                                     <h6>Бытовая электроника:</h6>
                                 </div>
 
                                 <div class="media-body-inline-grid" data-grid="images">
-
                                     <%foreach (var item in ListAdverts)
                                         { %>
                                     <div class="item-wrap" style="display: none" aid="<%=item.Id%>">
-                                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/unsplash_1.jpg">
+                                        <a href="Advert.aspx?id=<%=item.Id%>" class="href-photoContainer" title="<%=item.Name%>">
+                                            <div class="photoContainer" data='<%=item.ImgUrls%>'></div>
+                                        </a>
                                         <div class="item-wrap__wrap ">
-                                            <div class="item-wrap__name"><a href="#"><%=item.Name%></a></div>
+                                            <div class="item-wrap__name"><a href="Advert.aspx?id=<%=item.Id%>"><%=item.Name%></a></div>
                                             <div class="item-wrap__cost"><%=item.Price%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
                                             <div class="item-wrap__description">
+                                                <p><span class="item-wrap__description-description" maxlength="20"><%=item.Description%></span></p>
                                                 <p><%=item.Category%></p>
                                                 <p><%=item.Address%></p>
                                                 <div class="item-wrap__data"><%=item.Created.ToString("dd.MM.yyyy HH:mm")%></div>
@@ -445,165 +533,7 @@
                                         <div class="item-wrap__like" title="Добавить в Избранное"></div>
                                     </div>
                                     <%} %>
-
-                                    <div class="item-wrap" style="display: none" aid="222">
-                                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/unsplash_1.jpg">
-                                        <div class="item-wrap__wrap ">
-                                            <div class="item-wrap__name"><a href="#">Холодильник Indesit 90l / 40l </a></div>
-                                            <div class="item-wrap__cost">11 000 ₽</div>
-                                            <div class="item-wrap__description">
-                                                <p>Бытовая техника</p>
-                                                <p>р-н Торговая сторона</p>
-                                                <div class="item-wrap__data">Вчера 14:15</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
-                                    </div>
-
-                                    <div class="item-wrap" style="display: none">
-                                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_1.jpg">
-                                        <div class="item-wrap__wrap">
-                                            <div class="item-wrap__name"><a href="#">Кофемашина Tefal l400</a></div>
-                                            <div class="item-wrap__cost">13 000 ₽</div>
-                                            <div class="item-wrap__description">
-                                                <p>Техника для кухни</p>
-                                                <p>р-н Торговая сторона</p>
-                                                <div class="item-wrap__data">Вчера 12:15</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
-                                    </div>
-
-                                    <div class="item-wrap" style="display: none">
-                                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_11.jpg">
-                                        <div class="item-wrap__wrap">
-                                            <div class="item-wrap__name"><a href="#">Наушники проводные</a></div>
-                                            <div class="item-wrap__cost">2 000 ₽</div>
-                                            <div class="item-wrap__description">
-                                                <p></p>
-                                                <p>р-н Торговая сторона</p>
-                                                <div class="item-wrap__data">Вчера 11:15</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
-                                    </div>
-
-                                    <div class="item-wrap" style="display: none">
-                                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/unsplash_2.jpg">
-                                        <div class="item-wrap__wrap">
-                                            <div class="item-wrap__name"><a href="#">Копьютер в сборке intel core i7, nvidia 2080rtx, 1tb hdd, 128gb ssd, 16gb</a></div>
-                                            <div class="item-wrap__cost">41 000 ₽</div>
-                                            <div class="item-wrap__description">
-                                                <p>Компьютеры</p>
-                                                <p>р-н Торговая сторона</p>
-                                                <div class="item-wrap__data">Вчера 10:15</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
-                                    </div>
-                                    <div class="item-wrap" style="display: none">
-                                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_2.jpg">
-                                        <div class="item-wrap__wrap">
-                                            <div class="item-wrap__name"><a href="#">Ноутбук Acer Predator Heliios-300</a></div>
-                                            <div class="item-wrap__cost">61 000 ₽</div>
-                                            <div class="item-wrap__description">
-                                                <p>Компьютеры</p>
-                                                <p>р-н Торговая сторона</p>
-                                                <div class="item-wrap__data">Вчера 9:15</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
-                                    </div>
-
-                                    <div class="item-wrap" style="display: none">
-                                        <img data-action="zoom" data-width="500" data-height="500" src="assets/img/instagram_4.jpg">
-                                        <div class="item-wrap__wrap">
-                                            <div class="item-wrap__name"><a href="#">Колонка bluetooth v4.3 18w</a></div>
-                                            <div class="item-wrap__cost">4 000 ₽</div>
-                                            <div class="item-wrap__description">
-                                                <p></p>
-                                                <p>р-н Торговая сторона</p>
-                                                <div class="item-wrap__data">Вчера 14:15</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-wrap__like" title="Добавить в Избранное"></div>
-                                    </div>
                                 </div>
-
-                                <ul class="media-list mb-2">
-                                    <li class="media mb-3">
-                                        <img
-                                            class="media-object d-flex align-self-start mr-3"
-                                            src="assets/img/avatar-fat.jpg">
-                                        <div class="media-body">
-                                            <strong>Майк Браун: </strong>
-                                            Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
-               
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <img
-                                            class="media-object d-flex align-self-start mr-3"
-                                            src="assets/img/avatar-mdo.png">
-                                        <div class="media-body">
-                                            <strong>Виктория Золотова: </strong>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-               
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="media list-group-item p-4">
-                            <img
-                                class="media-object d-flex align-self-start mr-3"
-                                src="assets/img/avatar-fat.jpg">
-                            <div class="media-body">
-                                <div class="media-body-text">
-                                    <div class="media-heading">
-                                        <small class="float-right text-muted">12 min</small>
-                                        <h6>Майк Браун</h6>
-                                    </div>
-                                    <p>
-                                        Donec id elit non mi porta gravida at eget metus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-             
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="media list-group-item p-4">
-                            <img
-                                class="media-object d-flex align-self-start mr-3"
-                                src="assets/img/avatar-mdo.png">
-                            <div class="media-body">
-                                <div class="media-heading">
-                                    <small class="float-right text-muted">78 объявлений</small>
-                                    <h6>Недвижимость:</h6>
-                                </div>
-
-                                <p>
-                                    Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-           
-                                </p>
-
-                                <div class="media-body-inline-grid" data-grid="images">
-                                    <img style="display: none" data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_3.jpg">
-                                </div>
-
-                                <ul class="media-list">
-                                    <li class="media">
-                                        <img
-                                            class="media-object d-flex align-self-start mr-3"
-                                            src="assets/img/avatar-dhg.png">
-                                        <div class="media-body">
-                                            <strong>Dave Gamache: </strong>
-                                            Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
-               
-                                        </div>
-                                    </li>
-                                </ul>
                             </div>
                         </li>
                     </ul>
@@ -636,7 +566,28 @@
                             <p><strong>Курьер. Курьерские услуги. Санкт-Петербург.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                         </div>
                     </div>
+                    <div class="card card-link-list">
+                        <div class="card-body">
+                            Size of browser viewport:
+                            <br />
+                            $(window).height() = <span id="window_height"></span>
+                            <br />
+                            $(window).width() = <span id="window_width"></span>
+                            <br />
 
+                            Size of HTML document (same as pageHeight/pageWidth in screenshot):
+                            <br />
+                            $(document).height() = <span id="document_height"></span>
+                            <br />
+                            $(document).width() = <span id="document_width"></span>
+                            <br />
+                            Screen size:
+                            <br />
+                            window.screen.height = <span id="window_screen_height"></span>
+                            <br />
+                            window.screen.width = <span id="window_screen_width"></span>
+                        </div>
+                    </div>
                     <div class="card card-link-list">
                         <div class="card-body">
                             © Rentoolo
@@ -651,10 +602,9 @@
             </div>
         </div>
 
-
         <script src="assets/js/popper.min.js"></script>
         <script src="assets/js/chart.js"></script>
-        <script src="assets/js/toolkit.js"></script>
+        <script src="assets/js/toolkit.js?2"></script>
         <script src="assets/js/application.js"></script>
         <script>
             // execute/clear BS loaders for docs

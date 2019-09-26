@@ -49,15 +49,6 @@ namespace Rentoolo.Account {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl price_value;
         
         /// <summary>
-        /// file элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile file;
-        
-        /// <summary>
         /// input_video элемент управления.
         /// </summary>
         /// <remarks>
