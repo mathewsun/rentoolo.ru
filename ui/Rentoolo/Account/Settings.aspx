@@ -14,8 +14,7 @@
 
             $("#TextBox" + value).removeClass("cabinetTextBoxVisible");
 
-            if ($('#TextBox' + value).val().length == 0 && value == 'Referrer')
-            {
+            if ($('#TextBox' + value).val().length == 0 && value == 'Referrer') {
                 swal('Укажите id реферера', '', 'warning');
                 return false;
             }
@@ -38,25 +37,33 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h1><%: Title %></h1>
-    <table class="marginTable settingsTable">
-        <tr>
-            <td>Email:</td>
-            <td>
-                <asp:TextBox ID="TextBoxEmail" ClientIDMode="Static" ReadOnly="true" CssClass="settingsTextBoxVisible" runat="server"></asp:TextBox></td>
-            <td>
-                <img alt="Редактировать" src="/Images/icon_edit.png" id="editEmail" title="Редактировать" class="pointer" onclick="EditValue('Email')" />
-                <img alt="Сохранить" src="/Images/slready16.png" id="editEmailOk" style="display: none;" title="Сохранить" class="pointer" onclick="SaveValue('Email')" />
-            </td>
-        </tr>
-        <tr>
-            <td>Телефон:</td>
-            <td>
-                <asp:TextBox ID="TextBoxCommunication" ClientIDMode="Static" ReadOnly="true" CssClass="settingsTextBoxVisible" runat="server"></asp:TextBox></td>
-            <td>
-                <img alt="Редактировать" src="/Images/icon_edit.png" id="editCommunication" title="Редактировать" class="pointer" onclick="EditValue('Communication')" />
-                <img alt="Сохранить" src="/Images/slready16.png" id="editCommunicationOk" style="display: none;" title="Сохранить" class="pointer" onclick="SaveValue('Communication')" />
-            </td>
-        </tr>
-    </table>
+    <div class="additem">
+        <div class="additem-logo">
+            <h4><%: Title %></h4>
+        </div>
+        <div class="additem-category">
+            <div class="additem-right additem__way" cid="1001">
+                <table class="marginTable settingsTable">
+                    <tr>
+                        <td>Email:</td>
+                        <td>
+                            <asp:TextBox ID="TextBoxEmail" ClientIDMode="Static" ReadOnly="true" CssClass="settingsTextBoxVisible" runat="server"></asp:TextBox></td>
+                        <td>
+                            <img alt="Редактировать" src="/assets/img/icon_edit.png" id="editEmail" title="Редактировать" class="pointer" onclick="EditValue('Email')" />
+                            <img alt="Сохранить" src="/assets/img/slready16.png" id="editEmailOk" style="display: none;" title="Сохранить" class="pointer" onclick="SaveValue('Email')" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Телефон:</td>
+                        <td>
+                            <asp:TextBox ID="TextBoxCommunication" ClientIDMode="Static" ReadOnly="true" CssClass="settingsTextBoxVisible" runat="server"></asp:TextBox></td>
+                        <td>
+                            <img alt="Редактировать" src="/assets/img/icon_edit.png" id="editCommunication" title="Редактировать" class="pointer" onclick="EditValue('Communication')" />
+                            <img alt="Сохранить" src="/assets/img/slready16.png" id="editCommunicationOk" style="display: none;" title="Сохранить" class="pointer" onclick="SaveValue('Communication')" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </asp:Content>

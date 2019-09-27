@@ -212,6 +212,7 @@
     <Content Include="assets\img\favorite_dark_20.png" />
     <Content Include="assets\img\favorite_light_20.png" />
     <Content Include="assets\img\iceland.jpg" />
+    <Content Include="assets\img\icon_edit.png" />
     <Content Include="assets\img\instagram_1.jpg" />
     <Content Include="assets\img\instagram_10.jpg" />
     <Content Include="assets\img\instagram_11.jpg" />
@@ -232,6 +233,7 @@
     <Content Include="assets\img\instagram_9.jpg" />
     <Content Include="assets\img\kurier-piter.jpg" />
     <Content Include="assets\img\settings-icon-50.png" />
+    <Content Include="assets\img\slready16.png" />
     <Content Include="assets\img\unsplash_1.jpg" />
     <Content Include="assets\img\unsplash_2.jpg" />
     <Content Include="assets\img\varianty-planirovki-3-h-komnatnoj-kvartiry-v-hrushchevke-7.jpg" />
