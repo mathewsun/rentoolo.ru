@@ -167,7 +167,7 @@
     <Content Include="Account\Settings.aspx" />
     <Content Include="Account\SignUp.aspx" />
     <Content Include="Account\Tenders.aspx" />
-    <Content Include="Account\TokensBuyingaspx.aspx" />
+    <Content Include="Account\TokensBuying.aspx" />
     <Content Include="Account\TokensSelling.aspx" />
     <Content Include="Admin\Admin.aspx" />
     <Content Include="Admin\AdminMenu.ascx" />
@@ -436,12 +436,12 @@
     <Compile Include="Account\Tenders.aspx.designer.cs">
       <DependentUpon>Tenders.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\TokensBuyingaspx.aspx.cs">
-      <DependentUpon>TokensBuyingaspx.aspx</DependentUpon>
+    <Compile Include="Account\TokensBuying.aspx.cs">
+      <DependentUpon>TokensBuying.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\TokensBuyingaspx.aspx.designer.cs">
-      <DependentUpon>TokensBuyingaspx.aspx</DependentUpon>
+    <Compile Include="Account\TokensBuying.aspx.designer.cs">
+      <DependentUpon>TokensBuying.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\TokensSelling.aspx.cs">
       <DependentUpon>TokensSelling.aspx</DependentUpon>
