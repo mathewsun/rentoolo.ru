@@ -20,7 +20,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td colspan="3">Реф. ссылка:</td>
+                        <td colspan="3">Реферальная ссылка:</td>
                     </tr>
                     <tr>
                         <td colspan="3" class="height: 50px;">
