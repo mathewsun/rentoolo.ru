@@ -123,6 +123,9 @@
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Account/Cabinet.aspx">Кабинет</a>
+                            </li>
                             <li class="nav-item d-md-none">
                                 <asp:LoginStatus ID="LoginStatus3" CssClass="nav-link" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
                             </li>

@@ -167,6 +167,8 @@
     <Content Include="Account\Settings.aspx" />
     <Content Include="Account\SignUp.aspx" />
     <Content Include="Account\Tenders.aspx" />
+    <Content Include="Account\TokensBuyingaspx.aspx" />
+    <Content Include="Account\TokensSelling.aspx" />
     <Content Include="Admin\Admin.aspx" />
     <Content Include="Admin\AdminMenu.ascx" />
     <Content Include="Admin\ArticleOne.aspx" />
@@ -431,6 +433,20 @@
     </Compile>
     <Compile Include="Account\Tenders.aspx.designer.cs">
       <DependentUpon>Tenders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TokensBuyingaspx.aspx.cs">
+      <DependentUpon>TokensBuyingaspx.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TokensBuyingaspx.aspx.designer.cs">
+      <DependentUpon>TokensBuyingaspx.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TokensSelling.aspx.cs">
+      <DependentUpon>TokensSelling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TokensSelling.aspx.designer.cs">
+      <DependentUpon>TokensSelling.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminMaster.Master.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
@@ -820,14 +836,18 @@
     <Compile Include="Model\spGetUserAdverts_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\TokensBuying.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TokensDataHelper.cs" />
+    <Compile Include="Model\TokensSelling.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\UpdateBalanceType.cs" />
     <Compile Include="Model\CryptHelper.cs" />
     <Compile Include="Model\DataHelper.cs" />
     <Compile Include="Model\OperationTypes.cs" />
     <Compile Include="Model\Users.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\UsersInRoles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UsersOpenAuthAccounts.cs">
