@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web;
 using Rentoolo.Model;
+
 namespace Rentoolo
 {
-    public class UpiControllerTest : ApiController
+    public class UpiTestController : ApiController
     {
         // GET api/<controller>
         public IEnumerable<string> Get()

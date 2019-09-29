@@ -913,7 +913,7 @@
       <DependentUpon>Tokens.aspx</DependentUpon>
     </Compile>
     <Compile Include="UpiController.cs" />
-    <Compile Include="UpiControllerTest.cs" />
+    <Compile Include="UpiTestController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
