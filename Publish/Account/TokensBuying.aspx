@@ -2,11 +2,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="additem">
-        <div class="additem-logo">
+    <div class="card d-md-block d-lg-block mb-4">
+        <div class="card-body">
             <h4><%: Title %></h4>
         </div>
-        <div class="additem-category">
+        <div class="card-body">
             <div class="additem-right additem__way" cid="1001">
                 <table id="referalTable" class="basicTable referalTable">
                     <thead>

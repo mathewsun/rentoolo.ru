@@ -13,5 +13,20 @@ namespace Rentoolo
         {
 
         }
+
+        protected void ButtonBuyTokens_Click(object sender, EventArgs e)
+        {
+            string tokensCountBuyString = String.Format("{0}", Request.Form["ctl00$MainContent$tokensCountBuy"]);
+
+            long tokensCountBuy = 0;
+
+            try
+            {
+                tokensCountBuy = Int64.Parse(tokensCountBuyString);
+            }
+            catch { }
+
+
+        }
     }
 }

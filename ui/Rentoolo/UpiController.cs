@@ -68,7 +68,7 @@ namespace Rentoolo
                         }
                     }
 
-                    return Request.CreateErrorResponse(HttpStatusCode.Created, fileUrl); ;
+                    return Request.CreateResponse(HttpStatusCode.Created, fileUrl);
                 }
                 var res = string.Format("Please Upload a image.");
                 dict.Add("error", res);

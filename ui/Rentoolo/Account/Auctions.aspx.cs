@@ -11,6 +11,7 @@ namespace Rentoolo.Account
     public partial class Auctions : BasicPage
     {
         public List<AuctionsForPage> ListItems;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

@@ -11,9 +11,7 @@
     <meta name="author" content="rentoolo">
     <link rel="shortcut icon" href="/assets/img/yellow-green.ico">
 
-    <title>Rentoolo - Ваши объявления
-      
-    </title>
+    <title>Rentoolo - Ваши объявления</title>
 
     <meta property="og:title" content="Rentoolo - Ваши объявления" />
     <meta property="mrc__share_title" content="Rentoolo - Ваши объявления" />
@@ -98,6 +96,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/">Услуги</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Tokens.aspx">Токены</a>
                     </li>
 
                     <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">

@@ -33,7 +33,7 @@ strong {
 
     .app-navbar .form-control {
         -webkit-box-shadow: none;
-                box-shadow: none;
+        box-shadow: none;
     }
 
     .app-navbar .navbar-brand img {
@@ -99,15 +99,17 @@ strong {
     .app-brand img {
         width: 100%;
     }
+
 .booking {
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.1);
-            box-shadow: 0 0 10px rgba(0,0,0,.1);
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
     border-radius: 12px;
     background-color: #fff;
     padding: 20px;
     max-height: 800px;
     overflow-y: scroll;
 }
+
 .booking-title {
     font-size: 22px;
     font-weight: 700;
@@ -117,14 +119,15 @@ strong {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
 }
+
 .booking-wrap {
-    
     margin: 0;
     padding: 10px;
 }
+
 .booking-wrap-item {
     background-color: #fff;
     width: 100%;
@@ -135,10 +138,11 @@ strong {
     max-width: 400px;
     margin-top: 20px;
 }
-.booking-wrap-item div.title {
-    font-weight: 700;
-    font-size: 16px;
-}
+
+    .booking-wrap-item div.title {
+        font-weight: 700;
+        font-size: 16px;
+    }
 
 
 .booking-date {
@@ -147,6 +151,7 @@ strong {
     text-align: center;
     width: 100%;
 }
+
 .booking-change-wrap {
     width: 100%;
     height: 100%;
@@ -155,126 +160,143 @@ strong {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
     -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
     -ms-flex-preferred-size: 100%;
-        flex-basis: 100%;
+    flex-basis: 100%;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     width: 100%;
 }
+
 .booking-change {
     padding: 1px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-preferred-size: 25%;
-        flex-basis: 25%;
+    flex-basis: 25%;
     width: 100%;
     -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
     margin-top: 20px;
 }
-.booking-change button{
-   border: 2px solid #dedee8;
-   background-color: #fff;
-   border-radius: 6px;
-   padding: 5px 25px;
-   font-weight: 700;
-   cursor: pointer;
-}
-.booking-change button:hover {
-    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
-            box-shadow: 0 0 5px rgba(0,0,0,0.2)
-}
-.booking-change button:focus{
-   outline: none;
-   background-color: #71ceeb;
-   border: 2px solid #71ceeb;
-   color: #fff;
-}
+
+    .booking-change button {
+        border: 2px solid #dedee8;
+        background-color: #fff;
+        border-radius: 6px;
+        padding: 5px 25px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+        .booking-change button:hover {
+            -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+
+        .booking-change button:focus {
+            outline: none;
+            background-color: #71ceeb;
+            border: 2px solid #71ceeb;
+            color: #fff;
+        }
+
 .booking-title-wrap {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
 }
+
 .booking-button {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
 }
-.booking-button button:hover {
-    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.4);
-            box-shadow: 0 0 5px rgba(0,0,0,0.4)
-}
-.booking-button button:focus {
-    outline: none;
-}
-.booking-button button {
-    background-color: #71ceeb;
-    border-radius: 6px;
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.1);
-            box-shadow: 0 0 10px rgba(0,0,0,.1);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
 
+    .booking-button button:hover {
+        -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.4);
+        box-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
 
-}
+    .booking-button button:focus {
+        outline: none;
+    }
+
+    .booking-button button {
+        background-color: #71ceeb;
+        border-radius: 6px;
+        -webkit-box-shadow: 0 0 10px rgba(0,0,0,.1);
+        box-shadow: 0 0 10px rgba(0,0,0,.1);
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
 @media (max-width: 578px) {
     .booking-title {
         text-align: center;
         -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
         width: 100%;
     }
+
     .booking-title-wrap {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
         -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
         -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
     }
+
     .booking-title {
         font-size: 20px;
         text-align: center;
     }
+
     .booking-button {
         -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
         margin-top: 30px;
     }
 }
+
 @media (max-width: 440px) {
-    button.booking-change-time{
+    button.booking-change-time {
         padding: 5px 15px;
     }
 }
+
 @media (max-width: 340px) {
-    button.booking-change-time{
+    button.booking-change-time {
         padding: 5px 10px;
     }
- }
+}
+
+.fullCostLable {
+    padding-left: 10px;
+}

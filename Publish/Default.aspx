@@ -231,7 +231,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/">Услуги</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Tokens.aspx">Токены</a>
+                    </li>
                     <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <li class="nav-item d-md-none">
