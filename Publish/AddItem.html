@@ -1,0 +1,485 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="rentoolo">
+    <meta name="keywords" content="rentoolo">
+    <meta name="author" content="rentoolo">
+    <link rel="shortcut icon" href="assets/img/yellow-green.ico">
+
+    <title>
+        Rentoolo - Ваши объявления
+
+    </title>
+
+    <meta property="og:title" content="Rentoolo - Ваши объявления" />
+    <meta property="mrc__share_title" content="Rentoolo - Ваши объявления" />
+    <meta property="twitter:title" content="Rentoolo - Ваши объявления" />
+    <meta property="vk:image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
+    <meta property="og:image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
+    <meta property="twitter:image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
+    <meta property="image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <link href="assets/css/toolkit.css" rel="stylesheet">
+    <link href="assets/css/application.css" rel="stylesheet">
+    <link href="assets/css/additional.css?1" rel="stylesheet">
+
+    <style>
+        /* note: this is a hack for ios iframe for bootstrap themes shopify page */
+        /* this chunk of css is not part of the toolkit :) */
+        body {
+            width: 1px;
+            min-width: 100%;
+            *width: 100%;
+        }
+    </style>
+
+    <script src="assets/js/jquery-2.2.4.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".price__popup").click(function () {
+                if ($(".price_arrow, .price__open").is(":visible")) {
+                    $(".price_arrow, .price__open").fadeOut(300);
+
+                } else {
+                    $(".price_arrow, .price__open").fadeIn(300);
+                };
+            });
+            $(function () {
+                $("#phonenum").mask("+7(999)999-99-99");
+            });
+        });
+
+    </script>
+
+
+    <style>
+        #map {
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+    <script src="assets/js/dropzone/dropzone.js"></script>
+    <link href="assets/js/dropzone/dropzone.css" rel="stylesheet">
+    <link href="assets/js/dropzone/basic.css" rel="stylesheet">
+
+    <script>
+        $(document).ready(function () {
+            $("div#mdropzone").dropzone({
+                url: "/api/upitest",
+                addRemoveLinks: true,
+                resizeWidth: 800,
+                resizeHeight: 600,
+                resizeMethod: 'contain',
+                resizeQuality: 1.0,
+                dictDefaultMessage: "Add photos",
+                success: function (file, response) {
+                    var filaName = response.Message;
+                    file.previewElement.classList.add("dz-success");
+                    $("#my-dropzone").append($('<input type="hidden" name="AdvertPhotos" ' + 'value="' + filaName + '">'));
+                }
+            });
+        });
+    </script>
+
+
+
+</head>
+
+
+<body class="with-top-navbar">
+    <form method="post" action="./AddItem.aspx" id="Form1">
+        <div class="aspNetHidden">
+            <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+            <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTY1NDU2MTA1Mg9kFgJmDw8WBB4PX19BbnRpWHNyZlRva2VuBSBlNTk3NzU2YmI1MGI0MDIxOWYwMDM0NTU1YWFjZTMyNh4SX19BbnRpWHNyZlVzZXJOYW1lBQNtbW1kZBgCBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WBgUjY3RsMDAkTG9naW5WaWV3MSRMb2dpblN0YXR1czMkY3RsMDEFI2N0bDAwJExvZ2luVmlldzEkTG9naW5TdGF0dXMzJGN0bDAzBSNjdGwwMCRMb2dpblZpZXcxJExvZ2luU3RhdHVzMiRjdGwwMQUjY3RsMDAkTG9naW5WaWV3MSRMb2dpblN0YXR1czIkY3RsMDMFI2N0bDAwJExvZ2luVmlldzEkTG9naW5TdGF0dXMxJGN0bDAxBSNjdGwwMCRMb2dpblZpZXcxJExvZ2luU3RhdHVzMSRjdGwwMwUQY3RsMDAkTG9naW5WaWV3MQ8PZAIBZOGFofHfaR1DRJXrmEXIoKLR+b5BwjvbP+txmiT8EZrL" />
+        </div>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            var theForm = document.forms['Form1'];
+            if (!theForm) {
+                theForm = document.Form1;
+            }
+            function __doPostBack(eventTarget, eventArgument) {
+                if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                    theForm.__EVENTTARGET.value = eventTarget;
+                    theForm.__EVENTARGUMENT.value = eventArgument;
+                    theForm.submit();
+                }
+            }
+            //]]>
+        </script>
+
+
+
+        <div class="growl" id="app-growl"></div>
+
+        <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-primary app-navbar">
+
+            <a class="navbar-brand" href="/">
+                <span class="logo-text" style="margin-right: -3px;">Rent</span>
+                <img class="logo-img" src="assets/img/yellow-green.png" alt="brand">
+                <span class="logo-text" style="margin-left: -3px;">lo</span>
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right d-md-none"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Купить/Продать</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Аренда</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Аукционы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Тендеры</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Магазины</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Работа</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Услуги</a>
+                    </li>
+
+
+                    <li class="nav-item d-md-none">
+                        <a id="LoginView1_LoginStatus3" class="nav-link" href="javascript:__doPostBack(&#39;ctl00$LoginView1$LoginStatus3$ctl00&#39;,&#39;&#39;)">Выйти</a>
+                    </li>
+                </ul>
+                <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 d-none d-md-flex">
+
+                    <li>
+                        <a href="../Admin/Admin.aspx" id="LoginView1_A1">
+                            <img class="setting-img" src="/images/settings-icon-50.png" title="Управление" />
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" title="Избранное" href="/Favorites.aspx">
+                            <div class="icon icon-favorite"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Account/AddItem.aspx">
+                            <span class="btn btn-sm btn-pill btn-primary">Подать объявление</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="app-notifications nav-link" href="/">
+                            <span class="icon icon-bell"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ml-2">
+                        <div class="btn btn-default navbar-btn navbar-btn-avatar" data-toggle="popover">
+                            <img class="rounded-circle" src="assets/img/avatar-dhg.png">
+                        </div>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav d-none" id="js-popoverContent">
+                    <li class="nav-item"><a class="nav-link" href="#" data-action="growl">Growl</a></li>
+                    <li class="nav-item">
+                        <a id="LoginView1_LoginStatus2" class="nav-link" href="javascript:__doPostBack(&#39;ctl00$LoginView1$LoginStatus2$ctl00&#39;,&#39;&#39;)">Выйти</a>
+                    </li>
+                </ul>
+
+
+                <ul class="nav navbar-nav d-none">
+                    <li>
+                        <a href="Cabinet.aspx" id="LoginView1_CabinetLink" class="username" title="Личный кабинет">
+                            Кабинет (<span id="LoginView1_LoginName1" class="username">mmm</span>
+                            )
+                        </a>
+                    </li>
+                    <li>
+                        <a id="LoginView1_LoginStatus1" href="javascript:__doPostBack(&#39;ctl00$LoginView1$LoginStatus1$ctl00&#39;,&#39;&#39;)">Выйти</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Users</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+
+                    <div class="modal-body p-0">
+                        <div class="modal-body-scroller">
+                            <ul class="media-list media-list-users list-group">
+                                <li class="list-group-item">
+                                    <div class="media w-100">
+                                        <img class="media-object d-flex align-self-start mr-3" src="assets/img/avatar-fat.jpg">
+                                        <div class="media-body">
+                                            <button class="btn btn-secondary btn-sm float-right">
+                                                <span class="glyphicon glyphicon-user"></span>Follow
+
+                                            </button>
+                                            <strong>Майк Браун</strong>
+                                            <p>@fat - San Francisco</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="media w-100">
+                                        <img class="media-object d-flex align-self-start mr-3" src="assets/img/avatar-dhg.png">
+                                        <div class="media-body">
+                                            <button class="btn btn-secondary btn-sm float-right">
+                                                <span class="glyphicon glyphicon-user"></span>Follow
+
+                                            </button>
+                                            <strong>Dave Gamache</strong>
+                                            <p>@dhg - Palo Alto</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="media w-100">
+                                        <img class="media-object d-flex align-self-start mr-3" src="assets/img/avatar-mdo.png">
+                                        <div class="media-body">
+                                            <button class="btn btn-secondary btn-sm float-right">
+                                                <span class="glyphicon glyphicon-user"></span>Follow
+
+                                            </button>
+                                            <strong>Виктория Золотова</strong>
+                                            <p>@mdo - San Francisco</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container pt-4 pb-5">
+            <div class="row">
+                <div class="col-lg-9 additem">
+                    <form action="#" class="additem-form">
+                        <div class="additem-logo"><h4>Подать обьявление</h4></div>
+                        <div class="additem-category">
+                            <div class="additem-left">
+                                <span>Категория</span>
+                            </div>
+                            <div class="additem-right additem__way">
+                                <a href="#">Для бизнеса / Готовый бизнес / Другое</a>
+                            </div>
+                        </div>
+                        <div class="additem-category">
+                            <div class="additem-left">
+                                <span class="additem-title">Название объявления</span>
+                            </div>
+                            <div class="additem-right additem__input-name">
+                                <input type="text" class="additem-input" required>
+                            </div>
+                        </div>
+
+                        <div class="additem-category additem-text__wrap">
+                            <div class="additem-left">
+                                <span class="additem-title">Описание объявления</span>
+                            </div>
+                            <div class="additem-right additem-input__text">
+                                <textarea type="textarea" class="additem-input additem-input__text"></textarea>
+
+                            </div>
+                        </div>
+
+                        <div class="additem-category">
+                            <div class="additem-left">
+                                <span class="additem-title">Цена</span>
+                            </div>
+                            <div class="additem-right">
+                                <input type="number" class="additem-input additem__input-price" maxlength="14" required>
+                                <span class="price__value">₽</span>
+                                <div class="price__popup">
+                                    Какую цену указать
+                                    <span class="price_arrow"></span>
+                                    <span class="price__open">
+                                        Чтобы определиться с ценой, посмотрите, сколько за похожие товары просят конкуренты, учтите срок использования и имеющиеся дефекты.Если вы укажете слишком высокую цену или не обозначите её совсем, предложения конкурентов привлекут больше внимания. Неправдоподобно низкая цена может отпугнуть покупателя.
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="additem-category">
+                            <div class="additem-left">
+                                <span class="additem-title">Фотографии</span>
+                            </div>
+                            <div class="additem-right">
+                                <div id="mdropzone" class="dropzone"></div>
+                                <div id="my-dropzone" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="additem-category">
+                            <div class="additem-left">
+                                <span class="additem-title">Видео с Youtube</span>
+                            </div>
+                            <div class="additem-right additem__video">
+                                <input type="text" class="additem-input additem__input-video" placeholder=" Например https//www.youtube.com/watch?v=vMad0HvQ0k">
+                            </div>
+                        </div>
+                        <div class="additem-category">
+                            <div class="additem-left additem-contact">
+                                Контактная информация
+                            </div>
+
+                        </div>
+                        <div class="additem-category">
+                            <div class="additem-left">
+                                <span class="additem-title">Место сделки</span>
+                            </div>
+                            <div class="additem-right additem-place">
+                                <input type="text" class="additem-input" required>
+                            </div>
+                        </div>
+                        <div class="additem-category">
+                            <div class="additem-left ">
+
+                            </div>
+                            <div class="additem-right additem-map">
+                                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A877125111ad65104c6d5637b07b64b6a62ee325e975f67a8df120a2740017f7e&amp;source=constructor" width="500" height="208" frameborder="0.6px"></iframe>
+                            </div>
+                        </div>
+                        <div class="additem-category">
+                            <div class="additem-left">
+                                <span class="additem-title">Телефон</span>
+                            </div>
+                            <div class="additem-right additem-phone">
+                                <input id="phonenum" type="text" class="additem-input" placeholder="+7(___)___-__-__" required>
+                            </div>
+                        </div>
+                        <div class="additem-category additem-check__wrap">
+                            <div class="additem-left">
+                                <span class="additem-title">Способ связи</span>
+                            </div>
+                            <div class="additem-right">
+                                <div class="additem-checkbox">
+                                    <input type="radio" class="checkbox" id="phoneandmess" name="contact" checked>
+                                    <label class="checkbox-label" for="phoneandmess">
+                                        По телефону и в сообщениях
+                                    </label>
+                                </div>
+                                <div class="additem-checkbox">
+                                    <input type="radio" class="checkbox" id="onlyphone" name="contact">
+                                    <label class="checkbox-label" for="onlyphone">
+                                        Только по телефону
+                                    </label>
+                                </div>
+                                <div class="additem-checkbox">
+                                    <input type="radio" class="checkbox" id="message" name="contact">
+                                    <label class="checkbox-label" for="message">
+                                        Только в сообщениях
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="additem-category">
+                            <div class="additem-left additem-copyr__wrap">
+                                <span class="additem-title additem-copyr">
+                                    © «Rentoolo» 2007–2019
+                                </span>
+                            </div>
+                            <div class="additem-right additem-go">
+                                <button type="#" class="additem-button">Продолжить</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card mb-4 d-none d-lg-block">
+                        <div class="card-body">
+                            <h6 class="mb-3">Вы смотрели: <small>· <a href="#">Показать все</a></small></h6>
+                            <div data-grid="images" data-target-height="150">
+                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_2.jpg">
+                            </div>
+                            <p><strong>It might be time to visit Iceland.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
+                        </div>
+                    </div>
+                    <div class="card mb-4 d-none d-lg-block">
+                        <div class="card-body">
+                            <h6 class="mb-3">Ваши объявления: <small>· <a href="#">Показать все</a></small></h6>
+                            <div data-grid="images" data-target-height="150">
+                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/varianty-planirovki-3-h-komnatnoj-kvartiry-v-hrushchevke-7.jpg">
+                            </div>
+                            <p><strong>3х комнатная квартира СЗАО Москва</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
+                        </div>
+                    </div>
+                    <div class="card mb-4 d-none d-lg-block">
+                        <div class="card-body">
+                            <h6 class="mb-3">Избранное: <small>· <a href="#">Показать все</a></small></h6>
+                            <div data-grid="images" data-target-height="150">
+                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/kurier-piter.jpg">
+                            </div>
+                            <p><strong>Курьер. Курьерские услуги. Санкт-Петербург.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
+                        </div>
+                    </div>
+
+                    <div class="card card-link-list">
+                        <div class="card-body">
+                            © Rentoolo
+                            <a href="#">Help</a>
+                            <a href="#">Terms</a>
+                            <a href="#">Privacy</a>
+                            <a href="#">Cookies</a>
+                            <a href="#">Jobs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/chart.js"></script>
+        <script src="assets/js/toolkit.js"></script>
+        <script src="assets/js/application.js"></script>
+        <script>
+            // execute/clear BS loaders for docs
+            $(function () { while (window.BS && window.BS.loader && window.BS.loader.length) { (window.BS.loader.pop())() } })
+        </script>
+
+        <div class="aspNetHidden">
+
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="0F599264" />
+            <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAS1J7R2afbUgjLhWGtE29KaqpQGuCHHl9sDhMqk9e7kP4PAn1BGeMeiRBa7uZ7lnYz7teRC7h3ucrgQGJF6bT1JJzvhvFUEZ4UFmdvaJzlKHWvq5JV52vEwD/ddbD9n1WI=" />
+        </div>
+    </form>
+
+    <!-- Visual Studio Browser Link -->
+    <script type="application/json" id="__browserLink_initializationData">
+        {"appName":"Chrome","requestId":"b6c61f5007a0492796c4a0fcc5ebb5d4"}
+    </script>
+    <script type="text/javascript" src="http://localhost:1424/6ac11007f60b49d69a7e5a1ad42c5839/browserLink" async="async"></script>
+    <!-- End Browser Link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+</body>
+</html>

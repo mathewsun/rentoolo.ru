@@ -169,6 +169,7 @@
     <Content Include="Account\Tenders.aspx" />
     <Content Include="Account\TokensBuying.aspx" />
     <Content Include="Account\TokensSelling.aspx" />
+    <Content Include="AddItem.html" />
     <Content Include="Admin\Admin.aspx" />
     <Content Include="Admin\AdminMenu.ascx" />
     <Content Include="Admin\ArticleOne.aspx" />
