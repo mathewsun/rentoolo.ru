@@ -10,6 +10,8 @@ namespace Rentoolo
 {
     public partial class Tokens : BasicPage
     {
+        public string Result = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -36,7 +38,7 @@ namespace Rentoolo
 
             if(userWallet.Value < tokensCountBuy)
             {
-
+                Result = "No balance";
             }
 
         }
