@@ -262,6 +262,7 @@
     <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="DataBase\fnGetUserWallets.sql" />
     <Content Include="DataBase\Init\Init.sql" />
     <Content Include="DataBase\spGetAuctions.sql" />
     <Content Include="DataBase\spAddFavorites.sql" />

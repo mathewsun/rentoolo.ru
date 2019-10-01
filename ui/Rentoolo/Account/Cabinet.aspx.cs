@@ -7,8 +7,6 @@ namespace Rentoolo.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var ttt = User;
-
             if (!IsPostBack)
             {
                 this.UpdateSession();
