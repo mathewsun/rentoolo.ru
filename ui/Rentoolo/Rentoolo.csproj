@@ -169,6 +169,7 @@
     <Content Include="Account\Tenders.aspx" />
     <Content Include="Account\TokensBuying.aspx" />
     <Content Include="Account\TokensSelling.aspx" />
+    <Content Include="Account\Watched.aspx" />
     <Content Include="AddItem.html" />
     <Content Include="Admin\Admin.aspx" />
     <Content Include="Admin\AdminMenu.ascx" />
@@ -451,6 +452,13 @@
     </Compile>
     <Compile Include="Account\TokensSelling.aspx.designer.cs">
       <DependentUpon>TokensSelling.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Watched.aspx.cs">
+      <DependentUpon>Watched.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Watched.aspx.designer.cs">
+      <DependentUpon>Watched.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminMaster.Master.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>

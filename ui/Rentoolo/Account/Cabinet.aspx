@@ -35,6 +35,12 @@
                     </tr>
                 </table>
                 <div style="padding-top: 15px;">
+                    <a href="MyAdverts.aspx" class="button-changePassword settingButton">Мои объявления</a>
+                </div>
+                <div style="padding-top: 15px;">
+                    <a href="MyAdverts.aspx" class="button-changePassword settingButton">Вы смотрели</a>
+                </div>
+                <div style="padding-top: 15px;">
                     <a href="Settings.aspx" class="button-changePassword settingButton">Настройки</a>
                 </div>
                 <div style="padding-top: 15px;">
