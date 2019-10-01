@@ -16,23 +16,26 @@ namespace Rentoolo
 
         public List<fnGetUserWallets_Result> UserWalletsList;
 
-        public fnGetUserWallets_Result UserWalletRURT;
+        public fnGetUserWallets_Result UserWalletRURT = new fnGetUserWallets_Result { CurrencyId = 1, Value = 0 };
 
-        public fnGetUserWallets_Result UserWalletRENT;
+        public fnGetUserWallets_Result UserWalletRENT = new fnGetUserWallets_Result { CurrencyId = 8, Value = 0 };
 
         protected void Page_Load(object sender, EventArgs e)
         {
             OneTokenTodayCost = TokensDataHelper.GetOneTokensCost();
 
-            UserWalletsList = WalletsHelper.GetUserWallets(User.UserId);
+            if (User != null)
+            {
+                UserWalletsList = WalletsHelper.GetUserWallets(User.UserId);
 
-            UserWalletRURT = UserWalletsList.Where(x => x.CurrencyId == (int)CurrenciesEnum.RURT).FirstOrDefault();
+                UserWalletRURT = UserWalletsList.Where(x => x.CurrencyId == (int)CurrenciesEnum.RURT).FirstOrDefault();
 
-            if (UserWalletRURT == null) UserWalletRURT = new fnGetUserWallets_Result { CurrencyId = 1, Value = 0 };
+                if (UserWalletRURT == null) UserWalletRURT = new fnGetUserWallets_Result { CurrencyId = 1, Value = 0 };
 
-            UserWalletRENT = UserWalletsList.Where(x => x.CurrencyId == (int)CurrenciesEnum.RENT).FirstOrDefault();
+                UserWalletRENT = UserWalletsList.Where(x => x.CurrencyId == (int)CurrenciesEnum.RENT).FirstOrDefault();
 
-            if (UserWalletRENT == null) UserWalletRENT = new fnGetUserWallets_Result { CurrencyId = 8, Value = 0 };
+                if (UserWalletRENT == null) UserWalletRENT = new fnGetUserWallets_Result { CurrencyId = 8, Value = 0 };
+            }
         }
 
         protected void ButtonBuyTokens_Click(object sender, EventArgs e)
