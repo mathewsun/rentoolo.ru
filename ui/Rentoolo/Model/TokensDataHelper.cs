@@ -61,13 +61,13 @@ namespace Rentoolo.Model
             }
         }
 
-        public static int GetOneTokensCost()
+        public static float GetOneTokensCost()
         {
             Settings setting = DataHelper.GetSettingByName("TokenTodayCost");
 
             float todayCost = float.Parse(setting.Value);
 
-            return 0;
+            return todayCost;
         }
     }
 }

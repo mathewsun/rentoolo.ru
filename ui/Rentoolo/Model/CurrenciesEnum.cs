@@ -14,6 +14,8 @@
 
         EOS = 6,
 
-        MANA = 7
+        MANA = 7,
+
+        RENT = 8
     }
 }

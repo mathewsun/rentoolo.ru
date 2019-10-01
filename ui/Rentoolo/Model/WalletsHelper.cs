@@ -20,9 +20,40 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                Wallets item = dc.Wallets.Where(x => x.UserId == userId && x.CurrencyId == x.CurrencyId).FirstOrDefault();
+                Wallets item = dc.Wallets.Where(x => x.UserId == userId && x.CurrencyId == currencyId).FirstOrDefault();
 
                 return item;
+            }
+        }
+
+        public static int CreateUserWallet(Guid userId, int currencyId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Wallets item = new Wallets
+                {
+                    UserId = userId,
+                    CurrencyId = currencyId,
+                    Value = 0
+                };
+
+                var result = dc.Wallets.Add(item);
+
+                var res = dc.SaveChanges();
+
+                return result.Id;
+            }
+        }
+
+        public static void UpdateUserWallet(Guid userId, int currencyId, float value)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Wallets item = dc.Wallets.Where(x => x.UserId == userId && x.CurrencyId == currencyId).FirstOrDefault();
+
+                item.Value += value;
+
+                dc.SaveChanges();
             }
         }
     }

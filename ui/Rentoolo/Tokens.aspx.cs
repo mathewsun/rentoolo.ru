@@ -12,9 +12,11 @@ namespace Rentoolo
     {
         public string Result = string.Empty;
 
+        public float OneTokenTodayCost = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            OneTokenTodayCost = TokensDataHelper.GetOneTokensCost();
         }
 
         protected void ButtonBuyTokens_Click(object sender, EventArgs e)
@@ -32,14 +34,21 @@ namespace Rentoolo
             {
                 tokensCountBuy = Int64.Parse(tokensCountBuyString);
             }
-            catch { }
+            catch
+            {
+                Result = "Wrong count";
+            }
+
+            float sum = tokensCountBuy * OneTokenTodayCost;
 
             Wallets userWallet = WalletsHelper.GetUserWallet(User.UserId, (int)CurrenciesEnum.RURT);
 
-            if(userWallet.Value < tokensCountBuy)
+            if (userWallet.Value < sum)
             {
                 Result = "No balance";
             }
+
+
 
         }
     }
