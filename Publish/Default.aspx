@@ -546,7 +546,7 @@
                 <div class="col-lg-3">
                     <div class="card mb-4 d-none d-lg-block">
                         <div class="card-body">
-                            <h6 class="mb-3">Вы смотрели: <small>· <a href="#">Показать все</a></small></h6>
+                            <h6 class="mb-3">Вы смотрели: <small>· <a href="/Account/Watched.aspx">Показать все</a></small></h6>
                             <div data-grid="images" data-target-height="150">
                                 <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_2.jpg">
                             </div>
@@ -555,7 +555,7 @@
                     </div>
                     <div class="card mb-4 d-none d-lg-block">
                         <div class="card-body">
-                            <h6 class="mb-3">Ваши объявления: <small>· <a href="#">Показать все</a></small></h6>
+                            <h6 class="mb-3">Ваши объявления: <small>· <a href="/Account/MyAdverts.aspx">Показать все</a></small></h6>
                             <div data-grid="images" data-target-height="150">
                                 <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/varianty-planirovki-3-h-komnatnoj-kvartiry-v-hrushchevke-7.jpg">
                             </div>
@@ -564,7 +564,7 @@
                     </div>
                     <div class="card mb-4 d-none d-lg-block">
                         <div class="card-body">
-                            <h6 class="mb-3">Избранное: <small>· <a href="#">Показать все</a></small></h6>
+                            <h6 class="mb-3">Избранное: <small>· <a href="/Favorites.aspx">Показать все</a></small></h6>
                             <div data-grid="images" data-target-height="150">
                                 <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/kurier-piter.jpg">
                             </div>

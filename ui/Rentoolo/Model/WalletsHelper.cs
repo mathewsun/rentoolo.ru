@@ -26,7 +26,7 @@ namespace Rentoolo.Model
             }
         }
 
-        public static int CreateUserWallet(Guid userId, int currencyId)
+        public static int CreateUserWallet(Guid userId, int currencyId, float value)
         {
             using (var dc = new RentooloEntities())
             {
@@ -34,7 +34,7 @@ namespace Rentoolo.Model
                 {
                     UserId = userId,
                     CurrencyId = currencyId,
-                    Value = 0
+                    Value = value
                 };
 
                 var result = dc.Wallets.Add(item);
@@ -51,9 +51,16 @@ namespace Rentoolo.Model
             {
                 Wallets item = dc.Wallets.Where(x => x.UserId == userId && x.CurrencyId == currencyId).FirstOrDefault();
 
-                item.Value += value;
+                if (item == null)
+                {
+                    CreateUserWallet(userId, currencyId, value);
+                }
+                else
+                {
+                    item.Value += value;
 
-                dc.SaveChanges();
+                    dc.SaveChanges();
+                }
             }
         }
     }

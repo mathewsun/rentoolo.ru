@@ -15,7 +15,7 @@ namespace Rentoolo.Model
     public partial class TokensBuying
     {
         public int Id { get; set; }
-        public string Count { get; set; }
+        public long Count { get; set; }
         public System.Guid UserId { get; set; }
         public double CostOneToken { get; set; }
         public double FullCost { get; set; }

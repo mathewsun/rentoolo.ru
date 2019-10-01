@@ -15,7 +15,7 @@
                 <table class="marginTable cabinetTable">
                     <tr>
                         <td>
-                            <br />
+                            <%=User.UserName %>
                         </td>
                         <td></td>
                     </tr>
@@ -30,10 +30,17 @@
                     <tr>
                         <td>Баланс:
                         </td>
-                        <td>0р. <a href="#" title="Пополнить">Пополнить</a>
+                        <td><%if (UserWalletRURT != null)
+                                { %><%=UserWalletRURT.Value.ToString("N2") %><%} %>р. <a href="#" title="Пополнить">Пополнить</a>
                         </td>
                     </tr>
                 </table>
+                <div style="padding-top: 15px;">
+                    <a href="MyAdverts.aspx" class="button-changePassword settingButton">Мои объявления</a>
+                </div>
+                <div style="padding-top: 15px;">
+                    <a href="MyAdverts.aspx" class="button-changePassword settingButton">Вы смотрели</a>
+                </div>
                 <div style="padding-top: 15px;">
                     <a href="Settings.aspx" class="button-changePassword settingButton">Настройки</a>
                 </div>

@@ -89,6 +89,18 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="Name(Ru)" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OrderId" Type="int" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Rentoolo.dbo.Cookies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Cookies">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Value" />
+            <PropertyRef Name="Created" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Currencies">
           <Key>
             <PropertyRef Name="Id" />
@@ -131,7 +143,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserCookiesId" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="UserCookiesId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="AdvertId" Type="bigint" Nullable="false" />
           <Property Name="Created" Type="datetime" Nullable="false" />
         </EntityType>
@@ -248,12 +260,19 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="UpdateDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Rentoolo.dbo.TokensBuying' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TokensBuying">
           <Key>
             <PropertyRef Name="Id" />
+            <PropertyRef Name="Count" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="CostOneToken" />
+            <PropertyRef Name="FullCost" />
+            <PropertyRef Name="WhenDate" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Count" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Count" Type="bigint" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CostOneToken" Type="float" Nullable="false" />
           <Property Name="FullCost" Type="float" Nullable="false" />
@@ -264,7 +283,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Count" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Count" Type="bigint" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CostOneToken" Type="float" Nullable="false" />
           <Property Name="FullCost" Type="float" Nullable="false" />
@@ -605,7 +624,6 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <EntitySet Name="Referrals" EntityType="Self.Referrals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TokensBuying" EntityType="Self.TokensBuying" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TokensSelling" EntityType="Self.TokensSelling" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRoles" Schema="dbo" store:Type="Tables" />
@@ -619,6 +637,23 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
 [Categories].[Name(Ru)] AS [Name(Ru)], 
 [Categories].[OrderId] AS [OrderId]
 FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Cookies" EntityType="Self.Cookies" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Cookies].[Id] AS [Id], 
+[Cookies].[Value] AS [Value], 
+[Cookies].[Created] AS [Created]
+FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TokensBuying" EntityType="Self.TokensBuying" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[TokensBuying].[Id] AS [Id], 
+[TokensBuying].[Count] AS [Count], 
+[TokensBuying].[UserId] AS [UserId], 
+[TokensBuying].[CostOneToken] AS [CostOneToken], 
+[TokensBuying].[FullCost] AS [FullCost], 
+[TokensBuying].[WhenDate] AS [WhenDate]
+FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CashIns_Users" Association="Self.FK_CashIns_Users">
             <End Role="Users" EntitySet="Users" />
@@ -834,7 +869,7 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserCookiesId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserCookiesId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AdvertId" Type="Int64" Nullable="false" />
           <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
@@ -958,23 +993,12 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="TokensBuying">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Count" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="CostOneToken" Type="Double" Nullable="false" />
-          <Property Name="FullCost" Type="Double" Nullable="false" />
-          <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
         <EntityType Name="TokensSelling">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Count" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Count" Type="Int64" Nullable="false" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="CostOneToken" Type="Double" Nullable="false" />
           <Property Name="FullCost" Type="Double" Nullable="false" />
@@ -1052,6 +1076,32 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name_Ru_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OrderId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cookies">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Value" />
+            <PropertyRef Name="Created" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="Guid" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TokensBuying">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Count" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="CostOneToken" />
+            <PropertyRef Name="FullCost" />
+            <PropertyRef Name="WhenDate" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Count" Type="Int64" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="CostOneToken" Type="Double" Nullable="false" />
+          <Property Name="FullCost" Type="Double" Nullable="false" />
+          <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="MembershipApplication">
           <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
@@ -1214,13 +1264,14 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <EntitySet Name="Referrals" EntityType="Self.Referrals" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Settings" EntityType="Self.Settings" />
-          <EntitySet Name="TokensBuying" EntityType="Self.TokensBuying" />
           <EntitySet Name="TokensSelling" EntityType="Self.TokensSelling" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="Cookies" EntityType="Self.Cookies" />
+          <EntitySet Name="TokensBuying" EntityType="Self.TokensBuying" />
           <AssociationSet Name="MembershipApplication" Association="Self.MembershipApplication">
             <End Role="Applications" EntitySet="Applications" />
             <End Role="Memberships" EntitySet="Memberships" />
@@ -1343,7 +1394,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           <Property Type="String" Name="Address" Nullable="true" MaxLength="150" />
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="MessageType" Nullable="false" />
-          <Property Type="String" Name="ImgUrls" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1600,18 +1650,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TokensBuying">
-            <EntityTypeMapping TypeName="RentooloModel.TokensBuying">
-              <MappingFragment StoreEntitySet="TokensBuying">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CostOneToken" ColumnName="CostOneToken" />
-                <ScalarProperty Name="FullCost" ColumnName="FullCost" />
-                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TokensSelling">
             <EntityTypeMapping TypeName="RentooloModel.TokensSelling">
               <MappingFragment StoreEntitySet="TokensSelling">
@@ -1681,6 +1719,27 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Name_Ru_" ColumnName="Name(Ru)" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cookies">
+            <EntityTypeMapping TypeName="RentooloModel.Cookies">
+              <MappingFragment StoreEntitySet="Cookies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TokensBuying">
+            <EntityTypeMapping TypeName="RentooloModel.TokensBuying">
+              <MappingFragment StoreEntitySet="TokensBuying">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CostOneToken" ColumnName="CostOneToken" />
+                <ScalarProperty Name="FullCost" ColumnName="FullCost" />
+                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1808,7 +1867,6 @@ FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="MessageType" ColumnName="MessageType" />
-                <ScalarProperty Name="ImgUrls" ColumnName="ImgUrls" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

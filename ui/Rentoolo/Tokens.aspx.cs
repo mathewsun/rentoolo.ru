@@ -14,9 +14,25 @@ namespace Rentoolo
 
         public float OneTokenTodayCost = 0;
 
+        public List<fnGetUserWallets_Result> UserWalletsList;
+
+        public fnGetUserWallets_Result UserWalletRURT;
+
+        public fnGetUserWallets_Result UserWalletRENT;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             OneTokenTodayCost = TokensDataHelper.GetOneTokensCost();
+
+            UserWalletsList = WalletsHelper.GetUserWallets(User.UserId);
+
+            UserWalletRURT = UserWalletsList.Where(x => x.CurrencyId == (int)CurrenciesEnum.RURT).FirstOrDefault();
+
+            if (UserWalletRURT == null) UserWalletRURT = new fnGetUserWallets_Result { CurrencyId = 1, Value = 0 };
+
+            UserWalletRENT = UserWalletsList.Where(x => x.CurrencyId == (int)CurrenciesEnum.RENT).FirstOrDefault();
+
+            if (UserWalletRENT == null) UserWalletRENT = new fnGetUserWallets_Result { CurrencyId = 8, Value = 0 };
         }
 
         protected void ButtonBuyTokens_Click(object sender, EventArgs e)
@@ -37,18 +53,32 @@ namespace Rentoolo
             catch
             {
                 Result = "Wrong count";
+
+                return;
             }
 
             float sum = tokensCountBuy * OneTokenTodayCost;
 
             Wallets userWallet = WalletsHelper.GetUserWallet(User.UserId, (int)CurrenciesEnum.RURT);
 
-            if (userWallet.Value < sum)
+            if (userWallet == null || userWallet.Value < sum)
             {
                 Result = "No balance";
+
+                return;
             }
 
+            TokensBuying tokensBuying = new TokensBuying
+            {
+                UserId = User.UserId,
+                CostOneToken = OneTokenTodayCost,
+                Count = tokensCountBuy,
+                FullCost = sum
+            };
 
+            TokensDataHelper.AddTokensBuying(tokensBuying);
+
+            WalletsHelper.UpdateUserWallet(User.UserId, (int)CurrenciesEnum.RURT, -sum);
 
         }
     }

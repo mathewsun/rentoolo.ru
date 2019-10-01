@@ -48,13 +48,14 @@ namespace Rentoolo.Model
         public DbSet<Referrals> Referrals { get; set; }
         public DbSet<Roles> Roles { get; set; }
         public DbSet<Settings> Settings { get; set; }
-        public DbSet<TokensBuying> TokensBuying { get; set; }
         public DbSet<TokensSelling> TokensSelling { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<UsersOpenAuthAccounts> UsersOpenAuthAccounts { get; set; }
         public DbSet<UsersOpenAuthData> UsersOpenAuthData { get; set; }
         public DbSet<Wallets> Wallets { get; set; }
         public DbSet<Categories> Categories { get; set; }
+        public DbSet<Cookies> Cookies { get; set; }
+        public DbSet<TokensBuying> TokensBuying { get; set; }
     
         [EdmFunction("RentooloEntities", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()

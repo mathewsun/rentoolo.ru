@@ -12,13 +12,10 @@ namespace Rentoolo.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class TokensSelling
+    public partial class Cookies
     {
-        public int Id { get; set; }
-        public long Count { get; set; }
-        public System.Guid UserId { get; set; }
-        public double CostOneToken { get; set; }
-        public double FullCost { get; set; }
-        public System.DateTime WhenDate { get; set; }
+        public long Id { get; set; }
+        public System.Guid Value { get; set; }
+        public System.DateTime Created { get; set; }
     }
 }

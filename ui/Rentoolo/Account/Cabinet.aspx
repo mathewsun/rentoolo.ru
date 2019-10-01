@@ -15,7 +15,7 @@
                 <table class="marginTable cabinetTable">
                     <tr>
                         <td>
-                            <br />
+                            <%=User.UserName %>
                         </td>
                         <td></td>
                     </tr>
@@ -30,7 +30,8 @@
                     <tr>
                         <td>Баланс:
                         </td>
-                        <td>0р. <a href="#" title="Пополнить">Пополнить</a>
+                        <td><%if (UserWalletRURT != null)
+                                { %><%=UserWalletRURT.Value.ToString("N2") %><%} %>р. <a href="#" title="Пополнить">Пополнить</a>
                         </td>
                     </tr>
                 </table>
