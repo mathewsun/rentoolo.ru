@@ -61,7 +61,7 @@
 
                         <div class="mb-5">
                             <asp:Button ID="ButtonLogin" runat="server" CssClass="btn btn-primary" CommandName="Login" Text="Вход" />
-                            <button type="button" class="btn btn-secondary" onclick="location.href='/Account/SignUp.aspx'">Регистрация</button>
+                            <button type="button" class="btn btn-secondary" onclick="location.href='/Account/SignUp.aspx?ReturnUrl='">Регистрация</button>
                         </div>
 
                         <footer class="screen-login">

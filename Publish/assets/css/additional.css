@@ -62,18 +62,18 @@
 
     .icon-favorite:hover {
         height: 20px !important;
-        background: url("/assets/img/favorite_20.png") no-repeat;
+        background: url("/assets/img/favorite_light_20.png") no-repeat;
     }
 
 .icon-add-advert {
-    background: url("/assets/img/add_icon_1_8_1_40.png") no-repeat;
-    height: 40px !important;
-    width: 40px;
+    background: url("/assets/img/add_icon_1_1_20.png") no-repeat;
+    height: 20px !important;
+    width: 20px;
 }
 
     .icon-add-advert:hover {
-        height: 40px !important;
-        background: url("/assets/img/add_icon_1_8_2_40.png") no-repeat;
+        height: 20px !important;
+        background: url("/assets/img/add_icon_1_1_2_20.png") no-repeat;
     }
 
 .header-categories-group {
@@ -933,5 +933,5 @@ input::-webkit-inner-spin-button {
     position: absolute;
     right: 0;
     margin-right: 110px;
-    margin-top: -10px;
+    margin-top: 0px;
 }
