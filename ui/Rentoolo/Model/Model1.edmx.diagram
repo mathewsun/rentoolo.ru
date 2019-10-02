@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4b73a253410945e68c81c4958d5be2fe" Name="Diagram1">
+      <Diagram DiagramId="2599aa75da9749d4ac4e237200266022" Name="Diagram1">
         <EntityTypeShape EntityType="RentooloModel.Adverts" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Applications" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Articles" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
@@ -31,8 +31,7 @@
         <EntityTypeShape EntityType="RentooloModel.UsersOpenAuthData" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Wallets" Width="1.5" PointX="10.5" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Categories" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Cookies" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.TokensBuying" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.TokensBuying" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
         <AssociationConnector Association="RentooloModel.MembershipApplication" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.RoleApplication" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.UserApplication" ManuallyRouted="false" />

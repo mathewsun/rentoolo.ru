@@ -22,7 +22,7 @@
                 resizeQuality: 1.0,
                 dictDefaultMessage: "Add photos",
                 success: function (file, response) {
-                    var filaName = response.Message;
+                    var filaName = response;
                     file.previewElement.classList.add("dz-success");
                     $("#my-dropzone").append($('<input type="hidden" name="AdvertPhotos" ' + 'value="' + filaName + '">'));
                 }

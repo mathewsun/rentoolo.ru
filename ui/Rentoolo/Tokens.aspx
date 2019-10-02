@@ -34,7 +34,7 @@
             <h6 class="mb-3">Ваш баланс: <span id="balanceValue"><%if (UserWalletRURT != null)
                                                                      { %><%=UserWalletRURT.Value.ToString("N2") %><%} %></span> р.</h6>
             <h6 class="mb-3">У вас токенов: <span id="tokensCountHave"><%if (UserWalletRENT != null)
-                                                                     { %><%=UserWalletRENT.Value.ToString("N0") %><%} %></span></h6>
+                                                                           { %><%=UserWalletRENT.Value.ToString("N0") %><%} %></span></h6>
             <h6 class="mb-3">Всего токенов: <span id="fullTokensCount">10 000 000 000</span></h6>
             <h6 class="mb-3">Токенов, доступных к покупке: <span id="availableTokensCount">4 900 000 000</span></h6>
             <h6 class="mb-3">Стоимость токена сегодня: <span id="oneTokenCost"><%=OneTokenTodayCost.ToString("N2") %></span>р.</h6>
