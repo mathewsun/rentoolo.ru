@@ -146,7 +146,8 @@
     overflow: hidden;
     bottom: 100%;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     width: 20px;
     height: 10px;
     top: -10;
@@ -406,6 +407,8 @@
 
 
 .list-item-wrap {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
     display: flex !important;
     width: 100%;
     border-radius: 3px;
@@ -413,7 +416,8 @@
     position: relative;
     margin-bottom: 0 !important;
     margin-top: 10px !important;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 .list-item-wrap-img {
@@ -759,7 +763,8 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 768px) {
     .additem-contact {
-        flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
     }
 
     .additem-right {
@@ -787,7 +792,8 @@ input::-webkit-inner-spin-button {
     }
 
     .additem-go {
-        flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
     }
 
     .additem-copyr {
@@ -795,13 +801,17 @@ input::-webkit-inner-spin-button {
     }
 
     .additem-copyr__wrap {
-        flex-basis: 50%;
+        -ms-flex-preferred-size: 50%;
+            flex-basis: 50%;
     }
 }
 
 @media (max-width: 578px) {
     .additem-category {
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
     }
 
     .additem-input__text:after {
@@ -829,7 +839,9 @@ input::-webkit-inner-spin-button {
     }
 
     .additem-go {
-        justify-content: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
     }
 
     .additem-check__wrap {
@@ -842,7 +854,8 @@ input::-webkit-inner-spin-button {
 
     .price__open {
         left: 1%;
-        transform: translateX(-1%);
+        -webkit-transform: translateX(-1%);
+                transform: translateX(-1%);
     }
 }
 
@@ -934,4 +947,21 @@ input::-webkit-inner-spin-button {
     right: 0;
     margin-right: 110px;
     margin-top: -10px;
+}
+a.dz-remove {
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    font-size: 0!important;
+    top: -15px;
+    right: -15px;
+    z-index: 99;
+    border-radius: 5px;
+    background-image: url(../img/delete.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
