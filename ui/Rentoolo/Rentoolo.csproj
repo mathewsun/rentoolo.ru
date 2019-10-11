@@ -171,6 +171,7 @@
     <Content Include="Account\TokensSelling.aspx" />
     <Content Include="Account\Watched.aspx" />
     <Content Include="AddItem.html" />
+    <Content Include="AddItem_test.aspx" />
     <Content Include="Admin\Admin.aspx" />
     <Content Include="Admin\AdminMenu.ascx" />
     <Content Include="Admin\ArticleOne.aspx" />
@@ -266,6 +267,7 @@
     <Content Include="assets\js\utils.js" />
     <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
+    <Content Include="Category.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="DataBase\fnGetUserWallets.sql" />
     <Content Include="DataBase\Init\Init.sql" />
@@ -463,6 +465,13 @@
     </Compile>
     <Compile Include="Account\Watched.aspx.designer.cs">
       <DependentUpon>Watched.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddItem_test.aspx.cs">
+      <DependentUpon>AddItem_test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddItem_test.aspx.designer.cs">
+      <DependentUpon>AddItem_test.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminMaster.Master.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
@@ -678,6 +687,13 @@
     </Compile>
     <Compile Include="Business.aspx.designer.cs">
       <DependentUpon>Business.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Category.aspx.cs">
+      <DependentUpon>Category.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Category.aspx.designer.cs">
+      <DependentUpon>Category.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
