@@ -69,5 +69,14 @@ namespace Rentoolo.Model
 
             return todayCost;
         }
+
+        public static long GetFreeTokensCount()
+        {
+            Settings setting = DataHelper.GetSettingByName("FreeRentTokens");
+
+            long todayCost = Convert.ToInt64(setting.Value);
+
+            return todayCost;
+        }
     }
 }

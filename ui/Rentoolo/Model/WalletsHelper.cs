@@ -34,7 +34,8 @@ namespace Rentoolo.Model
                 {
                     UserId = userId,
                     CurrencyId = currencyId,
-                    Value = value
+                    Value = value,
+                    CreateDate = DateTime.Now
                 };
 
                 var result = dc.Wallets.Add(item);
@@ -53,7 +54,9 @@ namespace Rentoolo.Model
 
                 if (item == null)
                 {
-                    CreateUserWallet(userId, currencyId, value);
+                    int walletId = CreateUserWallet(userId, currencyId, value);
+
+                    item = dc.Wallets.Where(x => x.Id == walletId).FirstOrDefault();
                 }
                 else
                 {

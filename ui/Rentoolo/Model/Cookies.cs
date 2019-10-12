@@ -10,16 +10,12 @@
 namespace Rentoolo.Model
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class fnGetAllUsers_Result
+    public partial class Cookies
     {
-        public System.Guid UserId { get; set; }
-        public string UserName { get; set; }
-        public System.DateTime LastActivityDate { get; set; }
-        public string Pwd { get; set; }
-        public int PublicId { get; set; }
-        public string Communication { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public string Email { get; set; }
+        public long Id { get; set; }
+        public System.Guid Value { get; set; }
+        public System.DateTime Created { get; set; }
     }
 }

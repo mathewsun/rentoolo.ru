@@ -30,11 +30,11 @@ namespace Rentoolo
 
                 UserWalletRURT = UserWalletsList.Where(x => x.CurrencyId == (int)CurrenciesEnum.RURT).FirstOrDefault();
 
-                if (UserWalletRURT == null) UserWalletRURT = new fnGetUserWallets_Result { CurrencyId = 1, Value = 0 };
+                if (UserWalletRURT == null) UserWalletRURT = new fnGetUserWallets_Result { CurrencyId = (int)CurrenciesEnum.RURT, Value = 0 };
 
                 UserWalletRENT = UserWalletsList.Where(x => x.CurrencyId == (int)CurrenciesEnum.RENT).FirstOrDefault();
 
-                if (UserWalletRENT == null) UserWalletRENT = new fnGetUserWallets_Result { CurrencyId = 8, Value = 0 };
+                if (UserWalletRENT == null) UserWalletRENT = new fnGetUserWallets_Result { CurrencyId = (int)CurrenciesEnum.RENT, Value = 0 };
             }
         }
 
@@ -76,13 +76,34 @@ namespace Rentoolo
                 UserId = User.UserId,
                 CostOneToken = OneTokenTodayCost,
                 Count = tokensCountBuy,
-                FullCost = sum
+                FullCost = sum,
+                WhenDate = DateTime.Now
             };
 
             TokensDataHelper.AddTokensBuying(tokensBuying);
 
             WalletsHelper.UpdateUserWallet(User.UserId, (int)CurrenciesEnum.RURT, -sum);
 
+            WalletsHelper.UpdateUserWallet(User.UserId, (int)CurrenciesEnum.RENT, tokensCountBuy);
+
+            #region Логирование операции
+
+            {
+                Rentoolo.Model.Operations operation = new Rentoolo.Model.Operations
+                {
+                    UserId = User.UserId,
+                    Value = tokensCountBuy,
+                    Type = (int)OperationTypesEnum.Registration,
+                    Comment = string.Format("Покупка {0} токенов на сумму {1}.", tokensCountBuy, sum),
+                    WhenDate = DateTime.Now
+                };
+
+                DataHelper.AddOperation(operation);
+            }
+
+            #endregion
+
+            Response.Redirect("Tokens.aspx");
         }
     }
 }

@@ -43,7 +43,17 @@ namespace Rentoolo.Model
         /// <summary>
         /// Перевод от другого пользователя
         /// </summary>
-        PaymentIn = 16
+        PaymentIn = 16,
+
+        /// <summary>
+        /// Покупка токенов
+        /// </summary>
+        BuyingTokens = 17,
+
+        /// <summary>
+        /// Продажа токенов
+        /// </summary>
+        SellingTokens = 18
     }
 
     public class OperationTypes
@@ -119,6 +129,12 @@ namespace Rentoolo.Model
                     break;
                 case OperationTypesEnum.PaymentIn:
                     name = "Перевод от пользователя";
+                    break;
+                case OperationTypesEnum.BuyingTokens:
+                    name = "Покупка токенов";
+                    break;
+                case OperationTypesEnum.SellingTokens:
+                    name = "Продажа токенов";
                     break;
             }
 
