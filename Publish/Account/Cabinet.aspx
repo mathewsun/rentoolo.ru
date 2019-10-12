@@ -31,7 +31,8 @@
                         <td>Баланс:
                         </td>
                         <td><%if (UserWalletRURT != null)
-                                { %><%=UserWalletRURT.Value.ToString("N2") %><%} %>р. <a href="#" title="Пополнить">Пополнить</a>
+                                { %><%=UserWalletRURT.Value.ToString("N2") %><%}
+    else {%>0<%} %>р. <a href="#" title="Пополнить">Пополнить</a>
                         </td>
                     </tr>
                 </table>

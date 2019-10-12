@@ -32,14 +32,14 @@
     <div class="card d-md-block d-lg-block mb-4">
         <div class="card-body">
             <h6 class="mb-3">Ваш баланс: <span id="balanceValue"><%if (UserWalletRURT != null)
-                                                                     { %><%=UserWalletRURT.Value.ToString("N2") %><%} %></span> р.</h6>
+                                                                     { %><%=UserWalletRURT.Value.ToString("N2").Replace(",",".") %><%} %></span> р.</h6>
             <h6 class="mb-3">У вас токенов: <span id="tokensCountHave"><%if (UserWalletRENT != null)
                                                                            { %><%=UserWalletRENT.Value.ToString("N0") %><%} %></span></h6>
             <h6 class="mb-3">Всего токенов: <span id="fullTokensCount">10 000 000 000</span></h6>
             <h6 class="mb-3">Токенов, доступных к покупке: <span id="availableTokensCount">4 900 000 000</span></h6>
-            <h6 class="mb-3">Стоимость токена сегодня: <span id="oneTokenCost"><%=OneTokenTodayCost.ToString("N2") %></span>р.</h6>
-            <h6 class="mb-3">Доход Rentoolo сегодня: <span id="rentooloTodayProfit">0</span>р.</h6>
-            <h6 class="mb-3">Доход одного токена сегодня: <span id="oneTokenTodayProfit">0</span>р.</h6>
+            <h6 class="mb-3">Стоимость токена сегодня: <span id="oneTokenCost"><%=OneTokenTodayCost.ToString("N2").Replace(",",".") %></span> р.</h6>
+            <h6 class="mb-3">Доход Rentoolo сегодня: <span id="rentooloTodayProfit">0</span> р.</h6>
+            <h6 class="mb-3">Доход одного токена сегодня: <span id="oneTokenTodayProfit">0</span> р.</h6>
             <div>
                 На продажу выставлено 49% токенов. 
                 <br />
@@ -62,7 +62,7 @@
                     <span id="fullCost">100</span> р.
                 </div>
                 <div class="input-group-btn" style="padding-left: 20px;">
-                    <asp:Button ID="ButtonBuyTokens" runat="server" CssClass="btn btn-primary" Text="Купить токены" OnClick="ButtonBuyTokens_Click" />
+                    <asp:Button ID="ButtonBuyTokens" runat="server" CssClass="btn btn-primary" Text="Купить" OnClick="ButtonBuyTokens_Click" />
                 </div>
             </div>
         </div>

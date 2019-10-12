@@ -1,7 +1,7 @@
 USE [Rentoolo]
 GO
 
-/****** Object:  Table [dbo].[TokensBuying]    Script Date: 26.09.2019 21:16:11 ******/
+/****** Object:  Table [dbo].[TokensBuying]    Script Date: 12.10.2019 21:19:23 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,11 +10,15 @@ GO
 
 CREATE TABLE [dbo].[TokensBuying](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Count] [nchar](10) NOT NULL,
+	[Count] [bigint] NOT NULL,
 	[UserId] [uniqueidentifier] NOT NULL,
 	[CostOneToken] [float] NOT NULL,
 	[FullCost] [float] NOT NULL,
-	[WhenDate] [datetime] NOT NULL
+	[WhenDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_TokensBuying] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
