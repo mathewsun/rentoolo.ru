@@ -782,9 +782,6 @@
     </Compile>
     <Compile Include="Model\CategoriesEnum.cs" />
     <Compile Include="Model\AuctionsHelper.cs" />
-    <Compile Include="Model\Cookies.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Currencies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

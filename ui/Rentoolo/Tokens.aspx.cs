@@ -105,5 +105,16 @@ namespace Rentoolo
 
             Response.Redirect("Tokens.aspx");
         }
+
+        protected void ButtonSellTokens_Click(object sender, EventArgs e)
+        {
+            if (User == null)
+            {
+                Response.Redirect("/Account/Login.aspx?ReturnUrl=Tokens.aspx");
+            }
+
+            string tokensCountSellString = String.Format("{0}", Request.Form["ctl00$MainContent$tokensCountSell"]);
+
+        }
     }
 }
