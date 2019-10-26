@@ -124,9 +124,6 @@
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Account/Cabinet.aspx">Кабинет</a>
-                            </li>
                             <li class="nav-item d-md-none">
                                 <asp:LoginStatus ID="LoginStatus3" CssClass="nav-link" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
                             </li>
@@ -162,6 +159,7 @@
 
                             <ul class="nav navbar-nav d-none" id="js-popoverContent">
                                 <li class="nav-item"><a class="nav-link blue-color" href="/Account/MyAdverts.aspx">My Adverts</a></li>
+                                <li class="nav-item"><a id="A2" runat="server" class="nav-link blue-color username" href="~/Account/Cabinet.aspx" title="Личный кабинет">Кабинет</a></li>
                                 <li class="nav-item">
                                     <asp:LoginStatus CssClass="nav-link blue-color" ID="LoginStatus2" runat="server" LogoutAction="Redirect" OnLoggedOut="LoginStatus1_LoggedOut" LogoutText="Выйти" LogoutPageUrl="~/" />
                                 </li>
