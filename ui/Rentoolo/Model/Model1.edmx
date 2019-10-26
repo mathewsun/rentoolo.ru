@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище RentooloModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="RentooloModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adverts">
           <Key>
             <PropertyRef Name="Id" />
@@ -75,8 +75,8 @@
           <Property Name="AcceptedAccount" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SendAccount" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "Rentoolo.dbo.Categories" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="Id" />
@@ -88,6 +88,18 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Name(Ru)" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OrderId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Rentoolo.dbo.Cookies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Cookies">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Value" />
+            <PropertyRef Name="Created" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Currencies">
           <Key>
@@ -131,7 +143,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserCookiesId" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="UserCookiesId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="AdvertId" Type="bigint" Nullable="false" />
           <Property Name="Created" Type="datetime" Nullable="false" />
         </EntityType>
@@ -248,16 +260,9 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="UpdateDate" Type="datetime" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "Rentoolo.dbo.TokensBuying" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="TokensBuying">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="Count" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="CostOneToken" />
-            <PropertyRef Name="FullCost" />
-            <PropertyRef Name="WhenDate" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Count" Type="bigint" Nullable="false" />
@@ -591,7 +596,7 @@
         <Function Name="spGetUserAdverts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
         </Function>
-        <EntityContainer Name="Хранилище RentooloModelContainer">
+        <EntityContainer Name="RentooloModelStoreContainer">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
@@ -612,6 +617,7 @@
           <EntitySet Name="Referrals" EntityType="Self.Referrals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TokensBuying" EntityType="Self.TokensBuying" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TokensSelling" EntityType="Self.TokensSelling" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRoles" Schema="dbo" store:Type="Tables" />
@@ -626,15 +632,12 @@
 [Categories].[OrderId] AS [OrderId]
 FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="TokensBuying" EntityType="Self.TokensBuying" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="Cookies" EntityType="Self.Cookies" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-[TokensBuying].[Id] AS [Id], 
-[TokensBuying].[Count] AS [Count], 
-[TokensBuying].[UserId] AS [UserId], 
-[TokensBuying].[CostOneToken] AS [CostOneToken], 
-[TokensBuying].[FullCost] AS [FullCost], 
-[TokensBuying].[WhenDate] AS [WhenDate]
-FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
+[Cookies].[Id] AS [Id], 
+[Cookies].[Value] AS [Value], 
+[Cookies].[Created] AS [Created]
+FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CashIns_Users" Association="Self.FK_CashIns_Users">
             <End Role="Users" EntitySet="Users" />
@@ -850,7 +853,7 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserCookiesId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserCookiesId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AdvertId" Type="Int64" Nullable="false" />
           <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
@@ -974,6 +977,17 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="TokensBuying">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Count" Type="Int64" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="CostOneToken" Type="Double" Nullable="false" />
+          <Property Name="FullCost" Type="Double" Nullable="false" />
+          <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         <EntityType Name="TokensSelling">
           <Key>
             <PropertyRef Name="Id" />
@@ -1058,21 +1072,15 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
           <Property Name="Name_Ru_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OrderId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="TokensBuying">
+        <EntityType Name="Cookies">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="Count" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="CostOneToken" />
-            <PropertyRef Name="FullCost" />
-            <PropertyRef Name="WhenDate" />
+            <PropertyRef Name="Value" />
+            <PropertyRef Name="Created" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Count" Type="Int64" Nullable="false" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="CostOneToken" Type="Double" Nullable="false" />
-          <Property Name="FullCost" Type="Double" Nullable="false" />
-          <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="Guid" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="MembershipApplication">
           <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
@@ -1235,13 +1243,14 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
           <EntitySet Name="Referrals" EntityType="Self.Referrals" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Settings" EntityType="Self.Settings" />
+          <EntitySet Name="TokensBuying" EntityType="Self.TokensBuying" />
           <EntitySet Name="TokensSelling" EntityType="Self.TokensSelling" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
-          <EntitySet Name="TokensBuying" EntityType="Self.TokensBuying" />
+          <EntitySet Name="Cookies" EntityType="Self.Cookies" />
           <AssociationSet Name="MembershipApplication" Association="Self.MembershipApplication">
             <End Role="Applications" EntitySet="Applications" />
             <End Role="Memberships" EntitySet="Memberships" />
@@ -1371,7 +1380,7 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities">
+        <EntityContainerMapping StorageEntityContainer="RentooloModelStoreContainer" CdmEntityContainer="RentooloEntities">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -1621,6 +1630,18 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TokensBuying">
+            <EntityTypeMapping TypeName="RentooloModel.TokensBuying">
+              <MappingFragment StoreEntitySet="TokensBuying">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CostOneToken" ColumnName="CostOneToken" />
+                <ScalarProperty Name="FullCost" ColumnName="FullCost" />
+                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TokensSelling">
             <EntityTypeMapping TypeName="RentooloModel.TokensSelling">
               <MappingFragment StoreEntitySet="TokensSelling">
@@ -1693,15 +1714,12 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TokensBuying">
-            <EntityTypeMapping TypeName="RentooloModel.TokensBuying">
-              <MappingFragment StoreEntitySet="TokensBuying">
+          <EntitySetMapping Name="Cookies">
+            <EntityTypeMapping TypeName="RentooloModel.Cookies">
+              <MappingFragment StoreEntitySet="Cookies">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CostOneToken" ColumnName="CostOneToken" />
-                <ScalarProperty Name="FullCost" ColumnName="FullCost" />
-                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1713,7 +1731,7 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
               <ScalarProperty Name="UserId" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetAllUsers" FunctionImportName="fnGetAllUsers">
+          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetAllUsers" FunctionImportName="fnGetAllUsers">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetAllUsers_Result">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1727,7 +1745,7 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetTablesRows" FunctionImportName="fnGetTablesRows">
+          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetTablesRows" FunctionImportName="fnGetTablesRows">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetTablesRows_Result">
                 <ScalarProperty Name="TableName" ColumnName="TableName" />
@@ -1735,7 +1753,7 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserReferralsSecondLevel" FunctionImportName="fnGetUserReferralsSecondLevel">
+          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetUserReferralsSecondLevel" FunctionImportName="fnGetUserReferralsSecondLevel">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetUserReferralsSecondLevel_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1748,7 +1766,7 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserReferralsThirdLevel" FunctionImportName="fnGetUserReferralsThirdLevel">
+          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetUserReferralsThirdLevel" FunctionImportName="fnGetUserReferralsThirdLevel">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetUserReferralsThirdLevel_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1761,7 +1779,7 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserWallets" FunctionImportName="fnGetUserWallets">
+          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetUserWallets" FunctionImportName="fnGetUserWallets">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetUserWallets_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1772,9 +1790,9 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spAddFavorites" FunctionName="Хранилище RentooloModel.spAddFavorites" />
-          <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="Хранилище RentooloModel.spAddFavoritesByCookies" />
-          <FunctionImportMapping FunctionImportName="spGetFavorites" FunctionName="Хранилище RentooloModel.spGetFavorites">
+          <FunctionImportMapping FunctionImportName="spAddFavorites" FunctionName="RentooloModel.Store.spAddFavorites" />
+          <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="RentooloModel.Store.spAddFavoritesByCookies" />
+          <FunctionImportMapping FunctionImportName="spGetFavorites" FunctionName="RentooloModel.Store.spGetFavorites">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetFavorites_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1794,7 +1812,7 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetFavoritesByCookies" FunctionName="Хранилище RentooloModel.spGetFavoritesByCookies">
+          <FunctionImportMapping FunctionImportName="spGetFavoritesByCookies" FunctionName="RentooloModel.Store.spGetFavoritesByCookies">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetFavoritesByCookies_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1814,9 +1832,9 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastDayActive" FunctionName="Хранилище RentooloModel.spGetLoginStatisticLastDayActive" />
-          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastHourActive" FunctionName="Хранилище RentooloModel.spGetLoginStatisticLastHourActive" />
-          <FunctionImportMapping FunctionImportName="spGetUserAdverts" FunctionName="Хранилище RentooloModel.spGetUserAdverts">
+          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastDayActive" FunctionName="RentooloModel.Store.spGetLoginStatisticLastDayActive" />
+          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastHourActive" FunctionName="RentooloModel.Store.spGetLoginStatisticLastHourActive" />
+          <FunctionImportMapping FunctionImportName="spGetUserAdverts" FunctionName="RentooloModel.Store.spGetUserAdverts">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetUserAdverts_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1850,7 +1868,7 @@ FROM [dbo].[TokensBuying] AS [TokensBuying]</DefiningQuery>
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="true" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
