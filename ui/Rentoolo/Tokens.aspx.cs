@@ -60,6 +60,20 @@ namespace Rentoolo
                 return;
             }
 
+            if (tokensCountBuy == 0)
+            {
+                Result = "Zero count";
+
+                return;
+            }
+
+            if (tokensCountBuy < 0)
+            {
+                Result = "Below zero count value";
+
+                return;
+            }
+
             float sum = tokensCountBuy * OneTokenTodayCost;
 
             Wallets userWallet = WalletsHelper.GetUserWallet(User.UserId, (int)CurrenciesEnum.RURT);
@@ -114,6 +128,78 @@ namespace Rentoolo
             }
 
             string tokensCountSellString = String.Format("{0}", Request.Form["ctl00$MainContent$tokensCountSell"]);
+
+            long tokensCountSell = 0;
+
+            try
+            {
+                tokensCountSell = Int64.Parse(tokensCountSellString);
+            }
+            catch
+            {
+                Result = "Wrong count";
+
+                return;
+            }
+
+            if (tokensCountSell == 0)
+            {
+                Result = "Zero tokens";
+
+                return;
+            }
+
+            if (tokensCountSell < 0)
+            {
+                Result = "Below zero tokens value";
+
+                return;
+            }
+
+            float sum = tokensCountSell * OneTokenTodayCost;
+
+            Wallets userWalletRent = WalletsHelper.GetUserWallet(User.UserId, (int)CurrenciesEnum.RENT);
+
+            if (userWalletRent.Value < tokensCountSell)
+            {
+                Result = "No tokens";
+
+                return;
+            }
+
+            TokensSelling tokensSelling = new TokensSelling
+            {
+                UserId = User.UserId,
+                CostOneToken = OneTokenTodayCost,
+                Count = tokensCountSell,
+                FullCost = sum,
+                WhenDate = DateTime.Now
+            };
+
+            TokensDataHelper.AddTokensSelling(tokensSelling);
+
+            WalletsHelper.UpdateUserWallet(User.UserId, (int)CurrenciesEnum.RURT, sum);
+
+            WalletsHelper.UpdateUserWallet(User.UserId, (int)CurrenciesEnum.RENT, -tokensCountSell);
+
+            #region Логирование операции
+
+            {
+                Rentoolo.Model.Operations operation = new Rentoolo.Model.Operations
+                {
+                    UserId = User.UserId,
+                    Value = tokensCountSell,
+                    Type = (int)OperationTypesEnum.Registration,
+                    Comment = string.Format("Продажа {0} токенов на сумму {1}.", tokensCountSell, sum),
+                    WhenDate = DateTime.Now
+                };
+
+                DataHelper.AddOperation(operation);
+            }
+
+            #endregion
+
+            Response.Redirect("Tokens.aspx");
 
         }
     }

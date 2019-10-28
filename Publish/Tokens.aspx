@@ -4,11 +4,13 @@
     <script>
         $(document).ready(function () {
 
-            var balance = parseFloat($('#balanceValue').text());
-
-            var tokensCount = parseFloat($('#tokensCountHave').text());
-
             $('#tokensCountBuy').bind('input', function () {
+
+                var balanceText = $('#balanceValue').text();
+
+                var correctBalanceText = balanceText.replace(/\s/g, '');
+
+                var balance = parseFloat(correctBalanceText);
 
                 var oneTokenCost = parseFloat($('#oneTokenCost').text());
 
@@ -39,6 +41,12 @@
             });
 
             $('#tokensCountSell').bind('input', function () {
+
+                var tokensCountText = $('#tokensCountHave').text();
+
+                var correctTokensCountText = tokensCountText.replace(/\s/g, '');
+
+                var tokensCount = parseFloat(correctTokensCountText);
 
                 var oneTokenCost = parseFloat($('#oneTokenCost').text());
 
@@ -117,12 +125,12 @@
             <h6 class="mb-3">У вас токенов: <span id="tokensCountHave"><%if (UserWalletRENT != null)
                                                                            { %><%=UserWalletRENT.Value.ToString("N0") %><%} %></span></h6>
             <div style="display: -webkit-box;">
-                <asp:TextBox ID="tokensCountSell" ClientIDMode="Static" CssClass="form-control placeholder-right" Width="80px" runat="server">1000</asp:TextBox>
+                <asp:TextBox ID="tokensCountSell" ClientIDMode="Static" CssClass="form-control placeholder-right" Width="80px" runat="server">0</asp:TextBox>
                 <div class="fullCostSellLabel padding-left-10">
                     Цена продажи: 
                 </div>
                 <div>
-                    <span id="fullCostSell">100</span> р.
+                    <span id="fullCostSell">0</span> р.
                 </div>
                 <div class="input-group-btn" style="padding-left: 20px;">
                     <asp:Button ID="ButtonSellTokens" runat="server" CssClass="btn btn-primary" Text="Продать" OnClick="ButtonSellTokens_Click" />
