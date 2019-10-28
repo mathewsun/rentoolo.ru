@@ -338,6 +338,8 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Tokens.aspx" />
+    <Content Include="TokensBuying.aspx" />
+    <Content Include="TokensSelling.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -944,6 +946,20 @@
     </Compile>
     <Compile Include="Tokens.aspx.designer.cs">
       <DependentUpon>Tokens.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TokensBuying.aspx.cs">
+      <DependentUpon>TokensBuying.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TokensBuying.aspx.designer.cs">
+      <DependentUpon>TokensBuying.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TokensSelling.aspx.cs">
+      <DependentUpon>TokensSelling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TokensSelling.aspx.designer.cs">
+      <DependentUpon>TokensSelling.aspx</DependentUpon>
     </Compile>
     <Compile Include="UpiController.cs" />
     <Compile Include="UpiTestController.cs" />

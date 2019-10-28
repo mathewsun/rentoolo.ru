@@ -85,7 +85,7 @@ namespace Rentoolo
                 return;
             }
 
-            TokensBuying tokensBuying = new TokensBuying
+            Model.TokensBuying tokensBuying = new Model.TokensBuying
             {
                 UserId = User.UserId,
                 CostOneToken = OneTokenTodayCost,
@@ -167,7 +167,7 @@ namespace Rentoolo
                 return;
             }
 
-            TokensSelling tokensSelling = new TokensSelling
+            Model.TokensSelling tokensSelling = new Model.TokensSelling
             {
                 UserId = User.UserId,
                 CostOneToken = OneTokenTodayCost,
