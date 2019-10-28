@@ -22,9 +22,9 @@
 
             $(".photoContainer").brazzersCarousel();
 
-            if (width3 < 512) {
-                $(".href-photoContainer").attr("href", "#");
-            }
+            //if (width < 512) {
+            //    $(".href-photoContainer").attr("href", "#");
+            //}
 
         });
     </script>
