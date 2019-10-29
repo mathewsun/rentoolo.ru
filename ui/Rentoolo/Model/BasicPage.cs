@@ -14,11 +14,9 @@ namespace Rentoolo.Model
 
                 if (user != null)
                 {
-                    return user;
-                }
-                else
-                {
                     AddUserLoginStat(user.UserId);
+
+                    return user;
                 }
 
                 MembershipUser membershipUser = System.Web.Security.Membership.GetUser();
