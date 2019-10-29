@@ -1,5 +1,4 @@
-﻿<%@ Page Title="Продажа токенов" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TokensSelling.aspx.cs" Inherits="Rentoolo.Account.TokensSelling" %>
-
+﻿<%@ Page Title="Статистика входов" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LoginStatistics.aspx.cs" Inherits="Rentoolo.Account.LoginStatistics" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -14,11 +13,7 @@
                         <tr>
                             <th>Дата
                             </th>
-                            <th>Количество
-                            </th>
-                            <th>Цена токена
-                            </th>
-                            <th>Сумма
+                            <th>Ip
                             </th>
                         </tr>
                     </thead>
@@ -30,13 +25,7 @@
                                 <%= ListItems[i].WhenDate.ToString("dd.MM.yyyy HH:mm").Replace(".","/")%>
                             </td>
                             <td class="center">
-                                <%= ListItems[i].Count%>
-                            </td>
-                            <td>
-                                <%= ListItems[i].CostOneToken.ToString("N2")%> р.
-                            </td>
-                            <td>
-                                <%= ListItems[i].FullCost.ToString("N2")%> р.
+                                <%= ListItems[i].Ip%>
                             </td>
                         </tr>
                         <% } %>

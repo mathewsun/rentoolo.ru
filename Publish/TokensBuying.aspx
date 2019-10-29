@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Продажа токенов" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TokensSelling.aspx.cs" Inherits="Rentoolo.Account.TokensSelling" %>
+﻿<%@ Page Title="Покупка токенов" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TokensBuying.aspx.cs" Inherits="Rentoolo.TokensBuying" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>

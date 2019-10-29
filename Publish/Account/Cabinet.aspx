@@ -49,6 +49,9 @@
                     <a href="Manage.aspx" class="button-changePassword settingButton">Сменить пароль</a>
                 </div>
                 <div style="padding-top: 15px;">
+                    <a href="LoginStatistics.aspx" class="button-changePassword settingButton">Статистика входов</a>
+                </div>
+                <div style="padding-top: 15px;">
                     <a href="/Tokens.aspx" class="button-changePassword settingButton">Токены</a>
                 </div>
                 <div style="padding-top: 15px;">

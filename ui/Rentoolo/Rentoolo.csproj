@@ -328,6 +328,7 @@
     <Content Include="assets\fonts\toolkit-entypo.woff" />
     <Content Include="assets\fonts\toolkit-entypo.woff2" />
     <Content Include="Events.ashx" />
+    <Content Include="yandex_f9c03f80c16c0af8.html" />
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>

@@ -12315,3 +12315,7 @@ img.zoom-img {
 html {
     font-size: 14px;
 }
+
+.strong {
+    font-weight: bolder;
+}
