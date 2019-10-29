@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RentooloModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище RentooloModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adverts">
           <Key>
             <PropertyRef Name="Id" />
@@ -75,8 +75,8 @@
           <Property Name="AcceptedAccount" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SendAccount" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Rentoolo.dbo.Categories" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="Id" />
@@ -88,18 +88,6 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Name(Ru)" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OrderId" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Rentoolo.dbo.Cookies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Cookies">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Value" />
-            <PropertyRef Name="Created" />
-          </Key>
-          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Value" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Created" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Currencies">
           <Key>
@@ -143,7 +131,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Cookies' does not have a primary key 
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserCookiesId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserCookiesId" Type="nvarchar" MaxLength="36" Nullable="false" />
           <Property Name="AdvertId" Type="bigint" Nullable="false" />
           <Property Name="Created" Type="datetime" Nullable="false" />
         </EntityType>
@@ -161,6 +149,16 @@ warning 6002: The table/view 'Rentoolo.dbo.Cookies' does not have a primary key 
           <Property Name="Coordinate" Type="geography" />
           <Property Name="Phone" Type="nvarchar" MaxLength="20" />
           <Property Name="CommunicationType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoginStat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="Ip" Type="varchar" MaxLength="48" />
+          <Property Name="WhenDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="LoginStatistics">
           <Key>
@@ -596,7 +594,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Cookies' does not have a primary key 
         <Function Name="spGetUserAdverts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
         </Function>
-        <EntityContainer Name="RentooloModelStoreContainer">
+        <EntityContainer Name="Хранилище RentooloModelContainer">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
@@ -609,6 +607,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Cookies' does not have a primary key 
           <EntitySet Name="Favorites" EntityType="Self.Favorites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FavoritesByCookies" EntityType="Self.FavoritesByCookies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginStat" EntityType="Self.LoginStat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginStatistics" EntityType="Self.LoginStatistics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Memberships" EntityType="Self.Memberships" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
@@ -631,13 +630,6 @@ warning 6002: The table/view 'Rentoolo.dbo.Cookies' does not have a primary key 
 [Categories].[Name(Ru)] AS [Name(Ru)], 
 [Categories].[OrderId] AS [OrderId]
 FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Cookies" EntityType="Self.Cookies" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[Cookies].[Id] AS [Id], 
-[Cookies].[Value] AS [Value], 
-[Cookies].[Created] AS [Created]
-FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CashIns_Users" Association="Self.FK_CashIns_Users">
             <End Role="Users" EntitySet="Users" />
@@ -853,7 +845,7 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserCookiesId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserCookiesId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AdvertId" Type="Int64" Nullable="false" />
           <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
@@ -871,6 +863,16 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
           <Property Name="Coordinate" Type="Geography" />
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CommunicationType" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoginStat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="Ip" Type="String" MaxLength="48" FixedLength="false" Unicode="false" />
+          <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="LoginStatistics">
           <Key>
@@ -1072,16 +1074,6 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
           <Property Name="Name_Ru_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OrderId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Cookies">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Value" />
-            <PropertyRef Name="Created" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Value" Type="Guid" Nullable="false" />
-          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
         <Association Name="MembershipApplication">
           <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
           <End Role="Memberships" Type="Self.Memberships" Multiplicity="*" />
@@ -1235,6 +1227,7 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
           <EntitySet Name="Favorites" EntityType="Self.Favorites" />
           <EntitySet Name="FavoritesByCookies" EntityType="Self.FavoritesByCookies" />
           <EntitySet Name="Items" EntityType="Self.Items" />
+          <EntitySet Name="LoginStat" EntityType="Self.LoginStat" />
           <EntitySet Name="LoginStatistics" EntityType="Self.LoginStatistics" />
           <EntitySet Name="Memberships" EntityType="Self.Memberships" />
           <EntitySet Name="News" EntityType="Self.News" />
@@ -1250,7 +1243,6 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
-          <EntitySet Name="Cookies" EntityType="Self.Cookies" />
           <AssociationSet Name="MembershipApplication" Association="Self.MembershipApplication">
             <End Role="Applications" EntitySet="Applications" />
             <End Role="Memberships" EntitySet="Memberships" />
@@ -1380,7 +1372,7 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="RentooloModelStoreContainer" CdmEntityContainer="RentooloEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -1521,6 +1513,17 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
                 <ScalarProperty Name="Coordinate" ColumnName="Coordinate" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="CommunicationType" ColumnName="CommunicationType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginStat">
+            <EntityTypeMapping TypeName="RentooloModel.LoginStat">
+              <MappingFragment StoreEntitySet="LoginStat">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1714,15 +1717,6 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Cookies">
-            <EntityTypeMapping TypeName="RentooloModel.Cookies">
-              <MappingFragment StoreEntitySet="Cookies">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="UsersInRoles" TypeName="RentooloModel.UsersInRoles" StoreEntitySet="UsersInRoles">
             <EndProperty Name="Roles">
               <ScalarProperty Name="RoleId" ColumnName="RoleId" />
@@ -1731,7 +1725,7 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
               <ScalarProperty Name="UserId" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetAllUsers" FunctionImportName="fnGetAllUsers">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetAllUsers" FunctionImportName="fnGetAllUsers">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetAllUsers_Result">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1745,7 +1739,7 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetTablesRows" FunctionImportName="fnGetTablesRows">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetTablesRows" FunctionImportName="fnGetTablesRows">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetTablesRows_Result">
                 <ScalarProperty Name="TableName" ColumnName="TableName" />
@@ -1753,7 +1747,7 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetUserReferralsSecondLevel" FunctionImportName="fnGetUserReferralsSecondLevel">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserReferralsSecondLevel" FunctionImportName="fnGetUserReferralsSecondLevel">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetUserReferralsSecondLevel_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1766,7 +1760,7 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetUserReferralsThirdLevel" FunctionImportName="fnGetUserReferralsThirdLevel">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserReferralsThirdLevel" FunctionImportName="fnGetUserReferralsThirdLevel">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetUserReferralsThirdLevel_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1779,7 +1773,7 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetUserWallets" FunctionImportName="fnGetUserWallets">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserWallets" FunctionImportName="fnGetUserWallets">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetUserWallets_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1790,9 +1784,9 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spAddFavorites" FunctionName="RentooloModel.Store.spAddFavorites" />
-          <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="RentooloModel.Store.spAddFavoritesByCookies" />
-          <FunctionImportMapping FunctionImportName="spGetFavorites" FunctionName="RentooloModel.Store.spGetFavorites">
+          <FunctionImportMapping FunctionImportName="spAddFavorites" FunctionName="Хранилище RentooloModel.spAddFavorites" />
+          <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="Хранилище RentooloModel.spAddFavoritesByCookies" />
+          <FunctionImportMapping FunctionImportName="spGetFavorites" FunctionName="Хранилище RentooloModel.spGetFavorites">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetFavorites_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1812,7 +1806,7 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetFavoritesByCookies" FunctionName="RentooloModel.Store.spGetFavoritesByCookies">
+          <FunctionImportMapping FunctionImportName="spGetFavoritesByCookies" FunctionName="Хранилище RentooloModel.spGetFavoritesByCookies">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetFavoritesByCookies_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1832,9 +1826,9 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastDayActive" FunctionName="RentooloModel.Store.spGetLoginStatisticLastDayActive" />
-          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastHourActive" FunctionName="RentooloModel.Store.spGetLoginStatisticLastHourActive" />
-          <FunctionImportMapping FunctionImportName="spGetUserAdverts" FunctionName="RentooloModel.Store.spGetUserAdverts">
+          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastDayActive" FunctionName="Хранилище RentooloModel.spGetLoginStatisticLastDayActive" />
+          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastHourActive" FunctionName="Хранилище RentooloModel.spGetLoginStatisticLastHourActive" />
+          <FunctionImportMapping FunctionImportName="spGetUserAdverts" FunctionName="Хранилище RentooloModel.spGetUserAdverts">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetUserAdverts_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1868,7 +1862,7 @@ FROM [dbo].[Cookies] AS [Cookies]</DefiningQuery>
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="true" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

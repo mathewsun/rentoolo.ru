@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <div class="additem-right additem__way" cid="1001">
-                <table id="referalTable" class="basicTable referalTable">
+                <table id="referalTable" class="table">
                     <thead>
                         <tr>
                             <th>Дата

@@ -154,6 +154,7 @@
     <Content Include="Account\Cabinet.aspx" />
     <Content Include="Account\Exchange.aspx" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Account\LoginStatistics.aspx" />
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\ManageTopUserControl.ascx" />
     <Content Include="Account\Menu.ascx" />
@@ -282,6 +283,7 @@
     <Content Include="DataBase\spGetLoginStatisticLastHourActive.sql" />
     <Content Include="DataBase\fnGetTablesRows.sql" />
     <Content Include="DataBase\fnGetAllUsers.sql" />
+    <Content Include="DataBase\tables\LoginStat.sql" />
     <Content Include="DataBase\tables\Auctions.sql" />
     <Content Include="DataBase\tables\Business.sql" />
     <Content Include="DataBase\tables\Adverts.sql" />
@@ -373,6 +375,13 @@
     </Compile>
     <Compile Include="Account\Exchange.aspx.designer.cs">
       <DependentUpon>Exchange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\LoginStatistics.aspx.cs">
+      <DependentUpon>LoginStatistics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\LoginStatistics.aspx.designer.cs">
+      <DependentUpon>LoginStatistics.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\ManageTopUserControl.ascx.cs">
       <DependentUpon>ManageTopUserControl.ascx</DependentUpon>
@@ -784,9 +793,6 @@
     </Compile>
     <Compile Include="Model\CategoriesEnum.cs" />
     <Compile Include="Model\AuctionsHelper.cs" />
-    <Compile Include="Model\Cookies.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Currencies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -823,6 +829,9 @@
     <Compile Include="Model\Helper.cs" />
     <Compile Include="Model\ImgUploadResult.cs" />
     <Compile Include="Model\Items.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LoginStat.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LoginStatistics.cs">

@@ -290,6 +290,45 @@ namespace Rentoolo.Model
             }
         }
 
+        //---
+
+        public static void AddLoginStat(Guid userId, string ip)
+        {
+            LoginStat item = new LoginStat
+            {
+                Ip = ip,
+                UserId = userId,
+                WhenDate = DateTime.Now
+            };
+
+            AddLoginStat(item);
+        }
+
+        public static void AddLoginStat(LoginStat item)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                ctx.LoginStat.Add(item);
+
+                try
+                {
+                    ctx.SaveChanges();
+                }
+                catch (System.Exception ex)
+                {
+                    DataHelper.AddException(ex);
+                }
+            }
+        }
+
+        public static List<LoginStat> GetLoginStat(Guid userId)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                return ctx.LoginStat.Where(x => x.UserId == userId).OrderByDescending(x => x.WhenDate).ToList();
+            }
+        }
+
         #endregion
 
         #region Настройки

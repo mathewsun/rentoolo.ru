@@ -10,6 +10,6 @@
 namespace Rentoolo.Account {
     
     
-    public partial class TokensBuying {
+    public partial class LoginStatistics {
     }
 }

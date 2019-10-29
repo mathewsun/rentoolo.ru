@@ -1,4 +1,4 @@
-﻿<%@ Page Title="TokensBuying" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TokensBuying.aspx.cs" Inherits="Rentoolo.Account.TokensBuying" %>
+﻿<%@ Page Title="Покупка токенов" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TokensBuying.aspx.cs" Inherits="Rentoolo.Account.TokensBuying" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -8,7 +8,7 @@
         </div>
         <div class="card-body">
             <div class="additem-right additem__way" cid="1001">
-                <table id="referalTable" class="basicTable referalTable">
+                <table id="referalTable" class="table">
                     <thead>
                         <tr>
                             <th>Дата

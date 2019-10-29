@@ -70,24 +70,24 @@ namespace Rentoolo
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Context.User.Identity.Name))
-            {
-                try
-                {
-                    LoginStatistics item = new LoginStatistics();
+            //if (!string.IsNullOrEmpty(Context.User.Identity.Name))
+            //{
+            //    try
+            //    {
+            //        LoginStatistics item = new LoginStatistics();
 
-                    item.UserName = Context.User.Identity.Name;
+            //        item.UserName = Context.User.Identity.Name;
 
-                    item.WhenLastDate = DateTime.Now;
+            //        item.WhenLastDate = DateTime.Now;
 
-                    item.Ip = Request.UserHostAddress;
+            //        item.Ip = Request.UserHostAddress;
 
-                    item.Client = 0;
+            //        item.Client = 0;
 
-                    DataHelper.AddLoginStatistic(item);
-                }
-                catch { }
-            }
+            //        DataHelper.AddLoginStatistic(item);
+            //    }
+            //    catch { }
+            //}
 
             ListNews = DataHelper.GetActiveNewsLast5();
         }
