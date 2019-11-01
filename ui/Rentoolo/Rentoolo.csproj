@@ -165,6 +165,7 @@
     <Content Include="Account\Profit.aspx" />
     <Content Include="Account\Referrals.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Account\SelectCategory.aspx" />
     <Content Include="Account\Settings.aspx" />
     <Content Include="Account\SignUp.aspx" />
     <Content Include="Account\Tenders.aspx" />
@@ -435,6 +436,13 @@
     </Compile>
     <Compile Include="Account\Result.ashx.cs">
       <DependentUpon>Result.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SelectCategory.aspx.cs">
+      <DependentUpon>SelectCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SelectCategory.aspx.designer.cs">
+      <DependentUpon>SelectCategory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Settings.aspx.cs">
       <DependentUpon>Settings.aspx</DependentUpon>
