@@ -45,6 +45,18 @@ namespace Rentoolo
             routes.MapPageRoute("advertsRoute",
                 "Adverts/{id}",
                 "~/Adverts.aspx");
+
+            routes.MapPageRoute("testRoute",
+                "test",
+                "~/Test.aspx");
+
+            routes.MapPageRoute("addItemRoute",
+                "addItem",
+                "~/Account/AddItem.aspx");
+
+            routes.MapPageRoute("addRoute",
+                "add",
+                "~/Account/AddItem.aspx");
         }
     }
 }
