@@ -14,7 +14,7 @@ namespace Rentoolo.Model
 
                 if (user != null)
                 {
-                    AddUserLoginStat(user.UserId);
+                    //AddUserLoginStat(user.UserId);
 
                     return user;
                 }
@@ -33,6 +33,8 @@ namespace Rentoolo.Model
                 user = DataHelper.GetUser(new Guid(membershipUser.ProviderUserKey.ToString()));
 
                 Session["User"] = user;
+
+                AddUserLoginStat(user.UserId);
 
                 return user;
             }
