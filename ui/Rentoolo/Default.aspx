@@ -91,10 +91,10 @@
                     function (k, v) {
                         if (k != "") {
                             if (width1 < 512 || width2 < 512 || width3 < 512) {
-                                htmlString += "<img src='" + v + "' style='height: 150px; width: 150px;' alt='' />";
+                                htmlString += "<img src='" + v + "' style='height: 125px; width: 150px;' alt='' />";
                             }
                             else {
-                                htmlString += "<img src='" + v + "' style='height: 275px; width: 275px;' alt='' />";
+                                htmlString += "<img src='" + v + "' style='height: 230px; width: 275px;' alt='' />";
                             }
                         }
                     });
