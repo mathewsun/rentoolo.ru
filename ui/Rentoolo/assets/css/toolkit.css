@@ -12319,3 +12319,11 @@ html {
 .strong {
     font-weight: bolder;
 }
+
+@media (max-width: 575.98px) {
+    .advert-img {
+        height: 120px !important;
+        width: 170px !important;
+        padding-left: 5px;
+    }
+}
