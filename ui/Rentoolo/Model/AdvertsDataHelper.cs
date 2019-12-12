@@ -51,6 +51,16 @@ namespace Rentoolo.Model
             }
         }
 
+        public static List<Adverts> GetAdvertsForWithSearch(string search)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var list = ctx.Adverts.OrderByDescending(x => x.Created).ToList();
+
+                return list;
+            }
+        }
+
         public static List<spGetUserAdverts_Result> GetUserAdverts(Guid userId)
         {
             using (var ctx = new RentooloEntities())

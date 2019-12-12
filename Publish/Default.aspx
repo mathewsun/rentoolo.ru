@@ -22,7 +22,7 @@
     <meta property="image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <link href="assets/css/toolkit.css?2" rel="stylesheet">
+    <link href="assets/css/toolkit.css?2222" rel="stylesheet">
     <link href="assets/css/application.css" rel="stylesheet">
     <link href="assets/css/additional.css?888" rel="stylesheet">
 
@@ -90,12 +90,7 @@
                 JSON.parse(imgUrls,
                     function (k, v) {
                         if (k != "") {
-                            if (width1 < 512 || width2 < 512 || width3 < 512) {
-                                htmlString += "<img src='" + v + "' style='height: 125px; width: 150px;' alt='' />";
-                            }
-                            else {
-                                htmlString += "<img src='" + v + "' style='height: 230px; width: 275px;' alt='' />";
-                            }
+                            htmlString += "<img src='" + v + "' style='height: 120px; width: 170px;' class='advert-img' alt='' />";
                         }
                     });
 
@@ -248,6 +243,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Tokens.aspx">Токены</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Account/Cabinet.aspx">Кабинет</a>
                     </li>
                     <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>

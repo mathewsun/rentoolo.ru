@@ -1,10 +1,23 @@
 ﻿CREATE PROCEDURE  [dbo].[spGetAdverts]
-@uid nvarchar(50)
+@search nvarchar(100)
 AS
 BEGIN
-	select id
-	from FavoritesByCookies f
-	where f.Value = @uid
+SELECT
+[Id]
+,[Category]
+,[Name]
+,[Description]
+,[Created]
+,[CreatedUserId]
+,[Price]
+,[Address]
+,[Phone]
+,[MessageType]
+,[Position]
+,[ImgUrls]
+,[YouTubeUrl]
+from [Adverts] a
+WHERE CONTAINS([Name], @search) or CONTAINS([Description], @search)
 END
 GO
 

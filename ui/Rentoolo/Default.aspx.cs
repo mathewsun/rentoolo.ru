@@ -18,7 +18,9 @@ namespace Rentoolo
         {
             if (!IsPostBack)
             {
-                ListNews = DataHelper.GetActiveNewsLast5();
+                //ListNews = DataHelper.GetActiveNewsLast5();
+
+                string search = Request.QueryString["s"];
 
                 ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage();
 
@@ -69,6 +71,13 @@ namespace Rentoolo
             Session.Remove("User");
 
             Response.Redirect("/");
+        }
+
+        protected void ButtonSearch_Click(object sender, EventArgs e)
+        {
+            string search = String.Format("{0}", Request.Form["InputSearch"]);
+
+            Response.Redirect("/Default.aspx?s=" + Uri.EscapeDataString(search));
         }
     }
 }

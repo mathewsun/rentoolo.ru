@@ -141,7 +141,7 @@ body {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1rem;
     font-weight: 300;
-    line-height: 1.6;
+    line-height: 1.4;
     color: #212529;
     text-align: left;
     background-color: #f5f8fa;
@@ -12318,4 +12318,12 @@ html {
 
 .strong {
     font-weight: bolder;
+}
+
+@media (max-width: 575.98px) {
+    .advert-img {
+        height: 120px !important;
+        width: 170px !important;
+        padding-left: 5px;
+    }
 }
