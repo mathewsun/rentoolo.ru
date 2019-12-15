@@ -60,17 +60,17 @@
                     <%foreach (var item in ListItems)
                         { %>
                     <div class="list-item-wrap" style="display: none" aid="<%=item.Id%>">
-                        <a href="Advert.aspx?id=<%=item.Id%>" class="href-photoContainer" title="<%=item.Name%>">
+                        <a href="Advert.aspx?id=<%=item.AdvertId%>" class="href-photoContainer" title="<%=item.Name%>">
                             <div class="photoContainer" data='<%=item.ImgUrls%>'></div>
                         </a>
                         <div class="item-wrap-content">
-                            <div class="item-wrap-name"><a href="Advert.aspx?id=<%=item.Id%>"><%=item.Name%></a></div>
+                            <div class="item-wrap-name"><a href="Advert.aspx?id=<%=item.AdvertId%>"><%=item.Name%></a></div>
                             <div class="item-wrap-cost"><%=item.Price%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
                             <div class="item-wrap__description">
                                 <p><span class="item-wrap__description-description" maxlength="20"><%=item.Description%></span></p>
                                 <p><%=item.Category%></p>
                                 <p><%=item.Address%></p>
-                                <div class="item-wrap__data">Объявление создано: <%=item.CreatedAdverts.ToString("dd.MM.yyyy HH:mm")%></div>
+                                <div class="item-wrap__data">Опубликовано: <%=item.CreatedAdverts.ToString("dd.MM.yyyy HH:mm")%></div>
                                 <div class="item-wrap__data">Добавлено в избранное: <%=item.CreatedFavorites.ToString("dd.MM.yyyy HH:mm")%></div>
                             </div>
                         </div>
