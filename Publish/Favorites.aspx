@@ -13,7 +13,7 @@
                 JSON.parse(imgUrls,
                     function (k, v) {
                         if (k != "") {
-                            htmlString += "<img src='" + v + "' style='height: 275px; width: 275px;' alt='' />";
+                            htmlString += "<img src='" + v + "' style='height: 120px; width: 170px;' class='advert-img' alt='' />";
                         }
                     });
 
