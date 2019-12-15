@@ -152,6 +152,8 @@
     <Content Include="Account\AddItem.aspx" />
     <Content Include="Account\Auctions.aspx" />
     <Content Include="Account\Cabinet.aspx" />
+    <Content Include="Account\CashIn.aspx" />
+    <Content Include="Account\CashOut.aspx" />
     <Content Include="Account\Exchange.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\LoginStatistics.aspx" />
@@ -370,6 +372,20 @@
     </Compile>
     <Compile Include="Account\Cabinet.aspx.designer.cs">
       <DependentUpon>Cabinet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\CashIn.aspx.cs">
+      <DependentUpon>CashIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\CashIn.aspx.designer.cs">
+      <DependentUpon>CashIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\CashOut.aspx.cs">
+      <DependentUpon>CashOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\CashOut.aspx.designer.cs">
+      <DependentUpon>CashOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Exchange.aspx.cs">
       <DependentUpon>Exchange.aspx</DependentUpon>
@@ -873,6 +889,9 @@
     <Compile Include="Model\Payments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\QiwiApi.cs" />
+    <Compile Include="Model\QiwiCheckHistory.cs" />
+    <Compile Include="Model\QiwiPayment.cs" />
     <Compile Include="Model\Referrals.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

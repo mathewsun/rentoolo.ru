@@ -102,7 +102,7 @@
             </div>
             <br />
             <h6 class="mb-3">Ваш баланс: <span id="balanceValue"><%if (UserWalletRURT != null)
-                                                                     { %><%=UserWalletRURT.Value.ToString("N2").Replace(",",".") %><%} %></span> р.</h6>
+                                                                     { %><%=UserWalletRURT.Value.ToString("N2").Replace(",",".") %><%} %></span> р. <a href="/Account/CashIn.aspx"><span class="strong">пополнить</span></a></h6>
             <div style="display: -webkit-box;">
                 <asp:TextBox ID="tokensCountBuy" ClientIDMode="Static" CssClass="form-control placeholder-right" Width="80px" runat="server">1000</asp:TextBox>
                 <div class="fullCostLable padding-left-10">
