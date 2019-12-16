@@ -15,24 +15,17 @@
                 <table class="marginTable cabinetTable">
                     <tr>
                         <td>
-                            <%=User.UserName %>
+                            Логин:
                         </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">Реферальная ссылка:</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" class="height: 50px;">
-                            <input id="refferalLink" onclick="copyToClipboardUrl()" type="text" style="height: 20px; border: none; background: transparent; color: #181A1C; font-size: 17px; width: 400px; -webkit-appearance: none; box-shadow: inset 0px 0px 0px 0px red; cursor: pointer;" title="Скопировать" value="<%=Helper.GetRefferalLink(Request, this.User.PublicId) %>" />
-                        </td>
+                        <td><%=User.UserName %></td>
                     </tr>
                     <tr>
                         <td>Баланс:
                         </td>
                         <td><%if (UserWalletRURT != null)
                                 { %><%=UserWalletRURT.Value.ToString("N2") %><%}
-    else {%>0<%} %>р. <a href="#" title="Пополнить">Пополнить</a>
+                            else
+                            {%>0<%} %>р. <a href="#" title="Пополнить">Пополнить</a>
                         </td>
                     </tr>
                 </table>
@@ -59,6 +52,10 @@
                 </div>
                 <div style="padding-top: 15px;">
                     <a href="/Account/TokensSelling.aspx" class="button-changePassword settingButton">История продаж токенов</a>
+                </div>
+                <div style="padding-top: 15px;">
+                    Реферальная ссылка:
+                    <input id="refferalLink" onclick="copyToClipboardUrl()" type="text" style="height: 20px; border: none; background: transparent; color: #181A1C; font-size: 17px; width: 400px; -webkit-appearance: none; box-shadow: inset 0px 0px 0px 0px red; cursor: pointer;" title="Скопировать" value="<%=Helper.GetRefferalLink(Request, this.User.PublicId) %>" />
                 </div>
             </div>
         </div>
