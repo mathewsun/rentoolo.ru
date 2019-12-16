@@ -100,6 +100,24 @@ namespace Rentoolo.Model
             }
         }
 
+        public static void UpdateUserBalance(Guid userId, CurrenciesEnum currency, double balanceAddition, UpdateBalanceType updateType)
+        {
+            try
+            {
+                using (var ctx = new RentooloEntities())
+                {
+                    var obj = ctx.Wallets.FirstOrDefault(x => x.UserId == userId && x.CurrencyId == (int)currency);
+                    obj.Value = obj.Value + balanceAddition;
+
+                    ctx.SaveChanges();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                DataHelper.AddException(ex);
+            }
+        }
+
         public static List<fnGetAllUsers_Result> GetAllUsers()
         {
             using (var dc = new RentooloEntities())
