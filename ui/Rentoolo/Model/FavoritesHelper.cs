@@ -144,7 +144,7 @@ namespace Rentoolo.Model
         {
             using (var ctx = new RentooloEntities())
             {
-                System.Data.Objects.ObjectResult<spGetFavoritesByCookies_Result> result = ctx.spGetFavoritesByCookies(uid);
+                System.Data.Entity.Core.Objects.ObjectResult<spGetFavoritesByCookies_Result> result = ctx.spGetFavoritesByCookies(uid);
 
                 List<FavoritesForPage> list = new List<FavoritesForPage>();
 

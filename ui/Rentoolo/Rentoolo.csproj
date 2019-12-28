@@ -44,6 +44,14 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -53,7 +61,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -96,9 +103,6 @@
     </Reference>
     <Reference Include="Microsoft.ScriptManager.WebForms, Version=4.5.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.4.5.6\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
@@ -204,6 +208,7 @@
     <Content Include="assets\css\docs.css" />
     <Content Include="assets\css\jQuery.Brazzers-Carousel.css" />
     <Content Include="assets\css\photoSlider.css" />
+    <Content Include="assets\css\sweet-alert.css" />
     <Content Include="assets\css\toolkit.css" />
     <Content Include="assets\img\addphoto.png" />
     <Content Include="assets\img\addphoto.svg" />
@@ -269,6 +274,7 @@
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\js.cookie.js" />
     <Content Include="assets\js\popper.min.js" />
+    <Content Include="assets\js\sweet-alert.min.js" />
     <Content Include="assets\js\toolkit.js" />
     <Content Include="assets\js\utils.js" />
     <Content Include="bootstrap\index.html" />
@@ -279,6 +285,7 @@
     <Content Include="DataBase\Init\Init.sql" />
     <Content Include="DataBase\spGetAuctions.sql" />
     <Content Include="DataBase\spAddFavorites.sql" />
+    <Content Include="DataBase\spUpdateQiwiAccountBalance.sql" />
     <Content Include="DataBase\spGetUserAdverts.sql" />
     <Content Include="DataBase\spGetAdverts.sql" />
     <Content Include="DataBase\spGetFavorites.sql" />
@@ -288,6 +295,7 @@
     <Content Include="DataBase\spGetLoginStatisticLastHourActive.sql" />
     <Content Include="DataBase\fnGetTablesRows.sql" />
     <Content Include="DataBase\fnGetAllUsers.sql" />
+    <Content Include="DataBase\tables\Phones.sql" />
     <Content Include="DataBase\tables\LoginStat.sql" />
     <Content Include="DataBase\tables\Auctions.sql" />
     <Content Include="DataBase\tables\Business.sql" />
@@ -820,6 +828,7 @@
     </Compile>
     <Compile Include="Model\CategoriesEnum.cs" />
     <Compile Include="Model\AuctionsHelper.cs" />
+    <Compile Include="Model\CheckQiwiPayment.cs" />
     <Compile Include="Model\Currencies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -891,8 +900,12 @@
     <Compile Include="Model\Payments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Phones.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\QiwiApi.cs" />
     <Compile Include="Model\QiwiCheckHistory.cs" />
+    <Compile Include="Model\QiwiHelper.cs" />
     <Compile Include="Model\QiwiPayment.cs" />
     <Compile Include="Model\Referrals.cs">
       <DependentUpon>Model1.tt</DependentUpon>

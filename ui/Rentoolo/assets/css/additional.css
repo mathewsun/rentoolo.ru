@@ -147,7 +147,7 @@
     bottom: 100%;
     left: 50%;
     -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
     width: 20px;
     height: 10px;
     top: -10;
@@ -417,7 +417,7 @@
     margin-bottom: 0 !important;
     margin-top: 10px !important;
     -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .list-item-wrap-img {
@@ -763,7 +763,7 @@ input::-webkit-inner-spin-button {
 @media (max-width: 768px) {
     .additem-contact {
         -ms-flex-preferred-size: 100%;
-            flex-basis: 100%;
+        flex-basis: 100%;
     }
 
     .additem-right {
@@ -792,7 +792,7 @@ input::-webkit-inner-spin-button {
 
     .additem-go {
         -ms-flex-preferred-size: 100%;
-            flex-basis: 100%;
+        flex-basis: 100%;
     }
 
     .additem-copyr {
@@ -801,7 +801,7 @@ input::-webkit-inner-spin-button {
 
     .additem-copyr__wrap {
         -ms-flex-preferred-size: 50%;
-            flex-basis: 50%;
+        flex-basis: 50%;
     }
 }
 
@@ -809,8 +809,8 @@ input::-webkit-inner-spin-button {
     .additem-category {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
     }
 
     .additem-input__text:after {
@@ -839,8 +839,8 @@ input::-webkit-inner-spin-button {
 
     .additem-go {
         -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
     }
 
     .additem-check__wrap {
@@ -854,7 +854,7 @@ input::-webkit-inner-spin-button {
     .price__open {
         left: 1%;
         -webkit-transform: translateX(-1%);
-                transform: translateX(-1%);
+        transform: translateX(-1%);
     }
 }
 
@@ -947,6 +947,7 @@ input::-webkit-inner-spin-button {
     margin-right: 110px;
     margin-top: 0px;
 }
+
 a.dz-remove {
     position: absolute;
     display: -webkit-box;
@@ -955,7 +956,7 @@ a.dz-remove {
     height: 20px;
     width: 20px;
     background-color: transparent;
-    font-size: 0!important;
+    font-size: 0 !important;
     top: -15px;
     right: -15px;
     z-index: 99;
@@ -963,4 +964,24 @@ a.dz-remove {
     background-image: url(../img/delete.svg);
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.QiwiCashInTable td {
+    padding: 10px 10px !important;
+}
+
+.paymentButton {
+    font-famaly: Verdana, Helvetica, sans-serif !important;
+    padding: 0 9px;
+    height: 30px;
+    font-size: 12px !important;
+    border: 1px solid #538ec1 !important;
+    background: #a4cef4 !important;
+    color: #fff !important;
+    width: 72px;
+    cursor: pointer;
+}
+
+.cashInCount{
+    width: 150px;
 }

@@ -15,7 +15,7 @@ namespace Rentoolo.Account
 
             if(!string.IsNullOrEmpty(CheckNumber))
             {
-                
+                QiwiHelper.CheckQiwiAccountPaymentsHistory(CheckNumber);
             }
             
             //if (Request.UrlReferrer != null && Request.UrlReferrer.ToString().Contains("CashIn.aspx"))
