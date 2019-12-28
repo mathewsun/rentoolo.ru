@@ -20,12 +20,12 @@
                         <td><%=User.UserName %></td>
                     </tr>
                     <tr>
-                        <td>Баланс:
+                        <td>Баланс: &nbsp; 
                         </td>
                         <td><%if (UserWalletRURT != null)
                                 { %><%=UserWalletRURT.Value.ToString("N2") %><%}
                             else
-                            {%>0<%} %>р. <a href="#" title="Пополнить">Пополнить</a>
+                            {%>0<%} %>р. <a href="/Account/CashIn.aspx" title="Пополнить">Пополнить</a>
                         </td>
                     </tr>
                 </table>

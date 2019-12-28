@@ -49,13 +49,13 @@ namespace Rentoolo.Model
         public virtual DbSet<Referrals> Referrals { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Settings> Settings { get; set; }
+        public virtual DbSet<TokensBuying> TokensBuying { get; set; }
         public virtual DbSet<TokensSelling> TokensSelling { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UsersOpenAuthAccounts> UsersOpenAuthAccounts { get; set; }
         public virtual DbSet<UsersOpenAuthData> UsersOpenAuthData { get; set; }
         public virtual DbSet<Wallets> Wallets { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
-        public virtual DbSet<TokensBuying> TokensBuying { get; set; }
     
         [DbFunction("RentooloEntities", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()
