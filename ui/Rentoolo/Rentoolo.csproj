@@ -283,6 +283,7 @@
     <Content Include="Contact.aspx" />
     <Content Include="DataBase\fnGetUserWallets.sql" />
     <Content Include="DataBase\Init\Init.sql" />
+    <Content Include="DataBase\spGetLast200TokensOperations.sql" />
     <Content Include="DataBase\spGetAuctions.sql" />
     <Content Include="DataBase\spAddFavorites.sql" />
     <Content Include="DataBase\spUpdateQiwiAccountBalance.sql" />
@@ -341,6 +342,7 @@
     <Content Include="assets\fonts\toolkit-entypo.woff" />
     <Content Include="assets\fonts\toolkit-entypo.woff2" />
     <Content Include="Events.ashx" />
+    <Content Include="TokensOperations.aspx" />
     <Content Include="yandex_f9c03f80c16c0af8.html" />
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -1005,6 +1007,13 @@
     </Compile>
     <Compile Include="TokensBuying.aspx.designer.cs">
       <DependentUpon>TokensBuying.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TokensOperations.aspx.cs">
+      <DependentUpon>TokensOperations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TokensOperations.aspx.designer.cs">
+      <DependentUpon>TokensOperations.aspx</DependentUpon>
     </Compile>
     <Compile Include="TokensSelling.aspx.cs">
       <DependentUpon>TokensSelling.aspx</DependentUpon>

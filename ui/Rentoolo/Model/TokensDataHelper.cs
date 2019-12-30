@@ -16,6 +16,15 @@ namespace Rentoolo.Model
             }
         }
 
+        public static List<TokensBuying> GetLast200TokensOperations()
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.TokensBuying.OrderByDescending(x => x.Id).ToList();
+                return obj;
+            }
+        }
+
         public static List<TokensBuying> GetAllTokensBuying()
         {
             using (var ctx = new RentooloEntities())

@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Rentoolo.Account {
-    
-    
-    public partial class Settings {
-        
+namespace Rentoolo.Account
+{
+
+
+    public partial class Settings
+    {
+
         /// <summary>
         /// TextBoxEmail control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Rentoolo.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxEmail;
-        
+
         /// <summary>
         /// TextBoxCommunication control.
         /// </summary>
