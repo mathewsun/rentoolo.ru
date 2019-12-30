@@ -45,6 +45,9 @@
                     <a href="LoginStatistics.aspx" class="button-changePassword settingButton">Статистика входов</a>
                 </div>
                 <div style="padding-top: 15px;">
+                    <a href="/Account/CashOut.aspx" class="button-changePassword settingButton">Вывод средств</a>
+                </div>
+                <div style="padding-top: 15px;">
                     <a href="/Tokens.aspx" class="button-changePassword settingButton">Токены</a>
                 </div>
                 <div style="padding-top: 15px;">
