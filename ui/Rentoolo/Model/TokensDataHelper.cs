@@ -65,7 +65,7 @@ namespace Rentoolo.Model
         {
             Settings setting = DataHelper.GetSettingByName("TokenTodayCost");
 
-            float todayCost = float.Parse(setting.Value);
+            float todayCost = setting != null ? float.Parse(setting.Value) : 0;
 
             return todayCost;
         }
