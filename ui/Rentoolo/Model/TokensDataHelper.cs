@@ -87,5 +87,25 @@ namespace Rentoolo.Model
 
             return todayCost;
         }
+
+        public static long GetAvailableTokensCount()
+        {
+            Settings setting = DataHelper.GetSettingByName("AvailableTokensCount");
+
+            long count = setting != null ? Int64.Parse(setting.Value) : 4900000000;
+
+            return count;
+        }
+
+        public static void UpdateAvailableTokensCount(long value)
+        {
+            Settings setting = new Settings
+            {
+                Name = "AvailableTokensCount",
+                Value = value.ToString()
+            };
+
+            DataHelper.UpdateSettingByName(setting);
+        }
     }
 }

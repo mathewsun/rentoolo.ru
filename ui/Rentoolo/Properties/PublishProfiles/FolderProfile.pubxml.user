@@ -408,6 +408,9 @@
     <File Include="assets/js/dropzone/min/dropzone.min.js">
       <publishTime>09/26/2019 18:08:41</publishTime>
     </File>
+    <File Include="assets/js/format.js">
+      <publishTime>01/08/2020 01:59:31</publishTime>
+    </File>
     <File Include="assets/js/jquery-2.2.4.js">
       <publishTime>07/12/2019 20:19:50</publishTime>
     </File>
@@ -502,7 +505,7 @@
       <publishTime>04/17/2019 04:57:20</publishTime>
     </File>
     <File Include="bin/Rentoolo.dll">
-      <publishTime>01/08/2020 00:07:19</publishTime>
+      <publishTime>01/08/2020 02:34:36</publishTime>
     </File>
     <File Include="bin/Rentoolo.pdb">
       <publishTime>12/16/2019 13:03:32</publishTime>
@@ -1165,7 +1168,7 @@
       <publishTime>10/01/2019 23:15:17</publishTime>
     </File>
     <File Include="Tokens.aspx">
-      <publishTime>12/16/2019 01:33:33</publishTime>
+      <publishTime>01/08/2020 02:13:13</publishTime>
     </File>
     <File Include="TokensBuying.aspx">
       <publishTime>12/15/2019 22:42:14</publishTime>

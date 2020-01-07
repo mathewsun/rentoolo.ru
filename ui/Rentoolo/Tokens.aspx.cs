@@ -20,12 +20,16 @@ namespace Rentoolo
 
         public fnGetUserWallets_Result UserWalletRENT = new fnGetUserWallets_Result { CurrencyId = 8, Value = 0 };
 
+        public long AvailableTokensCount = 4900000000;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             OneTokenTodayCost = TokensDataHelper.GetOneTokensCost();
 
             if (User != null)
             {
+                AvailableTokensCount = TokensDataHelper.GetAvailableTokensCount();
+
                 UserWalletsList = WalletsHelper.GetUserWallets(User.UserId);
 
                 UserWalletRURT = UserWalletsList.Where(x => x.CurrencyId == (int)CurrenciesEnum.RURT).FirstOrDefault();
@@ -117,6 +121,8 @@ namespace Rentoolo
 
             #endregion
 
+            TokensDataHelper.UpdateAvailableTokensCount(AvailableTokensCount - tokensCountBuy);
+
             Response.Redirect("Tokens.aspx");
         }
 
@@ -198,6 +204,8 @@ namespace Rentoolo
             }
 
             #endregion
+
+            TokensDataHelper.UpdateAvailableTokensCount(AvailableTokensCount + tokensCountSell);
 
             Response.Redirect("Tokens.aspx");
 

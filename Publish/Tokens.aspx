@@ -1,8 +1,14 @@
 ﻿<%@ Page Title="Токены" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Tokens.aspx.cs" Inherits="Rentoolo.Tokens" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <script type="text/javascript" src="/assets/js/format.js"></script>
+    
     <script>
         $(document).ready(function () {
+
+            var availableTokensCount = $('#availableTokensCount').text();
+
+            $("#availableTokensCount").text(numberWithSpaces(availableTokensCount));
 
             $('#tokensCountBuy').bind('input', function () {
 
@@ -67,16 +73,11 @@
                         $(this).prop('title', '');
                         $(this).removeClass("bg-danger");
                     }
-
                 }
                 else {
                     $(this).addClass("bg-danger");
-
                 }
-
             });
-
-
         });
 
     </script>
@@ -85,7 +86,7 @@
     <div class="card d-md-block d-lg-block mb-4">
         <div class="card-body">
             <h6 class="mb-3">Всего токенов: <span id="fullTokensCount">10 000 000 000</span></h6>
-            <h6 class="mb-3">Токенов, доступных к покупке: <span id="availableTokensCount">4 900 000 000</span></h6>
+            <h6 class="mb-3">Токенов, доступных к покупке: <span id="availableTokensCount"><%=AvailableTokensCount%></span></h6>
             <h6 class="mb-3">Стоимость токена сегодня: <span id="oneTokenCost"><%=OneTokenTodayCost.ToString("N2").Replace(",",".") %></span> р.</h6>
             <h6 class="mb-3">Доход Rentoolo сегодня: <span id="rentooloTodayProfit">0</span> р.</h6>
             <h6 class="mb-3">Доход одного токена сегодня: <span id="oneTokenTodayProfit">0</span> р.</h6>

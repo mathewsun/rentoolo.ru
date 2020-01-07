@@ -401,6 +401,16 @@ namespace Rentoolo.Model
             }
         }
 
+        public static void UpdateSettingByName(Settings item)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.Settings.FirstOrDefault(x => x.Name == item.Name);
+                obj.Value = item.Value;
+                ctx.SaveChanges();
+            }
+        }
+
         #endregion
 
         #region Пополнение средств
