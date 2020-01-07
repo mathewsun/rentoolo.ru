@@ -982,6 +982,24 @@ a.dz-remove {
     cursor: pointer;
 }
 
-.cashInCount{
+.cashInCount {
     width: 150px;
+}
+
+.elementsTable {
+    margin-top: 10px;
+    font-size: 100%;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+    .elementsTable td {
+        padding: 7px 17px;
+    }
+
+.blueBtn {
+    width: 120px;
+    cursor: pointer;
+    background-color: #3097D1;
+    color: #fff;
 }

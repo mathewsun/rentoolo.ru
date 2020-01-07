@@ -33,6 +33,7 @@ namespace Rentoolo.Model
         public virtual DbSet<Auctions> Auctions { get; set; }
         public virtual DbSet<Business> Business { get; set; }
         public virtual DbSet<CashIns> CashIns { get; set; }
+        public virtual DbSet<CashOuts> CashOuts { get; set; }
         public virtual DbSet<Currencies> Currencies { get; set; }
         public virtual DbSet<DailyStatistics> DailyStatistics { get; set; }
         public virtual DbSet<Exceptions> Exceptions { get; set; }
@@ -141,6 +142,15 @@ namespace Rentoolo.Model
                 new ObjectParameter("uid", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetFavoritesByCookies_Result>("spGetFavoritesByCookies", uidParameter);
+        }
+    
+        public virtual ObjectResult<spGetLast200TokensOperations_Result> spGetLast200TokensOperations(Nullable<System.Guid> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetLast200TokensOperations_Result>("spGetLast200TokensOperations", userIdParameter);
         }
     
         public virtual int spGetLoginStatisticLastDayActive()

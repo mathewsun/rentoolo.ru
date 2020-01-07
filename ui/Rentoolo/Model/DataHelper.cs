@@ -873,20 +873,90 @@ namespace Rentoolo.Model
 
         #region Пополнения баланса
 
-        public static string GetHash(string val)
+        //public static string GetHash(string val)
+        //{
+        //    SHA1 sha = new SHA1CryptoServiceProvider();
+        //    byte[] data = sha.ComputeHash(Encoding.Default.GetBytes(val));
+
+        //    StringBuilder sBuilder = new StringBuilder();
+
+        //    for (int i = 0; i < data.Length; i++)
+        //    {
+        //        sBuilder.Append(data[i].ToString("x2"));
+        //    }
+        //    return sBuilder.ToString();
+        //}
+
+        #endregion
+
+        #region Вывод
+
+        /// <summary>
+        /// Создание вывода
+        /// </summary>
+        public static int AddCashOut(CashOuts item)
         {
-            SHA1 sha = new SHA1CryptoServiceProvider();
-            byte[] data = sha.ComputeHash(Encoding.Default.GetBytes(val));
-
-            StringBuilder sBuilder = new StringBuilder();
-
-            for (int i = 0; i < data.Length; i++)
+            using (var ctx = new RentooloEntities())
             {
-                sBuilder.Append(data[i].ToString("x2"));
+                ctx.CashOuts.Add(item);
+
+                try
+                {
+                    ctx.SaveChanges();
+                }
+                catch (System.Exception ex)
+                {
+                    DataHelper.AddException(ex);
+
+                    return 0;
+                }
+
+                return item.Id;
             }
-            return sBuilder.ToString();
         }
 
+        public static List<CashOuts> GetUser50CashOuts(Guid userId)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var list = ctx.CashOuts.Where(x => x.UserId == userId).OrderByDescending(x => x.WhenDate).Take(50).ToList();
+
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// Вывод
+        /// </summary>
+        public static CashOuts GetCashOut(int id)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.CashOuts.FirstOrDefault(x => x.Id == id);
+                return obj;
+            }
+        }
+
+        public static void UpdateCashOut(int Id, int state, string comment)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.CashOuts.Single(x => x.Id == Id);
+                obj.State = state;
+                obj.Comment = comment;
+                obj.WhenAdminEvent = DateTime.Now;
+                ctx.SaveChanges();
+            }
+        }
+
+        public static CashOuts GetCashOutForPayment()
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.CashOuts.Where(x => x.State == 1 && x.Result == 1).FirstOrDefault();
+                return obj;
+            }
+        }
         #endregion
 
         #region Администрирование

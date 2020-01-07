@@ -75,6 +75,23 @@
           <Property Name="AcceptedAccount" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SendAccount" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="CashOuts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Value" Type="float" Nullable="false" />
+          <Property Name="WhenDate" Type="datetime" Nullable="false" />
+          <Property Name="Sposob" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WhenAdminEvent" Type="datetime" />
+          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="Number" Type="nvarchar(max)" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="PaymentNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Result" Type="int" Nullable="false" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Categories">
@@ -606,6 +623,9 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
         <Function Name="spGetFavoritesByCookies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="uid" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="spGetLast200TokensOperations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="spGetLoginStatisticLastDayActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetLoginStatisticLastHourActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetUserAdverts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -622,6 +642,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <EntitySet Name="Auctions" EntityType="Self.Auctions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Business" EntityType="Self.Business" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashIns" EntityType="Self.CashIns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CashOuts" EntityType="Self.CashOuts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Exceptions" EntityType="Self.Exceptions" Schema="dbo" store:Type="Tables" />
@@ -823,6 +844,23 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="AcceptedAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SendAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Users" Relationship="Self.FK_CashIns_Users" FromRole="CashIns" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="CashOuts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Value" Type="Double" Nullable="false" />
+          <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sposob" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WhenAdminEvent" Type="DateTime" Precision="3" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="PaymentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Result" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Currencies">
           <Key>
@@ -1260,6 +1298,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <EntitySet Name="Auctions" EntityType="Self.Auctions" />
           <EntitySet Name="Business" EntityType="Self.Business" />
           <EntitySet Name="CashIns" EntityType="Self.CashIns" />
+          <EntitySet Name="CashOuts" EntityType="Self.CashOuts" />
           <EntitySet Name="Currencies" EntityType="Self.Currencies" />
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" />
           <EntitySet Name="Exceptions" EntityType="Self.Exceptions" />
@@ -1356,6 +1395,9 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <FunctionImport Name="spGetFavoritesByCookies" ReturnType="Collection(RentooloModel.spGetFavoritesByCookies_Result)">
             <Parameter Name="uid" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="spGetLast200TokensOperations" ReturnType="Collection(RentooloModel.spGetLast200TokensOperations_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Guid" />
+          </FunctionImport>
           <FunctionImport Name="spGetLoginStatisticLastDayActive" />
           <FunctionImport Name="spGetLoginStatisticLastHourActive" />
           <FunctionImport Name="spGetUserAdverts" ReturnType="Collection(RentooloModel.spGetUserAdverts_Result)">
@@ -1397,6 +1439,13 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Type="Int32" Name="MessageType" Nullable="true" />
           <Property Type="String" Name="ImgUrls" Nullable="true" />
           <Property Type="String" Name="PositionString" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetLast200TokensOperations_Result">
+          <Property Type="Int64" Name="Count" Nullable="false" />
+          <Property Type="Guid" Name="UserId" Nullable="false" />
+          <Property Type="Double" Name="CostOneToken" Nullable="false" />
+          <Property Type="Double" Name="FullCost" Nullable="false" />
+          <Property Type="DateTime" Name="WhenDate" Nullable="false" Precision="23" />
         </ComplexType>
         <ComplexType Name="spGetUserAdverts_Result">
           <Property Type="Int64" Name="Id" Nullable="false" />
@@ -1490,6 +1539,24 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
                 <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
                 <ScalarProperty Name="AcceptedAccount" ColumnName="AcceptedAccount" />
                 <ScalarProperty Name="SendAccount" ColumnName="SendAccount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CashOuts">
+            <EntityTypeMapping TypeName="RentooloModel.CashOuts">
+              <MappingFragment StoreEntitySet="CashOuts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
+                <ScalarProperty Name="Sposob" ColumnName="Sposob" />
+                <ScalarProperty Name="WhenAdminEvent" ColumnName="WhenAdminEvent" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="PaymentNumber" ColumnName="PaymentNumber" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1885,6 +1952,17 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
                 <ScalarProperty Name="MessageType" ColumnName="MessageType" />
                 <ScalarProperty Name="ImgUrls" ColumnName="ImgUrls" />
                 <ScalarProperty Name="PositionString" ColumnName="PositionString" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetLast200TokensOperations" FunctionName="RentooloModel.Store.spGetLast200TokensOperations">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.spGetLast200TokensOperations_Result">
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CostOneToken" ColumnName="CostOneToken" />
+                <ScalarProperty Name="FullCost" ColumnName="FullCost" />
+                <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

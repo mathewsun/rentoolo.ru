@@ -8,7 +8,7 @@
 
     <h2><%: Title %></h2>
 
-    <table class="basicTable">
+    <table class="table">
         <tr>
             <th>Дата
             </th>

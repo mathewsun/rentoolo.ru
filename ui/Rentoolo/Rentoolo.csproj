@@ -296,6 +296,7 @@
     <Content Include="DataBase\spGetLoginStatisticLastHourActive.sql" />
     <Content Include="DataBase\fnGetTablesRows.sql" />
     <Content Include="DataBase\fnGetAllUsers.sql" />
+    <Content Include="DataBase\tables\CashOuts.sql" />
     <Content Include="DataBase\tables\Phones.sql" />
     <Content Include="DataBase\tables\LoginStat.sql" />
     <Content Include="DataBase\tables\Auctions.sql" />
@@ -823,6 +824,9 @@
     <Compile Include="Model\CashIns.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\CashOuts.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\CashOutStates.cs" />
     <Compile Include="Model\CashOutTypesEnum.cs" />
     <Compile Include="Model\Categories.cs">
@@ -899,6 +903,7 @@
     <Compile Include="Model\Operations.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\PaymentHelper.cs" />
     <Compile Include="Model\Payments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -922,6 +927,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetFavorites_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetLast200TokensOperations_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetUserAdverts_Result.cs">
