@@ -5,21 +5,21 @@ using System.Web;
 
 namespace Rentoolo.Model
 {
-    public static class WatchedHelper
+    public static class WatchedDataHelper
     {
-        public static void AddWatched(Watched item)
+        public static void AddWatched(Guid userId, long advertId)
         {
             using (var ctx = new RentooloEntities())
             {
-                ctx.spAddWatched(item.UserId, item.AdvertId);
+                ctx.spAddWatched(userId, advertId);
             }
         }
 
-        public static void AddWatchedByCookies(FavoritesByCookies item)
+        public static void AddWatchedByCookies(string userCookiesId, long advertId)
         {
             using (var ctx = new RentooloEntities())
             {
-                ctx.spAddWatchedByCookies(item.UserCookiesId, item.AdvertId);
+                ctx.spAddWatchedByCookies(userCookiesId, advertId);
             }
         }
 

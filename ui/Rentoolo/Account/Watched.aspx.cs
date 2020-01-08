@@ -21,7 +21,7 @@ namespace Rentoolo.Account
                 //Users user = DataHelper.GetUser(User.UserId);
                 if (User != null)
                 {
-                    ListItems = WatchedHelper.GetWatchedByUser(User.UserId);
+                    ListItems = WatchedDataHelper.GetWatchedByUser(User.UserId);
                 }
                 else
                 {
@@ -29,7 +29,7 @@ namespace Rentoolo.Account
                     {
                         string value = Request.Cookies["uid"].Value;
 
-                        ListItems = WatchedHelper.GetWatchedByCookies(value);
+                        ListItems = WatchedDataHelper.GetWatchedByCookies(value);
                     }
                 }
 

@@ -66,7 +66,7 @@
                                 <p><%=item.Category%></p>
                                 <p><%=item.Address%></p>
                                 <div class="item-wrap__data">Опубликовано: <%=item.CreatedAdverts.ToString("dd.MM.yyyy HH:mm")%></div>
-                                <div class="item-wrap__data">Добавлено в избранное: <%=item.CreatedFavorites.ToString("dd.MM.yyyy HH:mm")%></div>
+                                <div class="item-wrap__data">Просмотрено: <%=item.CreatedFavorites.ToString("dd.MM.yyyy HH:mm")%></div>
                             </div>
                         </div>
                         <div class="item-wrap__like" title="Удалить из Избранного"></div>

@@ -8,7 +8,7 @@ using Rentoolo.Model;
 
 namespace Rentoolo
 {
-    public partial class Advert : System.Web.UI.Page
+    public partial class Advert : BasicPage
     {
         public Adverts AdvertItem;
 
@@ -24,6 +24,21 @@ namespace Rentoolo
             if (!IsPostBack)
             {
                 AdvertItem = AdvertsDataHelper.GetAdvert(id);
+
+                if (User != null)
+                {
+                    WatchedDataHelper.AddWatched(User.UserId, id);
+                }
+                else
+                {
+                    if (Request.Cookies["uid"] != null)
+                    {
+                        string value = Request.Cookies["uid"].Value;
+
+                        WatchedDataHelper.AddWatchedByCookies(value, id);
+                    }
+                }
+                
             }
 
             string tempId = Page.RouteData.Values["id"] as string;

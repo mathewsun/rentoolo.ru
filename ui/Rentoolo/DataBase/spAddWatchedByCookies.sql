@@ -2,7 +2,7 @@
 @uid nvarchar(36), @advertId bigint
 AS
 BEGIN
-    INSERT INTO WatchedByCookies (UserId, AdvertId)
+    INSERT INTO WatchedByCookies (UserCookiesId, AdvertId)
     VALUES (@uid, @advertId)
 END
 GO
