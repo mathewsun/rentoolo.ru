@@ -56,6 +56,8 @@ namespace Rentoolo.Model
         public virtual DbSet<UsersOpenAuthAccounts> UsersOpenAuthAccounts { get; set; }
         public virtual DbSet<UsersOpenAuthData> UsersOpenAuthData { get; set; }
         public virtual DbSet<Wallets> Wallets { get; set; }
+        public virtual DbSet<Watched> Watched { get; set; }
+        public virtual DbSet<WatchedByCookies> WatchedByCookies { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
     
         [DbFunction("RentooloEntities", "fnGetAllUsers")]
@@ -126,6 +128,32 @@ namespace Rentoolo.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddFavoritesByCookies", uidParameter, advertIdParameter);
         }
     
+        public virtual int spAddWatched(Nullable<System.Guid> userId, Nullable<long> advertId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(System.Guid));
+    
+            var advertIdParameter = advertId.HasValue ?
+                new ObjectParameter("advertId", advertId) :
+                new ObjectParameter("advertId", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddWatched", userIdParameter, advertIdParameter);
+        }
+    
+        public virtual int spAddWatchedByCookies(string uid, Nullable<long> advertId)
+        {
+            var uidParameter = uid != null ?
+                new ObjectParameter("uid", uid) :
+                new ObjectParameter("uid", typeof(string));
+    
+            var advertIdParameter = advertId.HasValue ?
+                new ObjectParameter("advertId", advertId) :
+                new ObjectParameter("advertId", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddWatchedByCookies", uidParameter, advertIdParameter);
+        }
+    
         public virtual ObjectResult<spGetFavorites_Result> spGetFavorites(Nullable<System.Guid> userId)
         {
             var userIdParameter = userId.HasValue ?
@@ -170,6 +198,24 @@ namespace Rentoolo.Model
                 new ObjectParameter("UserId", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserAdverts_Result>("spGetUserAdverts", userIdParameter);
+        }
+    
+        public virtual ObjectResult<spGetWatched_Result> spGetWatched(Nullable<System.Guid> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetWatched_Result>("spGetWatched", userIdParameter);
+        }
+    
+        public virtual ObjectResult<spGetWatchedByCookies_Result> spGetWatchedByCookies(string uid)
+        {
+            var uidParameter = uid != null ?
+                new ObjectParameter("uid", uid) :
+                new ObjectParameter("uid", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetWatchedByCookies_Result>("spGetWatchedByCookies", uidParameter);
         }
     
         public virtual int spUpdateQiwiAccountBalance(string number, Nullable<double> balance)

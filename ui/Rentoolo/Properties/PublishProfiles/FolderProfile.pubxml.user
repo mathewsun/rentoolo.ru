@@ -94,10 +94,10 @@
       <publishTime>01/03/2020 21:39:23</publishTime>
     </File>
     <File Include="Account/Watched.aspx">
-      <publishTime>10/01/2019 23:15:17</publishTime>
+      <publishTime>01/08/2020 18:06:25</publishTime>
     </File>
     <File Include="Account/Web.config">
-      <publishTime>10/01/2019 23:15:17</publishTime>
+      <publishTime>01/08/2020 17:40:28</publishTime>
     </File>
     <File Include="AddItem.html">
       <publishTime>10/01/2019 08:42:33</publishTime>
@@ -505,7 +505,7 @@
       <publishTime>04/17/2019 04:57:20</publishTime>
     </File>
     <File Include="bin/Rentoolo.dll">
-      <publishTime>01/08/2020 02:34:36</publishTime>
+      <publishTime>01/08/2020 20:50:23</publishTime>
     </File>
     <File Include="bin/Rentoolo.pdb">
       <publishTime>12/16/2019 13:03:32</publishTime>
@@ -663,6 +663,12 @@
     <File Include="DataBase/spAddWalletForUser.sql">
       <publishTime>03/25/2019 23:16:22</publishTime>
     </File>
+    <File Include="DataBase/spAddWatched.sql">
+      <publishTime>01/08/2020 18:18:30</publishTime>
+    </File>
+    <File Include="DataBase/spAddWatchedByCookies.sql">
+      <publishTime>01/08/2020 18:20:13</publishTime>
+    </File>
     <File Include="DataBase/spGetActiveQiwiAccount.sql">
       <publishTime>03/25/2019 23:16:22</publishTime>
     </File>
@@ -692,6 +698,12 @@
     </File>
     <File Include="DataBase/spGetUserBalanceByName.sql">
       <publishTime>12/12/2018 14:21:57</publishTime>
+    </File>
+    <File Include="DataBase/spGetWatched.sql">
+      <publishTime>01/08/2020 20:12:10</publishTime>
+    </File>
+    <File Include="DataBase/spGetWatchedByCookies.sql">
+      <publishTime>01/08/2020 20:18:30</publishTime>
     </File>
     <File Include="DataBase/spUpdateQiwiAccountBalance.sql">
       <publishTime>12/16/2019 23:51:37</publishTime>
@@ -737,6 +749,12 @@
     </File>
     <File Include="DataBase/tables/TokensSelling.sql">
       <publishTime>10/12/2019 21:19:12</publishTime>
+    </File>
+    <File Include="DataBase/tables/Watched.sql">
+      <publishTime>01/08/2020 03:55:34</publishTime>
+    </File>
+    <File Include="DataBase/tables/WatchedByCookies.sql">
+      <publishTime>01/08/2020 20:17:47</publishTime>
     </File>
     <File Include="Default.aspx">
       <publishTime>12/15/2019 22:42:14</publishTime>
@@ -1069,7 +1087,7 @@
       <publishTime>07/09/2019 20:36:14</publishTime>
     </File>
     <File Include="Model/Model1.edmx.diagram">
-      <publishTime>01/07/2020 14:31:17</publishTime>
+      <publishTime>01/08/2020 20:20:22</publishTime>
     </File>
     <File Include="News.aspx">
       <publishTime>07/12/2019 20:19:50</publishTime>
@@ -1180,7 +1198,7 @@
       <publishTime>12/15/2019 22:42:14</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/08/2020 00:07:19</publishTime>
+      <publishTime>01/08/2020 20:50:24</publishTime>
     </File>
     <File Include="WebForm1.aspx">
       <publishTime>07/03/2019 22:00:51</publishTime>

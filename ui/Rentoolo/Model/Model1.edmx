@@ -371,6 +371,24 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="Value" Type="float" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Watched">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AdvertId" Type="bigint" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WatchedByCookies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserCookiesId" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="AdvertId" Type="bigint" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+        </EntityType>
         <Association Name="FK_CashIns_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="CashIns" Type="Self.CashIns" Multiplicity="*" />
@@ -617,6 +635,14 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Parameter Name="uid" Type="nvarchar" Mode="In" />
           <Parameter Name="advertId" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="spAddWatched" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="advertId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="spAddWatchedByCookies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uid" Type="nvarchar" Mode="In" />
+          <Parameter Name="advertId" Type="bigint" Mode="In" />
+        </Function>
         <Function Name="spGetFavorites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
         </Function>
@@ -630,6 +656,12 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
         <Function Name="spGetLoginStatisticLastHourActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetUserAdverts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="spGetWatched" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="spGetWatchedByCookies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uid" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="spUpdateQiwiAccountBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="number" Type="nvarchar" Mode="In" />
@@ -666,6 +698,8 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Watched" EntityType="Self.Watched" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WatchedByCookies" EntityType="Self.WatchedByCookies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Categories].[Id] AS [Id], 
@@ -1139,6 +1173,24 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <NavigationProperty Name="Currencies" Relationship="Self.FK_Wallets_Cryptocurrencies" FromRole="Wallets" ToRole="Currencies" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Wallets_Users" FromRole="Wallets" ToRole="Users" />
         </EntityType>
+        <EntityType Name="Watched">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="AdvertId" Type="Int64" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="WatchedByCookies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserCookiesId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdvertId" Type="Int64" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="Id" />
@@ -1321,6 +1373,8 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" />
+          <EntitySet Name="Watched" EntityType="Self.Watched" />
+          <EntitySet Name="WatchedByCookies" EntityType="Self.WatchedByCookies" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
           <AssociationSet Name="MembershipApplication" Association="Self.MembershipApplication">
             <End Role="Applications" EntitySet="Applications" />
@@ -1389,6 +1443,14 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
             <Parameter Name="uid" Mode="In" Type="String" />
             <Parameter Name="advertId" Mode="In" Type="Int64" />
           </FunctionImport>
+          <FunctionImport Name="spAddWatched">
+            <Parameter Name="UserId" Mode="In" Type="Guid" />
+            <Parameter Name="advertId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="spAddWatchedByCookies">
+            <Parameter Name="uid" Mode="In" Type="String" />
+            <Parameter Name="advertId" Mode="In" Type="Int64" />
+          </FunctionImport>
           <FunctionImport Name="spGetFavorites" ReturnType="Collection(RentooloModel.spGetFavorites_Result)">
             <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
@@ -1402,6 +1464,12 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <FunctionImport Name="spGetLoginStatisticLastHourActive" />
           <FunctionImport Name="spGetUserAdverts" ReturnType="Collection(RentooloModel.spGetUserAdverts_Result)">
             <Parameter Name="UserId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="spGetWatched" ReturnType="Collection(RentooloModel.spGetWatched_Result)">
+            <Parameter Name="userId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="spGetWatchedByCookies" ReturnType="Collection(RentooloModel.spGetWatchedByCookies_Result)">
+            <Parameter Name="uid" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spUpdateQiwiAccountBalance">
             <Parameter Name="number" Mode="In" Type="String" />
@@ -1459,6 +1527,38 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="MessageType" Nullable="false" />
           <Property Type="String" Name="ImgUrls" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetWatched_Result">
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="Int64" Name="AdvertId" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedFavorites" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="Category" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="4000" />
+          <Property Type="DateTime" Name="CreatedAdverts" Nullable="true" Precision="23" />
+          <Property Type="Guid" Name="CreatedUserId" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="MessageType" Nullable="true" />
+          <Property Type="String" Name="ImgUrls" Nullable="true" />
+          <Property Type="String" Name="PositionString" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetWatchedByCookies_Result">
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="Int64" Name="AdvertId" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedFavorites" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="Category" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="4000" />
+          <Property Type="DateTime" Name="CreatedAdverts" Nullable="true" Precision="23" />
+          <Property Type="Guid" Name="CreatedUserId" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="MessageType" Nullable="true" />
+          <Property Type="String" Name="ImgUrls" Nullable="true" />
+          <Property Type="String" Name="PositionString" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1836,6 +1936,26 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Watched">
+            <EntityTypeMapping TypeName="RentooloModel.Watched">
+              <MappingFragment StoreEntitySet="Watched">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WatchedByCookies">
+            <EntityTypeMapping TypeName="RentooloModel.WatchedByCookies">
+              <MappingFragment StoreEntitySet="WatchedByCookies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserCookiesId" ColumnName="UserCookiesId" />
+                <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="RentooloModel.Categories">
               <MappingFragment StoreEntitySet="Categories">
@@ -1915,6 +2035,8 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spAddFavorites" FunctionName="RentooloModel.Store.spAddFavorites" />
           <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="RentooloModel.Store.spAddFavoritesByCookies" />
+          <FunctionImportMapping FunctionImportName="spAddWatched" FunctionName="RentooloModel.Store.spAddWatched" />
+          <FunctionImportMapping FunctionImportName="spAddWatchedByCookies" FunctionName="RentooloModel.Store.spAddWatchedByCookies" />
           <FunctionImportMapping FunctionImportName="spGetFavorites" FunctionName="RentooloModel.Store.spGetFavorites">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetFavorites_Result">
@@ -1982,6 +2104,46 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="MessageType" ColumnName="MessageType" />
                 <ScalarProperty Name="ImgUrls" ColumnName="ImgUrls" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetWatched" FunctionName="RentooloModel.Store.spGetWatched">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.spGetWatched_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
+                <ScalarProperty Name="CreatedFavorites" ColumnName="CreatedFavorites" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedAdverts" ColumnName="CreatedAdverts" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+                <ScalarProperty Name="ImgUrls" ColumnName="ImgUrls" />
+                <ScalarProperty Name="PositionString" ColumnName="PositionString" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetWatchedByCookies" FunctionName="RentooloModel.Store.spGetWatchedByCookies">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.spGetWatchedByCookies_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
+                <ScalarProperty Name="CreatedFavorites" ColumnName="CreatedFavorites" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedAdverts" ColumnName="CreatedAdverts" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+                <ScalarProperty Name="ImgUrls" ColumnName="ImgUrls" />
+                <ScalarProperty Name="PositionString" ColumnName="PositionString" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

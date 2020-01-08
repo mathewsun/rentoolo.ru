@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3c54f0fc3e104c3a81a6f42bc702e20a" Name="Diagram1">
+      <Diagram DiagramId="ae112da9960242de8e37eb623f6ac9a1" Name="Diagram1">
         <EntityTypeShape EntityType="RentooloModel.Adverts" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Applications" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Articles" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
@@ -34,7 +34,9 @@
         <EntityTypeShape EntityType="RentooloModel.UsersOpenAuthAccounts" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.UsersOpenAuthData" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Wallets" Width="1.5" PointX="10.5" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.Categories" Width="1.5" PointX="11.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Watched" Width="1.5" PointX="11.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.WatchedByCookies" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.Categories" Width="1.5" PointX="16.75" PointY="9.75" IsExpanded="true" />
         <AssociationConnector Association="RentooloModel.MembershipApplication" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.RoleApplication" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.UserApplication" ManuallyRouted="false" />
