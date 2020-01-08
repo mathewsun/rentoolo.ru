@@ -49,7 +49,7 @@
             <div class="media-body">
                 <div class="media-heading">
                     <small class="float-right text-muted"><span id="adverts-count"><%=ListCount %></span> adverts</small>
-                    <h6>Избранное:</h6>
+                    <h6>Вы смотрели:</h6>
                 </div>
                 <div class="media-body-inline-grid">
                     <%foreach (var item in ListItems)
