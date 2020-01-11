@@ -60,6 +60,10 @@
                     <br />
                     <input id="refferalLink" class="refferalLink" onclick="copyToClipboardUrl()" type="text" title="Скопировать" value="<%=Helper.GetRefferalLink(Request, this.User.PublicId) %>" />
                 </div>
+                <hr />
+                <div style="padding-top: 15px;">
+                    <a href="/Account/DeviceSettings.aspx" class="button-changePassword settingButton">Device Settings</a>
+                </div>
             </div>
         </div>
     </div>

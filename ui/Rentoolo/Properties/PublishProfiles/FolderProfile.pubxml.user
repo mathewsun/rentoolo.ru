@@ -13,19 +13,22 @@
       <publishTime>07/12/2019 20:19:49</publishTime>
     </File>
     <File Include="Account/AddItem.aspx">
-      <publishTime>10/02/2019 23:23:04</publishTime>
+      <publishTime>01/11/2020 07:38:17</publishTime>
     </File>
     <File Include="Account/Auctions.aspx">
       <publishTime>09/26/2019 18:08:41</publishTime>
     </File>
     <File Include="Account/Cabinet.aspx">
-      <publishTime>01/11/2020 05:20:15</publishTime>
+      <publishTime>01/11/2020 07:36:44</publishTime>
     </File>
     <File Include="Account/CashIn.aspx">
       <publishTime>12/28/2019 16:38:06</publishTime>
     </File>
     <File Include="Account/CashOut.aspx">
       <publishTime>01/07/2020 23:08:51</publishTime>
+    </File>
+    <File Include="Account/DeviceSettings.aspx">
+      <publishTime>01/11/2020 07:31:32</publishTime>
     </File>
     <File Include="Account/Exchange.aspx">
       <publishTime>07/12/2019 20:19:49</publishTime>
@@ -97,7 +100,7 @@
       <publishTime>01/09/2020 00:49:49</publishTime>
     </File>
     <File Include="Account/Web.config">
-      <publishTime>01/08/2020 17:40:28</publishTime>
+      <publishTime>01/11/2020 07:28:18</publishTime>
     </File>
     <File Include="AddItem.html">
       <publishTime>10/01/2019 08:42:33</publishTime>
@@ -505,7 +508,7 @@
       <publishTime>04/17/2019 04:57:20</publishTime>
     </File>
     <File Include="bin/Rentoolo.dll">
-      <publishTime>01/11/2020 05:13:37</publishTime>
+      <publishTime>01/11/2020 07:43:17</publishTime>
     </File>
     <File Include="bin/Rentoolo.pdb">
       <publishTime>12/16/2019 13:03:32</publishTime>
@@ -757,7 +760,7 @@
       <publishTime>01/08/2020 20:17:47</publishTime>
     </File>
     <File Include="Default.aspx">
-      <publishTime>12/15/2019 22:42:14</publishTime>
+      <publishTime>01/11/2020 07:42:54</publishTime>
     </File>
     <File Include="docs/index.html">
       <publishTime>07/12/2019 20:19:50</publishTime>

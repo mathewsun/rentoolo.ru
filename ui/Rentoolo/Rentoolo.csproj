@@ -158,6 +158,7 @@
     <Content Include="Account\Cabinet.aspx" />
     <Content Include="Account\CashIn.aspx" />
     <Content Include="Account\CashOut.aspx" />
+    <Content Include="Account\DeviceSettings.aspx" />
     <Content Include="Account\Exchange.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\LoginStatistics.aspx" />
@@ -406,6 +407,13 @@
     </Compile>
     <Compile Include="Account\CashOut.aspx.designer.cs">
       <DependentUpon>CashOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\DeviceSettings.aspx.cs">
+      <DependentUpon>DeviceSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\DeviceSettings.aspx.designer.cs">
+      <DependentUpon>DeviceSettings.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Exchange.aspx.cs">
       <DependentUpon>Exchange.aspx</DependentUpon>

@@ -59,16 +59,6 @@
             var height3 = window.screen.height;
             var width3 = window.screen.width;
 
-            $('#window_height').text(height1);
-            $('#window_width').text(width1);
-            $('#document_height').text(height2);
-            $('#document_width').text(width2);
-            $('#window_screen_height').text(height3);
-            $('#window_screen_width').text(width3);
-
-            //alert("height1 = " + height1 + "; width1 = " + width1 + "; height2 = " + height2 + "; width2 = " + width2 + "; height3 = " + height3 + "; width3 = " + width3);
-
-
             $("#allCategorieslist").click(function () {
                 if ($(".more-popup").is(":visible")) {
                     $(".more-popup").fadeOut(300);
@@ -586,28 +576,7 @@
                             <p><strong>Курьер. Курьерские услуги. Санкт-Петербург.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                         </div>
                     </div>
-                    <div class="card card-link-list">
-                        <div class="card-body">
-                            Size of browser viewport:
-                            <br />
-                            $(window).height() = <span id="window_height"></span>
-                            <br />
-                            $(window).width() = <span id="window_width"></span>
-                            <br />
-
-                            Size of HTML document (same as pageHeight/pageWidth in screenshot):
-                            <br />
-                            $(document).height() = <span id="document_height"></span>
-                            <br />
-                            $(document).width() = <span id="document_width"></span>
-                            <br />
-                            Screen size:
-                            <br />
-                            window.screen.height = <span id="window_screen_height"></span>
-                            <br />
-                            window.screen.width = <span id="window_screen_width"></span>
-                        </div>
-                    </div>
+                    
                     <div class="card card-link-list">
                         <div class="card-body">
                             © Rentoolo
