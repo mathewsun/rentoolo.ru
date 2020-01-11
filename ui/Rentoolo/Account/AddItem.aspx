@@ -27,6 +27,8 @@
                     $("#my-dropzone").append($('<input type="hidden" name="AdvertPhotos" ' + 'value="' + filaName + '">'));
                 }
             });
+
+            getLocation();
         });
     </script>
 

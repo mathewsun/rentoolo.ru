@@ -72,8 +72,6 @@
                 $(this).toggleClass('item-wrap__like-active');
             });
 
-            getLocation();
-
             $(".photoContainer").each(function (index) {
                 var htmlString = '';
                 var imgUrls = $(this).attr("data");
@@ -122,47 +120,10 @@
         });
     </script>
 
-    <script>
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-
-                    var innerHTMLgeo = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
-
-                    //alert(innerHTMLgeo);
-                },
-                    function (error) {
-                        // On error code..
-                    },
-                    { timeout: 30000, enableHighAccuracy: true, maximumAge: 75000 }
-                );
-            } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
-            }
-        }
-
-        function showError(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    x.innerHTML = "User denied the request for Geolocation."
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    x.innerHTML = "Location information is unavailable."
-                    break;
-                case error.TIMEOUT:
-                    x.innerHTML = "The request to get user location timed out."
-                    break;
-                case error.UNKNOWN_ERROR:
-                    x.innerHTML = "An unknown error occurred."
-                    break;
-            }
-        }
-    </script>
-
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function (m, e, t, r, i, k, a) {
-        m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
             m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
         })
             (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
@@ -516,7 +477,7 @@
                         </li>
 
                         <li class="media list-group-item p-4">
-                                                                                                                                                                                                                                         
+
                             <div class="media-body">
                                 <div class="media-heading">
                                     <small class="float-right text-muted"><%=AdvertsCount %> объявлений</small>
@@ -576,7 +537,7 @@
                             <p><strong>Курьер. Курьерские услуги. Санкт-Петербург.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                         </div>
                     </div>
-                    
+
                     <div class="card card-link-list">
                         <div class="card-body">
                             © Rentoolo
