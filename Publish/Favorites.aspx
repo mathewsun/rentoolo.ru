@@ -74,7 +74,7 @@
                                 <div class="item-wrap__data">Добавлено в избранное: <%=item.CreatedFavorites.ToString("dd.MM.yyyy HH:mm")%></div>
                             </div>
                         </div>
-                        <div class="item-wrap__like" title="Удалить из Избранного"></div>
+                        <div class="item-wrap__like item-wrap__like-active" title="Удалить из Избранного"></div>
                     </div>
                     <%} %>
                 </div>
