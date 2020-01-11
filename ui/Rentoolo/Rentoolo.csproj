@@ -962,6 +962,9 @@
     <Compile Include="Model\Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\UserSettings.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\UsersOpenAuthAccounts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

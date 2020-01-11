@@ -327,9 +327,18 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="PublicId" Type="int" Nullable="false" />
           <Property Name="Communication" Type="nvarchar(max)" />
           <Property Name="ReffAdd" Type="float" Nullable="false" />
-          <Property Name="Icq" Type="nvarchar" MaxLength="50" />
-          <Property Name="VkontakteId" Type="nvarchar" MaxLength="100" />
-          <Property Name="Skype" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastGeoposition" Type="nvarchar" MaxLength="51" />
+          <Property Name="Language" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="UserSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="UsersInRoles">
           <Key>
@@ -694,6 +703,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <EntitySet Name="TokensBuying" EntityType="Self.TokensBuying" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TokensSelling" EntityType="Self.TokensSelling" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSettings" EntityType="Self.UserSettings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" Schema="dbo" store:Type="Tables" />
@@ -1125,9 +1135,8 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="PublicId" Type="Int32" Nullable="false" />
           <Property Name="Communication" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ReffAdd" Type="Double" Nullable="false" />
-          <Property Name="Icq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="VkontakteId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Skype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastGeoposition" Type="String" MaxLength="51" FixedLength="false" Unicode="true" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Applications" Relationship="Self.UserApplication" FromRole="Users" ToRole="Applications" />
           <NavigationProperty Name="CashIns" Relationship="Self.FK_CashIns_Users" FromRole="Users" ToRole="CashIns" />
           <NavigationProperty Name="Memberships" Relationship="Self.MembershipUser" FromRole="Users" ToRole="Memberships" />
@@ -1136,6 +1145,16 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <NavigationProperty Name="Referrals1" Relationship="Self.FK_Referrals_Users1" FromRole="Users" ToRole="Referrals" />
           <NavigationProperty Name="Wallets" Relationship="Self.FK_Wallets_Users" FromRole="Users" ToRole="Wallets" />
           <NavigationProperty Name="Roles" Relationship="Self.UsersInRoles" FromRole="Users" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="UserSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="UsersOpenAuthAccounts">
           <Key>
@@ -1370,6 +1389,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <EntitySet Name="TokensBuying" EntityType="Self.TokensBuying" />
           <EntitySet Name="TokensSelling" EntityType="Self.TokensSelling" />
           <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UserSettings" EntityType="Self.UserSettings" />
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" />
@@ -1898,9 +1918,19 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
                 <ScalarProperty Name="PublicId" ColumnName="PublicId" />
                 <ScalarProperty Name="Communication" ColumnName="Communication" />
                 <ScalarProperty Name="ReffAdd" ColumnName="ReffAdd" />
-                <ScalarProperty Name="Icq" ColumnName="Icq" />
-                <ScalarProperty Name="VkontakteId" ColumnName="VkontakteId" />
-                <ScalarProperty Name="Skype" ColumnName="Skype" />
+                <ScalarProperty Name="LastGeoposition" ColumnName="LastGeoposition" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSettings">
+            <EntityTypeMapping TypeName="RentooloModel.UserSettings">
+              <MappingFragment StoreEntitySet="UserSettings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

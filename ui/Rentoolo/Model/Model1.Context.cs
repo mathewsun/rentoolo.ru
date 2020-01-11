@@ -53,6 +53,7 @@ namespace Rentoolo.Model
         public virtual DbSet<TokensBuying> TokensBuying { get; set; }
         public virtual DbSet<TokensSelling> TokensSelling { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<UserSettings> UserSettings { get; set; }
         public virtual DbSet<UsersOpenAuthAccounts> UsersOpenAuthAccounts { get; set; }
         public virtual DbSet<UsersOpenAuthData> UsersOpenAuthData { get; set; }
         public virtual DbSet<Wallets> Wallets { get; set; }

@@ -34,9 +34,8 @@ namespace Rentoolo.Model
         public int PublicId { get; set; }
         public string Communication { get; set; }
         public double ReffAdd { get; set; }
-        public string Icq { get; set; }
-        public string VkontakteId { get; set; }
-        public string Skype { get; set; }
+        public string LastGeoposition { get; set; }
+        public string Language { get; set; }
     
         public virtual Applications Applications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
