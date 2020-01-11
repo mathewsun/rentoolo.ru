@@ -14,8 +14,7 @@
             <div class="additem-right additem__way" cid="1001">
                 <table class="marginTable cabinetTable">
                     <tr>
-                        <td>
-                            Логин:
+                        <td>Логин:
                         </td>
                         <td><%=User.UserName %></td>
                     </tr>
@@ -24,8 +23,8 @@
                         </td>
                         <td><%if (UserWalletRURT != null)
                                 { %><%=UserWalletRURT.Value.ToString("N2") %><%}
-                            else
-                            {%>0<%} %>р. <a href="/Account/CashIn.aspx" title="Пополнить">Пополнить</a>
+                                                                               else
+                                                                               {%>0<%} %>р. <a href="/Account/CashIn.aspx" title="Пополнить">Пополнить</a>
                         </td>
                     </tr>
                 </table>
@@ -58,7 +57,8 @@
                 </div>
                 <div style="padding-top: 15px;">
                     Реферальная ссылка:
-                    <input id="refferalLink" onclick="copyToClipboardUrl()" type="text" style="height: 20px; border: none; background: transparent; color: #181A1C; font-size: 17px; width: 400px; -webkit-appearance: none; box-shadow: inset 0px 0px 0px 0px red; cursor: pointer;" title="Скопировать" value="<%=Helper.GetRefferalLink(Request, this.User.PublicId) %>" />
+                    <br />
+                    <input id="refferalLink" class="refferalLink" onclick="copyToClipboardUrl()" type="text" title="Скопировать" value="<%=Helper.GetRefferalLink(Request, this.User.PublicId) %>" />
                 </div>
             </div>
         </div>

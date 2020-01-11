@@ -1003,3 +1003,19 @@ a.dz-remove {
     background-color: #3097D1;
     color: #fff;
 }
+
+.refferalLink {
+    height: 20px;
+    border: none;
+    background: transparent;
+    color: #181A1C;
+    font-size: 14px;
+    width: 300px;
+    -webkit-appearance: none;
+    box-shadow: inset 0px 0px 0px 0px red;
+    cursor: pointer;
+}
+
+    .refferalLink:focus {
+        outline: none;
+    }
