@@ -107,7 +107,21 @@ namespace Rentoolo.Model
                 using (var ctx = new RentooloEntities())
                 {
                     var obj = ctx.Wallets.FirstOrDefault(x => x.UserId == userId && x.CurrencyId == (int)currency);
-                    obj.Value = obj.Value + balanceAddition;
+                    if (obj != null)
+                    {
+                        obj.Value = obj.Value + balanceAddition;
+                    }
+                    else
+                    {
+                        Wallets wallet = new Wallets();
+
+                        wallet.Value = balanceAddition;
+                        wallet.UserId = userId;
+                        wallet.CurrencyId = (int)currency;
+                        wallet.CreateDate = DateTime.Now;
+
+                        ctx.Wallets.Add(wallet);
+                    }
 
                     ctx.SaveChanges();
                 }
