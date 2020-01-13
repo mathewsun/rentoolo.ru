@@ -34,7 +34,14 @@ namespace Rentoolo.Account
 
             UserWalletRURT = UserWalletsList.Where(x => x.CurrencyId == 1).FirstOrDefault();
 
-            Balance = UserWalletRURT.Value;
+            if (UserWalletRURT != null)
+            {
+                Balance = UserWalletRURT.Value;
+            }
+            else
+            {
+                Balance = 0;
+            }
 
             list = DataHelper.GetUser50CashOuts(User.UserId);
 
