@@ -26,10 +26,10 @@ namespace Rentoolo
         {
             OneTokenTodayCost = TokensDataHelper.GetOneTokensCost();
 
+            AvailableTokensCount = TokensDataHelper.GetAvailableTokensCount();
+
             if (User != null)
             {
-                AvailableTokensCount = TokensDataHelper.GetAvailableTokensCount();
-
                 UserWalletsList = WalletsHelper.GetUserWallets(User.UserId);
 
                 UserWalletRURT = UserWalletsList.Where(x => x.CurrencyId == (int)CurrenciesEnum.RURT).FirstOrDefault();
