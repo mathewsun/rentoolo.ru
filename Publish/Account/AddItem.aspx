@@ -29,13 +29,41 @@
             });
 
             setLocation();
+
+            var wto;
+            $("#additem_place").change(function () {
+                clearTimeout(wto);
+                wto = setTimeout(function () {
+
+                    var address = $("#additem_place").val();
+
+                    var address = address.split(' ').join('+');
+
+                    var googleUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo";
+
+                    $.get(googleUrl, function (data) {
+
+                        var firstResult = data.results[0];
+
+                        var latlng = firstResult.geometry.location.lat + ',' + firstResult.geometry.location.lng;
+
+                        var mapCenter = { lat: firstResult.geometry.location.lat, lng: firstResult.geometry.location.lng };
+
+                        document.getElementById("latgeo").value = firstResult.geometry.location.lat;
+                        document.getElementById("lnggeo").value = firstResult.geometry.location.lng;
+
+                        var map = new google.maps.Map(document.getElementById('map'), { zoom: 17, center: mapCenter });
+                        // The marker, positioned at Uluru
+                        var marker = new google.maps.Marker({ position: mapCenter, map: map });
+                    });
+
+                }, 1000);
+            });
         });
     </script>
 
     <script>
         function setLocation() {
-            var latlng = 0;
-
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
 
@@ -44,18 +72,17 @@
                     document.getElementById("latgeo").value = position.coords.latitude;
                     document.getElementById("lnggeo").value = position.coords.longitude;
 
-                    latlng = position.coords.latitude + ',' + position.coords.longitude;
+                    var latlng = position.coords.latitude + ',' + position.coords.longitude;
 
                     var googleUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlng + "&key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo";
+
+                    var mapCenter = { lat: position.coords.latitude, lng: position.coords.longitude };
 
                     $.get(googleUrl, function (data) {
 
                         var firstResult = data.results[0];
 
                         $("#additem_place").val(firstResult.formatted_address);
-
-                        //set mat
-                        var mapCenter = { lat: position.coords.latitude, lng: position.coords.longitude };
 
                         var map = new google.maps.Map(document.getElementById('map'), { zoom: 17, center: mapCenter });
                         // The marker, positioned at Uluru
@@ -70,8 +97,6 @@
             } else {
                 x.innerHTML = "Geolocation is not supported by this browser.";
             }
-
-
         }
 
         function showError(error) {
@@ -169,7 +194,7 @@
                 <span class="additem-title">Место сделки</span>
             </div>
             <div class="additem-right additem-place">
-                <input type="text" id="additem_place" class="additem-input" required ClientIDMode="Static" runat="server">
+                <input type="text" id="additem_place" class="additem-input" required clientidmode="Static" runat="server">
                 <input type="hidden" id="latgeo" />
                 <input type="hidden" id="lnggeo" />
             </div>
