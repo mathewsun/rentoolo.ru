@@ -57,6 +57,24 @@ namespace Rentoolo
             routes.MapPageRoute("addRoute",
                 "add",
                 "~/Account/AddItem.aspx");
+
+            routes.MapPageRoute("tokensRoute",
+                "tokens",
+                "~/Tokens.aspx");
+
+            routes.MapPageRoute("tokensOperationsRoute",
+                "tokensOperations",
+                "~/TokensOperations.aspx");
+
+            routes.MapPageRoute("TokensBuyingRoute",
+                "TokensBuying",
+                "~/TokensBuying.aspx");
+
+            routes.MapPageRoute("TokensSellingRoute",
+                "TokensSelling",
+                "~/TokensSelling.aspx");
+
+
         }
     }
 }
