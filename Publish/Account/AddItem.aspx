@@ -116,6 +116,22 @@
             }
         }
     </script>
+    <script>
+        var autocomplete;
+        function initAutocomplete() {
+            autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById('additem_place'), { types: ['geocode'] });
+
+            autocomplete.setFields(['address_component']);
+
+            autocomplete.addListener('place_changed', fillInAddress);
+        }
+        function fillInAddress() {
+            var place = autocomplete.getPlace();
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo&libraries=places&callback=initAutocomplete"
+        async defer></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="additem">
@@ -197,6 +213,12 @@
                 <input type="text" id="additem_place" class="additem-input" required clientidmode="Static" runat="server">
                 <input type="hidden" id="latgeo" />
                 <input type="hidden" id="lnggeo" />
+                <input type="hidden" id="street_number_hidden" />
+                <input type="hidden" id="route_hidden" />
+                <input type="hidden" id="locality_hidden" />
+                <input type="hidden" id="administrative_area_level_1_hidden" />
+                <input type="hidden" id="country_hidden" />
+                <input type="hidden" id="postal_code_hidden" />
             </div>
         </div>
         <div class="additem-category">

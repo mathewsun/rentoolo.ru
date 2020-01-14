@@ -63,24 +63,6 @@
     </script>
 
     <script>
-        var autocomplete;
-
-        function initAutocomplete() {
-            // Create the autocomplete object, restricting the search predictions to
-            // geographical location types.
-            autocomplete = new google.maps.places.Autocomplete(
-                document.getElementById('additem_place'), { types: ['geocode'] });
-
-            // Avoid paying for data that you don't need by restricting the set of
-            // place fields that are returned to just the address components.
-            autocomplete.setFields(['address_component']);
-
-            // When the user selects an address from the drop-down, populate the
-            // address fields in the form.
-            autocomplete.addListener('place_changed', fillInAddress);
-        }
-
-
         function setLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
@@ -134,6 +116,22 @@
             }
         }
     </script>
+    <script>
+        var autocomplete;
+        function initAutocomplete() {
+            autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById('additem_place'), { types: ['geocode'] });
+
+            autocomplete.setFields(['address_component']);
+
+            autocomplete.addListener('place_changed', fillInAddress);
+        }
+        function fillInAddress() {
+            var place = autocomplete.getPlace();
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo&libraries=places&callback=initAutocomplete"
+        async defer></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="additem">
@@ -215,6 +213,12 @@
                 <input type="text" id="additem_place" class="additem-input" required clientidmode="Static" runat="server">
                 <input type="hidden" id="latgeo" />
                 <input type="hidden" id="lnggeo" />
+                <input type="hidden" id="street_number_hidden" />
+                <input type="hidden" id="route_hidden" />
+                <input type="hidden" id="locality_hidden" />
+                <input type="hidden" id="administrative_area_level_1_hidden" />
+                <input type="hidden" id="country_hidden" />
+                <input type="hidden" id="postal_code_hidden" />
             </div>
         </div>
         <div class="additem-category">
