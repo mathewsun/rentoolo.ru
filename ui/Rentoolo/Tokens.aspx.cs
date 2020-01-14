@@ -22,11 +22,15 @@ namespace Rentoolo
 
         public long AvailableTokensCount = 4900000000;
 
+        public long SellTokensCount = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             OneTokenTodayCost = TokensDataHelper.GetOneTokensCost();
 
             AvailableTokensCount = TokensDataHelper.GetAvailableTokensCount();
+
+            SellTokensCount = 4900000000 - AvailableTokensCount;
 
             if (User != null)
             {

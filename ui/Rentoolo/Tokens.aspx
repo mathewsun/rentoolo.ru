@@ -10,6 +10,10 @@
 
             $("#availableTokensCount").text(numberWithSpaces(availableTokensCount));
 
+            var sellTokensCount = $('#sellTokensCount').text();
+
+            $("#sellTokensCount").text(numberWithSpaces(sellTokensCount));
+
             $('#tokensCountBuy').bind('input', function () {
 
                 var balanceText = $('#balanceValue').text();
@@ -87,7 +91,8 @@
         <div class="card-body">
             <h6 class="mb-3">Всего токенов: <span id="fullTokensCount">10 000 000 000</span></h6>
             <h6 class="mb-3">Токенов, доступных к покупке: <span id="availableTokensCount"><%=AvailableTokensCount%></span></h6>
-            <h6 class="mb-3">Стоимость токена сегодня: <span id="oneTokenCost"><%=OneTokenTodayCost.ToString("N2").Replace(",",".") %></span> р.</h6>
+            <h6 class="mb-3">Токенов продано: <span id="sellTokensCount"><%=SellTokensCount%></span></h6>
+            <h6 class="mb-3">Текущая цена токена: <span id="oneTokenCost"><%=OneTokenTodayCost.ToString("N2").Replace(",",".") %></span> р.</h6>
             <h6 class="mb-3">Доход Rentoolo сегодня: <span id="rentooloTodayProfit">0</span> р.</h6>
             <h6 class="mb-3">Доход одного токена сегодня: <span id="oneTokenTodayProfit">0</span> р.</h6>
             <h6 class="mb-3">Ваш доход сегодня: <span id="oneTokenTodayProfit">0</span> р.</h6>
