@@ -16,11 +16,11 @@ namespace Rentoolo.Model
             }
         }
 
-        public static List<TokensBuying> GetLast200TokensOperations()
+        public static List<spGetLast200TokensOperations_Result> GetLast200TokensOperations()
         {
             using (var ctx = new RentooloEntities())
             {
-                var obj = ctx.TokensBuying.OrderByDescending(x => x.Id).ToList();
+                var obj = ctx.spGetLast200TokensOperations().ToList();
                 return obj;
             }
         }

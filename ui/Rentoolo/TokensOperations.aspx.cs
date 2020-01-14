@@ -10,7 +10,7 @@ namespace Rentoolo
 {
     public partial class TokensOperations : System.Web.UI.Page
     {
-        public List<Model.TokensBuying> ListItems;
+        public List<Model.spGetLast200TokensOperations_Result> ListItems;
 
         protected void Page_Load(object sender, EventArgs e)
         {

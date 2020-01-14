@@ -94,7 +94,7 @@
             <div>
                 На продажу выставлено 49% токенов. 
                 <br />
-                Список <a href="TokensBuying.aspx"><span class="strong">покупок</span></a> и <a href="TokensSelling.aspx"><span class="strong">продаж</span></a> токенов в открытом доступе. 
+                Список <a href="/TokensOperations.aspx"><span class="strong">всех операций</span></a>, <a href="/TokensBuying.aspx"><span class="strong">покупок</span></a> и <a href="/TokensSelling.aspx"><span class="strong">продаж</span></a> токенов в открытом доступе. 
                 <br />
                 Каждый токен приносит доход в равной доли от общего количества токенов.
                 <br />

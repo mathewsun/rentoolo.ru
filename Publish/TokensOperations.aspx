@@ -20,12 +20,17 @@
                             </th>
                             <th>Сумма
                             </th>
+                            <th>Операция
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <% for (int i = 0; ListItems != null && i < ListItems.Count; i++)
                             {%>
-                        <tr>
+                        <tr <% if (ListItems[i].OperationEvent == 0)
+                            {%>style="color: darkblue;" <%}
+                            else
+                            {%>style="color: green;<%} %>">
                             <td>
                                 <%= ListItems[i].WhenDate.ToString("dd.MM.yyyy HH:mm").Replace(".","/")%>
                             </td>
@@ -37,6 +42,13 @@
                             </td>
                             <td>
                                 <%= ListItems[i].FullCost.ToString("N2")%> р.
+                            </td>
+                            <td>
+                                <% if (ListItems[i].OperationEvent == 0)
+                                    {%><span style="color: darkblue;">Продажа</span><%}
+                                                                                        else
+                                                                                        {%><span style="color: green;">Покупка</span>
+                                <%} %>
                             </td>
                         </tr>
                         <% } %>

@@ -1,5 +1,4 @@
 ﻿ALTER PROCEDURE  [dbo].[spGetLast200TokensOperations]
-@UserId uniqueidentifier
 AS
 BEGIN
 	SELECT TOP 200 a.* FROM
@@ -10,6 +9,7 @@ BEGIN
           ,[CostOneToken]
           ,[FullCost]
           ,[WhenDate]
+		  ,1 as [OperationEvent]
       FROM [TokensBuying]
       Union
       SELECT TOP (1000) 
@@ -18,6 +18,7 @@ BEGIN
           ,[CostOneToken]
           ,[FullCost]
           ,[WhenDate]
+		  ,0 as [OperationEvent]
       FROM [TokensSelling]
       Order by [WhenDate]
       ) AS a
