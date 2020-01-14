@@ -90,6 +90,7 @@
             <h6 class="mb-3">Стоимость токена сегодня: <span id="oneTokenCost"><%=OneTokenTodayCost.ToString("N2").Replace(",",".") %></span> р.</h6>
             <h6 class="mb-3">Доход Rentoolo сегодня: <span id="rentooloTodayProfit">0</span> р.</h6>
             <h6 class="mb-3">Доход одного токена сегодня: <span id="oneTokenTodayProfit">0</span> р.</h6>
+            <h6 class="mb-3">Ваш доход сегодня: <span id="oneTokenTodayProfit">0</span> р.</h6>
             <div>
                 На продажу выставлено 49% токенов. 
                 <br />
