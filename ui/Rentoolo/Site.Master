@@ -22,9 +22,9 @@
     <meta property="image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <link href="/assets/css/toolkit.css" rel="stylesheet">
-    <link href="/assets/css/application.css" rel="stylesheet">
-    <link href="/assets/css/additional.css?2222" rel="stylesheet">
+    <link href="/assets/css/toolkit.css?8" rel="stylesheet">
+    <link href="/assets/css/application.css?8" rel="stylesheet">
+    <link href="/assets/css/additional.css?8" rel="stylesheet">
 
     <style>
         /* note: this is a hack for ios iframe for bootstrap themes shopify page */

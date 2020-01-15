@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Токены" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Tokens.aspx.cs" Inherits="Rentoolo.Tokens" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <script type="text/javascript" src="/assets/js/format.js"></script>
+    <script type="text/javascript" src="/assets/js/format.js?8"></script>
     
     <script>
         $(document).ready(function () {
