@@ -7,8 +7,7 @@
         <li class="media list-group-item p-4">
             <div class="media-body">
                 <div class="media-heading">
-                    <small class="float-right text-muted">8 adverts</small>
-                    <h6>Категории:</h6>
+                    <h6>Выберите категорию:</h6>
                 </div>
                 <div class="media-body-inline-grid">
                     <button type="button" class="btn btn-secondary btn-lg btn-block">Транспорт</button>

@@ -283,6 +283,7 @@
     <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
     <Content Include="Category.aspx" />
+    <Content Include="ConsumerElectronics.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="DataBase\fnGetUserWallets.sql" />
     <Content Include="DataBase\Init\Init.sql" />
@@ -321,7 +322,10 @@
     <Content Include="FAQ.aspx" />
     <Content Include="Favorites.aspx" />
     <Content Include="Help.aspx" />
+    <Content Include="HobbyRest.aspx" />
+    <Content Include="HomeGarden.aspx" />
     <Content Include="img\a\noPhoto.png" />
+    <Content Include="Job.aspx" />
     <Content Include="login\index.html" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -339,8 +343,12 @@
     <Content Include="Admin\Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="PersonalGoods.aspx" />
+    <Content Include="Pets.aspx" />
     <Content Include="profile\index.html" />
+    <Content Include="Realty.aspx" />
     <Content Include="Rent.aspx" />
+    <Content Include="Services.aspx" />
     <Content Include="Success.aspx" />
     <Content Include="Template.aspx" />
     <Content Include="Test.aspx" />
@@ -353,6 +361,7 @@
     <Content Include="assets\fonts\toolkit-entypo.woff2" />
     <Content Include="Events.ashx" />
     <Content Include="TokensOperations.aspx" />
+    <Content Include="Transport.aspx" />
     <Content Include="yandex_f9c03f80c16c0af8.html" />
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -760,6 +769,13 @@
     <Compile Include="Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ConsumerElectronics.aspx.cs">
+      <DependentUpon>ConsumerElectronics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsumerElectronics.aspx.designer.cs">
+      <DependentUpon>ConsumerElectronics.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -815,6 +831,27 @@
     </Compile>
     <Compile Include="Help.aspx.designer.cs">
       <DependentUpon>Help.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HobbyRest.aspx.cs">
+      <DependentUpon>HobbyRest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HobbyRest.aspx.designer.cs">
+      <DependentUpon>HobbyRest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HomeGarden.aspx.cs">
+      <DependentUpon>HomeGarden.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomeGarden.aspx.designer.cs">
+      <DependentUpon>HomeGarden.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Job.aspx.cs">
+      <DependentUpon>Job.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Job.aspx.designer.cs">
+      <DependentUpon>Job.aspx</DependentUpon>
     </Compile>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Adverts.cs">
@@ -998,13 +1035,41 @@
     <Compile Include="News.aspx.designer.cs">
       <DependentUpon>News.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PersonalGoods.aspx.cs">
+      <DependentUpon>PersonalGoods.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonalGoods.aspx.designer.cs">
+      <DependentUpon>PersonalGoods.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pets.aspx.cs">
+      <DependentUpon>Pets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pets.aspx.designer.cs">
+      <DependentUpon>Pets.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Realty.aspx.cs">
+      <DependentUpon>Realty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Realty.aspx.designer.cs">
+      <DependentUpon>Realty.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Rent.aspx.cs">
       <DependentUpon>Rent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Rent.aspx.designer.cs">
       <DependentUpon>Rent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services.aspx.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Services.aspx.designer.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -1062,12 +1127,21 @@
     <Compile Include="TokensSelling.aspx.designer.cs">
       <DependentUpon>TokensSelling.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Transport.aspx.cs">
+      <DependentUpon>Transport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transport.aspx.designer.cs">
+      <DependentUpon>Transport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UpiController.cs" />
     <Compile Include="UpiTestController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
+    <Folder Include="Rent\" />
+    <Folder Include="Sell\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config">

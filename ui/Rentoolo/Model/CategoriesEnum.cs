@@ -202,7 +202,7 @@
 
         HealthBeauty = 505,
 
-        HomeGarden = 60,
+        HomeGarden = 60,//Для дома и дачи
 
         Appliances = 601,
 
@@ -216,7 +216,7 @@
 
         Plants = 607,
 
-        ConsumerElectronics = 70,
+        ConsumerElectronics = 70,//Бытовая электроника
 
         AudioVideo = 701,
 
@@ -236,7 +236,7 @@
 
         PhotographicEquipment = 709,
 
-        HobbyRest = 80,
+        HobbyRest = 80,//Хобби и отдых
 
         TicketsTravel = 801,
 
@@ -252,7 +252,7 @@
 
         SportsRest = 807,
 
-        Pets = 90,
+        Pets = 90,//Животные
 
         Dogs = 901,
 
@@ -266,7 +266,7 @@
 
         GoodsPets = 906,
 
-        Business = 1000,
+        Business = 1000,//Для бизнеса
 
         ReadyBusiness = 1001,
 

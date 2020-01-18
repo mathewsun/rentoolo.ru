@@ -199,7 +199,7 @@
                         <a class="nav-link" href="/">Услуги</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Tokens.aspx">Токены</a>
+                        <a class="nav-link" href="/Tokens">Токены</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Account/Cabinet.aspx">Кабинет</a>
