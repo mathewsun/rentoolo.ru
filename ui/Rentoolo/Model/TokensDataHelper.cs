@@ -70,13 +70,14 @@ namespace Rentoolo.Model
             }
         }
 
-        public static float GetOneTokensCost()
+        public static double GetOneTokensCost()
         {
-            Settings setting = DataHelper.GetSettingByName("TokenTodayCost");
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.spGetTokenCostToday().FirstOrDefault();
 
-            float todayCost = setting != null ? float.Parse(setting.Value) : 0;
-
-            return todayCost;
+                return obj.Value;
+            }
         }
 
         public static long GetFreeTokensCount()

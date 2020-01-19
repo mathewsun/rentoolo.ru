@@ -26,7 +26,7 @@ namespace Rentoolo.Model
             }
         }
 
-        public static int CreateUserWallet(Guid userId, int currencyId, float value)
+        public static int CreateUserWallet(Guid userId, int currencyId, double value)
         {
             using (var dc = new RentooloEntities())
             {
@@ -46,7 +46,7 @@ namespace Rentoolo.Model
             }
         }
 
-        public static void UpdateUserWallet(Guid userId, int currencyId, float value)
+        public static void UpdateUserWallet(Guid userId, int currencyId, double value)
         {
             using (var dc = new RentooloEntities())
             {

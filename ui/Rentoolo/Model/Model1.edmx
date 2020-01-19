@@ -305,6 +305,14 @@
           <Property Name="FullCost" Type="float" Nullable="false" />
           <Property Name="WhenDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="TokensCost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="float" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="TokensSelling">
           <Key>
             <PropertyRef Name="Id" />
@@ -663,6 +671,7 @@
         <Function Name="spGetLast200TokensOperations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetLoginStatisticLastDayActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetLoginStatisticLastHourActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetTokenCostToday" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetUserAdverts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
         </Function>
@@ -701,6 +710,7 @@
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TokensBuying" EntityType="Self.TokensBuying" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TokensCost" EntityType="Self.TokensCost" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TokensSelling" EntityType="Self.TokensSelling" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserSettings" EntityType="Self.UserSettings" Schema="dbo" store:Type="Tables" />
@@ -1113,6 +1123,14 @@
           <Property Name="FullCost" Type="Double" Nullable="false" />
           <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="TokensCost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="Double" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         <EntityType Name="TokensSelling">
           <Key>
             <PropertyRef Name="Id" />
@@ -1389,6 +1407,7 @@
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Settings" EntityType="Self.Settings" />
           <EntitySet Name="TokensBuying" EntityType="Self.TokensBuying" />
+          <EntitySet Name="TokensCost" EntityType="Self.TokensCost" />
           <EntitySet Name="TokensSelling" EntityType="Self.TokensSelling" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="UserSettings" EntityType="Self.UserSettings" />
@@ -1482,6 +1501,7 @@
           <FunctionImport Name="spGetLast200TokensOperations" ReturnType="Collection(RentooloModel.spGetLast200TokensOperations_Result)" />
           <FunctionImport Name="spGetLoginStatisticLastDayActive" />
           <FunctionImport Name="spGetLoginStatisticLastHourActive" />
+          <FunctionImport Name="spGetTokenCostToday" ReturnType="Collection(RentooloModel.spGetTokenCostToday_Result)" />
           <FunctionImport Name="spGetUserAdverts" ReturnType="Collection(RentooloModel.spGetUserAdverts_Result)">
             <Parameter Name="UserId" Mode="In" Type="Guid" />
           </FunctionImport>
@@ -1535,6 +1555,11 @@
           <Property Type="Double" Name="FullCost" Nullable="false" />
           <Property Type="DateTime" Name="WhenDate" Nullable="false" Precision="23" />
           <Property Type="Int32" Name="OperationEvent" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetTokenCostToday_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Double" Name="Value" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
         </ComplexType>
         <ComplexType Name="spGetUserAdverts_Result">
           <Property Type="Int64" Name="Id" Nullable="false" />
@@ -1897,6 +1922,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TokensCost">
+            <EntityTypeMapping TypeName="RentooloModel.TokensCost">
+              <MappingFragment StoreEntitySet="TokensCost">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TokensSelling">
             <EntityTypeMapping TypeName="RentooloModel.TokensSelling">
               <MappingFragment StoreEntitySet="TokensSelling">
@@ -2124,6 +2158,15 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastDayActive" FunctionName="Хранилище RentooloModel.spGetLoginStatisticLastDayActive" />
           <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastHourActive" FunctionName="Хранилище RentooloModel.spGetLoginStatisticLastHourActive" />
+          <FunctionImportMapping FunctionImportName="spGetTokenCostToday" FunctionName="Хранилище RentooloModel.spGetTokenCostToday">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.spGetTokenCostToday_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spGetUserAdverts" FunctionName="Хранилище RentooloModel.spGetUserAdverts">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetUserAdverts_Result">

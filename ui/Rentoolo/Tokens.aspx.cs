@@ -12,7 +12,7 @@ namespace Rentoolo
     {
         public string Result = string.Empty;
 
-        public float OneTokenTodayCost = 0;
+        public double OneTokenTodayCost = 0;
 
         public List<fnGetUserWallets_Result> UserWalletsList;
 
@@ -82,7 +82,7 @@ namespace Rentoolo
                 return;
             }
 
-            float sum = tokensCountBuy * OneTokenTodayCost;
+            double sum = tokensCountBuy * OneTokenTodayCost;
 
             Wallets userWallet = WalletsHelper.GetUserWallet(User.UserId, (int)CurrenciesEnum.RURT);
 
@@ -166,7 +166,7 @@ namespace Rentoolo
                 return;
             }
 
-            float sum = tokensCountSell * OneTokenTodayCost;
+            double sum = tokensCountSell * OneTokenTodayCost;
 
             Wallets userWalletRent = WalletsHelper.GetUserWallet(User.UserId, (int)CurrenciesEnum.RENT);
 

@@ -511,7 +511,7 @@
       <publishTime>04/17/2019 04:57:20</publishTime>
     </File>
     <File Include="bin/Rentoolo.dll">
-      <publishTime>01/18/2020 06:40:32</publishTime>
+      <publishTime>01/19/2020 07:18:49</publishTime>
     </File>
     <File Include="bin/Rentoolo.pdb">
       <publishTime>12/16/2019 13:03:32</publishTime>
@@ -702,6 +702,9 @@
     <File Include="DataBase/spGetLoginStatisticLastHourActive.sql">
       <publishTime>06/15/2019 17:56:24</publishTime>
     </File>
+    <File Include="DataBase/spGetTokenCostToday.sql">
+      <publishTime>01/19/2020 07:09:03</publishTime>
+    </File>
     <File Include="DataBase/spGetUserAdverts.sql">
       <publishTime>09/16/2019 22:12:26</publishTime>
     </File>
@@ -713,6 +716,9 @@
     </File>
     <File Include="DataBase/spGetWatchedByCookies.sql">
       <publishTime>01/11/2020 23:06:10</publishTime>
+    </File>
+    <File Include="DataBase/spSetTokensCost.sql">
+      <publishTime>01/19/2020 06:45:19</publishTime>
     </File>
     <File Include="DataBase/spUpdateQiwiAccountBalance.sql">
       <publishTime>12/28/2019 08:59:06</publishTime>
@@ -755,6 +761,9 @@
     </File>
     <File Include="DataBase/tables/TokensBuying.sql">
       <publishTime>10/28/2019 19:30:45</publishTime>
+    </File>
+    <File Include="DataBase/tables/TokensCost.sql">
+      <publishTime>01/19/2020 07:04:53</publishTime>
     </File>
     <File Include="DataBase/tables/TokensSelling.sql">
       <publishTime>10/28/2019 19:30:45</publishTime>
@@ -1105,7 +1114,7 @@
       <publishTime>07/09/2019 20:36:14</publishTime>
     </File>
     <File Include="Model/Model1.edmx.diagram">
-      <publishTime>01/14/2020 08:04:33</publishTime>
+      <publishTime>01/19/2020 07:09:38</publishTime>
     </File>
     <File Include="News.aspx">
       <publishTime>06/15/2019 17:56:24</publishTime>
@@ -1216,7 +1225,7 @@
       <publishTime>10/28/2019 19:30:45</publishTime>
     </File>
     <File Include="Tokens.aspx">
-      <publishTime>01/18/2020 06:40:22</publishTime>
+      <publishTime>01/19/2020 07:18:42</publishTime>
     </File>
     <File Include="TokensBuying.aspx">
       <publishTime>10/29/2019 23:35:50</publishTime>
@@ -1231,7 +1240,7 @@
       <publishTime>01/15/2020 23:15:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/14/2020 08:19:24</publishTime>
+      <publishTime>01/19/2020 07:18:49</publishTime>
     </File>
     <File Include="WebForm1.aspx">
       <publishTime>07/03/2019 22:00:51</publishTime>

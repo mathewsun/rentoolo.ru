@@ -289,11 +289,13 @@
     <Content Include="DataBase\Init\Init.sql" />
     <Content Include="DataBase\spAddWatchedByCookies.sql" />
     <Content Include="DataBase\spAddWatched.sql" />
+    <Content Include="DataBase\spGetTokenCostToday.sql" />
     <Content Include="DataBase\spGetWatchedByCookies.sql" />
     <Content Include="DataBase\spGetWatched.sql" />
     <Content Include="DataBase\spGetLast200TokensOperations.sql" />
     <Content Include="DataBase\spGetAuctions.sql" />
     <Content Include="DataBase\spAddFavorites.sql" />
+    <Content Include="DataBase\spSetTokensCost.sql" />
     <Content Include="DataBase\spUpdateQiwiAccountBalance.sql" />
     <Content Include="DataBase\spGetUserAdverts.sql" />
     <Content Include="DataBase\spGetAdverts.sql" />
@@ -313,6 +315,7 @@
     <Content Include="DataBase\tables\Favorites.sql" />
     <Content Include="DataBase\tables\FavoritesByCookies.sql" />
     <Content Include="DataBase\tables\TokensBuying.sql" />
+    <Content Include="DataBase\tables\TokensCost.sql" />
     <Content Include="DataBase\tables\TokensSelling.sql" />
     <Content Include="DataBase\tables\Watched.sql" />
     <Content Include="DataBase\tables\WatchedByCookies.sql" />
@@ -985,6 +988,9 @@
     <Compile Include="Model\spGetLast200TokensOperations_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\spGetTokenCostToday_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\spGetUserAdverts_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -995,6 +1001,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TokensBuying.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TokensCost.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TokensDataHelper.cs" />

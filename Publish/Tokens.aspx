@@ -89,10 +89,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="card d-md-block d-lg-block mb-4">
         <div class="card-body">
+            <h6 class="mb-3">Цена токена: <span id="oneTokenCost"><%=OneTokenTodayCost.ToString().Replace(",",".") %></span> р.</h6>
             <h6 class="mb-3">Всего токенов: <span id="fullTokensCount">10 000 000 000</span></h6>
             <h6 class="mb-3">Доступно токенов: <span id="availableTokensCount"><%=AvailableTokensCount%></span></h6>
             <h6 class="mb-3">Продано токенов: <span id="sellTokensCount"><%=SellTokensCount%></span></h6>
-            <h6 class="mb-3">Текущая цена токена: <span id="oneTokenCost"><%=OneTokenTodayCost.ToString("N2").Replace(",",".") %></span> р.</h6>
             <h6 class="mb-3">Доход Rentoolo сегодня: <span id="rentooloTodayProfit">0</span> р.</h6>
             <h6 class="mb-3">Доход одного токена сегодня: <span id="oneTokenTodayProfit">0</span> р.</h6>
             <h6 class="mb-3">Ваш доход сегодня: <span id="oneTokenTodayProfit">0</span> р.</h6>
@@ -105,7 +105,7 @@
                 <br />
                 Купить и продать токены можно в любой момент.
                 <br />
-                Rentoolo обеспечивает <span class="rentooloYearPercents">15</span>% годовых с ежесуточным ростом стоимости токенов до тех пор, пока не будут проданы 49%, далее стоимость зависит от рыночной востребованности.
+                Rentoolo обеспечивает <span class="rentooloYearPercents">30</span>% годовых с ежесуточным ростом стоимости токенов до тех пор, пока не будут проданы 49%, далее стоимость зависит от рыночной востребованности.
             </div>
             <br />
             <h6 class="mb-3">Ваш баланс: <span id="balanceValue"><%if (UserWalletRURT != null)
@@ -116,7 +116,7 @@
                     Стоимость: 
                 </div>
                 <div>
-                    <span id="fullCost">100</span> р.
+                    <span id="fullCost"><%= (1000 * OneTokenTodayCost).ToString("N2") %></span> р.
                 </div>
                 <div class="input-group-btn" style="padding-left: 20px;">
                     <asp:Button ID="ButtonBuyTokens" runat="server" CssClass="btn btn-primary" Text="Купить" OnClick="ButtonBuyTokens_Click" />

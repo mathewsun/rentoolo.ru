@@ -51,6 +51,7 @@ namespace Rentoolo.Model
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Settings> Settings { get; set; }
         public virtual DbSet<TokensBuying> TokensBuying { get; set; }
+        public virtual DbSet<TokensCost> TokensCost { get; set; }
         public virtual DbSet<TokensSelling> TokensSelling { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UserSettings> UserSettings { get; set; }
@@ -186,6 +187,11 @@ namespace Rentoolo.Model
         public virtual int spGetLoginStatisticLastHourActive()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spGetLoginStatisticLastHourActive");
+        }
+    
+        public virtual ObjectResult<spGetTokenCostToday_Result> spGetTokenCostToday()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetTokenCostToday_Result>("spGetTokenCostToday");
         }
     
         public virtual ObjectResult<spGetUserAdverts_Result> spGetUserAdverts(Nullable<System.Guid> userId)
