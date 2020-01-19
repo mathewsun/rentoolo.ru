@@ -38,10 +38,10 @@
                                 <%= ListItems[i].Count%>
                             </td>
                             <td>
-                                <%= ListItems[i].CostOneToken.ToString("N2")%> р.
+                                <%= ListItems[i].CostOneToken.ToString()%> р.
                             </td>
                             <td>
-                                <%= ListItems[i].FullCost.ToString("N2")%> р.
+                                <%= ListItems[i].FullCost.ToString()%> р.
                             </td>
                             <td>
                                 <% if (ListItems[i].OperationEvent == 0)
