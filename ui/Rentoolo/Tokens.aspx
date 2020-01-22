@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript" src="/assets/js/format.js?8"></script>
-    
+
     <script>
         $(document).ready(function () {
 
@@ -82,7 +82,52 @@
                     $(this).addClass("bg-danger");
                 }
             });
+
+            window.setInterval(timer, 1000);
         });
+
+        function timer() {
+
+            var h, m, s;
+
+            var d = new Date();
+
+            h = <%= DateTime.Now.Hour %>;
+            m = d.getMinutes();
+            s = d.getSeconds();
+
+            var secondsCount = h*3600 + m*60 + s;
+
+            var minutesCount = h*60 + m;
+
+            var hoursCount = h;
+
+            var value = $('#oneTokenCostHidden').val();
+
+            var percentsPow = Math.pow(1.00002897611, hoursCount);
+
+            var currentHourValue = value * percentsPow;
+
+            var hoursCountPlus = hoursCount + 1;
+
+            var percentsPowPlusHour = Math.pow(1.00002897611, hoursCountPlus);
+
+            var plusHourValue = value * percentsPowPlusHour;
+
+            var diffValuePlusHour = plusHourValue - currentHourValue;
+
+            var secondValue = diffValuePlusHour / 3600;
+
+            var secondsCount = m*60 + s;
+
+            var diffValue = secondsCount * secondValue;
+
+            var currentValue = currentHourValue + diffValue;
+
+            $('#oneTokenCost').text(currentValue);
+
+            var ttt = 0;
+        }
 
     </script>
 </asp:Content>
@@ -90,6 +135,7 @@
     <div class="card d-md-block d-lg-block mb-4">
         <div class="card-body">
             <h6 class="mb-3">Цена токена: <span id="oneTokenCost"><%=OneTokenTodayCost.ToString().Replace(",",".") %></span> р.</h6>
+            <input type="hidden" id="oneTokenCostHidden" value="<%=OneTokenTodayCost.ToString().Replace(",",".") %>" />
             <h6 class="mb-3">Всего токенов: <span id="fullTokensCount">10 000 000 000</span></h6>
             <h6 class="mb-3">Доступно токенов: <span id="availableTokensCount"><%=AvailableTokensCount%></span></h6>
             <h6 class="mb-3">Продано токенов: <span id="sellTokensCount"><%=SellTokensCount%></span></h6>
@@ -126,7 +172,7 @@
             <%if (User != null)
                 { %>
             <br />
-            
+
             <h6 class="mb-3">У вас токенов: <span id="tokensCountHave"><%if (UserWalletRENT != null)
                                                                            { %><%=UserWalletRENT.Value.ToString("N0") %><%} %></span></h6>
             <div style="display: -webkit-box;">
