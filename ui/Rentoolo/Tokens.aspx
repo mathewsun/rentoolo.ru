@@ -83,8 +83,20 @@
                 }
             });
 
+            
+
             window.setInterval(timer, 1000);
         });
+
+        //$("#oneTokenCost").on('change',function(){
+                
+        //    var oneTokenCost = parseFloat($('#oneTokenCost').text());
+
+            
+
+        //    $("#oneTokenCost").html("<span class='tokenCostFirstPart'></span><span class='tokenCostSecondPart'></span>");
+
+        //});
 
         function timer() {
 
@@ -124,7 +136,11 @@
 
             var currentValue = currentHourValue + diffValue;
 
-            $('#oneTokenCost').text(currentValue);
+            var firstPart = currentValue.toString().substr(0, currentValue.toString().indexOf('.') + 3); 
+
+            var secondPart = currentValue.toString().substr(currentValue.toString().indexOf('.') + 3, currentValue.length); 
+
+            $('#oneTokenCost').html("<span class='tokenCostFirstPart'>" + firstPart.toString() + "</span><span class='tokenCostSecondPart'>" + secondPart + "</span>");
 
             var ttt = 0;
         }
@@ -151,11 +167,15 @@
                 <br />
                 Купить и продать токены можно в любой момент.
                 <br />
-                Rentoolo обеспечивает <span class="rentooloYearPercents">30</span>% годовых с ежесуточным ростом стоимости токенов до тех пор, пока не будут проданы 49%, далее стоимость зависит от рыночной востребованности.
+                Rentoolo обеспечивает <span class="rentooloYearPercents">30</span>% годовых с постоянным ростом стоимости токенов. Как будут проданы 49% дальше цена будет зависеть от рынка и вырастет в кратном размере.
             </div>
             <br />
+            <%if (User != null)
+                { %>
+
             <h6 class="mb-3">Ваш баланс: <span id="balanceValue"><%if (UserWalletRURT != null)
                                                                      { %><%=UserWalletRURT.Value.ToString("N2").Replace(",",".") %><%} %></span> р. <a href="/Account/CashIn.aspx"><span class="strong">пополнить</span></a></h6>
+            <%} %>
             <div style="display: -webkit-box;">
                 <asp:TextBox ID="tokensCountBuy" ClientIDMode="Static" CssClass="form-control placeholder-right" Width="80px" runat="server">1000</asp:TextBox>
                 <div class="fullCostLable padding-left-10">

@@ -82,6 +82,12 @@ namespace Rentoolo
                 return;
             }
 
+            DateTime currentDate = DateTime.Now;
+
+
+
+            double OneTokenCurrentCost = OneTokenTodayCost;
+
             double sum = tokensCountBuy * OneTokenTodayCost;
 
             Wallets userWallet = WalletsHelper.GetUserWallet(User.UserId, (int)CurrenciesEnum.RURT);

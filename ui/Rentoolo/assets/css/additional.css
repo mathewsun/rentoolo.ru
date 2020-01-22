@@ -1019,3 +1019,14 @@ a.dz-remove {
     .refferalLink:focus {
         outline: none;
     }
+
+.tokenCostFirstPart {
+    font-size: 1rem;
+    color: #212529;
+}
+
+.tokenCostSecondPart{
+    font-size: 1rem;
+    color: #212529;
+    /*font-weight: normal;*/
+}
