@@ -22,7 +22,7 @@
     <meta property="image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <link href="/assets/css/toolkit.css?888" rel="stylesheet">
+    <link href="/assets/css/toolkit.css?8888" rel="stylesheet">
     <link href="/assets/css/application.css?8" rel="stylesheet">
     <link href="/assets/css/additional.css?888888888" rel="stylesheet">
 
@@ -116,22 +116,25 @@
                         <a class="nav-link" href="/Tokens">Токены</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Account/Cabinet.aspx">Кабинет</a>
+                        <a class="nav-link" href="/Account/Cabinet">Кабинет</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/News">Новости</a>
                     </li>
                     <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <li class="nav-item d-md-none">
-                                <a class="nav-link" href="/Account/Login.aspx">Вход и регистрация</a>
+                                <a class="nav-link" href="/Account/Login">Вход и регистрация</a>
                             </li>
                             </ul>
                             <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 d-none d-md-flex">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/Favorites.aspx">
+                                    <a class="nav-link" href="/Favorites">
                                         <div class="favorite-top" title="Избранное"></div>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login.aspx">Вход и регистрация</a>
+                                    <a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login">Вход и регистрация</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/">
@@ -153,12 +156,12 @@
                             <% } %>
 
                             <li class="nav-item">
-                                <a class="nav-link" title="Избранное" href="/Favorites.aspx">
+                                <a class="nav-link" title="Избранное" href="/Favorites">
                                     <div class="icon icon-favorite"></div>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Account/AddItem.aspx">
+                                <a class="nav-link" href="/Account/AddItem">
                                     <span class="btn btn-sm btn-pill btn-primary">Подать объявление</span>
                                 </a>
                             </li>

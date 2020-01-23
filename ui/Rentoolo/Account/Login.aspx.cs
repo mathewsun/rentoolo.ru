@@ -73,7 +73,7 @@ namespace Rentoolo.Account
 
             if (string.IsNullOrEmpty(returnUrl))
             {
-                Response.Redirect("~/Account/Cabinet.aspx");
+                Response.Redirect("~/Account/Cabinet");
             }
             else
             {

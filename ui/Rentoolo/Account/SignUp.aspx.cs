@@ -48,7 +48,7 @@ namespace Rentoolo.Account
         {
             FormsAuthentication.SetAuthCookie(RegisterUser.UserName, createPersistentCookie: false);
 
-            string continueUrl = "~/Account/Cabinet.aspx";  //RegisterUser.ContinueDestinationPageUrl;
+            string continueUrl = "~/Account/Cabinet";  //RegisterUser.ContinueDestinationPageUrl;
             //if (!OpenAuth.IsLocalUrl(continueUrl))
             //{
             //    continueUrl = "~/";
@@ -157,7 +157,7 @@ namespace Rentoolo.Account
 
             #endregion
 
-            Response.Redirect("~/Account/Cabinet.aspx");
+            Response.Redirect("~/Account/Cabinet");
         }
 
         public class MyObject

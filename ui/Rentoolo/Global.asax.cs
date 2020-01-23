@@ -46,10 +46,6 @@ namespace Rentoolo
                 "Adverts/{id}",
                 "~/Adverts.aspx");
 
-            routes.MapPageRoute("testRoute",
-                "test",
-                "~/Test.aspx");
-
             routes.MapPageRoute("addItemRoute",
                 "addItem",
                 "~/Account/AddItem.aspx");
@@ -58,9 +54,33 @@ namespace Rentoolo
                 "add",
                 "~/Account/AddItem.aspx");
 
+            routes.MapPageRoute("cabinet",
+                "Account/Cabinet",
+                "~/Account/Cabinet.aspx");
+
             routes.MapPageRoute("cashIn",
                 "Account/CashIn",
                 "~/Account/CashIn.aspx");
+
+            routes.MapPageRoute("login",
+                "Account/Login",
+                "~/Account/Login.aspx");
+
+            routes.MapPageRoute("signup",
+                "Account/SignUp",
+                "~/Account/SignUp.aspx");
+
+            routes.MapPageRoute("favorites",
+                "Favorites",
+                "~/Favorites.aspx");
+
+            routes.MapPageRoute("news",
+                "news",
+                "~/News.aspx");
+
+            routes.MapPageRoute("testRoute",
+                "test",
+                "~/Test.aspx");
 
             routes.MapPageRoute("tokensRoute",
                 "tokens",
