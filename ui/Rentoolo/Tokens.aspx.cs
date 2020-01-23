@@ -84,11 +84,29 @@ namespace Rentoolo
 
             DateTime currentDate = DateTime.Now;
 
+            int hoursCount = currentDate.Hour;
 
+            double percentsPow = Math.Pow(1.00002897611, hoursCount);
 
-            double OneTokenCurrentCost = OneTokenTodayCost;
+            double currentHourValue = OneTokenTodayCost * percentsPow;
 
-            double sum = tokensCountBuy * OneTokenTodayCost;
+            int hoursCountPlus = hoursCount + 1;
+
+            double percentsPowPlusHour = Math.Pow(1.00002897611, hoursCountPlus);
+
+            double plusHourValue = OneTokenTodayCost * percentsPowPlusHour;
+
+            double diffValuePlusHour = plusHourValue - currentHourValue;
+
+            double secondValue = diffValuePlusHour / 3600;
+
+            int secondsCount = currentDate.Minute * 60 + currentDate.Second;
+
+            double diffValue = secondsCount * secondValue;
+
+            double currentValue = currentHourValue + diffValue;
+
+            double sum = tokensCountBuy * currentValue;
 
             Wallets userWallet = WalletsHelper.GetUserWallet(User.UserId, (int)CurrenciesEnum.RURT);
 
@@ -102,7 +120,7 @@ namespace Rentoolo
             Model.TokensBuying tokensBuying = new Model.TokensBuying
             {
                 UserId = User.UserId,
-                CostOneToken = OneTokenTodayCost,
+                CostOneToken = currentValue,
                 Count = tokensCountBuy,
                 FullCost = sum,
                 WhenDate = DateTime.Now
@@ -172,7 +190,31 @@ namespace Rentoolo
                 return;
             }
 
-            double sum = tokensCountSell * OneTokenTodayCost;
+            DateTime currentDate = DateTime.Now;
+
+            int hoursCount = currentDate.Hour;
+
+            double percentsPow = Math.Pow(1.00002897611, hoursCount);
+
+            double currentHourValue = OneTokenTodayCost * percentsPow;
+
+            int hoursCountPlus = hoursCount + 1;
+
+            double percentsPowPlusHour = Math.Pow(1.00002897611, hoursCountPlus);
+
+            double plusHourValue = OneTokenTodayCost * percentsPowPlusHour;
+
+            double diffValuePlusHour = plusHourValue - currentHourValue;
+
+            double secondValue = diffValuePlusHour / 3600;
+
+            int secondsCount = currentDate.Minute * 60 + currentDate.Second;
+
+            double diffValue = secondsCount * secondValue;
+
+            double currentValue = currentHourValue + diffValue;
+
+            double sum = tokensCountSell * currentValue;
 
             Wallets userWalletRent = WalletsHelper.GetUserWallet(User.UserId, (int)CurrenciesEnum.RENT);
 
@@ -186,7 +228,7 @@ namespace Rentoolo
             Model.TokensSelling tokensSelling = new Model.TokensSelling
             {
                 UserId = User.UserId,
-                CostOneToken = OneTokenTodayCost,
+                CostOneToken = currentValue,
                 Count = tokensCountSell,
                 FullCost = sum,
                 WhenDate = DateTime.Now
