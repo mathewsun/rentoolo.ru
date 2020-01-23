@@ -986,6 +986,26 @@ a.dz-remove {
     width: 150px;
 }
 
+.cashInImg {
+    width: 150px;
+    min-width: 100px;
+}
+
+@media (max-width: 576px) {
+    .cashInImg {
+        width: 50px;
+        min-width: 50px;
+    }
+
+    .cashInCount {
+        width: 140px;
+    }
+
+    .QiwiCashInTable td {
+        padding: 5px 5px !important;
+    }
+}
+
 .elementsTable {
     margin-top: 10px;
     font-size: 100%;
@@ -1025,7 +1045,7 @@ a.dz-remove {
     color: #212529;
 }
 
-.tokenCostSecondPart{
+.tokenCostSecondPart {
     font-size: 1rem;
     color: #212529;
     /*font-weight: normal;*/

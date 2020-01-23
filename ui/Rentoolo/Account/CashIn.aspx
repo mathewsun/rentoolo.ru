@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Пополнение баланса" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CashIn.aspx.cs" Inherits="Rentoolo.Account.CashIn" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 
     <script type="text/javascript" src="/assets/js/sweet-alert.min.js"></script>
@@ -8,8 +9,13 @@
 
     <table class="QiwiCashInTable">
         <tr>
+            <td colspan="3">
+                <span style="color: #3097D1; font-weight: bold;">После пополнения вернитесь пожалуйста на эту страницу и нажмите</span> <span style="color: #269e60; font-weight: bold;">"Проверить оплату"</span>
+            </td>
+        </tr>
+        <tr>
             <td>
-                <img src="/assets/img/qiwi_and_cards.jpg" style="width: 150px; min-width: 100px;" />
+                <img src="/assets/img/qiwi_and_cards.jpg" class="cashInImg" />
             </td>
             <td>
                 <asp:TextBox ID="QiwiPaymentAmountTextBox" CssClass="cashInCount" ClientIDMode="Static" runat="server">1000.00</asp:TextBox><br />
@@ -50,8 +56,8 @@
                 "& currency=RUB" +
                 "&source=qiwi_RUB";
 
-            var win = window.open(url, '_blank');
-            win.focus();
-        }
+        var win = window.open(url, '_blank');
+        win.focus();
+    }
     </script>
 </asp:Content>

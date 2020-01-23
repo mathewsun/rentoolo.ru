@@ -2124,6 +2124,10 @@ pre {
     }
 
 @media (max-width: 575.98px) {
+    .table {
+        font-size: 0.4rem;
+    }
+
     .table-responsive-sm {
         display: block;
         width: 100%;
