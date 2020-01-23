@@ -58,6 +58,10 @@ namespace Rentoolo
                 "add",
                 "~/Account/AddItem.aspx");
 
+            routes.MapPageRoute("cashIn",
+                "Account/CashIn",
+                "~/Account/CashIn.aspx");
+
             routes.MapPageRoute("tokensRoute",
                 "tokens",
                 "~/Tokens.aspx");
