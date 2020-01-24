@@ -108,5 +108,14 @@ namespace Rentoolo.Model
 
             DataHelper.UpdateSettingByName(setting);
         }
+
+        public static List<TokensCost> GetTokensCosts()
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.TokensCost.OrderBy(x => x.Date).ToList();
+                return obj;
+            }
+        }
     }
 }
