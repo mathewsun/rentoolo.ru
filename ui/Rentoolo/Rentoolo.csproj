@@ -363,6 +363,7 @@
     <Content Include="assets\fonts\toolkit-entypo.woff" />
     <Content Include="assets\fonts\toolkit-entypo.woff2" />
     <Content Include="Events.ashx" />
+    <Content Include="TokensCost.aspx" />
     <Content Include="TokensOperations.aspx" />
     <Content Include="Transport.aspx" />
     <Content Include="yandex_f9c03f80c16c0af8.html" />
@@ -1121,6 +1122,13 @@
     </Compile>
     <Compile Include="TokensBuying.aspx.designer.cs">
       <DependentUpon>TokensBuying.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TokensCost.aspx.cs">
+      <DependentUpon>TokensCost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TokensCost.aspx.designer.cs">
+      <DependentUpon>TokensCost.aspx</DependentUpon>
     </Compile>
     <Compile Include="TokensOperations.aspx.cs">
       <DependentUpon>TokensOperations.aspx</DependentUpon>

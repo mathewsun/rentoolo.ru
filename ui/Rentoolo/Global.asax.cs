@@ -54,27 +54,27 @@ namespace Rentoolo
                 "add",
                 "~/Account/AddItem.aspx");
 
-            routes.MapPageRoute("cabinet",
+            routes.MapPageRoute("cabinetRoute",
                 "Account/Cabinet",
                 "~/Account/Cabinet.aspx");
 
-            routes.MapPageRoute("cashIn",
+            routes.MapPageRoute("cashInRoute",
                 "Account/CashIn",
                 "~/Account/CashIn.aspx");
 
-            routes.MapPageRoute("login",
+            routes.MapPageRoute("loginRoute",
                 "Account/Login",
                 "~/Account/Login.aspx");
 
-            routes.MapPageRoute("signup",
+            routes.MapPageRoute("signupRoute",
                 "Account/SignUp",
                 "~/Account/SignUp.aspx");
 
-            routes.MapPageRoute("favorites",
+            routes.MapPageRoute("favoritesRoute",
                 "Favorites",
                 "~/Favorites.aspx");
 
-            routes.MapPageRoute("news",
+            routes.MapPageRoute("newsRoute",
                 "news",
                 "~/News.aspx");
 
@@ -86,13 +86,17 @@ namespace Rentoolo
                 "tokens",
                 "~/Tokens.aspx");
 
-            routes.MapPageRoute("tokensOperationsRoute",
-                "tokensOperations",
-                "~/TokensOperations.aspx");
-
             routes.MapPageRoute("TokensBuyingRoute",
                 "TokensBuying",
                 "~/TokensBuying.aspx");
+
+            routes.MapPageRoute("TokensCostRoute",
+                "TokensCost",
+                "~/TokensCost.aspx");
+
+            routes.MapPageRoute("tokensOperationsRoute",
+                "tokensOperations",
+                "~/TokensOperations.aspx");
 
             routes.MapPageRoute("TokensSellingRoute",
                 "TokensSelling",
