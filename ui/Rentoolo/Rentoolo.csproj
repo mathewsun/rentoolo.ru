@@ -185,6 +185,8 @@
     <Content Include="Admin\AdminMenu.ascx" />
     <Content Include="Admin\ArticleOne.aspx" />
     <Content Include="Admin\Articles.aspx" />
+    <Content Include="Admin\CashIns.aspx" />
+    <Content Include="Admin\CashOuts.aspx" />
     <Content Include="Admin\Clients.aspx" />
     <Content Include="Admin\DatabaseTables.aspx" />
     <Content Include="Admin\Exceptions.aspx" />
@@ -585,6 +587,20 @@
     </Compile>
     <Compile Include="Admin\Articles.aspx.designer.cs">
       <DependentUpon>Articles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CashIns.aspx.cs">
+      <DependentUpon>CashIns.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CashIns.aspx.designer.cs">
+      <DependentUpon>CashIns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CashOuts.aspx.cs">
+      <DependentUpon>CashOuts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CashOuts.aspx.designer.cs">
+      <DependentUpon>CashOuts.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Clients.aspx.cs">
       <DependentUpon>Clients.aspx</DependentUpon>

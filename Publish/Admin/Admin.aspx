@@ -33,6 +33,15 @@
             <asp:HyperLink ID="HyperLinkCabinet" NavigateUrl="Users.aspx" runat="server">Пользователи</asp:HyperLink>
         </div>
         <div>
+            <asp:HyperLink ID="HyperLink2" NavigateUrl="CashIns.aspx" runat="server">Пополнения</asp:HyperLink>
+        </div>
+        <div>
+            <asp:HyperLink ID="HyperLink5" NavigateUrl="CashOuts.aspx" runat="server">Вывод средств</asp:HyperLink>
+        </div>
+        <div>
+            <asp:HyperLink ID="HyperLink3" NavigateUrl="Operations.aspx" runat="server">Операции</asp:HyperLink>
+        </div>
+        <div>
             <asp:HyperLink ID="HyperLink1" NavigateUrl="News.aspx" runat="server">Новости</asp:HyperLink>
         </div>
         <div>

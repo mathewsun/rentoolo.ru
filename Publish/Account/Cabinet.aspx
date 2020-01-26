@@ -23,8 +23,8 @@
                         </td>
                         <td><%if (UserWalletRURT != null)
                                 { %><%=UserWalletRURT.Value.ToString("N2") %><%}
-                                                                               else
-                                                                               {%>0<%} %>р. <a href="/Account/CashIn" title="Пополнить">Пополнить</a>
+                                                                                 else
+                                                                                 {%>0<%} %>р. <a href="/Account/CashIn" title="Пополнить">Пополнить</a>
                         </td>
                     </tr>
                 </table>
@@ -55,6 +55,12 @@
                 <div style="padding-top: 15px;">
                     <a href="/Account/TokensSelling.aspx" class="button-changePassword settingButton">История продаж токенов</a>
                 </div>
+                <% if (Page.User.IsInRole("Administrator"))
+                    { %>
+                <div style="padding-top: 15px;">
+                    <a href="/Admin/Admin.aspx" class="button-changePassword settingButton">Управление</a>
+                </div>
+                <% } %>
                 <div style="padding-top: 15px;">
                     Реферальная ссылка:
                     <br />

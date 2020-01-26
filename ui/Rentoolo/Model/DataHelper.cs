@@ -949,6 +949,16 @@ namespace Rentoolo.Model
             }
         }
 
+        public static List<CashOuts> GetAllCashOuts()
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var list = ctx.CashOuts.Select(x => x).OrderByDescending(x => x.Id).Take(100).ToList();
+
+                return list;
+            }
+        }
+
         /// <summary>
         /// Вывод
         /// </summary>
