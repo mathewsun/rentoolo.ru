@@ -155,9 +155,9 @@
             <h6 class="mb-3">Всего токенов: <span id="fullTokensCount">10 000 000 000</span></h6>
             <h6 class="mb-3">Доступно токенов: <span id="availableTokensCount"><%=AvailableTokensCount%></span></h6>
             <h6 class="mb-3">Продано токенов: <span id="sellTokensCount"><%=SellTokensCount%></span></h6>
-            <h6 class="mb-3">Доход Rentoolo сегодня: <span id="rentooloTodayProfit">0</span> р.</h6>
-            <h6 class="mb-3">Доход одного токена сегодня: <span id="oneTokenTodayProfit">0</span> р.</h6>
-            <h6 class="mb-3">Ваш доход сегодня: <span id="oneTokenTodayProfit">0</span> р.</h6>
+            <h6 class="mb-3" style="color: grey;">Доход Rentoolo сегодня: <span id="rentooloTodayProfit">0</span> р.</h6>
+            <h6 class="mb-3" style="color: grey;">Доход одного токена сегодня: <span id="oneTokenTodayProfit">0</span> р.</h6>
+            <h6 class="mb-3" style="color: grey;">Ваш доход сегодня: <span id="oneTokenTodayProfit">0</span> р.</h6>
             <div>
                 На продажу выставлено 49% токенов. 
                 <br />
