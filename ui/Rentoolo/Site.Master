@@ -304,6 +304,7 @@
 
 
 
+        <script src="/assets/js/popper.min.js"></script>
         <script src="/assets/js/toolkit.js"></script>
         <script src="/assets/js/application.js"></script>
         <script>
