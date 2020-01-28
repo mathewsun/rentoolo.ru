@@ -37,6 +37,7 @@
     </style>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/assets/js/format.js?88"></script>
 
     <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
 
@@ -55,8 +56,6 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/55995166" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 </head>
-
-
 <body class="with-top-navbar">
     <form id="Form1" runat="server">
 
