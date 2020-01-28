@@ -150,7 +150,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="card d-md-block d-lg-block mb-4">
         <div class="card-body">
-            <h6 class="mb-3">Цена токена: <span id="oneTokenCost"><%=OneTokenTodayCost.ToString().Replace(",",".") %></span> р.</h6>
+            <h6 class="mb-3">Цена токена: <a href="/TokensCost" title="График стоимости"><span id="oneTokenCost"><%=OneTokenTodayCost.ToString().Replace(",",".") %></span> р.</a></h6>
             <input type="hidden" id="oneTokenCostHidden" value="<%=OneTokenTodayCost.ToString().Replace(",",".") %>" />
             <h6 class="mb-3">Всего токенов: <span id="fullTokensCount">10 000 000 000</span></h6>
             <h6 class="mb-3">Доступно токенов: <span id="availableTokensCount"><%=AvailableTokensCount%></span></h6>

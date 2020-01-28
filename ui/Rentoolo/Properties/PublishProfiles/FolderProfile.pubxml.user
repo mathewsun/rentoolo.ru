@@ -9,6 +9,15 @@
     <_PublishTargetUrl>D:\Work\rentoolo.ru\Publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="403.aspx">
+      <publishTime>01/28/2020 04:35:21</publishTime>
+    </File>
+    <File Include="404.aspx">
+      <publishTime>01/28/2020 04:35:21</publishTime>
+    </File>
+    <File Include="500.aspx">
+      <publishTime>01/28/2020 04:35:21</publishTime>
+    </File>
     <File Include="About.aspx">
       <publishTime>06/15/2019 17:56:23</publishTime>
     </File>
@@ -202,7 +211,7 @@
       <publishTime>06/15/2019 17:56:24</publishTime>
     </File>
     <File Include="assets/css/additional.css">
-      <publishTime>01/23/2020 05:48:17</publishTime>
+      <publishTime>01/28/2020 05:57:04</publishTime>
     </File>
     <File Include="assets/css/application.css">
       <publishTime>10/28/2019 19:30:45</publishTime>
@@ -514,7 +523,7 @@
       <publishTime>04/17/2019 04:57:20</publishTime>
     </File>
     <File Include="bin/Rentoolo.dll">
-      <publishTime>01/26/2020 21:45:38</publishTime>
+      <publishTime>01/28/2020 05:59:41</publishTime>
     </File>
     <File Include="bin/Rentoolo.pdb">
       <publishTime>12/16/2019 13:03:32</publishTime>
@@ -1213,7 +1222,7 @@
       <publishTime>01/15/2020 23:17:01</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>01/24/2020 06:45:06</publishTime>
+      <publishTime>01/28/2020 06:02:22</publishTime>
     </File>
     <File Include="SiteBalance.Master">
       <publishTime>05/22/2019 00:30:25</publishTime>
@@ -1228,13 +1237,13 @@
       <publishTime>10/28/2019 19:30:45</publishTime>
     </File>
     <File Include="Tokens.aspx">
-      <publishTime>01/27/2020 05:09:18</publishTime>
+      <publishTime>01/28/2020 05:58:40</publishTime>
     </File>
     <File Include="TokensBuying.aspx">
       <publishTime>10/29/2019 23:35:50</publishTime>
     </File>
     <File Include="TokensCost.aspx">
-      <publishTime>01/24/2020 06:43:24</publishTime>
+      <publishTime>01/28/2020 06:00:01</publishTime>
     </File>
     <File Include="TokensOperations.aspx">
       <publishTime>01/19/2020 20:39:52</publishTime>
@@ -1246,7 +1255,7 @@
       <publishTime>01/15/2020 23:15:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/19/2020 07:18:49</publishTime>
+      <publishTime>01/28/2020 05:59:41</publishTime>
     </File>
     <File Include="WebForm1.aspx">
       <publishTime>07/03/2019 22:00:51</publishTime>

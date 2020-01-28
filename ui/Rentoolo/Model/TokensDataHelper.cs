@@ -113,7 +113,7 @@ namespace Rentoolo.Model
         {
             using (var ctx = new RentooloEntities())
             {
-                var obj = ctx.TokensCost.OrderBy(x => x.Date).ToList();
+                var obj = ctx.TokensCost.Where(x => x.Date <= DateTime.Now).OrderBy(x => x.Date).ToList();
                 return obj;
             }
         }
