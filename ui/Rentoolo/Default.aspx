@@ -551,7 +551,6 @@
             </div>
         </div>
 
-        <script src="assets/js/popper.min.js"></script>
         <script src="assets/js/chart.js"></script>
         <script src="assets/js/toolkit.js?2"></script>
         <script src="assets/js/application.js"></script>
