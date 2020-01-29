@@ -50,7 +50,7 @@ namespace Rentoolo
         {
             if (User == null)
             {
-                Response.Redirect("/Account/Login.aspx?ReturnUrl=Tokens.aspx");
+                Response.Redirect("/Account/Login?ReturnUrl=Tokens");
             }
 
             string tokensCountBuyString = String.Format("{0}", Request.Form["ctl00$MainContent$tokensCountBuy"]);
@@ -151,14 +151,14 @@ namespace Rentoolo
 
             TokensDataHelper.UpdateAvailableTokensCount(AvailableTokensCount - tokensCountBuy);
 
-            Response.Redirect("Tokens.aspx");
+            Response.Redirect("Tokens");
         }
 
         protected void ButtonSellTokens_Click(object sender, EventArgs e)
         {
             if (User == null)
             {
-                Response.Redirect("/Account/Login.aspx?ReturnUrl=Tokens.aspx");
+                Response.Redirect("/Account/Login?ReturnUrl=Tokens");
             }
 
             string tokensCountSellString = String.Format("{0}", Request.Form["ctl00$MainContent$tokensCountSell"]);
@@ -259,7 +259,7 @@ namespace Rentoolo
 
             TokensDataHelper.UpdateAvailableTokensCount(AvailableTokensCount + tokensCountSell);
 
-            Response.Redirect("Tokens.aspx");
+            Response.Redirect("Tokens");
 
         }
     }
