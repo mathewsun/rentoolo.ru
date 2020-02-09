@@ -47,11 +47,11 @@ namespace Rentoolo
                 "~/Adverts.aspx");
 
             routes.MapPageRoute("addItemRoute",
-                "addItem",
+                "AddItem",
                 "~/Account/AddItem.aspx");
 
             routes.MapPageRoute("addRoute",
-                "add",
+                "Add",
                 "~/Account/AddItem.aspx");
 
             routes.MapPageRoute("cabinetRoute",

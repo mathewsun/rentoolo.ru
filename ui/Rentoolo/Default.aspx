@@ -223,7 +223,7 @@
                                 <a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login">Вход и регистрация</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Account/AddItem">
+                                <a class="nav-link" href="/AddItem">
                                     <span class="btn btn-sm btn-pill btn-primary">Подать объявление</span>
                                 </a>
                             </li>
