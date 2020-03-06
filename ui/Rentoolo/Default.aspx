@@ -16,10 +16,10 @@
     <meta property="og:title" content="Rentoolo - Ваши объявления" />
     <meta property="mrc__share_title" content="Rentoolo - Ваши объявления" />
     <meta property="twitter:title" content="Rentoolo - Ваши объявления" />
-    <meta property="vk:image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
-    <meta property="og:image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
-    <meta property="twitter:image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
-    <meta property="image" content="http://www.Rentoolo.ru/assets/img/banner_1.jpg" />
+    <meta property="vk:image" content="https://www.Rentoolo.ru/assets/img/banner_1.jpg" />
+    <meta property="og:image" content="https://www.Rentoolo.ru/assets/img/banner_1.jpg" />
+    <meta property="twitter:image" content="https://www.Rentoolo.ru/assets/img/banner_1.jpg" />
+    <meta property="image" content="https://www.Rentoolo.ru/assets/img/banner_1.jpg" />
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="assets/css/toolkit.css?22222" rel="stylesheet">
