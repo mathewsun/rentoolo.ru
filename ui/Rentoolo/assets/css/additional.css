@@ -55,6 +55,7 @@
 }
 
 .icon-favorite {
+    padding-top: 8px;
     height: 20px !important;
     background: url("/assets/img/favorite_20.png") no-repeat;
     padding-right: 25px;

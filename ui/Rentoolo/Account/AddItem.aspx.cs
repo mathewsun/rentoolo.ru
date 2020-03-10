@@ -12,9 +12,15 @@ namespace Rentoolo.Account
 {
     public partial class AddItem : BasicPage
     {
+        public string Category;
+
+        public string CategoryName;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            string Category = Request.QueryString["cat"];
 
+            CategoryName = CategoryHelper.GetCategoryName(Category)
         }
 
         protected void ButtonAddItem_Click(object sender, EventArgs e)

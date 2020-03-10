@@ -26,6 +26,8 @@
     <link href="assets/css/application.css" rel="stylesheet">
     <link href="assets/css/additional.css?888" rel="stylesheet">
 
+    <meta name="yandex-verification" content="f9c03f80c16c0af8" />
+
     <link href="assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
 
     <style>
@@ -157,7 +159,7 @@
             </a>
 
             <div class="d-md-none">
-                <a class="nav-link add-advert-header-icon" title="Подать объявление" href="/Account/AddItem.aspx">
+                <a class="nav-link add-advert-header-icon" title="Подать объявление" href="/Account/Category.aspx">
                     <div class="icon icon-add-advert"></div>
                 </a>
                 <a class="nav-link favorites-header-icon" title="Избранное" href="/Favorites.aspx">
@@ -223,7 +225,7 @@
                                 <a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login">Вход и регистрация</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/AddItem">
+                                <a class="nav-link" href="/Account/Category.aspx">
                                     <span class="btn btn-sm btn-pill btn-primary">Подать объявление</span>
                                 </a>
                             </li>
@@ -247,7 +249,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/Account/AddItem.aspx">
+                                    <a class="nav-link" href="/Account/Category.aspx">
                                         <span class="btn btn-sm btn-pill btn-primary">Подать объявление</span>
                                     </a>
                                 </li>

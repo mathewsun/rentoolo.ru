@@ -26,6 +26,8 @@
     <link href="assets/css/application.css" rel="stylesheet">
     <link href="assets/css/additional.css?888" rel="stylesheet">
 
+    <meta name="yandex-verification" content="f9c03f80c16c0af8" />
+
     <link href="assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
 
     <style>

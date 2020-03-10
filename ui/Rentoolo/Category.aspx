@@ -12,8 +12,6 @@
                 <div class="media-body-inline-grid">
                     <button type="button" class="btn btn-secondary btn-lg btn-block">Транспорт</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block">Недвижимость</button>
-                    <button type="button" class="btn btn-secondary btn-lg btn-block">Работа</button>
-                    <button type="button" class="btn btn-secondary btn-lg btn-block">Услуги</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block">Личные вещи</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block">Для дома и дачи</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block">Бытовая электроника</button>

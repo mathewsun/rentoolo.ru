@@ -161,6 +161,7 @@
     <Content Include="Account\Cabinet.aspx" />
     <Content Include="Account\CashIn.aspx" />
     <Content Include="Account\CashOut.aspx" />
+    <Content Include="Account\Category.aspx" />
     <Content Include="Account\DeviceSettings.aspx" />
     <Content Include="Account\Exchange.aspx" />
     <Content Include="Account\Login.aspx" />
@@ -176,6 +177,7 @@
     <Content Include="Account\Referrals.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Account\SelectCategory.aspx" />
+    <Content Include="Account\SellCategory.aspx" />
     <Content Include="Account\Settings.aspx" />
     <Content Include="Account\SignUp.aspx" />
     <Content Include="Account\Tenders.aspx" />
@@ -448,6 +450,13 @@
     <Compile Include="Account\CashOut.aspx.designer.cs">
       <DependentUpon>CashOut.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\Category.aspx.cs">
+      <DependentUpon>Category.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Category.aspx.designer.cs">
+      <DependentUpon>Category.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\DeviceSettings.aspx.cs">
       <DependentUpon>DeviceSettings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -527,6 +536,13 @@
     </Compile>
     <Compile Include="Account\SelectCategory.aspx.designer.cs">
       <DependentUpon>SelectCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SellCategory.aspx.cs">
+      <DependentUpon>SellCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SellCategory.aspx.designer.cs">
+      <DependentUpon>SellCategory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Settings.aspx.cs">
       <DependentUpon>Settings.aspx</DependentUpon>

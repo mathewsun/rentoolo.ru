@@ -272,4 +272,51 @@
 
         FurnitureBusiness = 1002
     }
+
+    public static class CategoryHelper
+    {
+        public static string GetCategoryName(string catId)
+        {
+            string result = string.Empty;
+
+            switch (catId)
+            {
+                case "10":
+                    result = "Транспорт";
+                    break;
+                case "20":
+                    result = "Недвижимость";
+                    break;
+                case "30":
+                    result = "Работа";
+                    break;
+                case "40":
+                    result = "Услуги";
+                    break;
+                case "50":
+                    result = "Личные вещи";
+                    break;
+                case "60":
+                    result = "Для дома и дачи";
+                    break;
+                case "70":
+                    result = "Бытовая электроника";
+                    break;
+                case "80":
+                    result = "Хобби и отдых";
+                    break;
+                case "90":
+                    result = "Животные";
+                    break;
+                case "1000":
+                    result = "Для бизнеса";
+                    break;
+                default:
+                    result = "Нет категории";
+                    break;
+            }
+
+            return result;
+        }
+    } 
 }

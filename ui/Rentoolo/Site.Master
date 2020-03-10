@@ -24,7 +24,9 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="/assets/css/toolkit.css?8888" rel="stylesheet">
     <link href="/assets/css/application.css?8" rel="stylesheet">
-    <link href="/assets/css/additional.css?8888888888" rel="stylesheet">
+    <link href="/assets/css/additional.css?2" rel="stylesheet">
+
+    
 
     <style>
         /* note: this is a hack for ios iframe for bootstrap themes shopify page */
@@ -160,7 +162,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Account/AddItem">
+                                <a class="nav-link" href="/Account/Category.aspx">
                                     <span class="btn btn-sm btn-pill btn-primary">Подать объявление</span>
                                 </a>
                             </li>
