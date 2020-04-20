@@ -143,7 +143,7 @@
                 <span>Категория</span>
             </div>
             <div class="additem-right additem__way" cid="1001">
-                <a href="#">Для бизнеса / Готовый бизнес / Другое</a>
+                <a href="#"><%=CategoryName %></a>
                 <input type="hidden" id="category_hidden" value="1001" runat="server" />
             </div>
         </div>

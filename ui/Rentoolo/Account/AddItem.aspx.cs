@@ -20,7 +20,7 @@ namespace Rentoolo.Account
         {
             string Category = Request.QueryString["cat"];
 
-            CategoryName = CategoryHelper.GetCategoryName(Category)
+            CategoryName = CategoryHelper.GetCategoryName(Category);
         }
 
         protected void ButtonAddItem_Click(object sender, EventArgs e)
