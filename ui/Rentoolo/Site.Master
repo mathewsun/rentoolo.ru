@@ -38,7 +38,8 @@
         }
     </style>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="/assets/js/jquery-2.2.4.js"></script>
+    
     <script type="text/javascript" src="/assets/js/format.js?88"></script>
 
     <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
