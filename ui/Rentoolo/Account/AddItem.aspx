@@ -135,9 +135,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="additem">
-        <div class="additem-logo">
-            <h4>Подать обьявление</h4>
-        </div>
         <div class="additem-category">
             <div class="additem-left">
                 <span>Категория</span>
