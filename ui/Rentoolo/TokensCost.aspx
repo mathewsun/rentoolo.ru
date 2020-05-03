@@ -1,15 +1,75 @@
 ﻿<%@ Page Title="График стоимости токена" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TokensCost.aspx.cs" Inherits="Rentoolo.TokensCost" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 
     <script>
 
         $(document).ready(function () {
 
-            var result = <%=jsonTokensCosts %>;
+
+            $.get("api/GetTokensCost", function (data) {
+               // $("#result").html(JSON.stringify(data));
+
+
+                google.charts.load('current', { packages: ['corechart', 'line'] });
+                google.charts.setOnLoadCallback(drawBasic);
+
+                function drawBasic() {
+
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('date', 'X');
+                    data.addColumn('number', 'Cost');
+
+                    
+
+
+                    var ttt = [{ "Id": 1, "Value": 0.10007191, "Date": "2020-01-19T01:00:01.667" }, { "Id": 2, "Value": 0.100143871710481, "Date": "2020-01-20T01:00:01.667" }, { "Id": 3, "Value": 0.100215885168628, "Date": "2020-01-21T01:00:01.667" }];
+
+                    var ttt2 = [[new Date(2000, 8, 5), 0.10007191], [new Date(2000, 9, 5), 0.100143871710481], [new Date(2000, 10, 5), 0.100215885168628]];
+
+                    data.addRows(ttt2);
+
+
+                    var options = {
+                        hAxis: {
+                            title: 'Date'
+                        },
+                        vAxis: {
+                            title: 'Cost'
+                        }
+                    };
+
+                    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+                    chart.draw(data, options);
+                }
+
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%--            var result = <%=jsonTokensCosts %>;
 
             var chartDates = result.map(function(item) {
                 return item.Date.split('T')[0];
@@ -84,7 +144,7 @@
                         }]
                     }
                 }
-            });
+            });--%>
 
         });
 
@@ -101,10 +161,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+    <div id="result"></div>
 
 
-    <div class="containerChart">
-        <canvas id="examChart"></canvas>
-    </div>
-
+    <div id="chart_div"></div>
+  
 </asp:Content>
