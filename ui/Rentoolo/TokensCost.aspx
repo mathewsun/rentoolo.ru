@@ -9,10 +9,17 @@
 
         $(document).ready(function () {
 
-
             $.get("api/GetTokensCost", function (data) {
-               // $("#result").html(JSON.stringify(data));
+                // $("#result").html(JSON.stringify(data));
 
+                var convertedData = [];
+
+                data.forEach(element => {
+
+                    var chartElement = [new Date(element.Date), element.Value]
+
+                    convertedData.push(chartElement);
+                });
 
                 google.charts.load('current', { packages: ['corechart', 'line'] });
                 google.charts.setOnLoadCallback(drawBasic);
@@ -23,15 +30,7 @@
                     data.addColumn('date', 'X');
                     data.addColumn('number', 'Cost');
 
-                    
-
-
-                    var ttt = [{ "Id": 1, "Value": 0.10007191, "Date": "2020-01-19T01:00:01.667" }, { "Id": 2, "Value": 0.100143871710481, "Date": "2020-01-20T01:00:01.667" }, { "Id": 3, "Value": 0.100215885168628, "Date": "2020-01-21T01:00:01.667" }];
-
-                    var ttt2 = [[new Date(2000, 8, 5), 0.10007191], [new Date(2000, 9, 5), 0.100143871710481], [new Date(2000, 10, 5), 0.100215885168628]];
-
-                    data.addRows(ttt2);
-
+                    data.addRows(convertedData);
 
                     var options = {
                         hAxis: {
@@ -165,5 +164,5 @@
 
 
     <div id="chart_div"></div>
-  
+
 </asp:Content>
