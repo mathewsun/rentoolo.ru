@@ -146,6 +146,15 @@
         </div>
         <div class="additem-category">
             <div class="additem-left">
+                <span>Подкатегория</span>
+            </div>
+            <div class="additem-right additem__way" cid="1001">
+                <asp:DropDownList ID="DropDownListSubCategory" runat="server"></asp:DropDownList>
+                <input type="hidden" id="subcategory_hidden" value="1001" runat="server" />
+            </div>
+        </div>
+        <div class="additem-category">
+            <div class="additem-left">
                 <span class="additem-title">Название объявления</span>
             </div>
             <div class="additem-right additem__input-name">

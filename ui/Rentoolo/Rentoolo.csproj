@@ -175,6 +175,7 @@
     <Content Include="500.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Account\AddItem.aspx" />
+    <Content Include="Account\Auction.aspx" />
     <Content Include="Account\Auctions.aspx" />
     <Content Include="Account\Cabinet.aspx" />
     <Content Include="Account\CashIn.aspx" />
@@ -194,13 +195,19 @@
     <Content Include="Account\Profit.aspx" />
     <Content Include="Account\Referrals.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Account\Rent.aspx" />
     <Content Include="Account\SelectCategory.aspx" />
     <Content Include="Account\SellCategory.aspx" />
+    <Content Include="Account\Service.aspx" />
     <Content Include="Account\Settings.aspx" />
+    <Content Include="Account\Shop.aspx" />
     <Content Include="Account\SignUp.aspx" />
+    <Content Include="Account\Tender.aspx" />
     <Content Include="Account\Tenders.aspx" />
     <Content Include="Account\TokensBuying.aspx" />
     <Content Include="Account\TokensSelling.aspx" />
+    <Content Include="Account\Transport.aspx" />
+    <Content Include="Account\Vacancy.aspx" />
     <Content Include="Account\Watched.aspx" />
     <Content Include="AddItem.html" />
     <Content Include="AddItem_test.aspx" />
@@ -440,6 +447,13 @@
     <Compile Include="Account\AddItem.aspx.designer.cs">
       <DependentUpon>AddItem.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\Auction.aspx.cs">
+      <DependentUpon>Auction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Auction.aspx.designer.cs">
+      <DependentUpon>Auction.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Auctions.aspx.cs">
       <DependentUpon>Auctions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -545,6 +559,13 @@
     <Compile Include="Account\Referrals.aspx.designer.cs">
       <DependentUpon>Referrals.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\Rent.aspx.cs">
+      <DependentUpon>Rent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Rent.aspx.designer.cs">
+      <DependentUpon>Rent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Result.ashx.cs">
       <DependentUpon>Result.ashx</DependentUpon>
     </Compile>
@@ -562,6 +583,13 @@
     <Compile Include="Account\SellCategory.aspx.designer.cs">
       <DependentUpon>SellCategory.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\Service.aspx.cs">
+      <DependentUpon>Service.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Service.aspx.designer.cs">
+      <DependentUpon>Service.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Settings.aspx.cs">
       <DependentUpon>Settings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -569,12 +597,26 @@
     <Compile Include="Account\Settings.aspx.designer.cs">
       <DependentUpon>Settings.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\Shop.aspx.cs">
+      <DependentUpon>Shop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Shop.aspx.designer.cs">
+      <DependentUpon>Shop.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\SignUp.aspx.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Account\SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Tender.aspx.cs">
+      <DependentUpon>Tender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Tender.aspx.designer.cs">
+      <DependentUpon>Tender.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Tenders.aspx.cs">
       <DependentUpon>Tenders.aspx</DependentUpon>
@@ -596,6 +638,20 @@
     </Compile>
     <Compile Include="Account\TokensSelling.aspx.designer.cs">
       <DependentUpon>TokensSelling.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Transport.aspx.cs">
+      <DependentUpon>Transport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Transport.aspx.designer.cs">
+      <DependentUpon>Transport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Vacancy.aspx.cs">
+      <DependentUpon>Vacancy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Vacancy.aspx.designer.cs">
+      <DependentUpon>Vacancy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Watched.aspx.cs">
       <DependentUpon>Watched.aspx</DependentUpon>
