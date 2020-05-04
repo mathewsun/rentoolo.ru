@@ -20,7 +20,7 @@ namespace Rentoolo.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string CategoryId = Request.QueryString["cat"];
+            CategoryId = Request.QueryString["cat"];
 
             CategoryName = CategoryHelper.GetCategoryName(CategoryId);
         }
