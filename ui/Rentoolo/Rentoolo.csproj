@@ -918,7 +918,6 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\GetSubCategoriesController.cs" />
     <Compile Include="Controllers\GetTokensCostController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -1024,7 +1023,6 @@
     </Compile>
     <Compile Include="Model\CategoriesEnum.cs" />
     <Compile Include="Model\AuctionsHelper.cs" />
-    <Compile Include="Model\Category.cs" />
     <Compile Include="Model\ChartDates.cs" />
     <Compile Include="Model\CheckQiwiPayment.cs" />
     <Compile Include="Model\Currencies.cs">
