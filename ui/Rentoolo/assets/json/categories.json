@@ -9,8 +9,72 @@
       },
       {
         "id": 102,
-        "name": "Moto"
+        "name": "Moto",
+        "subcategories": [
+          {
+            "id": 1021,
+            "name": "Motorcycles"
+          },
+          {
+            "id": 10211,
+            "name": "RoadMotorcycles"
+          },
+          {
+            "id": 10212,
+            "name": "CrossMotorcyclesEnduro"
+          },
+          {
+            "id": 10214,
+            "name": "SportBike"
+          },
+          {
+            "id": 10215,
+            "name": "Chopper"
+          },
+          {
+            "id": 10217,
+            "name": "CustomBikes"
+          },
+          {
+            "id": 1022,
+            "name": "Scooters"
+          },
+          {
+            "id": 1023,
+            "name": "Atv"
+          },
+          {
+            "id": 1024,
+            "name": "CrossCountryVehicle"
+          },
+          {
+            "id": 1025,
+            "name": "Buggy"
+          },
+          {
+            "id": 1026,
+            "name": "Carting"
+          }
+        ]
+      },
+      {
+        "id": 104,
+        "name": "Truck",
+        "subcategories": [
+          {
+            "id": 10401,
+            "name": "AutoTruck"
+          },
+          {
+            "id": 10402,
+            "name": "FarmingTruck"
+          }
+        ]
       }
     ]
+  },
+  {
+    "id": 20,
+    "name": "Realty"
   }
 ]
