@@ -68,6 +68,58 @@
           {
             "id": 10402,
             "name": "FarmingTruck"
+          },
+          {
+            "id": 10403,
+            "name": "Trailer"
+          },
+          {
+            "id": 10404,
+            "name": "PrimeMover"
+          },
+          {
+            "id": 10405,
+            "name": "Loader"
+          },
+          {
+            "id": 10406,
+            "name": "LightCommercialVehicles"
+          },
+          {
+            "id": 10407,
+            "name": "ConstructionTruck"
+          },
+          {
+            "id": 10408,
+            "name": "Bus"
+          },
+          {
+            "id": 10408,
+            "name": "Bus"
+          },
+          {
+            "id": 10409,
+            "name": "CommunalTruck"
+          },
+          {
+            "id": 10410,
+            "name": "Excavators"
+          },
+          {
+            "id": 10411,
+            "name": "TruckCranes"
+          },
+          {
+            "id": 10412,
+            "name": "Camper"
+          },
+          {
+            "id": 10414,
+            "name": "LoggingTruck"
+          },
+          {
+            "id": 10415,
+            "name": "Bulldozer"
           }
         ]
       }
