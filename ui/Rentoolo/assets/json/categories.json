@@ -122,11 +122,460 @@
             "name": "Bulldozer"
           }
         ]
+      },
+      {
+        "id": 105,
+        "name": "WaterTranspor"
+      },
+      {
+        "id": 106,
+        "name": "SpareParts"
       }
     ]
   },
   {
     "id": 20,
-    "name": "Realty"
+    "name": "Realty",
+    "subcategories": [
+      {
+        "id": 201,
+        "name": "Apartment"
+      },
+      {
+        "id": 202,
+        "name": "Room"
+      },
+      {
+
+        "id": 203,
+        "name": "House"
+      },
+      {
+        "id": 204,
+        "name": "Land"
+      },
+      {
+        "id": 205,
+        "name": "Garage"
+      },
+      {
+        "id": 206,
+        "name": "CommercialRealEstate"
+      },
+      {
+        "id": 207,
+        "name": "RealEstateAbroad"
+      }
+    ]
+
+  },
+  {
+    "id": 30,
+    "name": "Job",
+    "subcategories": [
+      {
+        "id": 301,
+        "name": "Resume"
+      },
+      {
+        "id": 302,
+        "name": "Vacancy"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Services",
+    "subcategories": [
+      {
+        "id": 401,
+        "name": "ItInternetTelecom",
+        "subcategories": [
+          {
+            "id": 4011,
+            "name": "WebsiteDevelopmentMarketing",
+            "subcategories": [
+              {
+                "id": 40111,
+                "name": "WebsiteDevelopment"
+              },
+              {
+                "id": 40112,
+                "name": "WebsiteMarketing"
+              }
+            ]
+          },
+          {
+            "id": 4012,
+            "name": "SoftwareInstallationSetup"
+          },
+          {
+            "id": 4013,
+            "name": "SettingupInternetNetworks"
+          },
+          {
+            "id": 4014,
+            "name": "ItMaster"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "name": "PersonalGoods",
+    "subcategories": [
+      {
+        "id": 501,
+        "name": "ClothesShoesAccessories",
+        "subcategories": [
+          {
+            "id": 5011,
+            "name": "WomensClothing",
+            "subcategories": [
+              {
+                "id": 501101,
+                "name": "WomensClothingFootwear"
+              },
+              {
+                "id": 501102,
+                "name": "WomensClothingDressesSkirts"
+              },
+              {
+                "id": 501103,
+                "name": "WomensClothingOuterwear"
+              },
+              {
+                "id": 501104,
+                "name": "WomensClothingShirtsBlouses"
+              },
+              {
+                "id": 501105,
+                "name": "WomensClothingKnitwear"
+              },
+              {
+                "id": 501106,
+                "name": "WomensClothingJacketsSuits"
+              },
+              {
+                "id": 501107,
+                "name": "WomensClothingJeans"
+              },
+              {
+                "id": 501108,
+                "name": "WomensClothingWeddingDresses"
+              },
+              {
+                "id": 501109,
+                "name": "WomensClothingPants"
+              },
+              {
+                "id": 5011010,
+                "name": "WomensClothingTopsTshirts"
+              },
+              {
+                "id": 5011011,
+                "name": "WomensClothingUnderwear"
+              },
+              {
+                "id": 5011012,
+                "name": "WomensClothingSwimwear"
+              },
+              {
+                "id": 5011014,
+                "name": "WomensClothingOther"
+              }
+            ]
+          },
+          {
+            "id": 5012,
+            "name": "MensClothing",
+            "subcategories": [
+              {
+                "id": 501201,
+                "name": "MensClothingFootwear"
+              },
+              {
+                "id": 501202,
+                "name": "MensClothingOuterwear"
+              },
+              {
+                "id": 501203,
+                "name": "MensClothingKnitwearTshirts"
+              },
+              {
+                "id": 501204,
+                "name": "MensClothingJacketsSuits"
+              },
+              {
+                "id": 501205,
+                "name": "MensClothingShirtsBlouses"
+              },
+              {
+                "id": 501206,
+                "name": "MensClothingJeans"
+              },
+              {
+                "id": 501207,
+                "name": "MensClothingPants"
+              },
+              {
+                "id": 501208,
+                "name": "MensClothingOther"
+              }
+            ]
+          }
+
+        ]
+      },
+      {
+        "id": 502,
+        "name": "ChildrensClothing",
+        "subcategories": [
+          {
+            "id": 5021,
+            "name": "GirlsClothing",
+            "subcategories": [
+              {
+                "id": 502101,
+                "name": "GirlsClothingFootwear"
+              },
+              {
+                "id": 502102,
+                "name": "GirlsClothingOuterwear"
+              },
+              {
+                "id": 502103,
+                "name": "GirlsClothingDressesSkirts"
+              },
+              {
+                "id": 502104,
+                "name": "GirlsClothingKnitwear"
+              },
+              {
+                "id": 502105,
+                "name": "GirlsClothingOverallsBody"
+              },
+              {
+                "id": 502106,
+                "name": "GirlsClothingPants"
+              },
+              {
+                "id": 502107,
+                "name": "GirlsClothingHatsMittensScarves"
+              },
+              {
+                "id": 502108,
+                "name": "GirlsClothingSleepwear"
+              },
+              {
+                "id": 502109,
+                "name": "GirlsClothingOther"
+              }
+            ]
+          },
+          {
+            "id": 5022,
+            "name": "BoysClothing",
+            "subcategories": [
+              {
+                "id": 502201,
+                "name": "BoysClothingFootwear"
+              },
+              {
+                "id": 502202,
+                "name": "BoysClothingOuterwear"
+              },
+              {
+                "id": 502203,
+                "name": "BoysClothingKnitwear"
+              },
+              {
+                "id": 502204,
+                "name": "BoysClothingPants"
+              },
+              {
+                "id": 502205,
+                "name": "BoysClothingOverallsBody"
+              },
+              {
+                "id": 502206,
+                "name": "BoysClothingHatsMittensScarves"
+              },
+              {
+                "id": 502207,
+                "name": "BoysClothingSleepwear"
+              },
+              {
+                "id": 502208,
+                "name": "BoysClothingOther"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 503,
+        "name": "ChildrensClothing"
+      },
+      {
+        "id": 504,
+        "name": "WatchesJewelery"
+      },
+      {
+        "id": 505,
+        "name": "HealthBeauty"
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "name": "HomeGarden",
+    "subcategories": [
+      {
+        "id": 601,
+        "name": "Appliances"
+      },
+      {
+        "id": 602,
+        "name": "FurnitureInterior"
+      },
+      {
+        "id": 603,
+        "name": "DishesKitchenware"
+      },
+      {
+        "id": 604,
+        "name": "Food"
+      },
+      {
+        "id": 605,
+        "name": "RepairConstruction"
+      },
+      {
+        "id": 607,
+        "name": "Plants"
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "name": "ConsumerElectronics",
+    "subcategories": [
+      {
+        "id": 701,
+        "name": "AudioVideo"
+      },
+      {
+        "id": 702,
+        "name": "GamesConsolesPrograms"
+      },
+      {
+        "id": 703,
+        "name": "DesktopComputers"
+      },
+      {
+        "id": 704,
+        "name": "Laptops"
+      },
+      {
+        "id": 705,
+        "name": "OfficeEquipmentConsumables"
+      },
+      {
+        "id": 706,
+        "name": "TabletsEbooks"
+      },
+      {
+        "id": 707,
+        "name": "Phones"
+      },
+      {
+        "id": 708,
+        "name": "ComputerProducts"
+      },
+      {
+        "id": 709,
+        "name": "PhotographicEquipment"
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "name": "HobbyRest",
+    "subcategories": [
+      {
+        "id": 801,
+        "name": "TicketsTravel"
+      },
+      {
+        "id": 802,
+        "name": "Bicycles"
+      },
+      {
+        "id": 803,
+        "name": "BooksMagazines"
+      },
+      {
+        "id": 804,
+        "name": "Collecting"
+      },
+      {
+        "id": 805,
+        "name": "MusicalInstruments"
+      },
+      {
+        "id": 806,
+        "name": "HuntingFishing"
+      },
+      {
+        "id": 807,
+        "name": "SportsRest"
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "name": "Pets",
+    "subcategories": [
+      {
+        "id": 901,
+        "name": "Dogs"
+      },
+      {
+        "id": 902,
+        "name": "Cats"
+      },
+      {
+        "id": 903,
+        "name": "Birds"
+      },
+      {
+        "id": 904,
+        "name": "Aquarium"
+      },
+      {
+        "id": 905,
+        "name": "OtherAnimals"
+      },
+      {
+        "id": 906,
+        "name": "GoodsPets"
+      }
+    ]
+  },
+  {
+    "id": 1000,
+    "name": "Business",
+    "subcategories": [
+      {
+        "id": 1001,
+        "name": "Business"
+      },
+      {
+        "id": 1002,
+        "name": "FurnitureBusiness"
+      }
+    ]
   }
 ]
