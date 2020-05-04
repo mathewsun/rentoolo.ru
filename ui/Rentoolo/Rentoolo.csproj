@@ -407,6 +407,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="assets\json\categories.json" />
+    <Content Include="assets\json\categories_ru.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
     <Content Include="Default.aspx" />
