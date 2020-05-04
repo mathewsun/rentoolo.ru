@@ -69,11 +69,12 @@
                             <div class="div-validation-error">
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ControlToValidate="Password" CssClass="field-validation-error" ErrorMessage="*" /></div>
                         </div>
-
+                        <%if (!IsLocalhost)
+                            { %>
                         <div class="form-group">
                             <div class="g-recaptcha" data-sitekey="6Lf4W6QUAAAAAPK2AR7Ms8SsI9_KuJ0l8XZWaTWD"></div>
                         </div>
-
+                        <%} %>
                         <div class="mb-5">
                             <asp:Button ID="ButtonLogin" runat="server" CssClass="btn btn-primary" CommandName="Login" Text="Вход" />
                             <button type="button" class="btn btn-secondary" onclick="location.href='/Account/SignUp?ReturnUrl='">Регистрация</button>
