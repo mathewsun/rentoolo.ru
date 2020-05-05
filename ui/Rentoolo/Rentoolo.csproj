@@ -362,6 +362,7 @@
     <Content Include="img\a\noPhoto.png" />
     <Content Include="Job.aspx" />
     <Content Include="login\index.html" />
+    <Content Include="Manager\ManageAdvert.aspx" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -408,6 +409,9 @@
     </Content>
     <Content Include="assets\json\categories.json" />
     <Content Include="assets\json\categories_ru.json" />
+    <Content Include="Manager\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
     <Content Include="Default.aspx" />
@@ -989,6 +993,13 @@
     </Compile>
     <Compile Include="Job.aspx.designer.cs">
       <DependentUpon>Job.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\ManageAdvert.aspx.cs">
+      <DependentUpon>ManageAdvert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\ManageAdvert.aspx.designer.cs">
+      <DependentUpon>ManageAdvert.aspx</DependentUpon>
     </Compile>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Adverts.cs">
