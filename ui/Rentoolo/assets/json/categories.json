@@ -2,30 +2,37 @@
   {
     "id": 10,
     "name": "Transport",
+    "name_ru": "Транспорт",
     "subcategories": [
       {
         "id": 101,
-        "name": "Auto"
+        "name": "Auto",
+        "name_ru": "Автомобили"
       },
       {
         "id": 102,
         "name": "Moto",
+        "name_ru": "Мотоциклы и мототехника",
         "subcategories": [
           {
             "id": 1021,
-            "name": "Motorcycles"
+            "name": "Motorcycles",
+            "name_ru": "Мотоциклы"
           },
           {
             "id": 10211,
-            "name": "RoadMotorcycles"
+            "name": "RoadMotorcycles",
+            "name_ru": "Дорожные"
           },
           {
             "id": 10212,
-            "name": "CrossMotorcyclesEnduro"
+            "name": "CrossMotorcyclesEnduro",
+            "name_ru": "Кросс и эндуро"
           },
           {
             "id": 10214,
-            "name": "SportBike"
+            "name": "SportBike",
+            "name_ru": "Спортивные"
           },
           {
             "id": 10215,
@@ -136,6 +143,7 @@
   {
     "id": 20,
     "name": "Realty",
+    "name_ru": "Недвижимость",
     "subcategories": [
       {
         "id": 201,
@@ -172,6 +180,7 @@
   {
     "id": 30,
     "name": "Job",
+    "name_ru": "Работа",
     "subcategories": [
       {
         "id": 301,
@@ -186,6 +195,7 @@
   {
     "id": 40,
     "name": "Services",
+    "name_ru": "Услуги",
     "subcategories": [
       {
         "id": 401,
@@ -224,6 +234,7 @@
   {
     "id": 50,
     "name": "PersonalGoods",
+    "name_ru": "Личные вещи",
     "subcategories": [
       {
         "id": 501,
@@ -431,6 +442,7 @@
   {
     "id": 60,
     "name": "HomeGarden",
+    "name_ru": "Для дома и дачи",
     "subcategories": [
       {
         "id": 601,
@@ -461,6 +473,7 @@
   {
     "id": 70,
     "name": "ConsumerElectronics",
+    "name_ru": "Бытовая электроника",
     "subcategories": [
       {
         "id": 701,
@@ -503,6 +516,7 @@
   {
     "id": 80,
     "name": "HobbyRest",
+    "name_ru": "Хобби и отдых",
     "subcategories": [
       {
         "id": 801,
@@ -537,6 +551,7 @@
   {
     "id": 90,
     "name": "Pets",
+    "name_ru": "Животные",
     "subcategories": [
       {
         "id": 901,
@@ -567,6 +582,7 @@
   {
     "id": 1000,
     "name": "Business",
+    "name_ru": "Для бизнеса",
     "subcategories": [
       {
         "id": 1001,

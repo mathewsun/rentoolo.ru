@@ -6,6 +6,14 @@
 
     <script>
         $(document).ready(function () {
+
+            $.get("/assets/json/categories.json", function (data) {
+
+                var category = data.find(x => x.id === <%=AdvertItem.Category%>);
+                $("#category").html(category.name);
+
+            });
+
             $(".photoContainer").each(function (index) {
                 var htmlString = '';
                 var imgUrls = $(this).attr("data");
@@ -35,7 +43,7 @@
                 <span>Категория</span>
             </div>
             <div class="additem-right additem__way" cid="1001">
-                <a href="#">Для бизнеса / Готовый бизнес / Другое</a>
+                <a href="#" id="category">Для бизнеса / Готовый бизнес / Другое</a>
                 <input type="hidden" id="category_hidden" value="1001" runat="server" />
             </div>
         </div>
