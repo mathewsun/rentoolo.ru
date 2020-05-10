@@ -2,37 +2,37 @@
   {
     "id": 10,
     "name": "Transport",
-    "name_ru": "Транспорт",
+    "name_ru": "РўСЂР°РЅСЃРїРѕСЂС‚",
     "subcategories": [
       {
         "id": 101,
         "name": "Auto",
-        "name_ru": "Автомобили"
+        "name_ru": "РђРІС‚РѕРјРѕР±РёР»Рё"
       },
       {
         "id": 102,
         "name": "Moto",
-        "name_ru": "Мотоциклы и мототехника",
+        "name_ru": "РњРѕС‚РѕС†РёРєР»С‹ Рё РјРѕС‚РѕС‚РµС…РЅРёРєР°",
         "subcategories": [
           {
             "id": 1021,
             "name": "Motorcycles",
-            "name_ru": "Мотоциклы"
+            "name_ru": "РњРѕС‚РѕС†РёРєР»С‹"
           },
           {
             "id": 10211,
             "name": "RoadMotorcycles",
-            "name_ru": "Дорожные"
+            "name_ru": "Р”РѕСЂРѕР¶РЅС‹Рµ"
           },
           {
             "id": 10212,
             "name": "CrossMotorcyclesEnduro",
-            "name_ru": "Кросс и эндуро"
+            "name_ru": "РљСЂРѕСЃСЃ Рё СЌРЅРґСѓСЂРѕ"
           },
           {
             "id": 10214,
             "name": "SportBike",
-            "name_ru": "Спортивные"
+            "name_ru": "РЎРїРѕСЂС‚РёРІРЅС‹Рµ"
           },
           {
             "id": 10215,
@@ -143,7 +143,7 @@
   {
     "id": 20,
     "name": "Realty",
-    "name_ru": "Недвижимость",
+    "name_ru": "РќРµРґРІРёР¶РёРјРѕСЃС‚СЊ",
     "subcategories": [
       {
         "id": 201,
@@ -180,7 +180,7 @@
   {
     "id": 30,
     "name": "Job",
-    "name_ru": "Работа",
+    "name_ru": "Р Р°Р±РѕС‚Р°",
     "subcategories": [
       {
         "id": 301,
@@ -195,7 +195,7 @@
   {
     "id": 40,
     "name": "Services",
-    "name_ru": "Услуги",
+    "name_ru": "РЈСЃР»СѓРіРё",
     "subcategories": [
       {
         "id": 401,
@@ -234,7 +234,7 @@
   {
     "id": 50,
     "name": "PersonalGoods",
-    "name_ru": "Личные вещи",
+    "name_ru": "Р›РёС‡РЅС‹Рµ РІРµС‰Рё",
     "subcategories": [
       {
         "id": 501,
@@ -442,7 +442,7 @@
   {
     "id": 60,
     "name": "HomeGarden",
-    "name_ru": "Для дома и дачи",
+    "name_ru": "Р”Р»СЏ РґРѕРјР° Рё РґР°С‡Рё",
     "subcategories": [
       {
         "id": 601,
@@ -473,7 +473,7 @@
   {
     "id": 70,
     "name": "ConsumerElectronics",
-    "name_ru": "Бытовая электроника",
+    "name_ru": "Р‘С‹С‚РѕРІР°СЏ СЌР»РµРєС‚СЂРѕРЅРёРєР°",
     "subcategories": [
       {
         "id": 701,
@@ -516,7 +516,7 @@
   {
     "id": 80,
     "name": "HobbyRest",
-    "name_ru": "Хобби и отдых",
+    "name_ru": "РҐРѕР±Р±Рё Рё РѕС‚РґС‹С…",
     "subcategories": [
       {
         "id": 801,
@@ -551,7 +551,7 @@
   {
     "id": 90,
     "name": "Pets",
-    "name_ru": "Животные",
+    "name_ru": "Р–РёРІРѕС‚РЅС‹Рµ",
     "subcategories": [
       {
         "id": 901,
@@ -582,7 +582,7 @@
   {
     "id": 1000,
     "name": "Business",
-    "name_ru": "Для бизнеса",
+    "name_ru": "Р”Р»СЏ Р±РёР·РЅРµСЃР°",
     "subcategories": [
       {
         "id": 1001,
