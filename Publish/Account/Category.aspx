@@ -16,6 +16,8 @@
                     <button type="button" class="btn btn-secondary btn-lg btn-block">Тендер</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block">Вакансия</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block">Услуги</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block">Магазин</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block">Разовая работа</button>
                 </div>
             </div>
         </li>

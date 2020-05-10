@@ -135,9 +135,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="additem">
-        <div class="additem-logo">
-            <h4>Подать обьявление</h4>
-        </div>
         <div class="additem-category">
             <div class="additem-left">
                 <span>Категория</span>
@@ -145,6 +142,15 @@
             <div class="additem-right additem__way" cid="1001">
                 <a href="#"><%=CategoryName %></a>
                 <input type="hidden" id="category_hidden" value="1001" runat="server" />
+            </div>
+        </div>
+        <div class="additem-category">
+            <div class="additem-left">
+                <span>Подкатегория</span>
+            </div>
+            <div class="additem-right additem__way" cid="1001">
+                <asp:DropDownList ID="DropDownListSubCategory" runat="server"></asp:DropDownList>
+                <input type="hidden" id="subcategory_hidden" value="1001" runat="server" />
             </div>
         </div>
         <div class="additem-category">
