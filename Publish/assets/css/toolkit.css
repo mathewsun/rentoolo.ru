@@ -2776,6 +2776,7 @@ fieldset:disabled a.btn {
     color: #212529;
     background-color: #d4dbe0;
     border-color: #d4dbe0;
+    font-weight: bold;
 }
 
     .btn-secondary:hover {
@@ -8194,7 +8195,7 @@ button.bg-dark:focus {
 
 .pt-4,
 .py-4 {
-    padding-top: 1.5rem !important;
+    padding-top: 0.5rem !important;
 }
 
 .pr-4,

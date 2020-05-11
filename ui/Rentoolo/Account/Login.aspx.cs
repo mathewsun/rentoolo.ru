@@ -10,17 +10,21 @@ namespace Rentoolo.Account
 {
     public partial class Login : Page
     {
-        public bool IsLocalhost { get; set;}
+        //public bool IsLocalhost { get; set;}
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string host = HttpContext.Current.Request.Url.Host;
+            //string host = HttpContext.Current.Request.Url.Host;
 
-            if (host == "localhost")
-            {
-                IsLocalhost = true;
-            }
+            //if (host == "localhost2")
+            //{
+            //    IsLocalhost = true;
+            //}
+            //else
+            //{
+            //    IsLocalhost = false;
+            //}
 
             //RegisterHyperLink.NavigateUrl = "~/Account/Cabinet.aspx";
 
@@ -71,11 +75,11 @@ namespace Rentoolo.Account
 
         protected void On_LoggingIn(object sender, System.Web.UI.WebControls.LoginCancelEventArgs e)
         {
-            if (IsLocalhost)
-            {
-                e.Cancel = false;
-                return;
-            }
+            //if (IsLocalhost)
+            //{
+            //    e.Cancel = false;
+            //    return;
+            //}
 
 
             if (!Validate())
