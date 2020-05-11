@@ -9,8 +9,14 @@
 
             $.get("/assets/json/categories.json", function (data) {
 
-                var category = data.find(x => x.id === <%=AdvertItem.Category%>);
-                $("#category").html(category.name);
+                var categoryName = findJsonElementById(data, <%=AdvertItem.Category%>);
+
+                if (categoryName !== undefined) {
+                    $("#category").html(categoryName);
+                }
+
+                //var category = data.find(x => x.id === <%=AdvertItem.Category%>);
+                //$("#category").html(category.name_ru);
 
             });
 
@@ -29,6 +35,37 @@
 
             $(".photoContainer").brazzersCarousel();
         });
+
+        function findJsonElementById(data, id) {
+
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].id == id) {
+                    return data[i].name_ru;
+                }
+                else {
+                    if (data[i].subcategories !== undefined) {
+                        var result = findJsonElementById(data[i].subcategories, id);
+
+                        if (result !== undefined) {
+                            return result;
+                        }
+                    }
+                }
+            }
+
+
+            //data.forEach(function (a) {
+            //    if (a.id == id) {
+            //        var resultName = a.name_ru;
+            //    }
+            //    else {
+            //        if (a.subcategories !== undefined) {
+            //            findJsonElementById(a.subcategories, id);
+            //        }
+            //    }
+            //});
+
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
