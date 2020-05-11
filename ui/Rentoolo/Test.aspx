@@ -5,7 +5,29 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="thumb1">
-    </div>
+    
+    
+    apple
+
+<asp:Button ID="ButtonHello" runat="server" Text="Click Hello!" OnClick="ButtonHello_Click" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </asp:Content>

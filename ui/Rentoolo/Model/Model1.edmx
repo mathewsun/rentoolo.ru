@@ -52,6 +52,7 @@
           <Property Name="StartPrice" Type="money" Nullable="false" />
           <Property Name="Created" Type="datetime" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Business">
           <Key>
@@ -107,6 +108,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Name(Ru)" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ParentCategoryId" Type="int" />
         </EntityType>
         <EntityType Name="Currencies">
           <Key>
@@ -472,6 +474,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserSettings_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserSettings" Type="Self.UserSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSettings">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Wallets_Cryptocurrencies">
           <End Role="Currencies" Type="Self.Currencies" Multiplicity="1" />
           <End Role="Wallets" Type="Self.Wallets" Multiplicity="*" />
@@ -492,6 +506,18 @@
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Wallets">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Watched_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Watched" Type="Self.Watched" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Watched">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -725,7 +751,8 @@
     [Categories].[Id] AS [Id], 
     [Categories].[Name] AS [Name], 
     [Categories].[Name(Ru)] AS [Name(Ru)], 
-    [Categories].[OrderId] AS [OrderId]
+    [Categories].[OrderId] AS [OrderId], 
+    [Categories].[ParentCategoryId] AS [ParentCategoryId]
     FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CashIns_Users" Association="Self.FK_CashIns_Users">
@@ -748,6 +775,10 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Referrals" EntitySet="Referrals" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserSettings_Users" Association="Self.FK_UserSettings_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSettings" EntitySet="UserSettings" />
+          </AssociationSet>
           <AssociationSet Name="FK_Wallets_Cryptocurrencies" Association="Self.FK_Wallets_Cryptocurrencies">
             <End Role="Currencies" EntitySet="Currencies" />
             <End Role="Wallets" EntitySet="Wallets" />
@@ -755,6 +786,10 @@
           <AssociationSet Name="FK_Wallets_Users" Association="Self.FK_Wallets_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Wallets" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Watched_Users" Association="Self.FK_Watched_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Watched" EntitySet="Watched" />
           </AssociationSet>
           <AssociationSet Name="MembershipApplication" Association="Self.MembershipApplication">
             <End Role="Applications" EntitySet="Applications" />
@@ -875,6 +910,7 @@
           <Property Name="StartPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Business">
           <Key>
@@ -1163,7 +1199,9 @@
           <NavigationProperty Name="News" Relationship="Self.FK_News_Users" FromRole="Users" ToRole="News" />
           <NavigationProperty Name="Referrals" Relationship="Self.FK_Referrals_Users" FromRole="Users" ToRole="Referrals" />
           <NavigationProperty Name="Referrals1" Relationship="Self.FK_Referrals_Users1" FromRole="Users" ToRole="Referrals" />
+          <NavigationProperty Name="UserSettings" Relationship="Self.FK_UserSettings_Users" FromRole="Users" ToRole="UserSettings" />
           <NavigationProperty Name="Wallets" Relationship="Self.FK_Wallets_Users" FromRole="Users" ToRole="Wallets" />
+          <NavigationProperty Name="Watched" Relationship="Self.FK_Watched_Users" FromRole="Users" ToRole="Watched" />
           <NavigationProperty Name="Roles" Relationship="Self.UsersInRoles" FromRole="Users" ToRole="Roles" />
         </EntityType>
         <EntityType Name="UserSettings">
@@ -1175,6 +1213,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UserSettings_Users" FromRole="UserSettings" ToRole="Users" />
         </EntityType>
         <EntityType Name="UsersOpenAuthAccounts">
           <Key>
@@ -1220,6 +1259,7 @@
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="AdvertId" Type="Int64" Nullable="false" />
           <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Watched_Users" FromRole="Watched" ToRole="Users" />
         </EntityType>
         <EntityType Name="WatchedByCookies">
           <Key>
@@ -1241,6 +1281,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name_Ru_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ParentCategoryId" Type="Int32" />
         </EntityType>
         <Association Name="MembershipApplication">
           <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
@@ -1350,6 +1391,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserSettings_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserSettings" Type="Self.UserSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSettings">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Wallets_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Wallets" Type="Self.Wallets" Multiplicity="*" />
@@ -1358,6 +1411,18 @@
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Wallets">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Watched_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Watched" Type="Self.Watched" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Watched">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1453,9 +1518,17 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Referrals" EntitySet="Referrals" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserSettings_Users" Association="Self.FK_UserSettings_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSettings" EntitySet="UserSettings" />
+          </AssociationSet>
           <AssociationSet Name="FK_Wallets_Users" Association="Self.FK_Wallets_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Wallets" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Watched_Users" Association="Self.FK_Watched_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Watched" EntitySet="Watched" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName" Association="Self.FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName">
             <End Role="UsersOpenAuthData" EntitySet="UsersOpenAuthData" />
@@ -1661,6 +1734,7 @@
                 <ScalarProperty Name="StartPrice" ColumnName="StartPrice" />
                 <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2030,6 +2104,7 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Name_Ru_" ColumnName="Name(Ru)" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

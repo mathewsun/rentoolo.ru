@@ -11,7 +11,12 @@ namespace Rentoolo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            var ttt = 10;
+        }
 
+        protected void ButtonHello_Click(object sender, EventArgs e)
+        {
+            var ttt2 = 10;
         }
     }
 }

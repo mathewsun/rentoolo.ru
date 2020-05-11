@@ -18,5 +18,7 @@ namespace Rentoolo.Model
         public System.Guid UserId { get; set; }
         public long AdvertId { get; set; }
         public System.DateTime Created { get; set; }
+    
+        public virtual Users Users { get; set; }
     }
 }

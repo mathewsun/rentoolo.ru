@@ -19,5 +19,7 @@ namespace Rentoolo.Model
         public string Name { get; set; }
         public string Value { get; set; }
         public System.DateTime Created { get; set; }
+    
+        public virtual Users Users { get; set; }
     }
 }

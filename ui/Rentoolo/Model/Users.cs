@@ -21,7 +21,9 @@ namespace Rentoolo.Model
             this.News = new HashSet<News>();
             this.Referrals = new HashSet<Referrals>();
             this.Referrals1 = new HashSet<Referrals>();
+            this.UserSettings = new HashSet<UserSettings>();
             this.Wallets = new HashSet<Wallets>();
+            this.Watched = new HashSet<Watched>();
             this.Roles = new HashSet<Roles>();
         }
     
@@ -48,7 +50,11 @@ namespace Rentoolo.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Referrals> Referrals1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserSettings> UserSettings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Wallets> Wallets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Watched> Watched { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Roles> Roles { get; set; }
     }

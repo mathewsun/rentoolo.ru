@@ -400,17 +400,17 @@
     <Content Include="TokensOperations.aspx" />
     <Content Include="Transport.aspx" />
     <Content Include="yandex_f9c03f80c16c0af8.html" />
+    <Content Include="assets\json\categories.json" />
+    <Content Include="assets\json\categories_ru.json" />
+    <Content Include="Manager\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
-    <Content Include="assets\json\categories.json" />
-    <Content Include="assets\json\categories_ru.json" />
-    <Content Include="Manager\Web.config">
-      <SubType>Designer</SubType>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
