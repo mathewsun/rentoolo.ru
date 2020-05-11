@@ -19,5 +19,6 @@ namespace Rentoolo.Model
         public decimal StartPrice { get; set; }
         public System.DateTime Created { get; set; }
         public System.Guid UserId { get; set; }
+        public string Description { get; set; }
     }
 }

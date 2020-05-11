@@ -29,5 +29,19 @@ namespace Rentoolo.Model
                 return list;
             }
         }
+        
+       public static int AddAuction(Auctions item)  
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                ctx.Auctions.Add(item);
+
+                ctx.SaveChanges();
+
+                return item.Id;
+            }
+        }
+
+
     }
 }
