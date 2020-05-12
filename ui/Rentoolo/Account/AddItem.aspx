@@ -10,7 +10,7 @@
     <script src="/assets/js/dropzone/dropzone.js"></script>
     <link href="/assets/js/dropzone/dropzone.css" rel="stylesheet">
     <link href="/assets/js/dropzone/basic.css" rel="stylesheet">
-    <script src="/assets/js/jsonUtils.js"></script>
+    <script src="/assets/js/jsonUtils.js?2"></script>
 
     <script>
         $(document).ready(function () {
@@ -61,10 +61,24 @@
             });
 
             $.get("/assets/json/categories.json", function (data) {
-                var categoryName = findJsonElementById(data, <%=CategoryId%>);
+                var category = findJsonElementById(data, <%=CategoryId%>);
 
-                if (categoryName !== undefined) {
-                    $("#category").html(categoryName);
+                if (category !== undefined) {
+                    $("#category").html(category.name_ru);
+                }
+
+                if (category.subcategories !== undefined) {
+                    $.each(category.subcategories, function (i, item) {
+                        $('#subCategories').append($('<option>', {
+                            value: item.id,
+                            text: item.name_ru
+                        }));
+                    });
+
+                    $("#subCategory").show();
+                }
+                else {
+                    $("#subCategory").hide();
                 }
             });
         });
@@ -147,18 +161,20 @@
             <div class="additem-left">
                 <span>Категория</span>
             </div>
-            <div class="additem-right additem__way" cid="1001">
+            <div class="additem-right additem__way" cid="<%=CategoryId %>">
                 <a href="#" id="category">Category</a>
-                <input type="hidden" id="category_hidden" value="1001" runat="server" />
+                <input type="hidden" id="category_hidden" value="<%=CategoryId %>" runat="server" />
             </div>
         </div>
-        <div class="additem-category">
+        <div class="additem-category" id="subCategory" style="display: none;">
             <div class="additem-left">
                 <span>Подкатегория</span>
             </div>
-            <div class="additem-right additem__way" cid="1001">
-                <asp:DropDownList ID="DropDownListSubCategory" runat="server"></asp:DropDownList>
-                <input type="hidden" id="subcategory_hidden" value="1001" runat="server" />
+            <div class="additem-right additem__way" cid="">
+                <select id="subCategories">
+                    
+                </select>
+                <input type="hidden" id="subcategory_hidden" value="" runat="server" />
             </div>
         </div>
         <div class="additem-category">

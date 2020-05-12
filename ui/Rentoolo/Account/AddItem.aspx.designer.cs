@@ -24,15 +24,6 @@ namespace Rentoolo.Account
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden category_hidden;
 
         /// <summary>
-        /// DropDownListSubCategory элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListSubCategory;
-
-        /// <summary>
         /// subcategory_hidden элемент управления.
         /// </summary>
         /// <remarks>

@@ -24,7 +24,7 @@ namespace Rentoolo.Account
 
             if(string.IsNullOrEmpty(CategoryId))
             {
-                Response.Redirect("/Account/Category.aspx");
+                Response.Redirect("/Account/Category");
             }
 
             //CategoryName = CategoryHelper.GetCategoryName(CategoryId);

@@ -67,6 +67,7 @@
       {
         "id": 104,
         "name": "Truck",
+        "name_ru": "Грузовики и спецтехника",
         "subcategories": [
           {
             "id": 10401,
@@ -132,11 +133,13 @@
       },
       {
         "id": 105,
-        "name": "WaterTranspor"
+        "name": "WaterTranspor",
+        "name_ru": "Водный транспорт"
       },
       {
         "id": 106,
-        "name": "SpareParts"
+        "name": "SpareParts",
+        "name_ru": "Запчасти и аксессуары"
       }
     ]
   },

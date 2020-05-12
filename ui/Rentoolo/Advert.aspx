@@ -3,15 +3,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
     <script src="/assets/js/jQuery.Brazzers-Carousel.js"></script>
-    <script src="/assets/js/jsonUtils.js"></script>
+    <script src="/assets/js/jsonUtils.js?2"></script>
 
     <script>
         $(document).ready(function () {
             $.get("/assets/json/categories.json", function (data) {
-                var categoryName = findJsonElementById(data, <%=AdvertItem.Category%>);
+                var category = findJsonElementById(data, <%=AdvertItem.Category%>);
 
-                if (categoryName !== undefined) {
-                    $("#category").html(categoryName);
+                if (category !== undefined) {
+                    $("#category").html(category.name_ru);
                 }
             });
 
