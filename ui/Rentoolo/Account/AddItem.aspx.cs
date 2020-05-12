@@ -14,7 +14,7 @@ namespace Rentoolo.Account
     {
         //public string Category;
 
-        public string CategoryName;
+        //public string CategoryName;
 
         public string CategoryId;
 
@@ -22,7 +22,12 @@ namespace Rentoolo.Account
         {
             CategoryId = Request.QueryString["cat"];
 
-            CategoryName = CategoryHelper.GetCategoryName(CategoryId);
+            if(string.IsNullOrEmpty(CategoryId))
+            {
+                Response.Redirect("/Account/Category.aspx");
+            }
+
+            //CategoryName = CategoryHelper.GetCategoryName(CategoryId);
         }
 
         protected void ButtonAddItem_Click(object sender, EventArgs e)

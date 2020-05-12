@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h4>UVAZHAEMYI, PROYDEMTE</h4>
+    <h4>Мои Аукционы</h4>
 
     <ul class="list-group media-list media-list-stream mb-4">
 
@@ -23,7 +23,7 @@
                             <div class="item-wrap-cost"><%=item.StartPrice%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
                             <div class="item-wrap__description">
                                 <p>ID аукциона: <%=item.Id%></p>
-                                <p>Имя владельца аукциона: <%=item.Name%> рублей</p>
+                                <%--<p>Имя владельца аукциона: <%=item.Name%> рублей</p>--%>
                                 <p>Стартовая цена аукциона: <%=item.StartPrice%></p>
                                 <p>Дата и время создания аукциона: <%=item.Created %></p>
                                 <p>Текущий пользователь: <%=item.UserName %></p>  <!--Нужно разобраться -->

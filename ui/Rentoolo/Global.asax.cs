@@ -62,6 +62,10 @@ namespace Rentoolo
                 "Account/CashIn",
                 "~/Account/CashIn.aspx");
 
+            routes.MapPageRoute("CategoryRoute",
+                "Account/Category",
+                "~/Account/Category.aspx");
+
             routes.MapPageRoute("loginRoute",
                 "Account/Login",
                 "~/Account/Login.aspx");

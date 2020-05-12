@@ -159,7 +159,7 @@
             </a>
 
             <div class="d-md-none">
-                <a class="nav-link add-advert-header-icon" title="Подать объявление" href="/Account/Category.aspx">
+                <a class="nav-link add-advert-header-icon" title="Подать объявление" href="/Account/Category">
                     <div class="icon icon-add-advert"></div>
                 </a>
                 <a class="nav-link favorites-header-icon" title="Избранное" href="/Favorites.aspx">
@@ -225,7 +225,7 @@
                                 <a id="loginLink" runat="server" class="nav-link login" href="~/Account/Login">Вход и регистрация</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Account/Category.aspx">
+                                <a class="nav-link" href="/Account/Category">
                                     <span class="btn btn-sm btn-pill btn-primary">Подать объявление</span>
                                 </a>
                             </li>
@@ -249,7 +249,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/Account/Category.aspx">
+                                    <a class="nav-link" href="/Account/Category">
                                         <span class="btn btn-sm btn-pill btn-primary">Подать объявление</span>
                                     </a>
                                 </li>

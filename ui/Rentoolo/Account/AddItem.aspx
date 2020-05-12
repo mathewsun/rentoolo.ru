@@ -10,6 +10,7 @@
     <script src="/assets/js/dropzone/dropzone.js"></script>
     <link href="/assets/js/dropzone/dropzone.css" rel="stylesheet">
     <link href="/assets/js/dropzone/basic.css" rel="stylesheet">
+    <script src="/assets/js/jsonUtils.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -56,8 +57,15 @@
                         // The marker, positioned at Uluru
                         var marker = new google.maps.Marker({ position: mapCenter, map: map });
                     });
-
                 }, 1000);
+            });
+
+            $.get("/assets/json/categories.json", function (data) {
+                var categoryName = findJsonElementById(data, <%=CategoryId%>);
+
+                if (categoryName !== undefined) {
+                    $("#category").html(categoryName);
+                }
             });
         });
     </script>
@@ -140,7 +148,7 @@
                 <span>Категория</span>
             </div>
             <div class="additem-right additem__way" cid="1001">
-                <a href="#"><%=CategoryName %></a>
+                <a href="#" id="category">Category</a>
                 <input type="hidden" id="category_hidden" value="1001" runat="server" />
             </div>
         </div>
