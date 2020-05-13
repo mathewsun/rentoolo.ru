@@ -9,7 +9,7 @@
                     <h6>Выберите тип объявления:</h6>
                 </div>
                 <div class="media-body-inline-grid">
-                    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/AddItem.aspx?cat=101';">Автомобили</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/Auto';">Автомобили</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/Moto';">Мотоциклы и мототехника</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/AddItem.aspx?cat=104';">Грузовики и спецтехника</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/AddItem.aspx?cat=105';">Водный транспорт</button>

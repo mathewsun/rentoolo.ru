@@ -177,6 +177,7 @@
     <Content Include="Account\AddItem.aspx" />
     <Content Include="Account\Auction.aspx" />
     <Content Include="Account\Auctions.aspx" />
+    <Content Include="Account\Auto.aspx" />
     <Content Include="Account\Cabinet.aspx" />
     <Content Include="Account\CashIn.aspx" />
     <Content Include="Account\CashOut.aspx" />
@@ -468,6 +469,13 @@
     </Compile>
     <Compile Include="Account\Auctions.aspx.designer.cs">
       <DependentUpon>Auctions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Auto.aspx.cs">
+      <DependentUpon>Auto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Auto.aspx.designer.cs">
+      <DependentUpon>Auto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Cabinet.aspx.cs">
       <DependentUpon>Cabinet.aspx</DependentUpon>
