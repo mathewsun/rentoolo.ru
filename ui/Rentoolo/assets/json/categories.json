@@ -36,31 +36,38 @@
           },
           {
             "id": 10215,
-            "name": "Chopper"
+            "name": "Chopper",
+            "name_ru": "Чопперы"
           },
           {
             "id": 10217,
-            "name": "CustomBikes"
+            "name": "CustomBikes",
+            "name_ru": "Кастом-байки"
           },
           {
             "id": 1022,
-            "name": "Scooters"
+            "name": "Scooters",
+            "name_ru": "Мопеды и скутеры"
           },
           {
             "id": 1023,
-            "name": "Atv"
+            "name": "Atv",
+            "name_ru": "Квадроциклы"
           },
           {
             "id": 1024,
-            "name": "CrossCountryVehicle"
+            "name": "CrossCountryVehicle",
+            "name_ru": "Вездеходы"
           },
           {
             "id": 1025,
-            "name": "Buggy"
+            "name": "Buggy",
+            "name_ru": "Багги"
           },
           {
             "id": 1026,
-            "name": "Carting"
+            "name": "Carting",
+            "name_ru": "Картинг"
           }
         ]
       },

@@ -10,7 +10,7 @@
                 </div>
                 <div class="media-body-inline-grid">
                     <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/AddItem.aspx?cat=101';">Автомобили</button>
-                    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/AddItem.aspx?cat=102';">Мотоциклы и мототехника</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/Moto';">Мотоциклы и мототехника</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/AddItem.aspx?cat=104';">Грузовики и спецтехника</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/AddItem.aspx?cat=105';">Водный транспорт</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/AddItem.aspx?cat=106';">Запчасти и аксессуары</button>

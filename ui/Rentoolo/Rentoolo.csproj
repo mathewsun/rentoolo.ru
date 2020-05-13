@@ -188,6 +188,7 @@
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\ManageTopUserControl.ascx" />
     <Content Include="Account\Menu.ascx" />
+    <Content Include="Account\Moto.aspx" />
     <Content Include="Account\MyAdverts.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Operations.aspx" />
@@ -530,6 +531,13 @@
     </Compile>
     <Compile Include="Account\Menu.ascx.designer.cs">
       <DependentUpon>Menu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Moto.aspx.cs">
+      <DependentUpon>Moto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Moto.aspx.designer.cs">
+      <DependentUpon>Moto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\MyAdverts.aspx.cs">
       <DependentUpon>MyAdverts.aspx</DependentUpon>
