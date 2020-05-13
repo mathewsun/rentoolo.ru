@@ -74,6 +74,14 @@ namespace Rentoolo
                 "Account/Login",
                 "~/Account/Login.aspx");
 
+            routes.MapPageRoute("rentAddItemRoute",
+                "Account/Rent",
+                "~/Account/Rent.aspx");
+
+            routes.MapPageRoute("accountSellCategoryRoute",
+                "Account/SellCategory",
+                "~/Account/SellCategory.aspx");
+
             routes.MapPageRoute("signupRoute",
                 "Account/SignUp",
                 "~/Account/SignUp.aspx");
