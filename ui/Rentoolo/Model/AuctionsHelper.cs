@@ -42,6 +42,15 @@ namespace Rentoolo.Model
             }
         }
 
+        public static List<Auctions> GetAllAuctions()
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var result = ctx.Auctions.ToList();
+
+                return result;
+            }
+        }
 
     }
 }
