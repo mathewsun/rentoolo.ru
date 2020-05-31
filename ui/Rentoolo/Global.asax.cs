@@ -54,6 +54,10 @@ namespace Rentoolo
                 "Add",
                 "~/Account/AddItem.aspx");
 
+            routes.MapPageRoute("addAuctionRoute",
+                "Account/Auction",
+                "~/Account/Auction.aspx");
+
             routes.MapPageRoute("autoRoute",
                 "Account/Auto",
                 "~/Account/Auto.aspx");
