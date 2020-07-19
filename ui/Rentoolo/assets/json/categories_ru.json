@@ -2,131 +2,25 @@
   {
     "id": 10,
     "name": "Transport",
+    "name_ru": "Транспорт",
     "subcategories": [
       {
         "id": 1010,
-        "name": "Auto"
+        "name": "Auto",
+        "name_ru": "Автомобили"
       },
       {
         "id": 1020,
         "name": "Moto",
+        "name_ru": "Мотоциклы и мототехника",
         "subcategories": [
           {
             "id": 102010,
-            "name": "Motorcycles"
-          },
-          {
-            "id": 102011,
-            "name": "RoadMotorcycles"
-          },
-          {
-            "id": 102012,
-            "name": "CrossMotorcyclesEnduro"
-          },
-          {
-            "id": 102014,
-            "name": "SportBike"
-          },
-          {
-            "id": 102015,
-            "name": "Chopper"
-          },
-          {
-            "id": 102017,
-            "name": "CustomBikes"
-          },
-          {
-            "id": 102020,
-            "name": "Scooters"
-          },
-          {
-            "id": 102030,
-            "name": "Atv"
-          },
-          {
-            "id": 102040,
-            "name": "CrossCountryVehicle"
-          },
-          {
-            "id": 102050,
-            "name": "Buggy"
-          },
-          {
-            "id": 102060,
-            "name": "Carting"
-          }
-        ]
-      },
-      {
-        "id": 1040,
-        "name": "Truck",
-        "subcategories": [
-          {
-            "id": 104001,
-            "name": "AutoTruck"
-          },
-          {
-            "id": 104002,
-            "name": "FarmingTruck"
-          },
-          {
-            "id": 104003,
-            "name": "Trailer"
-          },
-          {
-            "id": 104004,
-            "name": "PrimeMover"
-          },
-          {
-            "id": 104005,
-            "name": "Loader"
-          },
-          {
-            "id": 104006,
-            "name": "LightCommercialVehicles"
-          },
-          {
-            "id": 104007,
-            "name": "ConstructionTruck"
-          },
-          {
-            "id": 104008,
-            "name": "Bus"
-          },
-          {
-            "id": 104008,
-            "name": "Bus"
-          },
-          {
-            "id": 104009,
-            "name": "CommunalTruck"
-          },
-          {
-            "id": 104010,
-            "name": "Excavators"
-          },
-          {
-            "id": 104011,
-            "name": "TruckCranes"
-          },
-          {
-            "id": 104012,
-            "name": "Camper"
-          },
-          {
-            "id": 104014,
-            "name": "LoggingTruck"
-          },
-          {
-            "id": 104015,
-            "name": "Bulldozer"
+            "name": "Motorcycles",
+            "name_ru": "Мотоциклы"
           }
         ]
       }
     ]
-  },
-  {
-    "id": 20,
-    "name": "Realty"
   }
 ]

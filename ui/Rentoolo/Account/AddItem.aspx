@@ -60,7 +60,7 @@
                 }, 1000);
             });
 
-            $.get("/assets/json/categories.json", function (data) {
+            $.get("/assets/json/categories.json?4", function (data) {
                 var category = findJsonElementById(data, <%=CategoryId%>);
 
                 if (category !== undefined) {
