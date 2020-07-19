@@ -61,25 +61,71 @@
             });
 
             $.get("/assets/json/categories.json?4", function (data) {
-                var category = findJsonElementById(data, <%=CategoryId%>);
 
-                if (category !== undefined) {
-                    $("#category").html(category.name_ru);
-                }
+                var category = '<%=CategoryId%>';
 
-                if (category.subcategories !== undefined) {
-                    $.each(category.subcategories, function (i, item) {
-                        $('#subCategories').append($('<option>', {
-                            value: item.id,
-                            text: item.name_ru
-                        }));
-                    });
+                var strFirstCategory = category.substring(0, 2);
 
-                    $("#subCategory").show();
+                var firstCategory = findJsonElementById(data, strFirstCategory);
+
+                if (firstCategory.name_ru !== undefined) {
+                    $("#category").html(firstCategory.name_ru);
                 }
                 else {
-                    $("#subCategory").hide();
+                    $("#category").html(firstCategory.name);
                 }
+
+                var strSecondCategory = category.substring(0, 4);
+
+                if (strSecondCategory !== undefined) {
+                    var secondCategory = findJsonElementById(data, strSecondCategory);
+
+                    if (secondCategory.name_ru !== undefined) {
+                        $("#category").append("&nbsp;/&nbsp;" + secondCategory.name_ru);
+                    }
+                    else {
+                        $("#category").append("&nbsp;/&nbsp;" + secondCategory.name);
+                    }
+                }
+
+                var strThirdCategory = category.substring(0, 6);
+
+                if (strThirdCategory !== undefined) {
+                    var thirdCategory = findJsonElementById(data, strThirdCategory);
+
+                    if (thirdCategory.name_ru !== undefined) {
+                        $("#category").append("&nbsp;/&nbsp;" + thirdCategory.name_ru);
+                    }
+                    else {
+                        $("#category").append("&nbsp;/&nbsp;" + thirdCategory.name);
+                    }
+                }
+
+                //var category = findJsonElementById(data, category);
+
+                //if (category !== undefined) {
+                //    if (category.name_ru !== undefined) {
+                //        $("#category").html(category.name_ru);
+                //    }
+                //    else {
+                //        $("#category").html(category.name);
+                //    }
+                //}
+
+                //if (category.subcategories !== undefined) {
+                //    $.each(category.subcategories, function (i, item) {
+                //        $('#subCategories').append($('<option>', {
+                //            value: item.id,
+                //            text: item.name_ru
+                //        }));
+                //    });
+
+                //    $("#subCategory").show();
+                //}
+                //else {
+                //    $("#subCategory").hide();
+                //}
+
             });
         });
     </script>
@@ -172,7 +218,6 @@
             </div>
             <div class="additem-right additem__way" cid="">
                 <select id="subCategories">
-                    
                 </select>
                 <input type="hidden" id="subcategory_hidden" value="" runat="server" />
             </div>
