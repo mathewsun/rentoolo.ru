@@ -200,6 +200,7 @@
     <Content Include="Account\Rent.aspx" />
     <Content Include="Account\SelectCategory.aspx" />
     <Content Include="Account\SellCategory.aspx" />
+    <Content Include="Account\Sell\Business.aspx" />
     <Content Include="Account\Service.aspx" />
     <Content Include="Account\Settings.aspx" />
     <Content Include="Account\Shop.aspx" />
@@ -606,6 +607,13 @@
     </Compile>
     <Compile Include="Account\SellCategory.aspx.designer.cs">
       <DependentUpon>SellCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Sell\Business.aspx.cs">
+      <DependentUpon>Business.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Sell\Business.aspx.designer.cs">
+      <DependentUpon>Business.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Service.aspx.cs">
       <DependentUpon>Service.aspx</DependentUpon>
@@ -1325,6 +1333,7 @@
     <Compile Include="UpiTestController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Account\Rent\" />
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
     <Folder Include="Rent\" />
