@@ -16,7 +16,7 @@
                     <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/AddItem.aspx?cat=70';">Бытовая электроника</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/AddItem.aspx?cat=80';">Хобби и отдых</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/AddItem.aspx?cat=90';">Животные</button>
-                    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/AddItem.aspx?cat=1000';">Для бизнеса</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/AddItem.aspx?cat=1100';">Для бизнеса</button>
                 </div>
             </div>
         </li>
