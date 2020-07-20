@@ -78,6 +78,7 @@
                 var strSecondCategory = category.substring(0, 4);
 
                 if (strSecondCategory !== undefined) {
+                    if (strSecondCategory == strFirstCategory) return;
                     var secondCategory = findJsonElementById(data, strSecondCategory);
 
                     if (secondCategory.name_ru !== undefined) {
@@ -91,6 +92,7 @@
                 var strThirdCategory = category.substring(0, 6);
 
                 if (strThirdCategory !== undefined) {
+                    if (strThirdCategory == strFirstCategory) return;
                     var thirdCategory = findJsonElementById(data, strThirdCategory);
 
                     if (thirdCategory.name_ru !== undefined) {
