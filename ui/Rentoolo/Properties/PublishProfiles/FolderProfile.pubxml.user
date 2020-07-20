@@ -22,13 +22,16 @@
       <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/AddItem.aspx">
-      <publishTime>05/12/2020 21:01:46</publishTime>
+      <publishTime>07/21/2020 02:04:15</publishTime>
     </File>
     <File Include="Account/Auction.aspx">
       <publishTime>05/12/2020 19:37:55</publishTime>
     </File>
     <File Include="Account/Auctions.aspx">
-      <publishTime>05/12/2020 19:37:55</publishTime>
+      <publishTime>06/28/2020 05:35:30</publishTime>
+    </File>
+    <File Include="Account/Auto.aspx">
+      <publishTime>07/19/2020 23:37:04</publishTime>
     </File>
     <File Include="Account/Cabinet.aspx">
       <publishTime>04/30/2020 13:05:46</publishTime>
@@ -40,7 +43,7 @@
       <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Category.aspx">
-      <publishTime>05/03/2020 23:41:52</publishTime>
+      <publishTime>06/28/2020 05:35:30</publishTime>
     </File>
     <File Include="Account/DeviceSettings.aspx">
       <publishTime>04/30/2020 13:05:46</publishTime>
@@ -62,6 +65,9 @@
     </File>
     <File Include="Account/Menu.ascx">
       <publishTime>04/30/2020 13:05:46</publishTime>
+    </File>
+    <File Include="Account/Moto.aspx">
+      <publishTime>07/19/2020 23:38:03</publishTime>
     </File>
     <File Include="Account/MyAdverts.aspx">
       <publishTime>04/30/2020 13:05:46</publishTime>
@@ -88,7 +94,7 @@
       <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Rent.aspx">
-      <publishTime>05/03/2020 23:41:52</publishTime>
+      <publishTime>05/14/2020 02:42:53</publishTime>
     </File>
     <File Include="Account/Result.ashx">
       <publishTime>04/30/2020 13:05:46</publishTime>
@@ -96,8 +102,11 @@
     <File Include="Account/SelectCategory.aspx">
       <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
+    <File Include="Account/Sell/Business.aspx">
+      <publishTime>07/21/2020 01:41:29</publishTime>
+    </File>
     <File Include="Account/SellCategory.aspx">
-      <publishTime>04/30/2020 13:05:46</publishTime>
+      <publishTime>07/21/2020 01:38:23</publishTime>
     </File>
     <File Include="Account/Service.aspx">
       <publishTime>05/03/2020 23:41:52</publishTime>
@@ -127,7 +136,7 @@
       <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Transport.aspx">
-      <publishTime>05/03/2020 23:41:52</publishTime>
+      <publishTime>07/19/2020 23:37:29</publishTime>
     </File>
     <File Include="Account/Vacancy.aspx">
       <publishTime>05/03/2020 23:41:52</publishTime>
@@ -136,7 +145,7 @@
       <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Web.config">
-      <publishTime>05/12/2020 19:37:55</publishTime>
+      <publishTime>05/13/2020 18:47:55</publishTime>
     </File>
     <File Include="AddItem.html">
       <publishTime>04/30/2020 13:05:46</publishTime>
@@ -229,7 +238,7 @@
       <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Advert.aspx">
-      <publishTime>05/12/2020 20:42:50</publishTime>
+      <publishTime>05/12/2020 21:30:23</publishTime>
     </File>
     <File Include="Article.aspx">
       <publishTime>04/30/2020 13:05:46</publishTime>
@@ -469,7 +478,7 @@
       <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/jsonUtils.js">
-      <publishTime>05/12/2020 20:38:29</publishTime>
+      <publishTime>07/19/2020 15:47:50</publishTime>
     </File>
     <File Include="assets/js/popper.min.js">
       <publishTime>04/30/2020 13:05:46</publishTime>
@@ -484,10 +493,13 @@
       <publishTime>05/12/2020 20:38:33</publishTime>
     </File>
     <File Include="assets/json/categories.json">
-      <publishTime>05/10/2020 23:00:37</publishTime>
+      <publishTime>07/21/2020 01:42:17</publishTime>
     </File>
     <File Include="assets/json/categories_ru.json">
-      <publishTime>05/04/2020 14:22:11</publishTime>
+      <publishTime>07/19/2020 23:36:10</publishTime>
+    </File>
+    <File Include="Auctions.aspx">
+      <publishTime>06/28/2020 05:35:30</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>04/30/2020 13:05:47</publishTime>
@@ -559,10 +571,10 @@
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Rentoolo.dll">
-      <publishTime>05/12/2020 21:15:20</publishTime>
+      <publishTime>07/21/2020 02:04:53</publishTime>
     </File>
     <File Include="bin/Rentoolo.pdb">
-      <publishTime>05/12/2020 21:15:20</publishTime>
+      <publishTime>07/21/2020 02:04:53</publishTime>
     </File>
     <File Include="bin/ru/EntityFramework.resources.dll">
       <publishTime>04/30/2020 13:05:46</publishTime>
@@ -598,10 +610,10 @@
       <publishTime>04/30/2020 13:05:47</publishTime>
     </File>
     <File Include="bin/xNet.dll">
-      <publishTime>05/10/2020 23:17:25</publishTime>
+      <publishTime>07/21/2020 02:04:52</publishTime>
     </File>
     <File Include="bin/xNet.pdb">
-      <publishTime>05/10/2020 23:17:25</publishTime>
+      <publishTime>07/21/2020 02:04:52</publishTime>
     </File>
     <File Include="bootstrap/index.html">
       <publishTime>04/30/2020 13:05:46</publishTime>
@@ -1147,7 +1159,7 @@
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="img/a/noPhoto.png">
-      <publishTime>04/30/2020 13:05:46</publishTime>
+      <publishTime>05/30/2020 18:12:15</publishTime>
     </File>
     <File Include="img/a/test.html">
       <publishTime>01/01/0001 00:00:00</publishTime>

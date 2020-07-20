@@ -10,9 +10,9 @@
                     <h6>Выберите тип объявления:</h6>
                 </div>
                 <div class="media-body-inline-grid">
-                    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/SellCategory.aspx';" >Продажа</button>
-                    <button type="button" class="btn btn-secondary btn-lg btn-block">Аренда</button>
-                    <button type="button" class="btn btn-secondary btn-lg btn-block">Аукцион</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/SellCategory';" >Продажа</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/Rent';">Аренда</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href = '/Account/Auction';">Аукцион</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block">Тендер</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block">Вакансия</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block">Услуги</button>

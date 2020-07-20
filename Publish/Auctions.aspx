@@ -1,8 +1,9 @@
-﻿<%@ Page Title="Мои аукционы" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Auctions.aspx.cs" Inherits="Rentoolo.Account.Auctions" %>
+﻿<%@ Page Title="Аукционы" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Auctions.aspx.cs" Inherits="Rentoolo.Auctions" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h4>Мои Аукционы</h4>
+         <h4>Все аукционы</h4>
 
     <ul class="list-group media-list media-list-stream mb-4">
 
@@ -26,7 +27,7 @@
                                 <%--<p>Имя владельца аукциона: <%=item.Name%> рублей</p>--%>
                                 <p>Стартовая цена аукциона: <%=item.StartPrice%></p>
                                 <p>Дата и время создания аукциона: <%=item.Created %></p>
-                                <p>Текущий пользователь: <%=item.UserName %></p>  <!--Нужно разобраться -->
+                                <p>Текущий пользователь: <%--=item.UserName --%></p>  <!--Нужно разобраться -->
                                 <div class="item-wrap__data"><%=item.Created.ToString("dd.MM.yyyy HH:mm")%></div>
                             </div>
                         </div>
@@ -40,7 +41,4 @@
 
 
     </ul>
-
 </asp:Content>
-
-
