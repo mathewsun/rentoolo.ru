@@ -596,11 +596,13 @@
     "subcategories": [
       {
         "id": 1101,
-        "name": "Business"
+        "name": "Business",
+        "name_ru": "Готовый бизнес"
       },
       {
         "id": 1102,
-        "name": "FurnitureBusiness"
+        "name": "FurnitureBusiness",
+        "name_ru": "Оборудование для бизнеса"
       }
     ]
   }
