@@ -971,6 +971,18 @@ namespace Rentoolo.Model
             }
         }
 
+        public static void UpdateUserCashOut(int Id, Guid userId, int state, string comment)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.CashOuts.Single(x => x.Id == Id && x.UserId == userId);
+                obj.State = state;
+                obj.Comment = comment;
+                obj.WhenAdminEvent = DateTime.Now;
+                ctx.SaveChanges();
+            }
+        }
+
         public static void UpdateCashOut(int Id, int state, string comment)
         {
             using (var ctx = new RentooloEntities())

@@ -34,28 +34,37 @@ namespace Rentoolo.Admin
                 //    var paramName = tokens[0];
                 //    var paramValue = tokens[1];
 
-                //    switch (paramName)
-                //    {
-                //        case "event":
-                //            eventName = paramValue;
-
-                //            break;
-
-                //        case "result":
-                //            result = paramValue;
-
-                //            break;
-
-                //        case "id":
-                //            id = paramValue;
-
-                //            break;
-
-                //        default:
-                //            break;
-                //    }
                 //}
-                
+
+                switch (eventName)
+                {
+                    case "cashoutresult":
+                        int convertedId;
+
+                        bool success = Int32.TryParse(id, out convertedId);
+                        if (success)
+                        {
+                            if(result == "2")
+                            {
+                                DataHelper.UpdateCashOut(convertedId, (int)CashOutStatesEnum.Finished, string.Empty);
+                            }
+
+                            if (result == "3")
+                            {
+                                DataHelper.UpdateCashOut(convertedId, (int)CashOutStatesEnum.Rejected, string.Empty);
+                            }
+                        }
+                        else
+                        {
+                            return;
+                        }
+
+                        break;
+
+                    default:
+                        break;
+                }
+
             }
 
             context.Response.ContentType = "text/plain";
