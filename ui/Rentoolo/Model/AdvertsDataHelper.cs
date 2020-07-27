@@ -41,13 +41,23 @@ namespace Rentoolo.Model
             }
         }
 
-        public static List<Adverts> GetAdvertsForMainPage()
+        public static List<Adverts> GetAdvertsForMainPage(SellFilter filter)
         {
             using (var ctx = new RentooloEntities())
             {
-                var list = ctx.Adverts.OrderByDescending(x => x.Created).ToList();
+                if (!string.IsNullOrEmpty(filter.Search))
+                {
+                    var list = ctx.Adverts.Where(x => x.Name.Contains(filter.Search) || x.Description.Contains(filter.Search)).OrderByDescending(x => x.Created).ToList();
 
-                return list;
+                    return list;
+                }
+                else
+                {
+                    var list = ctx.Adverts.OrderByDescending(x => x.Created).ToList();
+
+                    return list;
+                }
+
             }
         }
 
@@ -71,13 +81,22 @@ namespace Rentoolo.Model
             }
         }
 
-        public static int GetAdvertsActiveCount()
+        public static int GetAdvertsActiveCount(SellFilter filter)
         {
             using (var ctx = new RentooloEntities())
             {
-                int count = ctx.Adverts.Count();
+                if (!string.IsNullOrEmpty(filter.Search))
+                {
+                    int count = ctx.Adverts.Where(x => x.Name.Contains(filter.Search) || x.Description.Contains(filter.Search)).Count();
 
-                return count;
+                    return count;
+                }
+                else
+                {
+                    int count = ctx.Adverts.Count();
+
+                    return count;
+                }
             }
         }
 

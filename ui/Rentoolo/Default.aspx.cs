@@ -20,11 +20,14 @@ namespace Rentoolo
             {
                 //ListNews = DataHelper.GetActiveNewsLast5();
 
-                string search = Request.QueryString["s"];
+                SellFilter filter = new SellFilter
+                {
+                    Search = Request.QueryString["s"]
+                };
 
-                ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage();
+                ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter);
 
-                AdvertsCount = AdvertsDataHelper.GetAdvertsActiveCount().ToString("N0");
+                AdvertsCount = AdvertsDataHelper.GetAdvertsActiveCount(filter).ToString("N0");
 
                 //Random rnd = new Random();
 
