@@ -183,10 +183,10 @@
                         <a class="nav-link" href="/">Купить/Продать</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Rent.aspx">Аренда</a>
+                        <a class="nav-link" href="/Rent">Аренда</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Аукционы</a>
+                        <a class="nav-link" href="/Auctions">Аукционы</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/">Тендеры</a>
