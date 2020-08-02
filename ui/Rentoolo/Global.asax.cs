@@ -101,6 +101,10 @@ namespace Rentoolo
                 "Account/Moto",
                 "~/Account/Moto.aspx");
 
+            routes.MapPageRoute("AuctionsRoute",
+                "Auctions",
+                "~/Auctions.aspx");
+
             routes.MapPageRoute("favoritesRoute",
                 "Favorites",
                 "~/Favorites.aspx");
@@ -108,6 +112,10 @@ namespace Rentoolo
             routes.MapPageRoute("newsRoute",
                 "news",
                 "~/News.aspx");
+
+            routes.MapPageRoute("rentRoute",
+                "Rent",
+                "~/Rent.aspx");
 
             routes.MapPageRoute("testRoute",
                 "test",
