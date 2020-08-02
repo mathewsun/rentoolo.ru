@@ -104,6 +104,55 @@ namespace Rentoolo.Model
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserWallets_Result>("[RentooloEntities].[fnGetUserWallets](@userId)", userIdParameter);
         }
     
+        public virtual int spAddAdvert(Nullable<int> category, string name, string description, Nullable<System.Guid> createdUserId, Nullable<double> price, string address, string phone, Nullable<int> messageType, System.Data.Entity.Spatial.DbGeography position, string imgUrls, string youTubeUrl)
+        {
+            var categoryParameter = category.HasValue ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var createdUserIdParameter = createdUserId.HasValue ?
+                new ObjectParameter("CreatedUserId", createdUserId) :
+                new ObjectParameter("CreatedUserId", typeof(System.Guid));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("Price", price) :
+                new ObjectParameter("Price", typeof(double));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("Phone", phone) :
+                new ObjectParameter("Phone", typeof(string));
+    
+            var messageTypeParameter = messageType.HasValue ?
+                new ObjectParameter("MessageType", messageType) :
+                new ObjectParameter("MessageType", typeof(int));
+    
+            var positionParameter = position != null ?
+                new ObjectParameter("Position", position) :
+                new ObjectParameter("Position", typeof(System.Data.Entity.Spatial.DbGeography));
+    
+            var imgUrlsParameter = imgUrls != null ?
+                new ObjectParameter("ImgUrls", imgUrls) :
+                new ObjectParameter("ImgUrls", typeof(string));
+    
+            var youTubeUrlParameter = youTubeUrl != null ?
+                new ObjectParameter("YouTubeUrl", youTubeUrl) :
+                new ObjectParameter("YouTubeUrl", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddAdvert", categoryParameter, nameParameter, descriptionParameter, createdUserIdParameter, priceParameter, addressParameter, phoneParameter, messageTypeParameter, positionParameter, imgUrlsParameter, youTubeUrlParameter);
+        }
+    
         public virtual int spAddFavorites(Nullable<System.Guid> userId, Nullable<long> advertId)
         {
             var userIdParameter = userId.HasValue ?

@@ -29,5 +29,6 @@ namespace Rentoolo.Model
         public string YouTubeUrl { get; set; }
         public bool IsApproved { get; set; }
         public Nullable<System.DateTime> WhenAdminApproved { get; set; }
+        public Nullable<int> Subcategory { get; set; }
     }
 }

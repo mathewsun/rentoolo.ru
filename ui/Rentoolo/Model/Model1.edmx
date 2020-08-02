@@ -24,6 +24,7 @@
           <Property Name="YouTubeUrl" Type="nvarchar(max)" />
           <Property Name="IsApproved" Type="bit" Nullable="false" />
           <Property Name="WhenAdminApproved" Type="datetime" />
+          <Property Name="Subcategory" Type="int" />
         </EntityType>
         <EntityType Name="Applications">
           <Key>
@@ -672,6 +673,19 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="spAddAdvert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Category" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedUserId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Price" Type="float" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="MessageType" Type="int" Mode="In" />
+          <Parameter Name="Position" Type="geography" Mode="In" />
+          <Parameter Name="ImgUrls" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="YouTubeUrl" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="spAddFavorites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="advertId" Type="bigint" Mode="In" />
@@ -879,6 +893,7 @@
           <Property Name="YouTubeUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsApproved" Type="Boolean" Nullable="false" />
           <Property Name="WhenAdminApproved" Type="DateTime" Precision="3" />
+          <Property Name="Subcategory" Type="Int32" />
         </EntityType>
         <EntityType Name="Applications">
           <Key>
@@ -1549,6 +1564,19 @@
           <FunctionImport Name="fnGetUserWallets" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserWallets_Result)">
             <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
+          <FunctionImport Name="spAddAdvert">
+            <Parameter Name="Category" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="CreatedUserId" Mode="In" Type="Guid" />
+            <Parameter Name="Price" Mode="In" Type="Double" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="MessageType" Mode="In" Type="Int32" />
+            <Parameter Name="Position" Mode="In" Type="Geography" />
+            <Parameter Name="ImgUrls" Mode="In" Type="String" />
+            <Parameter Name="YouTubeUrl" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="spAddFavorites">
             <Parameter Name="UserId" Mode="In" Type="Guid" />
             <Parameter Name="advertId" Mode="In" Type="Int64" />
@@ -1703,6 +1731,7 @@
                 <ScalarProperty Name="YouTubeUrl" ColumnName="YouTubeUrl" />
                 <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
                 <ScalarProperty Name="WhenAdminApproved" ColumnName="WhenAdminApproved" />
+                <ScalarProperty Name="Subcategory" ColumnName="Subcategory" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2175,6 +2204,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spAddAdvert" FunctionName="Хранилище RentooloModel.spAddAdvert" />
           <FunctionImportMapping FunctionImportName="spAddFavorites" FunctionName="Хранилище RentooloModel.spAddFavorites" />
           <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="Хранилище RentooloModel.spAddFavoritesByCookies" />
           <FunctionImportMapping FunctionImportName="spAddWatched" FunctionName="Хранилище RentooloModel.spAddWatched" />
