@@ -1083,6 +1083,12 @@
     <Compile Include="Model\Favorites.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\FavoritesAuctions.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FavoritesAuctionsByCookies.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\FavoritesByCookies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

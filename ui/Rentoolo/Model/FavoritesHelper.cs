@@ -6,6 +6,19 @@ namespace Rentoolo.Model
 {
     public static class FavoritesHelper
     {
+        #region Auctions
+
+        public static void AddFavoritesAuctions(FavoritesAuctions item)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                ctx.spAddFavoritesAuctions(item.UserId, item.AuctionId);
+            }
+        }
+
+        #endregion
+
+
         public static void AddFavorites(Favorites item)
         {
             using (var ctx = new RentooloEntities())
