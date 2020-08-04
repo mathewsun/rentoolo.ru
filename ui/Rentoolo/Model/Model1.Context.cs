@@ -297,5 +297,18 @@ namespace Rentoolo.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddFavoritesAuctions", userIdParameter, auctionIdParameter);
         }
+    
+        public virtual int spAddFavoritesAuctionsByCookies(string uid, Nullable<long> auctionId)
+        {
+            var uidParameter = uid != null ?
+                new ObjectParameter("uid", uid) :
+                new ObjectParameter("uid", typeof(string));
+    
+            var auctionIdParameter = auctionId.HasValue ?
+                new ObjectParameter("auctionId", auctionId) :
+                new ObjectParameter("auctionId", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddFavoritesAuctionsByCookies", uidParameter, auctionIdParameter);
+        }
     }
 }

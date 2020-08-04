@@ -712,6 +712,10 @@
           <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="AuctionId" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="spAddFavoritesAuctionsByCookies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uid" Type="nvarchar" Mode="In" />
+          <Parameter Name="auctionId" Type="bigint" Mode="In" />
+        </Function>
         <Function Name="spAddFavoritesByCookies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="uid" Type="nvarchar" Mode="In" />
           <Parameter Name="advertId" Type="bigint" Mode="In" />
@@ -1663,6 +1667,10 @@
             <Parameter Name="UserId" Mode="In" Type="Guid" />
             <Parameter Name="AuctionId" Mode="In" Type="Int64" />
           </FunctionImport>
+          <FunctionImport Name="spAddFavoritesAuctionsByCookies">
+            <Parameter Name="uid" Mode="In" Type="String" />
+            <Parameter Name="auctionId" Mode="In" Type="Int64" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spGetFavorites_Result">
           <Property Type="Int64" Name="Id" Nullable="false" />
@@ -2398,6 +2406,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spUpdateQiwiAccountBalance" FunctionName="Хранилище RentooloModel.spUpdateQiwiAccountBalance" />
           <FunctionImportMapping FunctionImportName="spAddFavoritesAuctions" FunctionName="Хранилище RentooloModel.spAddFavoritesAuctions" />
+          <FunctionImportMapping FunctionImportName="spAddFavoritesAuctionsByCookies" FunctionName="Хранилище RentooloModel.spAddFavoritesAuctionsByCookies" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
