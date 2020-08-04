@@ -110,20 +110,16 @@ namespace Rentoolo
 
                     if (uid != null)
                     {
-                        FavoritesByCookies favoritesByCookies = new FavoritesByCookies
+                        FavoritesAuctionsByCookies favoritesByCookies = new FavoritesAuctionsByCookies
                         {
                             UserCookiesId = uid.Value,
-                            AdvertId = Convert.ToInt64(id)
+                            AuctionId = Convert.ToInt64(id)
                         };
 
-                        FavoritesHelper.AddFavoritesByCookies(favoritesByCookies);
+                        FavoritesHelper.AddFavoritesAuctionsByCookies(favoritesByCookies);
                     }
                 }
             }
-
-
-
-
 
             if (eventName == "saveUserParam")
             {

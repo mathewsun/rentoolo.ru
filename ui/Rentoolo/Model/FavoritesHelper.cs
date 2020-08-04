@@ -16,6 +16,13 @@ namespace Rentoolo.Model
             }
         }
 
+        public static void AddFavoritesAuctionsByCookies(FavoritesAuctionsByCookies item)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                ctx.spAddFavoritesAuctionsByCookies(item.UserCookiesId, item.AuctionId);
+            }
+        }
         #endregion
 
 
