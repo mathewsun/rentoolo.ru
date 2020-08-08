@@ -12,7 +12,31 @@ namespace Rentoolo.Model
         {
             using (var ctx = new RentooloEntities())
             {
-                ctx.spAddFavoritesAuctions(item.UserId, item.AuctionId);
+                try
+                {
+                    var id = ctx.spAddFavoritesAuctions(item.UserId, item.AuctionId);
+
+                    //return id.value;
+                    var result = id.FirstOrDefault();
+
+                    if (result != null)
+                    {
+                        decimal resultId = result.Value;
+                    }
+                }
+                catch (Exception e) { }
+            }
+        }
+
+        public static void AddFavoritesAuctionsSQL()
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                //var results = ctx.Database.SqlQuery<Auctions>("select * from Auctions where id = 3").FirstOrDefault();
+
+                var results2 = ctx.Database.SqlQuery<Auctions>("select * from Auctions").ToList();
+                // ctx.spAddFavoritesAuctions(item.UserId, item.AuctionId);
+                //return results;
             }
         }
 
