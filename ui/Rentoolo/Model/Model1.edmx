@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище RentooloModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище RentooloModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adverts">
           <Key>
             <PropertyRef Name="Id" />
@@ -146,6 +146,24 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="AdvertId" Type="bigint" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FavoritesAuctions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AuctionId" Type="bigint" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FavoritesAuctionsByCookies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserCookiesId" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="AuctionId" Type="bigint" Nullable="false" />
           <Property Name="Created" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="FavoritesByCookies">
@@ -690,6 +708,14 @@
           <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="advertId" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="spAddFavoritesAuctions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="AuctionId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="spAddFavoritesAuctionsByCookies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uid" Type="nvarchar" Mode="In" />
+          <Parameter Name="auctionId" Type="bigint" Mode="In" />
+        </Function>
         <Function Name="spAddFavoritesByCookies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="uid" Type="nvarchar" Mode="In" />
           <Parameter Name="advertId" Type="bigint" Mode="In" />
@@ -737,6 +763,8 @@
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Exceptions" EntityType="Self.Exceptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Favorites" EntityType="Self.Favorites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoritesAuctions" EntityType="Self.FavoritesAuctions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoritesAuctionsByCookies" EntityType="Self.FavoritesAuctionsByCookies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FavoritesByCookies" EntityType="Self.FavoritesByCookies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginStat" EntityType="Self.LoginStat" Schema="dbo" store:Type="Tables" />
@@ -830,8 +858,7 @@
             <End Role="UsersInRoles" EntitySet="UsersInRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RentooloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1005,6 +1032,24 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="AdvertId" Type="Int64" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FavoritesAuctions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="AuctionId" Type="Int64" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FavoritesAuctionsByCookies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserCookiesId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AuctionId" Type="Int64" Nullable="false" />
           <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="FavoritesByCookies">
@@ -1474,6 +1519,8 @@
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" />
           <EntitySet Name="Exceptions" EntityType="Self.Exceptions" />
           <EntitySet Name="Favorites" EntityType="Self.Favorites" />
+          <EntitySet Name="FavoritesAuctions" EntityType="Self.FavoritesAuctions" />
+          <EntitySet Name="FavoritesAuctionsByCookies" EntityType="Self.FavoritesAuctionsByCookies" />
           <EntitySet Name="FavoritesByCookies" EntityType="Self.FavoritesByCookies" />
           <EntitySet Name="Items" EntityType="Self.Items" />
           <EntitySet Name="LoginStat" EntityType="Self.LoginStat" />
@@ -1556,13 +1603,13 @@
           <FunctionImport Name="fnGetAllUsers" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetAllUsers_Result)" />
           <FunctionImport Name="fnGetTablesRows" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetTablesRows_Result)" />
           <FunctionImport Name="fnGetUserReferralsSecondLevel" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserReferralsSecondLevel_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="fnGetUserReferralsThirdLevel" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserReferralsThirdLevel_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="fnGetUserWallets" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserWallets_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spAddAdvert">
             <Parameter Name="Category" Mode="In" Type="Int32" />
@@ -1594,27 +1641,35 @@
             <Parameter Name="advertId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="spGetFavorites" ReturnType="Collection(RentooloModel.spGetFavorites_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spGetFavoritesByCookies" ReturnType="Collection(RentooloModel.spGetFavoritesByCookies_Result)">
-            <Parameter Name="uid" Mode="In" Type="String" />
+          <Parameter Name="uid" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spGetLast200TokensOperations" ReturnType="Collection(RentooloModel.spGetLast200TokensOperations_Result)" />
           <FunctionImport Name="spGetLoginStatisticLastDayActive" />
           <FunctionImport Name="spGetLoginStatisticLastHourActive" />
           <FunctionImport Name="spGetTokenCostToday" ReturnType="Collection(RentooloModel.spGetTokenCostToday_Result)" />
           <FunctionImport Name="spGetUserAdverts" ReturnType="Collection(RentooloModel.spGetUserAdverts_Result)">
-            <Parameter Name="UserId" Mode="In" Type="Guid" />
+          <Parameter Name="UserId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spGetWatched" ReturnType="Collection(RentooloModel.spGetWatched_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spGetWatchedByCookies" ReturnType="Collection(RentooloModel.spGetWatchedByCookies_Result)">
-            <Parameter Name="uid" Mode="In" Type="String" />
+          <Parameter Name="uid" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spUpdateQiwiAccountBalance">
             <Parameter Name="number" Mode="In" Type="String" />
             <Parameter Name="balance" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="spAddFavoritesAuctions">
+            <Parameter Name="UserId" Mode="In" Type="Guid" />
+            <Parameter Name="AuctionId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="spAddFavoritesAuctionsByCookies">
+            <Parameter Name="uid" Mode="In" Type="String" />
+            <Parameter Name="auctionId" Mode="In" Type="Int64" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spGetFavorites_Result">
@@ -1848,6 +1903,26 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavoritesAuctions">
+            <EntityTypeMapping TypeName="RentooloModel.FavoritesAuctions">
+              <MappingFragment StoreEntitySet="FavoritesAuctions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AuctionId" ColumnName="AuctionId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavoritesAuctionsByCookies">
+            <EntityTypeMapping TypeName="RentooloModel.FavoritesAuctionsByCookies">
+              <MappingFragment StoreEntitySet="FavoritesAuctionsByCookies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserCookiesId" ColumnName="UserCookiesId" />
+                <ScalarProperty Name="AuctionId" ColumnName="AuctionId" />
                 <ScalarProperty Name="Created" ColumnName="Created" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2330,6 +2405,8 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spUpdateQiwiAccountBalance" FunctionName="Хранилище RentooloModel.spUpdateQiwiAccountBalance" />
+          <FunctionImportMapping FunctionImportName="spAddFavoritesAuctions" FunctionName="Хранилище RentooloModel.spAddFavoritesAuctions" />
+          <FunctionImportMapping FunctionImportName="spAddFavoritesAuctionsByCookies" FunctionName="Хранилище RentooloModel.spAddFavoritesAuctionsByCookies" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

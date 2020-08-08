@@ -30,6 +30,8 @@ namespace Rentoolo.Account
             item.Created = DateTime.Now;
 
             AuctionsHelper.AddAuction(item);
+
+            Response.Redirect("/Account/Auctions.aspx");
         }
     }
 }
