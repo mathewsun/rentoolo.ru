@@ -22,6 +22,46 @@ namespace Rentoolo.Controllers
                 TimeMinutesToCook = 15
             });
 
+            result.Add(new Recipes
+            {
+                Name = "Фалафель с овощами",
+                ImgUrl = "/img/kitchen/falafel-s-ovoshami.jpg",
+                CountLikes = 345,
+                TimeMinutesToCook = 25
+            });
+
+            result.Add(new Recipes
+            {
+                Name = "Говядина в фруктовом маринаде",
+                ImgUrl = "/img/kitchen/govadina-v-fruktovom-marinade.jpg",
+                CountLikes = 450,
+                TimeMinutesToCook = 40
+            });
+
+            result.Add(new Recipes
+            {
+                Name = "Венские вафли",
+                ImgUrl = "/img/kitchen/venskie-vafli.jpg",
+                CountLikes = 120,
+                TimeMinutesToCook = 15
+            });
+
+            result.Add(new Recipes
+            {
+                Name = "Картофель по-домашнему с тушеными овощами",
+                ImgUrl = "/img/kitchen/kartofel-po-domashnemu-s-tushenimi-ovoshami.jpg",
+                CountLikes = 570,
+                TimeMinutesToCook = 25
+            });
+
+            result.Add(new Recipes
+            {
+                Name = "Суши сет и роллы",
+                ImgUrl = "/img/kitchen/sushi-set-i-rolli.jpg",
+                CountLikes = 210,
+                TimeMinutesToCook = 60
+            });
+
             return Ok(result);
         }
     }

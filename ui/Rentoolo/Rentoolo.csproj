@@ -365,6 +365,11 @@
     <Content Include="HobbyRest.aspx" />
     <Content Include="HomeGarden.aspx" />
     <Content Include="img\a\noPhoto.png" />
+    <Content Include="img\kitchen\falafel-s-ovoshami.jpg" />
+    <Content Include="img\kitchen\govadina-v-fruktovom-marinade.jpg" />
+    <Content Include="img\kitchen\kartofel-po-domashnemu-s-tushenimi-ovoshami.jpg" />
+    <Content Include="img\kitchen\sushi-set-i-rolli.jpg" />
+    <Content Include="img\kitchen\venskie-vafli.jpg" />
     <Content Include="img\kitchen\vozdushnie-blini-na-pahte.jpg" />
     <Content Include="Job.aspx" />
     <Content Include="login\index.html" />
