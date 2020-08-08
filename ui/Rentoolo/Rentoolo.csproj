@@ -365,6 +365,7 @@
     <Content Include="HobbyRest.aspx" />
     <Content Include="HomeGarden.aspx" />
     <Content Include="img\a\noPhoto.png" />
+    <Content Include="img\kitchen\vozdushnie-blini-na-pahte.jpg" />
     <Content Include="Job.aspx" />
     <Content Include="login\index.html" />
     <Content Include="Manager\ManageAdvert.aspx" />
@@ -957,6 +958,8 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\GetTokensCostController.cs" />
+    <Compile Include="Controllers\KitchenController.cs" />
+    <Compile Include="Controllers\KitchenModel\Recipes.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
