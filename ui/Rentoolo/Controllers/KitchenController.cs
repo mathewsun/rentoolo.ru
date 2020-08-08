@@ -14,9 +14,9 @@ namespace Rentoolo.Controllers
     {
         public IHttpActionResult GetTopRecipes()
         {
-            List<Recipes> result = new List<Recipes>();
+            List<Recipe> result = new List<Recipe>();
 
-            result.Add(new Recipes
+            result.Add(new Recipe
             {
                 Name = "Воздушные блины на пахте",
                 ImgUrl = "https://www.rentoolo.ru/img/kitchen/vozdushnie-blini-na-pahte.jpg",
@@ -24,7 +24,7 @@ namespace Rentoolo.Controllers
                 TimeMinutesToCook = 15
             });
 
-            result.Add(new Recipes
+            result.Add(new Recipe
             {
                 Name = "Фалафель с овощами",
                 ImgUrl = "https://www.rentoolo.ru/img/kitchen/falafel-s-ovoshami.jpg",
@@ -32,7 +32,7 @@ namespace Rentoolo.Controllers
                 TimeMinutesToCook = 25
             });
 
-            result.Add(new Recipes
+            result.Add(new Recipe
             {
                 Name = "Говядина в фруктовом маринаде",
                 ImgUrl = "https://www.rentoolo.ru/img/kitchen/govadina-v-fruktovom-marinade.jpg",
@@ -40,7 +40,7 @@ namespace Rentoolo.Controllers
                 TimeMinutesToCook = 40
             });
 
-            result.Add(new Recipes
+            result.Add(new Recipe
             {
                 Name = "Венские вафли",
                 ImgUrl = "https://www.rentoolo.ru/img/kitchen/venskie-vafli.jpg",
@@ -48,7 +48,7 @@ namespace Rentoolo.Controllers
                 TimeMinutesToCook = 15
             });
 
-            result.Add(new Recipes
+            result.Add(new Recipe
             {
                 Name = "Картофель по-домашнему с тушеными овощами",
                 ImgUrl = "https://www.rentoolo.ru/img/kitchen/kartofel-po-domashnemu-s-tushenimi-ovoshami.jpg",
@@ -56,7 +56,7 @@ namespace Rentoolo.Controllers
                 TimeMinutesToCook = 25
             });
 
-            result.Add(new Recipes
+            result.Add(new Recipe
             {
                 Name = "Суши сет и роллы",
                 ImgUrl = "https://www.rentoolo.ru/img/kitchen/sushi-set-i-rolli.jpg",

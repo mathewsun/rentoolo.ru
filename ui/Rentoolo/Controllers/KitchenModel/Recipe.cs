@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Rentoolo.Controllers.KitchenModel
 {
-    public class Recipes
+    public class Recipe
     {
         public string Name { get; set; }
 

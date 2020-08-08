@@ -966,7 +966,7 @@
     </Compile>
     <Compile Include="Controllers\GetTokensCostController.cs" />
     <Compile Include="Controllers\KitchenController.cs" />
-    <Compile Include="Controllers\KitchenModel\Recipes.cs" />
+    <Compile Include="Controllers\KitchenModel\Recipe.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
