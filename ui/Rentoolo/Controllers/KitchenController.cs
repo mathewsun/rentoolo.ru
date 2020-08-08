@@ -5,9 +5,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Rentoolo.Controllers.KitchenModel;
+using System.Web.Http.Results;
 
 namespace Rentoolo.Controllers
 {
+    [Route("[controller]")]
     public class KitchenController : ApiController
     {
         public IHttpActionResult GetTop5Recipes()
@@ -62,7 +64,7 @@ namespace Rentoolo.Controllers
                 TimeMinutesToCook = 60
             });
 
-            return Ok(result);
+            return Json(result);
         }
     }
 }
