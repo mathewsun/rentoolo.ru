@@ -7,7 +7,9 @@ BEGIN
                    AND AuctionId = @AuctionId)
    BEGIN
        INSERT INTO FavoritesAuctions (UserId, AuctionId)
-       VALUES (@UserId, @AuctionId)
+       VALUES (@UserId, @AuctionId);
+
+       SELECT SCOPE_IDENTITY()
    END
 END
 GO
