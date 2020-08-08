@@ -102,7 +102,9 @@ namespace Rentoolo
                         Created = DateTime.Now
                     };
 
-                    FavoritesHelper.AddFavoritesAuctions(favorites);
+                   // FavoritesHelper.AddFavoritesAuctionsSQL();
+
+                  FavoritesHelper.AddFavoritesAuctions(favorites);
                 }
                 else
                 {
