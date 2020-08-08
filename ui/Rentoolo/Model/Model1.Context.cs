@@ -168,6 +168,32 @@ namespace Rentoolo.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddFavorites", userIdParameter, advertIdParameter);
         }
     
+        public virtual ObjectResult<Nullable<decimal>> spAddFavoritesAuctions(Nullable<System.Guid> userId, Nullable<long> auctionId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(System.Guid));
+    
+            var auctionIdParameter = auctionId.HasValue ?
+                new ObjectParameter("AuctionId", auctionId) :
+                new ObjectParameter("AuctionId", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("spAddFavoritesAuctions", userIdParameter, auctionIdParameter);
+        }
+    
+        public virtual int spAddFavoritesAuctionsByCookies(string uid, Nullable<long> auctionId)
+        {
+            var uidParameter = uid != null ?
+                new ObjectParameter("uid", uid) :
+                new ObjectParameter("uid", typeof(string));
+    
+            var auctionIdParameter = auctionId.HasValue ?
+                new ObjectParameter("auctionId", auctionId) :
+                new ObjectParameter("auctionId", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddFavoritesAuctionsByCookies", uidParameter, auctionIdParameter);
+        }
+    
         public virtual int spAddFavoritesByCookies(string uid, Nullable<long> advertId)
         {
             var uidParameter = uid != null ?
@@ -283,32 +309,6 @@ namespace Rentoolo.Model
                 new ObjectParameter("balance", typeof(double));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdateQiwiAccountBalance", numberParameter, balanceParameter);
-        }
-    
-        public virtual int spAddFavoritesAuctions(Nullable<System.Guid> userId, Nullable<long> auctionId)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(System.Guid));
-    
-            var auctionIdParameter = auctionId.HasValue ?
-                new ObjectParameter("AuctionId", auctionId) :
-                new ObjectParameter("AuctionId", typeof(long));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddFavoritesAuctions", userIdParameter, auctionIdParameter);
-        }
-    
-        public virtual int spAddFavoritesAuctionsByCookies(string uid, Nullable<long> auctionId)
-        {
-            var uidParameter = uid != null ?
-                new ObjectParameter("uid", uid) :
-                new ObjectParameter("uid", typeof(string));
-    
-            var auctionIdParameter = auctionId.HasValue ?
-                new ObjectParameter("auctionId", auctionId) :
-                new ObjectParameter("auctionId", typeof(long));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddFavoritesAuctionsByCookies", uidParameter, auctionIdParameter);
         }
     }
 }
