@@ -324,6 +324,8 @@
     <Content Include="Contact.aspx" />
     <Content Include="DataBase\fnGetUserWallets.sql" />
     <Content Include="DataBase\Init\Init.sql" />
+    <Content Include="DataBase\spAddFavoritesAuctions.sql" />
+    <Content Include="DataBase\spAddFavoritesAuctionsByCookies.sql" />
     <Content Include="DataBase\spAddWatchedByCookies.sql" />
     <Content Include="DataBase\spAddWatched.sql" />
     <Content Include="DataBase\spGetTokenCostToday.sql" />
