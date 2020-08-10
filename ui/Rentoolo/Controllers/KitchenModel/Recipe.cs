@@ -14,5 +14,11 @@ namespace Rentoolo.Controllers.KitchenModel
         public int TimeMinutesToCook { get; set; }
 
         public int CountLikes { get; set; }
+
+        public long UserId { get; set; }
+
+        public string UserName { get; set; }
+
+        public string UserAvatarImgUrl { get; set; }
     }
 }
