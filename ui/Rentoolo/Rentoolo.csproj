@@ -367,6 +367,9 @@
     <Content Include="HobbyRest.aspx" />
     <Content Include="HomeGarden.aspx" />
     <Content Include="img\a\noPhoto.png" />
+    <Content Include="img\kitchen\avatars\69179930_736853823483887_5740857891485646848_n.jpg" />
+    <Content Include="img\kitchen\avatars\69527679_631739310686765_4819614499147350016_n.jpg" />
+    <Content Include="img\kitchen\avatars\94671454_277769756585463_6526749104637214720_n.jpg" />
     <Content Include="img\kitchen\falafel-s-ovoshami.jpg" />
     <Content Include="img\kitchen\govadina-v-fruktovom-marinade.jpg" />
     <Content Include="img\kitchen\kartofel-po-domashnemu-s-tushenimi-ovoshami.jpg" />
