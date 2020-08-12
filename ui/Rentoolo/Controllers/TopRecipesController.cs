@@ -5,14 +5,12 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Rentoolo.Controllers.KitchenModel;
-using System.Web.Http.Results;
 
 namespace Rentoolo.Controllers
 {
-    [Route("[controller]")]
-    public class KitchenController : ApiController
+    public class TopRecipesController : ApiController
     {
-        public IHttpActionResult GetTopRecipes()
+        public IHttpActionResult Get()
         {
             List<Recipe> result = new List<Recipe>();
 
