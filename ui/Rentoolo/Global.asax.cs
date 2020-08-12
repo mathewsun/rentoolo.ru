@@ -45,6 +45,12 @@ namespace Rentoolo
                 defaults: new { id = System.Web.Http.RouteParameter.Optional }
             );
 
+            routes.MapHttpRoute(
+                name: "KitchenApi",
+                routeTemplate: "api/Kitchen/{controller}/{id}",
+                defaults: new { id = System.Web.Http.RouteParameter.Optional }
+            );
+
             routes.MapPageRoute("advertsRoute",
                 "Adverts/{id}",
                 "~/Adverts.aspx");

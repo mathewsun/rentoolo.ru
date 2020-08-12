@@ -968,6 +968,8 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\GetTokensCostController.cs" />
+    <Compile Include="Controllers\InstructionController.cs" />
+    <Compile Include="Controllers\InstructionsController.cs" />
     <Compile Include="Controllers\KitchenController.cs" />
     <Compile Include="Controllers\KitchenModel\Recipe.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
