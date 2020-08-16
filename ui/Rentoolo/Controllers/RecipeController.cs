@@ -4,36 +4,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Rentoolo.Model;
 
 namespace Rentoolo.Controllers
 {
     public class RecipeController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        public IHttpActionResult Get(int id)
         {
-            return new string[] { "value1", "value2" };
-        }
+            Recipes recipe = KitchenDataHelper.GetRecipe(id);
 
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<controller>
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
+            return Json(recipe);
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Rentoolo
         {
             routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/kitchen/{controller}/{id}",
                 defaults: new { id = System.Web.Http.RouteParameter.Optional }
             );
 
@@ -140,8 +140,6 @@ namespace Rentoolo
             routes.MapPageRoute("TokensSellingRoute",
                 "TokensSelling",
                 "~/TokensSelling.aspx");
-
-
         }
     }
 }

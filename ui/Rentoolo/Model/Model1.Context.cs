@@ -63,6 +63,7 @@ namespace Rentoolo.Model
         public virtual DbSet<Watched> Watched { get; set; }
         public virtual DbSet<WatchedByCookies> WatchedByCookies { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<Recipes> Recipes { get; set; }
     
         [DbFunction("RentooloEntities", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()
