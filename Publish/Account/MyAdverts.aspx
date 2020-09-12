@@ -43,7 +43,7 @@
                     <div class="list-item-wrap" style="display: none">
                         <a href ="/Advert.aspx?id=<%=item.Id%>" title="<%=item.Name%>"><div class="photoContainer" data='<%=item.ImgUrls%>'></div></a>
                         <div class="item-wrap-content">
-                            <div class="item-wrap-name"><a href="#"><%=item.Name%></a></div>
+                            <div class="item-wrap-name"><a href="/Advert.aspx?id=<%=item.Id%>"><%=item.Name%></a></div>
                             <div class="item-wrap-cost"><%=item.Price%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
                             <div class="item-wrap__description">
                                 <p><%=item.Category%></p>
