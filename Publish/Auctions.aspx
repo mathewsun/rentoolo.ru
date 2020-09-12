@@ -1,6 +1,16 @@
 ﻿<%@ Page Title="Аукционы" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Auctions.aspx.cs" Inherits="Rentoolo.Auctions" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <script>
+        $(document).ready(function () {
+            $(".item-wrap__like").click(function () {
+                addF($(this).parent().attr("aid"));
+            });
+        });
 
+        function addF(aId) {
+            $.get("/Events.ashx?e=afa&id=" + aId);
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
          <h4>Все аукционы</h4>
@@ -17,7 +27,7 @@
                 <div class="media-body-inline-grid">
                     <%foreach (var item in ListItems)
                         { %>
-                    <div class="list-item-wrap" style="display: none">
+                    <div class="list-item-wrap" style="display: none" aid="<%=item.Id%>">
                         <img class="list-item-wrap-img" src="assets/img/unsplash_1.jpg">
                         <div class="item-wrap-content">
                             <div class="item-wrap-name"><a href="#"><%=item.Name%></a></div>

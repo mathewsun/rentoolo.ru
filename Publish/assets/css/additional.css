@@ -262,7 +262,7 @@
 
 .item-wrap__wrap {
     min-height: 200px;
-    width: 200px;
+    width: 350px;
     margin-top: 10px;
 }
 
@@ -300,6 +300,22 @@
 
     .item-wrap__wrap {
         margin-left: 15px;
+        width: 250px;
+    }
+
+    .item-wrap__name {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 613px) {
+    .item-wrap__wrap {
+        padding-right: 15px;
+        width: 200px;
+    }
+
+    .item-wrap__name {
+        font-size: 12.5px;
     }
 }
 
@@ -316,6 +332,11 @@
 
     .item-wrap__wrap {
         padding-right: 15px;
+        width: 200px;
+    }
+
+    .item-wrap__name {
+        font-size: 12.5px;
     }
 }
 
@@ -337,7 +358,7 @@
     }
 
     .item-wrap__name {
-        font-size: 15px;
+        font-size: 12.5px;
     }
 
     .item-wrap {

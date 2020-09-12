@@ -36,10 +36,9 @@ namespace Rentoolo.Model
         public virtual DbSet<CashOuts> CashOuts { get; set; }
         public virtual DbSet<Currencies> Currencies { get; set; }
         public virtual DbSet<DailyStatistics> DailyStatistics { get; set; }
+        public virtual DbSet<DeletedAdverts> DeletedAdverts { get; set; }
         public virtual DbSet<Exceptions> Exceptions { get; set; }
         public virtual DbSet<Favorites> Favorites { get; set; }
-        public virtual DbSet<FavoritesAuctions> FavoritesAuctions { get; set; }
-        public virtual DbSet<FavoritesAuctionsByCookies> FavoritesAuctionsByCookies { get; set; }
         public virtual DbSet<FavoritesByCookies> FavoritesByCookies { get; set; }
         public virtual DbSet<Items> Items { get; set; }
         public virtual DbSet<LoginStat> LoginStat { get; set; }
@@ -49,9 +48,11 @@ namespace Rentoolo.Model
         public virtual DbSet<Operations> Operations { get; set; }
         public virtual DbSet<Payments> Payments { get; set; }
         public virtual DbSet<Phones> Phones { get; set; }
+        public virtual DbSet<Recipes> Recipes { get; set; }
         public virtual DbSet<Referrals> Referrals { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Settings> Settings { get; set; }
+        public virtual DbSet<Tenders> Tenders { get; set; }
         public virtual DbSet<TokensBuying> TokensBuying { get; set; }
         public virtual DbSet<TokensCost> TokensCost { get; set; }
         public virtual DbSet<TokensSelling> TokensSelling { get; set; }
@@ -63,7 +64,6 @@ namespace Rentoolo.Model
         public virtual DbSet<Watched> Watched { get; set; }
         public virtual DbSet<WatchedByCookies> WatchedByCookies { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
-        public virtual DbSet<Recipes> Recipes { get; set; }
     
         [DbFunction("RentooloEntities", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()
@@ -167,32 +167,6 @@ namespace Rentoolo.Model
                 new ObjectParameter("advertId", typeof(long));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddFavorites", userIdParameter, advertIdParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<decimal>> spAddFavoritesAuctions(Nullable<System.Guid> userId, Nullable<long> auctionId)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(System.Guid));
-    
-            var auctionIdParameter = auctionId.HasValue ?
-                new ObjectParameter("AuctionId", auctionId) :
-                new ObjectParameter("AuctionId", typeof(long));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("spAddFavoritesAuctions", userIdParameter, auctionIdParameter);
-        }
-    
-        public virtual int spAddFavoritesAuctionsByCookies(string uid, Nullable<long> auctionId)
-        {
-            var uidParameter = uid != null ?
-                new ObjectParameter("uid", uid) :
-                new ObjectParameter("uid", typeof(string));
-    
-            var auctionIdParameter = auctionId.HasValue ?
-                new ObjectParameter("auctionId", auctionId) :
-                new ObjectParameter("auctionId", typeof(long));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddFavoritesAuctionsByCookies", uidParameter, auctionIdParameter);
         }
     
         public virtual int spAddFavoritesByCookies(string uid, Nullable<long> advertId)

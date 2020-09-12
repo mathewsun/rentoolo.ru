@@ -87,7 +87,7 @@
                 });
 
                 setTimeout(function () {
-                    window.location.href = "CashOut.aspx";
+                    window.location.href = "CashOuts.aspx";
                 }, 2000);
             }
 
@@ -99,7 +99,7 @@
                 });
 
                 setTimeout(function () {
-                    window.location.href = "CashOut.aspx";
+                    window.location.href = "CashOuts.aspx";
                 }, 2000);
             }
 
