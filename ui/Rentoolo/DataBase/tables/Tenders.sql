@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[Tenders](
 	[UserOwnerId] [int] NOT NULL,
 	[Cost] [float] NOT NULL,
 	[ImgUrls] [nvarchar](max) NULL,
-	[Status] [nchar](30) NULL,
+	[Status] [int] NOT NULL,
 	[Created] [datetime] NOT NULL,
 	[CurrencyId] [int] NOT NULL,
  CONSTRAINT [PK_Tenders] PRIMARY KEY CLUSTERED 
@@ -22,6 +22,9 @@ CREATE TABLE [dbo].[Tenders](
 GO
 
 ALTER TABLE [dbo].[Tenders] ADD  CONSTRAINT [DF_Tenders_Cost]  DEFAULT ((0)) FOR [Cost]
+GO
+
+ALTER TABLE [dbo].[Tenders] ADD  CONSTRAINT [DF_Tenders_Status]  DEFAULT ((1)) FOR [Status]
 GO
 
 ALTER TABLE [dbo].[Tenders] ADD  CONSTRAINT [DF_Tenders_Created]  DEFAULT (getdate()) FOR [Created]
