@@ -11,17 +11,20 @@ CREATE TABLE [dbo].[Tenders](
 	[UserOwnerId] [int] NOT NULL,
 	[Cost] [float] NOT NULL,
 	[ImgUrls] [nvarchar](max) NULL,
-	[Status] [nchar](30) NULL,
+	[Status] [int] NOT NULL,
 	[Created] [datetime] NOT NULL,
 	[CurrencyId] [int] NOT NULL,
  CONSTRAINT [PK_Tenders] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 
 ALTER TABLE [dbo].[Tenders] ADD  CONSTRAINT [DF_Tenders_Cost]  DEFAULT ((0)) FOR [Cost]
+GO
+
+ALTER TABLE [dbo].[Tenders] ADD  CONSTRAINT [DF_Tenders_Status]  DEFAULT ((1)) FOR [Status]
 GO
 
 ALTER TABLE [dbo].[Tenders] ADD  CONSTRAINT [DF_Tenders_Created]  DEFAULT (getdate()) FOR [Created]
