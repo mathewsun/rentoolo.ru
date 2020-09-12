@@ -10,6 +10,6 @@
 namespace Rentoolo.Account {
     
     
-    public partial class Tender {
+    public partial class TenderInfo {
     }
 }
