@@ -40,8 +40,14 @@ namespace Rentoolo
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.MapHttpRoute(
-                name: "DefaultApi",
+                name: "DefaultApiKitchen",
                 routeTemplate: "api/kitchen/{controller}/{id}",
+                defaults: new { id = System.Web.Http.RouteParameter.Optional }
+            );
+
+            routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = System.Web.Http.RouteParameter.Optional }
             );
 
