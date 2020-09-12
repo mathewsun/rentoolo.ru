@@ -91,36 +91,36 @@ namespace Rentoolo
             {
                 string userName = context.User.Identity.Name;
 
-                if (!string.IsNullOrEmpty(userName))
-                {
-                    Users user = DataHelper.GetUserByName(userName);
+                //if (!string.IsNullOrEmpty(userName))
+                //{
+                //    Users user = DataHelper.GetUserByName(userName);
 
-                    Rentoolo.Model.FavoritesAuctions favorites = new Rentoolo.Model.FavoritesAuctions
-                    {
-                        UserId = user.UserId,
-                        AuctionId = Convert.ToInt64(id),
-                        Created = DateTime.Now
-                    };
+                //    Rentoolo.Model.FavoritesAuctions favorites = new Rentoolo.Model.FavoritesAuctions
+                //    {
+                //        UserId = user.UserId,
+                //        AuctionId = Convert.ToInt64(id),
+                //        Created = DateTime.Now
+                //    };
 
-                   // FavoritesHelper.AddFavoritesAuctionsSQL();
+                //   // FavoritesHelper.AddFavoritesAuctionsSQL();
 
-                  FavoritesHelper.AddFavoritesAuctions(favorites);
-                }
-                else
-                {
-                    var uid = context.Request.Cookies["uid"];
+                //  FavoritesHelper.AddFavoritesAuctions(favorites);
+                //}
+                //else
+                //{
+                //    var uid = context.Request.Cookies["uid"];
 
-                    if (uid != null)
-                    {
-                        FavoritesAuctionsByCookies favoritesByCookies = new FavoritesAuctionsByCookies
-                        {
-                            UserCookiesId = uid.Value,
-                            AuctionId = Convert.ToInt64(id)
-                        };
+                //    if (uid != null)
+                //    {
+                //        FavoritesAuctionsByCookies favoritesByCookies = new FavoritesAuctionsByCookies
+                //        {
+                //            UserCookiesId = uid.Value,
+                //            AuctionId = Convert.ToInt64(id)
+                //        };
 
-                        FavoritesHelper.AddFavoritesAuctionsByCookies(favoritesByCookies);
-                    }
-                }
+                //        FavoritesHelper.AddFavoritesAuctionsByCookies(favoritesByCookies);
+                //    }
+                //}
             }
 
             if (eventName == "saveUserParam")

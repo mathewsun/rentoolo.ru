@@ -8,25 +8,25 @@ namespace Rentoolo.Model
     {
         #region Auctions
 
-        public static void AddFavoritesAuctions(FavoritesAuctions item)
-        {
-            using (var ctx = new RentooloEntities())
-            {
-                try
-                {
-                    var id = ctx.spAddFavoritesAuctions(item.UserId, item.AuctionId);
+        //public static void AddFavoritesAuctions(FavoritesAuctions item)
+        //{
+        //    using (var ctx = new RentooloEntities())
+        //    {
+        //        try
+        //        {
+        //            var id = ctx.spAddFavoritesAuctions(item.UserId, item.AuctionId);
 
-                    //return id.value;
-                    var result = id.FirstOrDefault();
+        //            //return id.value;
+        //            var result = id.FirstOrDefault();
 
-                    if (result != null)
-                    {
-                        decimal resultId = result.Value;
-                    }
-                }
-                catch (Exception e) { }
-            }
-        }
+        //            if (result != null)
+        //            {
+        //                decimal resultId = result.Value;
+        //            }
+        //        }
+        //        catch (Exception e) { }
+        //    }
+        //}
 
         public static void AddFavoritesAuctionsSQL()
         {
@@ -40,13 +40,13 @@ namespace Rentoolo.Model
             }
         }
 
-        public static void AddFavoritesAuctionsByCookies(FavoritesAuctionsByCookies item)
-        {
-            using (var ctx = new RentooloEntities())
-            {
-                ctx.spAddFavoritesAuctionsByCookies(item.UserCookiesId, item.AuctionId);
-            }
-        }
+        //public static void AddFavoritesAuctionsByCookies(FavoritesAuctionsByCookies item)
+        //{
+        //    using (var ctx = new RentooloEntities())
+        //    {
+        //        ctx.spAddFavoritesAuctionsByCookies(item.UserCookiesId, item.AuctionId);
+        //    }
+        //}
         #endregion
 
 
