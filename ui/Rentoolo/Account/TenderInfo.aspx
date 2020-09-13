@@ -4,6 +4,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
+        <a href="Tender.aspx">
+            <h5>Вернуться к списку тендеров</h5>
+        </a>
         <h2>Tender Info</h2>
         <div>
             <h4>

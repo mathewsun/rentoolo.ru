@@ -11,7 +11,7 @@ namespace Rentoolo.Account
 {
     public partial class TenderInfo : System.Web.UI.Page
     {
-        public Tenders tender; 
+        public Tenders tender = new Tenders(); 
 
 
         protected void Page_Load(object sender, EventArgs e)

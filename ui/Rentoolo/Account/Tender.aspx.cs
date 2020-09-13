@@ -15,7 +15,7 @@ namespace Rentoolo.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var name = Request.QueryString["name"];
+            var name = Request.Form["name"];
             tenders = name == null ? TendersHelper.GetAllTenders() : TendersHelper.GetTenders(name);
         }
     }
