@@ -191,6 +191,7 @@
     <Content Include="Account\Menu.ascx" />
     <Content Include="Account\Moto.aspx" />
     <Content Include="Account\MyAdverts.aspx" />
+    <Content Include="Account\OkResult.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Operations.aspx" />
     <Content Include="Account\Payment.aspx" />
@@ -207,6 +208,8 @@
     <Content Include="Account\SignUp.aspx" />
     <Content Include="Account\Tender.aspx" />
     <Content Include="Account\TenderInfo.aspx" />
+    <Content Include="Account\TenderRequestCreated.aspx" />
+    <Content Include="Account\TenderRequests.aspx" />
     <Content Include="Account\TokensBuying.aspx" />
     <Content Include="Account\TokensSelling.aspx" />
     <Content Include="Account\Transport.aspx" />
@@ -568,6 +571,13 @@
     <Compile Include="Account\MyAdverts.aspx.designer.cs">
       <DependentUpon>MyAdverts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\OkResult.aspx.cs">
+      <DependentUpon>OkResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\OkResult.aspx.designer.cs">
+      <DependentUpon>OkResult.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Operations.aspx.cs">
       <DependentUpon>Operations.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -668,6 +678,20 @@
     </Compile>
     <Compile Include="Account\TenderInfo.aspx.designer.cs">
       <DependentUpon>TenderInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TenderRequestCreated.aspx.cs">
+      <DependentUpon>TenderRequestCreated.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TenderRequestCreated.aspx.designer.cs">
+      <DependentUpon>TenderRequestCreated.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TenderRequests.aspx.cs">
+      <DependentUpon>TenderRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TenderRequests.aspx.designer.cs">
+      <DependentUpon>TenderRequests.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\TokensBuying.aspx.cs">
       <DependentUpon>TokensBuying.aspx</DependentUpon>
@@ -973,6 +997,8 @@
     <Compile Include="Controllers\InstructionsController.cs" />
     <Compile Include="Controllers\KitchenModel\Recipe.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
+    <Compile Include="Controllers\TenderModels\TenderRequest.cs" />
+    <Compile Include="Controllers\TenderRequestController.cs" />
     <Compile Include="Controllers\TopRecipesController.cs" />
     <Compile Include="DatabaseHelpers\TendersHelper.cs" />
     <Compile Include="Default.aspx.cs">

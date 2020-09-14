@@ -9,14 +9,36 @@ using System.Web.UI.WebControls;
 
 namespace Rentoolo.Account
 {
-    public partial class TenderInfo : System.Web.UI.Page
+    public partial class TenderInfo : BasicPage
     {
-        public Tenders tender = new Tenders(); 
+        public Tenders tender = new Tenders();
 
+
+        // TODO: id тендера хранится в url, можно данные из бд подтянуть будет
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            tender = TendersHelper.GetTenderById(Convert.ToInt32(Request.QueryString["id"]));
+            if (!IsPostBack)
+            {
+                tender = TendersHelper.GetTenderById(Convert.ToInt32(Request.QueryString["id"]));
+
+                
+                TextBoxCost.Text = "0";
+            }
+        }
+
+        protected void ButtonAddRequest_Click(object sender, EventArgs e)
+        {
+            int a = 10;
+
+            string description = TextBoxDescription.Text;
+
+
+
+
+            
+
+
         }
     }
 }

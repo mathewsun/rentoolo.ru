@@ -36,6 +36,26 @@ namespace Rentoolo.DatabaseHelpers
             }
         }
 
+        public static void CreateTenderRequest(TenderRequest request)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.TenderRequest.Add(request);
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static List<TenderRequest> GetTenderRequests(int id)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var trequests = dc.TenderRequest.Where(x => x.CustomerId == id).ToList();
+                return trequests;
+            }
+        }
+
+
 
 
 
