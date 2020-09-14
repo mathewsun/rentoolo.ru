@@ -353,6 +353,7 @@
     <Content Include="DataBase\tables\Adverts.sql" />
     <Content Include="DataBase\tables\Favorites.sql" />
     <Content Include="DataBase\tables\FavoritesByCookies.sql" />
+    <Content Include="DataBase\tables\TenderRequest.sql" />
     <Content Include="DataBase\tables\TokensBuying.sql" />
     <Content Include="DataBase\tables\TokensCost.sql" />
     <Content Include="DataBase\tables\TokensSelling.sql" />
@@ -1202,6 +1203,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetWatched_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TenderRequest.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Tenders.cs">
