@@ -7,9 +7,9 @@
 // </автоматически создаваемое>
 //------------------------------------------------------------------------------
 
-namespace Rentoolo.Account {
+namespace Rentoolo.Account.TenderViews {
     
     
-    public partial class TenderRequestCreated {
+    public partial class TenderRequestView {
     }
 }

@@ -11,14 +11,17 @@ namespace Rentoolo.Account
 {
     public partial class TenderRequests : System.Web.UI.Page
     {
-        public List<TenderRequest> trequests ;
-        public int some = 11;
+        public List<TenderRequest> TRequests;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(Request.QueryString["id"]);
-            trequests = TendersHelper.GetTenderRequests(id);
-            
+            if (!IsPostBack)
+            {
+                int id = Convert.ToInt32(Request.QueryString["id"]);
+
+                TRequests = TendersHelper.GetTenderRequests(id);
+            }
+
         }
     }
 }

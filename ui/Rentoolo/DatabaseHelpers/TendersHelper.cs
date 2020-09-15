@@ -8,6 +8,24 @@ namespace Rentoolo.DatabaseHelpers
 {
     public static class TendersHelper
     {
+        public static void CreateTender(Tenders tender)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Tenders.Add(tender);
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static TenderRequest GetTenderRequest(int id)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var tenderRequest = dc.TenderRequest.First(x => x.Id == id);
+                return tenderRequest;
+            }
+        }
 
         public static List<Tenders> GetAllTenders()
         {
@@ -50,7 +68,7 @@ namespace Rentoolo.DatabaseHelpers
         {
             using (var dc = new RentooloEntities())
             {
-                var trequests = dc.TenderRequest.Where(x => x.CustomerId == id).ToList();
+                var trequests = dc.TenderRequest.Where(x => x.TenderId == id).ToList();
                 return trequests;
             }
         }

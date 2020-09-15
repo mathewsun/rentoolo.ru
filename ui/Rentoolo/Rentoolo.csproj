@@ -206,10 +206,11 @@
     <Content Include="Account\Settings.aspx" />
     <Content Include="Account\Shop.aspx" />
     <Content Include="Account\SignUp.aspx" />
-    <Content Include="Account\Tender.aspx" />
-    <Content Include="Account\TenderInfo.aspx" />
-    <Content Include="Account\TenderRequestCreated.aspx" />
-    <Content Include="Account\TenderRequests.aspx" />
+    <Content Include="Account\TenderViews\CreateTender.aspx" />
+    <Content Include="Account\TenderViews\Tender.aspx" />
+    <Content Include="Account\TenderViews\TenderInfo.aspx" />
+    <Content Include="Account\TenderViews\TenderRequests.aspx" />
+    <Content Include="Account\TenderViews\TenderRequestView.aspx" />
     <Content Include="Account\TokensBuying.aspx" />
     <Content Include="Account\TokensSelling.aspx" />
     <Content Include="Account\Transport.aspx" />
@@ -390,8 +391,8 @@
     </Content>
     <Content Include="Model\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="News.aspx" />
     <Content Include="notifications\index.html" />
@@ -665,33 +666,40 @@
     <Compile Include="Account\SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Tender.aspx.cs">
+    <Compile Include="Account\TenderViews\CreateTender.aspx.cs">
+      <DependentUpon>CreateTender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TenderViews\CreateTender.aspx.designer.cs">
+      <DependentUpon>CreateTender.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TenderViews\Tender.aspx.cs">
       <DependentUpon>Tender.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Tender.aspx.designer.cs">
+    <Compile Include="Account\TenderViews\Tender.aspx.designer.cs">
       <DependentUpon>Tender.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\TenderInfo.aspx.cs">
+    <Compile Include="Account\TenderViews\TenderInfo.aspx.cs">
       <DependentUpon>TenderInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\TenderInfo.aspx.designer.cs">
+    <Compile Include="Account\TenderViews\TenderInfo.aspx.designer.cs">
       <DependentUpon>TenderInfo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\TenderRequestCreated.aspx.cs">
-      <DependentUpon>TenderRequestCreated.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\TenderRequestCreated.aspx.designer.cs">
-      <DependentUpon>TenderRequestCreated.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\TenderRequests.aspx.cs">
+    <Compile Include="Account\TenderViews\TenderRequests.aspx.cs">
       <DependentUpon>TenderRequests.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\TenderRequests.aspx.designer.cs">
+    <Compile Include="Account\TenderViews\TenderRequests.aspx.designer.cs">
       <DependentUpon>TenderRequests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TenderViews\TenderRequestView.aspx.cs">
+      <DependentUpon>TenderRequestView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TenderViews\TenderRequestView.aspx.designer.cs">
+      <DependentUpon>TenderRequestView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\TokensBuying.aspx.cs">
       <DependentUpon>TokensBuying.aspx</DependentUpon>
@@ -997,8 +1005,6 @@
     <Compile Include="Controllers\InstructionsController.cs" />
     <Compile Include="Controllers\KitchenModel\Recipe.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
-    <Compile Include="Controllers\TenderModels\TenderRequest.cs" />
-    <Compile Include="Controllers\TenderRequestController.cs" />
     <Compile Include="Controllers\TopRecipesController.cs" />
     <Compile Include="DatabaseHelpers\TendersHelper.cs" />
     <Compile Include="Default.aspx.cs">
@@ -1171,9 +1177,9 @@
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Model\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1392,7 +1398,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account\Rent\" />
-    <Folder Include="Account\TenderViews\" />
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
     <Folder Include="Rent\" />

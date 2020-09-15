@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище RentooloModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adverts">
           <Key>
             <PropertyRef Name="Id" />
@@ -341,7 +341,7 @@
           <Property Name="ProviderName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Cost" Type="int" Nullable="false" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
-          <Property Name="DateStart" Type="datetime" Nullable="false" />
+          <Property Name="DateStart" Type="datetime" />
           <Property Name="DateCompleted" Type="datetime" />
           <Property Name="DateDelivered" Type="datetime" />
           <Property Name="TenderId" Type="int" Nullable="false" />
@@ -350,7 +350,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Description" Type="ntext" />
           <Property Name="UserOwnerId" Type="int" Nullable="false" />
@@ -788,7 +788,7 @@
           <Parameter Name="number" Type="nvarchar" Mode="In" />
           <Parameter Name="balance" Type="float" Mode="In" />
         </Function>
-        <EntityContainer Name="Хранилище ModelContainer">
+        <EntityContainer Name="Хранилище RentooloModelContainer">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
@@ -901,7 +901,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="RentooloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <ComplexType Name="fnGetAllUsers_Result">
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1274,7 +1274,7 @@
           <Property Name="ProviderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Cost" Type="Int32" Nullable="false" />
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
-          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateStart" Type="DateTime" Precision="3" />
           <Property Name="DateCompleted" Type="DateTime" Precision="3" />
           <Property Name="DateDelivered" Type="DateTime" Precision="3" />
           <Property Name="TenderId" Type="Int32" Nullable="false" />
@@ -1283,7 +1283,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UserOwnerId" Type="Int32" Nullable="false" />
@@ -1592,7 +1592,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RentooloEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
@@ -1687,15 +1687,15 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <FunctionImport Name="fnGetAllUsers" IsComposable="true" ReturnType="Collection(Model.fnGetAllUsers_Result)" />
-          <FunctionImport Name="fnGetTablesRows" IsComposable="true" ReturnType="Collection(Model.fnGetTablesRows_Result)" />
-          <FunctionImport Name="fnGetUserReferralsSecondLevel" IsComposable="true" ReturnType="Collection(Model.fnGetUserReferralsSecondLevel_Result)">
+          <FunctionImport Name="fnGetAllUsers" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetAllUsers_Result)" />
+          <FunctionImport Name="fnGetTablesRows" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetTablesRows_Result)" />
+          <FunctionImport Name="fnGetUserReferralsSecondLevel" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserReferralsSecondLevel_Result)">
             <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
-          <FunctionImport Name="fnGetUserReferralsThirdLevel" IsComposable="true" ReturnType="Collection(Model.fnGetUserReferralsThirdLevel_Result)">
+          <FunctionImport Name="fnGetUserReferralsThirdLevel" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserReferralsThirdLevel_Result)">
             <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
-          <FunctionImport Name="fnGetUserWallets" IsComposable="true" ReturnType="Collection(Model.fnGetUserWallets_Result)">
+          <FunctionImport Name="fnGetUserWallets" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserWallets_Result)">
             <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spAddAdvert">
@@ -1727,23 +1727,23 @@
             <Parameter Name="uid" Mode="In" Type="String" />
             <Parameter Name="advertId" Mode="In" Type="Int64" />
           </FunctionImport>
-          <FunctionImport Name="spGetFavorites" ReturnType="Collection(Model.spGetFavorites_Result)">
+          <FunctionImport Name="spGetFavorites" ReturnType="Collection(RentooloModel.spGetFavorites_Result)">
             <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
-          <FunctionImport Name="spGetFavoritesByCookies" ReturnType="Collection(Model.spGetFavoritesByCookies_Result)">
+          <FunctionImport Name="spGetFavoritesByCookies" ReturnType="Collection(RentooloModel.spGetFavoritesByCookies_Result)">
             <Parameter Name="uid" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="spGetLast200TokensOperations" ReturnType="Collection(Model.spGetLast200TokensOperations_Result)" />
+          <FunctionImport Name="spGetLast200TokensOperations" ReturnType="Collection(RentooloModel.spGetLast200TokensOperations_Result)" />
           <FunctionImport Name="spGetLoginStatisticLastDayActive" />
           <FunctionImport Name="spGetLoginStatisticLastHourActive" />
-          <FunctionImport Name="spGetTokenCostToday" ReturnType="Collection(Model.spGetTokenCostToday_Result)" />
-          <FunctionImport Name="spGetUserAdverts" ReturnType="Collection(Model.spGetUserAdverts_Result)">
+          <FunctionImport Name="spGetTokenCostToday" ReturnType="Collection(RentooloModel.spGetTokenCostToday_Result)" />
+          <FunctionImport Name="spGetUserAdverts" ReturnType="Collection(RentooloModel.spGetUserAdverts_Result)">
             <Parameter Name="UserId" Mode="In" Type="Guid" />
           </FunctionImport>
-          <FunctionImport Name="spGetWatched" ReturnType="Collection(Model.spGetWatched_Result)">
+          <FunctionImport Name="spGetWatched" ReturnType="Collection(RentooloModel.spGetWatched_Result)">
             <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
-          <FunctionImport Name="spGetWatchedByCookies" ReturnType="Collection(Model.spGetWatchedByCookies_Result)">
+          <FunctionImport Name="spGetWatchedByCookies" ReturnType="Collection(RentooloModel.spGetWatchedByCookies_Result)">
             <Parameter Name="uid" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spUpdateQiwiAccountBalance">
@@ -1846,9 +1846,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="RentooloEntities4">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities">
           <EntitySetMapping Name="Adverts">
-            <EntityTypeMapping TypeName="Model.Adverts">
+            <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
@@ -1870,7 +1870,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Applications">
-            <EntityTypeMapping TypeName="Model.Applications">
+            <EntityTypeMapping TypeName="RentooloModel.Applications">
               <MappingFragment StoreEntitySet="Applications">
                 <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
@@ -1879,7 +1879,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Articles">
-            <EntityTypeMapping TypeName="Model.Articles">
+            <EntityTypeMapping TypeName="RentooloModel.Articles">
               <MappingFragment StoreEntitySet="Articles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Head" ColumnName="Head" />
@@ -1890,7 +1890,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Auctions">
-            <EntityTypeMapping TypeName="Model.Auctions">
+            <EntityTypeMapping TypeName="RentooloModel.Auctions">
               <MappingFragment StoreEntitySet="Auctions">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1902,7 +1902,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Business">
-            <EntityTypeMapping TypeName="Model.Business">
+            <EntityTypeMapping TypeName="RentooloModel.Business">
               <MappingFragment StoreEntitySet="Business">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Header" ColumnName="Header" />
@@ -1915,7 +1915,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CashIns">
-            <EntityTypeMapping TypeName="Model.CashIns">
+            <EntityTypeMapping TypeName="RentooloModel.CashIns">
               <MappingFragment StoreEntitySet="CashIns">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1928,7 +1928,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CashOuts">
-            <EntityTypeMapping TypeName="Model.CashOuts">
+            <EntityTypeMapping TypeName="RentooloModel.CashOuts">
               <MappingFragment StoreEntitySet="CashOuts">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1946,7 +1946,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Currencies">
-            <EntityTypeMapping TypeName="Model.Currencies">
+            <EntityTypeMapping TypeName="RentooloModel.Currencies">
               <MappingFragment StoreEntitySet="Currencies">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1957,7 +1957,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DailyStatistics">
-            <EntityTypeMapping TypeName="Model.DailyStatistics">
+            <EntityTypeMapping TypeName="RentooloModel.DailyStatistics">
               <MappingFragment StoreEntitySet="DailyStatistics">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -1967,7 +1967,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DeletedAdverts">
-            <EntityTypeMapping TypeName="Model.DeletedAdverts">
+            <EntityTypeMapping TypeName="RentooloModel.DeletedAdverts">
               <MappingFragment StoreEntitySet="DeletedAdverts">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
@@ -1989,7 +1989,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Exceptions">
-            <EntityTypeMapping TypeName="Model.Exceptions">
+            <EntityTypeMapping TypeName="RentooloModel.Exceptions">
               <MappingFragment StoreEntitySet="Exceptions">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
@@ -1999,7 +1999,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Favorites">
-            <EntityTypeMapping TypeName="Model.Favorites">
+            <EntityTypeMapping TypeName="RentooloModel.Favorites">
               <MappingFragment StoreEntitySet="Favorites">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -2009,7 +2009,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FavoritesByCookies">
-            <EntityTypeMapping TypeName="Model.FavoritesByCookies">
+            <EntityTypeMapping TypeName="RentooloModel.FavoritesByCookies">
               <MappingFragment StoreEntitySet="FavoritesByCookies">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserCookiesId" ColumnName="UserCookiesId" />
@@ -2019,7 +2019,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Items">
-            <EntityTypeMapping TypeName="Model.Items">
+            <EntityTypeMapping TypeName="RentooloModel.Items">
               <MappingFragment StoreEntitySet="Items">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -2035,7 +2035,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LoginStat">
-            <EntityTypeMapping TypeName="Model.LoginStat">
+            <EntityTypeMapping TypeName="RentooloModel.LoginStat">
               <MappingFragment StoreEntitySet="LoginStat">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -2046,7 +2046,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LoginStatistics">
-            <EntityTypeMapping TypeName="Model.LoginStatistics">
+            <EntityTypeMapping TypeName="RentooloModel.LoginStatistics">
               <MappingFragment StoreEntitySet="LoginStatistics">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -2059,7 +2059,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Memberships">
-            <EntityTypeMapping TypeName="Model.Memberships">
+            <EntityTypeMapping TypeName="RentooloModel.Memberships">
               <MappingFragment StoreEntitySet="Memberships">
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -2084,7 +2084,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="News">
-            <EntityTypeMapping TypeName="Model.News">
+            <EntityTypeMapping TypeName="RentooloModel.News">
               <MappingFragment StoreEntitySet="News">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
@@ -2096,7 +2096,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Operations">
-            <EntityTypeMapping TypeName="Model.Operations">
+            <EntityTypeMapping TypeName="RentooloModel.Operations">
               <MappingFragment StoreEntitySet="Operations">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -2108,7 +2108,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Payments">
-            <EntityTypeMapping TypeName="Model.Payments">
+            <EntityTypeMapping TypeName="RentooloModel.Payments">
               <MappingFragment StoreEntitySet="Payments">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserIdSender" ColumnName="UserIdSender" />
@@ -2120,7 +2120,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Phones">
-            <EntityTypeMapping TypeName="Model.Phones">
+            <EntityTypeMapping TypeName="RentooloModel.Phones">
               <MappingFragment StoreEntitySet="Phones">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
@@ -2138,7 +2138,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Recipes">
-            <EntityTypeMapping TypeName="Model.Recipes">
+            <EntityTypeMapping TypeName="RentooloModel.Recipes">
               <MappingFragment StoreEntitySet="Recipes">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -2152,7 +2152,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Referrals">
-            <EntityTypeMapping TypeName="Model.Referrals">
+            <EntityTypeMapping TypeName="RentooloModel.Referrals">
               <MappingFragment StoreEntitySet="Referrals">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ReferrerUserId" ColumnName="ReferrerUserId" />
@@ -2162,7 +2162,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="Model.Roles">
+            <EntityTypeMapping TypeName="RentooloModel.Roles">
               <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
@@ -2172,7 +2172,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Settings">
-            <EntityTypeMapping TypeName="Model.Settings">
+            <EntityTypeMapping TypeName="RentooloModel.Settings">
               <MappingFragment StoreEntitySet="Settings">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Order" ColumnName="Order" />
@@ -2184,7 +2184,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TenderRequest">
-            <EntityTypeMapping TypeName="Model.TenderRequest">
+            <EntityTypeMapping TypeName="RentooloModel.TenderRequest">
               <MappingFragment StoreEntitySet="TenderRequest">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -2200,7 +2200,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tenders">
-            <EntityTypeMapping TypeName="Model.Tenders">
+            <EntityTypeMapping TypeName="RentooloModel.Tenders">
               <MappingFragment StoreEntitySet="Tenders">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -2215,7 +2215,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TokensBuying">
-            <EntityTypeMapping TypeName="Model.TokensBuying">
+            <EntityTypeMapping TypeName="RentooloModel.TokensBuying">
               <MappingFragment StoreEntitySet="TokensBuying">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
@@ -2227,7 +2227,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TokensCost">
-            <EntityTypeMapping TypeName="Model.TokensCost">
+            <EntityTypeMapping TypeName="RentooloModel.TokensCost">
               <MappingFragment StoreEntitySet="TokensCost">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
@@ -2236,7 +2236,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TokensSelling">
-            <EntityTypeMapping TypeName="Model.TokensSelling">
+            <EntityTypeMapping TypeName="RentooloModel.TokensSelling">
               <MappingFragment StoreEntitySet="TokensSelling">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
@@ -2248,7 +2248,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="Model.Users">
+            <EntityTypeMapping TypeName="RentooloModel.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -2265,7 +2265,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserSettings">
-            <EntityTypeMapping TypeName="Model.UserSettings">
+            <EntityTypeMapping TypeName="RentooloModel.UserSettings">
               <MappingFragment StoreEntitySet="UserSettings">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -2276,7 +2276,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UsersOpenAuthAccounts">
-            <EntityTypeMapping TypeName="Model.UsersOpenAuthAccounts">
+            <EntityTypeMapping TypeName="RentooloModel.UsersOpenAuthAccounts">
               <MappingFragment StoreEntitySet="UsersOpenAuthAccounts">
                 <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
                 <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
@@ -2288,7 +2288,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UsersOpenAuthData">
-            <EntityTypeMapping TypeName="Model.UsersOpenAuthData">
+            <EntityTypeMapping TypeName="RentooloModel.UsersOpenAuthData">
               <MappingFragment StoreEntitySet="UsersOpenAuthData">
                 <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
                 <ScalarProperty Name="MembershipUserName" ColumnName="MembershipUserName" />
@@ -2297,7 +2297,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Wallets">
-            <EntityTypeMapping TypeName="Model.Wallets">
+            <EntityTypeMapping TypeName="RentooloModel.Wallets">
               <MappingFragment StoreEntitySet="Wallets">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -2308,7 +2308,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Watched">
-            <EntityTypeMapping TypeName="Model.Watched">
+            <EntityTypeMapping TypeName="RentooloModel.Watched">
               <MappingFragment StoreEntitySet="Watched">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -2318,7 +2318,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WatchedByCookies">
-            <EntityTypeMapping TypeName="Model.WatchedByCookies">
+            <EntityTypeMapping TypeName="RentooloModel.WatchedByCookies">
               <MappingFragment StoreEntitySet="WatchedByCookies">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserCookiesId" ColumnName="UserCookiesId" />
@@ -2328,7 +2328,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="Model.Categories">
+            <EntityTypeMapping TypeName="RentooloModel.Categories">
               <MappingFragment StoreEntitySet="Categories">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -2338,7 +2338,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="UsersInRoles" TypeName="Model.UsersInRoles" StoreEntitySet="UsersInRoles">
+          <AssociationSetMapping Name="UsersInRoles" TypeName="RentooloModel.UsersInRoles" StoreEntitySet="UsersInRoles">
             <EndProperty Name="Roles">
               <ScalarProperty Name="RoleId" ColumnName="RoleId" />
             </EndProperty>
@@ -2346,9 +2346,9 @@
               <ScalarProperty Name="UserId" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionName="Хранилище Model.fnGetAllUsers" FunctionImportName="fnGetAllUsers">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetAllUsers" FunctionImportName="fnGetAllUsers">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.fnGetAllUsers_Result">
+              <ComplexTypeMapping TypeName="RentooloModel.fnGetAllUsers_Result">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
@@ -2360,17 +2360,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="Хранилище Model.fnGetTablesRows" FunctionImportName="fnGetTablesRows">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetTablesRows" FunctionImportName="fnGetTablesRows">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.fnGetTablesRows_Result">
+              <ComplexTypeMapping TypeName="RentooloModel.fnGetTablesRows_Result">
                 <ScalarProperty Name="TableName" ColumnName="TableName" />
                 <ScalarProperty Name="RowCount" ColumnName="RowCount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="Хранилище Model.fnGetUserReferralsSecondLevel" FunctionImportName="fnGetUserReferralsSecondLevel">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserReferralsSecondLevel" FunctionImportName="fnGetUserReferralsSecondLevel">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.fnGetUserReferralsSecondLevel_Result">
+              <ComplexTypeMapping TypeName="RentooloModel.fnGetUserReferralsSecondLevel_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ReferrerUserId" ColumnName="ReferrerUserId" />
                 <ScalarProperty Name="ReferralUserId" ColumnName="ReferralUserId" />
@@ -2381,9 +2381,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="Хранилище Model.fnGetUserReferralsThirdLevel" FunctionImportName="fnGetUserReferralsThirdLevel">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserReferralsThirdLevel" FunctionImportName="fnGetUserReferralsThirdLevel">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.fnGetUserReferralsThirdLevel_Result">
+              <ComplexTypeMapping TypeName="RentooloModel.fnGetUserReferralsThirdLevel_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ReferrerUserId" ColumnName="ReferrerUserId" />
                 <ScalarProperty Name="ReferralUserId" ColumnName="ReferralUserId" />
@@ -2394,9 +2394,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="Хранилище Model.fnGetUserWallets" FunctionImportName="fnGetUserWallets">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserWallets" FunctionImportName="fnGetUserWallets">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.fnGetUserWallets_Result">
+              <ComplexTypeMapping TypeName="RentooloModel.fnGetUserWallets_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
@@ -2405,14 +2405,14 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spAddAdvert" FunctionName="Хранилище Model.spAddAdvert" />
-          <FunctionImportMapping FunctionImportName="spAddFavorites" FunctionName="Хранилище Model.spAddFavorites" />
-          <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="Хранилище Model.spAddFavoritesByCookies" />
-          <FunctionImportMapping FunctionImportName="spAddWatched" FunctionName="Хранилище Model.spAddWatched" />
-          <FunctionImportMapping FunctionImportName="spAddWatchedByCookies" FunctionName="Хранилище Model.spAddWatchedByCookies" />
-          <FunctionImportMapping FunctionImportName="spGetFavorites" FunctionName="Хранилище Model.spGetFavorites">
+          <FunctionImportMapping FunctionImportName="spAddAdvert" FunctionName="Хранилище RentooloModel.spAddAdvert" />
+          <FunctionImportMapping FunctionImportName="spAddFavorites" FunctionName="Хранилище RentooloModel.spAddFavorites" />
+          <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="Хранилище RentooloModel.spAddFavoritesByCookies" />
+          <FunctionImportMapping FunctionImportName="spAddWatched" FunctionName="Хранилище RentooloModel.spAddWatched" />
+          <FunctionImportMapping FunctionImportName="spAddWatchedByCookies" FunctionName="Хранилище RentooloModel.spAddWatchedByCookies" />
+          <FunctionImportMapping FunctionImportName="spGetFavorites" FunctionName="Хранилище RentooloModel.spGetFavorites">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.spGetFavorites_Result">
+              <ComplexTypeMapping TypeName="RentooloModel.spGetFavorites_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
                 <ScalarProperty Name="CreatedFavorites" ColumnName="CreatedFavorites" />
@@ -2430,9 +2430,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetFavoritesByCookies" FunctionName="Хранилище Model.spGetFavoritesByCookies">
+          <FunctionImportMapping FunctionImportName="spGetFavoritesByCookies" FunctionName="Хранилище RentooloModel.spGetFavoritesByCookies">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.spGetFavoritesByCookies_Result">
+              <ComplexTypeMapping TypeName="RentooloModel.spGetFavoritesByCookies_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
                 <ScalarProperty Name="CreatedFavorites" ColumnName="CreatedFavorites" />
@@ -2450,9 +2450,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetLast200TokensOperations" FunctionName="Хранилище Model.spGetLast200TokensOperations">
+          <FunctionImportMapping FunctionImportName="spGetLast200TokensOperations" FunctionName="Хранилище RentooloModel.spGetLast200TokensOperations">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.spGetLast200TokensOperations_Result">
+              <ComplexTypeMapping TypeName="RentooloModel.spGetLast200TokensOperations_Result">
                 <ScalarProperty Name="Count" ColumnName="Count" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="CostOneToken" ColumnName="CostOneToken" />
@@ -2462,20 +2462,20 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastDayActive" FunctionName="Хранилище Model.spGetLoginStatisticLastDayActive" />
-          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastHourActive" FunctionName="Хранилище Model.spGetLoginStatisticLastHourActive" />
-          <FunctionImportMapping FunctionImportName="spGetTokenCostToday" FunctionName="Хранилище Model.spGetTokenCostToday">
+          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastDayActive" FunctionName="Хранилище RentooloModel.spGetLoginStatisticLastDayActive" />
+          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastHourActive" FunctionName="Хранилище RentooloModel.spGetLoginStatisticLastHourActive" />
+          <FunctionImportMapping FunctionImportName="spGetTokenCostToday" FunctionName="Хранилище RentooloModel.spGetTokenCostToday">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.spGetTokenCostToday_Result">
+              <ComplexTypeMapping TypeName="RentooloModel.spGetTokenCostToday_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetUserAdverts" FunctionName="Хранилище Model.spGetUserAdverts">
+          <FunctionImportMapping FunctionImportName="spGetUserAdverts" FunctionName="Хранилище RentooloModel.spGetUserAdverts">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.spGetUserAdverts_Result">
+              <ComplexTypeMapping TypeName="RentooloModel.spGetUserAdverts_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -2490,9 +2490,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetWatched" FunctionName="Хранилище Model.spGetWatched">
+          <FunctionImportMapping FunctionImportName="spGetWatched" FunctionName="Хранилище RentooloModel.spGetWatched">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.spGetWatched_Result">
+              <ComplexTypeMapping TypeName="RentooloModel.spGetWatched_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
                 <ScalarProperty Name="CreatedFavorites" ColumnName="CreatedFavorites" />
@@ -2510,9 +2510,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetWatchedByCookies" FunctionName="Хранилище Model.spGetWatchedByCookies">
+          <FunctionImportMapping FunctionImportName="spGetWatchedByCookies" FunctionName="Хранилище RentooloModel.spGetWatchedByCookies">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.spGetWatchedByCookies_Result">
+              <ComplexTypeMapping TypeName="RentooloModel.spGetWatchedByCookies_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
                 <ScalarProperty Name="CreatedFavorites" ColumnName="CreatedFavorites" />
@@ -2530,7 +2530,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spUpdateQiwiAccountBalance" FunctionName="Хранилище Model.spUpdateQiwiAccountBalance" />
+          <FunctionImportMapping FunctionImportName="spUpdateQiwiAccountBalance" FunctionName="Хранилище RentooloModel.spUpdateQiwiAccountBalance" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

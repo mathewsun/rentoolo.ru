@@ -20,7 +20,7 @@ namespace Rentoolo.Model
         public string ProviderName { get; set; }
         public int Cost { get; set; }
         public int CustomerId { get; set; }
-        public System.DateTime DateStart { get; set; }
+        public Nullable<System.DateTime> DateStart { get; set; }
         public Nullable<System.DateTime> DateCompleted { get; set; }
         public Nullable<System.DateTime> DateDelivered { get; set; }
         public int TenderId { get; set; }

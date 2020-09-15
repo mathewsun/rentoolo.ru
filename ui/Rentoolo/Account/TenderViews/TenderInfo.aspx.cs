@@ -12,16 +12,13 @@ namespace Rentoolo.Account
     public partial class TenderInfo : BasicPage
     {
         public Tenders tender = new Tenders();
-
-
-        // TODO: id тендера хранится в url, можно данные из бд подтянуть будет
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 tender = TendersHelper.GetTenderById(Convert.ToInt32(Request.QueryString["id"]));
-
                 
                 TextBoxCost.Text = "0";
             }
@@ -29,16 +26,27 @@ namespace Rentoolo.Account
 
         protected void ButtonAddRequest_Click(object sender, EventArgs e)
         {
-            int a = 10;
-
+            int cost = Convert.ToInt32(TextBoxCost.Text);
             string description = TextBoxDescription.Text;
+            int tenderId = Convert.ToInt32(Request.QueryString["id"]);
 
-
-
-
+            tender = TendersHelper.GetTenderById(tenderId);
             
+            TenderRequest tenderRequest = new TenderRequest()
+            {
+                // ид текущего пользователя 
+                ProviderId = User.PublicId,
+                // id владельца тендера
+                CustomerId = tender.UserOwnerId,
+                Description = description,
+                Cost = cost,
+                TenderId = tenderId,
+                ProviderName = User.UserName
 
+            };
 
+            TendersHelper.CreateTenderRequest(tenderRequest);
+            
         }
     }
 }

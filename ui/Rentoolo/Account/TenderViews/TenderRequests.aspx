@@ -10,7 +10,7 @@
 
         <div>
 
-            <% foreach (var t in trequests)
+            <% foreach (var t in TRequests)
                { %>
                     Поставщик: <%= t.ProviderName %> <br />
                     Цена: <%= t.Cost %> <br />
