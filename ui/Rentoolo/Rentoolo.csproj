@@ -211,6 +211,7 @@
     <Content Include="Account\TenderViews\TenderInfo.aspx" />
     <Content Include="Account\TenderViews\TenderRequests.aspx" />
     <Content Include="Account\TenderViews\TenderRequestView.aspx" />
+    <Content Include="Account\TenderViews\UsersTenderRequests.aspx" />
     <Content Include="Account\TokensBuying.aspx" />
     <Content Include="Account\TokensSelling.aspx" />
     <Content Include="Account\Transport.aspx" />
@@ -391,8 +392,8 @@
     </Content>
     <Content Include="Model\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="News.aspx" />
     <Content Include="notifications\index.html" />
@@ -700,6 +701,13 @@
     </Compile>
     <Compile Include="Account\TenderViews\TenderRequestView.aspx.designer.cs">
       <DependentUpon>TenderRequestView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TenderViews\UsersTenderRequests.aspx.cs">
+      <DependentUpon>UsersTenderRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TenderViews\UsersTenderRequests.aspx.designer.cs">
+      <DependentUpon>UsersTenderRequests.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\TokensBuying.aspx.cs">
       <DependentUpon>TokensBuying.aspx</DependentUpon>
@@ -1177,9 +1185,9 @@
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Model1.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Model1.Designer.cs">
       <AutoGen>True</AutoGen>

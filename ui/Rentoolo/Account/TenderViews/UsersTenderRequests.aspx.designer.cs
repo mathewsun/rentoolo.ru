@@ -10,15 +10,6 @@
 namespace Rentoolo.Account.TenderViews {
     
     
-    public partial class TenderRequestView {
-        
-        /// <summary>
-        /// ButtonAccept элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonAccept;
+    public partial class UsersTenderRequests {
     }
 }

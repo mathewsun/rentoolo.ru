@@ -8,12 +8,41 @@ namespace Rentoolo.DatabaseHelpers
 {
     public static class TendersHelper
     {
+
+
+        #region create
+
         public static void CreateTender(Tenders tender)
         {
             using (var dc = new RentooloEntities())
             {
                 dc.Tenders.Add(tender);
                 dc.SaveChanges();
+            }
+        }
+
+        public static void CreateTenderRequest(TenderRequest request)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.TenderRequest.Add(request);
+                dc.SaveChanges();
+            }
+        }
+
+        #endregion
+
+
+        #region get
+
+
+        public static List<TenderRequest> GetUsersTRequests(int userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                // our user is a customer in TenderRequest entity
+                var tRequests = dc.TenderRequest.Where(x => x.CustomerId == userId).ToList();
+                return tRequests;
             }
         }
 
@@ -54,14 +83,7 @@ namespace Rentoolo.DatabaseHelpers
             }
         }
 
-        public static void CreateTenderRequest(TenderRequest request)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                dc.TenderRequest.Add(request);
-                dc.SaveChanges();
-            }
-        }
+        
 
 
         public static List<TenderRequest> GetTenderRequests(int id)
@@ -74,7 +96,7 @@ namespace Rentoolo.DatabaseHelpers
         }
 
 
-
+        #endregion
 
 
     }
