@@ -103,7 +103,7 @@
                         <a class="nav-link" href="/Auctions">Аукционы</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Account/Tender">Тендеры</a>
+                        <a class="nav-link" href="/Tenders.aspx">Тендеры</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/">Магазины</a>

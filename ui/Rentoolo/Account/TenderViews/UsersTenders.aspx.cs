@@ -6,21 +6,22 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Rentoolo.Account
+namespace Rentoolo.Account.TenderViews
 {
-    public partial class TenderRequests : System.Web.UI.Page
+    public partial class UsersTenders : System.Web.UI.Page
     {
-        public List<TenderRequest> TRequests;
+        public List<Model.Tenders> Tenders;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+
             if (!IsPostBack)
             {
-                int id = Convert.ToInt32(Request.QueryString["id"]);
-
-                TRequests = TendersHelper.GetTenderRequests(id);
+                // id - users id
+                Tenders = TendersHelper.GetUsersTenders(Convert.ToInt32(Request.QueryString["id"]));
+                
             }
-
         }
     }
 }

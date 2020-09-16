@@ -1,5 +1,4 @@
-﻿using Rentoolo.DatabaseHelpers;
-using Rentoolo.Model;
+﻿using Rentoolo.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +21,7 @@ namespace Rentoolo.Account.TenderViews
             string description = TextBoxTDescription.Text;
             int cost = Convert.ToInt32(TextBoxTCost.Text);
 
-            var tender = new Tenders()
+            var tender = new Model.Tenders()
             {
                
                 Name = tname,

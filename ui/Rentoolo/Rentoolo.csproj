@@ -212,6 +212,8 @@
     <Content Include="Account\TenderViews\TenderRequests.aspx" />
     <Content Include="Account\TenderViews\TenderRequestView.aspx" />
     <Content Include="Account\TenderViews\UsersTenderRequests.aspx" />
+    <Content Include="Account\TenderViews\UsersTenders.aspx" />
+    <Content Include="Account\TenderViews\WinedTenderRequest.aspx" />
     <Content Include="Account\TokensBuying.aspx" />
     <Content Include="Account\TokensSelling.aspx" />
     <Content Include="Account\Transport.aspx" />
@@ -409,6 +411,8 @@
     <Content Include="Services.aspx" />
     <Content Include="Success.aspx" />
     <Content Include="Template.aspx" />
+    <Content Include="Tender.aspx" />
+    <Content Include="Tenders.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="Admin\Result.ashx" />
     <Content Include="Account\Result.ashx" />
@@ -708,6 +712,20 @@
     </Compile>
     <Compile Include="Account\TenderViews\UsersTenderRequests.aspx.designer.cs">
       <DependentUpon>UsersTenderRequests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TenderViews\UsersTenders.aspx.cs">
+      <DependentUpon>UsersTenders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TenderViews\UsersTenders.aspx.designer.cs">
+      <DependentUpon>UsersTenders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TenderViews\WinedTenderRequest.aspx.cs">
+      <DependentUpon>WinedTenderRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TenderViews\WinedTenderRequest.aspx.designer.cs">
+      <DependentUpon>WinedTenderRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\TokensBuying.aspx.cs">
       <DependentUpon>TokensBuying.aspx</DependentUpon>
@@ -1014,7 +1032,7 @@
     <Compile Include="Controllers\KitchenModel\Recipe.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\TopRecipesController.cs" />
-    <Compile Include="DatabaseHelpers\TendersHelper.cs" />
+    <Compile Include="Model\TendersHelper.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1352,6 +1370,20 @@
     <Compile Include="Template.aspx.designer.cs">
       <DependentUpon>Template.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Tender.aspx.cs">
+      <DependentUpon>Tender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tender.aspx.designer.cs">
+      <DependentUpon>Tender.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tenders.aspx.cs">
+      <DependentUpon>Tenders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tenders.aspx.designer.cs">
+      <DependentUpon>Tenders.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1408,6 +1440,7 @@
     <Folder Include="Account\Rent\" />
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
+    <Folder Include="DatabaseHelpers\" />
     <Folder Include="Rent\" />
     <Folder Include="Sell\" />
   </ItemGroup>

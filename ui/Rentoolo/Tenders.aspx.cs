@@ -1,21 +1,21 @@
-﻿using System;
+﻿using Rentoolo.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Rentoolo.Model;
 
-namespace Rentoolo.Account
+namespace Rentoolo
 {
-    public partial class Tender : System.Web.UI.Page
+    public partial class Tenders : System.Web.UI.Page
     {
-        public List<Model.Tenders> tenders;
+        public List<Model.Tenders> TendersList;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             var name = Request.Form["name"];
-            tenders = name == null ? TendersHelper.GetAllTenders() : TendersHelper.GetTenders(name);
+            TendersList = name == null ? TendersHelper.GetAllTenders() : TendersHelper.GetTenders(name);
         }
     }
 }

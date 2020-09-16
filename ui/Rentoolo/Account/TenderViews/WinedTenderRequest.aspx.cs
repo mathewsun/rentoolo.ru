@@ -6,21 +6,21 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Rentoolo.Account
+namespace Rentoolo.Account.TenderViews
 {
-    public partial class TenderRequests : System.Web.UI.Page
+    public partial class WinedTenderRequest : System.Web.UI.Page
     {
-        public List<TenderRequest> TRequests;
+        public TenderRequest TReq;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                // tender id
                 int id = Convert.ToInt32(Request.QueryString["id"]);
-
-                TRequests = TendersHelper.GetTenderRequests(id);
+                TReq = TendersHelper.GetWinedTRequest(id);
+                
             }
-
         }
     }
 }

@@ -13,7 +13,7 @@
         </div>
         <div>
             <form>
-               <asp:Button ID="ButtonAccept" runat="server" Text="Добавить заявку в мои заявки" OnClick="ButtonAccept_Click" />
+               <asp:Button ID="ButtonAccept" runat="server" Text="Выбрать эту заявку для исполнения поставщиком" OnClick="ButtonAccept_Click" />
             </form>
         </div>
     </div>

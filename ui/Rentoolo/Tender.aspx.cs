@@ -6,19 +6,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Rentoolo.Account
+namespace Rentoolo
 {
-    public partial class TenderInfo : BasicPage
+    public partial class Tender : BasicPage
     {
         public Model.Tenders tender = new Model.Tenders();
-        
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 tender = TendersHelper.GetTenderById(Convert.ToInt32(Request.QueryString["id"]));
-                
+
                 TextBoxCost.Text = "0";
             }
         }
@@ -30,7 +30,7 @@ namespace Rentoolo.Account
             int tenderId = Convert.ToInt32(Request.QueryString["id"]);
 
             tender = TendersHelper.GetTenderById(tenderId);
-            
+
             TenderRequest tenderRequest = new TenderRequest()
             {
                 // ид текущего пользователя 
@@ -45,7 +45,7 @@ namespace Rentoolo.Account
             };
 
             TendersHelper.CreateTenderRequest(tenderRequest);
-            
+
         }
     }
 }
