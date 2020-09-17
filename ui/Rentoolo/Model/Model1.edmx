@@ -447,6 +447,16 @@
           <Property Name="MembershipUserName" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="HasLocalPassword" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="UserViews">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Wallets">
           <Key>
             <PropertyRef Name="Id" />
@@ -825,6 +835,7 @@
           <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserViews" EntityType="Self.UserViews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Watched" EntityType="Self.Watched" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WatchedByCookies" EntityType="Self.WatchedByCookies" Schema="dbo" store:Type="Tables" />
@@ -1386,6 +1397,16 @@
           <Property Name="HasLocalPassword" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="UsersOpenAuthAccounts" Relationship="Self.FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName" FromRole="UsersOpenAuthData" ToRole="UsersOpenAuthAccounts" />
         </EntityType>
+        <EntityType Name="UserViews">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         <EntityType Name="Wallets">
           <Key>
             <PropertyRef Name="Id" />
@@ -1594,7 +1615,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RentooloEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
@@ -1629,6 +1650,7 @@
           <EntitySet Name="UserSettings" EntityType="Self.UserSettings" />
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" />
+          <EntitySet Name="UserViews" EntityType="Self.UserViews" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" />
           <EntitySet Name="Watched" EntityType="Self.Watched" />
           <EntitySet Name="WatchedByCookies" EntityType="Self.WatchedByCookies" />
@@ -1848,7 +1870,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities2">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities3">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -2296,6 +2318,17 @@
                 <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
                 <ScalarProperty Name="MembershipUserName" ColumnName="MembershipUserName" />
                 <ScalarProperty Name="HasLocalPassword" ColumnName="HasLocalPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserViews">
+            <EntityTypeMapping TypeName="RentooloModel.UserViews">
+              <MappingFragment StoreEntitySet="UserViews">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

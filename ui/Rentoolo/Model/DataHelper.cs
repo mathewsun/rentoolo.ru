@@ -1075,5 +1075,46 @@ namespace Rentoolo.Model
         }
 
         #endregion
+
+
+        #region UserViews
+
+        public static void TryAddUserView(UserViews userView)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var views = dc.UserViews.Where(x => x.UserId == userView.UserId).OrderBy(x=>x.Date);
+                if (views.Any())
+                {
+                    int count = views.Count();
+
+                    if ((views.Last().Date.Date - views.ToArray()[count - 2].Date).Days >= 1)
+                    {
+                        dc.UserViews.Add(userView);
+                        dc.SaveChanges();
+                    }
+                }
+                else
+                {
+                    dc.UserViews.Add(userView);
+                    dc.SaveChanges();
+                }
+
+            }
+        }
+
+
+        public static int GetUserViewsCount(int objectId,int type)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.UserViews.Where(x => (x.ObjectId == objectId) && (x.Type == type)).Count();
+            }
+        }
+
+        
+
+
+        #endregion
     }
 }
