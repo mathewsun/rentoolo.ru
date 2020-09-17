@@ -11,6 +11,11 @@ namespace Rentoolo
     public partial class Advert : BasicPage
     {
         public Adverts AdvertItem;
+        public int ViewsCount = 0;
+
+
+        // TODO: fix add UserViews add bug
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,6 +28,21 @@ namespace Rentoolo
 
             if (!IsPostBack)
             {
+
+                ViewsCount = DataHelper.GetUserViewsCount((int)id, StructsHelper.ViewedType["product"]);
+
+                var x = new UserViews()
+                {
+                    Date = DateTime.Now,
+                    UserId = User.UserId,
+                    Type = StructsHelper.ViewedType["product"],
+                    ObjectId = (int)id
+
+                };
+
+                DataHelper.TryAddUserView(x);
+
+
                 AdvertItem = AdvertsDataHelper.GetAdvert(id);
 
                 if (User != null)

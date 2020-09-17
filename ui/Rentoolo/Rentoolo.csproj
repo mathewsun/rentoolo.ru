@@ -1057,6 +1057,9 @@
     <Compile Include="Model\Categories.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Comments.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Currencies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1162,6 +1165,7 @@
     <Compile Include="Model\spGetWatched_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\StructsHelper.cs" />
     <Compile Include="Model\TenderRequest.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

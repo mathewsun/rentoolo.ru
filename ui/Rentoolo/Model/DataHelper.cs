@@ -1077,6 +1077,7 @@ namespace Rentoolo.Model
         #endregion
 
 
+                
         #region UserViews
 
         public static void TryAddUserView(UserViews userView)
@@ -1108,13 +1109,61 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
+
                 return dc.UserViews.Where(x => (x.ObjectId == objectId) && (x.Type == type)).Count();
             }
         }
 
-        
+
 
 
         #endregion
+
+
+        #region Comments
+
+        public static void AddComment(Comments comment)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Comments.Add(comment);
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static List<Comments> GetComments(int type, int advertId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Comments.Where(x => (x.Type == type) && (x.AdvertId == advertId)).ToList();
+            }
+        }
+
+        // comment id
+        public static void UpdateCommentLikes(int id)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Comments.First(x => x.Id == id).Likes += 1;
+                dc.SaveChanges();
+            }
+        }
+
+        // comment id
+        public static void UpdateCommentDisLikes(int id)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Comments.First(x => x.Id == id).DisLikes += 1;
+                dc.SaveChanges();
+            }
+        }
+
+
+        #endregion
+
+
+
     }
 }
