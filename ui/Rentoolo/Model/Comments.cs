@@ -16,6 +16,7 @@ namespace Rentoolo.Model
     {
         public int Id { get; set; }
         public System.Guid UserId { get; set; }
+        public string UserName { get; set; }
         public int AdvertId { get; set; }
         public string Comment { get; set; }
         public System.DateTime Date { get; set; }

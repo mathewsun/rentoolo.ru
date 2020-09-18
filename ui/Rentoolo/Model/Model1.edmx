@@ -117,6 +117,7 @@
           <Key>
             <PropertyRef Name="Id" />
             <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
             <PropertyRef Name="AdvertId" />
             <PropertyRef Name="Comment" />
             <PropertyRef Name="Date" />
@@ -126,6 +127,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="AdvertId" Type="int" Nullable="false" />
           <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
@@ -878,6 +880,7 @@
             <DefiningQuery>SELECT 
     [Comments].[Id] AS [Id], 
     [Comments].[UserId] AS [UserId], 
+    [Comments].[UserName] AS [UserName], 
     [Comments].[AdvertId] AS [AdvertId], 
     [Comments].[Comment] AS [Comment], 
     [Comments].[Date] AS [Date], 
@@ -1497,6 +1500,7 @@
           <Key>
             <PropertyRef Name="Id" />
             <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
             <PropertyRef Name="AdvertId" />
             <PropertyRef Name="Comment" />
             <PropertyRef Name="Date" />
@@ -1506,6 +1510,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AdvertId" Type="Int32" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
@@ -1677,7 +1682,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities6" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RentooloEntities7" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
@@ -1933,7 +1938,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities6">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities7">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -2446,6 +2451,7 @@
               <MappingFragment StoreEntitySet="Comments">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
