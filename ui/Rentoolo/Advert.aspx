@@ -131,5 +131,32 @@
                 <%=AdvertItem.Phone %>
             </div>
         </div>
+        <div>
+            <div>
+                <h3>
+                    Добавить комментарий:
+                </h3>
+                <div>
+
+                </div>
+            </div>
+            <div>
+                <h4>
+                    Комментарии:
+                </h4>
+                <div>
+
+                    <% foreach (var comment in CommentList)
+                       { %>
+                            
+
+
+
+                    <% } %>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 </asp:Content>

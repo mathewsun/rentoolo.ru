@@ -8,6 +8,11 @@ namespace Rentoolo.Model
 {
     public static class DataHelper
     {
+
+
+        // TODO: reformat Model.edmx
+
+
         #region Пользователи
 
         public static Users GetUser(Guid userId)
@@ -1089,7 +1094,7 @@ namespace Rentoolo.Model
                 {
                     int count = views.Count();
 
-                    if ((views.Last().Date.Date - views.ToArray()[count - 2].Date).Days >= 1)
+                    if ((views.ToArray()[count-1].Date.Date - DateTime.Now.Date).Days >= 1)
                     {
                         dc.UserViews.Add(userView);
                         dc.SaveChanges();

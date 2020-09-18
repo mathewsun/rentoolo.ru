@@ -17,8 +17,8 @@ namespace Rentoolo.Account.TenderViews
         {
             if (!IsPostBack)
             {
-
-                int id = Convert.ToInt32(Request.QueryString["uid"]);
+                
+                Guid id = Guid.Parse(Request.QueryString["uid"]);
                 TenderRequests = TendersHelper.GetUsersTRequests(id);
                 
             }

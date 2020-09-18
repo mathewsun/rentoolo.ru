@@ -108,7 +108,7 @@ namespace Rentoolo.Model
         }
 
 
-        public static List<TenderRequest> GetUsersTRequests(int userId)
+        public static List<TenderRequest> GetUsersTRequests(Guid userId)
         {
             using (var dc = new RentooloEntities())
             {
@@ -155,7 +155,7 @@ namespace Rentoolo.Model
             }
         }
 
-        public static List<Tenders> GetUsersTenders(int id)
+        public static List<Tenders> GetUsersTenders(Guid id)
         {
             using (var dc = new RentooloEntities())
             {

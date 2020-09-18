@@ -27,7 +27,7 @@ namespace Rentoolo.Account.TenderViews
                 Name = tname,
                 Description = description,
                 Cost = cost,
-                UserOwnerId = User.PublicId,
+                UserOwnerId = User.UserId,
                 Created = DateTime.Now
             };
 

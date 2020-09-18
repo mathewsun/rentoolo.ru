@@ -19,7 +19,7 @@ namespace Rentoolo.Account.TenderViews
             if (!IsPostBack)
             {
                 // id - users id
-                Tenders = TendersHelper.GetUsersTenders(Convert.ToInt32(Request.QueryString["id"]));
+                Tenders = TendersHelper.GetUsersTenders(Guid.Parse(Request.QueryString["uid"]));
                 
             }
         }

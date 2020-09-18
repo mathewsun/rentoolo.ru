@@ -15,7 +15,7 @@ namespace Rentoolo.Model
     public partial class Comments
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public System.Guid UserId { get; set; }
         public int AdvertId { get; set; }
         public string Comment { get; set; }
         public System.DateTime Date { get; set; }

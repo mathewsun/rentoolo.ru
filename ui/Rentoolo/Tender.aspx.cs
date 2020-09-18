@@ -34,7 +34,7 @@ namespace Rentoolo
             TenderRequest tenderRequest = new TenderRequest()
             {
                 // ид текущего пользователя 
-                ProviderId = User.PublicId,
+                ProviderId = User.UserId,
                 // id владельца тендера
                 CustomerId = tender.UserOwnerId,
                 Description = description,

@@ -12,6 +12,7 @@ namespace Rentoolo
     {
         public Adverts AdvertItem;
         public int ViewsCount = 0;
+        public List<Comments> CommentList;
 
 
         // TODO: fix add UserViews add bug
@@ -31,16 +32,26 @@ namespace Rentoolo
 
                 ViewsCount = DataHelper.GetUserViewsCount((int)id, StructsHelper.ViewedType["product"]);
 
-                var x = new UserViews()
+                if (User.UserId != null)
                 {
-                    Date = DateTime.Now,
-                    UserId = User.UserId,
-                    Type = StructsHelper.ViewedType["product"],
-                    ObjectId = (int)id
+                    // if user didnt authorised, it will be null 
+                    UserViews userViews = new UserViews()
+                    {
+                        Date = DateTime.Now,
+                        UserId = User.UserId,
+                        Type = StructsHelper.ViewedType["product"],
+                        ObjectId = (int)id
+                    };
 
-                };
+                    DataHelper.TryAddUserView(userViews);
+                }
 
-                DataHelper.TryAddUserView(x);
+
+                CommentList = DataHelper.GetComments(StructsHelper.ViewedType["product"], (int)id);
+
+
+
+
 
 
                 AdvertItem = AdvertsDataHelper.GetAdvert(id);
