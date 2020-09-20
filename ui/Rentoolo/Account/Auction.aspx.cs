@@ -1,4 +1,5 @@
-﻿using Rentoolo.Model;
+﻿using Newtonsoft.Json;
+using Rentoolo.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,21 @@ namespace Rentoolo.Account
         {
             Model.Auctions item = new Model.Auctions();
 
+            var objPhotos = Request.Form["AuctionPhotos"];
+
+            if (objPhotos != null)
+            {
+                String[] listPhotos = objPhotos.Split(',');
+
+                var jsonPhotos = JsonConvert.SerializeObject(listPhotos);
+
+                item.ImgUrls = jsonPhotos;
+            }
+            else
+            {
+                item.ImgUrls = "[\"/img/a/noPhoto.png\"]";
+            }
+
             item.Name = TextBoxName.Text;
 
             item.StartPrice = decimal.Parse(TextBoxPrice.Text);
@@ -28,7 +44,6 @@ namespace Rentoolo.Account
             item.UserId = User.UserId;
 
             item.Created = DateTime.Now;
-
             AuctionsHelper.AddAuction(item);
 
             Response.Redirect("/Account/Auctions.aspx");

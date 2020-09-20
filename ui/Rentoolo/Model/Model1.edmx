@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище RentooloModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="RentooloModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adverts">
           <Key>
             <PropertyRef Name="Id" />
@@ -53,6 +53,7 @@
           <Property Name="StartPrice" Type="money" Nullable="false" />
           <Property Name="Created" Type="datetime" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImgUrls" Type="nvarchar(max)" />
           <Property Name="Description" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Business">
@@ -96,8 +97,8 @@
           <Property Name="PaymentNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="Result" Type="int" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "Rentoolo.dbo.Categories" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="Id" />
@@ -330,20 +331,6 @@
           <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="UpdateDate" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Tenders">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Description" Type="ntext" />
-          <Property Name="UserOwnerId" Type="int" Nullable="false" />
-          <Property Name="Cost" Type="float" Nullable="false" />
-          <Property Name="ImgUrls" Type="nvarchar(max)" />
-          <Property Name="Status" Type="int" Nullable="false" />
-          <Property Name="Created" Type="datetime" Nullable="false" />
-          <Property Name="CurrencyId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TokensBuying">
           <Key>
@@ -773,7 +760,7 @@
           <Parameter Name="number" Type="nvarchar" Mode="In" />
           <Parameter Name="balance" Type="float" Mode="In" />
         </Function>
-        <EntityContainer Name="Хранилище RentooloModelContainer">
+        <EntityContainer Name="RentooloModelStoreContainer">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
@@ -799,7 +786,6 @@
           <EntitySet Name="Referrals" EntityType="Self.Referrals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tenders" EntityType="Self.Tenders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TokensBuying" EntityType="Self.TokensBuying" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TokensCost" EntityType="Self.TokensCost" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TokensSelling" EntityType="Self.TokensSelling" Schema="dbo" store:Type="Tables" />
@@ -976,6 +962,7 @@
           <Property Name="StartPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="ImgUrls" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Business">
@@ -1247,20 +1234,6 @@
           <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="Tenders">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="UserOwnerId" Type="Int32" Nullable="false" />
-          <Property Name="Cost" Type="Double" Nullable="false" />
-          <Property Name="ImgUrls" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="TokensBuying">
           <Key>
@@ -1587,7 +1560,6 @@
           <EntitySet Name="Referrals" EntityType="Self.Referrals" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Settings" EntityType="Self.Settings" />
-          <EntitySet Name="Tenders" EntityType="Self.Tenders" />
           <EntitySet Name="TokensBuying" EntityType="Self.TokensBuying" />
           <EntitySet Name="TokensCost" EntityType="Self.TokensCost" />
           <EntitySet Name="TokensSelling" EntityType="Self.TokensSelling" />
@@ -1814,7 +1786,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities">
+        <EntityContainerMapping StorageEntityContainer="RentooloModelStoreContainer" CdmEntityContainer="RentooloEntities">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -1865,6 +1837,7 @@
                 <ScalarProperty Name="StartPrice" ColumnName="StartPrice" />
                 <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ImgUrls" ColumnName="ImgUrls" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2151,21 +2124,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tenders">
-            <EntityTypeMapping TypeName="RentooloModel.Tenders">
-              <MappingFragment StoreEntitySet="Tenders">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="UserOwnerId" ColumnName="UserOwnerId" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="ImgUrls" ColumnName="ImgUrls" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TokensBuying">
             <EntityTypeMapping TypeName="RentooloModel.TokensBuying">
               <MappingFragment StoreEntitySet="TokensBuying">
@@ -2298,7 +2256,7 @@
               <ScalarProperty Name="UserId" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetAllUsers" FunctionImportName="fnGetAllUsers">
+          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetAllUsers" FunctionImportName="fnGetAllUsers">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetAllUsers_Result">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -2312,7 +2270,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetTablesRows" FunctionImportName="fnGetTablesRows">
+          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetTablesRows" FunctionImportName="fnGetTablesRows">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetTablesRows_Result">
                 <ScalarProperty Name="TableName" ColumnName="TableName" />
@@ -2320,7 +2278,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserReferralsSecondLevel" FunctionImportName="fnGetUserReferralsSecondLevel">
+          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetUserReferralsSecondLevel" FunctionImportName="fnGetUserReferralsSecondLevel">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetUserReferralsSecondLevel_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -2333,7 +2291,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserReferralsThirdLevel" FunctionImportName="fnGetUserReferralsThirdLevel">
+          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetUserReferralsThirdLevel" FunctionImportName="fnGetUserReferralsThirdLevel">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetUserReferralsThirdLevel_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -2346,7 +2304,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserWallets" FunctionImportName="fnGetUserWallets">
+          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetUserWallets" FunctionImportName="fnGetUserWallets">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetUserWallets_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -2357,12 +2315,12 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spAddAdvert" FunctionName="Хранилище RentooloModel.spAddAdvert" />
-          <FunctionImportMapping FunctionImportName="spAddFavorites" FunctionName="Хранилище RentooloModel.spAddFavorites" />
-          <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="Хранилище RentooloModel.spAddFavoritesByCookies" />
-          <FunctionImportMapping FunctionImportName="spAddWatched" FunctionName="Хранилище RentooloModel.spAddWatched" />
-          <FunctionImportMapping FunctionImportName="spAddWatchedByCookies" FunctionName="Хранилище RentooloModel.spAddWatchedByCookies" />
-          <FunctionImportMapping FunctionImportName="spGetFavorites" FunctionName="Хранилище RentooloModel.spGetFavorites">
+          <FunctionImportMapping FunctionImportName="spAddAdvert" FunctionName="RentooloModel.Store.spAddAdvert" />
+          <FunctionImportMapping FunctionImportName="spAddFavorites" FunctionName="RentooloModel.Store.spAddFavorites" />
+          <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="RentooloModel.Store.spAddFavoritesByCookies" />
+          <FunctionImportMapping FunctionImportName="spAddWatched" FunctionName="RentooloModel.Store.spAddWatched" />
+          <FunctionImportMapping FunctionImportName="spAddWatchedByCookies" FunctionName="RentooloModel.Store.spAddWatchedByCookies" />
+          <FunctionImportMapping FunctionImportName="spGetFavorites" FunctionName="RentooloModel.Store.spGetFavorites">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetFavorites_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -2382,7 +2340,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetFavoritesByCookies" FunctionName="Хранилище RentooloModel.spGetFavoritesByCookies">
+          <FunctionImportMapping FunctionImportName="spGetFavoritesByCookies" FunctionName="RentooloModel.Store.spGetFavoritesByCookies">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetFavoritesByCookies_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -2402,7 +2360,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetLast200TokensOperations" FunctionName="Хранилище RentooloModel.spGetLast200TokensOperations">
+          <FunctionImportMapping FunctionImportName="spGetLast200TokensOperations" FunctionName="RentooloModel.Store.spGetLast200TokensOperations">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetLast200TokensOperations_Result">
                 <ScalarProperty Name="Count" ColumnName="Count" />
@@ -2414,9 +2372,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastDayActive" FunctionName="Хранилище RentooloModel.spGetLoginStatisticLastDayActive" />
-          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastHourActive" FunctionName="Хранилище RentooloModel.spGetLoginStatisticLastHourActive" />
-          <FunctionImportMapping FunctionImportName="spGetTokenCostToday" FunctionName="Хранилище RentooloModel.spGetTokenCostToday">
+          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastDayActive" FunctionName="RentooloModel.Store.spGetLoginStatisticLastDayActive" />
+          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastHourActive" FunctionName="RentooloModel.Store.spGetLoginStatisticLastHourActive" />
+          <FunctionImportMapping FunctionImportName="spGetTokenCostToday" FunctionName="RentooloModel.Store.spGetTokenCostToday">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetTokenCostToday_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -2425,7 +2383,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetUserAdverts" FunctionName="Хранилище RentooloModel.spGetUserAdverts">
+          <FunctionImportMapping FunctionImportName="spGetUserAdverts" FunctionName="RentooloModel.Store.spGetUserAdverts">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetUserAdverts_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -2442,7 +2400,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetWatched" FunctionName="Хранилище RentooloModel.spGetWatched">
+          <FunctionImportMapping FunctionImportName="spGetWatched" FunctionName="RentooloModel.Store.spGetWatched">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetWatched_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -2462,7 +2420,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetWatchedByCookies" FunctionName="Хранилище RentooloModel.spGetWatchedByCookies">
+          <FunctionImportMapping FunctionImportName="spGetWatchedByCookies" FunctionName="RentooloModel.Store.spGetWatchedByCookies">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetWatchedByCookies_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -2482,7 +2440,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spUpdateQiwiAccountBalance" FunctionName="Хранилище RentooloModel.spUpdateQiwiAccountBalance" />
+          <FunctionImportMapping FunctionImportName="spUpdateQiwiAccountBalance" FunctionName="RentooloModel.Store.spUpdateQiwiAccountBalance" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -2500,7 +2458,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
