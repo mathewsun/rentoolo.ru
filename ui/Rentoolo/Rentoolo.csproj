@@ -316,6 +316,7 @@
     <Content Include="assets\js\sweet-alert.min.js" />
     <Content Include="assets\js\toolkit.js" />
     <Content Include="assets\js\utils.js" />
+    <Content Include="Auction.aspx" />
     <Content Include="Auctions.aspx" />
     <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
@@ -931,6 +932,13 @@
     </Compile>
     <Compile Include="Articles.aspx.designer.cs">
       <DependentUpon>Articles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction.aspx.cs">
+      <DependentUpon>Auction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction.aspx.designer.cs">
+      <DependentUpon>Auction.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auctions.aspx.cs">
       <DependentUpon>Auctions.aspx</DependentUpon>

@@ -79,6 +79,10 @@
     <ul class="list-group media-list media-list-stream mb-4">
         <li class="media list-group-item p-4">
             <div class="media-body">
+                <div class="media-heading">
+                                    <small class="float-right text-muted"><%=AuctionsCount %> аукционов</small>
+                                    <h6>Аукционы:</h6>
+                                </div>
                 <div class="media-body-inline-grid" data-grid="images">
                     <!--<div class="row"> - эта строка не давала отобразиться картинкам, почему? <-->
                     <%foreach (var item in ListItems)
