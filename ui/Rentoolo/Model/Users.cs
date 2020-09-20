@@ -38,6 +38,10 @@ namespace Rentoolo.Model
         public double ReffAdd { get; set; }
         public string LastGeoposition { get; set; }
         public string Language { get; set; }
+        public Nullable<int> Sex { get; set; }
+        public string Interests { get; set; }
+        public string WorkPlace { get; set; }
+        public string AboutUser { get; set; }
     
         public virtual Applications Applications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

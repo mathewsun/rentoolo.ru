@@ -8,6 +8,11 @@ namespace Rentoolo.Model
 {
     public static class DataHelper
     {
+
+
+        // TODO: reformat Model.edmx
+
+
         #region Пользователи
 
         public static Users GetUser(Guid userId)
@@ -1075,5 +1080,95 @@ namespace Rentoolo.Model
         }
 
         #endregion
+
+
+                
+        #region UserViews
+
+        public static void TryAddUserView(UserViews userView)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var views = dc.UserViews.Where(x => x.UserId == userView.UserId).OrderBy(x=>x.Date);
+                if (views.Any())
+                {
+                    int count = views.Count();
+
+                    if ((views.ToArray()[count-1].Date.Date - DateTime.Now.Date).Days >= 1)
+                    {
+                        dc.UserViews.Add(userView);
+                        dc.SaveChanges();
+                    }
+                }
+                else
+                {
+                    dc.UserViews.Add(userView);
+                    dc.SaveChanges();
+                }
+
+            }
+        }
+
+
+        public static int GetUserViewsCount(int objectId,int type)
+        {
+            using (var dc = new RentooloEntities())
+            {
+
+                return dc.UserViews.Where(x => (x.ObjectId == objectId) && (x.Type == type)).Count();
+            }
+        }
+
+
+
+
+        #endregion
+
+
+        #region Comments
+
+        public static void AddComment(Comments comment)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Comments.Add(comment);
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static List<Comments> GetComments(int type, int advertId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Comments.Where(x => (x.Type == type) && (x.AdvertId == advertId)).ToList();
+            }
+        }
+
+        // comment id
+        public static void UpdateCommentLikes(int id)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Comments.First(x => x.Id == id).Likes += 1;
+                dc.SaveChanges();
+            }
+        }
+
+        // comment id
+        public static void UpdateCommentDisLikes(int id)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Comments.First(x => x.Id == id).DisLikes += 1;
+                dc.SaveChanges();
+            }
+        }
+
+
+        #endregion
+
+
+
     }
 }

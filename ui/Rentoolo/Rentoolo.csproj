@@ -191,6 +191,7 @@
     <Content Include="Account\Menu.ascx" />
     <Content Include="Account\Moto.aspx" />
     <Content Include="Account\MyAdverts.aspx" />
+    <Content Include="Account\OkResult.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Operations.aspx" />
     <Content Include="Account\Payment.aspx" />
@@ -205,8 +206,14 @@
     <Content Include="Account\Settings.aspx" />
     <Content Include="Account\Shop.aspx" />
     <Content Include="Account\SignUp.aspx" />
-    <Content Include="Account\Tender.aspx" />
-    <Content Include="Account\Tenders.aspx" />
+    <Content Include="Account\TenderViews\CreateTender.aspx" />
+    <Content Include="Account\TenderViews\Tender.aspx" />
+    <Content Include="Account\TenderViews\TenderInfo.aspx" />
+    <Content Include="Account\TenderViews\TenderRequests.aspx" />
+    <Content Include="Account\TenderViews\TenderRequestView.aspx" />
+    <Content Include="Account\TenderViews\UsersTenderRequests.aspx" />
+    <Content Include="Account\TenderViews\UsersTenders.aspx" />
+    <Content Include="Account\TenderViews\WinedTenderRequest.aspx" />
     <Content Include="Account\TokensBuying.aspx" />
     <Content Include="Account\TokensSelling.aspx" />
     <Content Include="Account\Transport.aspx" />
@@ -353,6 +360,7 @@
     <Content Include="DataBase\tables\Adverts.sql" />
     <Content Include="DataBase\tables\Favorites.sql" />
     <Content Include="DataBase\tables\FavoritesByCookies.sql" />
+    <Content Include="DataBase\tables\TenderRequest.sql" />
     <Content Include="DataBase\tables\TokensBuying.sql" />
     <Content Include="DataBase\tables\TokensCost.sql" />
     <Content Include="DataBase\tables\TokensSelling.sql" />
@@ -403,6 +411,8 @@
     <Content Include="Services.aspx" />
     <Content Include="Success.aspx" />
     <Content Include="Template.aspx" />
+    <Content Include="Tender.aspx" />
+    <Content Include="Tenders.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="Admin\Result.ashx" />
     <Content Include="Account\Result.ashx" />
@@ -567,6 +577,13 @@
     <Compile Include="Account\MyAdverts.aspx.designer.cs">
       <DependentUpon>MyAdverts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\OkResult.aspx.cs">
+      <DependentUpon>OkResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\OkResult.aspx.designer.cs">
+      <DependentUpon>OkResult.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Operations.aspx.cs">
       <DependentUpon>Operations.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -654,19 +671,61 @@
     <Compile Include="Account\SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Tender.aspx.cs">
+    <Compile Include="Account\TenderViews\CreateTender.aspx.cs">
+      <DependentUpon>CreateTender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TenderViews\CreateTender.aspx.designer.cs">
+      <DependentUpon>CreateTender.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TenderViews\Tender.aspx.cs">
       <DependentUpon>Tender.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Tender.aspx.designer.cs">
+    <Compile Include="Account\TenderViews\Tender.aspx.designer.cs">
       <DependentUpon>Tender.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Tenders.aspx.cs">
-      <DependentUpon>Tenders.aspx</DependentUpon>
+    <Compile Include="Account\TenderViews\TenderInfo.aspx.cs">
+      <DependentUpon>TenderInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Tenders.aspx.designer.cs">
-      <DependentUpon>Tenders.aspx</DependentUpon>
+    <Compile Include="Account\TenderViews\TenderInfo.aspx.designer.cs">
+      <DependentUpon>TenderInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TenderViews\TenderRequests.aspx.cs">
+      <DependentUpon>TenderRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TenderViews\TenderRequests.aspx.designer.cs">
+      <DependentUpon>TenderRequests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TenderViews\TenderRequestView.aspx.cs">
+      <DependentUpon>TenderRequestView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TenderViews\TenderRequestView.aspx.designer.cs">
+      <DependentUpon>TenderRequestView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TenderViews\UsersTenderRequests.aspx.cs">
+      <DependentUpon>UsersTenderRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TenderViews\UsersTenderRequests.aspx.designer.cs">
+      <DependentUpon>UsersTenderRequests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TenderViews\UsersTenders.aspx.cs">
+      <DependentUpon>UsersTenders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TenderViews\UsersTenders.aspx.designer.cs">
+      <DependentUpon>UsersTenders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TenderViews\WinedTenderRequest.aspx.cs">
+      <DependentUpon>WinedTenderRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TenderViews\WinedTenderRequest.aspx.designer.cs">
+      <DependentUpon>WinedTenderRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\TokensBuying.aspx.cs">
       <DependentUpon>TokensBuying.aspx</DependentUpon>
@@ -973,6 +1032,147 @@
     <Compile Include="Controllers\KitchenModel\Recipe.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\TopRecipesController.cs" />
+    <Compile Include="HelperModels\StateStructs.cs" />
+    <Compile Include="Model\Adverts.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Applications.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Articles.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Auctions.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Business.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CashIns.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CashOuts.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Categories.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Comments.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Currencies.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DailyStatistics.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DeletedAdverts.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Exceptions.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Favorites.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FavoritesByCookies.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\fnGetAllUsers_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\fnGetTablesRows_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\fnGetUserReferralsSecondLevel_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\fnGetUserReferralsThirdLevel_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\fnGetUserWallets_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Items.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LoginStat.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LoginStatistics.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Memberships.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\News.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Operations.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Payments.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Phones.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Recipes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Referrals.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Roles.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Settings.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetFavoritesByCookies_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetFavorites_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetLast200TokensOperations_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetTokenCostToday_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetUserAdverts_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetWatchedByCookies_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetWatched_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\StructsHelper.cs" />
+    <Compile Include="Model\TenderRequest.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Tenders.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TendersHelper.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1051,161 +1251,29 @@
       <DependentUpon>ManageAdvert.aspx</DependentUpon>
     </Compile>
     <Compile Include="Model\Account.cs" />
-    <Compile Include="Model\Adverts.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\AdvertsDataHelper.cs" />
-    <Compile Include="Model\Applications.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Articles.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Auctions.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\AuctionsForPage.cs" />
     <Compile Include="Model\BasicPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Model\Business.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CashIns.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CashOuts.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\CashOutStates.cs" />
     <Compile Include="Model\CashOutTypesEnum.cs" />
-    <Compile Include="Model\Categories.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\CategoriesEnum.cs" />
     <Compile Include="Model\AuctionsHelper.cs" />
     <Compile Include="Model\ChartDates.cs" />
     <Compile Include="Model\CheckQiwiPayment.cs" />
-    <Compile Include="Model\Currencies.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\CurrenciesEnum.cs" />
-    <Compile Include="Model\DailyStatistics.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DeletedAdverts.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Exceptions.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Favorites.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\FavoritesByCookies.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\FavoritesForPage.cs" />
     <Compile Include="Model\FavoritesHelper.cs" />
-    <Compile Include="Model\fnGetAllUsers_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\fnGetTablesRows_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\fnGetUserReferralsSecondLevel_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\fnGetUserReferralsThirdLevel_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\fnGetUserWallets_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Helper.cs" />
     <Compile Include="Model\ImgUploadResult.cs" />
-    <Compile Include="Model\Items.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\KitchenDataHelper.cs" />
-    <Compile Include="Model\LoginStat.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\LoginStatistics.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Memberships.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\News.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Operations.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\PaymentHelper.cs" />
-    <Compile Include="Model\Payments.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Phones.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\QiwiApi.cs" />
     <Compile Include="Model\QiwiCheckHistory.cs" />
     <Compile Include="Model\QiwiHelper.cs" />
     <Compile Include="Model\QiwiPayment.cs" />
-    <Compile Include="Model\Recipes.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Referrals.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Roles.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\SellFilter.cs" />
-    <Compile Include="Model\Settings.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\spGetFavoritesByCookies_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\spGetFavorites_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\spGetLast200TokensOperations_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\spGetTokenCostToday_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\spGetUserAdverts_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\spGetWatchedByCookies_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\spGetWatched_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Tenders.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\TokensBuying.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1230,6 +1298,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UsersOpenAuthData.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserViews.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Wallets.cs">
@@ -1307,6 +1378,20 @@
     <Compile Include="Template.aspx.designer.cs">
       <DependentUpon>Template.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Tender.aspx.cs">
+      <DependentUpon>Tender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tender.aspx.designer.cs">
+      <DependentUpon>Tender.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tenders.aspx.cs">
+      <DependentUpon>Tenders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tenders.aspx.designer.cs">
+      <DependentUpon>Tenders.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1363,6 +1448,7 @@
     <Folder Include="Account\Rent\" />
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
+    <Folder Include="DatabaseHelpers\" />
     <Folder Include="Rent\" />
     <Folder Include="Sell\" />
   </ItemGroup>
