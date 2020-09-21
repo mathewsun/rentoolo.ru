@@ -415,7 +415,6 @@
     <Content Include="Template.aspx" />
     <Content Include="Tender.aspx" />
     <Content Include="Tenders.aspx" />
-    <Content Include="Test.aspx" />
     <Content Include="Admin\Result.ashx" />
     <Content Include="Account\Result.ashx" />
     <Content Include="AdminMaster.Master" />
@@ -425,6 +424,7 @@
     <Content Include="assets\fonts\toolkit-entypo.woff2" />
     <Content Include="Events.ashx" />
     <Content Include="Test\Konstantin.aspx" />
+    <Content Include="Test\matheweducation.aspx" />
     <Content Include="TokensCost.aspx" />
     <Content Include="TokensOperations.aspx" />
     <Content Include="Transport.aspx" />
@@ -1395,19 +1395,19 @@
     <Compile Include="Tenders.aspx.designer.cs">
       <DependentUpon>Tenders.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Test.aspx.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test.aspx.designer.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Test\Konstantin.aspx.cs">
       <DependentUpon>Konstantin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Test\Konstantin.aspx.designer.cs">
       <DependentUpon>Konstantin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\matheweducation.aspx.cs">
+      <DependentUpon>matheweducation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\matheweducation.aspx.designer.cs">
+      <DependentUpon>matheweducation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tokens.aspx.cs">
       <DependentUpon>Tokens.aspx</DependentUpon>
