@@ -12,13 +12,16 @@ namespace Rentoolo.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Operations
+    public partial class Tenders
     {
         public int Id { get; set; }
-        public System.Guid UserId { get; set; }
-        public double Value { get; set; }
-        public int Type { get; set; }
-        public string Comment { get; set; }
-        public System.DateTime WhenDate { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int UserOwnerId { get; set; }
+        public double Cost { get; set; }
+        public string ImgUrls { get; set; }
+        public int Status { get; set; }
+        public System.DateTime Created { get; set; }
+        public int CurrencyId { get; set; }
     }
 }
