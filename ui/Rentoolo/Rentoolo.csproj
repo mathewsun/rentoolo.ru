@@ -424,6 +424,7 @@
     <Content Include="assets\fonts\toolkit-entypo.woff" />
     <Content Include="assets\fonts\toolkit-entypo.woff2" />
     <Content Include="Events.ashx" />
+    <Content Include="Test\Konstantin.aspx" />
     <Content Include="TokensCost.aspx" />
     <Content Include="TokensOperations.aspx" />
     <Content Include="Transport.aspx" />
@@ -1400,6 +1401,13 @@
     </Compile>
     <Compile Include="Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\Konstantin.aspx.cs">
+      <DependentUpon>Konstantin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\Konstantin.aspx.designer.cs">
+      <DependentUpon>Konstantin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tokens.aspx.cs">
       <DependentUpon>Tokens.aspx</DependentUpon>
