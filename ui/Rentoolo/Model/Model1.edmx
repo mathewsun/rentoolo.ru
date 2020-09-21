@@ -54,6 +54,7 @@
           <Property Name="Created" Type="datetime" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ImgUrls" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Business">
           <Key>
@@ -1068,6 +1069,7 @@
           <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImgUrls" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Business">
           <Key>
@@ -2044,6 +2046,7 @@
                 <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImgUrls" ColumnName="ImgUrls" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
