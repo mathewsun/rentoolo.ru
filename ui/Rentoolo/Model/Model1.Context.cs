@@ -70,46 +70,46 @@ namespace Rentoolo.Model
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Comments> Comments { get; set; }
     
-        [DbFunction("RentooloEntities8", "fnGetAllUsers")]
+        [DbFunction("RentooloEntities", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetAllUsers_Result>("[RentooloEntities8].[fnGetAllUsers]()");
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetAllUsers_Result>("[RentooloEntities].[fnGetAllUsers]()");
         }
     
-        [DbFunction("RentooloEntities8", "fnGetTablesRows")]
+        [DbFunction("RentooloEntities", "fnGetTablesRows")]
         public virtual IQueryable<fnGetTablesRows_Result> fnGetTablesRows()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetTablesRows_Result>("[RentooloEntities8].[fnGetTablesRows]()");
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetTablesRows_Result>("[RentooloEntities].[fnGetTablesRows]()");
         }
     
-        [DbFunction("RentooloEntities8", "fnGetUserReferralsSecondLevel")]
+        [DbFunction("RentooloEntities", "fnGetUserReferralsSecondLevel")]
         public virtual IQueryable<fnGetUserReferralsSecondLevel_Result> fnGetUserReferralsSecondLevel(Nullable<System.Guid> userId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserReferralsSecondLevel_Result>("[RentooloEntities8].[fnGetUserReferralsSecondLevel](@userId)", userIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserReferralsSecondLevel_Result>("[RentooloEntities].[fnGetUserReferralsSecondLevel](@userId)", userIdParameter);
         }
     
-        [DbFunction("RentooloEntities8", "fnGetUserReferralsThirdLevel")]
+        [DbFunction("RentooloEntities", "fnGetUserReferralsThirdLevel")]
         public virtual IQueryable<fnGetUserReferralsThirdLevel_Result> fnGetUserReferralsThirdLevel(Nullable<System.Guid> userId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserReferralsThirdLevel_Result>("[RentooloEntities8].[fnGetUserReferralsThirdLevel](@userId)", userIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserReferralsThirdLevel_Result>("[RentooloEntities].[fnGetUserReferralsThirdLevel](@userId)", userIdParameter);
         }
     
-        [DbFunction("RentooloEntities8", "fnGetUserWallets")]
+        [DbFunction("RentooloEntities", "fnGetUserWallets")]
         public virtual IQueryable<fnGetUserWallets_Result> fnGetUserWallets(Nullable<System.Guid> userId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserWallets_Result>("[RentooloEntities8].[fnGetUserWallets](@userId)", userIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserWallets_Result>("[RentooloEntities].[fnGetUserWallets](@userId)", userIdParameter);
         }
     
         public virtual int spAddAdvert(Nullable<int> category, string name, string description, Nullable<System.Guid> createdUserId, Nullable<double> price, string address, string phone, Nullable<int> messageType, System.Data.Entity.Spatial.DbGeography position, string imgUrls, string youTubeUrl)
@@ -211,6 +211,19 @@ namespace Rentoolo.Model
                 new ObjectParameter("advertId", typeof(long));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddWatchedByCookies", uidParameter, advertIdParameter);
+        }
+    
+        public virtual ObjectResult<spGetComments_Result> spGetComments(Nullable<long> objectId, Nullable<System.Guid> userId)
+        {
+            var objectIdParameter = objectId.HasValue ?
+                new ObjectParameter("objectId", objectId) :
+                new ObjectParameter("objectId", typeof(long));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetComments_Result>("spGetComments", objectIdParameter, userIdParameter);
         }
     
         public virtual ObjectResult<spGetFavorites_Result> spGetFavorites(Nullable<System.Guid> userId)

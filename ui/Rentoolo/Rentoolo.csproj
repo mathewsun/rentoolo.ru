@@ -336,6 +336,7 @@
     <Content Include="DataBase\spAddFavoritesAuctionsByCookies.sql" />
     <Content Include="DataBase\spAddWatchedByCookies.sql" />
     <Content Include="DataBase\spAddWatched.sql" />
+    <Content Include="DataBase\spGetComments.sql" />
     <Content Include="DataBase\spGetTokenCostToday.sql" />
     <Content Include="DataBase\spGetWatchedByCookies.sql" />
     <Content Include="DataBase\spGetWatched.sql" />
@@ -363,6 +364,7 @@
     <Content Include="DataBase\tables\Favorites.sql" />
     <Content Include="DataBase\tables\FavoritesByCookies.sql" />
     <Content Include="DataBase\tables\TenderRequest.sql" />
+    <Content Include="DataBase\tables\Tenders.sql" />
     <Content Include="DataBase\tables\TokensBuying.sql" />
     <Content Include="DataBase\tables\TokensCost.sql" />
     <Content Include="DataBase\tables\TokensSelling.sql" />
@@ -1060,6 +1062,7 @@
     <Compile Include="Model\Categories.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\CommentForUser.cs" />
     <Compile Include="Model\Comments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1151,6 +1154,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Settings.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetComments_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetFavoritesByCookies_Result.cs">

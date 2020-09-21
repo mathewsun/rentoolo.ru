@@ -1082,19 +1082,19 @@ namespace Rentoolo.Model
         #endregion
 
 
-                
+
         #region UserViews
 
         public static void TryAddUserView(UserViews userView)
         {
             using (var dc = new RentooloEntities())
             {
-                var views = dc.UserViews.Where(x => x.UserId == userView.UserId).OrderBy(x=>x.Date);
+                var views = dc.UserViews.Where(x => x.UserId == userView.UserId).OrderBy(x => x.Date);
                 if (views.Any())
                 {
                     int count = views.Count();
 
-                    if ((views.ToArray()[count-1].Date.Date - DateTime.Now.Date).Days >= 1)
+                    if ((views.ToArray()[count - 1].Date.Date - DateTime.Now.Date).Days >= 1)
                     {
                         dc.UserViews.Add(userView);
                         dc.SaveChanges();
@@ -1110,7 +1110,7 @@ namespace Rentoolo.Model
         }
 
 
-        public static int GetUserViewsCount(int objectId,int type)
+        public static int GetUserViewsCount(int objectId, int type)
         {
             using (var dc = new RentooloEntities())
             {
@@ -1199,18 +1199,16 @@ namespace Rentoolo.Model
         #endregion
 
 
-
-
-        public static int LikesCount(int commentId)
+        public static int GetLikesCount(int commentId)
         {
-            using(var dc = new RentooloEntities())
+            using (var dc = new RentooloEntities())
             {
                 var count = dc.Likes.Count(x => x.CommentId == commentId);
                 return count;
             }
         }
 
-        public static int DisLikesCount(int commentId)
+        public static int GetDisLikesCount(int commentId)
         {
             using (var dc = new RentooloEntities())
             {
@@ -1269,19 +1267,21 @@ namespace Rentoolo.Model
         }
 
 
-        
-
-
-        
-
-
-
-
-
-
         #endregion
 
+        #region Comments
 
+        public static List<spGetComments_Result> GetComments_Results(long objId, Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                List<spGetComments_Result> result = dc.spGetComments(objId, userId).ToList();
+                
+                return result;
+            }
+        }
+
+        #endregion
 
     }
 }

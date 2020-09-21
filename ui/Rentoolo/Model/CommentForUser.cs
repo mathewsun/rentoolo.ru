@@ -18,17 +18,13 @@ namespace Rentoolo.Model
             Date = comment.Date;
             Type = comment.Type;
 
-            Likes = DataHelper.LikesCount(comment.Id);
-            DisLikes = DataHelper.DisLikesCount(comment.Id);
+            Likes = DataHelper.GetLikesCount(comment.Id);
+            DisLikes = DataHelper.GetDisLikesCount(comment.Id);
             HaveLike = DataHelper.HaveUserLike(comment.UserId, comment.Id);
             HaveDisLike = DataHelper.HaveUserDisLike(comment.UserId, comment.Id);
-
-
-    }
-
-
-
-
+            
+        }
+        
         
             public int Id { get; set; }
             public System.Guid UserId { get; set; }
@@ -42,7 +38,6 @@ namespace Rentoolo.Model
             public bool HaveLike { get; set; }
             public bool HaveDisLike { get; set; }
         
-
 
     }
 }

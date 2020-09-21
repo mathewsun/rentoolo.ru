@@ -151,10 +151,30 @@
                     <% foreach (var comment in CommentList)
                        { %>
                             Name: <%= comment.UserName %>    <br />
-                     Created: <%= comment.Date %>    <br />
-                    Comment: <%= comment.Comment %>    <br />
-                    Likes: <%= comment.Likes %>    <br />
-                    Dislikes: <%= comment.DisLikes %>    <br />
+                     Created: <%= comment.Date %>            <br />
+                    Comment: <%= comment.Comment %>          <br />
+                    Likes: <%= comment.Likes %>              <br />
+                    Dislikes: <%= comment.DisLikes %>        <br />
+
+
+                    <%
+
+                        // TODO: доделать отображение иконок лайков и дизлайков (синий если нажата была пользователем и серый по дефолту)
+                        
+                        if (comment.HaveLike)
+                        {
+                            
+                        }
+
+                        if (comment.HaveDisLike)
+                        {
+
+                        }
+
+
+                        %>
+
+
                     
                     <asp:Button ID="ButtonLike" runat="server" Text="Like" OnClick="ButtonLike_Click" CommandName="" CommandArgument="" />
                     <asp:Button ID="ButtonDisLike" runat="server" Text="DisLike" OnClick="ButtonDisLike_Click" CommandName="" CommandArgument="" />

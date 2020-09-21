@@ -12,7 +12,7 @@ namespace Rentoolo
     {
         public Adverts AdvertItem;
         public int ViewsCount = 0;
-        public List<Comments> CommentList;
+        public List<CommentForUser> CommentList;
         
         
         int advId;
@@ -50,11 +50,11 @@ namespace Rentoolo
                 }
 
 
-                CommentList = DataHelper.GetComments(StructsHelper.ViewedType["product"], (int)id);
+                List<Comments> CommentsList = DataHelper.GetComments(StructsHelper.ViewedType["product"], (int)id);
 
-                foreach(var comment in CommentList)
+                foreach(var comment in CommentsList)
                 {
-                    comment.Likes = 
+                    CommentList.Add(new CommentForUser(comment));
                 }
 
 

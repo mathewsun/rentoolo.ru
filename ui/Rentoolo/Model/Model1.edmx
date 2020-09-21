@@ -177,9 +177,9 @@
         </EntityType>
         <EntityType Name="DisLikes">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CommentId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
@@ -820,6 +820,10 @@
           <Parameter Name="uid" Type="nvarchar" Mode="In" />
           <Parameter Name="advertId" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="spGetComments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="objectId" Type="bigint" Mode="In" />
+          <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="spGetFavorites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
         </Function>
@@ -1150,9 +1154,9 @@
         </EntityType>
         <EntityType Name="DisLikes">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CommentId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
         </EntityType>
@@ -1716,7 +1720,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities8" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RentooloEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
@@ -1855,6 +1859,10 @@
             <Parameter Name="uid" Mode="In" Type="String" />
             <Parameter Name="advertId" Mode="In" Type="Int64" />
           </FunctionImport>
+          <FunctionImport Name="spGetComments" ReturnType="Collection(RentooloModel.spGetComments_Result)">
+            <Parameter Name="objectId" Mode="In" Type="Int64" />
+            <Parameter Name="userId" Mode="In" Type="Guid" />
+          </FunctionImport>
           <FunctionImport Name="spGetFavorites" ReturnType="Collection(RentooloModel.spGetFavorites_Result)">
             <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
@@ -1879,6 +1887,16 @@
             <Parameter Name="balance" Mode="In" Type="Double" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="spGetComments_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Guid" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="AdvertId" Nullable="false" />
+          <Property Type="String" Name="Comment" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="Likes" Nullable="false" />
+          <Property Type="Int32" Name="DisLikes" Nullable="false" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="spGetFavorites_Result">
           <Property Type="Int64" Name="Id" Nullable="false" />
           <Property Type="Int64" Name="AdvertId" Nullable="false" />
@@ -1974,7 +1992,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities8">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -2119,7 +2137,7 @@
           <EntitySetMapping Name="DisLikes">
             <EntityTypeMapping TypeName="RentooloModel.DisLikes">
               <MappingFragment StoreEntitySet="DisLikes">
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="CommentId" ColumnName="CommentId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
@@ -2587,6 +2605,20 @@
           <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="Хранилище RentooloModel.spAddFavoritesByCookies" />
           <FunctionImportMapping FunctionImportName="spAddWatched" FunctionName="Хранилище RentooloModel.spAddWatched" />
           <FunctionImportMapping FunctionImportName="spAddWatchedByCookies" FunctionName="Хранилище RentooloModel.spAddWatchedByCookies" />
+          <FunctionImportMapping FunctionImportName="spGetComments" FunctionName="Хранилище RentooloModel.spGetComments">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.spGetComments_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Likes" ColumnName="Likes" />
+                <ScalarProperty Name="DisLikes" ColumnName="DisLikes" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spGetFavorites" FunctionName="Хранилище RentooloModel.spGetFavorites">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetFavorites_Result">
