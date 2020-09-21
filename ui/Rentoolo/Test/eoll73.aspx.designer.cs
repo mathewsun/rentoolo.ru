@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Rentoolo.Account
+namespace Rentoolo.Test
 {
 
 
-    public partial class Tenders
+    public partial class eoll73
     {
     }
 }

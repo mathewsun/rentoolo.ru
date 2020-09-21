@@ -7,54 +7,45 @@
 // </автоматически создаваемое>
 //------------------------------------------------------------------------------
 
-namespace Rentoolo {
+namespace Rentoolo.Account.TenderViews {
     
     
-    public partial class Advert {
+    public partial class CreateTender {
         
         /// <summary>
-        /// category_hidden элемент управления.
+        /// TextBoxTName элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden category_hidden;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxTName;
         
         /// <summary>
-        /// TextBoxComment элемент управления.
+        /// TextBoxTDescription элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxComment;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxTDescription;
         
         /// <summary>
-        /// Button1 элемент управления.
+        /// TextBoxTCost элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxTCost;
         
         /// <summary>
-        /// ButtonLike элемент управления.
+        /// ButtonAddRequest элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonLike;
-        
-        /// <summary>
-        /// ButtonDisLike элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonDisLike;
+        protected global::System.Web.UI.WebControls.Button ButtonAddRequest;
     }
 }

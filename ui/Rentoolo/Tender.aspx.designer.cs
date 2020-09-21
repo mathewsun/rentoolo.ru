@@ -10,51 +10,33 @@
 namespace Rentoolo {
     
     
-    public partial class Advert {
+    public partial class Tender {
         
         /// <summary>
-        /// category_hidden элемент управления.
+        /// TextBoxDescription элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden category_hidden;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxDescription;
         
         /// <summary>
-        /// TextBoxComment элемент управления.
+        /// TextBoxCost элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxComment;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxCost;
         
         /// <summary>
-        /// Button1 элемент управления.
+        /// ButtonAddRequest элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// ButtonLike элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonLike;
-        
-        /// <summary>
-        /// ButtonDisLike элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonDisLike;
+        protected global::System.Web.UI.WebControls.Button ButtonAddRequest;
     }
 }

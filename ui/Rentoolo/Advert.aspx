@@ -131,5 +131,59 @@
                 <%=AdvertItem.Phone %>
             </div>
         </div>
+        <div>
+            <div>
+                <h3>
+                    Добавить комментарий:
+                </h3>
+                <div>
+                    Комментарий: <asp:TextBox ID="TextBoxComment" runat="server"></asp:TextBox>
+                    <asp:Button ID="Button1" runat="server" Text="создать комментарий" OnClick="Button1_Click" />
+
+                </div>
+            </div>
+            <div>
+                <h4>
+                    Комментарии:
+                </h4>
+                <div>
+
+                    <% foreach (var comment in CommentList)
+                       { %>
+                            Name: <%= comment.UserName %>    <br />
+                     Created: <%= comment.Date %>            <br />
+                    Comment: <%= comment.Comment %>          <br />
+                    Likes: <%= comment.Likes %>              <br />
+                    Dislikes: <%= comment.DisLikes %>        <br />
+
+
+                    <%
+
+                        // TODO: доделать отображение иконок лайков и дизлайков (синий если нажата была пользователем и серый по дефолту)
+                        
+                        if (comment.HaveLike)
+                        {
+                            
+                        }
+
+                        if (comment.HaveDisLike)
+                        {
+
+                        }
+
+
+                        %>
+
+
+                    
+                    <asp:Button ID="ButtonLike" runat="server" Text="Like" OnClick="ButtonLike_Click" CommandName="" CommandArgument="" />
+                    <asp:Button ID="ButtonDisLike" runat="server" Text="DisLike" OnClick="ButtonDisLike_Click" CommandName="" CommandArgument="" />
+
+                    <% } %>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 </asp:Content>

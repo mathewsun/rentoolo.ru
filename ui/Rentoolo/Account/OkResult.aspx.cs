@@ -7,10 +7,15 @@ using System.Web.UI.WebControls;
 
 namespace Rentoolo.Account
 {
-    public partial class Tender : System.Web.UI.Page
+    public partial class OkResult : System.Web.UI.Page
     {
+
+        public string text = "ok";
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+
 
         }
     }

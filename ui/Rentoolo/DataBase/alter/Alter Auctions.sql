@@ -1,0 +1,1 @@
+﻿ALTER TABLE dbo.Auctions ADD [ImgUrls] [nvarchar](max) NULL

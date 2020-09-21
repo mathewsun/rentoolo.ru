@@ -37,10 +37,12 @@ namespace Rentoolo.Model
         public virtual DbSet<Currencies> Currencies { get; set; }
         public virtual DbSet<DailyStatistics> DailyStatistics { get; set; }
         public virtual DbSet<DeletedAdverts> DeletedAdverts { get; set; }
+        public virtual DbSet<DisLikes> DisLikes { get; set; }
         public virtual DbSet<Exceptions> Exceptions { get; set; }
         public virtual DbSet<Favorites> Favorites { get; set; }
         public virtual DbSet<FavoritesByCookies> FavoritesByCookies { get; set; }
         public virtual DbSet<Items> Items { get; set; }
+        public virtual DbSet<Likes> Likes { get; set; }
         public virtual DbSet<LoginStat> LoginStat { get; set; }
         public virtual DbSet<LoginStatistics> LoginStatistics { get; set; }
         public virtual DbSet<Memberships> Memberships { get; set; }
@@ -61,6 +63,7 @@ namespace Rentoolo.Model
         public virtual DbSet<UserSettings> UserSettings { get; set; }
         public virtual DbSet<UsersOpenAuthAccounts> UsersOpenAuthAccounts { get; set; }
         public virtual DbSet<UsersOpenAuthData> UsersOpenAuthData { get; set; }
+        public virtual DbSet<UserViews> UserViews { get; set; }
         public virtual DbSet<Wallets> Wallets { get; set; }
         public virtual DbSet<Watched> Watched { get; set; }
         public virtual DbSet<WatchedByCookies> WatchedByCookies { get; set; }
@@ -208,6 +211,19 @@ namespace Rentoolo.Model
                 new ObjectParameter("advertId", typeof(long));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddWatchedByCookies", uidParameter, advertIdParameter);
+        }
+    
+        public virtual ObjectResult<spGetComments_Result> spGetComments(Nullable<long> objectId, Nullable<System.Guid> userId)
+        {
+            var objectIdParameter = objectId.HasValue ?
+                new ObjectParameter("objectId", objectId) :
+                new ObjectParameter("objectId", typeof(long));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetComments_Result>("spGetComments", objectIdParameter, userIdParameter);
         }
     
         public virtual ObjectResult<spGetFavorites_Result> spGetFavorites(Nullable<System.Guid> userId)

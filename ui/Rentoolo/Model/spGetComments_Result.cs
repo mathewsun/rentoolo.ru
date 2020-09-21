@@ -10,18 +10,16 @@
 namespace Rentoolo.Model
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Tenders
+    public partial class spGetComments_Result
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public System.Guid UserOwnerId { get; set; }
-        public double Cost { get; set; }
-        public string ImgUrls { get; set; }
-        public Nullable<int> Status { get; set; }
-        public System.DateTime Created { get; set; }
-        public int CurrencyId { get; set; }
+        public System.Guid UserId { get; set; }
+        public int AdvertId { get; set; }
+        public string Comment { get; set; }
+        public System.DateTime Date { get; set; }
+        public int Likes { get; set; }
+        public int DisLikes { get; set; }
+        public int Type { get; set; }
     }
 }
