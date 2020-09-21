@@ -12,7 +12,9 @@ namespace Rentoolo
     {
         public Adverts AdvertItem;
         public int ViewsCount = 0;
-        public List<Comments> CommentList;
+        public List<CommentForUser> CommentList;
+        
+        
         int advId;
 
         // TODO: fix add UserViews add bug
@@ -48,7 +50,12 @@ namespace Rentoolo
                 }
 
 
-                CommentList = DataHelper.GetComments(StructsHelper.ViewedType["product"], (int)id);
+                List<Comments> CommentsList = DataHelper.GetComments(StructsHelper.ViewedType["product"], (int)id);
+
+                foreach(var comment in CommentsList)
+                {
+                    CommentList.Add(new CommentForUser(comment));
+                }
 
 
 
