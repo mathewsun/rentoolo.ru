@@ -1169,6 +1169,119 @@ namespace Rentoolo.Model
         #endregion
 
 
+        #region Likes/DisLikes
+
+
+        #region have like/dislike
+
+        public static bool HaveUserLike(Guid userId, int commentId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var like = dc.Likes.FirstOrDefault(x => (x.CommentId == commentId) && (x.UserId == userId));
+                bool haveLiked = like == null ? false : true;
+                return haveLiked;
+            }
+        }
+
+
+        public static bool HaveUserDisLike(Guid userId, int commentId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var like = dc.DisLikes.FirstOrDefault(x => (x.CommentId == commentId) && (x.UserId == userId));
+                bool haveDisLiked = like == null ? false : true;
+                return haveDisLiked;
+            }
+        }
+
+
+        #endregion
+
+
+
+
+        public static int LikesCount(int commentId)
+        {
+            using(var dc = new RentooloEntities())
+            {
+                var count = dc.Likes.Count(x => x.CommentId == commentId);
+                return count;
+            }
+        }
+
+        public static int DisLikesCount(int commentId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var count = dc.DisLikes.Count(x => x.CommentId == commentId);
+                return count;
+            }
+        }
+
+
+
+
+        public static void LikeUnLike(Guid userId, int commentId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                if (HaveUserLike(userId, commentId))
+                {
+                    Likes like = dc.Likes.Where(x => (x.CommentId == commentId) && (x.UserId == userId)).First();
+                    dc.Likes.Remove(like);
+                }
+                else
+                {
+                    if (HaveUserDisLike(userId, commentId))
+                    {
+                        // убирает дизлайк
+                        DisLikeUnDisLike(userId, commentId);
+                    }
+
+                    dc.Likes.Add(new Likes() { UserId = userId, CommentId = commentId });
+
+                }
+            }
+        }
+
+        public static void DisLikeUnDisLike(Guid userId, int commentId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                if (HaveUserDisLike(userId, commentId))
+                {
+                    var dislike = dc.DisLikes.First(x => (x.UserId == userId) && (x.CommentId == commentId));
+                    dc.DisLikes.Remove(dislike);
+                }
+                else
+                {
+                    if (HaveUserLike(userId, commentId))
+                    {
+                        // убирает лайк
+                        LikeUnLike(userId, commentId);
+                    }
+
+                    dc.DisLikes.Add(new DisLikes() { UserId = userId, CommentId = commentId });
+
+                }
+            }
+        }
+
+
+        
+
+
+        
+
+
+
+
+
+
+        #endregion
+
+
 
     }
 }

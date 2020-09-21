@@ -13,6 +13,8 @@ namespace Rentoolo
         public Adverts AdvertItem;
         public int ViewsCount = 0;
         public List<Comments> CommentList;
+        
+        
         int advId;
 
         // TODO: fix add UserViews add bug
@@ -49,6 +51,11 @@ namespace Rentoolo
 
 
                 CommentList = DataHelper.GetComments(StructsHelper.ViewedType["product"], (int)id);
+
+                foreach(var comment in CommentList)
+                {
+                    comment.Likes = 
+                }
 
 
 

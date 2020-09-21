@@ -366,6 +366,7 @@
     <Content Include="DataBase\tables\TokensBuying.sql" />
     <Content Include="DataBase\tables\TokensCost.sql" />
     <Content Include="DataBase\tables\TokensSelling.sql" />
+    <Content Include="DataBase\tables\Users.sql" />
     <Content Include="DataBase\tables\Watched.sql" />
     <Content Include="DataBase\tables\WatchedByCookies.sql" />
     <Content Include="docs\index.html" />
@@ -1071,6 +1072,9 @@
     <Compile Include="Model\DeletedAdverts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DisLikes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Exceptions.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1096,6 +1100,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Items.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Likes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LoginStat.cs">

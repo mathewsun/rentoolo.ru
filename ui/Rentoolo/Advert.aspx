@@ -156,8 +156,8 @@
                     Likes: <%= comment.Likes %>    <br />
                     Dislikes: <%= comment.DisLikes %>    <br />
                     
-                    <asp:Button ID="ButtonLike" runat="server" Text="Like" OnClick="ButtonLike_Click" />
-                    <asp:Button ID="ButtonDisLike" runat="server" Text="DisLike" OnClick="ButtonDisLike_Click" />
+                    <asp:Button ID="ButtonLike" runat="server" Text="Like" OnClick="ButtonLike_Click" CommandName="" CommandArgument="" />
+                    <asp:Button ID="ButtonDisLike" runat="server" Text="DisLike" OnClick="ButtonDisLike_Click" CommandName="" CommandArgument="" />
 
                     <% } %>
 
