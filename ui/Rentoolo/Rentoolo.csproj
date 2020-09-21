@@ -376,7 +376,39 @@
     <Content Include="Help.aspx" />
     <Content Include="HobbyRest.aspx" />
     <Content Include="HomeGarden.aspx" />
+    <Content Include="img\a\0ETyETt0UGH9SpLUCJJGQ.jpg" />
+    <Content Include="img\a\1ubiLdqmUKpYsar4SsM1A.jpg" />
+    <Content Include="img\a\1Yg7WTepOUe4guNHxqZgSw.jpg" />
+    <Content Include="img\a\5pCX225yECrJK1EdRDIKw.jpg" />
+    <Content Include="img\a\8bkqHlYySEmqCRWPeubGQ.jpg" />
+    <Content Include="img\a\9FtOlXC3KUWJ6D938o8Kmw.jpg" />
+    <Content Include="img\a\br10SfqbBUSvK8jFPm1r3Q.jpg" />
+    <Content Include="img\a\DhaLb5TLUSEvgfAxgH77Q.jpg" />
+    <Content Include="img\a\DU0vHVSLf0OOY5bwFefEMA.jpg" />
+    <Content Include="img\a\e1pheumNfUSooc5OhG7K8w.png" />
+    <Content Include="img\a\FnmKKH4Ak2oMXMcgnLKHw.jpg" />
+    <Content Include="img\a\g1TMt82J0WUJ8QHj8MhA.jpg" />
+    <Content Include="img\a\GcLH1ion40GwK8eK88m0Q.jpg" />
+    <Content Include="img\a\GSI4kgcK8UmITf7eW8ClSw.jpg" />
+    <Content Include="img\a\j7rMiCXWekmVM6TaCXnspg.jpg" />
+    <Content Include="img\a\KBl6y2RkKptV35fV8rg.jpg" />
+    <Content Include="img\a\KzFZndm8GkCewRbzpDzTzQ.jpg" />
+    <Content Include="img\a\mxsrgrPttUqWOQp0wBbQ.jpg" />
+    <Content Include="img\a\N22eeOEoEaZCPPkw39Zkw.jpg" />
+    <Content Include="img\a\nFulAD509kO262lg8wHqkQ.jpg" />
     <Content Include="img\a\noPhoto.png" />
+    <Content Include="img\a\oWD62LoCh0Ki7lDEi64c8w.jpg" />
+    <Content Include="img\a\PkfH63NfykK5IDAhQC97g.jpg" />
+    <Content Include="img\a\Q62a1tGae0WwHZy6tCiYVQ.jpg" />
+    <Content Include="img\a\qbt8Vq3gKU2tEnWH1l6LuA.jpg" />
+    <Content Include="img\a\SIHdBzJ2xkeewPafXldijw.jpg" />
+    <Content Include="img\a\sMFAAAITL06GeAXpGNqumA.jpg" />
+    <Content Include="img\a\UOsvIyfOc0ahpcP2o6VMEg.jpg" />
+    <Content Include="img\a\V6bJ415pk00SmjqznXbZA.jpg" />
+    <Content Include="img\a\VClzoRSFUOz9BjWDV7BDA.jpg" />
+    <Content Include="img\a\wcB4wOYDX0aj7Ef3GU4SQ.jpg" />
+    <Content Include="img\a\wCkZwxQHxUa4W0CpWexR2g.jpg" />
+    <Content Include="img\a\zvUwKw2GuESIKa8MalcwHw.jpg" />
     <Content Include="img\kitchen\avatars\69179930_736853823483887_5740857891485646848_n.jpg" />
     <Content Include="img\kitchen\avatars\69527679_631739310686765_4819614499147350016_n.jpg" />
     <Content Include="img\kitchen\avatars\94671454_277769756585463_6526749104637214720_n.jpg" />
@@ -415,7 +447,6 @@
     <Content Include="Template.aspx" />
     <Content Include="Tender.aspx" />
     <Content Include="Tenders.aspx" />
-    <Content Include="Test.aspx" />
     <Content Include="Admin\Result.ashx" />
     <Content Include="Account\Result.ashx" />
     <Content Include="AdminMaster.Master" />
@@ -424,6 +455,7 @@
     <Content Include="assets\fonts\toolkit-entypo.woff" />
     <Content Include="assets\fonts\toolkit-entypo.woff2" />
     <Content Include="Events.ashx" />
+    <Content Include="Test\eoll73.aspx" />
     <Content Include="Test\Konstantin.aspx" />
     <Content Include="TokensCost.aspx" />
     <Content Include="TokensOperations.aspx" />
@@ -1395,12 +1427,12 @@
     <Compile Include="Tenders.aspx.designer.cs">
       <DependentUpon>Tenders.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Test.aspx.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
+    <Compile Include="Test\eoll73.aspx.cs">
+      <DependentUpon>eoll73.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Test.aspx.designer.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
+    <Compile Include="Test\eoll73.aspx.designer.cs">
+      <DependentUpon>eoll73.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test\Konstantin.aspx.cs">
       <DependentUpon>Konstantin.aspx</DependentUpon>
