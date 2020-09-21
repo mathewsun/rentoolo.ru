@@ -22,7 +22,7 @@
     <meta property="image" content="https://www.Rentoolo.ru/assets/img/banner_1.jpg" />
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <link href="assets/css/toolkit.css?22222" rel="stylesheet">
+    <link href="assets/css/toolkit.css?4" rel="stylesheet">
     <link href="assets/css/application.css" rel="stylesheet">
     <link href="assets/css/additional.css?888" rel="stylesheet">
 
