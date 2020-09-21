@@ -102,13 +102,14 @@ namespace Rentoolo
         // TODO: add comments likes dislikes
         // TODO: test comments
 
-        protected void ButtonLike_Click(object sender, EventArgs e)
+        protected void ButtonLike_Click(object sender, CommandEventArgs e)
         {
+            
             // как взять ID комментария из списка?
             // DataHelper.UpdateCommentLikes()
         }
 
-        protected void ButtonDisLike_Click(object sender, EventArgs e)
+        protected void ButtonDisLike_Click(object sender, CommandEventArgs e)
         {
 
         }
