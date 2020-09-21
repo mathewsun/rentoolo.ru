@@ -329,6 +329,7 @@
     <Content Include="Category.aspx" />
     <Content Include="ConsumerElectronics.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="DataBase\alter\AlterUsers.sql" />
     <Content Include="DataBase\fnGetUserWallets.sql" />
     <Content Include="DataBase\Init\Init.sql" />
     <Content Include="DataBase\spAddFavoritesAuctions.sql" />
@@ -353,6 +354,7 @@
     <Content Include="DataBase\fnGetTablesRows.sql" />
     <Content Include="DataBase\fnGetAllUsers.sql" />
     <Content Include="DataBase\tables\CashOuts.sql" />
+    <Content Include="DataBase\tables\Comments.sql" />
     <Content Include="DataBase\tables\Phones.sql" />
     <Content Include="DataBase\tables\LoginStat.sql" />
     <Content Include="DataBase\tables\Auctions.sql" />
