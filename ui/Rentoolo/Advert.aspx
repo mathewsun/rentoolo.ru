@@ -161,12 +161,12 @@
 
                         // TODO: доделать отображение иконок лайков и дизлайков (синий если нажата была пользователем и серый по дефолту)
                         
-                        if (comment.HaveLike)
+                        if (comment.HaveLiked)
                         {
                             
                         }
 
-                        if (comment.HaveDisLike)
+                        if (comment.HaveDisLiked)
                         {
 
                         }

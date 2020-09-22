@@ -1283,5 +1283,16 @@ namespace Rentoolo.Model
 
         #endregion
 
+
+        public static List<spGetCommentsForUser_Result> spGetCommentsForUser(Guid userId, int advertId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var result = dc.spGetCommentsForUser(userId, advertId).ToList();
+
+                return result;
+            }
+        }
+
     }
 }

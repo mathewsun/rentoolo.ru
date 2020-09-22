@@ -12,9 +12,9 @@ namespace Rentoolo
     {
         public Adverts AdvertItem;
         public int ViewsCount = 0;
-        public List<CommentForUser> CommentList;
+        public List<spGetCommentsForUser_Result> CommentList;
         
-        
+        // advert id
         int advId;
 
         // TODO: fix add UserViews add bug
@@ -48,14 +48,10 @@ namespace Rentoolo
 
                     DataHelper.TryAddUserView(userViews);
                 }
+                
 
-
-                List<Comments> CommentsList = DataHelper.GetComments(StructsHelper.ViewedType["product"], (int)id);
-
-                foreach(var comment in CommentsList)
-                {
-                    CommentList.Add(new CommentForUser(comment));
-                }
+                // TODO: make tests
+                CommentList = DataHelper.spGetCommentsForUser(User.UserId, advId);
 
 
 
@@ -112,8 +108,7 @@ namespace Rentoolo
         protected void ButtonLike_Click(object sender, CommandEventArgs e)
         {
             
-            // как взять ID комментария из списка?
-            // DataHelper.UpdateCommentLikes()
+             
         }
 
         protected void ButtonDisLike_Click(object sender, CommandEventArgs e)
