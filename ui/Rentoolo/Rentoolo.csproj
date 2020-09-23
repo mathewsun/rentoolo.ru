@@ -337,6 +337,7 @@
     <Content Include="DataBase\spAddWatchedByCookies.sql" />
     <Content Include="DataBase\spAddWatched.sql" />
     <Content Include="DataBase\spGetComments.sql" />
+    <Content Include="DataBase\spGetCommentsTestVarkent.sql" />
     <Content Include="DataBase\spGetTokenCostToday.sql" />
     <Content Include="DataBase\spGetWatchedByCookies.sql" />
     <Content Include="DataBase\spGetWatched.sql" />
@@ -426,13 +427,11 @@
     <Content Include="Manager\ManageAdvert.aspx" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <LastGenOutput>Model1.Context1.cs</LastGenOutput>
     </Content>
     <Content Include="Model\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <LastGenOutput>Model11.cs</LastGenOutput>
     </Content>
     <Content Include="News.aspx" />
     <Content Include="notifications\index.html" />
@@ -1114,9 +1113,6 @@
     <Compile Include="Model\DeletedAdverts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DisLikes.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Exceptions.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1144,9 +1140,6 @@
     <Compile Include="Model\Items.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Likes.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\LoginStat.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1156,20 +1149,22 @@
     <Compile Include="Model\Memberships.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Model1.Context.cs">
+    <Compile Include="Model\Model1.Context.cs" />
+    <Compile Include="Model\Model1.Context1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Model1.cs">
+    <Compile Include="Model\Model1.cs" />
+    <Compile Include="Model\Model1.Designer.cs">
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Model\Model11.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\News.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -1193,6 +1188,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Settings.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetCommentsTestVarkent_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetComments_Result.cs">
@@ -1352,9 +1350,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UsersOpenAuthData.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\UserViews.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Wallets.cs">
