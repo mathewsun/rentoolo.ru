@@ -1283,5 +1283,17 @@ namespace Rentoolo.Model
 
         #endregion
 
+        #region CommentsTestVarkent
+
+        public static List<spGetCommentsTestVarkent_Result> spGetCommentsTestVarkent_Results(long objId, Guid userId)
+        {  
+            using (var dc1 = new RentooloEntities())
+            {
+                List<spGetCommentsTestVarkent_Result> result1 = dc1.spGetCommentsTestVarkent(objId, userId).ToList();
+                
+                return result1;
+            }
+        }
+        #endregion
     }
 }
