@@ -1,10 +1,11 @@
 ﻿USE [Rentoolo]
 GO
+/****** Object:  StoredProcedure [dbo].[spGetCommentsForUser]    Script Date: 24.09.2020 17:05:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE  [dbo].[spGetCommentsForUser]
+ALTER PROCEDURE  [dbo].[spGetCommentsForUser]
 (@userId uniqueidentifier, @advertId int)
 AS
 BEGIN

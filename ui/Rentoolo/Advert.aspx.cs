@@ -16,10 +16,8 @@ namespace Rentoolo
         
         // advert id
         int advId;
-
-        // TODO: fix add UserViews add bug
-
-
+        
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             long id = Convert.ToInt64(Request.QueryString["id"]);
@@ -29,8 +27,7 @@ namespace Rentoolo
             {
                 Response.Redirect("/");
             }
-
-            // TODO: make tests
+            
             CommentList = DataHelper.spGetCommentsForUser(User.UserId, advId);
 
             if (!IsPostBack)
@@ -51,15 +48,8 @@ namespace Rentoolo
 
                     DataHelper.TryAddUserView(userViews);
                 }
-
-
-
-
                 RptrComments.DataSource = CommentList;
                 RptrComments.DataBind();
-
-
-
 
                 AdvertItem = AdvertsDataHelper.GetAdvert(id);
 
@@ -82,8 +72,7 @@ namespace Rentoolo
             string tempId = Page.RouteData.Values["id"] as string;
         }
 
-
-        // add comment button
+        
         protected void Button1_Click(object sender, EventArgs e)
         {
             string commentText = TextBoxComment.Text;
@@ -100,29 +89,9 @@ namespace Rentoolo
             };
 
             DataHelper.AddComment(comment);
-
-
-
-        }
-
-        // TODO: add comments likes dislikes
-        // TODO: test comments
-
-        protected void ButtonLike_Click(object sender, CommandEventArgs e)
-        {
             
-            DataHelper.LikeUnLike(User.UserId, Convert.ToInt32(e.CommandArgument.ToString()));
-            var name = nameof(ButtonLike_Click);
-            Console.WriteLine(name);
-
         }
-
-        protected void ButtonDisLike_Click(object sender, CommandEventArgs e)
-        {
-
-            Console.WriteLine(nameof(ButtonDisLike_Click));
-        }
-
+        
         protected void RptrComments_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
 
@@ -148,5 +117,7 @@ namespace Rentoolo
                 
             }
         }
+
+
     }
 }
