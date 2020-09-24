@@ -111,19 +111,9 @@
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="ParentCategoryId" Type="int" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "Rentoolo.dbo.Comments" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Comments">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="AdvertId" />
-            <PropertyRef Name="Comment" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Likes" />
-            <PropertyRef Name="DisLikes" />
-            <PropertyRef Name="Type" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
@@ -859,6 +849,7 @@
           <EntitySet Name="Business" EntityType="Self.Business" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashIns" EntityType="Self.CashIns" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashOuts" EntityType="Self.CashOuts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeletedAdverts" EntityType="Self.DeletedAdverts" Schema="dbo" store:Type="Tables" />
@@ -901,19 +892,6 @@
     [Categories].[OrderId] AS [OrderId], 
     [Categories].[ParentCategoryId] AS [ParentCategoryId]
     FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Comments" EntityType="Self.Comments" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Comments].[Id] AS [Id], 
-    [Comments].[UserId] AS [UserId], 
-    [Comments].[UserName] AS [UserName], 
-    [Comments].[AdvertId] AS [AdvertId], 
-    [Comments].[Comment] AS [Comment], 
-    [Comments].[Date] AS [Date], 
-    [Comments].[Likes] AS [Likes], 
-    [Comments].[DisLikes] AS [DisLikes], 
-    [Comments].[Type] AS [Type]
-    FROM [dbo].[Comments] AS [Comments]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CashIns_Users" Association="Self.FK_CashIns_Users">
             <End Role="Users" EntitySet="Users" />
@@ -1114,6 +1092,20 @@
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="PaymentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Result" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdvertId" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Likes" Type="Int32" Nullable="false" />
+          <Property Name="DisLikes" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Currencies">
           <Key>
@@ -1538,28 +1530,6 @@
           <Property Name="OrderId" Type="Int32" Nullable="false" />
           <Property Name="ParentCategoryId" Type="Int32" />
         </EntityType>
-        <EntityType Name="Comments">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="AdvertId" />
-            <PropertyRef Name="Comment" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Likes" />
-            <PropertyRef Name="DisLikes" />
-            <PropertyRef Name="Type" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AdvertId" Type="Int32" Nullable="false" />
-          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Likes" Type="Int32" Nullable="false" />
-          <Property Name="DisLikes" Type="Int32" Nullable="false" />
-          <Property Name="Type" Type="Int32" Nullable="false" />
-        </EntityType>
         <Association Name="MembershipApplication">
           <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
           <End Role="Memberships" Type="Self.Memberships" Multiplicity="*" />
@@ -1724,7 +1694,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RentooloEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
@@ -1732,6 +1702,7 @@
           <EntitySet Name="Business" EntityType="Self.Business" />
           <EntitySet Name="CashIns" EntityType="Self.CashIns" />
           <EntitySet Name="CashOuts" EntityType="Self.CashOuts" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" />
           <EntitySet Name="Currencies" EntityType="Self.Currencies" />
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" />
           <EntitySet Name="DeletedAdverts" EntityType="Self.DeletedAdverts" />
@@ -1766,7 +1737,6 @@
           <EntitySet Name="Watched" EntityType="Self.Watched" />
           <EntitySet Name="WatchedByCookies" EntityType="Self.WatchedByCookies" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
-          <EntitySet Name="Comments" EntityType="Self.Comments" />
           <AssociationSet Name="MembershipApplication" Association="Self.MembershipApplication">
             <End Role="Applications" EntitySet="Applications" />
             <End Role="Memberships" EntitySet="Memberships" />
@@ -2012,7 +1982,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities3">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities4">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -2108,6 +2078,21 @@
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="PaymentNumber" ColumnName="PaymentNumber" />
                 <ScalarProperty Name="Result" ColumnName="Result" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="RentooloModel.Comments">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Likes" ColumnName="Likes" />
+                <ScalarProperty Name="DisLikes" ColumnName="DisLikes" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2535,21 +2520,6 @@
                 <ScalarProperty Name="Name_Ru_" ColumnName="Name(Ru)" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Comments">
-            <EntityTypeMapping TypeName="RentooloModel.Comments">
-              <MappingFragment StoreEntitySet="Comments">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Likes" ColumnName="Likes" />
-                <ScalarProperty Name="DisLikes" ColumnName="DisLikes" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -6,10 +6,10 @@
     <script src="/assets/js/jsonUtils.js?2"></script>
 
     <script>
-        $(document).ready(function () {
+        <%--$(document).ready(function () {
             $.get("/assets/json/categories.json", function (data) {
                 var category = findJsonElementById(data, <%=AdvertItem.Category%>);
-
+        
                 if (category !== undefined) {
                     $("#category").html(category.name_ru);
                 }
@@ -29,7 +29,7 @@
             });
 
             $(".photoContainer").brazzersCarousel();
-        });
+        });--%>
 
         
     </script>
@@ -146,27 +146,28 @@
                 <h4>
                     Комментарии:
                 </h4>
-                <div>
+                <%--<div>
 
                     <% foreach (var comment in CommentList)
                        { %>
-                            Name: <%= comment.UserName %>    <br />
+                            Name:     <br />
                      Created: <%= comment.Date %>            <br />
                     Comment: <%= comment.Comment %>          <br />
                     Likes: <%= comment.Likes %>              <br />
                     Dislikes: <%= comment.DisLikes %>        <br />
+                    
 
 
                     <%
 
                         // TODO: доделать отображение иконок лайков и дизлайков (синий если нажата была пользователем и серый по дефолту)
                         
-                        if (comment.HaveLiked)
+                        if ((bool)comment.HaveLiked)
                         {
                             
                         }
 
-                        if (comment.HaveDisLiked)
+                        if ((bool)comment.HaveDisLiked)
                         {
 
                         }
@@ -174,16 +175,86 @@
 
                         %>
 
+                    <button onclick="javascript:Like("<%=comment.UserId %>",<%=comment.Id %>)">Like test js</button>
+                    <button onclick="Like(<%=comment.UserId %>,<%=comment.Id %>)">Like</button>
 
                     
-                    <asp:Button ID="ButtonLike" runat="server" Text="Like" OnClick="ButtonLike_Click" CommandName="" CommandArgument="" />
-                    <asp:Button ID="ButtonDisLike" runat="server" Text="DisLike" OnClick="ButtonDisLike_Click" CommandName="" CommandArgument="" />
+
 
                     <% } %>
 
-                </div>
+                </div>--%>
+
+
+
+                <asp:Repeater ID="RptrComments" runat="server" OnItemDataBound="RptrComments_ItemDataBound" OnItemCommand="RptrComments_ItemCommand" >
+                    <ItemTemplate>
+                        <div>
+                            Name:     <br />
+                            Created: <%#Eval("Date") %>          <br />
+                            Comment: <%#Eval("Date") %>          <br />
+                            Likes: <%#Eval("date") %>              <br />
+                            Dislikes: <%#Eval("date") %>        <br />
+                            <asp:Button ID="ButtonLike" runat="server" Text="Like click" CommandArgument='<%#Eval("Id") %>' />
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+
+
+
+
+
+
+
             </div>
         </div>
+
+
+        <script type="text/javascript">
+
+            function Like(userId, commentId) {
+
+                let data = { UserId: "", CommentId: null };
+                data.UserId = userId;
+                data.CommentId = commentId;
+
+                console.log(data);
+                
+                let url = "/api/LikesDisLikes";
+
+                fetch(url, {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data) 
+                });
+
+                alert("some");
+                
+
+            }
+
+            function DisLike(userId, commentId) {
+
+                let data = { UserId: "", CommentId: null };
+                data.UserId = userId;
+                data.CommentId = commentId;
+                
+                let url = "";
+
+                fetch(url, {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data) 
+                });
+
+            }
+
+
+        </script>
 
     </div>
 </asp:Content>

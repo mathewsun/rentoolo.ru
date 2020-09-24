@@ -1036,6 +1036,7 @@
     <Compile Include="Controllers\InstructionController.cs" />
     <Compile Include="Controllers\InstructionsController.cs" />
     <Compile Include="Controllers\KitchenModel\Recipe.cs" />
+    <Compile Include="Controllers\LikesDisLikesController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\TopRecipesController.cs" />
     <Compile Include="HelperModels\StateStructs.cs" />
@@ -1109,6 +1110,7 @@
     <Compile Include="Model\Likes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\LikesDisLikes.cs" />
     <Compile Include="Model\LoginStat.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

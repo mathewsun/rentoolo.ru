@@ -1240,6 +1240,7 @@ namespace Rentoolo.Model
                     dc.Likes.Add(new Likes() { UserId = userId, CommentId = commentId });
 
                 }
+                dc.SaveChanges();
             }
         }
 
@@ -1263,6 +1264,7 @@ namespace Rentoolo.Model
                     dc.DisLikes.Add(new DisLikes() { UserId = userId, CommentId = commentId });
 
                 }
+                dc.SaveChanges();
             }
         }
 

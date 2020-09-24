@@ -10,7 +10,7 @@ namespace Rentoolo
 {
     public partial class Advert : BasicPage
     {
-        public Adverts AdvertItem;
+        public Adverts AdvertItem = new Adverts();
         public int ViewsCount = 0;
         public List<spGetCommentsForUser_Result> CommentList;
         
@@ -30,6 +30,9 @@ namespace Rentoolo
                 Response.Redirect("/");
             }
 
+            // TODO: make tests
+            CommentList = DataHelper.spGetCommentsForUser(User.UserId, advId);
+
             if (!IsPostBack)
             {
 
@@ -48,12 +51,12 @@ namespace Rentoolo
 
                     DataHelper.TryAddUserView(userViews);
                 }
-                
-
-                // TODO: make tests
-                CommentList = DataHelper.spGetCommentsForUser(User.UserId, advId);
 
 
+
+
+                RptrComments.DataSource = CommentList;
+                RptrComments.DataBind();
 
 
 
@@ -108,12 +111,31 @@ namespace Rentoolo
         protected void ButtonLike_Click(object sender, CommandEventArgs e)
         {
             
-             
+            DataHelper.LikeUnLike(User.UserId, Convert.ToInt32(e.CommandArgument.ToString()));
+            var name = nameof(ButtonLike_Click);
+            Console.WriteLine(name);
+
         }
 
         protected void ButtonDisLike_Click(object sender, CommandEventArgs e)
         {
 
+            Console.WriteLine(nameof(ButtonDisLike_Click));
+        }
+
+        protected void RptrComments_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+
+        }
+
+        protected void RptrComments_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+
+            DataHelper.LikeUnLike(User.UserId, Convert.ToInt32(e.CommandArgument.ToString()));
+
+            var ca = e.CommandArgument.ToString();
+
+            Console.WriteLine(e.CommandArgument.ToString());
         }
     }
 }
