@@ -18,8 +18,9 @@ namespace Rentoolo.Model
         public int AdvertId { get; set; }
         public string Comment { get; set; }
         public System.DateTime Date { get; set; }
-        public Nullable<int> Likes { get; set; }
-        public Nullable<int> DisLikes { get; set; }
+        public string UserName { get; set; }
+        public Nullable<int> LikesCount { get; set; }
+        public Nullable<int> DisLikesCount { get; set; }
         public Nullable<bool> HaveDisLiked { get; set; }
         public Nullable<bool> HaveLiked { get; set; }
         public int Type { get; set; }

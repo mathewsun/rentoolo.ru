@@ -130,12 +130,23 @@ namespace Rentoolo
 
         protected void RptrComments_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+            string cmdName = e.CommandName.ToString();
+            string cmdArg = e.CommandArgument.ToString();
+            int commentId = Convert.ToInt32(cmdArg);
 
-            DataHelper.LikeUnLike(User.UserId, Convert.ToInt32(e.CommandArgument.ToString()));
-
-            var ca = e.CommandArgument.ToString();
-
-            Console.WriteLine(e.CommandArgument.ToString());
+            switch (cmdName)
+            {
+                case "Like":
+                    DataHelper.LikeUnLike(User.UserId, commentId);
+                    break;
+                case "DisLike":
+                    DataHelper.DisLikeUnDisLike(User.UserId, commentId);
+                    break;
+                default:
+                    throw new Exception("unsopprted case");
+                    break;
+                
+            }
         }
     }
 }

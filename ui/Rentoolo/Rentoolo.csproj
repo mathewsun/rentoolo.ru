@@ -1036,7 +1036,6 @@
     <Compile Include="Controllers\InstructionController.cs" />
     <Compile Include="Controllers\InstructionsController.cs" />
     <Compile Include="Controllers\KitchenModel\Recipe.cs" />
-    <Compile Include="Controllers\LikesDisLikesController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\TopRecipesController.cs" />
     <Compile Include="HelperModels\StateStructs.cs" />

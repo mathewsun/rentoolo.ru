@@ -1694,7 +1694,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RentooloEntities6" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
@@ -1881,8 +1881,9 @@
           <Property Type="Int32" Name="AdvertId" Nullable="false" />
           <Property Type="String" Name="Comment" Nullable="false" />
           <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="Likes" Nullable="true" />
-          <Property Type="Int32" Name="DisLikes" Nullable="true" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="LikesCount" Nullable="true" />
+          <Property Type="Int32" Name="DisLikesCount" Nullable="true" />
           <Property Type="Boolean" Name="HaveDisLiked" Nullable="true" />
           <Property Type="Boolean" Name="HaveLiked" Nullable="true" />
           <Property Type="Int32" Name="Type" Nullable="false" />
@@ -1982,7 +1983,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities4">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities6">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -2617,8 +2618,9 @@
                 <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Likes" ColumnName="Likes" />
-                <ScalarProperty Name="DisLikes" ColumnName="DisLikes" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LikesCount" ColumnName="LikesCount" />
+                <ScalarProperty Name="DisLikesCount" ColumnName="DisLikesCount" />
                 <ScalarProperty Name="HaveDisLiked" ColumnName="HaveDisLiked" />
                 <ScalarProperty Name="HaveLiked" ColumnName="HaveLiked" />
                 <ScalarProperty Name="Type" ColumnName="Type" />

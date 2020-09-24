@@ -8,13 +8,16 @@ CREATE PROCEDURE  [dbo].[spGetCommentsForUser]
 (@userId uniqueidentifier, @advertId int)
 AS
 BEGIN
+
+
 	SELECT [Id]
-      ,[UserId]
+      ,[cmnts].[UserId]
       ,[AdvertId]
       ,[Comment]
       ,[Date]
-	  ,(SELECT COUNT(*) FROM [dbo].[Likes] WHERE CommentId = Id) AS Likes
-	  ,(SELECT COUNT(*) FROM [dbo].[DisLikes] WHERE CommentId = Id) AS DisLikes
+	  ,[usrs].[UserName]
+	  ,(SELECT COUNT(*) FROM [dbo].[Likes] AS lks WHERE lks.CommentId = cmnts.Id) AS LikesCount
+	  ,(SELECT COUNT(*) FROM [dbo].[DisLikes] AS dlks WHERE dlks.CommentId = cmnts.Id) AS DisLikesCount
 
 	  ,CONVERT(BIT, (CASE when  EXISTS (SELECT * FROM [dbo].[DisLikes] 
 	  WHERE CommentId = Id AND UserId = @userId) then 1 ELSE 0 END) ) AS HaveDisLiked
@@ -23,7 +26,9 @@ BEGIN
 	  WHERE CommentId = Id AND UserId = @userId) then 1 ELSE 0 END) ) AS HaveLiked
 
       ,[Type]
-  FROM [Comments]
-	where [AdvertId] = @advertId
+  FROM [Comments] AS cmnts
+  JOIN [Users] AS usrs 
+  ON(cmnts.UserId = usrs.UserId)
+	WHERE [AdvertId] = @advertId
 	ORDER BY [Date] ASC
 END

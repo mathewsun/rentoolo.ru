@@ -146,115 +146,25 @@
                 <h4>
                     Комментарии:
                 </h4>
-                <%--<div>
-
-                    <% foreach (var comment in CommentList)
-                       { %>
-                            Name:     <br />
-                     Created: <%= comment.Date %>            <br />
-                    Comment: <%= comment.Comment %>          <br />
-                    Likes: <%= comment.Likes %>              <br />
-                    Dislikes: <%= comment.DisLikes %>        <br />
-                    
-
-
-                    <%
-
-                        // TODO: доделать отображение иконок лайков и дизлайков (синий если нажата была пользователем и серый по дефолту)
-                        
-                        if ((bool)comment.HaveLiked)
-                        {
-                            
-                        }
-
-                        if ((bool)comment.HaveDisLiked)
-                        {
-
-                        }
-
-
-                        %>
-
-                    <button onclick="javascript:Like("<%=comment.UserId %>",<%=comment.Id %>)">Like test js</button>
-                    <button onclick="Like(<%=comment.UserId %>,<%=comment.Id %>)">Like</button>
-
-                    
-
-
-                    <% } %>
-
-                </div>--%>
-
-
-
+                
                 <asp:Repeater ID="RptrComments" runat="server" OnItemDataBound="RptrComments_ItemDataBound" OnItemCommand="RptrComments_ItemCommand" >
                     <ItemTemplate>
                         <div>
-                            Name:     <br />
+                            Name:  <%#Eval("UserName") %>   <br />
                             Created: <%#Eval("Date") %>          <br />
-                            Comment: <%#Eval("Date") %>          <br />
-                            Likes: <%#Eval("date") %>              <br />
-                            Dislikes: <%#Eval("date") %>        <br />
-                            <asp:Button ID="ButtonLike" runat="server" Text="Like click" CommandArgument='<%#Eval("Id") %>' />
+                            Comment: <%#Eval("Comment") %>          <br />
+                            Likes: <%#Eval("LikesCount") %>              <br />
+                            Dislikes: <%#Eval("DisLikesCount") %>        <br />
+                            HaveLiked: <%#Eval("HaveLiked") %>  <br />
+                            HaveDisLiked:  <%#Eval("HaveDisLiked") %>  <br />
+                            <asp:Button ID="ButtonLike" runat="server" Text="Like" CommandName="Like" CommandArgument='<%#Eval("Id") %>' />
+                            <asp:Button ID="ButtonDisLike" runat="server" Text="DisLike" CommandName="DisLike" CommandArgument='<%#Eval("Id") %>' />
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
 
-
-
-
-
-
-
             </div>
         </div>
-
-
-        <script type="text/javascript">
-
-            function Like(userId, commentId) {
-
-                let data = { UserId: "", CommentId: null };
-                data.UserId = userId;
-                data.CommentId = commentId;
-
-                console.log(data);
-                
-                let url = "/api/LikesDisLikes";
-
-                fetch(url, {
-                        method: 'POST',
-                        headers: {
-                          'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data) 
-                });
-
-                alert("some");
-                
-
-            }
-
-            function DisLike(userId, commentId) {
-
-                let data = { UserId: "", CommentId: null };
-                data.UserId = userId;
-                data.CommentId = commentId;
-                
-                let url = "";
-
-                fetch(url, {
-                        method: 'POST',
-                        headers: {
-                          'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data) 
-                });
-
-            }
-
-
-        </script>
 
     </div>
 </asp:Content>
