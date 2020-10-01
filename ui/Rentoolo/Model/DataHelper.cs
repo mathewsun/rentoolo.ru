@@ -1283,8 +1283,6 @@ namespace Rentoolo.Model
             }
         }
 
-        #endregion
-
 
         public static List<spGetCommentsForUser_Result> spGetCommentsForUser(Guid userId, int advertId)
         {
@@ -1295,6 +1293,55 @@ namespace Rentoolo.Model
                 return result;
             }
         }
+
+        #endregion
+
+
+
+        #region Dialogs
+
+        public static void CreateDialog(Guid user1, Guid user2)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.DialogsInfo.Add(new DialogsInfo { User1Id = user1, User2Id = user2 });
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static void SaveNewMessage(Guid userId, Int64 dialogId, string message)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.DialogMessages.Add(new DialogMessages() { FromUserId = userId, DialogInfoId = dialogId, Message = message });
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static List<DialogMessages> GetMessages(Int64 dialogId, int skipCount = 0)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var messages = dc.DialogMessages.Select(x => x).OrderBy(x=>x.Id).Skip(skipCount);
+                return messages.ToList();
+            }
+        }
+
+        public static List<DialogsInfo> GetDialogs(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var chats = dc.DialogsInfo.Where(x => (x.User1Id == userId) || (x.User2Id == userId));
+                return chats.ToList();
+            }
+        }
+
+
+
+
+        #endregion
 
     }
 }

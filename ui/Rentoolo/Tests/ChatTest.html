@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Chat tests</h1>
+
+    <div id="app">
+
+        {{message1}} <br />
+
+
+                     <div>
+                         <div>
+                             <div v-for="(chat,index) in chats" :key="index">
+
+                                 <button @click="getMessages(chat.Id)">
+                                     {{chat.Id}}
+                                 </button>
+
+                             </div>
+                         </div>
+                     </div>
+
+        <div>
+            <div v-for="(message,index) in messages" :key="index">
+                <div>
+                    From:{{message.FromUserId}} <br />
+                    Message: <br />
+                    {{message.Message}}
+                    <hr />
+                </div>
+                
+
+            </div>
+        </div>
+        
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                userId: "A55A7415-80E3-4DFD-93A1-3EA9D8D88329",
+                message1: 'Hello Vue!',
+                showChats: true,
+                chats: [],
+                messages: []
+            },
+            created: function () {
+                this.getChats();
+            },
+            methods: {
+                getChats() {
+                    // dont forbid to change url
+                    let url = "http://localhost:53225/api/chat/Dialogs/DialogList/" + this.userId;
+                    let data = {
+                        method: "GET"
+                    };
+                    fetch(url,data)
+                        .then((response) => {
+                            console.log(response);
+                            return response.json();
+                        })
+                        .then((data) => {
+                            console.log(data);
+                            this.chats = data;
+                        });
+
+                },
+                getMessages(chatId) {
+                    let url = "http://localhost:53225/api/chat/Dialogs/Messages/" + chatId;
+                    let data = {
+                        method: "GET"
+                    };
+                    fetch(url, data)
+                        .then((response) => {
+                            return response.json();
+                        })
+                        .then((data) => {
+                            console.log(data);
+                            this.messages = data;
+                        });
+                }
+            }
+
+        })
+
+    </script>
+</body>
+</html>

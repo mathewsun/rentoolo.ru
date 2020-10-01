@@ -8,6 +8,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using Rentoolo;
 using System.Web.Http;
+using Rentoolo.TestDir;
 
 namespace Rentoolo
 {
@@ -20,6 +21,7 @@ namespace Rentoolo
             // Code that runs on application startup
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterOpenAuth();
+            //new WSServer().Serve();
 
             RegisterRoutes(RouteTable.Routes);
 
@@ -50,6 +52,15 @@ namespace Rentoolo
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = System.Web.Http.RouteParameter.Optional }
             );
+
+            routes.MapHttpRoute(
+                name: "ChatsApi",
+                routeTemplate: "api/chat/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+                );
+
+
+
 
             routes.MapPageRoute("advertsRoute",
                 "Adverts/{id}",
