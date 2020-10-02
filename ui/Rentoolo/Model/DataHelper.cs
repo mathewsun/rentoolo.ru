@@ -1314,17 +1314,30 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                dc.DialogMessages.Add(new DialogMessages() { FromUserId = userId, DialogInfoId = dialogId, Message = message });
+                dc.DialogMessages.Add(new DialogMessages() { FromUserId = userId, DialogInfoId = dialogId, Message = message, Date = DateTime.Now });
                 dc.SaveChanges();
             }
         }
+
+        public static void SaveNewMessage(DialogMessages msg)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                msg.Date = DateTime.Now;
+                dc.DialogMessages.Add(msg);
+                dc.SaveChanges();
+            }
+        }
+
+
+
 
 
         public static List<DialogMessages> GetMessages(Int64 dialogId, int skipCount = 0)
         {
             using (var dc = new RentooloEntities())
             {
-                var messages = dc.DialogMessages.Select(x => x).OrderBy(x=>x.Id).Skip(skipCount);
+                var messages = dc.DialogMessages.Select(x => x).OrderBy(x=>x.Date).Skip(skipCount);
                 return messages.ToList();
             }
         }

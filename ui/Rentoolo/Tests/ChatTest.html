@@ -9,10 +9,24 @@
 
     <div id="app">
 
-        {{message1}} <br />
+
+        <div>
+            <button @click="showHideChats()">show/hide chats</button>
+            <button @click="showHideMessages">show/hide messages</button>
+        </div>
+
+        <div>
+            <div>
+                <input v-model="message" />
+            </div>
+            <button @click="sendMessage">send</button>
+        </div>
+
+        <h3>{{message1}} </h3>
+        
 
 
-                     <div>
+                     <div v-if="showChats">
                          <div>
                              <div v-for="(chat,index) in chats" :key="index">
 
@@ -24,7 +38,7 @@
                          </div>
                      </div>
 
-        <div>
+        <div v-if="showMessages">
             <div v-for="(message,index) in messages" :key="index">
                 <div>
                     From:{{message.FromUserId}} <br />
@@ -49,20 +63,29 @@
             el: '#app',
             data: {
                 userId: "A55A7415-80E3-4DFD-93A1-3EA9D8D88329",
+                currentChatId: null,
                 message1: 'Hello Vue!',
                 showChats: true,
                 chats: [],
-                messages: []
+                messages: [],
+                message: "",
+                showMessages: false
             },
             created: function () {
                 this.getChats();
             },
             methods: {
+                showHideChats() {
+                    this.showChats = !this.showChats;
+                },
+                showHideMessages() {
+                    this.showMessages = !this.showMessages;
+                },
                 getChats() {
                     // dont forbid to change url
                     let url = "http://localhost:53225/api/chat/Dialogs/DialogList/" + this.userId;
                     let data = {
-                        method: "GET"
+                        method: "GET",
                     };
                     fetch(url,data)
                         .then((response) => {
@@ -77,6 +100,7 @@
                 },
                 getMessages(chatId) {
                     let url = "http://localhost:53225/api/chat/Dialogs/Messages/" + chatId;
+                    this.currentChatId = chatId;
                     let data = {
                         method: "GET"
                     };
@@ -88,6 +112,38 @@
                             console.log(data);
                             this.messages = data;
                         });
+                    this.showMessages = true;
+                },
+                sendMessage() {
+                    let bodyData = {
+                        DialogInfoId: this.currentChatId,
+                        Message: this.message,
+                        FromUserId: this.userId,
+
+                    }
+
+                    let url = "http://localhost:53225/api/chat/Dialogs/CreateMessage";
+
+                    let data = {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Access-Control-Allow-Origin': '*'
+                        },
+                        body: JSON.stringify(bodyData)
+                    };
+                    fetch(url, data)
+                        .then((response) => {
+                            
+                            return response;
+                        })
+                        .then((data) => {
+                            console.log(data);
+                        });
+
+                    this.message = "";
+
+
                 }
             }
 

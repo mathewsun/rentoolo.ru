@@ -18,5 +18,6 @@ namespace Rentoolo.Model
         public long DialogInfoId { get; set; }
         public string Message { get; set; }
         public System.Guid FromUserId { get; set; }
+        public System.DateTime Date { get; set; }
     }
 }

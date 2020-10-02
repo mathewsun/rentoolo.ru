@@ -8,6 +8,7 @@ using System.Web.Http;
 
 namespace Rentoolo.Controllers
 {
+    
     public class DialogsController : ApiController
     {
 
@@ -34,6 +35,14 @@ namespace Rentoolo.Controllers
         {
             var res = DataHelper.GetMessages(id);
             return Json(res);
+        }
+
+
+        [Route(Name = "ChatsApi")]
+        [HttpPost]
+        public void CreateMessage(DialogMessages msg)
+        {
+            DataHelper.SaveNewMessage(msg);
         }
 
 
