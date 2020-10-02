@@ -165,6 +165,14 @@
           <Property Name="WhenAdminApproved" Type="datetime" />
           <Property Name="Subcategory" Type="int" />
         </EntityType>
+        <EntityType Name="DialogActiveUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DialogId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="DialogMessages">
           <Key>
             <PropertyRef Name="Id" />
@@ -871,6 +879,7 @@
           <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeletedAdverts" EntityType="Self.DeletedAdverts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DialogActiveUsers" EntityType="Self.DialogActiveUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DialogMessages" EntityType="Self.DialogMessages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DialogsInfo" EntityType="Self.DialogsInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DisLikes" EntityType="Self.DisLikes" Schema="dbo" store:Type="Tables" />
@@ -1167,6 +1176,14 @@
           <Property Name="IsApproved" Type="Boolean" Nullable="false" />
           <Property Name="WhenAdminApproved" Type="DateTime" Precision="3" />
           <Property Name="Subcategory" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DialogActiveUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="DialogId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="DialogMessages">
           <Key>
@@ -1732,7 +1749,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities8" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RentooloEntities9" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
@@ -1744,6 +1761,7 @@
           <EntitySet Name="Currencies" EntityType="Self.Currencies" />
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" />
           <EntitySet Name="DeletedAdverts" EntityType="Self.DeletedAdverts" />
+          <EntitySet Name="DialogActiveUsers" EntityType="Self.DialogActiveUsers" />
           <EntitySet Name="DialogMessages" EntityType="Self.DialogMessages" />
           <EntitySet Name="DialogsInfo" EntityType="Self.DialogsInfo" />
           <EntitySet Name="DisLikes" EntityType="Self.DisLikes" />
@@ -2023,7 +2041,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities8">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities9">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -2177,6 +2195,15 @@
                 <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
                 <ScalarProperty Name="WhenAdminApproved" ColumnName="WhenAdminApproved" />
                 <ScalarProperty Name="Subcategory" ColumnName="Subcategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DialogActiveUsers">
+            <EntityTypeMapping TypeName="RentooloModel.DialogActiveUsers">
+              <MappingFragment StoreEntitySet="DialogActiveUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DialogId" ColumnName="DialogId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

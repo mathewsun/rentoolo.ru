@@ -38,6 +38,7 @@ namespace Rentoolo.Model
         public virtual DbSet<Currencies> Currencies { get; set; }
         public virtual DbSet<DailyStatistics> DailyStatistics { get; set; }
         public virtual DbSet<DeletedAdverts> DeletedAdverts { get; set; }
+        public virtual DbSet<DialogActiveUsers> DialogActiveUsers { get; set; }
         public virtual DbSet<DialogMessages> DialogMessages { get; set; }
         public virtual DbSet<DialogsInfo> DialogsInfo { get; set; }
         public virtual DbSet<DisLikes> DisLikes { get; set; }
@@ -72,46 +73,46 @@ namespace Rentoolo.Model
         public virtual DbSet<WatchedByCookies> WatchedByCookies { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
     
-        [DbFunction("RentooloEntities8", "fnGetAllUsers")]
+        [DbFunction("RentooloEntities9", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetAllUsers_Result>("[RentooloEntities8].[fnGetAllUsers]()");
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetAllUsers_Result>("[RentooloEntities9].[fnGetAllUsers]()");
         }
     
-        [DbFunction("RentooloEntities8", "fnGetTablesRows")]
+        [DbFunction("RentooloEntities9", "fnGetTablesRows")]
         public virtual IQueryable<fnGetTablesRows_Result> fnGetTablesRows()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetTablesRows_Result>("[RentooloEntities8].[fnGetTablesRows]()");
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetTablesRows_Result>("[RentooloEntities9].[fnGetTablesRows]()");
         }
     
-        [DbFunction("RentooloEntities8", "fnGetUserReferralsSecondLevel")]
+        [DbFunction("RentooloEntities9", "fnGetUserReferralsSecondLevel")]
         public virtual IQueryable<fnGetUserReferralsSecondLevel_Result> fnGetUserReferralsSecondLevel(Nullable<System.Guid> userId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserReferralsSecondLevel_Result>("[RentooloEntities8].[fnGetUserReferralsSecondLevel](@userId)", userIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserReferralsSecondLevel_Result>("[RentooloEntities9].[fnGetUserReferralsSecondLevel](@userId)", userIdParameter);
         }
     
-        [DbFunction("RentooloEntities8", "fnGetUserReferralsThirdLevel")]
+        [DbFunction("RentooloEntities9", "fnGetUserReferralsThirdLevel")]
         public virtual IQueryable<fnGetUserReferralsThirdLevel_Result> fnGetUserReferralsThirdLevel(Nullable<System.Guid> userId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserReferralsThirdLevel_Result>("[RentooloEntities8].[fnGetUserReferralsThirdLevel](@userId)", userIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserReferralsThirdLevel_Result>("[RentooloEntities9].[fnGetUserReferralsThirdLevel](@userId)", userIdParameter);
         }
     
-        [DbFunction("RentooloEntities8", "fnGetUserWallets")]
+        [DbFunction("RentooloEntities9", "fnGetUserWallets")]
         public virtual IQueryable<fnGetUserWallets_Result> fnGetUserWallets(Nullable<System.Guid> userId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserWallets_Result>("[RentooloEntities8].[fnGetUserWallets](@userId)", userIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserWallets_Result>("[RentooloEntities9].[fnGetUserWallets](@userId)", userIdParameter);
         }
     
         public virtual int spAddAdvert(Nullable<int> category, string name, string description, Nullable<System.Guid> createdUserId, Nullable<double> price, string address, string phone, Nullable<int> messageType, System.Data.Entity.Spatial.DbGeography position, string imgUrls, string youTubeUrl)

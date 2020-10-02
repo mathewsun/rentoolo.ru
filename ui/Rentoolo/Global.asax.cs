@@ -21,7 +21,7 @@ namespace Rentoolo
             // Code that runs on application startup
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterOpenAuth();
-            //new WSServer().Serve();
+            WSServer.Serve();
 
             RegisterRoutes(RouteTable.Routes);
 

@@ -43,6 +43,7 @@ namespace Rentoolo.Controllers
         public void CreateMessage(DialogMessages msg)
         {
             DataHelper.SaveNewMessage(msg);
+            
         }
 
 

@@ -59,6 +59,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script type="text/javascript">
 
+        let websock;
+
         var app = new Vue({
             el: '#app',
             data: {
@@ -69,12 +71,63 @@
                 chats: [],
                 messages: [],
                 message: "",
-                showMessages: false
+                showMessages: false,
+                ws: null
             },
             created: function () {
                 this.getChats();
             },
             methods: {
+
+                initWSConnection() {
+
+                    console.log("try connect");
+
+                    let socket = new WebSocket("ws://localhost:8080");
+
+                    let chatId = this.currentChatId;
+                    let usrId = this.userId;
+
+                    socket.onopen = function () {
+                        
+                        let data = {
+                            type: "initUser",
+                            dialogId: chatId,
+                            userId: usrId
+                        }
+                        console.log("---------");
+                        console.log(data);
+
+                        socket.send(JSON.stringify(data));
+                    };
+
+                    socket.onclose = function (event) {
+                        if (event.wasClean) {
+                            alert('Соединение закрыто чисто');
+                        } else {
+                            alert('Обрыв соединения'); // например, "убит" процесс сервера
+                        }
+                        alert('Код: ' + event.code + ' причина: ' + event.reason);
+                    };
+
+                    socket.onmessage = function (event) {
+                        console.log("Получены данные " + event.data);
+
+                    };
+
+                    socket.onerror = function (error) {
+                        alert("Ошибка " + error.message);
+                    };
+
+
+
+                    
+
+                    websock = socket;
+
+
+
+                },
                 showHideChats() {
                     this.showChats = !this.showChats;
                 },
@@ -113,6 +166,11 @@
                             this.messages = data;
                         });
                     this.showMessages = true;
+
+                    this.initWSConnection();
+
+
+
                 },
                 sendMessage() {
                     let bodyData = {
@@ -132,6 +190,12 @@
                         },
                         body: JSON.stringify(bodyData)
                     };
+
+
+                    
+
+
+
                     fetch(url, data)
                         .then((response) => {
                             
@@ -143,6 +207,8 @@
 
                     this.message = "";
 
+
+                    
 
                 }
             }

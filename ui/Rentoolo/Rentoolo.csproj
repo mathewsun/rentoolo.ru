@@ -1089,6 +1089,9 @@
     <Compile Include="Model\DeletedAdverts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DialogActiveUsers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DialogMessages.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

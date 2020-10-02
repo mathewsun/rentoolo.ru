@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Rentoolo.TestDir;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -1326,8 +1328,57 @@ namespace Rentoolo.Model
                 msg.Date = DateTime.Now;
                 dc.DialogMessages.Add(msg);
                 dc.SaveChanges();
+
+                var dialog = dc.DialogsInfo.First(x => x.Id == msg.DialogInfoId);
+
+
+                var activeUsers = dc.DialogActiveUsers.Where(x => (x.UserId == dialog.User1Id) || (x.UserId == dialog.User2Id));
+
+                foreach(var user in activeUsers)
+                {
+                    WSServer.SendMessageToUser(user.UserId.ToString(), JsonConvert.SerializeObject(msg));
+                }
+
+
+
             }
         }
+
+
+
+        public static void AddActiveWSUser(DialogActiveUsers user)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.DialogActiveUsers.Add(user);
+                dc.SaveChanges();
+            }
+        }
+
+        public static void RemoveActiveWSUser(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var activeUser = dc.DialogActiveUsers.First(x => x.UserId == userId);
+                dc.DialogActiveUsers.Remove(activeUser);
+                dc.SaveChanges();
+            }
+        }
+
+
+
+
+        //public static bool GetActiveDialogUser(Guid userId)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        var user =  dc.DialogActiveUsers.FirstOrDefault(x => x.UserId == userId);
+        //        bool isActive = user == null ? false : true;
+        //        return isActive;
+        //    }
+        //} 
+
+
 
 
 
