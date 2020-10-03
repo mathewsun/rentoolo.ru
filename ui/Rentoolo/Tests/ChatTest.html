@@ -79,14 +79,30 @@
             },
             methods: {
 
+                addMessage(msg) {
+                    let jsonedMsg = JSON.parse(msg);
+                    this.messages.unshift(jsonedMsg);
+                },
+
                 initWSConnection() {
-
-                    console.log("try connect");
-
+                    console.log("this.msges");
+                    console.log(this.messages);
+                    const addMessage = this.addMessage;
+                    const addMsg = function (msg) {
+                        console.log(this.messages);
+                        addMessage(msg);
+                    }
+                    
                     let socket = new WebSocket("ws://localhost:8080");
 
                     let chatId = this.currentChatId;
                     let usrId = this.userId;
+
+
+                    socket.onmessage = function (event) {
+                        console.log("Получены данные " + event.data);
+                        addMsg(event.data);
+                    };
 
                     socket.onopen = function () {
                         
@@ -110,10 +126,7 @@
                         alert('Код: ' + event.code + ' причина: ' + event.reason);
                     };
 
-                    socket.onmessage = function (event) {
-                        console.log("Получены данные " + event.data);
-
-                    };
+                    
 
                     socket.onerror = function (error) {
                         alert("Ошибка " + error.message);
@@ -125,7 +138,8 @@
 
                     websock = socket;
 
-
+                    console.log("this.msges");
+                    console.log(this.messages);
 
                 },
                 showHideChats() {
