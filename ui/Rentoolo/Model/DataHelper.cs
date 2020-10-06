@@ -1299,6 +1299,7 @@ namespace Rentoolo.Model
         #endregion
 
 
+        // TODO: переписать сложные linq запросы на хранимые процедуры в БД
 
         #region Dialogs
 
@@ -1333,6 +1334,8 @@ namespace Rentoolo.Model
 
 
                 var activeUsers = dc.DialogActiveUsers.Where(x => (x.UserId == dialog.User1Id) || (x.UserId == dialog.User2Id));
+
+                // TODO: разобраться почему несколько раз отправляется
 
                 foreach(var user in activeUsers)
                 {
@@ -1403,9 +1406,140 @@ namespace Rentoolo.Model
         }
 
 
+        public static List<ViewedDialogInfo> GetViwedDialogs(Guid userId)
+        {
+            // выбор DialogInfo и преобразование типа в  ViewedDialogInfo
+            // с вычислением названия диалога(диалог называется как в ВК по имени собеседника 
+            using (var dc = new RentooloEntities())
+            {
+                IQueryable<ViewedDialogInfo> vChats = (IQueryable<ViewedDialogInfo>)
+
+                    (from x in dc.DialogsInfo where (x.User1Id == userId) || (x.User2Id == userId)
+
+                     select new ViewedDialogInfo()
+                     {
+                         Id = x.Id, DialogName = x.User1Id==userId ?
+
+                         dc.Users.First(u=>u.UserId==x.User2Id).UserName : dc.Users.First(u => u.UserId == x.User1Id).UserName
+
+                         //    (x.User1Id == userId ?
+                         //new ViewedDialogInfo() { Id = x.Id, DialogName = dc.Users.First(y => y.UserId == x.User2Id).UserName }
+                         //: new ViewedDialogInfo() { Id = x.Id, DialogName = dc.Users.First(y => y.UserId == x.User1Id).UserName })
+                     });
+
+                return vChats.ToList();
+
+            }
+        }
+
+
 
 
         #endregion
+
+
+        #region Chats
+
+        public static void CreateChatDialog(Chats chatInfo, Guid anotherUserId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Chats.Add(chatInfo);
+                dc.SaveChanges();
+
+                long chatId = dc.Chats.First(x => x.Id == chatInfo.Id).Id;
+
+                dc.ChatUsers.Add(new ChatUsers() { UserId = anotherUserId, ChatId = chatId });
+                dc.ChatUsers.Add(new ChatUsers() { UserId = chatInfo.OwnerId, ChatId = chatId });
+
+                dc.SaveChanges();
+            }
+        }
+
+
+
+        public static void CreateChat(Chats chatInfo)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Chats.Add(chatInfo);
+                dc.ChatUsers.Add(new ChatUsers() { UserId = chatInfo.OwnerId, ChatId = chatInfo.Id });
+                dc.SaveChanges();
+                long chatId = dc.Chats.First(x => x.Id == chatInfo.Id).Id;
+                dc.ChatUsers.Add(new ChatUsers() { UserId = chatInfo.OwnerId, ChatId = chatId });
+                dc.SaveChanges();
+            }
+        }
+
+        
+
+        public static List<Chats> GetChats(Guid userId ,int skipCount = 0)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var chatIds = dc.ChatUsers.Where(x => x.UserId == userId).Select(x => x.Id).ToList();
+                var chats = dc.Chats.Where(x => chatIds.Contains(x.Id));
+                return chats.ToList();
+            }
+        }
+
+
+
+        public static void AddChatUser(ChatUsers chatUser)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ChatUsers.Add(chatUser);
+                dc.SaveChanges();
+            }
+        }
+
+
+
+
+        public static List<ChatMessages> GetChatMessages(long chatId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.ChatMessages.Where(x => x.ChatId == chatId).ToList();
+            }
+
+        }
+
+
+        public static void SaveChatMessage(ChatMessages message)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ChatMessages.Add(message);
+                dc.SaveChanges();
+            }
+        }
+
+
+
+
+        //public static List<ViewedChat> GetViewedChats(Guid userId)
+        //{
+        //    var dialogs = GetViwedDialogs(userId);
+        //    var chats = GetChats(userId);
+
+        //    List<ViewedChat> viewedChats = new List<ViewedChat>();
+
+        //    viewedChats.AddRange(dialogs.Select(x => new ViewedChat(x)));
+        //    viewedChats.AddRange(chats.Select(x => new ViewedChat(x)));
+
+        //    return viewedChats;
+        //}
+
+
+
+
+
+
+
+        #endregion
+
 
     }
 }

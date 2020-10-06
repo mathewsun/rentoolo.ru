@@ -55,7 +55,7 @@ namespace Rentoolo
 
             routes.MapHttpRoute(
                 name: "ChatsApi",
-                routeTemplate: "api/chat/{controller}/{action}/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
                 );
 

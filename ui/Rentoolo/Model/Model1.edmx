@@ -111,6 +111,33 @@
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="ParentCategoryId" Type="int" />
         </EntityType>
+        <EntityType Name="ChatMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="ChatId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Chats">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OwnerId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChatName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChatType" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChatUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChatId" Type="bigint" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="Comments">
           <Key>
             <PropertyRef Name="Id" />
@@ -875,6 +902,9 @@
           <EntitySet Name="Business" EntityType="Self.Business" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashIns" EntityType="Self.CashIns" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashOuts" EntityType="Self.CashOuts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatMessages" EntityType="Self.ChatMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chats" EntityType="Self.Chats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatUsers" EntityType="Self.ChatUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" Schema="dbo" store:Type="Tables" />
@@ -1121,6 +1151,33 @@
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="PaymentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Result" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChatMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChatId" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Chats">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OwnerId" Type="Guid" Nullable="false" />
+          <Property Name="ChatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChatType" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChatUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChatId" Type="Int64" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
         </EntityType>
         <EntityType Name="Comments">
           <Key>
@@ -1749,7 +1806,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities9" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RentooloEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
@@ -1757,6 +1814,9 @@
           <EntitySet Name="Business" EntityType="Self.Business" />
           <EntitySet Name="CashIns" EntityType="Self.CashIns" />
           <EntitySet Name="CashOuts" EntityType="Self.CashOuts" />
+          <EntitySet Name="ChatMessages" EntityType="Self.ChatMessages" />
+          <EntitySet Name="Chats" EntityType="Self.Chats" />
+          <EntitySet Name="ChatUsers" EntityType="Self.ChatUsers" />
           <EntitySet Name="Comments" EntityType="Self.Comments" />
           <EntitySet Name="Currencies" EntityType="Self.Currencies" />
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" />
@@ -2041,7 +2101,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities9">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities1">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -2137,6 +2197,36 @@
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="PaymentNumber" ColumnName="PaymentNumber" />
                 <ScalarProperty Name="Result" ColumnName="Result" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatMessages">
+            <EntityTypeMapping TypeName="RentooloModel.ChatMessages">
+              <MappingFragment StoreEntitySet="ChatMessages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chats">
+            <EntityTypeMapping TypeName="RentooloModel.Chats">
+              <MappingFragment StoreEntitySet="Chats">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="ChatName" ColumnName="ChatName" />
+                <ScalarProperty Name="ChatType" ColumnName="ChatType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatUsers">
+            <EntityTypeMapping TypeName="RentooloModel.ChatUsers">
+              <MappingFragment StoreEntitySet="ChatUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

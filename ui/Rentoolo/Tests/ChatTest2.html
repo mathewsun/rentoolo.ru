@@ -11,6 +11,9 @@
 
         <div>
             <h5>user configs</h5>
+            <div>
+                UserId: {{userId}}
+            </div>
             <input v-model="userId" />
         </div>
 
@@ -27,20 +30,20 @@
         </div>
 
         <h3>{{message1}} </h3>
-        
 
 
-                     <div v-if="showChats">
-                         <div>
-                             <div v-for="(chat,index) in chats" :key="index">
 
-                                 <button @click="getMessages(chat.Id)">
-                                     {{chat.Id}}
-                                 </button>
+        <div v-if="showChats">
+            <div>
+                <div v-for="(chat,index) in chats" :key="index">
 
-                             </div>
-                         </div>
-                     </div>
+                    <button @click="getMessages(chat.Id)">
+                        {{chat.Id}}
+                    </button>
+
+                </div>
+            </div>
+        </div>
 
         <div v-if="showMessages">
             <div v-for="(message,index) in messages" :key="index">
@@ -50,11 +53,11 @@
                     {{message.Message}}
                     <hr />
                 </div>
-                
+
 
             </div>
         </div>
-        
+
     </div>
 
 
@@ -96,7 +99,7 @@
                         console.log(this.messages);
                         addMessage(msg);
                     }
-                    
+
                     let socket = new WebSocket("ws://localhost:8080");
 
                     let chatId = this.currentChatId;
@@ -109,7 +112,7 @@
                     };
 
                     socket.onopen = function () {
-                        
+
                         let data = {
                             type: "initUser",
                             dialogId: chatId,
@@ -130,7 +133,7 @@
                         alert('Код: ' + event.code + ' причина: ' + event.reason);
                     };
 
-                    
+
 
                     socket.onerror = function (error) {
                         alert("Ошибка " + error.message);
@@ -138,7 +141,7 @@
 
 
 
-                    
+
 
                     websock = socket;
 
@@ -154,7 +157,7 @@
                 },
                 getChats() {
                     // dont forbid to change url
-                    let url = "http://localhost:53225/api/chat/Dialogs/DialogList/" + this.userId;
+                    let url = "http://localhost:53225/api/chats/" + this.userId;
                     let data = {
                         method: "GET",
                     };
@@ -210,13 +213,13 @@
                     };
 
 
-                    
+
 
 
 
                     fetch(url, data)
                         .then((response) => {
-                            
+
                             return response;
                         })
                         .then((data) => {
@@ -226,7 +229,7 @@
                     this.message = "";
 
 
-                    
+
 
                 }
             }

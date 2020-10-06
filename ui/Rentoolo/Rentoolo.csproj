@@ -438,6 +438,7 @@
     <Content Include="Events.ashx" />
     <Content Include="TestDir\TestPage.html" />
     <Content Include="Tests\ChatTest.html" />
+    <Content Include="Tests\ChatTest2.html" />
     <Content Include="TokensCost.aspx" />
     <Content Include="TokensOperations.aspx" />
     <Content Include="Transport.aspx" />
@@ -1049,6 +1050,7 @@
     <Compile Include="Controllers\InstructionController.cs" />
     <Compile Include="Controllers\InstructionsController.cs" />
     <Compile Include="Controllers\KitchenModel\Recipe.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\TopRecipesController.cs" />
     <Compile Include="HelperModels\StateStructs.cs" />
@@ -1074,6 +1076,15 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Categories.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChatMessages.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Chats.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChatUsers.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CommentForUser.cs" />
@@ -1345,6 +1356,8 @@
     <Compile Include="Model\UserViews.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ViewedChat.cs" />
+    <Compile Include="Model\ViewedDialogInfo.cs" />
     <Compile Include="Model\Wallets.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
