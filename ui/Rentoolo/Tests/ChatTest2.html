@@ -38,6 +38,9 @@
                 <div v-for="(chat,index) in chats" :key="index">
 
                     <button @click="getMessages(chat.Id)">
+
+                        
+
                         {{chat.Id}}
                     </button>
 
@@ -173,13 +176,15 @@
 
                 },
                 getMessages(chatId) {
-                    let url = "http://localhost:53225/api/chat/Dialogs/Messages/" + chatId;
+                    let url = "http://localhost:53225/api/Messages/" + chatId;
                     this.currentChatId = chatId;
                     let data = {
                         method: "GET"
                     };
                     fetch(url, data)
                         .then((response) => {
+                            console.log("message list");
+                            console.log(response);
                             return response.json();
                         })
                         .then((data) => {

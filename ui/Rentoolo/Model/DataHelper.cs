@@ -1465,6 +1465,7 @@ namespace Rentoolo.Model
                 dc.Chats.Add(chatInfo);
                 dc.ChatUsers.Add(new ChatUsers() { UserId = chatInfo.OwnerId, ChatId = chatInfo.Id });
                 dc.SaveChanges();
+
                 long chatId = dc.Chats.First(x => x.Id == chatInfo.Id).Id;
                 dc.ChatUsers.Add(new ChatUsers() { UserId = chatInfo.OwnerId, ChatId = chatId });
                 dc.SaveChanges();
@@ -1511,6 +1512,7 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
+                message.Date = DateTime.Now;
                 dc.ChatMessages.Add(message);
                 dc.SaveChanges();
             }

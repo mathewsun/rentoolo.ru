@@ -27,13 +27,7 @@ namespace Rentoolo.Controllers
             return Json(DataHelper.GetChatMessages(id));
         }
 
-
-
-        // GET: api/Messages
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        
         
 
         // PUT: api/Messages/5
