@@ -27,8 +27,13 @@ namespace Rentoolo.Controllers
         
         public IHttpActionResult GetChatList(string id)
         {
-            return Json(DataHelper.GetChats(Guid.Parse(id)));
+            return Json(DataHelper.GetChatsForUser(Guid.Parse(id)));
         }
+
+
+        
+
+
 
 
         public void PutChatUser(ChatUsers chatUser)

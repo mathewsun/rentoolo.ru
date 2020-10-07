@@ -1441,6 +1441,14 @@ namespace Rentoolo.Model
         #region Chats
 
 
+        public static List<spGetChatsForUser_Result> GetChatsForUser(Guid userId, int skipCount = 0)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.spGetChatsForUser(userId).ToList();
+            }
+        }
+
 
 
         public static void AddActiveWSUser(ChatActiveUsers user)

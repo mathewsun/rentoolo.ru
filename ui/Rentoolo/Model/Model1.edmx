@@ -871,6 +871,12 @@
           <Parameter Name="uid" Type="nvarchar" Mode="In" />
           <Parameter Name="advertId" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="spGetChats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="spGetChatsForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="spGetComments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="objectId" Type="bigint" Mode="In" />
           <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
@@ -1823,7 +1829,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RentooloEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
@@ -1969,6 +1975,12 @@
             <Parameter Name="uid" Mode="In" Type="String" />
             <Parameter Name="advertId" Mode="In" Type="Int64" />
           </FunctionImport>
+          <FunctionImport Name="spGetChats" ReturnType="Collection(RentooloModel.spGetChats_Result)">
+            <Parameter Name="userId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChatsForUser" ReturnType="Collection(RentooloModel.spGetChatsForUser_Result)">
+            <Parameter Name="userId" Mode="In" Type="Guid" />
+          </FunctionImport>
           <FunctionImport Name="spGetComments" ReturnType="Collection(RentooloModel.spGetComments_Result)">
             <Parameter Name="objectId" Mode="In" Type="Int64" />
             <Parameter Name="userId" Mode="In" Type="Guid" />
@@ -2001,6 +2013,14 @@
             <Parameter Name="balance" Mode="In" Type="Double" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="spGetChats_Result">
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="String" Name="ChatName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetChatsForUser_Result">
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="String" Name="ChatName" Nullable="true" MaxLength="50" />
+        </ComplexType>
         <ComplexType Name="spGetComments_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Guid" Name="UserId" Nullable="false" />
@@ -2119,7 +2139,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities2">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities3">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -2800,6 +2820,22 @@
           <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="Хранилище RentooloModel.spAddFavoritesByCookies" />
           <FunctionImportMapping FunctionImportName="spAddWatched" FunctionName="Хранилище RentooloModel.spAddWatched" />
           <FunctionImportMapping FunctionImportName="spAddWatchedByCookies" FunctionName="Хранилище RentooloModel.spAddWatchedByCookies" />
+          <FunctionImportMapping FunctionImportName="spGetChats" FunctionName="Хранилище RentooloModel.spGetChats">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.spGetChats_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ChatName" ColumnName="ChatName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetChatsForUser" FunctionName="Хранилище RentooloModel.spGetChatsForUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.spGetChatsForUser_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ChatName" ColumnName="ChatName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spGetComments" FunctionName="Хранилище RentooloModel.spGetComments">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetComments_Result">
