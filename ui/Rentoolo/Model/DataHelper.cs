@@ -1440,6 +1440,32 @@ namespace Rentoolo.Model
 
         #region Chats
 
+
+
+
+        public static void AddActiveWSUser(ChatActiveUsers user)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ChatActiveUsers.Add(user);
+                dc.SaveChanges();
+            }
+        }
+
+        public static void RemoveChatActiveWSUser(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var activeUser = dc.ChatActiveUsers.First(x => x.UserId == userId);
+                dc.ChatActiveUsers.Remove(activeUser);
+                dc.SaveChanges();
+            }
+        }
+
+
+
+
+
         public static void CreateChatDialog(Chats chatInfo, Guid anotherUserId)
         {
             using (var dc = new RentooloEntities())
@@ -1515,6 +1541,18 @@ namespace Rentoolo.Model
                 message.Date = DateTime.Now;
                 dc.ChatMessages.Add(message);
                 dc.SaveChanges();
+
+
+
+
+                var activeUsers = dc.ChatActiveUsers.Where(x => x.ChatId == message.ChatId);
+
+                // TODO: разобраться почему несколько раз отправляется
+
+                foreach (var user in activeUsers)
+                {
+                    WSServer.SendMessageToUser(user.UserId.ToString(), JsonConvert.SerializeObject(message));
+                }
             }
         }
 

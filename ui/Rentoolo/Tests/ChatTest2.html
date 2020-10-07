@@ -118,7 +118,7 @@
 
                         let data = {
                             type: "initUser",
-                            dialogId: chatId,
+                            chatId: chatId,
                             userId: usrId
                         }
                         console.log("---------");
@@ -200,19 +200,18 @@
                 },
                 sendMessage() {
                     let bodyData = {
-                        DialogInfoId: this.currentChatId,
+                        ChatId: this.currentChatId,
                         Message: this.message,
-                        FromUserId: this.userId,
+                        UserId: this.userId,
 
                     }
 
-                    let url = "http://localhost:53225/api/chat/Dialogs/CreateMessage";
+                    let url = "http://localhost:53225/api/Messages";
 
                     let data = {
                         method: "POST",
                         headers: {
-                            'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': '*'
+                            'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(bodyData)
                     };

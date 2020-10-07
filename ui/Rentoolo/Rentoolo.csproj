@@ -1078,6 +1078,9 @@
     <Compile Include="Model\Categories.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ChatActiveUsers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ChatMessages.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

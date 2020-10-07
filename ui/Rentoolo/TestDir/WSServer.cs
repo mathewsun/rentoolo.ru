@@ -27,7 +27,11 @@ namespace Rentoolo.TestDir
         static void removeUser(IWebSocketConnection conn)
         {
             string userId = connectedUsers[conn];
-            DataHelper.RemoveActiveWSUser(Guid.Parse(userId));
+            //DataHelper.RemoveActiveWSUser(Guid.Parse(userId));
+            DataHelper.RemoveChatActiveWSUser(Guid.Parse(userId));
+            connectedUsers.Remove(conn);
+            connectedUsersSockets.Remove(userId);
+
         }
 
         static void addUser(string userId, IWebSocketConnection conn)
@@ -58,7 +62,7 @@ namespace Rentoolo.TestDir
                     switch (cmdType)
                     {
                         case "initUser":
-                            int dialogId = (int)json["dialogId"];
+                            int chatId = (int)json["chatId"];
                             string strUserId = json["userId"].ToString();
 
                             addUser(strUserId, socket);
@@ -69,7 +73,8 @@ namespace Rentoolo.TestDir
 
 
 
-                            DataHelper.AddActiveWSUser(new DialogActiveUsers() { DialogId = dialogId, UserId = userId });
+                            //DataHelper.AddActiveWSUser(new DialogActiveUsers() { DialogId = chatId, UserId = userId });
+                            DataHelper.AddActiveWSUser(new ChatActiveUsers() { ChatId = chatId, UserId = userId });
 
                             break;
                         case "message":
