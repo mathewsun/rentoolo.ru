@@ -21,58 +21,30 @@ namespace Rentoolo.Controllers
         //}
 
         // GET api/<controller>/Id
-        [Route(Name = "ChatsApi")]
-        [HttpGet]
-        public IHttpActionResult DialogList(string id)
-        {
-            return Json(DataHelper.GetDialogs(Guid.Parse(id)));
-        }
-
-
-        [Route(Name = "ChatsApi")]
-        [HttpGet]
-        public IHttpActionResult Messages(int id)
-        {
-            var res = DataHelper.GetMessages(id);
-            return Json(res);
-        }
-
-
-        [Route(Name = "ChatsApi")]
-        [HttpPost]
-        public void CreateMessage(DialogMessages msg)
-        {
-            DataHelper.SaveNewMessage(msg);
-            
-        }
-
-        
-
-
-
-
-
-
-        // GET api/<controller>
-        //public IEnumerable<string> Get()
+        //[Route(Name = "ChatsApi")]
+        //[HttpGet]
+        //public IHttpActionResult DialogList(string id)
         //{
-        //    return new string[] { "value1", "value2" };
+        //    return Json(DataHelper.GetDialogs(Guid.Parse(id)));
         //}
 
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
+        //[Route(Name = "ChatsApi")]
+        //[HttpGet]
+        //public IHttpActionResult Messages(int id)
+        //{
+        //    var res = DataHelper.GetMessages(id);
+        //    return Json(res);
+        //}
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
 
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
+        //[Route(Name = "ChatsApi")]
+        //[HttpPost]
+        //public void CreateMessage(DialogMessages msg)
+        //{
+        //    DataHelper.SaveNewMessage(msg);
+            
+        //}
+        
     }
 }

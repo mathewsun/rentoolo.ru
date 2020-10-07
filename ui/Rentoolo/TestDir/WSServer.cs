@@ -9,6 +9,10 @@ using Rentoolo.Model;
 
 namespace Rentoolo.TestDir
 {
+
+
+    // USE chatTest2.html 
+
     public static class WSServer
     {
         static WebSocketServer server;

@@ -1139,13 +1139,13 @@ namespace Rentoolo.Model
         }
 
 
-        public static List<Comments> GetComments(int type, int advertId)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                return dc.Comments.Where(x => (x.Type == type) && (x.AdvertId == advertId)).ToList();
-            }
-        }
+        //public static List<Comments> GetComments(int type, int advertId)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        return dc.Comments.Where(x => (x.Type == type) && (x.AdvertId == advertId)).ToList();
+        //    }
+        //}
 
         // comment id
         public static void UpdateCommentLikes(int id)
@@ -1275,15 +1275,15 @@ namespace Rentoolo.Model
 
         #region Comments
 
-        public static List<spGetComments_Result> GetComments_Results(long objId, Guid userId)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                List<spGetComments_Result> result = dc.spGetComments(objId, userId).ToList();
+        //public static List<spGetComments_Result> GetComments_Results(long objId, Guid userId)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        List<spGetComments_Result> result = dc.spGetComments(objId, userId).ToList();
                 
-                return result;
-            }
-        }
+        //        return result;
+        //    }
+        //}
 
 
         public static List<spGetCommentsForUser_Result> spGetCommentsForUser(Guid userId, int advertId)
@@ -1301,72 +1301,73 @@ namespace Rentoolo.Model
 
         // TODO: переписать сложные linq запросы на хранимые процедуры в БД
 
+            // dialogs deprecated
         #region Dialogs
 
-        public static void CreateDialog(Guid user1, Guid user2)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                dc.DialogsInfo.Add(new DialogsInfo { User1Id = user1, User2Id = user2 });
-                dc.SaveChanges();
-            }
-        }
+        //public static void CreateDialog(Guid user1, Guid user2)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        dc.DialogsInfo.Add(new DialogsInfo { User1Id = user1, User2Id = user2 });
+        //        dc.SaveChanges();
+        //    }
+        //}
 
 
-        public static void SaveNewMessage(Guid userId, Int64 dialogId, string message)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                dc.DialogMessages.Add(new DialogMessages() { FromUserId = userId, DialogInfoId = dialogId, Message = message, Date = DateTime.Now });
-                dc.SaveChanges();
-            }
-        }
+        //public static void SaveNewMessage(Guid userId, Int64 dialogId, string message)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        dc.DialogMessages.Add(new DialogMessages() { FromUserId = userId, DialogInfoId = dialogId, Message = message, Date = DateTime.Now });
+        //        dc.SaveChanges();
+        //    }
+        //}
 
-        public static void SaveNewMessage(DialogMessages msg)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                msg.Date = DateTime.Now;
-                dc.DialogMessages.Add(msg);
-                dc.SaveChanges();
+        //public static void SaveNewMessage(DialogMessages msg)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        msg.Date = DateTime.Now;
+        //        dc.DialogMessages.Add(msg);
+        //        dc.SaveChanges();
 
-                var dialog = dc.DialogsInfo.First(x => x.Id == msg.DialogInfoId);
-
-
-                var activeUsers = dc.DialogActiveUsers.Where(x => (x.UserId == dialog.User1Id) || (x.UserId == dialog.User2Id));
-
-                // TODO: разобраться почему несколько раз отправляется
-
-                foreach(var user in activeUsers)
-                {
-                    WSServer.SendMessageToUser(user.UserId.ToString(), JsonConvert.SerializeObject(msg));
-                }
+        //        var dialog = dc.DialogsInfo.First(x => x.Id == msg.DialogInfoId);
 
 
+        //        var activeUsers = dc.DialogActiveUsers.Where(x => (x.UserId == dialog.User1Id) || (x.UserId == dialog.User2Id));
 
-            }
-        }
+        //        // TODO: разобраться почему несколько раз отправляется
+
+        //        foreach(var user in activeUsers)
+        //        {
+        //            WSServer.SendMessageToUser(user.UserId.ToString(), JsonConvert.SerializeObject(msg));
+        //        }
 
 
 
-        public static void AddActiveWSUser(DialogActiveUsers user)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                dc.DialogActiveUsers.Add(user);
-                dc.SaveChanges();
-            }
-        }
+        //    }
+        //}
 
-        public static void RemoveActiveWSUser(Guid userId)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                var activeUser = dc.DialogActiveUsers.First(x => x.UserId == userId);
-                dc.DialogActiveUsers.Remove(activeUser);
-                dc.SaveChanges();
-            }
-        }
+
+
+        //public static void AddActiveWSUser(DialogActiveUsers user)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        dc.DialogActiveUsers.Add(user);
+        //        dc.SaveChanges();
+        //    }
+        //}
+
+        //public static void RemoveActiveWSUser(Guid userId)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        var activeUser = dc.DialogActiveUsers.First(x => x.UserId == userId);
+        //        dc.DialogActiveUsers.Remove(activeUser);
+        //        dc.SaveChanges();
+        //    }
+        //}
 
 
 
@@ -1387,50 +1388,50 @@ namespace Rentoolo.Model
 
 
 
-        public static List<DialogMessages> GetMessages(Int64 dialogId, int skipCount = 0)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                var messages = dc.DialogMessages.Select(x => x).OrderBy(x=>x.Date).Skip(skipCount);
-                return messages.ToList();
-            }
-        }
+        //public static List<DialogMessages> GetMessages(Int64 dialogId, int skipCount = 0)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        var messages = dc.DialogMessages.Select(x => x).OrderBy(x=>x.Date).Skip(skipCount);
+        //        return messages.ToList();
+        //    }
+        //}
 
-        public static List<DialogsInfo> GetDialogs(Guid userId)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                var chats = dc.DialogsInfo.Where(x => (x.User1Id == userId) || (x.User2Id == userId));
-                return chats.ToList();
-            }
-        }
+        //public static List<DialogsInfo> GetDialogs(Guid userId)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        var chats = dc.DialogsInfo.Where(x => (x.User1Id == userId) || (x.User2Id == userId));
+        //        return chats.ToList();
+        //    }
+        //}
 
 
-        public static List<ViewedDialogInfo> GetViwedDialogs(Guid userId)
-        {
-            // выбор DialogInfo и преобразование типа в  ViewedDialogInfo
-            // с вычислением названия диалога(диалог называется как в ВК по имени собеседника 
-            using (var dc = new RentooloEntities())
-            {
-                IQueryable<ViewedDialogInfo> vChats = (IQueryable<ViewedDialogInfo>)
+        //public static List<ViewedDialogInfo> GetViwedDialogs(Guid userId)
+        //{
+        //    // выбор DialogInfo и преобразование типа в  ViewedDialogInfo
+        //    // с вычислением названия диалога(диалог называется как в ВК по имени собеседника 
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        IQueryable<ViewedDialogInfo> vChats = (IQueryable<ViewedDialogInfo>)
 
-                    (from x in dc.DialogsInfo where (x.User1Id == userId) || (x.User2Id == userId)
+        //            (from x in dc.DialogsInfo where (x.User1Id == userId) || (x.User2Id == userId)
 
-                     select new ViewedDialogInfo()
-                     {
-                         Id = x.Id, DialogName = x.User1Id==userId ?
+        //             select new ViewedDialogInfo()
+        //             {
+        //                 Id = x.Id, DialogName = x.User1Id==userId ?
 
-                         dc.Users.First(u=>u.UserId==x.User2Id).UserName : dc.Users.First(u => u.UserId == x.User1Id).UserName
+        //                 dc.Users.First(u=>u.UserId==x.User2Id).UserName : dc.Users.First(u => u.UserId == x.User1Id).UserName
 
-                         //    (x.User1Id == userId ?
-                         //new ViewedDialogInfo() { Id = x.Id, DialogName = dc.Users.First(y => y.UserId == x.User2Id).UserName }
-                         //: new ViewedDialogInfo() { Id = x.Id, DialogName = dc.Users.First(y => y.UserId == x.User1Id).UserName })
-                     });
+        //                 //    (x.User1Id == userId ?
+        //                 //new ViewedDialogInfo() { Id = x.Id, DialogName = dc.Users.First(y => y.UserId == x.User2Id).UserName }
+        //                 //: new ViewedDialogInfo() { Id = x.Id, DialogName = dc.Users.First(y => y.UserId == x.User1Id).UserName })
+        //             });
 
-                return vChats.ToList();
+        //        return vChats.ToList();
 
-            }
-        }
+        //    }
+        //}
 
 
 
@@ -1551,9 +1552,9 @@ namespace Rentoolo.Model
                 dc.SaveChanges();
 
 
+                
 
-
-                var activeUsers = dc.ChatActiveUsers.Where(x => x.ChatId == message.ChatId);
+                var activeUsers = dc.ChatActiveUsers.Where(x => x.ChatId == message.ChatId).ToArray();
 
                 // TODO: разобраться почему несколько раз отправляется
 

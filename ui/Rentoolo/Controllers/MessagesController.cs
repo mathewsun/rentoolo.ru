@@ -28,16 +28,5 @@ namespace Rentoolo.Controllers
         }
 
         
-        
-
-        // PUT: api/Messages/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Messages/5
-        public void Delete(int id)
-        {
-        }
     }
 }
