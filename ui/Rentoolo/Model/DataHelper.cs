@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Rentoolo.TestDir;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -1137,13 +1139,13 @@ namespace Rentoolo.Model
         }
 
 
-        public static List<Comments> GetComments(int type, int advertId)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                return dc.Comments.Where(x => (x.Type == type) && (x.AdvertId == advertId)).ToList();
-            }
-        }
+        //public static List<Comments> GetComments(int type, int advertId)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        return dc.Comments.Where(x => (x.Type == type) && (x.AdvertId == advertId)).ToList();
+        //    }
+        //}
 
         // comment id
         public static void UpdateCommentLikes(int id)
@@ -1240,6 +1242,7 @@ namespace Rentoolo.Model
                     dc.Likes.Add(new Likes() { UserId = userId, CommentId = commentId });
 
                 }
+                dc.SaveChanges();
             }
         }
 
@@ -1263,6 +1266,7 @@ namespace Rentoolo.Model
                     dc.DisLikes.Add(new DisLikes() { UserId = userId, CommentId = commentId });
 
                 }
+                dc.SaveChanges();
             }
         }
 
@@ -1271,12 +1275,23 @@ namespace Rentoolo.Model
 
         #region Comments
 
-        public static List<spGetComments_Result> GetComments_Results(long objId, Guid userId)
+        //public static List<spGetComments_Result> GetComments_Results(long objId, Guid userId)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        List<spGetComments_Result> result = dc.spGetComments(objId, userId).ToList();
+                
+        //        return result;
+        //    }
+        //}
+
+
+        public static List<spGetCommentsForUser_Result> spGetCommentsForUser(Guid userId, int advertId)
         {
             using (var dc = new RentooloEntities())
             {
-                List<spGetComments_Result> result = dc.spGetComments(objId, userId).ToList();
-                
+                var result = dc.spGetCommentsForUser(userId, advertId).ToList();
+
                 return result;
             }
         }
@@ -1295,5 +1310,297 @@ namespace Rentoolo.Model
             }
         }
         #endregion
+
+
+        // TODO: переписать сложные linq запросы на хранимые процедуры в БД
+
+            // dialogs deprecated
+        #region Dialogs
+
+        //public static void CreateDialog(Guid user1, Guid user2)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        dc.DialogsInfo.Add(new DialogsInfo { User1Id = user1, User2Id = user2 });
+        //        dc.SaveChanges();
+        //    }
+        //}
+
+
+        //public static void SaveNewMessage(Guid userId, Int64 dialogId, string message)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        dc.DialogMessages.Add(new DialogMessages() { FromUserId = userId, DialogInfoId = dialogId, Message = message, Date = DateTime.Now });
+        //        dc.SaveChanges();
+        //    }
+        //}
+
+        //public static void SaveNewMessage(DialogMessages msg)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        msg.Date = DateTime.Now;
+        //        dc.DialogMessages.Add(msg);
+        //        dc.SaveChanges();
+
+        //        var dialog = dc.DialogsInfo.First(x => x.Id == msg.DialogInfoId);
+
+
+        //        var activeUsers = dc.DialogActiveUsers.Where(x => (x.UserId == dialog.User1Id) || (x.UserId == dialog.User2Id));
+
+        //        // TODO: разобраться почему несколько раз отправляется
+
+        //        foreach(var user in activeUsers)
+        //        {
+        //            WSServer.SendMessageToUser(user.UserId.ToString(), JsonConvert.SerializeObject(msg));
+        //        }
+
+
+
+        //    }
+        //}
+
+
+
+        //public static void AddActiveWSUser(DialogActiveUsers user)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        dc.DialogActiveUsers.Add(user);
+        //        dc.SaveChanges();
+        //    }
+        //}
+
+        //public static void RemoveActiveWSUser(Guid userId)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        var activeUser = dc.DialogActiveUsers.First(x => x.UserId == userId);
+        //        dc.DialogActiveUsers.Remove(activeUser);
+        //        dc.SaveChanges();
+        //    }
+        //}
+
+
+
+
+        //public static bool GetActiveDialogUser(Guid userId)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        var user =  dc.DialogActiveUsers.FirstOrDefault(x => x.UserId == userId);
+        //        bool isActive = user == null ? false : true;
+        //        return isActive;
+        //    }
+        //} 
+
+
+
+
+
+
+
+        //public static List<DialogMessages> GetMessages(Int64 dialogId, int skipCount = 0)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        var messages = dc.DialogMessages.Select(x => x).OrderBy(x=>x.Date).Skip(skipCount);
+        //        return messages.ToList();
+        //    }
+        //}
+
+        //public static List<DialogsInfo> GetDialogs(Guid userId)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        var chats = dc.DialogsInfo.Where(x => (x.User1Id == userId) || (x.User2Id == userId));
+        //        return chats.ToList();
+        //    }
+        //}
+
+
+        //public static List<ViewedDialogInfo> GetViwedDialogs(Guid userId)
+        //{
+        //    // выбор DialogInfo и преобразование типа в  ViewedDialogInfo
+        //    // с вычислением названия диалога(диалог называется как в ВК по имени собеседника 
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        IQueryable<ViewedDialogInfo> vChats = (IQueryable<ViewedDialogInfo>)
+
+        //            (from x in dc.DialogsInfo where (x.User1Id == userId) || (x.User2Id == userId)
+
+        //             select new ViewedDialogInfo()
+        //             {
+        //                 Id = x.Id, DialogName = x.User1Id==userId ?
+
+        //                 dc.Users.First(u=>u.UserId==x.User2Id).UserName : dc.Users.First(u => u.UserId == x.User1Id).UserName
+
+        //                 //    (x.User1Id == userId ?
+        //                 //new ViewedDialogInfo() { Id = x.Id, DialogName = dc.Users.First(y => y.UserId == x.User2Id).UserName }
+        //                 //: new ViewedDialogInfo() { Id = x.Id, DialogName = dc.Users.First(y => y.UserId == x.User1Id).UserName })
+        //             });
+
+        //        return vChats.ToList();
+
+        //    }
+        //}
+
+
+
+
+        #endregion
+
+
+        #region Chats
+
+
+        public static List<spGetChatsForUser_Result> GetChatsForUser(Guid userId, int skipCount = 0)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.spGetChatsForUser(userId).ToList();
+            }
+        }
+
+
+
+        public static void AddActiveWSUser(ChatActiveUsers user)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ChatActiveUsers.Add(user);
+                dc.SaveChanges();
+            }
+        }
+
+        public static void RemoveChatActiveWSUser(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var activeUser = dc.ChatActiveUsers.First(x => x.UserId == userId);
+                dc.ChatActiveUsers.Remove(activeUser);
+                dc.SaveChanges();
+            }
+        }
+
+
+
+
+
+        public static void CreateChatDialog(Chats chatInfo, Guid anotherUserId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Chats.Add(chatInfo);
+                dc.SaveChanges();
+
+                long chatId = dc.Chats.First(x => x.Id == chatInfo.Id).Id;
+
+                dc.ChatUsers.Add(new ChatUsers() { UserId = anotherUserId, ChatId = chatId });
+                dc.ChatUsers.Add(new ChatUsers() { UserId = chatInfo.OwnerId, ChatId = chatId });
+
+                dc.SaveChanges();
+            }
+        }
+
+
+
+        public static void CreateChat(Chats chatInfo)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Chats.Add(chatInfo);
+                dc.ChatUsers.Add(new ChatUsers() { UserId = chatInfo.OwnerId, ChatId = chatInfo.Id });
+                dc.SaveChanges();
+
+                long chatId = dc.Chats.First(x => x.Id == chatInfo.Id).Id;
+                dc.ChatUsers.Add(new ChatUsers() { UserId = chatInfo.OwnerId, ChatId = chatId });
+                dc.SaveChanges();
+            }
+        }
+
+        
+
+        public static List<Chats> GetChats(Guid userId ,int skipCount = 0)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var chatIds = dc.ChatUsers.Where(x => x.UserId == userId).Select(x => x.Id).ToList();
+                var chats = dc.Chats.Where(x => chatIds.Contains(x.Id));
+                return chats.ToList();
+            }
+        }
+
+
+
+        public static void AddChatUser(ChatUsers chatUser)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ChatUsers.Add(chatUser);
+                dc.SaveChanges();
+            }
+        }
+
+
+
+
+        public static List<ChatMessages> GetChatMessages(long chatId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.ChatMessages.Where(x => x.ChatId == chatId).ToList();
+            }
+
+        }
+
+
+        public static void SaveChatMessage(ChatMessages message)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                message.Date = DateTime.Now;
+                dc.ChatMessages.Add(message);
+                dc.SaveChanges();
+
+
+                
+
+                var activeUsers = dc.ChatActiveUsers.Where(x => x.ChatId == message.ChatId).ToArray();
+
+                // TODO: разобраться почему несколько раз отправляется
+
+                foreach (var user in activeUsers)
+                {
+                    WSServer.SendMessageToUser(user.UserId.ToString(), JsonConvert.SerializeObject(message));
+                }
+            }
+        }
+
+
+
+
+        //public static List<ViewedChat> GetViewedChats(Guid userId)
+        //{
+        //    var dialogs = GetViwedDialogs(userId);
+        //    var chats = GetChats(userId);
+
+        //    List<ViewedChat> viewedChats = new List<ViewedChat>();
+
+        //    viewedChats.AddRange(dialogs.Select(x => new ViewedChat(x)));
+        //    viewedChats.AddRange(chats.Select(x => new ViewedChat(x)));
+
+        //    return viewedChats;
+        //}
+
+
+
+
+
+
+
+        #endregion
+
     }
 }

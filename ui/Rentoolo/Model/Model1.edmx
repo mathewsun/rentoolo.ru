@@ -112,19 +112,44 @@
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="ParentCategoryId" Type="int" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "Rentoolo.dbo.Comments" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ChatActiveUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChatId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChatMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="ChatId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Chats">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OwnerId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChatName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChatType" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChatUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChatId" Type="bigint" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="Comments">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="AdvertId" />
-            <PropertyRef Name="Comment" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Likes" />
-            <PropertyRef Name="DisLikes" />
-            <PropertyRef Name="Type" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
@@ -176,6 +201,43 @@
           <Property Name="WhenAdminApproved" Type="datetime" />
           <Property Name="Subcategory" Type="int" />
         </EntityType>
+
+
+        <EntityType Name="DialogActiveUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DialogId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DialogMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DialogInfoId" Type="bigint" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FromUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DialogsInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User1Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="User2Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DisLikes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+
         <EntityType Name="Exceptions">
           <Key>
             <PropertyRef Name="Id" />
@@ -795,13 +857,25 @@
           <Parameter Name="uid" Type="nvarchar" Mode="In" />
           <Parameter Name="advertId" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="spGetChats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="spGetChatsForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="spGetComments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="objectId" Type="bigint" Mode="In" />
           <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
         </Function>
+
         <Function Name="spGetCommentsTestVarkent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="objectId" Type="bigint" Mode="In" />
           <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+
+        <Function Name="spGetCommentsForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="advertId" Type="int" Mode="In" />
+
         </Function>
         <Function Name="spGetFavorites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
@@ -834,9 +908,20 @@
           <EntitySet Name="Business" EntityType="Self.Business" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashIns" EntityType="Self.CashIns" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashOuts" EntityType="Self.CashOuts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatActiveUsers" EntityType="Self.ChatActiveUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatMessages" EntityType="Self.ChatMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chats" EntityType="Self.Chats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatUsers" EntityType="Self.ChatUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeletedAdverts" EntityType="Self.DeletedAdverts" Schema="dbo" store:Type="Tables" />
+
+          <EntitySet Name="DialogActiveUsers" EntityType="Self.DialogActiveUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DialogMessages" EntityType="Self.DialogMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DialogsInfo" EntityType="Self.DialogsInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DisLikes" EntityType="Self.DisLikes" Schema="dbo" store:Type="Tables" />
+
           <EntitySet Name="Exceptions" EntityType="Self.Exceptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Favorites" EntityType="Self.Favorites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FavoritesByCookies" EntityType="Self.FavoritesByCookies" Schema="dbo" store:Type="Tables" />
@@ -873,19 +958,6 @@
     [Categories].[OrderId] AS [OrderId], 
     [Categories].[ParentCategoryId] AS [ParentCategoryId]
     FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Comments" EntityType="Self.Comments" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Comments].[Id] AS [Id], 
-    [Comments].[UserId] AS [UserId], 
-    [Comments].[UserName] AS [UserName], 
-    [Comments].[AdvertId] AS [AdvertId], 
-    [Comments].[Comment] AS [Comment], 
-    [Comments].[Date] AS [Date], 
-    [Comments].[Likes] AS [Likes], 
-    [Comments].[DisLikes] AS [DisLikes], 
-    [Comments].[Type] AS [Type]
-    FROM [dbo].[Comments] AS [Comments]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CashIns_Users" Association="Self.FK_CashIns_Users">
             <End Role="Users" EntitySet="Users" />
@@ -1088,6 +1160,55 @@
           <Property Name="PaymentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Result" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="ChatActiveUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="ChatId" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChatMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChatId" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Chats">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OwnerId" Type="Guid" Nullable="false" />
+          <Property Name="ChatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChatType" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChatUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChatId" Type="Int64" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdvertId" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Likes" Type="Int32" Nullable="false" />
+          <Property Name="DisLikes" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Currencies">
           <Key>
             <PropertyRef Name="Id" />
@@ -1129,6 +1250,42 @@
           <Property Name="WhenAdminApproved" Type="DateTime" Precision="3" />
           <Property Name="Subcategory" Type="Int32" />
         </EntityType>
+
+        <EntityType Name="DialogActiveUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="DialogId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DialogMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DialogInfoId" Type="Int64" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FromUserId" Type="Guid" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="DialogsInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User1Id" Type="Guid" Nullable="false" />
+          <Property Name="User2Id" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DisLikes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+        </EntityType>
+
         <EntityType Name="Exceptions">
           <Key>
             <PropertyRef Name="Id" />
@@ -1485,28 +1642,6 @@
           <Property Name="OrderId" Type="Int32" Nullable="false" />
           <Property Name="ParentCategoryId" Type="Int32" />
         </EntityType>
-        <EntityType Name="Comments">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="AdvertId" />
-            <PropertyRef Name="Comment" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Likes" />
-            <PropertyRef Name="DisLikes" />
-            <PropertyRef Name="Type" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AdvertId" Type="Int32" Nullable="false" />
-          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Likes" Type="Int32" Nullable="false" />
-          <Property Name="DisLikes" Type="Int32" Nullable="false" />
-          <Property Name="Type" Type="Int32" Nullable="false" />
-        </EntityType>
         <Association Name="MembershipApplication">
           <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
           <End Role="Memberships" Type="Self.Memberships" Multiplicity="*" />
@@ -1671,7 +1806,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities1" annotation:LazyLoadingEnabled="true">
+
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
@@ -1679,9 +1814,20 @@
           <EntitySet Name="Business" EntityType="Self.Business" />
           <EntitySet Name="CashIns" EntityType="Self.CashIns" />
           <EntitySet Name="CashOuts" EntityType="Self.CashOuts" />
+          <EntitySet Name="ChatActiveUsers" EntityType="Self.ChatActiveUsers" />
+          <EntitySet Name="ChatMessages" EntityType="Self.ChatMessages" />
+          <EntitySet Name="Chats" EntityType="Self.Chats" />
+          <EntitySet Name="ChatUsers" EntityType="Self.ChatUsers" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" />
           <EntitySet Name="Currencies" EntityType="Self.Currencies" />
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" />
           <EntitySet Name="DeletedAdverts" EntityType="Self.DeletedAdverts" />
+
+          <EntitySet Name="DialogActiveUsers" EntityType="Self.DialogActiveUsers" />
+          <EntitySet Name="DialogMessages" EntityType="Self.DialogMessages" />
+          <EntitySet Name="DialogsInfo" EntityType="Self.DialogsInfo" />
+          <EntitySet Name="DisLikes" EntityType="Self.DisLikes" />
+
           <EntitySet Name="Exceptions" EntityType="Self.Exceptions" />
           <EntitySet Name="Favorites" EntityType="Self.Favorites" />
           <EntitySet Name="FavoritesByCookies" EntityType="Self.FavoritesByCookies" />
@@ -1710,7 +1856,6 @@
           <EntitySet Name="Watched" EntityType="Self.Watched" />
           <EntitySet Name="WatchedByCookies" EntityType="Self.WatchedByCookies" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
-          <EntitySet Name="Comments" EntityType="Self.Comments" />
           <AssociationSet Name="MembershipApplication" Association="Self.MembershipApplication">
             <End Role="Applications" EntitySet="Applications" />
             <End Role="Memberships" EntitySet="Memberships" />
@@ -1807,13 +1952,25 @@
             <Parameter Name="uid" Mode="In" Type="String" />
             <Parameter Name="advertId" Mode="In" Type="Int64" />
           </FunctionImport>
+          <FunctionImport Name="spGetChats" ReturnType="Collection(RentooloModel.spGetChats_Result)">
+            <Parameter Name="userId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChatsForUser" ReturnType="Collection(RentooloModel.spGetChatsForUser_Result)">
+            <Parameter Name="userId" Mode="In" Type="Guid" />
+          </FunctionImport>
           <FunctionImport Name="spGetComments" ReturnType="Collection(RentooloModel.spGetComments_Result)">
             <Parameter Name="objectId" Mode="In" Type="Int64" />
             <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
+
           <FunctionImport Name="spGetCommentsTestVarkent" ReturnType="Collection(RentooloModel.spGetCommentsTestVarkent_Result)">
             <Parameter Name="objectId" Mode="In" Type="Int64" />
             <Parameter Name="userId" Mode="In" Type="Guid" />
+
+          <FunctionImport Name="spGetCommentsForUser" ReturnType="Collection(RentooloModel.spGetCommentsForUser_Result)">
+            <Parameter Name="userId" Mode="In" Type="Guid" />
+            <Parameter Name="advertId" Mode="In" Type="Int32" />
+
           </FunctionImport>
           <FunctionImport Name="spGetFavorites" ReturnType="Collection(RentooloModel.spGetFavorites_Result)">
             <Parameter Name="userId" Mode="In" Type="Guid" />
@@ -1839,6 +1996,14 @@
             <Parameter Name="balance" Mode="In" Type="Double" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="spGetChats_Result">
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="String" Name="ChatName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetChatsForUser_Result">
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="String" Name="ChatName" Nullable="true" MaxLength="50" />
+        </ComplexType>
         <ComplexType Name="spGetComments_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Guid" Name="UserId" Nullable="false" />
@@ -1849,14 +2014,26 @@
           <Property Type="Int32" Name="DisLikes" Nullable="false" />
           <Property Type="Int32" Name="Type" Nullable="false" />
         </ComplexType>
+
         <ComplexType Name="spGetCommentsTestVarkent_Result">
+
+        <ComplexType Name="spGetCommentsForUser_Result">
+
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Guid" Name="UserId" Nullable="false" />
           <Property Type="Int32" Name="AdvertId" Nullable="false" />
           <Property Type="String" Name="Comment" Nullable="false" />
           <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+
           <Property Type="Int32" Name="Likes" Nullable="false" />
           <Property Type="Int32" Name="DisLikes" Nullable="false" />
+
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="LikesCount" Nullable="true" />
+          <Property Type="Int32" Name="DisLikesCount" Nullable="true" />
+          <Property Type="Boolean" Name="HaveDisLiked" Nullable="true" />
+          <Property Type="Boolean" Name="HaveLiked" Nullable="true" />
+
           <Property Type="Int32" Name="Type" Nullable="false" />
         </ComplexType>
         <ComplexType Name="spGetFavorites_Result">
@@ -1954,7 +2131,11 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+
         <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities1">
+
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities3">
+
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -2054,6 +2235,60 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ChatActiveUsers">
+            <EntityTypeMapping TypeName="RentooloModel.ChatActiveUsers">
+              <MappingFragment StoreEntitySet="ChatActiveUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatMessages">
+            <EntityTypeMapping TypeName="RentooloModel.ChatMessages">
+              <MappingFragment StoreEntitySet="ChatMessages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chats">
+            <EntityTypeMapping TypeName="RentooloModel.Chats">
+              <MappingFragment StoreEntitySet="Chats">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="ChatName" ColumnName="ChatName" />
+                <ScalarProperty Name="ChatType" ColumnName="ChatType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatUsers">
+            <EntityTypeMapping TypeName="RentooloModel.ChatUsers">
+              <MappingFragment StoreEntitySet="ChatUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="RentooloModel.Comments">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Likes" ColumnName="Likes" />
+                <ScalarProperty Name="DisLikes" ColumnName="DisLikes" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Currencies">
             <EntityTypeMapping TypeName="RentooloModel.Currencies">
               <MappingFragment StoreEntitySet="Currencies">
@@ -2097,6 +2332,46 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+
+          <EntitySetMapping Name="DialogActiveUsers">
+            <EntityTypeMapping TypeName="RentooloModel.DialogActiveUsers">
+              <MappingFragment StoreEntitySet="DialogActiveUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DialogId" ColumnName="DialogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DialogMessages">
+            <EntityTypeMapping TypeName="RentooloModel.DialogMessages">
+              <MappingFragment StoreEntitySet="DialogMessages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DialogInfoId" ColumnName="DialogInfoId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DialogsInfo">
+            <EntityTypeMapping TypeName="RentooloModel.DialogsInfo">
+              <MappingFragment StoreEntitySet="DialogsInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="User1Id" ColumnName="User1Id" />
+                <ScalarProperty Name="User2Id" ColumnName="User2Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DisLikes">
+            <EntityTypeMapping TypeName="RentooloModel.DisLikes">
+              <MappingFragment StoreEntitySet="DisLikes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+
           <EntitySetMapping Name="Exceptions">
             <EntityTypeMapping TypeName="RentooloModel.Exceptions">
               <MappingFragment StoreEntitySet="Exceptions">
@@ -2452,21 +2727,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Comments">
-            <EntityTypeMapping TypeName="RentooloModel.Comments">
-              <MappingFragment StoreEntitySet="Comments">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Likes" ColumnName="Likes" />
-                <ScalarProperty Name="DisLikes" ColumnName="DisLikes" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="UsersInRoles" TypeName="RentooloModel.UsersInRoles" StoreEntitySet="UsersInRoles">
             <EndProperty Name="Roles">
               <ScalarProperty Name="RoleId" ColumnName="RoleId" />
@@ -2539,6 +2799,22 @@
           <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="Хранилище RentooloModel.spAddFavoritesByCookies" />
           <FunctionImportMapping FunctionImportName="spAddWatched" FunctionName="Хранилище RentooloModel.spAddWatched" />
           <FunctionImportMapping FunctionImportName="spAddWatchedByCookies" FunctionName="Хранилище RentooloModel.spAddWatchedByCookies" />
+          <FunctionImportMapping FunctionImportName="spGetChats" FunctionName="Хранилище RentooloModel.spGetChats">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.spGetChats_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ChatName" ColumnName="ChatName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetChatsForUser" FunctionName="Хранилище RentooloModel.spGetChatsForUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.spGetChatsForUser_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ChatName" ColumnName="ChatName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spGetComments" FunctionName="Хранилище RentooloModel.spGetComments">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetComments_Result">
@@ -2553,16 +2829,30 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+
           <FunctionImportMapping FunctionImportName="spGetCommentsTestVarkent" FunctionName="Хранилище RentooloModel.spGetCommentsTestVarkent">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetCommentsTestVarkent_Result">
+
+          <FunctionImportMapping FunctionImportName="spGetCommentsForUser" FunctionName="Хранилище RentooloModel.spGetCommentsForUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.spGetCommentsForUser_Result">
+
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="AdvertId" ColumnName="AdvertId" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+
                 <ScalarProperty Name="Likes" ColumnName="Likes" />
                 <ScalarProperty Name="DisLikes" ColumnName="DisLikes" />
+
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LikesCount" ColumnName="LikesCount" />
+                <ScalarProperty Name="DisLikesCount" ColumnName="DisLikesCount" />
+                <ScalarProperty Name="HaveDisLiked" ColumnName="HaveDisLiked" />
+                <ScalarProperty Name="HaveLiked" ColumnName="HaveLiked" />
+
                 <ScalarProperty Name="Type" ColumnName="Type" />
               </ComplexTypeMapping>
             </ResultMapping>
