@@ -11,7 +11,14 @@ namespace Rentoolo.Controllers
     public class ChatsController : ApiController
     {
 
-        
+        // url types
+        // chats?anotheruser=           - for chat
+        // chats?anotheruser=GuidValue  - for dialog
+
+
+        // class Chats field type - 0 for chats, 1 - for dialogs
+
+
         public void PostChat([FromBody]Chats chatInfo,[FromUri]string anotherUser)
         {
             if (anotherUser == null)

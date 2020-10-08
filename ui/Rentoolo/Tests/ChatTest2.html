@@ -18,6 +18,19 @@
         </div>
 
         <div>
+            <h5>
+                Create chat
+            </h5>
+
+            <div>
+                <input type="text" v-model="chatName" />
+                <button @click="createChat" >create</button>
+            </div>
+
+        </div>
+
+
+        <div>
             <button @click="showHideChats()">show/hide chats</button>
             <button @click="showHideMessages">show/hide messages</button>
         </div>
@@ -82,13 +95,43 @@
                 messages: [],
                 message: "",
                 showMessages: false,
-                ws: null
+                ws: null,
+                chatName: ""
             },
             created: function () {
                 this.getChats();
             },
             methods: {
 
+
+                createChat() {
+
+                    let url = "http://localhost:53225/api/Chats?anotheruser=";
+
+                    let bodyData = {
+                        OwnerId: this.userId,
+                        chatName: this.chatName,
+                        chatType: 0
+                    };
+
+                    let data = {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(bodyData)
+                    };
+
+                    fetch(url, data)
+                        .then((response) => {
+
+                            return response;
+                        })
+                        .then((data) => {
+                            console.log(data);
+                        });
+
+                },
                 addMessage(msg) {
                     let jsonedMsg = JSON.parse(msg);
                     this.messages.unshift(jsonedMsg);
