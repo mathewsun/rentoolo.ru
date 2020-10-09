@@ -17,7 +17,7 @@ namespace Rentoolo.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int UserOwnerId { get; set; }
+        public System.Guid UserOwnerId { get; set; }
         public double Cost { get; set; }
         public string ImgUrls { get; set; }
         public int Status { get; set; }
