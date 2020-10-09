@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using Rentoolo.TestDir;
+//using Rentoolo.TestDir;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1300,15 +1300,15 @@ namespace Rentoolo.Model
 
         #region CommentsTestVarkent
 
-        public static List<spGetCommentsTestVarkent_Result> spGetCommentsTestVarkent_Results(long objId, Guid userId)
-        {  
-            using (var dc1 = new RentooloEntities())
-            {
-                List<spGetCommentsTestVarkent_Result> result1 = dc1.spGetCommentsTestVarkent(objId, userId).ToList();
+        //public static List<spGetCommentsTestVarkent_Result> spGetCommentsTestVarkent_Results(long objId, Guid userId)
+        //{  
+        //    using (var dc1 = new RentooloEntities())
+        //    {
+        //        List<spGetCommentsTestVarkent_Result> result1 = dc1.spGetCommentsTestVarkent(objId, userId).ToList();
                 
-                return result1;
-            }
-        }
+        //        return result1;
+        //    }
+        //}
         #endregion
 
 
@@ -1573,7 +1573,7 @@ namespace Rentoolo.Model
 
                 foreach (var user in activeUsers)
                 {
-                    WSServer.SendMessageToUser(user.UserId.ToString(), JsonConvert.SerializeObject(message));
+                    //WSServer.SendMessageToUser(user.UserId.ToString(), JsonConvert.SerializeObject(message));
                 }
             }
         }
