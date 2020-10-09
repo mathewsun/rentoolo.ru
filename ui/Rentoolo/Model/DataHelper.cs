@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-//using Rentoolo.TestDir;
+using Rentoolo.TestDir;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1573,7 +1573,7 @@ namespace Rentoolo.Model
 
                 foreach (var user in activeUsers)
                 {
-                    //WSServer.SendMessageToUser(user.UserId.ToString(), JsonConvert.SerializeObject(message));
+                    WSServer.SendMessageToUser(user.UserId.ToString(), JsonConvert.SerializeObject(message));
                 }
             }
         }

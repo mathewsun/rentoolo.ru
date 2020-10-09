@@ -8,7 +8,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using Rentoolo;
 using System.Web.Http;
-//using Rentoolo.TestDir;
+using Rentoolo.TestDir;
 
 namespace Rentoolo
 {
@@ -21,7 +21,7 @@ namespace Rentoolo
             // Code that runs on application startup
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterOpenAuth();
-            //WSServer.Serve();
+            WSServer.Serve();
 
             RegisterRoutes(RouteTable.Routes);
 
