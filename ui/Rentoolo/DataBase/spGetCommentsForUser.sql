@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER PROCEDURE  [dbo].[spGetCommentsForUser]
+CREATE PROCEDURE  [dbo].[spGetCommentsForUser]
 (@userId uniqueidentifier, @advertId int)
 AS
 BEGIN
@@ -33,3 +33,7 @@ BEGIN
 	WHERE [AdvertId] = @advertId
 	ORDER BY [Date] ASC
 END
+
+GRANT EXECUTE
+    ON OBJECT::[dbo].[spGetCommentsForUser] TO PUBLIC
+    AS [dbo];
