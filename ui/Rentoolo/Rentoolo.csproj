@@ -52,10 +52,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fleck, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fleck.1.1.0\lib\net45\Fleck.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -337,7 +339,6 @@
     <Content Include="DataBase\spAddWatchedByCookies.sql" />
     <Content Include="DataBase\spAddWatched.sql" />
     <Content Include="DataBase\spGetComments.sql" />
-    <Content Include="DataBase\spGetCommentsTestVarkent.sql" />
     <Content Include="DataBase\spGetTokenCostToday.sql" />
     <Content Include="DataBase\spGetWatchedByCookies.sql" />
     <Content Include="DataBase\spGetWatched.sql" />
@@ -427,11 +428,13 @@
     <Content Include="Manager\ManageAdvert.aspx" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context1.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model11.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="News.aspx" />
     <Content Include="notifications\index.html" />
@@ -457,8 +460,8 @@
     <Content Include="assets\fonts\toolkit-entypo.woff" />
     <Content Include="assets\fonts\toolkit-entypo.woff2" />
     <Content Include="Events.ashx" />
+    <Content Include="TestDir\TestPage.html" />
     <Content Include="Test\eoll73.aspx" />
-    <Content Include="Test\GG-dotNET.aspx" />
     <Content Include="Test\Konstantin.aspx" />
     <Content Include="Test\matheweducation.aspx" />
     <Content Include="Test\Varkentin.aspx" />
@@ -1082,6 +1085,7 @@
     <Compile Include="Model\Articles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\AuctionHelper.cs" />
     <Compile Include="Model\Auctions.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1094,13 +1098,24 @@
     <Compile Include="Model\CashOuts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\CategorieEnum.cs" />
     <Compile Include="Model\Categories.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\CategoriesEnum.cs" />
-    <Compile Include="Model\AuctionsHelper.cs" />
-    <Compile Include="Model\ChartDates.cs" />
-    <Compile Include="Model\CheckQiwiPayment.cs" />
+    <Compile Include="Model\ChartsDates.cs" />
+    <Compile Include="Model\ChatActiveUsers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChatMessages.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Chats.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChatUsers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CheckQiwiPayments.cs" />
     <Compile Include="Model\CommentForUser.cs" />
     <Compile Include="Model\Comments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -1112,6 +1127,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DeletedAdverts.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DialogsInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DisLikes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Exceptions.cs">
@@ -1141,6 +1162,9 @@
     <Compile Include="Model\Items.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Likes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\LoginStat.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1150,22 +1174,20 @@
     <Compile Include="Model\Memberships.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Model1.Context.cs" />
-    <Compile Include="Model\Model1.Context1.cs">
+    <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Model1.cs" />
-    <Compile Include="Model\Model1.Designer.cs">
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Model\Model11.cs">
+    <Compile Include="Model\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\News.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -1191,7 +1213,10 @@
     <Compile Include="Model\Settings.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\spGetCommentsTestVarkent_Result.cs">
+    <Compile Include="Model\spGetChatsForUser_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetCommentsForUser_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetComments_Result.cs">
@@ -1311,10 +1336,6 @@
     </Compile>
     <Compile Include="Model\CashOutStates.cs" />
     <Compile Include="Model\CashOutTypesEnum.cs" />
-    <Compile Include="Model\CategoriesEnum.cs" />
-    <Compile Include="Model\AuctionsHelper.cs" />
-    <Compile Include="Model\ChartDates.cs" />
-    <Compile Include="Model\CheckQiwiPayment.cs" />
     <Compile Include="Model\CurrenciesEnum.cs" />
     <Compile Include="Model\FavoritesForPage.cs" />
     <Compile Include="Model\FavoritesHelper.cs" />
@@ -1351,6 +1372,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UsersOpenAuthData.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserViews.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Wallets.cs">
@@ -1442,19 +1466,13 @@
     <Compile Include="Tenders.aspx.designer.cs">
       <DependentUpon>Tenders.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TestDir\WSServer.cs" />
     <Compile Include="Test\eoll73.aspx.cs">
       <DependentUpon>eoll73.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Test\eoll73.aspx.designer.cs">
       <DependentUpon>eoll73.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Test\GG-dotNET.aspx.cs">
-      <DependentUpon>GG-dotNET.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test\GG-dotNET.aspx.designer.cs">
-      <DependentUpon>GG-dotNET.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test\Konstantin.aspx.cs">
       <DependentUpon>Konstantin.aspx</DependentUpon>
