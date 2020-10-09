@@ -8,7 +8,7 @@ CREATE TABLE [dbo].[Tenders](
 	[Id] [int] NOT NULL,
 	[Name] [nvarchar](max) NOT NULL,
 	[Description] [ntext] NULL,
-	[UserOwnerId] [int] NOT NULL,
+	[UserOwnerId] [uniqueidentifier] NOT NULL,
 	[Cost] [float] NOT NULL,
 	[ImgUrls] [nvarchar](max) NULL,
 	[Status] [int] NOT NULL,
