@@ -6,12 +6,21 @@ namespace Rentoolo.Model
 {
     public static class AuctionsHelper
     {
+        public static int GetAuctionsActiveCount()
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                int count = ctx.Auctions.Count();
+
+                return count;
+            }
+        }
 
         public static List<AuctionsForPage> GetAuctions(Guid userId)
         {
             using (var ctx = new RentooloEntities())
             {
-                var result = ctx.Auctions.Where(x=>x.UserId==userId).ToList();
+                var result = ctx.Auctions.Where(x => x.UserId == userId).ToList();
 
                 List<AuctionsForPage> list = new List<AuctionsForPage>();
 
@@ -22,15 +31,16 @@ namespace Rentoolo.Model
                         Id = item.Id,
                         Name = item.Name,
                         Created = item.Created,
-                        StartPrice = item.StartPrice
+                        StartPrice = item.StartPrice,
+                        ImgUrls = item.ImgUrls
                     });
                 }
 
                 return list;
             }
         }
-        
-       public static int AddAuction(Auctions item)  
+
+        public static int AddAuction(Auctions item)
         {
             using (var ctx = new RentooloEntities())
             {

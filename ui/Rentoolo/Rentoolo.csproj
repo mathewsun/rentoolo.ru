@@ -52,10 +52,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fleck, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fleck.1.1.0\lib\net45\Fleck.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -458,9 +460,11 @@
     <Content Include="assets\fonts\toolkit-entypo.woff" />
     <Content Include="assets\fonts\toolkit-entypo.woff2" />
     <Content Include="Events.ashx" />
+    <Content Include="TestDir\TestPage.html" />
     <Content Include="Test\eoll73.aspx" />
     <Content Include="Test\Konstantin.aspx" />
     <Content Include="Test\matheweducation.aspx" />
+    <Content Include="Test\Varkentin.aspx" />
     <Content Include="TokensCost.aspx" />
     <Content Include="TokensOperations.aspx" />
     <Content Include="Transport.aspx" />
@@ -1081,6 +1085,7 @@
     <Compile Include="Model\Articles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\AuctionHelper.cs" />
     <Compile Include="Model\Auctions.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1093,9 +1098,24 @@
     <Compile Include="Model\CashOuts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\CategorieEnum.cs" />
     <Compile Include="Model\Categories.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ChartsDates.cs" />
+    <Compile Include="Model\ChatActiveUsers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChatMessages.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Chats.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChatUsers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CheckQiwiPayments.cs" />
     <Compile Include="Model\CommentForUser.cs" />
     <Compile Include="Model\Comments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -1107,6 +1127,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DeletedAdverts.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DialogsInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DisLikes.cs">
@@ -1188,6 +1211,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Settings.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetChatsForUser_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetCommentsForUser_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetComments_Result.cs">
@@ -1307,10 +1336,6 @@
     </Compile>
     <Compile Include="Model\CashOutStates.cs" />
     <Compile Include="Model\CashOutTypesEnum.cs" />
-    <Compile Include="Model\CategoriesEnum.cs" />
-    <Compile Include="Model\AuctionsHelper.cs" />
-    <Compile Include="Model\ChartDates.cs" />
-    <Compile Include="Model\CheckQiwiPayment.cs" />
     <Compile Include="Model\CurrenciesEnum.cs" />
     <Compile Include="Model\FavoritesForPage.cs" />
     <Compile Include="Model\FavoritesHelper.cs" />
@@ -1441,6 +1466,7 @@
     <Compile Include="Tenders.aspx.designer.cs">
       <DependentUpon>Tenders.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TestDir\WSServer.cs" />
     <Compile Include="Test\eoll73.aspx.cs">
       <DependentUpon>eoll73.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1461,6 +1487,13 @@
     </Compile>
     <Compile Include="Test\matheweducation.aspx.designer.cs">
       <DependentUpon>matheweducation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\Varkentin.aspx.cs">
+      <DependentUpon>Varkentin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\Varkentin.aspx.designer.cs">
+      <DependentUpon>Varkentin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tokens.aspx.cs">
       <DependentUpon>Tokens.aspx</DependentUpon>

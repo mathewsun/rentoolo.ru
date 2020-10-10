@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -9,6 +10,15 @@ namespace Rentoolo.Model
     {
         #region Объявления
 
+        public static TEntity Get<TEntity>(long id) where TEntity : class
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var items = (DbSet<TEntity>) dc.GetType().GetProperty(typeof(TEntity).Name).GetValue(dc);
+                var item = items.AsEnumerable().FirstOrDefault(x => Convert.ToInt64(typeof(TEntity).GetProperty("Id").GetValue(x))  == id);
+                return item;
+            }
+        }
         public static List<Adverts> GetAdverts()
         {
             using (var ctx = new RentooloEntities())
@@ -78,6 +88,30 @@ namespace Rentoolo.Model
                 var list = ctx.spGetUserAdverts(userId).ToList();
 
                 return list;
+            }
+        }
+
+        public static int GetActiveCount<TEntity>(SellFilter filter = null) where TEntity : class
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var items = (DbSet<TEntity>)ctx.GetType().GetProperty(typeof(TEntity).Name).GetValue(ctx);
+
+                if (!string.IsNullOrEmpty(filter?.Search))
+                {
+                    var count = items.AsEnumerable().Where(x =>
+                            typeof(TEntity).GetProperty("Name").GetValue(x).ToString().
+                                Contains(filter.Search) 
+                            || typeof(TEntity).GetProperty("Description").GetValue(x).ToString().
+                                Contains(filter.Search)).Count();
+
+                    return count;
+                }
+                else
+                {
+                    return items.Count();
+                }
+
             }
         }
 

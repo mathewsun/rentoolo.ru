@@ -17,6 +17,8 @@ namespace Rentoolo.Model
 
         public string UserName { get; set; }
 
+        public string ImgUrls { get; set; }
+
         //Сюда добавить столбец из Users  public string Username (leftjoin)
 
 

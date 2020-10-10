@@ -34,9 +34,14 @@ namespace Rentoolo.Model
         public virtual DbSet<Business> Business { get; set; }
         public virtual DbSet<CashIns> CashIns { get; set; }
         public virtual DbSet<CashOuts> CashOuts { get; set; }
+        public virtual DbSet<ChatActiveUsers> ChatActiveUsers { get; set; }
+        public virtual DbSet<ChatMessages> ChatMessages { get; set; }
+        public virtual DbSet<Chats> Chats { get; set; }
+        public virtual DbSet<ChatUsers> ChatUsers { get; set; }
         public virtual DbSet<Currencies> Currencies { get; set; }
         public virtual DbSet<DailyStatistics> DailyStatistics { get; set; }
         public virtual DbSet<DeletedAdverts> DeletedAdverts { get; set; }
+        public virtual DbSet<DialogsInfo> DialogsInfo { get; set; }
         public virtual DbSet<DisLikes> DisLikes { get; set; }
         public virtual DbSet<Exceptions> Exceptions { get; set; }
         public virtual DbSet<Favorites> Favorites { get; set; }
@@ -213,17 +218,26 @@ namespace Rentoolo.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddWatchedByCookies", uidParameter, advertIdParameter);
         }
     
-        public virtual ObjectResult<spGetComments_Result> spGetComments(Nullable<long> objectId, Nullable<System.Guid> userId)
+        public virtual ObjectResult<spGetChatsForUser_Result> spGetChatsForUser(Nullable<System.Guid> userId)
         {
-            var objectIdParameter = objectId.HasValue ?
-                new ObjectParameter("objectId", objectId) :
-                new ObjectParameter("objectId", typeof(long));
-    
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetComments_Result>("spGetComments", objectIdParameter, userIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetChatsForUser_Result>("spGetChatsForUser", userIdParameter);
+        }
+    
+        public virtual ObjectResult<spGetCommentsForUser_Result> spGetCommentsForUser(Nullable<System.Guid> userId, Nullable<int> advertId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(System.Guid));
+    
+            var advertIdParameter = advertId.HasValue ?
+                new ObjectParameter("advertId", advertId) :
+                new ObjectParameter("advertId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetCommentsForUser_Result>("spGetCommentsForUser", userIdParameter, advertIdParameter);
         }
     
         public virtual ObjectResult<spGetFavorites_Result> spGetFavorites(Nullable<System.Guid> userId)
@@ -302,6 +316,19 @@ namespace Rentoolo.Model
                 new ObjectParameter("balance", typeof(double));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdateQiwiAccountBalance", numberParameter, balanceParameter);
+        }
+    
+        public virtual ObjectResult<spGetComments_Result> spGetComments(Nullable<long> objectId, Nullable<System.Guid> userId)
+        {
+            var objectIdParameter = objectId.HasValue ?
+                new ObjectParameter("objectId", objectId) :
+                new ObjectParameter("objectId", typeof(long));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetComments_Result>("spGetComments", objectIdParameter, userIdParameter);
         }
     }
 }

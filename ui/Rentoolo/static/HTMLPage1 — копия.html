@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    User type: <input type="text" id="usrType" /> <br />
+    user Id: <input type="text" id="usrId" /> <br />
+
+    <input type="text" id="cmpId" /> <button onclick="setUser()">set companion</button> <br />
+
+    <button onclick="initChat()">connect</button> <br />
+
+    <input type="text" id="inp" /> <br />
+
+    <button onclick="sendMessage()">send message</button>
+
+    <div id="container">
+
+    </div>
+
+    <script type="text/javascript">
+
+        let ws;
+        let txtField;
+        let container;
+        let setUserInp;
+
+
+        let usrData = {};
+
+
+
+        function setUser() {
+
+            let data = {
+                type: "set_companion",
+                companionId: setUserInp.value
+            }
+
+
+            ws.send(JSON.stringify(data));
+
+        }
+
+
+
+
+
+        function sendMessage() {
+            let text = txtField.value;
+            let data = {
+                type: "message",
+                message: text
+            }
+
+            ws.send(JSON.stringify(data));
+
+
+
+        }
+        
+
+        function initChat() {
+            txtField = document.getElementById("inp");
+            container = document.getElementById("container");
+            setUserInp = document.getElementById("cmpId");
+
+
+            let usrType = document.getElementById("usrType").value;
+            let usrId = document.getElementById("usrId").value;
+
+            usrData = {
+                userType: usrType,
+                userId: usrId
+            }
+
+            console.log(usrData);
+
+            initWS();
+
+        }
+
+
+
+        function initWS() {
+            ws = new WebSocket("ws://localhost:8080");
+            ws.onopen = function () {
+
+                let data = {
+                    type: 'init',
+                    userType: usrData.userType,
+                    userId: usrData.userId
+
+                }
+
+                let strData = JSON.stringify(data);
+
+                console.log(strData);
+
+                ws.send(strData);
+
+
+            };
+
+            ws.onmessage = function (event) {
+                console.log(event);
+                let data = JSON.parse(event.data);
+                
+                console.log(data);
+            }
+
+        }
+        
+    </script>
+</body>
+</html>

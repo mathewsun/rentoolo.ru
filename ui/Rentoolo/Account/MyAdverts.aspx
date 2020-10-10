@@ -22,10 +22,6 @@
 
             $(".photoContainer").brazzersCarousel();
 
-            //if (width < 512) {
-            //    $(".href-photoContainer").attr("href", "#");
-            //}
-
         });
     </script>
 </asp:Content>

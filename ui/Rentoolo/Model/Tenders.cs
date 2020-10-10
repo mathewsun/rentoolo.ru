@@ -20,7 +20,7 @@ namespace Rentoolo.Model
         public System.Guid UserOwnerId { get; set; }
         public double Cost { get; set; }
         public string ImgUrls { get; set; }
-        public Nullable<int> Status { get; set; }
+        public int Status { get; set; }
         public System.DateTime Created { get; set; }
         public int CurrencyId { get; set; }
     }

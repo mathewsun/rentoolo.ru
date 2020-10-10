@@ -6,10 +6,10 @@
     <script src="/assets/js/jsonUtils.js?2"></script>
 
     <script>
-        $(document).ready(function () {
+        <%--$(document).ready(function () {
             $.get("/assets/json/categories.json", function (data) {
                 var category = findJsonElementById(data, <%=AdvertItem.Category%>);
-
+        
                 if (category !== undefined) {
                     $("#category").html(category.name_ru);
                 }
@@ -29,7 +29,7 @@
             });
 
             $(".photoContainer").brazzersCarousel();
-        });
+        });--%>
 
         
     </script>
@@ -146,42 +146,23 @@
                 <h4>
                     Комментарии:
                 </h4>
-                <div>
+                
+                <asp:Repeater ID="RptrComments" runat="server" OnItemDataBound="RptrComments_ItemDataBound" OnItemCommand="RptrComments_ItemCommand" >
+                    <ItemTemplate>
+                        <div>
+                            Name:  <%#Eval("UserName") %>   <br />
+                            Created: <%#Eval("Date") %>          <br />
+                            Comment: <%#Eval("Comment") %>          <br />
+                            Likes: <%#Eval("LikesCount") %>              <br />
+                            Dislikes: <%#Eval("DisLikesCount") %>        <br />
+                            HaveLiked: <%#Eval("HaveLiked") %>  <br />
+                            HaveDisLiked:  <%#Eval("HaveDisLiked") %>  <br />
+                            <asp:Button ID="ButtonLike" runat="server" Text="Like" CommandName="Like" CommandArgument='<%#Eval("Id") %>' />
+                            <asp:Button ID="ButtonDisLike" runat="server" Text="DisLike" CommandName="DisLike" CommandArgument='<%#Eval("Id") %>' />
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
 
-                    <% foreach (var comment in CommentList)
-                       { %>
-                            Name: <%= comment.UserName %>    <br />
-                     Created: <%= comment.Date %>            <br />
-                    Comment: <%= comment.Comment %>          <br />
-                    Likes: <%= comment.Likes %>              <br />
-                    Dislikes: <%= comment.DisLikes %>        <br />
-
-
-                    <%
-
-                        // TODO: доделать отображение иконок лайков и дизлайков (синий если нажата была пользователем и серый по дефолту)
-                        
-                        if (comment.HaveLike)
-                        {
-                            
-                        }
-
-                        if (comment.HaveDisLike)
-                        {
-
-                        }
-
-
-                        %>
-
-
-                    
-                    <asp:Button ID="ButtonLike" runat="server" Text="Like" OnClick="ButtonLike_Click" CommandName="" CommandArgument="" />
-                    <asp:Button ID="ButtonDisLike" runat="server" Text="DisLike" OnClick="ButtonDisLike_Click" CommandName="" CommandArgument="" />
-
-                    <% } %>
-
-                </div>
             </div>
         </div>
 
