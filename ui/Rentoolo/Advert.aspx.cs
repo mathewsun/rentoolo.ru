@@ -10,16 +10,14 @@ namespace Rentoolo
 {
     public partial class Advert : BasicPage
     {
-        public Adverts AdvertItem;
+        public Adverts AdvertItem = new Adverts();
         public int ViewsCount = 0;
-        public List<CommentForUser> CommentList;
+        public List<spGetCommentsForUser_Result> CommentList;
         
-        
+        // advert id
         int advId;
-
-        // TODO: fix add UserViews add bug
-
-
+        
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             long id = Convert.ToInt64(Request.QueryString["id"]);
@@ -29,6 +27,8 @@ namespace Rentoolo
             {
                 Response.Redirect("/");
             }
+            
+            CommentList = DataHelper.spGetCommentsForUser(User.UserId, advId);
 
             if (!IsPostBack)
             {
@@ -48,19 +48,8 @@ namespace Rentoolo
 
                     DataHelper.TryAddUserView(userViews);
                 }
-
-
-                List<Comments> CommentsList = DataHelper.GetComments(StructsHelper.ViewedType["product"], (int)id);
-
-                foreach(var comment in CommentsList)
-                {
-                    CommentList.Add(new CommentForUser(comment));
-                }
-
-
-
-
-
+                RptrComments.DataSource = CommentList;
+                RptrComments.DataBind();
 
                 AdvertItem = AdvertsDataHelper.GetAdvert(id);
 
@@ -83,8 +72,7 @@ namespace Rentoolo
             string tempId = Page.RouteData.Values["id"] as string;
         }
 
-
-        // add comment button
+        
         protected void Button1_Click(object sender, EventArgs e)
         {
             string commentText = TextBoxComment.Text;
@@ -101,24 +89,35 @@ namespace Rentoolo
             };
 
             DataHelper.AddComment(comment);
-
-
-
-        }
-
-        // TODO: add comments likes dislikes
-        // TODO: test comments
-
-        protected void ButtonLike_Click(object sender, CommandEventArgs e)
-        {
             
-            // как взять ID комментария из списка?
-            // DataHelper.UpdateCommentLikes()
         }
-
-        protected void ButtonDisLike_Click(object sender, CommandEventArgs e)
+        
+        protected void RptrComments_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
 
         }
+
+        protected void RptrComments_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            string cmdName = e.CommandName.ToString();
+            string cmdArg = e.CommandArgument.ToString();
+            int commentId = Convert.ToInt32(cmdArg);
+
+            switch (cmdName)
+            {
+                case "Like":
+                    DataHelper.LikeUnLike(User.UserId, commentId);
+                    break;
+                case "DisLike":
+                    DataHelper.DisLikeUnDisLike(User.UserId, commentId);
+                    break;
+                default:
+                    throw new Exception("unsopprted case");
+                    break;
+                
+            }
+        }
+
+
     }
 }

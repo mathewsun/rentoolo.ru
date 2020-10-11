@@ -40,21 +40,12 @@ namespace Rentoolo {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// ButtonLike элемент управления.
+        /// RptrComments элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonLike;
-        
-        /// <summary>
-        /// ButtonDisLike элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonDisLike;
+        protected global::System.Web.UI.WebControls.Repeater RptrComments;
     }
 }
