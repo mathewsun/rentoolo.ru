@@ -10,115 +10,118 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="403.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="404.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="500.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="About.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/AddItem.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>08/16/2020 13:12:04</publishTime>
     </File>
     <File Include="Account/Auction.aspx">
-      <publishTime>12/05/2020 19:37:55</publishTime>
+      <publishTime>09/22/2020 00:43:33</publishTime>
     </File>
     <File Include="Account/Auctions.aspx">
       <publishTime>08/08/2020 14:27:11</publishTime>
     </File>
     <File Include="Account/Auto.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/19/2020 23:37:04</publishTime>
     </File>
     <File Include="Account/Cabinet.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/CashIn.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/CashOut.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Category.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>06/28/2020 05:35:30</publishTime>
     </File>
     <File Include="Account/DeviceSettings.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Exchange.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Login.aspx">
-      <publishTime>10/05/2020 23:20:43</publishTime>
+      <publishTime>05/10/2020 23:20:43</publishTime>
     </File>
     <File Include="Account/LoginStatistics.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Manage.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/ManageTopUserControl.ascx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Menu.ascx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Moto.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/19/2020 23:38:03</publishTime>
     </File>
     <File Include="Account/MyAdverts.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>09/22/2020 00:43:33</publishTime>
+    </File>
+    <File Include="Account/OkResult.aspx">
+      <publishTime>09/21/2020 08:40:40</publishTime>
     </File>
     <File Include="Account/OpenAuthProviders.ascx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Operations.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Payment.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Profit.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Referrals.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Register.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Account/RegisterExternalLogin.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Rent.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/14/2020 02:42:53</publishTime>
     </File>
     <File Include="Account/Result.ashx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/SelectCategory.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Sell/Business.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/21/2020 01:41:29</publishTime>
     </File>
     <File Include="Account/SellCategory.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/21/2020 01:38:23</publishTime>
     </File>
     <File Include="Account/Service.aspx">
-      <publishTime>03/05/2020 23:41:52</publishTime>
+      <publishTime>05/03/2020 23:41:52</publishTime>
     </File>
     <File Include="Account/Settings.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Shop.aspx">
-      <publishTime>03/05/2020 23:41:52</publishTime>
+      <publishTime>05/03/2020 23:41:52</publishTime>
     </File>
     <File Include="Account/SignUp.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Tender.aspx">
       <publishTime>03/05/2020 23:41:52</publishTime>
@@ -126,47 +129,71 @@
     <File Include="Account/Tenders.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="Account/TenderViews/CreateTender.aspx">
+      <publishTime>09/21/2020 08:40:40</publishTime>
+    </File>
+    <File Include="Account/TenderViews/Tender.aspx">
+      <publishTime>09/21/2020 08:40:40</publishTime>
+    </File>
+    <File Include="Account/TenderViews/TenderInfo.aspx">
+      <publishTime>09/21/2020 08:40:40</publishTime>
+    </File>
+    <File Include="Account/TenderViews/TenderRequests.aspx">
+      <publishTime>09/21/2020 08:40:40</publishTime>
+    </File>
+    <File Include="Account/TenderViews/TenderRequestView.aspx">
+      <publishTime>09/21/2020 08:40:40</publishTime>
+    </File>
+    <File Include="Account/TenderViews/UsersTenderRequests.aspx">
+      <publishTime>09/21/2020 08:40:40</publishTime>
+    </File>
+    <File Include="Account/TenderViews/UsersTenders.aspx">
+      <publishTime>09/21/2020 08:40:40</publishTime>
+    </File>
+    <File Include="Account/TenderViews/WinedTenderRequest.aspx">
+      <publishTime>09/21/2020 08:40:40</publishTime>
+    </File>
     <File Include="Account/TokensBuying.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/TokensBuyingaspx.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Account/TokensSelling.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Transport.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/19/2020 23:37:29</publishTime>
     </File>
     <File Include="Account/Vacancy.aspx">
-      <publishTime>03/05/2020 23:41:52</publishTime>
+      <publishTime>05/03/2020 23:41:52</publishTime>
     </File>
     <File Include="Account/Watched.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Account/Web.config">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/13/2020 18:47:55</publishTime>
     </File>
     <File Include="AddItem.html">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="AddItem_test.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/Admin.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/AdminMenu.ascx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/ArticleOne.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/Articles.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/CashIns.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/CashOut.aspx">
       <publishTime>12/04/2019 04:53:02</publishTime>
@@ -175,340 +202,340 @@
       <publishTime>12/04/2019 04:53:02</publishTime>
     </File>
     <File Include="Admin/CashOuts.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2020 18:43:31</publishTime>
     </File>
     <File Include="Admin/Clients.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/DatabaseTables.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/Exceptions.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/Ips.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/LoginStatistics.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/LoginStatisticsToday.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/News.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/NewsOne.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/Operations.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/Payments.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/QiwiPhones.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Admin/Referrals.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/Result.ashx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/Setting.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/Settings.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/Statistics.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/User.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/Users.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Admin/Web.config">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="AdminMaster.Master">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Advert.aspx">
-      <publishTime>12/05/2020 21:30:23</publishTime>
+      <publishTime>10/11/2020 23:49:33</publishTime>
     </File>
     <File Include="Article.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Articles.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/css/additional.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2020 20:17:00</publishTime>
     </File>
     <File Include="assets/css/application.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/css/docs.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/css/jQuery.Brazzers-Carousel.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/css/photoSlider.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/css/sweet-alert.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/css/toolkit.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>09/22/2020 00:43:33</publishTime>
     </File>
     <File Include="assets/fonts/toolkit-entypo.eot">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/fonts/toolkit-entypo.ttf">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/fonts/toolkit-entypo.woff">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/fonts/toolkit-entypo.woff2">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/addphoto.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/addphoto.svg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/add_icon_1_1_20.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/add_icon_1_1_2_20.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/add_icon_1_8_1_20.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/add_icon_1_8_1_40.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/add_icon_1_8_2_20.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/add_icon_1_8_2_40.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/avatar-dhg.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/avatar-fat.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/avatar-mdo.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/banner_1.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/brand-white.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/brand.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/delete.svg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/favorite_20.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/favorite_20_light.png">
       <publishTime>08/06/2019 00:45:10</publishTime>
     </File>
     <File Include="assets/img/favorite_dark_20.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/favorite_light_20.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/iceland.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/icon_edit.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_1.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_10.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_11.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_12.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_13.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_14.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_15.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_16.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_17.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_18.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_2.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_3.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_4.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_5.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_6.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_7.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_8.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/instagram_9.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/kurier-piter.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/position.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/qiwi_and_cards.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/settings-icon-50.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/slready16.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/unsplash_1.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/unsplash_2.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/varianty-planirovki-3-h-komnatnoj-kvartiry-v-hrushchevke-7.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/vk_black.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/vk_white.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/yellow-green.ico">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/img/yellow-green.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/application.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/chart.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/dropzone/basic.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/dropzone/dropzone-amd-module.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/dropzone/dropzone.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/dropzone/dropzone.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/dropzone/min/basic.min.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/dropzone/min/dropzone-amd-module.min.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/dropzone/min/dropzone.min.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/dropzone/min/dropzone.min.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/format.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/jquery-2.2.4.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/jQuery.Brazzers-Carousel.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/jquery.min.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/js.cookie.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/jsonUtils.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/19/2020 15:47:50</publishTime>
     </File>
     <File Include="assets/js/popper.min.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/sweet-alert.min.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/toolkit.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="assets/js/utils.js">
-      <publishTime>12/05/2020 20:38:33</publishTime>
+      <publishTime>05/12/2020 20:38:33</publishTime>
     </File>
     <File Include="assets/json/categories.json">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/21/2020 01:42:17</publishTime>
     </File>
     <File Include="assets/json/categories_ru.json">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/19/2020 23:36:10</publishTime>
     </File>
     <File Include="Auctions.aspx">
-      <publishTime>08/08/2020 14:27:11</publishTime>
+      <publishTime>09/22/2020 00:43:33</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:47</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.jQuery.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.jQuery.UI.Combined.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/Cats.dll">
       <publishTime>04/04/2019 02:29:15</publishTime>
@@ -517,121 +544,124 @@
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/DotNetOpenAuth.AspNet.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/DotNetOpenAuth.Core.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/DotNetOpenAuth.OAuth.Consumer.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/DotNetOpenAuth.OAuth.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/DotNetOpenAuth.OpenId.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/DotNetOpenAuth.OpenId.RelyingParty.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
+    </File>
+    <File Include="bin/Fleck.dll">
+      <publishTime>03/20/2019 17:31:14</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Membership.OpenAuth.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Web.Optimization.WebForms.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/Microsoft.ScriptManager.MSAjax.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/Microsoft.ScriptManager.WebForms.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/Mono.Math.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/09/2019 00:56:44</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.pdb">
       <publishTime>09/01/2019 00:19:25</publishTime>
     </File>
     <File Include="bin/Org.Mentalis.Security.Cryptography.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/Rentolo.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Rentoolo.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>10/12/2020 00:24:46</publishTime>
     </File>
     <File Include="bin/Rentoolo.pdb">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>10/12/2020 00:24:46</publishTime>
     </File>
     <File Include="bin/ru/EntityFramework.resources.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/ru/EntityFramework.SqlServer.resources.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/ru/System.Net.Http.Formatting.resources.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/ru/System.Web.Http.resources.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/ru/System.Web.Http.WebHost.resources.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/System.Web.Providers.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:47</publishTime>
     </File>
     <File Include="bin/xNet.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>10/12/2020 00:24:45</publishTime>
     </File>
     <File Include="bin/xNet.pdb">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>10/12/2020 00:24:45</publishTime>
     </File>
     <File Include="bootstrap/index.html">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Bundle.config">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Business.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Category.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="ConsumerElectronics.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Contact.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Content/animate.css">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -687,6 +717,9 @@
     <File Include="Content/toolkit.css">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="DataBase/alter/AlterUsers.sql">
+      <publishTime>09/21/2020 21:58:50</publishTime>
+    </File>
     <File Include="DataBase/cpDailyProcedures.sql">
       <publishTime>12/12/2018 14:31:41</publishTime>
     </File>
@@ -697,13 +730,13 @@
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="DataBase/fnGetAllUsers.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/fnGetReferralBonus.sql">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="DataBase/fnGetTablesRows.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/fnGetUserBalance.sql">
       <publishTime>11/10/2015 01:45:05</publishTime>
@@ -715,22 +748,22 @@
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="DataBase/fnGetUserWallets.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/Init/Init.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spAddFavorites.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spAddFavoritesAuctions.sql">
-      <publishTime>10/08/2020 23:08:57</publishTime>
+      <publishTime>08/10/2020 23:08:57</publishTime>
     </File>
     <File Include="DataBase/spAddFavoritesAuctionsByCookies.sql">
       <publishTime>08/08/2020 14:27:11</publishTime>
     </File>
     <File Include="DataBase/spAddFavoritesByCookies.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spAddQiwiBalanceUpdatePerMonth.sql">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -739,55 +772,58 @@
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="DataBase/spAddWatched.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spAddWatchedByCookies.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spGetActiveQiwiAccount.sql">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="DataBase/spGetAdverts.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spGetAuctions.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
+    </File>
+    <File Include="DataBase/spGetComments.sql">
+      <publishTime>09/22/2020 00:03:49</publishTime>
     </File>
     <File Include="DataBase/spGetFavorites.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spGetFavoritesByCookies.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spGetLast200TokensOperations.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spGetLoginStatisticLastDayActive.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spGetLoginStatisticLastHourActive.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spGetTokenCostToday.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spGetUserAdverts.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spGetUserBalanceByName.sql">
       <publishTime>12/12/2018 14:21:57</publishTime>
     </File>
     <File Include="DataBase/spGetWatched.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spGetWatchedByCookies.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spSetTokensCost.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spUpdateQiwiAccountBalance.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/spUpdateQiwiAccountWhenHistoryChecked.sql">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -802,64 +838,76 @@
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="DataBase/tables/Adverts.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/tables/Auctions.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>09/22/2020 00:43:33</publishTime>
     </File>
     <File Include="DataBase/tables/Business.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/tables/CashOuts.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
+    </File>
+    <File Include="DataBase/tables/Comments.sql">
+      <publishTime>09/21/2020 21:58:50</publishTime>
     </File>
     <File Include="DataBase/tables/Favorites.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/tables/FavoritesByCookies.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/tables/LoginStat.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/tables/Phones.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
+    </File>
+    <File Include="DataBase/tables/TenderRequest.sql">
+      <publishTime>09/22/2020 00:22:11</publishTime>
+    </File>
+    <File Include="DataBase/tables/Tenders.sql">
+      <publishTime>10/11/2020 23:49:33</publishTime>
     </File>
     <File Include="DataBase/tables/TokensBuying.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/tables/TokensCost.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/tables/TokensSelling.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
+    </File>
+    <File Include="DataBase/tables/Users.sql">
+      <publishTime>09/21/2020 21:58:50</publishTime>
     </File>
     <File Include="DataBase/tables/Watched.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="DataBase/tables/WatchedByCookies.sql">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Default.aspx">
-      <publishTime>02/08/2020 18:56:03</publishTime>
+      <publishTime>10/12/2020 00:23:33</publishTime>
     </File>
     <File Include="docs/index.html">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Empty.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Events.ashx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Fail.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="FAQ.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Favorites.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="fonts/pluton.eot">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -874,16 +922,16 @@
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Help.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="HobbyRest.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="HomeGarden.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Images/avatar-dhg %281%29.png">
       <publishTime>12/04/2019 03:19:14</publishTime>
@@ -1164,20 +1212,116 @@
     <File Include="Images/yobit.jpg">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="img/a/0ETyETt0UGH9SpLUCJJGQ.jpg">
+      <publishTime>04/27/2020 14:38:56</publishTime>
+    </File>
+    <File Include="img/a/1ubiLdqmUKpYsar4SsM1A.jpg">
+      <publishTime>07/26/2020 19:19:16</publishTime>
+    </File>
+    <File Include="img/a/1Yg7WTepOUe4guNHxqZgSw.jpg">
+      <publishTime>10/26/2019 14:29:40</publishTime>
+    </File>
+    <File Include="img/a/5pCX225yECrJK1EdRDIKw.jpg">
+      <publishTime>07/26/2020 19:19:16</publishTime>
+    </File>
+    <File Include="img/a/8bkqHlYySEmqCRWPeubGQ.jpg">
+      <publishTime>10/11/2019 20:54:02</publishTime>
+    </File>
+    <File Include="img/a/9FtOlXC3KUWJ6D938o8Kmw.jpg">
+      <publishTime>07/26/2020 19:19:16</publishTime>
+    </File>
+    <File Include="img/a/br10SfqbBUSvK8jFPm1r3Q.jpg">
+      <publishTime>10/11/2019 20:54:02</publishTime>
+    </File>
+    <File Include="img/a/DhaLb5TLUSEvgfAxgH77Q.jpg">
+      <publishTime>10/26/2019 14:29:40</publishTime>
+    </File>
+    <File Include="img/a/DU0vHVSLf0OOY5bwFefEMA.jpg">
+      <publishTime>10/26/2019 13:54:32</publishTime>
+    </File>
+    <File Include="img/a/e1pheumNfUSooc5OhG7K8w.png">
+      <publishTime>07/16/2020 01:44:38</publishTime>
+    </File>
+    <File Include="img/a/FnmKKH4Ak2oMXMcgnLKHw.jpg">
+      <publishTime>10/26/2019 14:29:38</publishTime>
+    </File>
+    <File Include="img/a/g1TMt82J0WUJ8QHj8MhA.jpg">
+      <publishTime>06/26/2020 23:48:20</publishTime>
+    </File>
+    <File Include="img/a/GcLH1ion40GwK8eK88m0Q.jpg">
+      <publishTime>10/11/2019 20:54:02</publishTime>
+    </File>
+    <File Include="img/a/GSI4kgcK8UmITf7eW8ClSw.jpg">
+      <publishTime>07/26/2020 19:19:16</publishTime>
+    </File>
+    <File Include="img/a/j7rMiCXWekmVM6TaCXnspg.jpg">
+      <publishTime>10/03/2019 00:36:18</publishTime>
+    </File>
+    <File Include="img/a/KBl6y2RkKptV35fV8rg.jpg">
+      <publishTime>08/16/2020 14:17:14</publishTime>
+    </File>
+    <File Include="img/a/KzFZndm8GkCewRbzpDzTzQ.jpg">
+      <publishTime>07/16/2020 01:20:42</publishTime>
+    </File>
+    <File Include="img/a/mxsrgrPttUqWOQp0wBbQ.jpg">
+      <publishTime>10/11/2019 20:54:02</publishTime>
+    </File>
+    <File Include="img/a/N22eeOEoEaZCPPkw39Zkw.jpg">
+      <publishTime>10/26/2019 14:29:40</publishTime>
+    </File>
+    <File Include="img/a/nFulAD509kO262lg8wHqkQ.jpg">
+      <publishTime>10/26/2019 14:29:38</publishTime>
+    </File>
     <File Include="img/a/noPhoto.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/30/2020 18:12:16</publishTime>
+    </File>
+    <File Include="img/a/oWD62LoCh0Ki7lDEi64c8w.jpg">
+      <publishTime>10/26/2019 13:54:32</publishTime>
+    </File>
+    <File Include="img/a/PkfH63NfykK5IDAhQC97g.jpg">
+      <publishTime>08/16/2020 14:17:14</publishTime>
+    </File>
+    <File Include="img/a/Q62a1tGae0WwHZy6tCiYVQ.jpg">
+      <publishTime>11/16/2019 17:43:58</publishTime>
+    </File>
+    <File Include="img/a/qbt8Vq3gKU2tEnWH1l6LuA.jpg">
+      <publishTime>10/26/2019 13:54:32</publishTime>
+    </File>
+    <File Include="img/a/SIHdBzJ2xkeewPafXldijw.jpg">
+      <publishTime>10/11/2019 20:54:02</publishTime>
+    </File>
+    <File Include="img/a/sMFAAAITL06GeAXpGNqumA.jpg">
+      <publishTime>10/11/2019 20:50:04</publishTime>
     </File>
     <File Include="img/a/test.html">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="img/a/UOsvIyfOc0ahpcP2o6VMEg.jpg">
+      <publishTime>10/26/2019 13:54:32</publishTime>
+    </File>
+    <File Include="img/a/V6bJ415pk00SmjqznXbZA.jpg">
+      <publishTime>05/07/2020 16:52:04</publishTime>
+    </File>
+    <File Include="img/a/VClzoRSFUOz9BjWDV7BDA.jpg">
+      <publishTime>10/26/2019 13:54:32</publishTime>
+    </File>
+    <File Include="img/a/wcB4wOYDX0aj7Ef3GU4SQ.jpg">
+      <publishTime>05/30/2020 17:45:00</publishTime>
+    </File>
+    <File Include="img/a/wCkZwxQHxUa4W0CpWexR2g.jpg">
+      <publishTime>10/11/2019 20:54:02</publishTime>
+    </File>
+    <File Include="img/a/zvUwKw2GuESIKa8MalcwHw.jpg">
+      <publishTime>10/11/2019 20:33:16</publishTime>
+    </File>
     <File Include="img/kitchen/avatars/69179930_736853823483887_5740857891485646848_n.jpg">
-      <publishTime>10/08/2020 23:13:47</publishTime>
+      <publishTime>08/10/2020 23:13:47</publishTime>
     </File>
     <File Include="img/kitchen/avatars/69527679_631739310686765_4819614499147350016_n.jpg">
-      <publishTime>10/08/2020 23:14:10</publishTime>
+      <publishTime>08/10/2020 23:14:10</publishTime>
     </File>
     <File Include="img/kitchen/avatars/94671454_277769756585463_6526749104637214720_n.jpg">
-      <publishTime>10/08/2020 23:13:18</publishTime>
+      <publishTime>08/10/2020 23:13:18</publishTime>
     </File>
     <File Include="img/kitchen/falafel-s-ovoshami.jpg">
       <publishTime>08/08/2020 16:28:46</publishTime>
@@ -1198,10 +1342,10 @@
       <publishTime>08/08/2020 14:24:33</publishTime>
     </File>
     <File Include="Job.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="login/index.html">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Manager/ManageAdvert.aspx">
       <publishTime>05/05/2020 05:46:33</publishTime>
@@ -1213,16 +1357,16 @@
       <publishTime>09/07/2019 20:36:14</publishTime>
     </File>
     <File Include="Model/Model1.edmx.diagram">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>10/11/2020 23:49:33</publishTime>
     </File>
     <File Include="News.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="notifications/index.html">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>03/05/2020 20:51:32</publishTime>
+      <publishTime>10/11/2020 23:49:34</publishTime>
     </File>
     <File Include="PayPayMakeTransferHandler.ashx">
       <publishTime>12/04/2019 04:53:11</publishTime>
@@ -1231,19 +1375,19 @@
       <publishTime>12/04/2019 04:53:11</publishTime>
     </File>
     <File Include="PersonalGoods.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Pets.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="profile/index.html">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Realty.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Rent.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Scripts/app.js">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -1306,43 +1450,64 @@
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Services.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>02/08/2020 18:56:12</publishTime>
+      <publishTime>10/12/2020 00:24:04</publishTime>
     </File>
     <File Include="SiteBalance.Master">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Success.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Template.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
+    </File>
+    <File Include="Tender.aspx">
+      <publishTime>09/21/2020 08:40:40</publishTime>
+    </File>
+    <File Include="Tenders.aspx">
+      <publishTime>09/21/2020 08:40:40</publishTime>
     </File>
     <File Include="Test.aspx">
       <publishTime>12/05/2020 19:37:55</publishTime>
     </File>
+    <File Include="Test/eoll73.aspx">
+      <publishTime>09/22/2020 00:03:49</publishTime>
+    </File>
+    <File Include="Test/Konstantin.aspx">
+      <publishTime>09/21/2020 22:01:44</publishTime>
+    </File>
+    <File Include="Test/matheweducation.aspx">
+      <publishTime>09/22/2020 00:03:49</publishTime>
+    </File>
+    <File Include="Test/Varkentin.aspx">
+      <publishTime>09/23/2020 10:29:56</publishTime>
+    </File>
+    <File Include="TestDir/TestPage.html">
+      <publishTime>10/11/2020 23:49:34</publishTime>
+    </File>
     <File Include="Tokens.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="TokensBuying.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="TokensCost.aspx">
-      <publishTime>03/05/2020 23:22:44</publishTime>
+      <publishTime>05/03/2020 23:22:44</publishTime>
     </File>
     <File Include="TokensOperations.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="TokensSelling.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Transport.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>10/12/2020 00:20:05</publishTime>
     </File>
     <File Include="WebForm1.aspx">
       <publishTime>03/07/2019 22:00:51</publishTime>
@@ -1354,7 +1519,7 @@
       <publishTime>03/07/2019 22:13:07</publishTime>
     </File>
     <File Include="yandex_f9c03f80c16c0af8.html">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/30/2020 13:05:46</publishTime>
     </File>
   </ItemGroup>
 </Project>
