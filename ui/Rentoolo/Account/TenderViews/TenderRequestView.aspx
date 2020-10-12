@@ -3,6 +3,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
+
+        <h4>
+            <a href="TenderInfo.aspx?id=<%=TenderId %>">
+                вернуться к тендеру
+            </a>
+        </h4>
+
         <h3>
             Заявка на тендер
         </h3>

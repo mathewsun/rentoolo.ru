@@ -12,6 +12,8 @@ namespace Rentoolo.Account.TenderViews
     {
         public TenderRequest TenderRequest;
         int id;
+        // from tender id
+        public int TenderId;
 
         // TODO: изменить статус у заявки при принятии ее от тендера
 
@@ -20,6 +22,7 @@ namespace Rentoolo.Account.TenderViews
             if (!IsPostBack)
             {
                 id = Convert.ToInt32(Request.QueryString["id"]);
+                TenderId = Convert.ToInt32(Request.QueryString["tenderId"]);
                 TenderRequest = TendersHelper.GetTenderRequest(id);
             }
         }
