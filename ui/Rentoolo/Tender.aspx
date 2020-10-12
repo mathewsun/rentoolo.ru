@@ -8,6 +8,11 @@
             <a href="Tender.aspx">
                 <h5>Вернуться к списку тендеров</h5>
             </a>
+
+            <a href="/Account/TenderViews/TenderRequests.aspx?id=<%=tender.Id %>">
+                <h4>Показать список запросов на тендер</h4>
+            </a>
+
             <h2>Tender Info</h2>
             <div>
                 <h4>
