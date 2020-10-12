@@ -22,9 +22,9 @@
     <meta property="image" content="https://www.Rentoolo.ru/assets/img/banner_1.jpg" />
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <link href="/assets/css/toolkit.css?888841" rel="stylesheet">
-    <link href="/assets/css/application.css?8" rel="stylesheet">
-    <link href="/assets/css/additional.css?222444" rel="stylesheet">
+    <link href="/assets/css/toolkit.css?88884122" rel="stylesheet">
+    <link href="/assets/css/application.css?822" rel="stylesheet">
+    <link href="/assets/css/additional.css?22244422" rel="stylesheet">
 
     
 
@@ -103,7 +103,7 @@
                         <a class="nav-link" href="/Auctions">Аукционы</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Тендеры</a>
+                        <a class="nav-link" href="/Tenders.aspx">Тендеры</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/">Магазины</a>

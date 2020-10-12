@@ -632,8 +632,8 @@ pre {
 
 .container {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 5px;
+    padding-left: 5px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -12329,6 +12329,12 @@ html {
 @media (max-width: 575.98px) {
     /*Image size below 576px width*/
     .advert-img {
+        height: 120px !important;
+        width: 170px !important;
+        padding-left: 5px;
+    }
+
+    .auction-img {
         height: 120px !important;
         width: 170px !important;
         padding-left: 5px;
