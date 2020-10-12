@@ -5,12 +5,14 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[Auctions](
+ALTER TABLE [dbo].[Auctions](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](max) NOT NULL,
 	[StartPrice] [money] NOT NULL,
 	[Created] [datetime] NOT NULL,
 	[UserId] [uniqueidentifier] NOT NULL,
+	[ImgUrls] [nvarchar](max) NULL,
+	[Description] [nvarchar](max) NULL,
  CONSTRAINT [PK_Auctions] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
