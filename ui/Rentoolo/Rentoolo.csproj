@@ -219,6 +219,7 @@
     <Content Include="Account\TokensBuying.aspx" />
     <Content Include="Account\TokensSelling.aspx" />
     <Content Include="Account\Transport.aspx" />
+    <Content Include="Account\UserProfile.aspx" />
     <Content Include="Account\Vacancy.aspx" />
     <Content Include="Account\Watched.aspx" />
     <Content Include="AddItem.html" />
@@ -790,6 +791,13 @@
     </Compile>
     <Compile Include="Account\Transport.aspx.designer.cs">
       <DependentUpon>Transport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Vacancy.aspx.cs">
       <DependentUpon>Vacancy.aspx</DependentUpon>

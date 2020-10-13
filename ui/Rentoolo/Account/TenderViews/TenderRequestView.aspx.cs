@@ -30,9 +30,6 @@ namespace Rentoolo.Account.TenderViews
         protected void ButtonAccept_Click(object sender, EventArgs e)
         {
             TendersHelper.UpdateTReqStatusStart(id);
-
-
-
         }
     }
 }

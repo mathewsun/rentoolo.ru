@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Rentoolo.Account.TenderViews
 {
-    public partial class UsersTenders : System.Web.UI.Page
+    public partial class UsersTenders : BasicPage
     {
         public List<Model.Tenders> Tenders;
 
@@ -18,9 +18,7 @@ namespace Rentoolo.Account.TenderViews
 
             if (!IsPostBack)
             {
-                // id - users id
-                Tenders = TendersHelper.GetUsersTenders(Guid.Parse(Request.QueryString["uid"]));
-                
+                Tenders = TendersHelper.GetUsersTenders(User.UserId);
             }
         }
     }
