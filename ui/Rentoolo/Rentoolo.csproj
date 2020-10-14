@@ -462,6 +462,7 @@
     <Content Include="assets\fonts\toolkit-entypo.woff2" />
     <Content Include="Events.ashx" />
     <Content Include="TestDir\TestPage.html" />
+    <Content Include="Tests\ChatTest2.html" />
     <Content Include="Test\eoll73.aspx" />
     <Content Include="Test\Konstantin.aspx" />
     <Content Include="Test\matheweducation.aspx" />
