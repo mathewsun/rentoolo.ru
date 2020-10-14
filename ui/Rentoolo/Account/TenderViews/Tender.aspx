@@ -46,6 +46,9 @@
                    <div class="block-card">
                         <a href="TenderInfo.aspx?id=<%=tender.Id %>">
                             <h4> <%= tender.Name %> </h4>
+                            <div>
+                                
+                            </div>
                             <div class="black-text">
                                 Description: 
                                 <%= tender.Description %>

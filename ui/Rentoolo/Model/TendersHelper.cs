@@ -155,6 +155,38 @@ namespace Rentoolo.Model
             }
         }
 
+        public static List<Tenders> GetTenders(string name, double minCost, double maxCost, int mode = 0)
+        {
+            //  mode(sort) 0- ascendance 1- descendance
+            
+            using (var dc = new RentooloEntities())
+            {
+                List<Tenders> tenders;
+
+                if (maxCost < minCost)
+                {
+                    tenders = (from t in dc.Tenders where (t.Name.Contains(name))&&(t.Cost>=minCost) select t).ToList();
+                }
+                else
+                {
+                    tenders = (from t in dc.Tenders where (t.Name.Contains(name)) && ((t.Cost >= minCost)&&(t.Cost<=maxCost)) select t).ToList();
+                }
+
+                if (mode == 0)
+                {
+                    return tenders.OrderBy(x => x.Created).ToList();
+                }else
+                {
+                    return tenders.OrderByDescending(x => x.Created).ToList();
+                }
+                
+            }
+        }
+
+
+
+
+
         public static List<Tenders> GetUsersTenders(Guid id)
         {
             using (var dc = new RentooloEntities())
