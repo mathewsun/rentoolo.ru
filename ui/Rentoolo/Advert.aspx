@@ -93,6 +93,18 @@
             </div>
 
         </div>
+
+
+        <div class="additem-category">
+            <div class="additem-left additem-contact">
+                <a href="Account/UserProfile.aspx?id=<%=AdvertItem.CreatedUserId %>" >
+                    <%= AnotherUser.UserName %>
+                </a>
+            </div>
+
+        </div>
+
+
         <div class="additem-category">
             <div class="additem-left">
                 <span class="additem-title">Место сделки</span>
