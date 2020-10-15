@@ -17,24 +17,67 @@ namespace Rentoolo
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             var name = Request.Form["name"];
-            TendersList = name == null ? TendersHelper.GetAllTenders() : TendersHelper.GetTenders(name);
+            var strMinCost = Request.Form["minCost"];
+            var strMaxCost = Request.Form["maxCost"];
+            var strStartDate = Request.Form["startDate"];
+            var strEndDate = Request.Form["endDate"];
+            var category = Convert.ToInt16( Request.Form["category"]);
+            var mode = Convert.ToInt16(Request.Form["mode"]);
 
-            //Guid[] userIds = TendersList.Select(x => x.UserOwnerId).ToArray();
+            double minCost, maxCost;
+            DateTime startDate, endDate;
+            
 
-            //var dc = new RentooloEntities();
 
-            //var users = dc.Users.Where(x => userIds.Contains(x.UserId));
+            if (name != null && strMinCost != null && strStartDate != null && category != null)
+            {
+                minCost = Convert.ToDouble(strMinCost);
+                maxCost = Convert.ToDouble(strMaxCost);
+                startDate = DateTime.Parse(strStartDate);
+                endDate = DateTime.Parse(strEndDate);
 
-            //var result = from user in users
-            //             join t in TendersList on user.UserId equals t.UserOwnerId
-            //             select new ViewedTender() { Tender = t, User = user };
+                TendersList = TendersHelper.GetTenders(name, startDate, endDate, minCost, maxCost, category, mode);
+                
+            }
+            else if (name != null && strMinCost != null && strStartDate != null && category == null)
+            {
+                minCost = Convert.ToDouble(strMinCost);
+                maxCost = Convert.ToDouble(strMaxCost);
+                startDate = DateTime.Parse(strStartDate);
+                endDate = DateTime.Parse(strEndDate);
 
-            //ViewedTenders = result.ToList();
+                TendersList = TendersHelper.GetTenders(name, startDate, endDate, minCost, maxCost);
+            }
+            else if (name != null && strMinCost != null && strStartDate == null && category == null)
+            {
+                minCost = Convert.ToDouble(strMinCost);
+                maxCost = Convert.ToDouble(strMaxCost);
+
+                TendersList = TendersHelper.GetTenders(name,minCost, maxCost);
+            }
+            else if (name != null &&strStartDate != null && category == null)
+            {
+                startDate = DateTime.Parse(strStartDate);
+                endDate = DateTime.Parse(strEndDate);
+
+                TendersList = TendersHelper.GetTenders(name, startDate, endDate);
+            }
+            else if (name != null && category != null)
+            {
+                TendersList = TendersHelper.GetTenders(name, category);
+            }
+            else
+            {
+                TendersList = TendersHelper.GetAllTenders();
+            }
 
             
+            //TendersList = name == null ? TendersHelper.GetAllTenders() : TendersHelper.GetTenders(name);
+            
         }
-
+        
 
         public class ViewedTender
         {

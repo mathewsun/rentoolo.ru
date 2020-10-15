@@ -42,13 +42,13 @@
         
         <div class="grid-view">
 
-            <% foreach (var tender in ViewedTenders) { %>
+            <% foreach (var tender in TendersList) { %>
                    <div class="block-card">
-                        <a href="Tender.aspx?id=<%=tender.Tender.Id %>">
-                            <h4> <%= tender.Tender.Name %> </h4>
+                        <a href="Tender.aspx?id=<%=tender.Id %>">
+                            <h4> <%= tender.Name %> </h4>
                             <div class="black-text">
                                 Description: 
-                                <%= tender.Tender.Description %>
+                                <%= tender.Description %>
                             </div>
                         </a>
                    </div>

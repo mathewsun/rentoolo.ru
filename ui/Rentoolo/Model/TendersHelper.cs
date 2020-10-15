@@ -254,7 +254,7 @@ namespace Rentoolo.Model
         }
 
 
-        public static List<Tenders> GetTenders(string name, DateTime startPeriod, DateTime endPeriod, double minCost, double maxCost,int category, int mode = 0)
+        public static List<Tenders> GetTenders(string name, DateTime startPeriod, DateTime endPeriod, double minCost, double maxCost,int category, int mode)
         {
             //  mode(sort) 0- ascendance 1- descendance  
 
