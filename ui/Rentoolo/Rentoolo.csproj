@@ -462,11 +462,12 @@
     <Content Include="assets\fonts\toolkit-entypo.woff2" />
     <Content Include="Events.ashx" />
     <Content Include="TestDir\TestPage.html" />
-    <Content Include="Tests\ChatTest2.html" />
+    <Content Include="Test\dmitriyraspel.aspx" />
     <Content Include="Test\eoll73.aspx" />
     <Content Include="Test\Konstantin.aspx" />
     <Content Include="Test\matheweducation.aspx" />
     <Content Include="Test\Varkentin.aspx" />
+    <Content Include="Tests\ChatTest2.html" />
     <Content Include="TokensCost.aspx" />
     <Content Include="TokensOperations.aspx" />
     <Content Include="Transport.aspx" />
@@ -1487,6 +1488,13 @@
       <DependentUpon>Tenders.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestDir\WSServer.cs" />
+    <Compile Include="Test\dmitriyraspel.aspx.cs">
+      <DependentUpon>dmitriyraspel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\dmitriyraspel.aspx.designer.cs">
+      <DependentUpon>dmitriyraspel.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Test\eoll73.aspx.cs">
       <DependentUpon>eoll73.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
