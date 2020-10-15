@@ -51,6 +51,9 @@ namespace Rentoolo.Model
             }
         }
 
+
+        
+
         public static List<Adverts> GetAdvertsForMainPage(SellFilter filter)
         {
             using (var ctx = new RentooloEntities())

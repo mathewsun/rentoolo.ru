@@ -6,10 +6,10 @@
     <script src="/assets/js/jsonUtils.js?2"></script>
 
     <script>
-        $(document).ready(function () {
+        <%--$(document).ready(function () {
             $.get("/assets/json/categories.json", function (data) {
                 var category = findJsonElementById(data, <%=AdvertItem.Category%>);
-
+        
                 if (category !== undefined) {
                     $("#category").html(category.name_ru);
                 }
@@ -29,7 +29,7 @@
             });
 
             $(".photoContainer").brazzersCarousel();
-        });
+        });--%>
 
         
     </script>
@@ -131,5 +131,40 @@
                 <%=AdvertItem.Phone %>
             </div>
         </div>
+        <div>
+            <div>
+                <h3>
+                    Добавить комментарий:
+                </h3>
+                <div>
+                    Комментарий: <asp:TextBox ID="TextBoxComment" runat="server"></asp:TextBox>
+                    <asp:Button ID="Button1" runat="server" Text="создать комментарий" OnClick="Button1_Click" />
+
+                </div>
+            </div>
+            <div>
+                <h4>
+                    Комментарии:
+                </h4>
+                
+                <asp:Repeater ID="RptrComments" runat="server" OnItemDataBound="RptrComments_ItemDataBound" OnItemCommand="RptrComments_ItemCommand" >
+                    <ItemTemplate>
+                        <div>
+                            Name:  <%#Eval("UserName") %>   <br />
+                            Created: <%#Eval("Date") %>          <br />
+                            Comment: <%#Eval("Comment") %>          <br />
+                            Likes: <%#Eval("LikesCount") %>              <br />
+                            Dislikes: <%#Eval("DisLikesCount") %>        <br />
+                            HaveLiked: <%#Eval("HaveLiked") %>  <br />
+                            HaveDisLiked:  <%#Eval("HaveDisLiked") %>  <br />
+                            <asp:Button ID="ButtonLike" runat="server" Text="Like" CommandName="Like" CommandArgument='<%#Eval("Id") %>' />
+                            <asp:Button ID="ButtonDisLike" runat="server" Text="DisLike" CommandName="DisLike" CommandArgument='<%#Eval("Id") %>' />
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+
+            </div>
+        </div>
+
     </div>
 </asp:Content>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+
+    <button onclick="initWS()">init</button>
+
+
+    <script type="text/javascript">
+
+        let ws;
+
+        function initWS() {
+            ws = new WebSocket("ws://localhost:8080");
+            ws.onopen = function () {
+                
+                console.log("Connected");
+                
+
+
+            };
+
+            ws.onmessage = function (event) {
+                console.log(event);
+                let data = JSON.parse(event.data);
+
+                console.log(data);
+            }
+
+        }
+
+
+    </script>
+</body>
+</html>

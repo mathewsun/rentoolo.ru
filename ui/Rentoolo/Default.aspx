@@ -22,13 +22,13 @@
     <meta property="image" content="https://www.Rentoolo.ru/assets/img/banner_1.jpg" />
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <link href="assets/css/toolkit.css?4" rel="stylesheet">
-    <link href="assets/css/application.css" rel="stylesheet">
-    <link href="assets/css/additional.css?888" rel="stylesheet">
+    <link href="assets/css/toolkit.css?422" rel="stylesheet">
+    <link href="assets/css/application.css?22" rel="stylesheet">
+    <link href="assets/css/additional.css?88822" rel="stylesheet">
 
     <meta name="yandex-verification" content="f9c03f80c16c0af8" />
 
-    <link href="assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
+    <link href="assets/css/jQuery.Brazzers-Carousel.css?22" rel="stylesheet">
 
     <style>
         /* note: this is a hack for ios iframe for bootstrap themes shopify page */
