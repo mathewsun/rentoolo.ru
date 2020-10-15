@@ -20,6 +20,5 @@ namespace Rentoolo.Model
         public System.DateTime Created { get; set; }
         public System.Guid UserId { get; set; }
         public string Description { get; set; }
-        public string ImgUrls { get; set; }
     }
 }
