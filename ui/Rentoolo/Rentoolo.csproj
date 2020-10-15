@@ -468,6 +468,7 @@
     <Content Include="TestDir\TestPage.html" />
     <Content Include="Test\dmitriyraspel.aspx" />
     <Content Include="Test\eoll73.aspx" />
+    <Content Include="Test\GG-dotNET.aspx" />
     <Content Include="Test\Konstantin.aspx" />
     <Content Include="Test\matheweducation.aspx" />
     <Content Include="Test\Varkentin.aspx" />
@@ -1505,6 +1506,13 @@
     </Compile>
     <Compile Include="Test\eoll73.aspx.designer.cs">
       <DependentUpon>eoll73.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\GG-dotNET.aspx.cs">
+      <DependentUpon>GG-dotNET.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\GG-dotNET.aspx.designer.cs">
+      <DependentUpon>GG-dotNET.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test\Konstantin.aspx.cs">
       <DependentUpon>Konstantin.aspx</DependentUpon>
