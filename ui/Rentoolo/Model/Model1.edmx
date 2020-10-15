@@ -488,6 +488,7 @@
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -503,6 +504,8 @@
           <Property Name="Interests" Type="nvarchar(max)" />
           <Property Name="WorkPlace" Type="nvarchar(max)" />
           <Property Name="AboutUser" Type="nvarchar(max)" />
+          <Property Name="BirthDay" Type="datetime" />
+          <Property Name="UniqueUserName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="UserSettings">
           <Key>
@@ -1554,6 +1557,7 @@
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ApplicationId" Type="Guid" Nullable="false" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1569,6 +1573,8 @@
           <Property Name="Interests" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="WorkPlace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AboutUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDay" Type="DateTime" Precision="3" />
+          <Property Name="UniqueUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Applications" Relationship="Self.UserApplication" FromRole="Users" ToRole="Applications" />
           <NavigationProperty Name="CashIns" Relationship="Self.FK_CashIns_Users" FromRole="Users" ToRole="CashIns" />
           <NavigationProperty Name="Memberships" Relationship="Self.MembershipUser" FromRole="Users" ToRole="Memberships" />
@@ -1833,7 +1839,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RentooloEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
@@ -2143,7 +2149,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities2">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -2651,6 +2657,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="RentooloModel.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -2666,6 +2673,8 @@
                 <ScalarProperty Name="Interests" ColumnName="Interests" />
                 <ScalarProperty Name="WorkPlace" ColumnName="WorkPlace" />
                 <ScalarProperty Name="AboutUser" ColumnName="AboutUser" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="UniqueUserName" ColumnName="UniqueUserName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
