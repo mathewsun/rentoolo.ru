@@ -204,51 +204,9 @@ namespace Rentoolo.Model
             using (var dc = new RentooloEntities())
             {
                 IQueryable<Tenders> tenders = tendersByName(dc.Tenders, name);
-
-                //if (endPeriod < startPeriod)
-                //{
-                //    tenders = (from t in dc.Tenders where (t.Name.Contains(name)) && (t.Created >= startPeriod) select t);
-                //}
-                //else
-                //{
-                //    tenders = (from t in dc.Tenders where (t.Name.Contains(name)) && ((t.Created >= startPeriod) && (t.Created <= endPeriod)) select t);
-                //}
-
-
-                //if (maxCost < minCost)
-                //{
-                //    tenders = (from t in tenders where (t.Name.Contains(name)) && (t.Cost >= minCost) select t);
-                //}
-                //else
-                //{
-                //    tenders = (from t in tenders where (t.Name.Contains(name)) && ((t.Cost >= minCost) && (t.Cost <= maxCost)) select t);
-                //}
-
-
-                //if (mode == 0)
-                //{
-                //    tenders = tenders.OrderBy(x => x.Cost);
-                //    tenders = tenders.OrderBy(x => x.Created);
-                //}
-                //else if(mode == 1)
-                //{
-                //    tenders = tenders.OrderByDescending(x => x.Cost);
-                //    tenders = tenders.OrderBy(x => x.Created);
-                //}
-                //else if(mode == 2)
-                //{
-                //    tenders = tenders.OrderBy(x => x.Cost);
-                //    tenders = tenders.OrderByDescending(x => x.Created);
-                //}
-                //else
-                //{
-                //    tenders = tenders.OrderByDescending(x => x.Cost);
-                //    tenders = tenders.OrderByDescending(x => x.Created);
-                //}
-
+                
                 tenders = sortByCostAndDate(tenders, startPeriod, endPeriod, minCost, maxCost, mode);
-
-
+                
                 return tenders.ToList();
             }
         }

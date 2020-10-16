@@ -37,7 +37,7 @@ namespace Rentoolo
 
             if (!IsPostBack)
             {
-
+                
                 ViewsCount = DataHelper.GetUserViewsCount((int)id, StructsHelper.ViewedType["product"]);
 
                 if (User != null)
