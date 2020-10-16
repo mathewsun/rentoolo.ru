@@ -23,21 +23,21 @@ namespace Rentoolo.Account
             if (id[0] != '@')
             {
                 CurUser = DataHelper.GetUser(Guid.Parse(id));
-
             }
             else
             {
-                id = id.Trim("@id".ToCharArray());
-                CurUser = DataHelper.GetUser(Convert.ToInt32(id));
+                CurUser = DataHelper.GetUser(id);
+                
+                if (CurUser == null)
+                {
+
+                    id = id.Trim("@id".ToCharArray());
+                    CurUser = DataHelper.GetUser(Convert.ToInt32(id));
+                }
             }
 
 
-
-
             
-
-
-
             ChatList = DataHelper.GetChats(CurUser.UserId);
 
             RptrComments.DataSource = ChatList;
@@ -101,6 +101,12 @@ namespace Rentoolo.Account
 
             Chats chat = ChatList.FirstOrDefault(x => x.ChatName == TextBox1.Text);
             DataHelper.AddChatUser(new ChatUsers() { ChatId = chat.Id, UserId = CurUser.UserId });
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            string name = TextBox2.Text;
+            DataHelper.SetUserUniqueId(CurUser.UserId, name);
         }
     }
 }

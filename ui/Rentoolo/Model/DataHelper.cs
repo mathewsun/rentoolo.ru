@@ -28,6 +28,17 @@ namespace Rentoolo.Model
         }
 
 
+        public static Users GetUser(string userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Users user = dc.Users.FirstOrDefault(x => x.UniqueUserName == userId);
+
+                return user;
+            }
+        }
+
+
         public static Users GetUser(int userId)
         {
             using (var dc = new RentooloEntities())
@@ -37,6 +48,18 @@ namespace Rentoolo.Model
                 return user;
             }
         }
+
+
+        public static void SetUserUniqueId(Guid userId, string uniqueName)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Users.First(x => x.UserId == userId).UniqueUserName = uniqueName;
+                dc.SaveChanges();
+            }
+        }
+
+
 
 
         public static Guid GetUserId(string userName)
