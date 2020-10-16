@@ -473,6 +473,7 @@
     <Content Include="Test\matheweducation.aspx" />
     <Content Include="Test\Varkentin.aspx" />
     <Content Include="Tests\ChatTest2.html" />
+    <Content Include="Test\VueTest.aspx" />
     <Content Include="TokensCost.aspx" />
     <Content Include="TokensOperations.aspx" />
     <Content Include="Transport.aspx" />
@@ -1534,6 +1535,13 @@
     </Compile>
     <Compile Include="Test\Varkentin.aspx.designer.cs">
       <DependentUpon>Varkentin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\VueTest.aspx.cs">
+      <DependentUpon>VueTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\VueTest.aspx.designer.cs">
+      <DependentUpon>VueTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tokens.aspx.cs">
       <DependentUpon>Tokens.aspx</DependentUpon>
