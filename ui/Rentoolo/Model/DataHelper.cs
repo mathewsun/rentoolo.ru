@@ -27,6 +27,18 @@ namespace Rentoolo.Model
             }
         }
 
+
+        public static Users GetUser(int userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Users user = dc.Users.FirstOrDefault(x => x.Id == userId);
+
+                return user;
+            }
+        }
+
+
         public static Guid GetUserId(string userName)
         {
             using (var dc = new RentooloEntities())
@@ -1532,6 +1544,7 @@ namespace Rentoolo.Model
             }
         }
 
+        
 
 
         public static void AddChatUser(ChatUsers chatUser)

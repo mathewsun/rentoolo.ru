@@ -17,8 +17,28 @@ namespace Rentoolo.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            CurUser = DataHelper.GetUser(Guid.Parse(Request.QueryString["id"]));
-            ChatList = DataHelper.GetChats(User.UserId);
+
+            string id = Request.QueryString["id"];
+
+            if (id[0] != '@')
+            {
+                CurUser = DataHelper.GetUser(Guid.Parse(id));
+
+            }
+            else
+            {
+                id = id.Trim("@id".ToCharArray());
+                CurUser = DataHelper.GetUser(Convert.ToInt32(id));
+            }
+
+
+
+
+            
+
+
+
+            ChatList = DataHelper.GetChats(CurUser.UserId);
 
             RptrComments.DataSource = ChatList;
             RptrComments.DataBind();
