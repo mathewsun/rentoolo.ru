@@ -178,6 +178,7 @@
     <Content Include="About.aspx" />
     <Content Include="Account\AddItem.aspx" />
     <Content Include="Account\Auction.aspx" />
+    <Content Include="Account\AuctionInfo.aspx" />
     <Content Include="Account\Auctions.aspx" />
     <Content Include="Account\Auto.aspx" />
     <Content Include="Account\Cabinet.aspx" />
@@ -326,6 +327,7 @@
     <Content Include="assets\js\sweet-alert.min.js" />
     <Content Include="assets\js\toolkit.js" />
     <Content Include="assets\js\utils.js" />
+    <Content Include="Account\AuctionRequests.aspx" />
     <Content Include="Auctions.aspx" />
     <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
@@ -537,6 +539,13 @@
     </Compile>
     <Compile Include="Account\Auction.aspx.designer.cs">
       <DependentUpon>Auction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\AuctionInfo.aspx.cs">
+      <DependentUpon>AuctionInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AuctionInfo.aspx.designer.cs">
+      <DependentUpon>AuctionInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Auctions.aspx.cs">
       <DependentUpon>Auctions.aspx</DependentUpon>
@@ -1050,6 +1059,13 @@
     <Compile Include="Articles.aspx.designer.cs">
       <DependentUpon>Articles.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\AuctionRequests.aspx.cs">
+      <DependentUpon>AuctionRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AuctionRequests.aspx.designer.cs">
+      <DependentUpon>AuctionRequests.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Auctions.aspx.cs">
       <DependentUpon>Auctions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1104,6 +1120,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\AuctionHelper.cs" />
+    <Compile Include="Model\AuctionRequests.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Auctions.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1587,6 +1606,7 @@
     </Compile>
     <Compile Include="UpiController.cs" />
     <Compile Include="UpiTestController.cs" />
+    <Compile Include="Workers\AuctionsChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account\Rent\" />
