@@ -19,6 +19,12 @@
                     <%= tender.Name %>
                 </h4>
                 <p>
+                    Owner:  <br />
+                        <a href="Account/UserProfile.aspx?id=<%=UserId %>" >
+                            <%= UserName %>
+                        </a>
+                </p>
+                <p>
                     Description: 
                     <%= tender.Description %>
                 </p>

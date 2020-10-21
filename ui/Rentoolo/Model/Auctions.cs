@@ -21,5 +21,6 @@ namespace Rentoolo.Model
         public System.Guid UserId { get; set; }
         public string ImgUrls { get; set; }
         public string Description { get; set; }
+        public System.DateTime DataEnd { get; set; }
     }
 }

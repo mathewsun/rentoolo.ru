@@ -44,6 +44,9 @@ namespace Rentoolo.Account
             item.UserId = User.UserId;
 
             item.Created = DateTime.Now;
+
+            item.DataEnd = DateTime.Parse(TextBoxDataEnd.Text);
+
             AuctionsHelper.AddAuction(item);
 
             Response.Redirect("/Account/Auctions.aspx");

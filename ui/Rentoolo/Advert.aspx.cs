@@ -12,7 +12,7 @@ namespace Rentoolo
     {
         public Adverts AdvertItem = new Adverts();
         public int ViewsCount = 0;
-        public List<spGetCommentsForUser_Result> CommentList;
+        public List<spGetCommentsForUser_Result> CommentList = new List<spGetCommentsForUser_Result>();
 
         // user which created advert
         public Users AnotherUser;
@@ -31,13 +31,18 @@ namespace Rentoolo
                 Response.Redirect("/");
             }
 
+
+            if (User != null)
+            {
+                CommentList = DataHelper.spGetCommentsForUser(User.UserId, advId);
+            }
+
             AdvertItem = AdvertsDataHelper.GetAdvert(id);
-            CommentList = DataHelper.spGetCommentsForUser(User.UserId, advId);
             AnotherUser = DataHelper.GetUser(AdvertItem.CreatedUserId);
 
             if (!IsPostBack)
             {
-
+                
                 ViewsCount = DataHelper.GetUserViewsCount((int)id, StructsHelper.ViewedType["product"]);
 
                 if (User != null)

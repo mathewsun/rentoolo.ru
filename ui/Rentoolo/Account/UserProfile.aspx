@@ -14,6 +14,12 @@
                 <div>
                     <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Cоздать диалог" />
                 </div>
+
+                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                <asp:Button ID="Button3" runat="server" Text="Задать уникальное имя" OnClick="Button3_Click" />
+
+
+
                 <div>
                     <h6>Добавить в чат из списка:
                     <p>

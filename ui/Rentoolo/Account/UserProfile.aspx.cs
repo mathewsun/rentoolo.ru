@@ -17,8 +17,28 @@ namespace Rentoolo.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            CurUser = DataHelper.GetUser(Guid.Parse(Request.QueryString["id"]));
-            ChatList = DataHelper.GetChats(User.UserId);
+
+            string id = Request.QueryString["id"];
+
+            if (id[0] != '@')
+            {
+                CurUser = DataHelper.GetUser(Guid.Parse(id));
+            }
+            else
+            {
+                CurUser = DataHelper.GetUser(id);
+                
+                if (CurUser == null)
+                {
+
+                    id = id.Trim("@id".ToCharArray());
+                    CurUser = DataHelper.GetUser(Convert.ToInt32(id));
+                }
+            }
+
+
+            
+            ChatList = DataHelper.GetChats(CurUser.UserId);
 
             RptrComments.DataSource = ChatList;
             RptrComments.DataBind();
@@ -81,6 +101,12 @@ namespace Rentoolo.Account
 
             Chats chat = ChatList.FirstOrDefault(x => x.ChatName == TextBox1.Text);
             DataHelper.AddChatUser(new ChatUsers() { ChatId = chat.Id, UserId = CurUser.UserId });
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            string name = TextBox2.Text;
+            DataHelper.SetUserUniqueId(CurUser.UserId, name);
         }
     }
 }
