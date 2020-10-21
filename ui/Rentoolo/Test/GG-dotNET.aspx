@@ -3,5 +3,5 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    Это страница пользователя <strong>GG-dotNET</strong>
+    Это страница пользователя GG <strong>GG-dotNET</strong>
 </asp:Content>
