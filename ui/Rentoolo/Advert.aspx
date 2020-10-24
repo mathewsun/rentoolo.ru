@@ -6,7 +6,7 @@
     <script src="/assets/js/jsonUtils.js?2"></script>
 
     <script>
-        <%--$(document).ready(function () {
+        $(document).ready(function () {
             $.get("/assets/json/categories.json", function (data) {
                 var category = findJsonElementById(data, <%=AdvertItem.Category%>);
         
@@ -29,7 +29,7 @@
             });
 
             $(".photoContainer").brazzersCarousel();
-        });--%>
+        });
 
         
     </script>
