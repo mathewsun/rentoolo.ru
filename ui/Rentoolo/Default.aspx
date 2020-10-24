@@ -475,6 +475,8 @@
                         <li class="media list-group-item p-4">
                             <div class="input-group">
                                 <input type="text" id="InputSearch" class="form-control" runat="server" placeholder="Поиск по объявлениям">
+                                <input type="text" id="StartDate"  runat="server" placeholder="StartDate">
+                                <input type="text" id="EndDate"  runat="server" placeholder="EndDate">
                                 <div class="input-group-btn">
                                     <asp:Button ID="ButtonSearch" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
                                 </div>

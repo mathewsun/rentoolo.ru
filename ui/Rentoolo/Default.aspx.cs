@@ -20,14 +20,45 @@ namespace Rentoolo
             {
                 //ListNews = DataHelper.GetActiveNewsLast5();
 
+                DateTime startDate, endDate;
+                DateTime defaultDate = DateTime.Parse("01-01-0001 00:00:00");
+
                 SellFilter filter = new SellFilter
                 {
                     Search = Request.QueryString["s"]
                 };
 
-                ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter);
+                if (DateTime.TryParse(Request.QueryString["startDate"], out startDate)|| DateTime.TryParse(Request.QueryString["endDate"], out endDate))
+                {
+                    filter.Search = "";
+                    DateTime.TryParse(Request.QueryString["endDate"], out endDate);
+
+                    if ((startDate != defaultDate) && (endDate != defaultDate))
+                    {
+                        ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter, startDate, endDate);
+                    }
+                    else if (startDate != defaultDate)
+                    {
+                        ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter, startDate);
+                        
+                    }
+                    else if (endDate != defaultDate)
+                    {
+                        ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter, endDate, true);
+                    }
+
+                }
+                else
+                {
+                    ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter);
+                }
+
 
                 AdvertsCount = AdvertsDataHelper.GetAdvertsActiveCount(filter).ToString("N0");
+
+
+
+
 
                 //Random rnd = new Random();
 
@@ -80,7 +111,27 @@ namespace Rentoolo
         {
             string search = String.Format("{0}", Request.Form["InputSearch"]);
 
-            Response.Redirect("/Default.aspx?s=" + Uri.EscapeDataString(search));
+            string startDate = Request.Form["StartDate"];
+            string endDate = Request.Form["EndDate"];
+
+            string queryStr = "?"+ "s=" + search;
+
+            if (startDate != null && endDate != null)
+            {
+                queryStr += "&startDate=" + startDate + "&endDate=" + endDate;
+            }else if (startDate != null)
+            {
+                queryStr += "&startDate=" + startDate;
+            }
+            else if(endDate!=null){
+                queryStr += "&endDate=" + endDate;
+            }
+
+
+            Response.Redirect("/Default.aspx" + queryStr);
+
+            //Response.Redirect("/Default.aspx?s=" + Uri.EscapeDataString(search) +
+            //    "&startDate=" + startDate + "&endDate=" + endDate);
         }
     }
 }
