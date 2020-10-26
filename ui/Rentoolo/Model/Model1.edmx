@@ -44,6 +44,17 @@
           <Property Name="WhenDate" Type="datetime" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
+        <EntityType Name="AuctionRequests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AuctionId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Auctions">
           <Key>
             <PropertyRef Name="Id" />
@@ -929,6 +940,7 @@
           <EntitySet Name="Adverts" EntityType="Self.Adverts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuctionRequests" EntityType="Self.AuctionRequests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Auctions" EntityType="Self.Auctions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Business" EntityType="Self.Business" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashIns" EntityType="Self.CashIns" Schema="dbo" store:Type="Tables" />
@@ -1131,6 +1143,17 @@
           <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuctionRequests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="AuctionId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Auctions">
           <Key>
@@ -1864,10 +1887,11 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RentooloEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
+          <EntitySet Name="AuctionRequests" EntityType="Self.AuctionRequests" />
           <EntitySet Name="Auctions" EntityType="Self.Auctions" />
           <EntitySet Name="Business" EntityType="Self.Business" />
           <EntitySet Name="CashIns" EntityType="Self.CashIns" />
@@ -2175,7 +2199,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities2">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities3">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -2215,6 +2239,18 @@
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuctionRequests">
+            <EntityTypeMapping TypeName="RentooloModel.AuctionRequests">
+              <MappingFragment StoreEntitySet="AuctionRequests">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AuctionId" ColumnName="AuctionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

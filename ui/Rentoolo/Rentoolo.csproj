@@ -363,6 +363,7 @@
     <Content Include="DataBase\spGetLoginStatisticLastHourActive.sql" />
     <Content Include="DataBase\fnGetTablesRows.sql" />
     <Content Include="DataBase\fnGetAllUsers.sql" />
+    <Content Include="DataBase\tables\AuctionRequests.sql" />
     <Content Include="DataBase\tables\CashOuts.sql" />
     <Content Include="DataBase\tables\Comments.sql" />
     <Content Include="DataBase\tables\Complaints.sql" />
@@ -1089,6 +1090,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\AuctionHelper.cs" />
+    <Compile Include="Model\AuctionRequests.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Auctions.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
