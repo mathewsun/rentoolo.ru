@@ -1638,5 +1638,60 @@ namespace Rentoolo.Model
 
         #endregion
 
+
+        #region Complaints
+
+        // use enums ComplaintType, ComplaintObjType in code where methods is called
+
+        enum ComplaintType
+        {
+            insult = 1,
+            spam
+        }
+
+
+        public enum ComplaintObjType
+        {
+            Advert = 1,
+            Tender,
+            Auction
+        }
+
+
+        
+
+
+        public static List<Complaints> GetComplaints(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Complaints.Where(x => x.UserRecipier == userId).ToList();
+            }
+        }
+
+
+        public static List<Complaints> GetComplaints(int objectId, int objectType)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Complaints.Where(x => x.ObjectId==objectId && x.ObjectType == objectType).ToList();
+            }
+        }
+
+
+        public static void AddComplaint(Complaints complaint)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Complaints.Add(complaint);
+                dc.SaveChanges();
+            }
+        }
+
+
+        #endregion
+
+
+
     }
 }
