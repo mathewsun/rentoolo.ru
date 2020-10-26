@@ -66,6 +66,7 @@
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ImgUrls" Type="nvarchar(max)" />
           <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DataEnd" Type="datetime" />
         </EntityType>
         <EntityType Name="Business">
           <Key>
@@ -1167,6 +1168,7 @@
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="ImgUrls" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataEnd" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Business">
           <Key>
@@ -1889,7 +1891,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RentooloEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
@@ -2201,7 +2203,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities4">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities1">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -2266,6 +2268,7 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ImgUrls" ColumnName="ImgUrls" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DataEnd" ColumnName="DataEnd" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

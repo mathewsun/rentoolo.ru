@@ -332,6 +332,8 @@
     <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
     <Content Include="Category.aspx" />
+    <Content Include="ComplaintPage.aspx" />
+    <Content Include="ComplaintsPage.aspx" />
     <Content Include="ConsumerElectronics.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="DataBase\alter\AlterUsers.sql" />
@@ -1056,6 +1058,20 @@
     </Compile>
     <Compile Include="Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ComplaintPage.aspx.cs">
+      <DependentUpon>ComplaintPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComplaintPage.aspx.designer.cs">
+      <DependentUpon>ComplaintPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ComplaintsPage.aspx.cs">
+      <DependentUpon>ComplaintsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComplaintsPage.aspx.designer.cs">
+      <DependentUpon>ComplaintsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConsumerElectronics.aspx.cs">
       <DependentUpon>ConsumerElectronics.aspx</DependentUpon>

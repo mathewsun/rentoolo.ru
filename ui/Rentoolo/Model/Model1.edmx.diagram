@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a8c487f1a0fb428e90d6468869a42654" Name="Diagram1">
+      <Diagram DiagramId="b485f36c043145b5b4fcf291d553fb67" Name="Diagram1">
         <EntityTypeShape EntityType="RentooloModel.Adverts" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Applications" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Articles" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />

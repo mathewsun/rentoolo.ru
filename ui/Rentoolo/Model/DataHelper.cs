@@ -1658,7 +1658,14 @@ namespace Rentoolo.Model
         }
 
 
-        
+
+        public static Complaints GetComplaint(int complaintId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Complaints.FirstOrDefault(x => x.Id == complaintId);
+            }
+        }
 
 
         public static List<Complaints> GetComplaints(Guid userId)
