@@ -104,11 +104,6 @@ namespace Rentoolo.Model
                     return list.ToList();
                 }
 
-
-                return ctx.Adverts.Where(x => x.Name.Contains(filter.Search) || x.Description.Contains(filter.Search))
-                    .Where(x => x.Created >= startEndDate).ToList();
-
-
             }
         }
 

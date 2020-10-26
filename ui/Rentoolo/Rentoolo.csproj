@@ -365,6 +365,7 @@
     <Content Include="DataBase\fnGetAllUsers.sql" />
     <Content Include="DataBase\tables\CashOuts.sql" />
     <Content Include="DataBase\tables\Comments.sql" />
+    <Content Include="DataBase\tables\Complaints.sql" />
     <Content Include="DataBase\tables\Phones.sql" />
     <Content Include="DataBase\tables\LoginStat.sql" />
     <Content Include="DataBase\tables\Auctions.sql" />
