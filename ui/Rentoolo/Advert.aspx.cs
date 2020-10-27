@@ -20,7 +20,9 @@ namespace Rentoolo
         
         // advert id
         int advId;
-        
+
+        // you can see other types in StructsHelper
+        int complaintType = 1;
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -129,6 +131,10 @@ namespace Rentoolo
             }
         }
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }

@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Rentoolo
 {
-    public partial class CreateComplaint : System.Web.UI.Page
+    public partial class CreateComplaint : BasicPage
     {
         public string ComplaintTypeName = "";
         public string ComplaintObjTypeName = "";
@@ -22,7 +22,7 @@ namespace Rentoolo
             
             complaintObjectType = Convert.ToInt32(Request.QueryString["complaintObjectType"]);
 
-            userSender = Guid.Parse(Request.QueryString["userSender"]);
+            userSender = User.UserId;
             userRecivier = Guid.Parse(Request.QueryString["userRecivier"]);
 
             objectId = Convert.ToInt32(Request.QueryString["objectId"]);

@@ -144,6 +144,15 @@
             </div>
         </div>
         <div>
+
+            <h5>
+                <a href="CreateComplaint.aspx?complaintObjectType=1&userRecivier=<%=AdvertItem.CreatedUserId %>&objectId=<%=AdvertItem.Id %>">
+                    Пожаловаться
+                </a>
+            </h5>
+
+        </div>
+        <div>
             <div>
                 <h3>
                     Добавить комментарий:

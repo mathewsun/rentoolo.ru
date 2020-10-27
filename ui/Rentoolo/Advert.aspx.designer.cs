@@ -7,11 +7,13 @@
 // </автоматически создаваемое>
 //------------------------------------------------------------------------------
 
-namespace Rentoolo {
-    
-    
-    public partial class Advert {
-        
+namespace Rentoolo
+{
+
+
+    public partial class Advert
+    {
+
         /// <summary>
         /// category_hidden элемент управления.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Rentoolo {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden category_hidden;
-        
+
         /// <summary>
         /// TextBoxComment элемент управления.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Rentoolo {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxComment;
-        
+
         /// <summary>
         /// Button1 элемент управления.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Rentoolo {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-        
+
         /// <summary>
         /// RptrComments элемент управления.
         /// </summary>
