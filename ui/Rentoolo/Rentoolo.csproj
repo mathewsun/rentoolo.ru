@@ -336,6 +336,7 @@
     <Content Include="ComplaintsPage.aspx" />
     <Content Include="ConsumerElectronics.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="CreateComplaint.aspx" />
     <Content Include="DataBase\alter\AlterUsers.sql" />
     <Content Include="DataBase\fnGetUserWallets.sql" />
     <Content Include="DataBase\Init\Init.sql" />
@@ -1095,6 +1096,13 @@
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\TopRecipesController.cs" />
+    <Compile Include="CreateComplaint.aspx.cs">
+      <DependentUpon>CreateComplaint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateComplaint.aspx.designer.cs">
+      <DependentUpon>CreateComplaint.aspx</DependentUpon>
+    </Compile>
     <Compile Include="HelperModels\StateStructs.cs" />
     <Compile Include="Model\Adverts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -1191,6 +1199,7 @@
     <Compile Include="Model\fnGetUserWallets_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\HelperStructs\StructsHelper.cs" />
     <Compile Include="Model\Items.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1278,7 +1287,6 @@
     <Compile Include="Model\spGetWatched_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\StructsHelper.cs" />
     <Compile Include="Model\TenderRequest.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

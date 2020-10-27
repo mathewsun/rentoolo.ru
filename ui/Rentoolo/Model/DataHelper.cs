@@ -1641,23 +1641,9 @@ namespace Rentoolo.Model
 
         #region Complaints
 
-        // use enums ComplaintType, ComplaintObjType in code where methods is called
+        // use enums ComplaintType, ComplaintObjType in code where methods is called from StructsHelper and HelperStructs
 
-        enum ComplaintType
-        {
-            insult = 1,
-            spam
-        }
-
-
-        public enum ComplaintObjType
-        {
-            Advert = 1,
-            Tender,
-            Auction
-        }
-
-
+        
 
         public static Complaints GetComplaint(int complaintId)
         {
@@ -1666,6 +1652,17 @@ namespace Rentoolo.Model
                 return dc.Complaints.FirstOrDefault(x => x.Id == complaintId);
             }
         }
+
+
+        public static Complaints GetComplaint(int complaintType, int complaintObjectType)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Complaints.FirstOrDefault(x => x.СomplaintType == complaintType && x.ObjectType==complaintObjectType);
+            }
+        }
+
+
 
 
         public static List<Complaints> GetComplaints(Guid userId)

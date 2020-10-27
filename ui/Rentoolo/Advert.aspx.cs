@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Rentoolo.Model;
+using Rentoolo.Model.HelperStructs;
 
 namespace Rentoolo
 {
