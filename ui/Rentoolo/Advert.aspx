@@ -190,21 +190,6 @@
                     Комментарии:
                 </h4>
                 
-                <asp:Repeater ID="RptrComments" runat="server" OnItemDataBound="RptrComments_ItemDataBound" OnItemCommand="RptrComments_ItemCommand" >
-                    <ItemTemplate>
-                        <div>
-                            Name:  <%#Eval("UserName") %>   <br />
-                            Created: <%#Eval("Date") %>          <br />
-                            Comment: <%#Eval("Comment") %>          <br />
-                            Likes: <%#Eval("LikesCount") %>              <br />
-                            Dislikes: <%#Eval("DisLikesCount") %>        <br />
-                            HaveLiked: <%#Eval("HaveLiked") %>  <br />
-                            HaveDisLiked:  <%#Eval("HaveDisLiked") %>  <br />
-                            <asp:Button ID="ButtonLike" runat="server" Text="Like" CommandName="Like" CommandArgument='<%#Eval("Id") %>' />
-                            <asp:Button ID="ButtonDisLike" runat="server" Text="DisLike" CommandName="DisLike" CommandArgument='<%#Eval("Id") %>' />
-                        </div>
-                    </ItemTemplate>
-                </asp:Repeater>
 
 
                 <div id="vue-app">
