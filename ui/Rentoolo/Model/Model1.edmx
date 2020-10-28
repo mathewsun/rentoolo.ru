@@ -915,6 +915,12 @@
           <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="advertId" Type="int" Mode="In" />
         </Function>
+        <Function Name="spGetComplaintsByRecipier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="spGetComplaintsBySender" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="spGetFavorites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
         </Function>
@@ -1891,7 +1897,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RentooloEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
@@ -2053,6 +2059,12 @@
             <Parameter Name="userId" Mode="In" Type="Guid" />
             <Parameter Name="advertId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="spGetComplaintsByRecipier" ReturnType="Collection(RentooloModel.spGetComplaintsByRecipier_Result)">
+            <Parameter Name="userId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="spGetComplaintsBySender" ReturnType="Collection(RentooloModel.spGetComplaintsBySender_Result)">
+            <Parameter Name="userId" Mode="In" Type="Guid" />
+          </FunctionImport>
           <FunctionImport Name="spGetFavorites" ReturnType="Collection(RentooloModel.spGetFavorites_Result)">
             <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
@@ -2107,6 +2119,30 @@
           <Property Type="Boolean" Name="HaveDisLiked" Nullable="true" />
           <Property Type="Boolean" Name="HaveLiked" Nullable="true" />
           <Property Type="Int32" Name="Type" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetComplaintsByRecipier_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="Int32" Name="СomplaintType" Nullable="false" />
+          <Property Type="Int32" Name="ObjectId" Nullable="false" />
+          <Property Type="Int32" Name="ObjectType" Nullable="false" />
+          <Property Type="Guid" Name="UserSender" Nullable="false" />
+          <Property Type="Guid" Name="UserRecipier" Nullable="false" />
+          <Property Type="DateTime" Name="Data" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UserRecipierName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="UserSenderName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetComplaintsBySender_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="Int32" Name="СomplaintType" Nullable="false" />
+          <Property Type="Int32" Name="ObjectId" Nullable="false" />
+          <Property Type="Int32" Name="ObjectType" Nullable="false" />
+          <Property Type="Guid" Name="UserSender" Nullable="false" />
+          <Property Type="Guid" Name="UserRecipier" Nullable="false" />
+          <Property Type="DateTime" Name="Data" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UserSenderName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="UserRecipierName" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="spGetFavorites_Result">
           <Property Type="Int64" Name="Id" Nullable="false" />
@@ -2203,7 +2239,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities2">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -2960,6 +2996,38 @@
                 <ScalarProperty Name="HaveDisLiked" ColumnName="HaveDisLiked" />
                 <ScalarProperty Name="HaveLiked" ColumnName="HaveLiked" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetComplaintsByRecipier" FunctionName="Хранилище RentooloModel.spGetComplaintsByRecipier">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.spGetComplaintsByRecipier_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="СomplaintType" ColumnName="СomplaintType" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+                <ScalarProperty Name="UserSender" ColumnName="UserSender" />
+                <ScalarProperty Name="UserRecipier" ColumnName="UserRecipier" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="UserRecipierName" ColumnName="UserRecipierName" />
+                <ScalarProperty Name="UserSenderName" ColumnName="UserSenderName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetComplaintsBySender" FunctionName="Хранилище RentooloModel.spGetComplaintsBySender">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.spGetComplaintsBySender_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="СomplaintType" ColumnName="СomplaintType" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+                <ScalarProperty Name="UserSender" ColumnName="UserSender" />
+                <ScalarProperty Name="UserRecipier" ColumnName="UserRecipier" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="UserSenderName" ColumnName="UserSenderName" />
+                <ScalarProperty Name="UserRecipierName" ColumnName="UserRecipierName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -3,6 +3,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-
+        <% foreach (var complaint in Complaints)
+            { %>
+                <div>
+                    
+                </div>
+                
+        <% } %>
     </div>
 </asp:Content>

@@ -11,7 +11,7 @@ namespace Rentoolo
 {
     public partial class ComplaintPage : System.Web.UI.Page
     {
-        public Complaints Complaint = new Complaints();
+        public Complaints Complaint = null;
         public string ComplaintTypeName = "";
         public string ComplaintObjTypeName = "";
         public string UserSender = "";
@@ -19,9 +19,12 @@ namespace Rentoolo
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            Complaint = DataHelper.GetComplaint(Convert.ToInt32(Request.QueryString["id"]));
-            if (Complaint == null)
+            
+            string id = Request.QueryString["id"];
+            if (id != null)
+            {
+                Complaint = DataHelper.GetComplaint(Convert.ToInt32(id));
+            }else
             {
                 int complaintType = Convert.ToInt32(Request.QueryString["complaintType"]);
                 int complaintObjectType = Convert.ToInt32(Request.QueryString["complaintObjectType"]);

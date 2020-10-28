@@ -1,0 +1,28 @@
+﻿USE [Rentoolo]
+GO
+/****** Object:  StoredProcedure [dbo].[spGetComplaintsByRecipier]    Script Date: 28.10.2020 11:01:59 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE  [dbo].[spGetComplaintsByRecipier]
+(@userId uniqueidentifier)
+AS
+BEGIN
+
+
+SELECT cpts.[Id]
+      ,[Message]
+      ,[СomplaintType]
+      ,[ObjectId]
+      ,[ObjectType]
+      ,[UserSender]
+      ,[UserRecipier]
+      ,[Data]
+	  ,usrs.UserName AS UserRecipierName
+	  , (SELECT FIRST_VALUE(UserName) OVER(ORDER BY Id) FROM [dbo].[Users] WHERE UserId = UserSender) AS UserSenderName
+  FROM [dbo].[Complaints] as cpts 
+  LEFT JOIN [dbo].[Users] as usrs ON( cpts.UserRecipier = usrs.UserId) WHERE cpts.UserRecipier = @userId 
+
+END
+

@@ -4,6 +4,7 @@
     <link href="assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
     <script src="/assets/js/jQuery.Brazzers-Carousel.js"></script>
     <script src="/assets/js/jsonUtils.js?2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -183,6 +184,50 @@
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
+
+
+                <div id="vue-app">
+                    {{message}}
+                    <div v-for="(comment, index) in comments">
+                        Name:  {{comment.UserName}}   <br />
+                        Created: {{comment.Date}}          <br />
+                        Comment: {{comment.Comment}}         <br />
+                        Likes: {{comment.LikesCount}}             <br />
+                        Dislikes: {{comment.DisLikesCount}}        <br />
+                        HaveLiked: {{comment.HaveLiked}}  <br />
+                        HaveDisLiked:  {{comment.HaveDisLiked}}  <br />
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+
+
+                    var app = new Vue({
+                        el: '#vue-app',
+                        data: {
+                            message: 'Привет, Vue!',
+                            comments: []
+                        },
+                        created: function () {
+
+                            let url = 'api/Comments/<%=AdvertItem.Id %>';
+
+                            let data = {}
+
+                            fetch(url,data)
+                                .then((response) => {
+                                    return response.json();
+                                })
+                                .then((data) => {
+                                    console.log(data);
+                                });
+
+
+                        }
+                    })
+
+                </script>
+
 
             </div>
         </div>

@@ -1662,14 +1662,43 @@ namespace Rentoolo.Model
             }
         }
 
+        public static List<spGetComplaintsByRecipier_Result> GetComplaintsByRecipier(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.spGetComplaintsByRecipier(userId).ToList();
+            }
+        }
 
+        public static List<spGetComplaintsBySender_Result> GetComplaintsBySender(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.spGetComplaintsBySender(userId).ToList();
+            }
+        }
 
 
         public static List<Complaints> GetComplaints(Guid userId)
         {
             using (var dc = new RentooloEntities())
             {
-                return dc.Complaints.Where(x => x.UserRecipier == userId).ToList();
+                return dc.Complaints.Where(x => x.UserSender == userId).ToList();
+            }
+        }
+
+        public static List<Complaints> GetComplaints(Guid userId, bool isRecipier)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                if (isRecipier)
+                {
+                    return dc.Complaints.Where(x => x.UserRecipier == userId).ToList();
+                }
+                else
+                {
+                    return dc.Complaints.Where(x => x.UserSender == userId).ToList();
+                }
             }
         }
 
