@@ -1619,7 +1619,6 @@
     <Folder Include="Account\Rent\" />
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
-    <Folder Include="DatabaseHelpers\" />
     <Folder Include="Rent\" />
     <Folder Include="Sell\" />
   </ItemGroup>
