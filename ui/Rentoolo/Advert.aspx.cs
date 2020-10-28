@@ -13,7 +13,6 @@ namespace Rentoolo
     {
         public Adverts AdvertItem = new Adverts();
         public int ViewsCount = 0;
-        public List<spGetCommentsForUser_Result> CommentList = new List<spGetCommentsForUser_Result>();
 
         // user which created advert
         public Users AnotherUser;
@@ -34,11 +33,6 @@ namespace Rentoolo
                 Response.Redirect("/");
             }
 
-
-            if (User != null)
-            {
-                CommentList = DataHelper.spGetCommentsForUser(User.UserId, advId);
-            }
 
             AdvertItem = AdvertsDataHelper.GetAdvert(id);
             AnotherUser = DataHelper.GetUser(AdvertItem.CreatedUserId);
@@ -61,8 +55,6 @@ namespace Rentoolo
 
                     DataHelper.TryAddUserView(userViews);
                 }
-                RptrComments.DataSource = CommentList;
-                RptrComments.DataBind();
 
                 
 
@@ -81,8 +73,6 @@ namespace Rentoolo
                 }
                 
             }
-
-            string tempId = Page.RouteData.Values["id"] as string;
         }
 
         
@@ -105,36 +95,6 @@ namespace Rentoolo
             
         }
         
-        protected void RptrComments_ItemDataBound(object sender, RepeaterItemEventArgs e)
-        {
-
-        }
-
-        protected void RptrComments_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            string cmdName = e.CommandName.ToString();
-            string cmdArg = e.CommandArgument.ToString();
-            int commentId = Convert.ToInt32(cmdArg);
-
-            switch (cmdName)
-            {
-                case "Like":
-                    DataHelper.LikeUnLike(User.UserId, commentId);
-                    break;
-                case "DisLike":
-                    DataHelper.DisLikeUnDisLike(User.UserId, commentId);
-                    break;
-                default:
-                    throw new Exception("unsopprted case");
-                    break;
-                
-            }
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-
-        }
 
     }
 }

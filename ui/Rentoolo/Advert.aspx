@@ -190,8 +190,6 @@
                     Комментарии:
                 </h4>
                 
-
-
                 <div id="vue-app">
                     {{message}}
                     <div v-for="(comment, index) in comments" v-bind:key="index">
