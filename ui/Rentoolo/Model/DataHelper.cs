@@ -27,16 +27,25 @@ namespace Rentoolo.Model
             }
         }
 
-
-        public static Users GetUser(string userId)
+        public static Users GetUser(string userName)
         {
             using (var dc = new RentooloEntities())
             {
-                Users user = dc.Users.FirstOrDefault(x => x.UniqueUserName == userId);
+                Users user = dc.Users.FirstOrDefault(x => x.UserName == userName);
 
                 return user;
             }
         }
+
+        //public static Users GetUser(string userId)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        Users user = dc.Users.FirstOrDefault(x => x.UniqueUserName == userId);
+
+        //        return user;
+        //    }
+        //}
 
 
         public static Users GetUser(int userId)

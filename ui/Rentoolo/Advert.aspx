@@ -6,6 +6,27 @@
     <script src="/assets/js/jsonUtils.js?2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
+    <style>
+        div.button {
+          display:inline-block;
+          -webkit-appearance:button;
+          padding:3px 8px 3px 8px;
+          font-size:13px;
+          position:relative;
+          cursor:context-menu;
+          box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+          border:1px solid #CCC;
+          background:#DDD;
+        }
+
+        div.button:active {
+            color:red;
+            box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+        }
+
+
+    </style>
+
     <script>
         $(document).ready(function () {
             $.get("/assets/json/categories.json", function (data) {
@@ -188,7 +209,8 @@
 
                 <div id="vue-app">
                     {{message}}
-                    <div v-for="(comment, index) in comments">
+                    <div v-for="(comment, index) in comments" v-bind:key="index">
+                        <div>
                         Name:  {{comment.UserName}}   <br />
                         Created: {{comment.Date}}          <br />
                         Comment: {{comment.Comment}}         <br />
@@ -196,6 +218,9 @@
                         Dislikes: {{comment.DisLikesCount}}        <br />
                         HaveLiked: {{comment.HaveLiked}}  <br />
                         HaveDisLiked:  {{comment.HaveDisLiked}}  <br />
+                            </div>
+                        <div class="button" @click="Like(comment.Id)">Like</div>
+                        <div class="button" @click="DisLike(comment.Id)">DisLike</div>
                     </div>
                 </div>
 
@@ -220,9 +245,44 @@
                                 })
                                 .then((data) => {
                                     console.log(data);
+                                    this.comments = data;
                                 });
 
 
+                        },
+                        methods: {
+                            Like(commentId) {
+                                console.log('LIKE!');
+                                this.LDRequest("Like", commentId);
+                            },
+                            DisLike(commentId) {
+                                console.log('DisLike!');
+                                this.LDRequest("DisLike", commentId);
+                            },
+                            LDRequest(cmd,commentId) {
+
+                                let url = 'api/LikesDislikes';
+
+                                let jsonData = { Cmd: cmd, CommentId: commentId };
+                                let data = {
+                                    method: 'PUT',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(jsonData)
+                                }
+
+                                fetch(url, data)
+                                    .then((response) => {
+                                        return response.json();
+                                    })
+                                    .then((data) => {
+                                        console.log(data);
+
+                                    });
+
+
+                            }
                         }
                     })
 

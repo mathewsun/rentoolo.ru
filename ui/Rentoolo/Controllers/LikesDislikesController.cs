@@ -37,7 +37,7 @@ namespace Rentoolo.Controllers
         // PUT api/<controller>/5
         public void Put([FromBody] LikeDislikeCmd value)
         {
-            Users user = (Users)HttpContext.Current.Session["User"];
+            Users user = DataHelper.GetUser(RequestContext.Principal.Identity.Name);
 
             switch (value.Cmd)
             {

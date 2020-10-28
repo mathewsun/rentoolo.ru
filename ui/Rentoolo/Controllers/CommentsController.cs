@@ -15,14 +15,13 @@ namespace Rentoolo.Controllers
         public IEnumerable<spGetCommentsForUser_Result> Get(int id)
         {
             
-            var coockies = Request.Headers.GetCookies();
-            //RequestContext.Principal
-            //Users user = (Users)HttpContext.Current.Session["User"];
+            var name = RequestContext.Principal.Identity.Name;
+            Users user = DataHelper.GetUser(name);
 
-            //List<spGetCommentsForUser_Result> commentList = DataHelper.spGetCommentsForUser(user.UserId, id);
+            List<spGetCommentsForUser_Result> commentList = DataHelper.spGetCommentsForUser(user.UserId, id);
 
             //return commentList;
-            return null;
+            return commentList;
         }
 
         // GET api/<controller>
