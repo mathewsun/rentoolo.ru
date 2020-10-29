@@ -5,8 +5,11 @@
     <div>
         <% foreach (var item in ComplaintList)
             { %>
-        <a href="UserComplaintView.aspx?id=<%=item.Id %>"
-                From: <%= item.UserSenderName %> <br />
+            <div>
+                <a href="UserComplaintView.aspx?id=<%=item.Id %>">
+                    From: <%= item.UserSenderName %> <br />
+                </a>
+            </div>
         <%} %>
     </div>
 </asp:Content>

@@ -107,6 +107,51 @@ namespace Rentoolo.Model
             }
         }
 
+
+        public static List<Adverts> GetAdvertsForMainPage(TestSellFilter filter)
+        {
+            // bool isEndDate is needed to undestand correctly startEndDate variable - if its true 
+            // it means that startEndDate is endDate else startDate
+
+            using (var ctx = new RentooloEntities())
+            {
+                var result = ctx.Adverts.Select(x => x);
+                if (filter.Search != null)
+                {
+                    result = result.filterAdverts(filter.Search);
+                }
+
+                if (filter.StartDate != null)
+                {
+                    result = result.filterAdverts((DateTime)filter.StartDate, false);
+                }
+
+                if (filter.EndDate != null)
+                {
+                    result = result.filterAdverts((DateTime)filter.EndDate, true);
+                }
+
+                if (filter.StartPrice != null)
+                {
+                    result = result.filterAdverts((double)filter.StartPrice, true);
+                }
+
+                if (filter.EndPrice != null)
+                {
+                    result = result.filterAdverts((double)filter.EndPrice, false);
+                }
+                return result.ToList();
+            }
+        }
+
+
+
+
+
+
+
+
+
         static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts,DateTime startDate, DateTime endDate)
         {
             return adverts.Where(x => x.Created >= startDate && x.Created <= endDate);
@@ -125,10 +170,54 @@ namespace Rentoolo.Model
             
         }
 
+
+
+
+
+        static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, string filter)
+        {
+            var list = adverts.Where(x => x.Name.Contains(filter) || x.Description.Contains(filter)).OrderByDescending(x => x.Created);
+            return list;
+        }
+
+
         static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, SellFilter filter)
         {
             var list = adverts.Where(x => x.Name.Contains(filter.Search) || x.Description.Contains(filter.Search)).OrderByDescending(x => x.Created);
             return list;
+        }
+
+        static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, double startEndPrice, bool isStartPrice = true)
+        {
+            IQueryable<Adverts> list;
+            if (isStartPrice)
+            {
+                list = adverts.Where(x => x.Price >= startEndPrice).OrderByDescending(x => x.Created);
+            }
+            else
+            {
+                list = adverts.Where(x => x.Price <= startEndPrice).OrderByDescending(x => x.Created);
+            }
+                
+            return list;
+        }
+
+        static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, double startPrice, double endPrice)
+        {
+            IQueryable<Adverts> list;
+
+            list = adverts.filterAdverts(startPrice, true);
+            list = list.filterAdverts(endPrice, false);
+
+            return list;
+        }
+
+        static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, bool onlyInName)
+        {
+            IQueryable<Adverts> list;
+
+
+            return null;
         }
 
 

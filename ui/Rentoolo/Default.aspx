@@ -474,9 +474,21 @@
 
                         <li class="media list-group-item p-4">
                             <div class="input-group">
-                                <input type="text" id="InputSearch" class="form-control" runat="server" placeholder="Поиск по объявлениям">
-                                <input type="text" id="StartDate"  runat="server" placeholder="StartDate">
-                                <input type="text" id="EndDate"  runat="server" placeholder="EndDate">
+                                <div>
+                                    <input type="text" id="InputSearch" class="form-control" runat="server" placeholder="Поиск по объявлениям">
+                                    <input type="text" id="StartDate"  runat="server" placeholder="StartDate">
+                                    <input type="text" id="EndDate"  runat="server" placeholder="EndDate">
+                                </div>
+                                <div>
+                                    Диапазон стоимоcти: 
+                                    <input type="number" name="startPrice" placeholder="startPrice" />
+                                    <input type="number" name="endPrice" placeholder="endPrice" /> <br />
+
+                                    Город: <input type="text" name="city" /> <br />
+
+                                    Только в названии: <input type="checkbox" name="onlyInName" />
+                                    
+                                </div>
                                 <div class="input-group-btn">
                                     <asp:Button ID="ButtonSearch" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
                                 </div>

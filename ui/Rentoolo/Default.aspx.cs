@@ -21,37 +21,102 @@ namespace Rentoolo
                 //ListNews = DataHelper.GetActiveNewsLast5();
 
                 DateTime startDate, endDate;
+                DateTime? startDate2 = null, endDate2 = null;
                 DateTime defaultDate = DateTime.Parse("01-01-0001 00:00:00");
+
+                bool onlyInName = Request.QueryString["onlyInName"] == "on" ? true : false;
+
+
+                decimal? startPrice = null, endPrice = null;
+                decimal startPrice2, endPrice2;
+
+
+                string city = Request.QueryString["city"];
+
+                string strStartDate = Request.QueryString["startDate"];
+                string strEndDate = Request.QueryString["endDate"];
+
+                
+
 
                 SellFilter filter = new SellFilter
                 {
                     Search = Request.QueryString["s"]
                 };
 
-                if (DateTime.TryParse(Request.QueryString["startDate"], out startDate)|| DateTime.TryParse(Request.QueryString["endDate"], out endDate))
+                if (DateTime.TryParse(Request.QueryString["startDate"], out startDate) || DateTime.TryParse(Request.QueryString["endDate"], out endDate))
                 {
                     filter.Search = "";
                     DateTime.TryParse(Request.QueryString["endDate"], out endDate);
 
-                    if ((startDate != defaultDate) && (endDate != defaultDate))
+                    if (startDate != TestSellFilter.DefaultDate)
                     {
-                        ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter, startDate, endDate);
+                        startDate2 = startDate;
                     }
-                    else if (startDate != defaultDate)
+                    if (endDate != TestSellFilter.DefaultDate)
                     {
-                        ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter, startDate);
-                        
+                        endDate2 = endDate;
                     }
-                    else if (endDate != defaultDate)
+                }
+
+                if(decimal.TryParse(Request.QueryString["startPrice"],out startPrice2)||decimal.TryParse(Request.QueryString["endPrice"],out endPrice2))
+                {
+                    decimal.TryParse(Request.QueryString["endPrice"], out endPrice2);
+                    if (startPrice2 != null)
                     {
-                        ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter, endDate, true);
+                        startPrice = startPrice2;
+                    }
+
+                    if (endPrice2 != null)
+                    {
+                        endPrice = endPrice2;
                     }
 
                 }
-                else
+
+
+
+
+
+                TestSellFilter testSellFilter = new TestSellFilter()
                 {
-                    ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter);
-                }
+                    Search = Request.QueryString["s"],
+                    StartDate = startDate2,
+                    EndDate = endDate2,
+                    City = city,
+                    StartPrice = startPrice,
+                    EndPrice = endPrice,
+                    OnlyInName = onlyInName
+                };
+
+                ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(testSellFilter);
+
+
+
+                //if (DateTime.TryParse(Request.QueryString["startDate"], out startDate) || DateTime.TryParse(Request.QueryString["endDate"], out endDate))
+                //{
+                //    filter.Search = "";
+                //    DateTime.TryParse(Request.QueryString["endDate"], out endDate);
+
+                //    if ((startDate != defaultDate) && (endDate != defaultDate))
+                //    {
+                //        ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter, startDate, endDate);
+                //    }
+                //    else if (startDate != defaultDate)
+                //    {
+                //        ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter, startDate);
+
+                //    }
+                //    else if (endDate != defaultDate)
+                //    {
+                //        ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter, endDate, true);
+                //    }
+
+                //}
+                //else
+                //{
+                //    ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter);
+                //}
 
 
                 AdvertsCount = AdvertsDataHelper.GetAdvertsActiveCount(filter).ToString("N0");
@@ -111,21 +176,24 @@ namespace Rentoolo
         {
             string search = String.Format("{0}", Request.Form["InputSearch"]);
 
+            // creating query string(queryStr) for redirect to this page with search parameters
+
             string startDate = Request.Form["StartDate"];
             string endDate = Request.Form["EndDate"];
 
+            string onlyInName = Request.Form["onlyInName"];
+
+            string startPrice = Request.Form["startPrice"];
+            string endPrice = Request.Form["endPrice"];
+
+            string city = Request.Form["city"];
+
             string queryStr = "?"+ "s=" + search;
 
-            if (startDate != null && endDate != null)
-            {
-                queryStr += "&startDate=" + startDate + "&endDate=" + endDate;
-            }else if (startDate != null)
-            {
-                queryStr += "&startDate=" + startDate;
-            }
-            else if(endDate!=null){
-                queryStr += "&endDate=" + endDate;
-            }
+            queryStr += "&startDate=" + startDate + "&endDate=" + endDate;
+            queryStr += "&onlyInName=" + onlyInName;
+            queryStr += "&startPrice=" + startPrice + "&endPrice=" + endPrice;
+            queryStr += "&city=" + city;
 
 
             Response.Redirect("/Default.aspx" + queryStr);
