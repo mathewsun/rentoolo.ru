@@ -27,6 +27,50 @@ namespace Rentoolo.Model
             }
         }
 
+        public static Users GetUser(string userName)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Users user = dc.Users.FirstOrDefault(x => x.UserName == userName);
+
+                return user;
+            }
+        }
+
+        //public static Users GetUser(string userId)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        Users user = dc.Users.FirstOrDefault(x => x.UniqueUserName == userId);
+
+        //        return user;
+        //    }
+        //}
+
+
+        public static Users GetUser(int userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Users user = dc.Users.FirstOrDefault(x => x.Id == userId);
+
+                return user;
+            }
+        }
+
+
+        public static void SetUserUniqueId(Guid userId, string uniqueName)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Users.First(x => x.UserId == userId).UniqueUserName = uniqueName;
+                dc.SaveChanges();
+            }
+        }
+
+
+
+
         public static Guid GetUserId(string userName)
         {
             using (var dc = new RentooloEntities())
@@ -1532,6 +1576,7 @@ namespace Rentoolo.Model
             }
         }
 
+        
 
 
         public static void AddChatUser(ChatUsers chatUser)
@@ -1601,6 +1646,94 @@ namespace Rentoolo.Model
 
 
         #endregion
+
+
+        #region Complaints
+
+        // use enums ComplaintType, ComplaintObjType in code where methods is called from StructsHelper and HelperStructs
+
+        
+
+        public static Complaints GetComplaint(int complaintId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Complaints.FirstOrDefault(x => x.Id == complaintId);
+            }
+        }
+
+
+        public static Complaints GetComplaint(int complaintType, int complaintObjectType)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Complaints.FirstOrDefault(x => x.СomplaintType == complaintType && x.ObjectType==complaintObjectType);
+            }
+        }
+
+        public static List<spGetComplaintsByRecipier_Result> GetComplaintsByRecipier(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.spGetComplaintsByRecipier(userId).ToList();
+            }
+        }
+
+        public static List<spGetComplaintsBySender_Result> GetComplaintsBySender(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.spGetComplaintsBySender(userId).ToList();
+            }
+        }
+
+
+        public static List<Complaints> GetComplaints(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Complaints.Where(x => x.UserSender == userId).ToList();
+            }
+        }
+
+        public static List<Complaints> GetComplaints(Guid userId, bool isRecipier)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                if (isRecipier)
+                {
+                    return dc.Complaints.Where(x => x.UserRecipier == userId).ToList();
+                }
+                else
+                {
+                    return dc.Complaints.Where(x => x.UserSender == userId).ToList();
+                }
+            }
+        }
+
+
+        public static List<Complaints> GetComplaints(int objectId, int objectType)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Complaints.Where(x => x.ObjectId==objectId && x.ObjectType == objectType).ToList();
+            }
+        }
+
+
+        public static void AddComplaint(Complaints complaint)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Complaints.Add(complaint);
+                dc.SaveChanges();
+            }
+        }
+
+
+        #endregion
+
+
 
     }
 }

@@ -11,11 +11,11 @@ AS
 BEGIN
 
 
-	SELECT [Id]
+	SELECT cmnts.[Id]
       ,[cmnts].[UserId]
-      ,[AdvertId]
-      ,[Comment]
-      ,[Date]
+      ,cmnts.[AdvertId]
+      ,cmnts.[Comment]
+      ,cmnts.[Date]
 	  ,[usrs].[UserName]
 	  ,(SELECT COUNT(*) FROM [dbo].[Likes] AS lks WHERE lks.CommentId = cmnts.Id) AS LikesCount
 	  ,(SELECT COUNT(*) FROM [dbo].[DisLikes] AS dlks WHERE dlks.CommentId = cmnts.Id) AS DisLikesCount
@@ -26,7 +26,7 @@ BEGIN
 	  ,CONVERT(BIT, (CASE when  EXISTS (SELECT * FROM [dbo].[Likes] 
 	  WHERE CommentId = Id AND UserId = @userId) then 1 ELSE 0 END) ) AS HaveLiked
 
-      ,[Type]
+      ,cmnts.[Type]
   FROM [Comments] AS cmnts
   JOIN [Users] AS usrs 
   ON(cmnts.UserId = usrs.UserId)

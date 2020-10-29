@@ -11,6 +11,8 @@ namespace Rentoolo
     public partial class Tender : BasicPage
     {
         public Model.Tenders tender = new Model.Tenders();
+        public string UserId;
+        public string UserName;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -18,6 +20,10 @@ namespace Rentoolo
             if (!IsPostBack)
             {
                 tender = TendersHelper.GetTenderById(Convert.ToInt32(Request.QueryString["id"]));
+
+                var user = DataHelper.GetUser(tender.UserOwnerId);
+                UserId = user.UserId.ToString();
+                UserName = user.UserName;
 
                 TextBoxCost.Text = "0";
             }

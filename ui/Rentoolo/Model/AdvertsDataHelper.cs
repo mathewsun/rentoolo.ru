@@ -51,6 +51,88 @@ namespace Rentoolo.Model
             }
         }
 
+
+
+
+        public static List<Adverts> GetAdvertsForMainPage(SellFilter filter, DateTime startDate, DateTime endDate)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var list = ctx.Adverts.Select(x => x);
+                if (!string.IsNullOrEmpty(filter.Search))
+                {
+                    
+                    list = list.filterAdverts(filter);
+                    list = list.filterAdverts(startDate, endDate);
+                    list = list.OrderByDescending(x => x.Created);
+
+                    return list.ToList();
+                }
+                else
+                {
+                    list = list.filterAdverts(startDate, endDate);
+                    list = (IQueryable<Adverts>)list.OrderByDescending(x => x.Created).ToList();
+
+                    return list.ToList();
+                }
+
+            }
+        }
+
+
+        public static List<Adverts> GetAdvertsForMainPage(SellFilter filter, DateTime startEndDate, bool isEndDate = false)
+        {
+            // bool isEndDate is needed to undestand correctly startEndDate variable - if its true 
+            // it means that startEndDate is endDate else startDate
+            
+            using (var ctx = new RentooloEntities())
+            {
+                var list = ctx.Adverts.Select(x => x);
+                if (!string.IsNullOrEmpty(filter.Search))
+                {
+                    list = list.filterAdverts(filter);
+                    list = list.filterAdverts(startEndDate, isEndDate);
+                    list = list.OrderByDescending(x => x.Created);
+
+                    return list.ToList();
+                }
+                else
+                {
+                    list = list.filterAdverts(startEndDate, isEndDate);
+                    list = (IQueryable<Adverts>)list.OrderByDescending(x => x.Created);
+
+                    return list.ToList();
+                }
+
+            }
+        }
+
+        static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts,DateTime startDate, DateTime endDate)
+        {
+            return adverts.Where(x => x.Created >= startDate && x.Created <= endDate);
+        }
+
+        static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, DateTime startEndDate, bool isEndDate = false)
+        {
+            if (isEndDate)
+            {
+                return adverts.Where(x => x.Created <= startEndDate);
+            }
+            else
+            {
+                return adverts.Where(x => x.Created >= startEndDate);
+            }
+            
+        }
+
+        static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, SellFilter filter)
+        {
+            var list = adverts.Where(x => x.Name.Contains(filter.Search) || x.Description.Contains(filter.Search)).OrderByDescending(x => x.Created);
+            return list;
+        }
+
+
+
         public static List<Adverts> GetAdvertsForMainPage(SellFilter filter)
         {
             using (var ctx = new RentooloEntities())

@@ -22,13 +22,13 @@
     <meta property="image" content="https://www.Rentoolo.ru/assets/img/banner_1.jpg" />
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <link href="assets/css/toolkit.css?4" rel="stylesheet">
-    <link href="assets/css/application.css" rel="stylesheet">
-    <link href="assets/css/additional.css?888" rel="stylesheet">
+    <link href="assets/css/toolkit.css?422" rel="stylesheet">
+    <link href="assets/css/application.css?22" rel="stylesheet">
+    <link href="assets/css/additional.css?88822" rel="stylesheet">
 
     <meta name="yandex-verification" content="f9c03f80c16c0af8" />
 
-    <link href="assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
+    <link href="assets/css/jQuery.Brazzers-Carousel.css?22" rel="stylesheet">
 
     <style>
         /* note: this is a hack for ios iframe for bootstrap themes shopify page */
@@ -475,6 +475,8 @@
                         <li class="media list-group-item p-4">
                             <div class="input-group">
                                 <input type="text" id="InputSearch" class="form-control" runat="server" placeholder="Поиск по объявлениям">
+                                <input type="text" id="StartDate"  runat="server" placeholder="StartDate">
+                                <input type="text" id="EndDate"  runat="server" placeholder="EndDate">
                                 <div class="input-group-btn">
                                     <asp:Button ID="ButtonSearch" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
                                 </div>

@@ -46,6 +46,11 @@
      <asp:Label ID="LabelPrice" runat="server" Text="Начальная цена:"></asp:Label>
     <asp:TextBox ID="TextBoxPrice" runat="server" Width="81px"></asp:TextBox>
 
+    <br />
+    DataEndLife: <br />
+    <asp:TextBox ID="TextBoxDataEnd" runat="server"></asp:TextBox>
+
+
     <div>         
         <span class="additem-title">Фотографии</span>
         <div class="image-load">

@@ -27,6 +27,7 @@ namespace Rentoolo.Model
             this.Roles = new HashSet<Roles>();
         }
     
+        public int Id { get; set; }
         public System.Guid ApplicationId { get; set; }
         public System.Guid UserId { get; set; }
         public string UserName { get; set; }
@@ -42,6 +43,8 @@ namespace Rentoolo.Model
         public string Interests { get; set; }
         public string WorkPlace { get; set; }
         public string AboutUser { get; set; }
+        public Nullable<System.DateTime> BirthDay { get; set; }
+        public string UniqueUserName { get; set; }
     
         public virtual Applications Applications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
