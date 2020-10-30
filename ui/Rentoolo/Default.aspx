@@ -489,6 +489,16 @@
                                     Только в названии: <input type="checkbox" name="onlyInName" />
                                     
                                 </div>
+                                <div>
+                                    Sort by date: 
+                                    <input type="checkbox" name="sortByDate" /> <br />
+                                    Sort by price:
+                                    <input type="checkbox" name="sortByPrice" /> <br />
+                                    Sort by date descendance: 
+                                    <input type="checkbox" name="sortByDateDesc" /> <br />
+                                    Sort by price descendance:
+                                    <input type="checkbox" name="sortByPriceDesc" /> <br />
+                                </div>
                                 <div class="input-group-btn">
                                     <asp:Button ID="ButtonSearch" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
                                 </div>

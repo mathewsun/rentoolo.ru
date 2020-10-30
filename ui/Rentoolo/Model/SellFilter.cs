@@ -20,6 +20,14 @@ namespace Rentoolo.Model
         public decimal? EndPrice { get; set; }
 
         public string City { get; set; }
+
+        public bool? ByDate { get; set; }
+        public bool? ByPrice { get; set; }
+        public bool? ByDateDesc { get; set; }
+        public bool? ByPriceDesc { get; set; }
+
+
+
     }
 
 }

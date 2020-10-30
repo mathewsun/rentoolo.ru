@@ -153,6 +153,25 @@ namespace Rentoolo.Model
                     result = result.filterAdverts(filter.City);
                 }
 
+                if (filter.ByDate == true)
+                {
+                    result = result.OrderBy(x => x.Created);
+                }
+
+                if(filter.ByDateDesc==true)
+                {
+                    result = result.OrderByDescending(x => x.Created);
+                }
+
+                if (filter.ByPrice==true)
+                {
+                    result = result.OrderBy(x => x.Price);
+                }
+
+                if (filter.ByPriceDesc == true)
+                {
+                    result = result.OrderByDescending(x => x.Price);
+                }
 
 
 
@@ -188,7 +207,7 @@ namespace Rentoolo.Model
 
         static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, string city)
         {
-            var list = adverts.Where(x => x.Address.Contains(city)).OrderByDescending(x => x.Created);
+            var list = adverts.Where(x => x.Address.Contains(city));
             return list;
         }
 
@@ -201,11 +220,11 @@ namespace Rentoolo.Model
             IQueryable<Adverts> list;
             if (onlyInName)
             {
-                list = adverts.Where(x => x.Name.Contains(filter)).OrderByDescending(x => x.Created);
+                list = adverts.Where(x => x.Name.Contains(filter));
             }
             else
             {
-                list = adverts.Where(x => x.Name.Contains(filter) || x.Description.Contains(filter)).OrderByDescending(x => x.Created);
+                list = adverts.Where(x => x.Name.Contains(filter) || x.Description.Contains(filter));
             }
             
 
@@ -225,7 +244,7 @@ namespace Rentoolo.Model
 
         static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, SellFilter filter)
         {
-            var list = adverts.Where(x => x.Name.Contains(filter.Search) || x.Description.Contains(filter.Search)).OrderByDescending(x => x.Created);
+            var list = adverts.Where(x => x.Name.Contains(filter.Search) || x.Description.Contains(filter.Search));
             return list;
         }
 
@@ -234,11 +253,11 @@ namespace Rentoolo.Model
             IQueryable<Adverts> list;
             if (isStartPrice)
             {
-                list = adverts.Where(x => x.Price >= startEndPrice).OrderByDescending(x => x.Created);
+                list = adverts.Where(x => x.Price >= startEndPrice);
             }
             else
             {
-                list = adverts.Where(x => x.Price <= startEndPrice).OrderByDescending(x => x.Created);
+                list = adverts.Where(x => x.Price <= startEndPrice);
             }
                 
             return list;
@@ -253,15 +272,6 @@ namespace Rentoolo.Model
 
             return list;
         }
-
-        static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, bool onlyInName)
-        {
-            IQueryable<Adverts> list;
-
-
-            return null;
-        }
-
 
 
         public static List<Adverts> GetAdvertsForMainPage(SellFilter filter)
