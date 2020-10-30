@@ -346,6 +346,7 @@
     <Content Include="DataBase\Init\init_110920.sql" />
     <Content Include="DataBase\Init\init_151020.sql" />
     <Content Include="DataBase\Init\init_230920.sql" />
+    <Content Include="DataBase\Init\init_301020.sql" />
     <Content Include="DataBase\spAddFavoritesAuctions.sql" />
     <Content Include="DataBase\spAddFavoritesAuctionsByCookies.sql" />
     <Content Include="DataBase\spAddWatchedByCookies.sql" />
