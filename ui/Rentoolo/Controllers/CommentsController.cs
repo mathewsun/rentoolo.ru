@@ -14,11 +14,18 @@ namespace Rentoolo.Controllers
         // GET api/<controller>/{id}
         public IEnumerable<spGetCommentsForUser_Result> Get(int id)
         {
-            
+            List<spGetCommentsForUser_Result> commentList;
             var name = RequestContext.Principal.Identity.Name;
             Users user = DataHelper.GetUser(name);
-
-            List<spGetCommentsForUser_Result> commentList = DataHelper.spGetCommentsForUser(user.UserId, id);
+            if (user != null)
+            {
+                commentList = DataHelper.spGetCommentsForUser(user.UserId, id);
+            }
+            else
+            {
+                commentList = new List<spGetCommentsForUser_Result>();
+            }
+            
 
             //return commentList;
             return commentList;
