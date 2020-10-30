@@ -161,13 +161,6 @@ namespace Rentoolo.Model
         }
 
 
-
-
-
-
-
-
-
         static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts,DateTime startDate, DateTime endDate)
         {
             return adverts.Where(x => x.Created >= startDate && x.Created <= endDate);
@@ -185,9 +178,6 @@ namespace Rentoolo.Model
             }
             
         }
-
-
-
 
 
         //static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, string filter)
