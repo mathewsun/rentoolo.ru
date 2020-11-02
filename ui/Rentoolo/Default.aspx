@@ -27,6 +27,7 @@
     <link href="assets/css/additional.css?88822" rel="stylesheet">
 
     <meta name="yandex-verification" content="f9c03f80c16c0af8" />
+    <meta name="google-site-verification" content="BfIjGZxsZYqrNnWTzlNb6Whynn4y6hOC5amjYpEcDLk" />
 
     <link href="assets/css/jQuery.Brazzers-Carousel.css?22" rel="stylesheet">
 
@@ -40,25 +41,24 @@
         }
 
 
-        .searchbar-grid{
+        .searchbar-grid {
             width: 100%;
             display: grid;
             grid-template-columns: 80% 20%;
         }
 
 
-        .rowed-grid{
-            width:100%;
-            display:grid;
-            grid-template-columns: 1fr; 
+        .rowed-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
             grid-row-gap: 5px;
         }
 
-        .margin-block{
+        .margin-block {
             margin-bottom: 5px;
             margin-top: 5px;
         }
-
     </style>
 
     <script src="/assets/js/jquery-2.2.4.js"></script>
@@ -497,36 +497,44 @@
                             <div class="input-group">
                                 <div class="rowed-grid">
                                     <div class="searchbar-grid">
-                                        <div style="width:100%">
-                                            <input style="width:100%" type="text" id="InputSearch" class="form-control" runat="server" placeholder="Поиск по объявлениям">
+                                        <div style="width: 100%">
+                                            <input style="width: 100%" type="text" id="InputSearch" class="form-control" runat="server" placeholder="Поиск по объявлениям">
                                         </div>
                                         <div class="input-group-btn">
                                             <asp:Button ID="ButtonSearch" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
                                         </div>
                                     </div>
-                                    <div> &nbsp; <br /> </div>
+                                    <div>
+                                        &nbsp;
+                                        <br />
+                                    </div>
                                     <div>
                                         Диапазон дат:
-                                        <input type="date" id="StartDate"  placeholder="StartDate">
-                                        <input type="date" id="EndDate"  placeholder="EndDate">
+                                        <input type="date" id="StartDate" placeholder="StartDate">
+                                        <input type="date" id="EndDate" placeholder="EndDate">
                                     </div>
 
                                     <div>
                                         Диапазон стоимоcти: 
                                         <input type="number" name="startPrice" placeholder="startPrice" />
-                                        <input type="number" name="endPrice" placeholder="endPrice" /> <br />
+                                        <input type="number" name="endPrice" placeholder="endPrice" />
+                                        <br />
                                     </div>
 
 
-                                        
-                                    <div>
-                                        Город: <input type="text" name="city" /> <br />
 
-                                        Только в названии: <input type="checkbox" name="onlyInName" />
+                                    <div>
+                                        Город:
+                                        <input type="text" name="city" />
+                                        <br />
+
+                                        Только в названии:
+                                        <input type="checkbox" name="onlyInName" />
                                     </div>
 
                                     <div>
-                                        Sort: <input  type="text" name="sortBy" list="sortBy" />
+                                        Sort:
+                                        <input type="text" name="sortBy" list="sortBy" />
                                         <datalist id="sortBy">
                                             <option>by date</option>
                                             <option>by price</option>
