@@ -98,26 +98,6 @@ namespace Rentoolo.Model
                     result = result.filterAdverts(filter.City);
                 }
 
-                //if (filter.ByDate == true)
-                //{
-                //    result = result.OrderBy(x => x.Created);
-                //}
-
-                //if(filter.ByDateDesc==true)
-                //{
-                //    result = result.OrderByDescending(x => x.Created);
-                //}
-
-                //if (filter.ByPrice==true)
-                //{
-                //    result = result.OrderBy(x => x.Price);
-                //}
-
-                //if (filter.ByPriceDesc == true)
-                //{
-                //    result = result.OrderByDescending(x => x.Price);
-                //}
-
 
                 switch (filter.SortBy)
                 {

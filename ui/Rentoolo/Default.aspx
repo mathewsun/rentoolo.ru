@@ -38,6 +38,27 @@
             min-width: 100%;
             *width: 100%;
         }
+
+
+        .searchbar-grid{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 80% 20%;
+        }
+
+
+        .rowed-grid{
+            width:100%;
+            display:grid;
+            grid-template-columns: 1fr; 
+            grid-row-gap: 5px;
+        }
+
+        .margin-block{
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+
     </style>
 
     <script src="/assets/js/jquery-2.2.4.js"></script>
@@ -474,45 +495,47 @@
 
                         <li class="media list-group-item p-4">
                             <div class="input-group">
-                                <div>
-                                    <input type="text" id="InputSearch" class="form-control" runat="server" placeholder="Поиск по объявлениям">
-                                    <input type="text" id="StartDate"  runat="server" placeholder="StartDate">
-                                    <input type="text" id="EndDate"  runat="server" placeholder="EndDate">
-                                </div>
-                                <div>
-                                    Диапазон стоимоcти: 
-                                    <input type="number" name="startPrice" placeholder="startPrice" />
-                                    <input type="number" name="endPrice" placeholder="endPrice" /> <br />
+                                <div class="rowed-grid">
+                                    <div class="searchbar-grid">
+                                        <div style="width:100%">
+                                            <input style="width:100%" type="text" id="InputSearch" class="form-control" runat="server" placeholder="Поиск по объявлениям">
+                                        </div>
+                                        <div class="input-group-btn">
+                                            <asp:Button ID="ButtonSearch" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
+                                        </div>
+                                    </div>
+                                    <div> &nbsp; <br /> </div>
+                                    <div>
+                                        Диапазон дат:
+                                        <input type="date" id="StartDate"  placeholder="StartDate">
+                                        <input type="date" id="EndDate"  placeholder="EndDate">
+                                    </div>
 
-                                    Город: <input type="text" name="city" /> <br />
+                                    <div>
+                                        Диапазон стоимоcти: 
+                                        <input type="number" name="startPrice" placeholder="startPrice" />
+                                        <input type="number" name="endPrice" placeholder="endPrice" /> <br />
+                                    </div>
 
-                                    Только в названии: <input type="checkbox" name="onlyInName" />
-                                    
-                                </div>
-                                <div>
-                                    Sort by date: 
-                                    <input type="checkbox" name="sortByDate" /> <br />
-                                    Sort by price:
-                                    <input type="checkbox" name="sortByPrice" /> <br />
-                                    Sort by date descendance: 
-                                    <input type="checkbox" name="sortByDateDesc" /> <br />
-                                    Sort by price descendance:
-                                    <input type="checkbox" name="sortByPriceDesc" /> <br />
-                                </div>
 
-                                <div>
-                                    <input  type="text" name="sortBy" list="sortBy" />
-                                    <datalist id="sortBy">
-                                        <option>by date</option>
-                                        <option>by price</option>
-                                        <option>by date descendance</option>
-                                        <option>by price descendance</option>
-                                    </datalist>
+                                        
+                                    <div>
+                                        Город: <input type="text" name="city" /> <br />
 
-                                </div>
+                                        Только в названии: <input type="checkbox" name="onlyInName" />
+                                    </div>
 
-                                <div class="input-group-btn">
-                                    <asp:Button ID="ButtonSearch" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
+                                    <div>
+                                        Sort: <input  type="text" name="sortBy" list="sortBy" />
+                                        <datalist id="sortBy">
+                                            <option>by date</option>
+                                            <option>by price</option>
+                                            <option>by date descendance</option>
+                                            <option>by price descendance</option>
+                                        </datalist>
+
+                                    </div>
+
                                 </div>
                             </div>
                         </li>

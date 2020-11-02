@@ -33,24 +33,6 @@ namespace Rentoolo
         protected global::System.Web.UI.HtmlControls.HtmlInputText InputSearch;
 
         /// <summary>
-        /// StartDate элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText StartDate;
-
-        /// <summary>
-        /// EndDate элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText EndDate;
-
-        /// <summary>
         /// ButtonSearch элемент управления.
         /// </summary>
         /// <remarks>
