@@ -12,15 +12,15 @@ namespace Rentoolo.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Auctions
+    public partial class Complaints
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public decimal StartPrice { get; set; }
-        public System.DateTime Created { get; set; }
-        public System.Guid UserId { get; set; }
-        public string ImgUrls { get; set; }
-        public string Description { get; set; }
-        public Nullable<System.DateTime> DataEnd { get; set; }
+        public string Message { get; set; }
+        public int СomplaintType { get; set; }
+        public int ObjectId { get; set; }
+        public int ObjectType { get; set; }
+        public System.Guid UserSender { get; set; }
+        public System.Guid UserRecipier { get; set; }
+        public System.DateTime Data { get; set; }
     }
 }

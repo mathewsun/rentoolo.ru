@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Rentoolo.Model;
+using Rentoolo.Model.HelperStructs;
 
 namespace Rentoolo
 {
@@ -12,14 +13,15 @@ namespace Rentoolo
     {
         public Adverts AdvertItem = new Adverts();
         public int ViewsCount = 0;
-        public List<spGetCommentsForUser_Result> CommentList = new List<spGetCommentsForUser_Result>();
 
         // user which created advert
         public Users AnotherUser;
         
         // advert id
         int advId;
-        
+
+        // you can see other types in StructsHelper
+        int complaintType = 1;
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,11 +33,6 @@ namespace Rentoolo
                 Response.Redirect("/");
             }
 
-
-            if (User != null)
-            {
-                CommentList = DataHelper.spGetCommentsForUser(User.UserId, advId);
-            }
 
             AdvertItem = AdvertsDataHelper.GetAdvert(id);
             AnotherUser = DataHelper.GetUser(AdvertItem.CreatedUserId);
@@ -58,8 +55,6 @@ namespace Rentoolo
 
                     DataHelper.TryAddUserView(userViews);
                 }
-                RptrComments.DataSource = CommentList;
-                RptrComments.DataBind();
 
                 
 
@@ -78,8 +73,6 @@ namespace Rentoolo
                 }
                 
             }
-
-            string tempId = Page.RouteData.Values["id"] as string;
         }
 
         
@@ -102,32 +95,6 @@ namespace Rentoolo
             
         }
         
-        protected void RptrComments_ItemDataBound(object sender, RepeaterItemEventArgs e)
-        {
-
-        }
-
-        protected void RptrComments_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            string cmdName = e.CommandName.ToString();
-            string cmdArg = e.CommandArgument.ToString();
-            int commentId = Convert.ToInt32(cmdArg);
-
-            switch (cmdName)
-            {
-                case "Like":
-                    DataHelper.LikeUnLike(User.UserId, commentId);
-                    break;
-                case "DisLike":
-                    DataHelper.DisLikeUnDisLike(User.UserId, commentId);
-                    break;
-                default:
-                    throw new Exception("unsopprted case");
-                    break;
-                
-            }
-        }
-
 
     }
 }

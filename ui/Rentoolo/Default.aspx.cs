@@ -20,14 +20,129 @@ namespace Rentoolo
             {
                 //ListNews = DataHelper.GetActiveNewsLast5();
 
+                DateTime startDate, endDate;
+                DateTime? startDate2 = null, endDate2 = null;
+
+                bool onlyInName = Request.QueryString["onlyInName"] == "on" ? true : false;
+
+                decimal? startPrice = null, endPrice = null;
+                decimal startPrice2, endPrice2;
+
+                string city = Request.QueryString["city"];
+
+
+
                 SellFilter filter = new SellFilter
                 {
                     Search = Request.QueryString["s"]
                 };
 
-                ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(filter);
+                if (DateTime.TryParse(Request.QueryString["startDate"], out startDate) || DateTime.TryParse(Request.QueryString["endDate"], out endDate))
+                {
+                    filter.Search = "";
+                    DateTime.TryParse(Request.QueryString["endDate"], out endDate);
+
+                    if (startDate != SellFilter.DefaultDate)
+                    {
+                        startDate2 = startDate;
+                    }
+                    if (endDate != SellFilter.DefaultDate)
+                    {
+                        endDate2 = endDate;
+                    }
+                }
+
+                if(decimal.TryParse(Request.QueryString["startPrice"],out startPrice2)||decimal.TryParse(Request.QueryString["endPrice"],out endPrice2))
+                {
+                    decimal.TryParse(Request.QueryString["endPrice"], out endPrice2);
+                    if (startPrice2 != null)
+                    {
+                        startPrice = startPrice2;
+                    }
+
+                    if (endPrice2 != null)
+                    {
+                        endPrice = endPrice2;
+                    }
+
+                }
+
+
+                bool? byDate, byPrice, byDateDesc, byPriceDesc;
+
+                string strByDate = Request.QueryString["sortByDate"];
+                string strByPrice = Request.QueryString["sortByPrice"];
+                //                                   sortByDateDesc
+                string strByDateDesc = Request.QueryString["sortByDateDesc"];
+                string strByPriceDesc = Request.QueryString["sortByPriceDesc"];
+
+
+                if ((strByDate == "") || (strByDate == null))
+                {
+                    byDate = null;
+                }
+                else
+                {
+                    byDate = strByDate == "on" ? true : false;
+                }
+
+                if (strByPrice == "" || strByPrice == null)
+                {
+                    byPrice = null;
+                }
+                else
+                {
+                    byPrice = strByPrice == "on" ? true : false;
+                }
+
+
+                if ((strByDateDesc == "") || (strByDateDesc == null))
+                {
+                    byDateDesc = null;
+                }
+                else
+                {
+                    byDateDesc = strByDateDesc == "on" ? true : false;
+                }
+
+                if (strByPriceDesc == "" || strByPriceDesc == null)
+                {
+                    byPriceDesc = null;
+                }
+                else
+                {
+                    byPriceDesc = strByPriceDesc == "on" ? true : false;
+                }
+
+
+
+
+
+
+
+                SellFilter testSellFilter = new SellFilter()
+                {
+                    Search = Request.QueryString["s"],
+                    StartDate = startDate2,
+                    EndDate = endDate2,
+                    City = city,
+                    StartPrice = startPrice,
+                    EndPrice = endPrice,
+                    OnlyInName = onlyInName,
+                    ByDate = byDate,
+                    ByPrice = byPrice,
+                    ByDateDesc = byDateDesc,
+                    ByPriceDesc = byPriceDesc,
+                };
+
+                ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(testSellFilter);
+
 
                 AdvertsCount = AdvertsDataHelper.GetAdvertsActiveCount(filter).ToString("N0");
+
+
+
+
 
                 //Random rnd = new Random();
 
@@ -80,7 +195,38 @@ namespace Rentoolo
         {
             string search = String.Format("{0}", Request.Form["InputSearch"]);
 
-            Response.Redirect("/Default.aspx?s=" + Uri.EscapeDataString(search));
+            // creating query string(queryStr) for redirect to this page with search parameters
+
+            string startDate = Request.Form["StartDate"];
+            string endDate = Request.Form["EndDate"];
+
+            string onlyInName = Request.Form["onlyInName"];
+
+            string startPrice = Request.Form["startPrice"];
+            string endPrice = Request.Form["endPrice"];
+
+            string city = Request.Form["city"];
+
+            string sortByDate = Request.Form["sortByDate"];
+            string sortByPrice = Request.Form["sortByPrice"];
+
+            string sortByDateDesc = Request.Form["sortByDateDesc"];
+            string sortByPriceDesc = Request.Form["sortByPriceDesc"];
+
+            string queryStr = "?"+ "s=" + search;
+
+            queryStr += "&startDate=" + startDate + "&endDate=" + endDate;
+            queryStr += "&onlyInName=" + onlyInName;
+            queryStr += "&startPrice=" + startPrice + "&endPrice=" + endPrice;
+            queryStr += "&city=" + city;
+            queryStr += "&sortByDate=" + sortByDate;
+            queryStr += "&sortByPrice=" + sortByPrice;
+            queryStr += "&sortByDateDesc=" + sortByDateDesc;
+            queryStr += "&sortByPriceDesc=" + sortByPriceDesc;
+
+
+            Response.Redirect("/Default.aspx" + queryStr);
+
         }
     }
 }

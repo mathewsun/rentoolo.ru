@@ -8,7 +8,7 @@
 
         <div id="app">
             {{ message }}
-            <button @click="some"> click me to log! </button>
+            <div @click="some"> click me to log! </div>
         </div>
 
         <script type="text/javascript">
