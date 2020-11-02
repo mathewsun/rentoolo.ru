@@ -5,11 +5,6 @@ namespace Rentoolo.Model
     public class SellFilter
     {
         public string Search { get; set; }
-    }
-
-    public class TestSellFilter
-    {
-        public string Search { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public static DateTime DefaultDate = DateTime.Parse("01-01-0001 00:00:00");
@@ -25,9 +20,6 @@ namespace Rentoolo.Model
         public bool? ByPrice { get; set; }
         public bool? ByDateDesc { get; set; }
         public bool? ByPriceDesc { get; set; }
-
-
-
     }
 
 }
