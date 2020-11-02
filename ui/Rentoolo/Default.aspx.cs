@@ -30,6 +30,8 @@ namespace Rentoolo
 
                 string city = Request.QueryString["city"];
 
+                string sortBy = Request.QueryString["sortBy"];
+
 
 
                 SellFilter filter = new SellFilter
@@ -120,7 +122,7 @@ namespace Rentoolo
 
 
 
-                SellFilter testSellFilter = new SellFilter()
+                SellFilter sellFilter = new SellFilter()
                 {
                     Search = Request.QueryString["s"],
                     StartDate = startDate2,
@@ -133,9 +135,10 @@ namespace Rentoolo
                     ByPrice = byPrice,
                     ByDateDesc = byDateDesc,
                     ByPriceDesc = byPriceDesc,
+                    SortBy = sortBy
                 };
 
-                ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(testSellFilter);
+                ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(sellFilter);
 
 
                 AdvertsCount = AdvertsDataHelper.GetAdvertsActiveCount(filter).ToString("N0");
@@ -213,6 +216,8 @@ namespace Rentoolo
             string sortByDateDesc = Request.Form["sortByDateDesc"];
             string sortByPriceDesc = Request.Form["sortByPriceDesc"];
 
+            string sortBy = Request.Form["sortBy"];
+
             string queryStr = "?"+ "s=" + search;
 
             queryStr += "&startDate=" + startDate + "&endDate=" + endDate;
@@ -223,6 +228,7 @@ namespace Rentoolo
             queryStr += "&sortByPrice=" + sortByPrice;
             queryStr += "&sortByDateDesc=" + sortByDateDesc;
             queryStr += "&sortByPriceDesc=" + sortByPriceDesc;
+            queryStr += "&sortBy=" + sortBy;
 
 
             Response.Redirect("/Default.aspx" + queryStr);

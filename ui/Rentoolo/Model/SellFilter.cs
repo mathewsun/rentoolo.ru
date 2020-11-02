@@ -20,6 +20,7 @@ namespace Rentoolo.Model
         public bool? ByPrice { get; set; }
         public bool? ByDateDesc { get; set; }
         public bool? ByPriceDesc { get; set; }
+        public string SortBy { get; set; } = "by date";
     }
 
 }

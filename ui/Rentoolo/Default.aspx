@@ -499,6 +499,18 @@
                                     Sort by price descendance:
                                     <input type="checkbox" name="sortByPriceDesc" /> <br />
                                 </div>
+
+                                <div>
+                                    <input  type="text" name="sortBy" list="sortBy" />
+                                    <datalist id="sortBy">
+                                        <option>by date</option>
+                                        <option>by price</option>
+                                        <option>by date descendance</option>
+                                        <option>by price descendance</option>
+                                    </datalist>
+
+                                </div>
+
                                 <div class="input-group-btn">
                                     <asp:Button ID="ButtonSearch" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
                                 </div>
