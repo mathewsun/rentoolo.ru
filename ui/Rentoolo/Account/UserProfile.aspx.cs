@@ -20,21 +20,30 @@ namespace Rentoolo.Account
 
             string id = Request.QueryString["id"];
 
-            if (id[0] != '@')
+            if (id != null)
             {
-                CurUser = DataHelper.GetUser(Guid.Parse(id));
+                if (id[0] != '@')
+                {
+                    CurUser = DataHelper.GetUser(Guid.Parse(id));
+                }
+                else
+                {
+                    CurUser = DataHelper.GetUser(id);
+
+                    if (CurUser == null)
+                    {
+
+                        id = id.Trim("@".ToCharArray());
+                        CurUser = DataHelper.GetUser(Convert.ToInt32(id));
+                    }
+                }
             }
             else
             {
-                CurUser = DataHelper.GetUser(id);
-                
-                if (CurUser == null)
-                {
-
-                    id = id.Trim("@id".ToCharArray());
-                    CurUser = DataHelper.GetUser(Convert.ToInt32(id));
-                }
+                CurUser = User;
             }
+
+            
 
 
             
