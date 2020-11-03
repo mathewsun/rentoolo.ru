@@ -180,6 +180,7 @@
     <Content Include="500.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Account\AddItem.aspx" />
+    <Content Include="Account\AddItemCar.aspx" />
     <Content Include="Account\Auction.aspx" />
     <Content Include="Account\AuctionInfo.aspx" />
     <Content Include="Account\Auctions.aspx" />
@@ -527,6 +528,13 @@
     </Compile>
     <Compile Include="Account\AddItem.aspx.designer.cs">
       <DependentUpon>AddItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\AddItemCar.aspx.cs">
+      <DependentUpon>AddItemCar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AddItemCar.aspx.designer.cs">
+      <DependentUpon>AddItemCar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Auction.aspx.cs">
       <DependentUpon>Auction.aspx</DependentUpon>

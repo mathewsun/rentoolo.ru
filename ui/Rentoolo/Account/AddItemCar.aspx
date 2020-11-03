@@ -234,6 +234,35 @@
                 <div id="my-dropzone" style="display: none;"></div>
             </div>
         </div>
+        
+        <div class="additem-category">
+            <div class="additem-left">
+                <span class="additem-title">Цвет</span>
+            </div>
+            <div class="additem-right">
+                <input type="color" list="colorList" name="idColor" id="input_color" value="##cccccc">
+                <datalist id="colorList">
+                    <option value="#ffffff" label="Белый">
+                    <option value="#C0C0C0" label="Серебряный">
+                    <option value="##808080" label="Серый">
+                    <option value="#000000" label="Черный">
+                    <option value="#A52A2A" label="Коричневый">
+                    <option value="#FFD700" label="Золотой">
+                    <option value="#F5F5DC" label="Бежевый">
+                    <option value="#ff0000" label="Красный">
+                    <option value="#FFA500" label="Оранжевый">
+                    <option value="#FFFF00" label="Желтый">
+                    <option value="#008000" label="Зелёный">
+                    <option value="#87CEEB" label="Голубой">
+                    <option value="#0000ff" label="Синий">
+                    <option value="#EE82EE" label="Фиолетовый">
+                    <option value="#800080" label="Пурпурный">
+                    <option value="#FFC0CB" label="Розовый">
+                    
+                    
+                </datalist>
+            </div>
+        </div>
 
         <div class="additem-category">
             <div class="additem-left">
@@ -248,8 +277,29 @@
             <div class="additem-left">
                 <span class="additem-title">VIN или номер кузова</span>
             </div>
-            <div class="additem-right additem__input-name">
+            <div class="additem-right">
                 <input type="text" id="input_vin" class="additem-input" required runat="server">
+            </div>
+        </div>
+        
+        <div class="additem-category">
+            <div class="additem-left">
+                <span class="additem-title">Марка</span>
+            </div>
+            <div class="additem-right">
+                <select id="input_brand" class="additem-input" required runat="server">
+                    <option value="">Выберите марку</option>
+                    <option value="1">AC</option>
+                    <option value="2">Acura</option>
+                    <option value="3">Adler</option>
+                    <option value="4">Alfa Romeo</option>
+                    <option value="5">Alpine</option>
+                    <option value="6">AMC</option>
+                    <option value="7">AM General</option>
+                    <option value="8">Ariel</option>
+                    <option value="9">Aro</option>
+                    <option value="10">Asia</option>
+                </select>
             </div>
         </div>
 
