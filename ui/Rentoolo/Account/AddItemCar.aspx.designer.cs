@@ -11,7 +11,7 @@ namespace Rentoolo.Account
 {
 
 
-    public partial class AddItem
+    public partial class AddItemCar
     {
 
         /// <summary>
@@ -33,13 +33,31 @@ namespace Rentoolo.Account
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden subcategory_hidden;
 
         /// <summary>
-        /// input_name control.
+        /// input_video control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText input_name;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText input_video;
+
+        /// <summary>
+        /// input_vin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText input_vin;
+
+        /// <summary>
+        /// input_brand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect input_brand;
 
         /// <summary>
         /// input_text control.
@@ -58,15 +76,6 @@ namespace Rentoolo.Account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl price_value;
-
-        /// <summary>
-        /// input_video control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText input_video;
 
         /// <summary>
         /// additem_place control.
