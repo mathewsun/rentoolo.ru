@@ -508,14 +508,14 @@
                                         &nbsp;
                                         <br />
                                     </div>
-                                    <div>
+<%--                                    <div>
                                         Диапазон дат:
                                         <input type="date" id="StartDate" placeholder="StartDate">
                                         <input type="date" id="EndDate" placeholder="EndDate">
-                                    </div>
+                                    </div>--%>
 
                                     <div>
-                                        Диапазон стоимоcти: 
+                                        Цена: 
                                         <input type="number" name="startPrice" placeholder="startPrice" />
                                         <input type="number" name="endPrice" placeholder="endPrice" />
                                         <br />
