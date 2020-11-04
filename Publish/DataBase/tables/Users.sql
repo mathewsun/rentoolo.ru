@@ -24,6 +24,7 @@ CREATE TABLE [dbo].[Users](
 	[Interests] [nvarchar](max) NULL,
 	[WorkPlace] [nvarchar](max) NULL,
 	[AboutUser] [nvarchar](max) NULL,
+	[BirthDay] [datetime] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[UserId] ASC
