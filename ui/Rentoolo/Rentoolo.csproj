@@ -349,6 +349,7 @@
     <Content Include="DataBase\alter\AlterUsers.sql" />
     <Content Include="DataBase\fnGetUserWallets.sql" />
     <Content Include="DataBase\Init\Init.sql" />
+    <Content Include="DataBase\Init\init_041120.sql" />
     <Content Include="DataBase\Init\init_091020.sql" />
     <Content Include="DataBase\Init\init_110920.sql" />
     <Content Include="DataBase\Init\init_151020.sql" />
