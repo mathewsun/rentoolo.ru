@@ -56,6 +56,9 @@
       <HintPath>..\packages\Fleck.1.1.0\lib\net45\Fleck.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -177,7 +180,9 @@
     <Content Include="500.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Account\AddItem.aspx" />
+    <Content Include="Account\AddItemCar.aspx" />
     <Content Include="Account\Auction.aspx" />
+    <Content Include="Account\AuctionInfo.aspx" />
     <Content Include="Account\Auctions.aspx" />
     <Content Include="Account\Auto.aspx" />
     <Content Include="Account\Cabinet.aspx" />
@@ -219,6 +224,8 @@
     <Content Include="Account\TokensBuying.aspx" />
     <Content Include="Account\TokensSelling.aspx" />
     <Content Include="Account\Transport.aspx" />
+    <Content Include="Account\UserComplaints.aspx" />
+    <Content Include="Account\UserComplaintView.aspx" />
     <Content Include="Account\UserProfile.aspx" />
     <Content Include="Account\Vacancy.aspx" />
     <Content Include="Account\Watched.aspx" />
@@ -326,12 +333,16 @@
     <Content Include="assets\js\sweet-alert.min.js" />
     <Content Include="assets\js\toolkit.js" />
     <Content Include="assets\js\utils.js" />
+    <Content Include="Account\AuctionRequests.aspx" />
     <Content Include="Auctions.aspx" />
     <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
     <Content Include="Category.aspx" />
+    <Content Include="ComplaintPage.aspx" />
+    <Content Include="ComplaintsPage.aspx" />
     <Content Include="ConsumerElectronics.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="CreateComplaint.aspx" />
     <Content Include="DataBase\alter\AlterUsers.sql" />
     <Content Include="DataBase\fnGetUserWallets.sql" />
     <Content Include="DataBase\Init\Init.sql" />
@@ -339,11 +350,15 @@
     <Content Include="DataBase\Init\init_110920.sql" />
     <Content Include="DataBase\Init\init_151020.sql" />
     <Content Include="DataBase\Init\init_230920.sql" />
+    <Content Include="DataBase\Init\init_301020.sql" />
+    <Content Include="DataBase\Init\init_301020_2.sql" />
     <Content Include="DataBase\spAddFavoritesAuctions.sql" />
     <Content Include="DataBase\spAddFavoritesAuctionsByCookies.sql" />
     <Content Include="DataBase\spAddWatchedByCookies.sql" />
     <Content Include="DataBase\spAddWatched.sql" />
     <Content Include="DataBase\spGetComments.sql" />
+    <Content Include="DataBase\spGetComplaintsByRecipier.txt" />
+    <Content Include="DataBase\spGetComplaintsBySender.sql" />
     <Content Include="DataBase\spGetTokenCostToday.sql" />
     <Content Include="DataBase\spGetWatchedByCookies.sql" />
     <Content Include="DataBase\spGetWatched.sql" />
@@ -361,8 +376,10 @@
     <Content Include="DataBase\spGetLoginStatisticLastHourActive.sql" />
     <Content Include="DataBase\fnGetTablesRows.sql" />
     <Content Include="DataBase\fnGetAllUsers.sql" />
+    <Content Include="DataBase\tables\AuctionRequests.sql" />
     <Content Include="DataBase\tables\CashOuts.sql" />
     <Content Include="DataBase\tables\Comments.sql" />
+    <Content Include="DataBase\tables\Complaints.sql" />
     <Content Include="DataBase\tables\Phones.sql" />
     <Content Include="DataBase\tables\LoginStat.sql" />
     <Content Include="DataBase\tables\Auctions.sql" />
@@ -386,39 +403,7 @@
     <Content Include="Help.aspx" />
     <Content Include="HobbyRest.aspx" />
     <Content Include="HomeGarden.aspx" />
-    <Content Include="img\a\0ETyETt0UGH9SpLUCJJGQ.jpg" />
-    <Content Include="img\a\1ubiLdqmUKpYsar4SsM1A.jpg" />
-    <Content Include="img\a\1Yg7WTepOUe4guNHxqZgSw.jpg" />
-    <Content Include="img\a\5pCX225yECrJK1EdRDIKw.jpg" />
-    <Content Include="img\a\8bkqHlYySEmqCRWPeubGQ.jpg" />
-    <Content Include="img\a\9FtOlXC3KUWJ6D938o8Kmw.jpg" />
-    <Content Include="img\a\br10SfqbBUSvK8jFPm1r3Q.jpg" />
-    <Content Include="img\a\DhaLb5TLUSEvgfAxgH77Q.jpg" />
-    <Content Include="img\a\DU0vHVSLf0OOY5bwFefEMA.jpg" />
-    <Content Include="img\a\e1pheumNfUSooc5OhG7K8w.png" />
-    <Content Include="img\a\FnmKKH4Ak2oMXMcgnLKHw.jpg" />
-    <Content Include="img\a\g1TMt82J0WUJ8QHj8MhA.jpg" />
-    <Content Include="img\a\GcLH1ion40GwK8eK88m0Q.jpg" />
-    <Content Include="img\a\GSI4kgcK8UmITf7eW8ClSw.jpg" />
-    <Content Include="img\a\j7rMiCXWekmVM6TaCXnspg.jpg" />
-    <Content Include="img\a\KBl6y2RkKptV35fV8rg.jpg" />
-    <Content Include="img\a\KzFZndm8GkCewRbzpDzTzQ.jpg" />
-    <Content Include="img\a\mxsrgrPttUqWOQp0wBbQ.jpg" />
-    <Content Include="img\a\N22eeOEoEaZCPPkw39Zkw.jpg" />
-    <Content Include="img\a\nFulAD509kO262lg8wHqkQ.jpg" />
     <Content Include="img\a\noPhoto.png" />
-    <Content Include="img\a\oWD62LoCh0Ki7lDEi64c8w.jpg" />
-    <Content Include="img\a\PkfH63NfykK5IDAhQC97g.jpg" />
-    <Content Include="img\a\Q62a1tGae0WwHZy6tCiYVQ.jpg" />
-    <Content Include="img\a\qbt8Vq3gKU2tEnWH1l6LuA.jpg" />
-    <Content Include="img\a\SIHdBzJ2xkeewPafXldijw.jpg" />
-    <Content Include="img\a\sMFAAAITL06GeAXpGNqumA.jpg" />
-    <Content Include="img\a\UOsvIyfOc0ahpcP2o6VMEg.jpg" />
-    <Content Include="img\a\V6bJ415pk00SmjqznXbZA.jpg" />
-    <Content Include="img\a\VClzoRSFUOz9BjWDV7BDA.jpg" />
-    <Content Include="img\a\wcB4wOYDX0aj7Ef3GU4SQ.jpg" />
-    <Content Include="img\a\wCkZwxQHxUa4W0CpWexR2g.jpg" />
-    <Content Include="img\a\zvUwKw2GuESIKa8MalcwHw.jpg" />
     <Content Include="img\kitchen\avatars\69179930_736853823483887_5740857891485646848_n.jpg" />
     <Content Include="img\kitchen\avatars\69527679_631739310686765_4819614499147350016_n.jpg" />
     <Content Include="img\kitchen\avatars\94671454_277769756585463_6526749104637214720_n.jpg" />
@@ -453,6 +438,19 @@
     <Content Include="Realty.aspx" />
     <Content Include="Rent.aspx" />
     <Content Include="Services.aspx" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Success.aspx" />
     <Content Include="Template.aspx" />
     <Content Include="Tender.aspx" />
@@ -473,6 +471,7 @@
     <Content Include="Test\matheweducation.aspx" />
     <Content Include="Test\Varkentin.aspx" />
     <Content Include="Tests\ChatTest2.html" />
+    <Content Include="Test\VueTest.aspx" />
     <Content Include="TokensCost.aspx" />
     <Content Include="TokensOperations.aspx" />
     <Content Include="Transport.aspx" />
@@ -530,12 +529,26 @@
     <Compile Include="Account\AddItem.aspx.designer.cs">
       <DependentUpon>AddItem.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\AddItemCar.aspx.cs">
+      <DependentUpon>AddItemCar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AddItemCar.aspx.designer.cs">
+      <DependentUpon>AddItemCar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Auction.aspx.cs">
       <DependentUpon>Auction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Account\Auction.aspx.designer.cs">
       <DependentUpon>Auction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\AuctionInfo.aspx.cs">
+      <DependentUpon>AuctionInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AuctionInfo.aspx.designer.cs">
+      <DependentUpon>AuctionInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Auctions.aspx.cs">
       <DependentUpon>Auctions.aspx</DependentUpon>
@@ -799,6 +812,20 @@
     <Compile Include="Account\Transport.aspx.designer.cs">
       <DependentUpon>Transport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\UserComplaints.aspx.cs">
+      <DependentUpon>UserComplaints.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\UserComplaints.aspx.designer.cs">
+      <DependentUpon>UserComplaints.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\UserComplaintView.aspx.cs">
+      <DependentUpon>UserComplaintView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\UserComplaintView.aspx.designer.cs">
+      <DependentUpon>UserComplaintView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\UserProfile.aspx.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1049,6 +1076,13 @@
     <Compile Include="Articles.aspx.designer.cs">
       <DependentUpon>Articles.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\AuctionRequests.aspx.cs">
+      <DependentUpon>AuctionRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AuctionRequests.aspx.designer.cs">
+      <DependentUpon>AuctionRequests.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Auctions.aspx.cs">
       <DependentUpon>Auctions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1070,6 +1104,20 @@
     <Compile Include="Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ComplaintPage.aspx.cs">
+      <DependentUpon>ComplaintPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComplaintPage.aspx.designer.cs">
+      <DependentUpon>ComplaintPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ComplaintsPage.aspx.cs">
+      <DependentUpon>ComplaintsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComplaintsPage.aspx.designer.cs">
+      <DependentUpon>ComplaintsPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ConsumerElectronics.aspx.cs">
       <DependentUpon>ConsumerElectronics.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1085,13 +1133,22 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ChatsController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\GetTokensCostController.cs" />
     <Compile Include="Controllers\InstructionController.cs" />
     <Compile Include="Controllers\InstructionsController.cs" />
     <Compile Include="Controllers\KitchenModel\Recipe.cs" />
+    <Compile Include="Controllers\LikesDislikesController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\TopRecipesController.cs" />
+    <Compile Include="CreateComplaint.aspx.cs">
+      <DependentUpon>CreateComplaint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateComplaint.aspx.designer.cs">
+      <DependentUpon>CreateComplaint.aspx</DependentUpon>
+    </Compile>
     <Compile Include="HelperModels\StateStructs.cs" />
     <Compile Include="Model\Adverts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -1103,6 +1160,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\AuctionHelper.cs" />
+    <Compile Include="Model\AuctionRequests.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Auctions.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1135,6 +1195,9 @@
     <Compile Include="Model\CheckQiwiPayments.cs" />
     <Compile Include="Model\CommentForUser.cs" />
     <Compile Include="Model\Comments.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Complaints.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Currencies.cs">
@@ -1182,6 +1245,7 @@
     <Compile Include="Model\fnGetUserWallets_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\HelperStructs\StructsHelper.cs" />
     <Compile Include="Model\Items.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1248,6 +1312,12 @@
     <Compile Include="Model\spGetComments_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\spGetComplaintsByRecipier_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetComplaintsBySender_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\spGetFavoritesByCookies_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1269,7 +1339,6 @@
     <Compile Include="Model\spGetWatched_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\StructsHelper.cs" />
     <Compile Include="Model\TenderRequest.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1464,6 +1533,7 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Success.aspx.cs">
       <DependentUpon>Success.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1535,6 +1605,13 @@
     <Compile Include="Test\Varkentin.aspx.designer.cs">
       <DependentUpon>Varkentin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Test\VueTest.aspx.cs">
+      <DependentUpon>VueTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\VueTest.aspx.designer.cs">
+      <DependentUpon>VueTest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tokens.aspx.cs">
       <DependentUpon>Tokens.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1579,12 +1656,12 @@
     </Compile>
     <Compile Include="UpiController.cs" />
     <Compile Include="UpiTestController.cs" />
+    <Compile Include="Workers\AuctionsChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account\Rent\" />
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
-    <Folder Include="DatabaseHelpers\" />
     <Folder Include="Rent\" />
     <Folder Include="Sell\" />
   </ItemGroup>
@@ -1627,7 +1704,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53205</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53225/</IISUrl>
+          <IISUrl>http://localhost:53222/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

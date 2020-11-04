@@ -25,6 +25,7 @@ namespace Rentoolo
 
             RegisterRoutes(RouteTable.Routes);
 
+            SqlServerTypes.Utilities.LoadNativeAssemblies(Server.MapPath("~/bin"));
         }
 
         void Application_End(object sender, EventArgs e)
