@@ -4,9 +4,31 @@
     <link href="assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
     <script src="/assets/js/jQuery.Brazzers-Carousel.js"></script>
     <script src="/assets/js/jsonUtils.js?2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <style>
+        div.button {
+          display:inline-block;
+          -webkit-appearance:button;
+          padding:3px 8px 3px 8px;
+          font-size:13px;
+          position:relative;
+          cursor:context-menu;
+          box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+          border:1px solid #CCC;
+          background:#DDD;
+        }
+
+        div.button:active {
+            color:red;
+            box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+        }
+
+
+    </style>
 
     <script>
-        <%--$(document).ready(function () {
+        $(document).ready(function () {
             $.get("/assets/json/categories.json", function (data) {
                 var category = findJsonElementById(data, <%=AdvertItem.Category%>);
         
@@ -29,7 +51,7 @@
             });
 
             $(".photoContainer").brazzersCarousel();
-        });--%>
+        });
 
         
     </script>
@@ -54,7 +76,7 @@
             <div class="additem-left">
                 <span class="additem-title">Название объявления</span>
             </div>
-            <div class="additem-right additem__input-name">
+            <div class="additem-right">
                 <%=AdvertItem.Name %>
             </div>
         </div>
@@ -93,6 +115,18 @@
             </div>
 
         </div>
+
+
+        <div class="additem-category">
+            <div class="additem-left additem-contact">
+                <a href="Account/UserProfile.aspx?id=<%=AdvertItem.CreatedUserId %>" >
+                    <%= AnotherUser.UserName %>
+                </a>
+            </div>
+
+        </div>
+
+
         <div class="additem-category">
             <div class="additem-left">
                 <span class="additem-title">Место сделки</span>
@@ -132,6 +166,15 @@
             </div>
         </div>
         <div>
+
+            <h5>
+                <a href="CreateComplaint.aspx?complaintObjectType=1&userRecivier=<%=AdvertItem.CreatedUserId %>&objectId=<%=AdvertItem.Id %>">
+                    Пожаловаться
+                </a>
+            </h5>
+
+        </div>
+        <div>
             <div>
                 <h3>
                     Добавить комментарий:
@@ -147,21 +190,87 @@
                     Комментарии:
                 </h4>
                 
-                <asp:Repeater ID="RptrComments" runat="server" OnItemDataBound="RptrComments_ItemDataBound" OnItemCommand="RptrComments_ItemCommand" >
-                    <ItemTemplate>
+                <div id="vue-app">
+                    {{message}}
+                    <div v-for="(comment, index) in comments" v-bind:key="index">
                         <div>
-                            Name:  <%#Eval("UserName") %>   <br />
-                            Created: <%#Eval("Date") %>          <br />
-                            Comment: <%#Eval("Comment") %>          <br />
-                            Likes: <%#Eval("LikesCount") %>              <br />
-                            Dislikes: <%#Eval("DisLikesCount") %>        <br />
-                            HaveLiked: <%#Eval("HaveLiked") %>  <br />
-                            HaveDisLiked:  <%#Eval("HaveDisLiked") %>  <br />
-                            <asp:Button ID="ButtonLike" runat="server" Text="Like" CommandName="Like" CommandArgument='<%#Eval("Id") %>' />
-                            <asp:Button ID="ButtonDisLike" runat="server" Text="DisLike" CommandName="DisLike" CommandArgument='<%#Eval("Id") %>' />
-                        </div>
-                    </ItemTemplate>
-                </asp:Repeater>
+                        Name:  {{comment.UserName}}   <br />
+                        Created: {{comment.Date}}          <br />
+                        Comment: {{comment.Comment}}         <br />
+                        Likes: {{comment.LikesCount}}             <br />
+                        Dislikes: {{comment.DisLikesCount}}        <br />
+                        HaveLiked: {{comment.HaveLiked}}  <br />
+                        HaveDisLiked:  {{comment.HaveDisLiked}}  <br />
+                            </div>
+                        <div class="button" @click="Like(comment.Id)">Like</div>
+                        <div class="button" @click="DisLike(comment.Id)">DisLike</div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+
+
+                    var app = new Vue({
+                        el: '#vue-app',
+                        data: {
+                            message: 'Привет, Vue!',
+                            comments: []
+                        },
+                        created: function () {
+
+                            let url = 'api/Comments/<%=AdvertItem.Id %>';
+
+                            let data = {}
+
+                            fetch(url,data)
+                                .then((response) => {
+                                    return response.json();
+                                })
+                                .then((data) => {
+                                    console.log(data);
+                                    this.comments = data;
+                                });
+
+
+                        },
+                        methods: {
+                            Like(commentId) {
+                                console.log('LIKE!');
+                                this.LDRequest("Like", commentId);
+                            },
+                            DisLike(commentId) {
+                                console.log('DisLike!');
+                                this.LDRequest("DisLike", commentId);
+                            },
+                            LDRequest(cmd,commentId) {
+
+                                let url = 'api/LikesDislikes';
+
+                                let jsonData = { Cmd: cmd, CommentId: commentId };
+                                let data = {
+                                    method: 'PUT',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(jsonData)
+                                }
+
+                                fetch(url, data)
+                                    .then((response) => {
+                                        return response.json();
+                                    })
+                                    .then((data) => {
+                                        console.log(data);
+
+                                    });
+
+
+                            }
+                        }
+                    })
+
+                </script>
+
 
             </div>
         </div>

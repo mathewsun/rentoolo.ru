@@ -76,7 +76,7 @@
             <div class="additem-left">
                 <span class="additem-title">Название объявления</span>
             </div>
-            <div class="additem-right additem__input-name">
+            <div class="additem-right">
                 <%=AdvertItem.Name %>
             </div>
         </div>

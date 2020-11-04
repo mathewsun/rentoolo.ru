@@ -70,6 +70,18 @@
                 <div style="padding-top: 15px;">
                     <a href="/Account/DeviceSettings.aspx" class="button-changePassword settingButton">Device Settings</a>
                 </div>
+
+                <div>
+                    Текущая ссылка на профиль:
+
+
+
+                    Уникальная ссылка на профиль пользователя:
+                    <input type="text" name="uniqueName" />
+
+                    <asp:Button ID="ButtonSetUniqName" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Set name" OnClick="ButtonSetUniqName_Click" />
+                </div>
+
             </div>
         </div>
     </div>

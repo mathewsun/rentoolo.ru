@@ -122,6 +122,24 @@ namespace Rentoolo.Model
             }
         }
 
+
+        public static void SetUserUniqueName(Users user)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                // add проверки на уникальность
+                //bool containsName = dc.Users.Select(x => x.UniqueUserName.Contains(user.UniqueUserName))==null?true:false;
+                //if (!containsName)
+                //{
+                    var obj = dc.Users.FirstOrDefault(x => x.UserId == user.UserId);
+                    obj.UniqueUserName = user.UniqueUserName;
+                    dc.SaveChanges();
+                //}
+            }
+        }
+
+
+
         public static void UpdateUserParametr(string userName, string parametr, String parametrValue)
         {
             using (var ctx = new RentooloEntities())
