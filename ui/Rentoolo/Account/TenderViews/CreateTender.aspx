@@ -3,16 +3,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+    <div>
 
-    <form>
         <asp:TextBox ID="TextBoxTName" runat="server" ToolTip="название тендера"></asp:TextBox>
         <asp:TextBox ID="TextBoxTDescription" runat="server" ToolTip="описание" ></asp:TextBox>
         <asp:TextBox ID="TextBoxTCost" runat="server" ToolTip="стоимость" ></asp:TextBox>
         <asp:Button ID="ButtonAddRequest" runat="server" Text="Создать тендер" OnClick="ButtonAddTender_Click" />
 
-
-    </form>
-
-
+    </div>
 
 </asp:Content>

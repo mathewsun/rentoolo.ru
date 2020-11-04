@@ -302,6 +302,9 @@
     <Content Include="assets\img\instagram_8.jpg" />
     <Content Include="assets\img\instagram_9.jpg" />
     <Content Include="assets\img\kurier-piter.jpg" />
+    <Content Include="assets\img\liked.png" />
+    <Content Include="assets\img\neliked.jpg" />
+    <Content Include="assets\img\notLiked.jpg" />
     <Content Include="assets\img\position.png" />
     <Content Include="assets\img\qiwi_and_cards.jpg" />
     <Content Include="assets\img\settings-icon-50.png" />
@@ -380,6 +383,8 @@
     <Content Include="DataBase\tables\CashOuts.sql" />
     <Content Include="DataBase\tables\Comments.sql" />
     <Content Include="DataBase\tables\Complaints.sql" />
+    <Content Include="DataBase\tables\ItemDisLikes.sql" />
+    <Content Include="DataBase\tables\ItemLikes.sql" />
     <Content Include="DataBase\tables\Phones.sql" />
     <Content Include="DataBase\tables\LoginStat.sql" />
     <Content Include="DataBase\tables\Auctions.sql" />
@@ -475,6 +480,7 @@
     <Content Include="TokensCost.aspx" />
     <Content Include="TokensOperations.aspx" />
     <Content Include="Transport.aspx" />
+    <Content Include="UserProfile.aspx" />
     <Content Include="yandex_f9c03f80c16c0af8.html" />
     <Content Include="assets\json\categories.json" />
     <Content Include="assets\json\categories_ru.json" />
@@ -1137,6 +1143,7 @@
     <Compile Include="Controllers\GetTokensCostController.cs" />
     <Compile Include="Controllers\InstructionController.cs" />
     <Compile Include="Controllers\InstructionsController.cs" />
+    <Compile Include="Controllers\ItemLikesDislikesController.cs" />
     <Compile Include="Controllers\KitchenModel\Recipe.cs" />
     <Compile Include="Controllers\LikesDislikesController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
@@ -1246,6 +1253,14 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\HelperStructs\StructsHelper.cs" />
+    <Compile Include="Model\ItemDislikes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ItemLikeDislike.cs" />
+    <Compile Include="Model\ItemLikes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ItemLikesDislikes.cs" />
     <Compile Include="Model\Items.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1656,6 +1671,13 @@
     </Compile>
     <Compile Include="UpiController.cs" />
     <Compile Include="UpiTestController.cs" />
+    <Compile Include="UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Workers\AuctionsChecker.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1335,6 +1335,75 @@ namespace Rentoolo.Model
 
         #endregion
 
+
+        #region Item likes/dislikes
+
+
+        public static int GetItemLikes(int objType, long objId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var count = dc.ItemLikes.Count(x => x.ObjectType==objType&&x.ObjectId==objId);
+                return count;
+            }
+        }
+
+
+        public static int GetItemDisLikes(int objType, long objId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var count = dc.ItemDislikes.Count(x => x.ObjectType == objType && x.ObjectId == objId);
+                return count;
+            }
+        }
+
+
+
+
+
+        public static void LikeItem(ItemLikes item)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ItemLikes.Add(item);
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static void UnLikeItem()
+        {
+            
+        }
+
+
+        public static void DisLikeItem(ItemDislikes item)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ItemDislikes.Add(item);
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static void UnDisLikeItem()
+        {
+
+        }
+
+
+
+        #endregion
+
+
+
+
+
+
+
+
         #region Comments
 
         //public static List<spGetComments_Result> GetComments_Results(long objId, Guid userId)
@@ -1342,7 +1411,7 @@ namespace Rentoolo.Model
         //    using (var dc = new RentooloEntities())
         //    {
         //        List<spGetComments_Result> result = dc.spGetComments(objId, userId).ToList();
-                
+
         //        return result;
         //    }
         //}
