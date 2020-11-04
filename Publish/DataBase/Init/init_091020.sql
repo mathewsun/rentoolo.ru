@@ -1,6 +1,6 @@
-﻿USE [Rentoolo]
+USE [Rentoolo]
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnGetUserBalance]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetUserBalance]    Script Date: 09.10.2020 15:48:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -20,7 +20,7 @@ END;
 
 
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnGetUserBalanceByName]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetUserBalanceByName]    Script Date: 09.10.2020 15:48:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -38,37 +38,453 @@ END;
 
 
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  Table [dbo].[Adverts]    Script Date: 09.10.2020 15:48:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Users](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[ApplicationId] [uniqueidentifier] NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[UserName] [nvarchar](50) NOT NULL,
-	[IsAnonymous] [bit] NOT NULL,
-	[LastActivityDate] [datetime] NOT NULL,
-	[Pwd] [nvarchar](max) NULL,
-	[PublicId] [int] NOT NULL,
-	[Communication] [nvarchar](max) NULL,
-	[ReffAdd] [float] NOT NULL,
-	[LastGeoposition] [nvarchar](51) NULL,
-	[Language] [nvarchar](10) NULL,
-	[Sex] [int] NULL,
-	[Interests] [nvarchar](max) NULL,
-	[WorkPlace] [nvarchar](max) NULL,
-	[AboutUser] [nvarchar](max) NULL,
-	[BirthDay] [datetime] NULL,
-	[UniqueUserName] [nvarchar](50) NULL,
-PRIMARY KEY CLUSTERED 
+CREATE TABLE [dbo].[Adverts](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Category] [int] NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Description] [nvarchar](4000) NOT NULL,
+	[Created] [datetime] NOT NULL,
+	[CreatedUserId] [uniqueidentifier] NOT NULL,
+	[Price] [float] NOT NULL,
+	[Address] [nvarchar](150) NULL,
+	[Phone] [nvarchar](50) NULL,
+	[MessageType] [int] NOT NULL,
+	[Position] [geography] NULL,
+	[ImgUrls] [nvarchar](max) NULL,
+	[YouTubeUrl] [nvarchar](max) NULL,
+	[IsApproved] [bit] NOT NULL,
+	[WhenAdminApproved] [datetime] NULL,
+	[Subcategory] [int] NULL,
+ CONSTRAINT [PK_Adverts] PRIMARY KEY CLUSTERED 
 (
-	[UserId] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Memberships]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  Table [dbo].[Applications]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Applications](
+	[ApplicationName] [nvarchar](235) NOT NULL,
+	[ApplicationId] [uniqueidentifier] NOT NULL,
+	[Description] [nvarchar](256) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ApplicationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Articles]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Articles](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Head] [nvarchar](max) NOT NULL,
+	[Text] [nvarchar](max) NOT NULL,
+	[WhenDate] [datetime] NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_Articles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Auctions]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Auctions](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[StartPrice] [money] NOT NULL,
+	[Created] [datetime] NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[Description] [nvarchar](max) NULL,
+	[ImgUrls] [nvarchar](max) NULL,
+ CONSTRAINT [PK_Auctions] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Business]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Business](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Header] [nvarchar](max) NOT NULL,
+	[Description] [nvarchar](max) NOT NULL,
+	[Cost] [float] NULL,
+	[NoCost] [bit] NOT NULL,
+	[PaybackPeriod] [float] NULL,
+	[MonthlyIncome] [float] NULL,
+ CONSTRAINT [PK_Business] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[CashIns]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CashIns](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[Value] [float] NOT NULL,
+	[Sposob] [nvarchar](max) NOT NULL,
+	[WhenDate] [datetime] NOT NULL,
+	[AcceptedAccount] [nvarchar](50) NOT NULL,
+	[SendAccount] [nvarchar](50) NULL,
+ CONSTRAINT [PK_CashIns] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[CashOuts]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CashOuts](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[Value] [float] NOT NULL,
+	[WhenDate] [datetime] NOT NULL,
+	[Sposob] [nvarchar](max) NOT NULL,
+	[WhenAdminEvent] [datetime] NULL,
+	[State] [int] NOT NULL,
+	[Number] [nvarchar](max) NULL,
+	[Comment] [nvarchar](max) NULL,
+	[Type] [int] NOT NULL,
+	[PaymentNumber] [nvarchar](50) NULL,
+	[Result] [int] NOT NULL,
+ CONSTRAINT [PK_CashOuts] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Categories]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Categories](
+	[Id] [int] NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Name(Ru)] [nvarchar](50) NOT NULL,
+	[OrderId] [int] NOT NULL,
+	[ParentCategoryId] [int] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ChatActiveUsers]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ChatActiveUsers](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[ChatId] [bigint] NOT NULL,
+ CONSTRAINT [PK_ChatActiveUsers] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ChatMessages]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ChatMessages](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[Message] [nvarchar](max) NOT NULL,
+	[Date] [datetime] NOT NULL,
+	[ChatId] [bigint] NOT NULL,
+ CONSTRAINT [PK_ChatMessages] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Chats]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Chats](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[OwnerId] [uniqueidentifier] NOT NULL,
+	[ChatName] [nvarchar](50) NULL,
+	[ChatType] [smallint] NOT NULL,
+ CONSTRAINT [PK_Chats] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ChatUsers]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ChatUsers](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[ChatId] [bigint] NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_ChatUsers] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Comments]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Comments](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[UserName] [nvarchar](max) NOT NULL,
+	[AdvertId] [int] NOT NULL,
+	[Comment] [nvarchar](max) NOT NULL,
+	[Date] [datetime] NOT NULL,
+	[Likes] [int] NOT NULL,
+	[DisLikes] [int] NOT NULL,
+	[Type] [int] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Currencies]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Currencies](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[Acronim] [nvarchar](50) NOT NULL,
+	[DateAdd] [datetime] NOT NULL,
+	[IsValid] [bit] NOT NULL,
+ CONSTRAINT [PK_Cryptocurrencies2] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DailyStatistics]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DailyStatistics](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Date] [datetime] NOT NULL,
+	[UserAdded] [int] NOT NULL,
+	[DepositeAdded] [float] NOT NULL,
+ CONSTRAINT [PK_DailyStatistics] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DeletedAdverts]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DeletedAdverts](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Category] [int] NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Description] [nvarchar](4000) NOT NULL,
+	[Created] [datetime] NOT NULL,
+	[CreatedUserId] [uniqueidentifier] NOT NULL,
+	[Price] [float] NOT NULL,
+	[Address] [nvarchar](150) NULL,
+	[Phone] [nvarchar](50) NULL,
+	[MessageType] [int] NOT NULL,
+	[Position] [geography] NULL,
+	[ImgUrls] [nvarchar](max) NULL,
+	[YouTubeUrl] [nvarchar](max) NULL,
+	[IsApproved] [bit] NOT NULL,
+	[WhenAdminApproved] [datetime] NULL,
+	[Subcategory] [int] NULL,
+ CONSTRAINT [PK_Deleted_Adverts] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DialogsInfo]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DialogsInfo](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[User1Id] [uniqueidentifier] NOT NULL,
+	[User2Id] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_DialogsInfo] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DisLikes]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DisLikes](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[CommentId] [int] NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_DisLikes] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Exceptions]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Exceptions](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Value] [nvarchar](max) NOT NULL,
+	[WhenDate] [datetime] NOT NULL,
+	[UserId] [uniqueidentifier] NULL,
+ CONSTRAINT [PK_Exceptions] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Favorites]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Favorites](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[AdvertId] [bigint] NOT NULL,
+	[Created] [datetime] NOT NULL,
+ CONSTRAINT [PK_Favorites] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[FavoritesByCookies]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[FavoritesByCookies](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[UserCookiesId] [nvarchar](36) NOT NULL,
+	[AdvertId] [bigint] NOT NULL,
+	[Created] [datetime] NOT NULL,
+ CONSTRAINT [PK_FavoritesByCookies] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Items]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Items](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](100) NOT NULL,
+	[Description] [nvarchar](max) NOT NULL,
+	[Cost] [float] NOT NULL,
+	[Address] [nvarchar](150) NULL,
+	[CoordinateX] [decimal](9, 6) NULL,
+	[CoordinateY] [decimal](9, 6) NULL,
+	[Coordinate] [geography] NULL,
+	[Phone] [nvarchar](20) NULL,
+	[CommunicationType] [int] NOT NULL,
+ CONSTRAINT [PK_Items] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Likes]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Likes](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CommentId] [int] NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_Likes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[LoginStat]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[LoginStat](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[UserName] [nvarchar](50) NULL,
+	[UserId] [uniqueidentifier] NULL,
+	[Ip] [varchar](48) NULL,
+	[WhenDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_LoginStat] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[LoginStatistics]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[LoginStatistics](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserName] [nvarchar](50) NULL,
+	[Ip] [nvarchar](max) NULL,
+	[WhenLastDate] [datetime] NOT NULL,
+	[Count] [bigint] NOT NULL,
+	[Client] [int] NOT NULL,
+	[Version] [nvarchar](10) NOT NULL,
+ CONSTRAINT [PK_LoginStatistics] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Memberships]    Script Date: 09.10.2020 15:48:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -99,7 +515,411 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnGetAllUsers]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  Table [dbo].[News]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[News](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Text] [nvarchar](max) NOT NULL,
+	[Date] [datetime] NOT NULL,
+	[AuthorId] [uniqueidentifier] NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[Active] [bit] NULL,
+ CONSTRAINT [PK_New] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Operations]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Operations](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[Value] [float] NOT NULL,
+	[Type] [int] NOT NULL,
+	[Comment] [nvarchar](max) NOT NULL,
+	[WhenDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_Operations] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Payments]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Payments](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[UserIdSender] [uniqueidentifier] NOT NULL,
+	[UserIdRecepient] [uniqueidentifier] NOT NULL,
+	[Value] [float] NOT NULL,
+	[WhenDate] [datetime] NOT NULL,
+	[Comment] [nvarchar](max) NULL,
+ CONSTRAINT [PK_Payments] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Phones]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Phones](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Number] [nvarchar](50) NOT NULL,
+	[Pwd] [nvarchar](50) NOT NULL,
+	[CreatedDate] [datetime] NOT NULL,
+	[Blocked] [bit] NOT NULL,
+	[LastActive] [datetime] NOT NULL,
+	[Balance] [float] NOT NULL,
+	[WhenHistoryChecked] [datetime] NOT NULL,
+	[BalanceUpdatePerMonth] [float] NOT NULL,
+	[BalanceUpdatePerMonthUpdateDate] [datetime] NOT NULL,
+	[IdentificateStatus] [int] NOT NULL,
+	[Commision] [bit] NOT NULL,
+ CONSTRAINT [PK_Phones] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Recipes]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Recipes](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[Discription] [nvarchar](max) NOT NULL,
+	[Created] [datetime] NOT NULL,
+	[ImgUrl] [nvarchar](250) NULL,
+	[CountLikes] [int] NOT NULL,
+	[TimeMinutesToCook] [int] NOT NULL,
+	[UserId] [bigint] NOT NULL,
+ CONSTRAINT [PK_Recipes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Referrals]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Referrals](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ReferrerUserId] [uniqueidentifier] NOT NULL,
+	[ReferralUserId] [uniqueidentifier] NOT NULL,
+	[WhenDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_Refferals] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Roles]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Roles](
+	[ApplicationId] [uniqueidentifier] NOT NULL,
+	[RoleId] [uniqueidentifier] NOT NULL,
+	[RoleName] [nvarchar](256) NOT NULL,
+	[Description] [nvarchar](256) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[RoleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Settings]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Settings](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Order] [int] NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[Value] [nvarchar](max) NOT NULL,
+	[Description] [nvarchar](max) NULL,
+	[UpdateDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_Settings] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TenderRequest]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TenderRequest](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Description] [nvarchar](max) NOT NULL,
+	[ProviderId] [uniqueidentifier] NOT NULL,
+	[ProviderName] [nvarchar](50) NOT NULL,
+	[Cost] [int] NOT NULL,
+	[CustomerId] [uniqueidentifier] NOT NULL,
+	[DateStart] [datetime] NULL,
+	[DateCompleted] [datetime] NULL,
+	[DateDelivered] [datetime] NULL,
+	[DateWin] [datetime] NULL,
+	[TenderId] [int] NOT NULL,
+ CONSTRAINT [PK_TenderRequest] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Tenders]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tenders](
+	[Id] [int] NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[Description] [ntext] NULL,
+	[UserOwnerId] [uniqueidentifier] NOT NULL,
+	[Cost] [float] NOT NULL,
+	[ImgUrls] [nvarchar](max) NULL,
+	[Status] [int] NOT NULL,
+	[Created] [datetime] NOT NULL,
+	[CurrencyId] [int] NOT NULL,
+ CONSTRAINT [PK_Tenders] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TokensBuying]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TokensBuying](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Count] [bigint] NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[CostOneToken] [float] NOT NULL,
+	[FullCost] [float] NOT NULL,
+	[WhenDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_TokensBuying] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TokensCost]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TokensCost](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Value] [float] NOT NULL,
+	[Date] [datetime] NOT NULL,
+ CONSTRAINT [PK_TokenCost] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TokensSelling]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TokensSelling](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Count] [bigint] NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[CostOneToken] [float] NOT NULL,
+	[FullCost] [float] NOT NULL,
+	[WhenDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_TokensSelling] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Users]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Users](
+	[ApplicationId] [uniqueidentifier] NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[UserName] [nvarchar](50) NOT NULL,
+	[IsAnonymous] [bit] NOT NULL,
+	[LastActivityDate] [datetime] NOT NULL,
+	[Pwd] [nvarchar](max) NULL,
+	[PublicId] [int] NOT NULL,
+	[Communication] [nvarchar](max) NULL,
+	[ReffAdd] [float] NOT NULL,
+	[LastGeoposition] [nvarchar](51) NULL,
+	[Language] [nvarchar](10) NULL,
+	[Sex] [int] NULL,
+	[Interests] [nvarchar](max) NULL,
+	[WorkPlace] [nvarchar](max) NULL,
+	[AboutUser] [nvarchar](max) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[UserSettings]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserSettings](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Value] [nvarchar](50) NOT NULL,
+	[Created] [datetime] NOT NULL,
+ CONSTRAINT [PK_UserSettings] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[UsersInRoles]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UsersInRoles](
+	[UserId] [uniqueidentifier] NOT NULL,
+	[RoleId] [uniqueidentifier] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[RoleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[UsersOpenAuthAccounts]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UsersOpenAuthAccounts](
+	[ApplicationName] [nvarchar](128) NOT NULL,
+	[ProviderName] [nvarchar](128) NOT NULL,
+	[ProviderUserId] [nvarchar](128) NOT NULL,
+	[ProviderUserName] [nvarchar](max) NOT NULL,
+	[MembershipUserName] [nvarchar](128) NOT NULL,
+	[LastUsedUtc] [datetime] NULL,
+ CONSTRAINT [PK_dbo.UsersOpenAuthAccounts] PRIMARY KEY CLUSTERED 
+(
+	[ApplicationName] ASC,
+	[ProviderName] ASC,
+	[ProviderUserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[UsersOpenAuthData]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UsersOpenAuthData](
+	[ApplicationName] [nvarchar](128) NOT NULL,
+	[MembershipUserName] [nvarchar](128) NOT NULL,
+	[HasLocalPassword] [bit] NOT NULL,
+ CONSTRAINT [PK_dbo.UsersOpenAuthData] PRIMARY KEY CLUSTERED 
+(
+	[ApplicationName] ASC,
+	[MembershipUserName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[UserViews]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserViews](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[ObjectId] [int] NOT NULL,
+	[Type] [int] NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[Date] [datetime] NOT NULL,
+ CONSTRAINT [PK_UserViews] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Wallets]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Wallets](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[CurrencyId] [int] NOT NULL,
+	[Value] [float] NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_Wallets] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Watched]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Watched](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[AdvertId] [bigint] NOT NULL,
+	[Created] [datetime] NOT NULL,
+ CONSTRAINT [PK_Watched] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[WatchedByCookies]    Script Date: 09.10.2020 15:48:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[WatchedByCookies](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[UserCookiesId] [nvarchar](36) NOT NULL,
+	[AdvertId] [bigint] NOT NULL,
+	[Created] [datetime] NOT NULL,
+ CONSTRAINT [PK_WatchedByCookies] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  UserDefinedFunction [dbo].[fnGetAllUsers]    Script Date: 09.10.2020 15:48:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -122,123 +942,7 @@ RETURN
 	ON u.[UserId] = m.[UserId]
 );
 GO
-/****** Object:  Table [dbo].[Referrals]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Referrals](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[ReferrerUserId] [uniqueidentifier] NOT NULL,
-	[ReferralUserId] [uniqueidentifier] NOT NULL,
-	[WhenDate] [datetime] NOT NULL,
- CONSTRAINT [PK_Refferals] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  UserDefinedFunction [dbo].[fnGetUserReferralsSecondLevel]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE FUNCTION [dbo].[fnGetUserReferralsSecondLevel] (@userId uniqueidentifier)
-RETURNS table
-AS
-RETURN 
-(
-SELECT r.*, u.PublicId, u.UserName, rup1lvl.ReferrerUserId as refererUp1Lvl
-FROM Referrals r
-left join Referrals rup1lvl
-on rup1lvl.ReferralUserId = r.ReferrerUserId
-left join Users u
-on u.UserId = r.ReferralUserId
-where rup1lvl.ReferrerUserId = @userId
-);
-
-
-GO
-/****** Object:  UserDefinedFunction [dbo].[fnGetUserReferralsThirdLevel]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE FUNCTION [dbo].[fnGetUserReferralsThirdLevel] (@userId uniqueidentifier)
-RETURNS table
-AS
-RETURN 
-(
-SELECT r.*, u.PublicId, u.UserName, rup2lvl.ReferrerUserId as refererUp2Lvl
-FROM Referrals r
-left join Referrals rup1lvl
-on rup1lvl.ReferralUserId = r.ReferrerUserId
-left join Referrals rup2lvl
-on rup2lvl.ReferralUserId = rup1lvl.ReferrerUserId
-left join Users u
-on u.UserId = r.ReferralUserId
-where rup2lvl.ReferrerUserId = @userId
-);
-
-
-GO
-/****** Object:  Table [dbo].[Wallets]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Wallets](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[CurrencyId] [int] NOT NULL,
-	[Value] [float] NOT NULL,
-	[CreateDate] [datetime] NOT NULL,
- CONSTRAINT [PK_Wallets] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Currencies]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Currencies](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](max) NOT NULL,
-	[Acronim] [nvarchar](50) NOT NULL,
-	[DateAdd] [datetime] NOT NULL,
-	[IsValid] [bit] NOT NULL,
- CONSTRAINT [PK_Cryptocurrencies2] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  UserDefinedFunction [dbo].[fnGetUserWallets]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE FUNCTION [dbo].[fnGetUserWallets] (@userId uniqueidentifier)
-RETURNS table
-AS
-RETURN 
-(
-	SELECT 	w.[Id]
-		,w.[CurrencyId]
-		,w.[Value]
-		,c.[Name]
-		,c.[Acronim]
-	FROM [Wallets] w
-	LEFT JOIN [Currencies] c
-	ON w.[CurrencyId] = c.[Id]
-	WHERE w.[UserId] = @userId
-);
-
-GO
-/****** Object:  UserDefinedFunction [dbo].[fnGetTablesRows]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetTablesRows]    Script Date: 09.10.2020 15:48:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -267,901 +971,115 @@ RETURN
 
 
 GO
-/****** Object:  Table [dbo].[Adverts]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetUserReferralsSecondLevel]    Script Date: 09.10.2020 15:48:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Adverts](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[Category] [int] NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[Description] [nvarchar](4000) NOT NULL,
-	[Created] [datetime] NOT NULL,
-	[CreatedUserId] [uniqueidentifier] NOT NULL,
-	[Price] [float] NOT NULL,
-	[Address] [nvarchar](150) NULL,
-	[Phone] [nvarchar](50) NULL,
-	[MessageType] [int] NOT NULL,
-	[Position] [geography] NULL,
-	[ImgUrls] [nvarchar](max) NULL,
-	[YouTubeUrl] [nvarchar](max) NULL,
-	[IsApproved] [bit] NOT NULL,
-	[WhenAdminApproved] [datetime] NULL,
-	[Subcategory] [int] NULL,
-	[Color] [nvarchar](50) NULL,
-	[Vin] [nvarchar](50) NULL,
-	[Brand] [nvarchar](max) NULL,
- CONSTRAINT [PK_Adverts] PRIMARY KEY CLUSTERED 
+CREATE FUNCTION [dbo].[fnGetUserReferralsSecondLevel] (@userId uniqueidentifier)
+RETURNS table
+AS
+RETURN 
 (
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+SELECT r.*, u.PublicId, u.UserName, rup1lvl.ReferrerUserId as refererUp1Lvl
+FROM Referrals r
+left join Referrals rup1lvl
+on rup1lvl.ReferralUserId = r.ReferrerUserId
+left join Users u
+on u.UserId = r.ReferralUserId
+where rup1lvl.ReferrerUserId = @userId
+);
+
+
 GO
-/****** Object:  Table [dbo].[Applications]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetUserReferralsThirdLevel]    Script Date: 09.10.2020 15:48:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Applications](
-	[ApplicationName] [nvarchar](235) NOT NULL,
-	[ApplicationId] [uniqueidentifier] NOT NULL,
-	[Description] [nvarchar](256) NULL,
-PRIMARY KEY CLUSTERED 
+CREATE FUNCTION [dbo].[fnGetUserReferralsThirdLevel] (@userId uniqueidentifier)
+RETURNS table
+AS
+RETURN 
 (
-	[ApplicationId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+SELECT r.*, u.PublicId, u.UserName, rup2lvl.ReferrerUserId as refererUp2Lvl
+FROM Referrals r
+left join Referrals rup1lvl
+on rup1lvl.ReferralUserId = r.ReferrerUserId
+left join Referrals rup2lvl
+on rup2lvl.ReferralUserId = rup1lvl.ReferrerUserId
+left join Users u
+on u.UserId = r.ReferralUserId
+where rup2lvl.ReferrerUserId = @userId
+);
+
+
 GO
-/****** Object:  Table [dbo].[Articles]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetUserWallets]    Script Date: 09.10.2020 15:48:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Articles](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Head] [nvarchar](max) NOT NULL,
-	[Text] [nvarchar](max) NOT NULL,
-	[WhenDate] [datetime] NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
- CONSTRAINT [PK_Articles] PRIMARY KEY CLUSTERED 
+CREATE FUNCTION [dbo].[fnGetUserWallets] (@userId uniqueidentifier)
+RETURNS table
+AS
+RETURN 
 (
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[AuctionRequests]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[AuctionRequests](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[Price] [money] NOT NULL,
-	[Description] [nvarchar](max) NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[AuctionId] [int] NOT NULL,
- CONSTRAINT [PK_AuctionRequests] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Auctions]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Auctions](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](max) NOT NULL,
-	[StartPrice] [money] NOT NULL,
-	[Created] [datetime] NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[ImgUrls] [nvarchar](max) NULL,
-	[Description] [nvarchar](max) NULL,
-	[DataEnd] [datetime] NULL,
- CONSTRAINT [PK_Auctions] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Business]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Business](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[Header] [nvarchar](max) NOT NULL,
-	[Description] [nvarchar](max) NOT NULL,
-	[Cost] [float] NULL,
-	[NoCost] [bit] NOT NULL,
-	[PaybackPeriod] [float] NULL,
-	[MonthlyIncome] [float] NULL,
- CONSTRAINT [PK_Business] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[CashIns]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[CashIns](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[Value] [float] NOT NULL,
-	[Sposob] [nvarchar](max) NOT NULL,
-	[WhenDate] [datetime] NOT NULL,
-	[AcceptedAccount] [nvarchar](50) NOT NULL,
-	[SendAccount] [nvarchar](50) NULL,
- CONSTRAINT [PK_CashIns] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[CashOuts]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[CashOuts](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[Value] [float] NOT NULL,
-	[WhenDate] [datetime] NOT NULL,
-	[Sposob] [nvarchar](max) NOT NULL,
-	[WhenAdminEvent] [datetime] NULL,
-	[State] [int] NOT NULL,
-	[Number] [nvarchar](max) NULL,
-	[Comment] [nvarchar](max) NULL,
-	[Type] [int] NOT NULL,
-	[PaymentNumber] [nvarchar](50) NULL,
-	[Result] [int] NOT NULL,
- CONSTRAINT [PK_CashOuts] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Categories](
-	[Id] [int] NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[Name(Ru)] [nvarchar](50) NOT NULL,
-	[OrderId] [int] NOT NULL,
-	[ParentCategoryId] [int] NULL
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[ChatActiveUsers]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[ChatActiveUsers](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[ChatId] [bigint] NOT NULL,
- CONSTRAINT [PK_ChatActiveUsers] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[ChatMessages]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[ChatMessages](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[Message] [nvarchar](max) NOT NULL,
-	[Date] [datetime] NOT NULL,
-	[ChatId] [bigint] NOT NULL,
- CONSTRAINT [PK_ChatMessages] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Chats]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Chats](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[OwnerId] [uniqueidentifier] NOT NULL,
-	[ChatName] [nvarchar](50) NULL,
-	[ChatType] [smallint] NOT NULL,
- CONSTRAINT [PK_Chats] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[ChatUsers]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[ChatUsers](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[ChatId] [bigint] NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
- CONSTRAINT [PK_ChatUsers] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Comments]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Comments](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[UserName] [nvarchar](max) NOT NULL,
-	[AdvertId] [int] NOT NULL,
-	[Comment] [nvarchar](max) NOT NULL,
-	[Date] [datetime] NOT NULL,
-	[Likes] [int] NOT NULL,
-	[DisLikes] [int] NOT NULL,
-	[Type] [int] NOT NULL,
- CONSTRAINT [PK_Comments] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Complaints]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Complaints](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Message] [nvarchar](max) NULL,
-	[СomplaintType] [int] NOT NULL,
-	[ObjectId] [int] NOT NULL,
-	[ObjectType] [int] NOT NULL,
-	[UserSender] [uniqueidentifier] NOT NULL,
-	[UserRecipier] [uniqueidentifier] NOT NULL,
-	[Data] [datetime] NOT NULL,
- CONSTRAINT [PK_Complaints] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[DailyStatistics]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[DailyStatistics](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Date] [datetime] NOT NULL,
-	[UserAdded] [int] NOT NULL,
-	[DepositeAdded] [float] NOT NULL,
- CONSTRAINT [PK_DailyStatistics] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[DeletedAdverts]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[DeletedAdverts](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[Category] [int] NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[Description] [nvarchar](4000) NOT NULL,
-	[Created] [datetime] NOT NULL,
-	[CreatedUserId] [uniqueidentifier] NOT NULL,
-	[Price] [float] NOT NULL,
-	[Address] [nvarchar](150) NULL,
-	[Phone] [nvarchar](50) NULL,
-	[MessageType] [int] NOT NULL,
-	[Position] [geography] NULL,
-	[ImgUrls] [nvarchar](max) NULL,
-	[YouTubeUrl] [nvarchar](max) NULL,
-	[IsApproved] [bit] NOT NULL,
-	[WhenAdminApproved] [datetime] NULL,
-	[Subcategory] [int] NULL,
- CONSTRAINT [PK_Deleted_Adverts] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[DialogActiveUsers]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[DialogActiveUsers](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[DialogId] [int] NOT NULL,
- CONSTRAINT [PK_DialogActiveUsers] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[DialogMessages]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[DialogMessages](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[DialogInfoId] [bigint] NOT NULL,
-	[Message] [nvarchar](max) NOT NULL,
-	[FromUserId] [uniqueidentifier] NOT NULL,
-	[Date] [datetime] NOT NULL,
- CONSTRAINT [PK_DialogMessages] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[DialogsInfo]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[DialogsInfo](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[User1Id] [uniqueidentifier] NOT NULL,
-	[User2Id] [uniqueidentifier] NOT NULL,
- CONSTRAINT [PK_DialogsInfo] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[DisLikes]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[DisLikes](
-	[id] [int] IDENTITY(1,1) NOT NULL,
-	[CommentId] [int] NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
- CONSTRAINT [PK_DisLikes] PRIMARY KEY CLUSTERED 
-(
-	[id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Exceptions]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Exceptions](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Value] [nvarchar](max) NOT NULL,
-	[WhenDate] [datetime] NOT NULL,
-	[UserId] [uniqueidentifier] NULL,
- CONSTRAINT [PK_Exceptions] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Favorites]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Favorites](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[AdvertId] [bigint] NOT NULL,
-	[Created] [datetime] NOT NULL,
- CONSTRAINT [PK_Favorites] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[FavoritesByCookies]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[FavoritesByCookies](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[UserCookiesId] [nvarchar](36) NOT NULL,
-	[AdvertId] [bigint] NOT NULL,
-	[Created] [datetime] NOT NULL,
- CONSTRAINT [PK_FavoritesByCookies] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Items]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Items](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](100) NOT NULL,
-	[Description] [nvarchar](max) NOT NULL,
-	[Cost] [float] NOT NULL,
-	[Address] [nvarchar](150) NULL,
-	[CoordinateX] [decimal](9, 6) NULL,
-	[CoordinateY] [decimal](9, 6) NULL,
-	[Coordinate] [geography] NULL,
-	[Phone] [nvarchar](20) NULL,
-	[CommunicationType] [int] NOT NULL,
- CONSTRAINT [PK_Items] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Likes]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Likes](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[CommentId] [int] NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
- CONSTRAINT [PK_Likes] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[LoginStat]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[LoginStat](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[UserName] [nvarchar](50) NULL,
-	[UserId] [uniqueidentifier] NULL,
-	[Ip] [varchar](48) NULL,
-	[WhenDate] [datetime] NOT NULL,
- CONSTRAINT [PK_LoginStat] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[LoginStatistics]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[LoginStatistics](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[UserName] [nvarchar](50) NULL,
-	[Ip] [nvarchar](max) NULL,
-	[WhenLastDate] [datetime] NOT NULL,
-	[Count] [bigint] NOT NULL,
-	[Client] [int] NOT NULL,
-	[Version] [nvarchar](10) NOT NULL,
- CONSTRAINT [PK_LoginStatistics] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[News]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[News](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Text] [nvarchar](max) NOT NULL,
-	[Date] [datetime] NOT NULL,
-	[AuthorId] [uniqueidentifier] NOT NULL,
-	[CreateDate] [datetime] NOT NULL,
-	[Active] [bit] NULL,
- CONSTRAINT [PK_New] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Operations]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Operations](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[Value] [float] NOT NULL,
-	[Type] [int] NOT NULL,
-	[Comment] [nvarchar](max) NOT NULL,
-	[WhenDate] [datetime] NOT NULL,
- CONSTRAINT [PK_Operations] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Payments]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Payments](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[UserIdSender] [uniqueidentifier] NOT NULL,
-	[UserIdRecepient] [uniqueidentifier] NOT NULL,
-	[Value] [float] NOT NULL,
-	[WhenDate] [datetime] NOT NULL,
-	[Comment] [nvarchar](max) NULL,
- CONSTRAINT [PK_Payments] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Phones]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Phones](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Number] [nvarchar](50) NOT NULL,
-	[Pwd] [nvarchar](50) NOT NULL,
-	[CreatedDate] [datetime] NOT NULL,
-	[Blocked] [bit] NOT NULL,
-	[LastActive] [datetime] NOT NULL,
-	[Balance] [float] NOT NULL,
-	[WhenHistoryChecked] [datetime] NOT NULL,
-	[BalanceUpdatePerMonth] [float] NOT NULL,
-	[BalanceUpdatePerMonthUpdateDate] [datetime] NOT NULL,
-	[IdentificateStatus] [int] NOT NULL,
-	[Commision] [bit] NOT NULL,
- CONSTRAINT [PK_Phones] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Recipes]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Recipes](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](max) NOT NULL,
-	[Discription] [nvarchar](max) NOT NULL,
-	[Created] [datetime] NOT NULL,
-	[ImgUrl] [nvarchar](250) NULL,
-	[CountLikes] [int] NOT NULL,
-	[TimeMinutesToCook] [int] NOT NULL,
-	[UserId] [bigint] NOT NULL,
- CONSTRAINT [PK_Recipes] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Roles]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Roles](
-	[ApplicationId] [uniqueidentifier] NOT NULL,
-	[RoleId] [uniqueidentifier] NOT NULL,
-	[RoleName] [nvarchar](256) NOT NULL,
-	[Description] [nvarchar](256) NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[RoleId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Settings]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Settings](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Order] [int] NOT NULL,
-	[Name] [nvarchar](max) NOT NULL,
-	[Value] [nvarchar](max) NOT NULL,
-	[Description] [nvarchar](max) NULL,
-	[UpdateDate] [datetime] NOT NULL,
- CONSTRAINT [PK_Settings] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[TenderRequest]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[TenderRequest](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Description] [nvarchar](max) NOT NULL,
-	[ProviderId] [uniqueidentifier] NOT NULL,
-	[ProviderName] [nvarchar](50) NOT NULL,
-	[Cost] [int] NOT NULL,
-	[CustomerId] [uniqueidentifier] NOT NULL,
-	[DateStart] [datetime] NULL,
-	[DateCompleted] [datetime] NULL,
-	[DateDelivered] [datetime] NULL,
-	[DateWin] [datetime] NULL,
-	[TenderId] [int] NOT NULL,
- CONSTRAINT [PK_TenderRequest] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Tenders]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Tenders](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](max) NOT NULL,
-	[Description] [ntext] NULL,
-	[UserOwnerId] [uniqueidentifier] NOT NULL,
-	[Cost] [float] NOT NULL,
-	[ImgUrls] [nvarchar](max) NULL,
-	[Status] [int] NULL,
-	[Created] [datetime] NOT NULL,
-	[CurrencyId] [int] NOT NULL,
-	[CategoryId] [int] NOT NULL,
- CONSTRAINT [PK_Tenders] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[TokensBuying]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[TokensBuying](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Count] [bigint] NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[CostOneToken] [float] NOT NULL,
-	[FullCost] [float] NOT NULL,
-	[WhenDate] [datetime] NOT NULL,
- CONSTRAINT [PK_TokensBuying] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[TokensCost]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[TokensCost](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Value] [float] NOT NULL,
-	[Date] [datetime] NOT NULL,
- CONSTRAINT [PK_TokenCost] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[TokensSelling]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[TokensSelling](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Count] [bigint] NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[CostOneToken] [float] NOT NULL,
-	[FullCost] [float] NOT NULL,
-	[WhenDate] [datetime] NOT NULL,
- CONSTRAINT [PK_TokensSelling] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[UserSettings]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[UserSettings](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[Value] [nvarchar](50) NOT NULL,
-	[Created] [datetime] NOT NULL,
- CONSTRAINT [PK_UserSettings] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[UsersInRoles]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[UsersInRoles](
-	[UserId] [uniqueidentifier] NOT NULL,
-	[RoleId] [uniqueidentifier] NOT NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[UserId] ASC,
-	[RoleId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[UsersOpenAuthAccounts]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[UsersOpenAuthAccounts](
-	[ApplicationName] [nvarchar](128) NOT NULL,
-	[ProviderName] [nvarchar](128) NOT NULL,
-	[ProviderUserId] [nvarchar](128) NOT NULL,
-	[ProviderUserName] [nvarchar](max) NOT NULL,
-	[MembershipUserName] [nvarchar](128) NOT NULL,
-	[LastUsedUtc] [datetime] NULL,
- CONSTRAINT [PK_dbo.UsersOpenAuthAccounts] PRIMARY KEY CLUSTERED 
-(
-	[ApplicationName] ASC,
-	[ProviderName] ASC,
-	[ProviderUserId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[UsersOpenAuthData]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[UsersOpenAuthData](
-	[ApplicationName] [nvarchar](128) NOT NULL,
-	[MembershipUserName] [nvarchar](128) NOT NULL,
-	[HasLocalPassword] [bit] NOT NULL,
- CONSTRAINT [PK_dbo.UsersOpenAuthData] PRIMARY KEY CLUSTERED 
-(
-	[ApplicationName] ASC,
-	[MembershipUserName] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[UserViews]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[UserViews](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[ObjectId] [int] NOT NULL,
-	[Type] [int] NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[Date] [datetime] NOT NULL,
- CONSTRAINT [PK_UserViews] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Watched]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Watched](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[UserId] [uniqueidentifier] NOT NULL,
-	[AdvertId] [bigint] NOT NULL,
-	[Created] [datetime] NOT NULL,
- CONSTRAINT [PK_Watched] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[WatchedByCookies]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[WatchedByCookies](
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
-	[UserCookiesId] [nvarchar](36) NOT NULL,
-	[AdvertId] [bigint] NOT NULL,
-	[Created] [datetime] NOT NULL,
- CONSTRAINT [PK_WatchedByCookies] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+	SELECT 	w.[Id]
+		,w.[CurrencyId]
+		,w.[Value]
+		,c.[Name]
+		,c.[Acronim]
+	FROM [Wallets] w
+	LEFT JOIN [Currencies] c
+	ON w.[CurrencyId] = c.[Id]
+	WHERE w.[UserId] = @userId
+);
+
 GO
 SET IDENTITY_INSERT [dbo].[Adverts] ON 
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (27, 50, N'Холодильник Bosh', N'Новенький! Не пользовались.', CAST(N'2019-10-03T00:37:17.040' AS DateTime), N'f95dea8f-3fae-4c54-be1d-572e5dfe9116', 9900, N'Новый Арбат 78', N'+79864552545', 0, NULL, N'["/img/a/j7rMiCXWekmVM6TaCXnspg.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (27, 50, N'Холодильник Bosh', N'Новенький! Не пользовались.', CAST(N'2019-10-03T00:37:17.040' AS DateTime), N'f95dea8f-3fae-4c54-be1d-572e5dfe9116', 9900, N'Новый Арбат 78', N'+79864552545', 0, NULL, N'["/img/a/j7rMiCXWekmVM6TaCXnspg.jpg"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (28, 50, N'телевизор Samsung 55''', N'в хорошем состоянии', CAST(N'2019-10-11T20:33:25.107' AS DateTime), N'314bd290-5fc5-4a93-8131-db644b83aaed', 29000, N'Москва, Арбат 10', N'+7942557872', 0, NULL, N'["/img/a/zvUwKw2GuESIKa8MalcwHw.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (28, 50, N'телевизор Samsung 55''', N'в хорошем состоянии', CAST(N'2019-10-11T20:33:25.107' AS DateTime), N'314bd290-5fc5-4a93-8131-db644b83aaed', 29000, N'Москва, Арбат 10', N'+7942557872', 0, NULL, N'["/img/a/zvUwKw2GuESIKa8MalcwHw.jpg"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (29, 50, N'горные лыжи Atomic Smoke Titanium', N'Откатал 3 сезона. В хорошем состоянии.
-В комплекте крепления, палки, чехол.', CAST(N'2019-10-11T20:50:50.260' AS DateTime), N'314bd290-5fc5-4a93-8131-db644b83aaed', 8450, N'Москва, Динамо', N'+7942557878', 0, NULL, N'["/img/a/sMFAAAITL06GeAXpGNqumA.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (29, 50, N'горные лыжи Atomic Smoke Titanium', N'Откатал 3 сезона. В хорошем состоянии.
+В комплекте крепления, палки, чехол.', CAST(N'2019-10-11T20:50:50.260' AS DateTime), N'314bd290-5fc5-4a93-8131-db644b83aaed', 8450, N'Москва, Динамо', N'+7942557878', 0, NULL, N'["/img/a/sMFAAAITL06GeAXpGNqumA.jpg"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (30, 50, N'Кофеварка ', N'Тестовое объявление с большим количеством картинок', CAST(N'2019-10-11T20:54:25.323' AS DateTime), N'314bd290-5fc5-4a93-8131-db644b83aaed', 3200, N'Москва, Кузьминки 20', N'+7942257872', 0, NULL, N'["/img/a/SIHdBzJ2xkeewPafXldijw.jpg","/img/a/br10SfqbBUSvK8jFPm1r3Q.jpg","/img/a/GcLH1ion40GwK8eK88m0Q.jpg","/img/a/mxsrgrPttUqWOQp0wBbQ.jpg","/img/a/wCkZwxQHxUa4W0CpWexR2g.jpg","/img/a/8bkqHlYySEmqCRWPeubGQ.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (30, 50, N'Кофеварка ', N'Тестовое объявление с большим количеством картинок', CAST(N'2019-10-11T20:54:25.323' AS DateTime), N'314bd290-5fc5-4a93-8131-db644b83aaed', 3200, N'Москва, Кузьминки 20', N'+7942257872', 0, NULL, N'["/img/a/SIHdBzJ2xkeewPafXldijw.jpg","/img/a/br10SfqbBUSvK8jFPm1r3Q.jpg","/img/a/GcLH1ion40GwK8eK88m0Q.jpg","/img/a/mxsrgrPttUqWOQp0wBbQ.jpg","/img/a/wCkZwxQHxUa4W0CpWexR2g.jpg","/img/a/8bkqHlYySEmqCRWPeubGQ.jpg"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (31, 1010, N'хендай солярис', N'Практически новый', CAST(N'2019-10-26T13:54:46.850' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 300000, N'Новогиреево', N'+79864522542', 0, NULL, N'["/img/a/oWD62LoCh0Ki7lDEi64c8w.jpg","/img/a/qbt8Vq3gKU2tEnWH1l6LuA.jpg","/img/a/DU0vHVSLf0OOY5bwFefEMA.jpg","/img/a/UOsvIyfOc0ahpcP2o6VMEg.jpg","/img/a/VClzoRSFUOz9BjWDV7BDA.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (31, 1010, N'хендай солярис', N'Практически новый', CAST(N'2019-10-26T13:54:46.850' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 300000, N'Новогиреево', N'+79864522542', 0, NULL, N'["/img/a/oWD62LoCh0Ki7lDEi64c8w.jpg","/img/a/qbt8Vq3gKU2tEnWH1l6LuA.jpg","/img/a/DU0vHVSLf0OOY5bwFefEMA.jpg","/img/a/UOsvIyfOc0ahpcP2o6VMEg.jpg","/img/a/VClzoRSFUOz9BjWDV7BDA.jpg"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (32, 1101, N'Магазин разливного пива', N'Оборотка 600.000 рублей.
-Чистая прибыль 200.000 рублей.', CAST(N'2019-10-26T14:29:49.840' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1200000, N'Воронеж', N'+79864889931', 0, NULL, N'["/img/a/FnmKKH4Ak2oMXMcgnLKHw.jpg","/img/a/nFulAD509kO262lg8wHqkQ.jpg","/img/a/N22eeOEoEaZCPPkw39Zkw.jpg","/img/a/DhaLb5TLUSEvgfAxgH77Q.jpg","/img/a/1Yg7WTepOUe4guNHxqZgSw.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (32, 1101, N'Магазин разливного пива', N'Оборотка 600.000 рублей.
+Чистая прибыль 200.000 рублей.', CAST(N'2019-10-26T14:29:49.840' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1200000, N'Воронеж', N'+79864889931', 0, NULL, N'["/img/a/FnmKKH4Ak2oMXMcgnLKHw.jpg","/img/a/nFulAD509kO262lg8wHqkQ.jpg","/img/a/N22eeOEoEaZCPPkw39Zkw.jpg","/img/a/DhaLb5TLUSEvgfAxgH77Q.jpg","/img/a/1Yg7WTepOUe4guNHxqZgSw.jpg"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10027, 50, N'7777', N'77777', CAST(N'2020-05-01T00:33:16.583' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 7777, N'Кочновский пр-д, 5 строение 7, Москва, Россия, 125319', N'+79864889122', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (10027, 50, N'7777', N'77777', CAST(N'2020-05-01T00:33:16.583' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 7777, N'Кочновский пр-д, 5 строение 7, Москва, Россия, 125319', N'+79864889122', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10028, 50, N'7777', N'777', CAST(N'2020-05-01T00:33:30.630' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 7777, N'Кочновский пр-д, 5 строение 7, Москва, Россия, 125319', N'+79864522542', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (10028, 50, N'7777', N'777', CAST(N'2020-05-01T00:33:30.630' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 7777, N'Кочновский пр-д, 5 строение 7, Москва, Россия, 125319', N'+79864522542', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10029, 50, N'2222 тест', N'3332', CAST(N'2020-05-01T00:43:06.323' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 4444, N'Кочновский пр-д, 5 строение 7, Москва, Россия, 125319', N'+79864522542', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (10029, 50, N'2222 тест', N'3332', CAST(N'2020-05-01T00:43:06.323' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 4444, N'Кочновский пр-д, 5 строение 7, Москва, Россия, 125319', N'+79864522542', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10031, 1010, N'Ваз 2106', N'Любимая шестерочкв', CAST(N'2020-05-07T16:52:38.577' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 40000, N'ул. Старый Гай, 12, Москва, Россия, 111402', N'+79686399088', 0, NULL, N'["/img/a/V6bJ415pk00SmjqznXbZA.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (10031, 1010, N'Ваз 2106', N'Любимая шестерочкв', CAST(N'2020-05-07T16:52:38.577' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 40000, N'ул. Старый Гай, 12, Москва, Россия, 111402', N'+79686399088', 0, NULL, N'["/img/a/V6bJ415pk00SmjqznXbZA.jpg"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10032, 50, N'Тест 4', N'Тестттт 4444', CAST(N'2020-05-30T17:45:32.733' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, N'ул. Вучетича, 28 корпус 3, Москва, Россия, 127206', N'+79864554545', 0, NULL, N'["/img/a/wcB4wOYDX0aj7Ef3GU4SQ.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (10032, 50, N'Тест 4', N'Тестттт 4444', CAST(N'2020-05-30T17:45:32.733' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, N'ул. Вучетича, 28 корпус 3, Москва, Россия, 127206', N'+79864554545', 0, NULL, N'["/img/a/wcB4wOYDX0aj7Ef3GU4SQ.jpg"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10033, 50, N'Тест 5', N'Тесттт;тттттттт 5', CAST(N'2020-05-30T17:46:36.037' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 200000, N'ул. Вучетича, 28 корпус 3, Москва, Россия, 127206', N'+79864554545', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (10033, 50, N'Тест 5', N'Тесттт;тттттттт 5', CAST(N'2020-05-30T17:46:36.037' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 200000, N'ул. Вучетича, 28 корпус 3, Москва, Россия, 127206', N'+79864554545', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10034, 1000, N'Готовый бизнес проект ', N'Как создавать красоту и деньги благодаря гальванике. Реализовать свой творческий потенциал и быть счастливым.
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (10034, 1000, N'Готовый бизнес проект ', N'Как создавать красоту и деньги благодаря гальванике. Реализовать свой творческий потенциал и быть счастливым.
 В общем как превратить листья с деревьев в деньги?
 https://upravlenec.e-autopay.com/p/5500/ps
 П.С.
 Целевая аудитория реализации продукта весь мир, уровень продаж зависит от вашего вклада. Помимо обучения гальванике, попутно расскажут как продавать в интернете.
-', CAST(N'2020-06-26T23:48:36.957' AS DateTime), N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 14970, N'Севастополь', N'79821395919', 0, NULL, N'["/img/a/g1TMt82J0WUJ8QHj8MhA.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+', CAST(N'2020-06-26T23:48:36.957' AS DateTime), N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 14970, N'Севастополь', N'79821395919', 0, NULL, N'["/img/a/g1TMt82J0WUJ8QHj8MhA.jpg"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10035, 10, N'Skoda Oktavia', N'В хорошем состоянии.', CAST(N'2020-07-16T01:21:48.863' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100000, N'Тимирязевская ул., 38А строение 1, Москва, Россия, 127422', N'+79864889142', 0, NULL, N'["/img/a/e1pheumNfUSooc5OhG7K8w.png","/img/a/KzFZndm8GkCewRbzpDzTzQ.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (10035, 10, N'Skoda Oktavia', N'В хорошем состоянии.', CAST(N'2020-07-16T01:21:48.863' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100000, N'Тимирязевская ул., 38А строение 1, Москва, Россия, 127422', N'+79864889142', 0, NULL, N'["/img/a/e1pheumNfUSooc5OhG7K8w.png","/img/a/KzFZndm8GkCewRbzpDzTzQ.jpg"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (20035, 70, N'Микроволновка Samsung', N'Купили 5 лет назад. Отлично работает.
-Пользовались бережно.', CAST(N'2020-07-26T19:19:31.460' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, N'Ивановская ул., 34, Москва', N'+79864522542', 0, NULL, N'["/img/a/5pCX225yECrJK1EdRDIKw.jpg","/img/a/GSI4kgcK8UmITf7eW8ClSw.jpg","/img/a/9FtOlXC3KUWJ6D938o8Kmw.jpg","/img/a/1ubiLdqmUKpYsar4SsM1A.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (20035, 70, N'Микроволновка Samsung', N'Купили 5 лет назад. Отлично работает.
+Пользовались бережно.', CAST(N'2020-07-26T19:19:31.460' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, N'Ивановская ул., 34, Москва', N'+79864522542', 0, NULL, N'["/img/a/5pCX225yECrJK1EdRDIKw.jpg","/img/a/GSI4kgcK8UmITf7eW8ClSw.jpg","/img/a/9FtOlXC3KUWJ6D938o8Kmw.jpg","/img/a/1ubiLdqmUKpYsar4SsM1A.jpg"]', N'', 0, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (20041, 50, N'Шкаф-купе', N'3 секции.
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory]) VALUES (20041, 50, N'Шкаф-купе', N'3 секции.
 Купили несколько лет назад.
-В хорошем состоянии.', CAST(N'2020-08-16T14:17:19.717' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, N'Черняховского ул., 19 строение 15, Москва, Россия, 125319', N'+79864522542', 0, NULL, N'["/img/a/PkfH63NfykK5IDAhQC97g.jpg","/img/a/KBl6y2RkKptV35fV8rg.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+В хорошем состоянии.', CAST(N'2020-08-16T14:17:19.717' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, N'Черняховского ул., 19 строение 15, Москва, Россия, 125319', N'+79864522542', 0, NULL, N'["/img/a/PkfH63NfykK5IDAhQC97g.jpg","/img/a/KBl6y2RkKptV35fV8rg.jpg"]', N'', 0, NULL, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Adverts] OFF
 GO
@@ -1283,144 +1201,6 @@ INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryI
 GO
 INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (501, N'ClothesShoesAccessories', N'Одежда, обувь, аксессуары', 1, NULL)
 GO
-SET IDENTITY_INSERT [dbo].[ChatActiveUsers] ON 
-GO
-INSERT [dbo].[ChatActiveUsers] ([Id], [UserId], [ChatId]) VALUES (25, N'a55a7415-80e3-4dfd-92a1-3ea9d8d88329', 9)
-GO
-INSERT [dbo].[ChatActiveUsers] ([Id], [UserId], [ChatId]) VALUES (33, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 9)
-GO
-INSERT [dbo].[ChatActiveUsers] ([Id], [UserId], [ChatId]) VALUES (34, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 9)
-GO
-SET IDENTITY_INSERT [dbo].[ChatActiveUsers] OFF
-GO
-SET IDENTITY_INSERT [dbo].[ChatMessages] ON 
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (2, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'some mnogo texta 2', CAST(N'2020-10-06T23:33:39.087' AS DateTime), 9)
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (3, N'00000000-0000-0000-0000-000000000000', N'htttx', CAST(N'2020-10-07T18:31:42.527' AS DateTime), 0)
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (4, N'00000000-0000-0000-0000-000000000000', N'qtx', CAST(N'2020-10-07T18:36:20.407' AS DateTime), 0)
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (5, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'httx', CAST(N'2020-10-07T18:37:39.267' AS DateTime), 9)
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (6, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'hi alex!', CAST(N'2020-10-07T21:58:06.433' AS DateTime), 5)
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (7, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'hmm..', CAST(N'2020-10-07T22:02:12.297' AS DateTime), 5)
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (8, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'йй', CAST(N'2020-10-07T22:07:37.470' AS DateTime), 5)
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (9, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'ййййй', CAST(N'2020-10-07T22:11:26.073' AS DateTime), 5)
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (10, N'a55a7415-80e3-4dfd-92a1-3ea9d8d88329', N'among us', CAST(N'2020-10-07T22:16:24.263' AS DateTime), 9)
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (11, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'!!!!!', CAST(N'2020-10-13T19:51:11.457' AS DateTime), 9)
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (12, N'a55a7415-80e3-4dfd-91a1-3ea9d8d88329', N'!!!!!!', CAST(N'2020-10-28T22:40:15.700' AS DateTime), 9)
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (13, N'c55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'aaaaaaaaaa', CAST(N'2020-10-28T22:46:02.547' AS DateTime), 9)
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (14, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'!!!!!!!!!!!!!!!!', CAST(N'2020-10-28T22:47:16.280' AS DateTime), 9)
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (15, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'!!!!!!!!!!!!', CAST(N'2020-10-28T22:50:49.170' AS DateTime), 9)
-GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (16, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'3333', CAST(N'2020-10-28T22:52:25.517' AS DateTime), 9)
-GO
-SET IDENTITY_INSERT [dbo].[ChatMessages] OFF
-GO
-SET IDENTITY_INSERT [dbo].[Chats] ON 
-GO
-INSERT [dbo].[Chats] ([Id], [OwnerId], [ChatName], [ChatType]) VALUES (1, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', NULL, 0)
-GO
-INSERT [dbo].[Chats] ([Id], [OwnerId], [ChatName], [ChatType]) VALUES (2, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88325', NULL, 0)
-GO
-INSERT [dbo].[Chats] ([Id], [OwnerId], [ChatName], [ChatType]) VALUES (3, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88324', NULL, 0)
-GO
-INSERT [dbo].[Chats] ([Id], [OwnerId], [ChatName], [ChatType]) VALUES (4, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', NULL, 1)
-GO
-INSERT [dbo].[Chats] ([Id], [OwnerId], [ChatName], [ChatType]) VALUES (5, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', NULL, 1)
-GO
-INSERT [dbo].[Chats] ([Id], [OwnerId], [ChatName], [ChatType]) VALUES (6, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88323', NULL, 0)
-GO
-INSERT [dbo].[Chats] ([Id], [OwnerId], [ChatName], [ChatType]) VALUES (7, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'Some chat for tests', 0)
-GO
-INSERT [dbo].[Chats] ([Id], [OwnerId], [ChatName], [ChatType]) VALUES (8, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'Some chat for tests 2', 0)
-GO
-INSERT [dbo].[Chats] ([Id], [OwnerId], [ChatName], [ChatType]) VALUES (9, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'Some chat for tests 3', 0)
-GO
-INSERT [dbo].[Chats] ([Id], [OwnerId], [ChatName], [ChatType]) VALUES (10, N'a55a7415-80e3-4dfd-92a1-3ea9d8d88329', N'someFrndt', 0)
-GO
-INSERT [dbo].[Chats] ([Id], [OwnerId], [ChatName], [ChatType]) VALUES (11, N'a55a7415-80e3-4dfd-92a1-3ea9d8d88329', N'someFrndt2', 0)
-GO
-INSERT [dbo].[Chats] ([Id], [OwnerId], [ChatName], [ChatType]) VALUES (12, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'chat test4', 0)
-GO
-INSERT [dbo].[Chats] ([Id], [OwnerId], [ChatName], [ChatType]) VALUES (13, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'hhh', 1)
-GO
-INSERT [dbo].[Chats] ([Id], [OwnerId], [ChatName], [ChatType]) VALUES (14, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'mmm', 1)
-GO
-SET IDENTITY_INSERT [dbo].[Chats] OFF
-GO
-SET IDENTITY_INSERT [dbo].[ChatUsers] ON 
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (3, 5, N'497b82eb-2f1f-410d-a71c-36b45111b74b')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (4, 5, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (5, 0, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88323')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (6, 0, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (7, 7, N'31c4e8bb-9c5b-45d7-8fa0-65c75f87e121')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (8, 0, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (9, 8, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (10, 0, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (11, 9, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (12, 9, N'31c4e8bb-9c5b-45d7-8fa0-65c75f87e121')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (13, 0, N'a55a7415-80e3-4dfd-92a1-3ea9d8d88329')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (14, 10, N'a55a7415-80e3-4dfd-92a1-3ea9d8d88329')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (15, 0, N'a55a7415-80e3-4dfd-92a1-3ea9d8d88329')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (16, 11, N'a55a7415-80e3-4dfd-92a1-3ea9d8d88329')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (17, 0, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (18, 12, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (19, 13, N'b98b7ebc-4d5e-405b-88d8-087421c50b8e')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (20, 13, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (21, 14, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59')
-GO
-INSERT [dbo].[ChatUsers] ([Id], [ChatId], [UserId]) VALUES (22, 14, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329')
-GO
-SET IDENTITY_INSERT [dbo].[ChatUsers] OFF
-GO
-SET IDENTITY_INSERT [dbo].[Comments] ON 
-GO
-INSERT [dbo].[Comments] ([Id], [UserId], [UserName], [AdvertId], [Comment], [Date], [Likes], [DisLikes], [Type]) VALUES (1, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'qqq', 20041, N'some comment to test', CAST(N'2020-09-23T16:19:37.803' AS DateTime), 0, 0, 1)
-GO
-INSERT [dbo].[Comments] ([Id], [UserId], [UserName], [AdvertId], [Comment], [Date], [Likes], [DisLikes], [Type]) VALUES (2, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'qqq', 20041, N'some another comment', CAST(N'2020-09-23T16:26:12.503' AS DateTime), 0, 0, 1)
-GO
-INSERT [dbo].[Comments] ([Id], [UserId], [UserName], [AdvertId], [Comment], [Date], [Likes], [DisLikes], [Type]) VALUES (1002, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'qqq', 20035, N'not bad', CAST(N'2020-09-28T20:34:19.487' AS DateTime), 0, 0, 1)
-GO
-SET IDENTITY_INSERT [dbo].[Comments] OFF
-GO
-SET IDENTITY_INSERT [dbo].[Complaints] ON 
-GO
-INSERT [dbo].[Complaints] ([Id], [Message], [СomplaintType], [ObjectId], [ObjectType], [UserSender], [UserRecipier], [Data]) VALUES (1, N'some message chto ochen ne ponravilos', 1, 20041, 1, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2020-10-27T23:28:47.867' AS DateTime))
-GO
-INSERT [dbo].[Complaints] ([Id], [Message], [СomplaintType], [ObjectId], [ObjectType], [UserSender], [UserRecipier], [Data]) VALUES (6, N'some zaloba', 1, 20041, 1, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-29T00:00:00.000' AS DateTime))
-GO
-SET IDENTITY_INSERT [dbo].[Complaints] OFF
-GO
 SET IDENTITY_INSERT [dbo].[Currencies] ON 
 GO
 INSERT [dbo].[Currencies] ([Id], [Name], [Acronim], [DateAdd], [IsValid]) VALUES (1, N'Russian Ruble', N'RURT', CAST(N'2018-11-18T19:07:12.273' AS DateTime), 1)
@@ -1441,81 +1221,11 @@ INSERT [dbo].[Currencies] ([Id], [Name], [Acronim], [DateAdd], [IsValid]) VALUES
 GO
 SET IDENTITY_INSERT [dbo].[Currencies] OFF
 GO
-SET IDENTITY_INSERT [dbo].[DialogMessages] ON 
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (1, 1, N'Tests msg', N'497b82eb-2f1f-410d-a71c-36b45111b74b', CAST(N'2020-10-02T18:08:46.840' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (2, 1, N'vrdt,ljhf', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-02T19:29:48.930' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (3, 1, N'[;;lj,,jytdktr', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-02T19:31:17.260' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (4, 1, N'qqqqqqqqqqq', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-02T19:32:31.883' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (5, 1, N'qqqqqqqq22222222', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-02T19:32:52.573' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (6, 1, N'fgxn', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-02T21:35:55.747' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (7, 1, N'aa', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-02T22:13:13.880' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (8, 1, N'pooooooo', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-02T22:16:47.443' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (9, 1, N'oug', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-02T22:19:16.427' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (10, 1, N'рффффф', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-02T22:21:43.307' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (11, 1, N'hmmmm', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-02T22:24:23.057' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (12, 1, N'somebody was told me the world is gone around me', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:30:37.787' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (13, 1, N'HELP i need some body', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:33:10.540' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (14, 1, N'!!!!!!!!!!!!', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:35:25.603' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (15, 1, N'@@@@@@@@', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:36:13.593' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (16, 1, N'heh', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:38:23.367' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (17, 1, N'kek', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:40:21.817' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (18, 1, N'kekekekeekekeke', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:40:44.040' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (19, 1, N'qqaaassss', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:42:32.393' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (20, 1, N'ffffff', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:43:52.297' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (21, 1, N'rrrr', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:44:10.517' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (22, 1, N'oooo', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:44:18.477' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (23, 1, N'pops', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:46:56.103' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (24, 1, N'qerty', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:50:15.207' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (25, 1, N'zzz', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:53:28.117' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (26, 1, N't', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T13:58:40.450' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (27, 1, N'mega mozg', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T14:00:46.107' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (28, 1, N'cmd', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-03T14:03:26.523' AS DateTime))
-GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (29, 1, N'!!!!!!!!!!!!!!!!!!', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-06T00:24:03.673' AS DateTime))
-GO
-SET IDENTITY_INSERT [dbo].[DialogMessages] OFF
-GO
 SET IDENTITY_INSERT [dbo].[DialogsInfo] ON 
 GO
 INSERT [dbo].[DialogsInfo] ([Id], [User1Id], [User2Id]) VALUES (1, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'497b82eb-2f1f-410d-a71c-36b45111b74b')
 GO
 SET IDENTITY_INSERT [dbo].[DialogsInfo] OFF
-GO
-SET IDENTITY_INSERT [dbo].[DisLikes] ON 
-GO
-INSERT [dbo].[DisLikes] ([id], [CommentId], [UserId]) VALUES (2, 1, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329')
-GO
-INSERT [dbo].[DisLikes] ([id], [CommentId], [UserId]) VALUES (3, 2, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329')
-GO
-SET IDENTITY_INSERT [dbo].[DisLikes] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Exceptions] ON 
 GO
@@ -1781,13 +1491,11 @@ INSERT [dbo].[FavoritesByCookies] ([Id], [UserCookiesId], [AdvertId], [Created])
 GO
 INSERT [dbo].[FavoritesByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (10047, N'7924fdcf-d476-43b0-b96a-be25dbc23ad7', 10027, CAST(N'2020-07-25T20:37:36.883' AS DateTime))
 GO
+INSERT [dbo].[FavoritesByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (10049, N'b183a97a-4064-4c84-b8b4-86f64beb48e9', 20041, CAST(N'2020-09-16T22:45:34.740' AS DateTime))
+GO
+INSERT [dbo].[FavoritesByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (10050, N'b183a97a-4064-4c84-b8b4-86f64beb48e9', 20035, CAST(N'2020-09-16T22:45:35.683' AS DateTime))
+GO
 SET IDENTITY_INSERT [dbo].[FavoritesByCookies] OFF
-GO
-SET IDENTITY_INSERT [dbo].[Likes] ON 
-GO
-INSERT [dbo].[Likes] ([Id], [CommentId], [UserId]) VALUES (1002, 1002, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329')
-GO
-SET IDENTITY_INSERT [dbo].[Likes] OFF
 GO
 SET IDENTITY_INSERT [dbo].[LoginStat] ON 
 GO
@@ -2509,161 +2217,21 @@ INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (
 GO
 INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10356, NULL, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', N'localhost', CAST(N'2020-08-16T14:17:19.200' AS DateTime))
 GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10357, NULL, N'53446782-b6e0-43cf-a718-4e445e853160', N'localhost', CAST(N'2020-09-11T00:23:45.573' AS DateTime))
+INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10357, NULL, N'705ef2c6-0e23-4f3e-a4b8-dfcc1ec27b6e', N'localhost', CAST(N'2020-09-12T05:50:30.470' AS DateTime))
 GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10358, NULL, N'53446782-b6e0-43cf-a718-4e445e853160', N'localhost', CAST(N'2020-09-11T00:37:31.513' AS DateTime))
+INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10358, NULL, N'0883b92a-7df3-4665-b6ab-67b60a2da118', N'localhost', CAST(N'2020-09-14T22:46:07.163' AS DateTime))
 GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10359, NULL, N'53446782-b6e0-43cf-a718-4e445e853160', N'localhost', CAST(N'2020-09-11T19:50:32.677' AS DateTime))
+INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10359, NULL, N'705ef2c6-0e23-4f3e-a4b8-dfcc1ec27b6e', N'localhost', CAST(N'2020-09-17T20:41:12.803' AS DateTime))
 GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10360, NULL, N'53446782-b6e0-43cf-a718-4e445e853160', N'localhost', CAST(N'2020-09-11T21:01:25.883' AS DateTime))
+INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10360, NULL, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', N'localhost', CAST(N'2020-09-19T12:24:59.553' AS DateTime))
 GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10361, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-14T20:57:54.767' AS DateTime))
+INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10361, NULL, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', N'localhost', CAST(N'2020-09-22T00:45:21.220' AS DateTime))
 GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10362, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-14T22:59:47.557' AS DateTime))
+INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10362, NULL, N'705ef2c6-0e23-4f3e-a4b8-dfcc1ec27b6e', N'localhost', CAST(N'2020-09-23T10:41:42.067' AS DateTime))
 GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10363, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-15T20:52:11.783' AS DateTime))
+INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10363, NULL, N'705ef2c6-0e23-4f3e-a4b8-dfcc1ec27b6e', N'localhost', CAST(N'2020-09-23T10:42:31.703' AS DateTime))
 GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10364, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-15T21:01:18.430' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10365, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-15T21:02:01.600' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10366, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-15T21:06:30.363' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10367, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-15T21:26:33.670' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10368, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-15T21:34:28.383' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10369, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-15T21:36:02.217' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10370, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-15T21:38:56.877' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10371, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-15T21:40:55.273' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10372, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-15T21:59:50.163' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10373, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-15T22:31:28.617' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10374, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-15T22:35:34.693' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10375, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-15T22:39:32.353' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10376, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-15T23:19:44.427' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10377, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-16T21:41:24.513' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10378, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-18T19:41:30.590' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10379, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-18T20:27:58.840' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10380, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-18T20:29:59.437' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10381, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-18T20:32:27.690' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20361, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-23T15:37:41.843' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20362, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-23T16:19:01.737' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20363, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-23T16:28:32.823' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20364, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-23T16:33:39.113' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20365, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-23T16:36:05.867' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20366, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-23T16:45:10.570' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20367, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-24T14:09:09.327' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20368, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-24T14:16:05.690' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20369, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-24T14:23:55.697' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20370, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-24T15:18:04.543' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20371, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-24T15:21:44.817' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20372, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-24T15:24:15.500' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20373, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-24T15:28:17.997' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20374, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-24T15:30:38.853' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20375, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-24T15:33:38.820' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20376, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-24T15:37:30.493' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20377, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-24T16:41:11.763' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20378, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-24T16:41:11.763' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (20379, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-24T17:02:03.137' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30361, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-09-28T20:33:56.007' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30362, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-07T22:50:47.807' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30363, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-08T17:30:30.770' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30364, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-08T17:46:09.187' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30365, NULL, N'eb192af4-6fa7-4f34-ac02-5058cc5d424b', N'localhost', CAST(N'2020-10-08T23:19:12.370' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30366, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-13T19:42:59.750' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30367, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-13T19:53:41.777' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30368, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-13T20:08:40.547' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30369, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-13T23:18:09.967' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30370, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-13T23:21:41.197' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30371, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-14T18:41:10.750' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30372, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-14T18:42:12.110' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30373, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-14T19:35:00.760' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30374, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-14T19:41:30.320' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30375, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-14T19:52:56.360' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30376, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-14T20:43:39.010' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30377, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-14T20:48:30.683' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30378, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-14T20:51:40.337' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30379, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-14T21:15:14.760' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30380, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-14T21:17:00.847' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30381, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-27T23:27:25.857' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30382, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-28T15:23:46.700' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30383, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-28T15:47:33.087' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30384, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-28T17:17:48.283' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30385, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-28T18:07:12.347' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30386, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-28T18:16:59.357' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30387, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-28T19:49:49.933' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30388, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-28T19:50:16.597' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30389, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-28T19:55:55.070' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30390, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-28T20:31:47.807' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30391, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-28T20:45:50.853' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30392, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-28T22:36:40.173' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30393, NULL, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'localhost', CAST(N'2020-10-29T22:31:53.877' AS DateTime))
-GO
-INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (30394, NULL, N'bd4551af-fc28-4b85-b147-20a051676b21', N'localhost', CAST(N'2020-11-02T13:49:39.837' AS DateTime))
+INSERT [dbo].[LoginStat] ([Id], [UserName], [UserId], [Ip], [WhenDate]) VALUES (10364, NULL, N'e8762a91-97fd-480c-95bd-87a8e4c95bd2', N'localhost', CAST(N'2020-09-25T01:25:56.023' AS DateTime))
 GO
 SET IDENTITY_INSERT [dbo].[LoginStat] OFF
 GO
@@ -2767,21 +2335,13 @@ INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordForm
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'90553147-77ee-4561-b0f7-1f239afac377', N'T21vh9EpEqeNCsJ1F+DVTxfdZz/p5X3h/200cZYQO/s=', 1, N'dctEroda38LDQz00FTbxxQ==', N'Fghgg@ffh.ru', NULL, NULL, 1, 0, CAST(N'2019-07-09T20:09:44.003' AS DateTime), CAST(N'2019-07-09T20:09:44.003' AS DateTime), CAST(N'2019-07-09T20:09:44.003' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
-INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'bd4551af-fc28-4b85-b147-20a051676b21', N'O7UewHtPed2cHPerH5q9aql8EK3yQ/BJwDglVJIl4d4=', 1, N'tydRAI+CzyJwxioxKMFMbw==', N'admin@admin.com', NULL, NULL, 1, 0, CAST(N'2020-11-02T10:49:39.630' AS DateTime), CAST(N'2020-11-02T10:49:39.630' AS DateTime), CAST(N'2020-11-02T10:49:39.630' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
-GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'69c917b6-c2a7-4fc6-9b13-310ce4b09d33', N'TzlB0UbSX3jM7tcXxPxerAgW32vvkx69ORDkccyGdBY=', 1, N'KIq9CZf+cZ+l8ZtgJuc2dA==', N'uirykkkku@wert.ty', NULL, NULL, 1, 0, CAST(N'2020-01-13T22:27:19.773' AS DateTime), CAST(N'2020-01-13T22:27:19.773' AS DateTime), CAST(N'2020-01-13T22:27:19.773' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'497b82eb-2f1f-410d-a71c-36b45111b74b', N'tKgc6n8h4SpetHuQB7vBCHUWpWyO0kkWLgFZxiO4LD4=', 1, N'wLI087K7rurp38k6qs2kdA==', N'mssqlanddotnet@gmail.com', NULL, NULL, 1, 0, CAST(N'2020-03-31T09:56:45.163' AS DateTime), CAST(N'2020-03-31T09:56:45.163' AS DateTime), CAST(N'2020-03-31T09:56:45.163' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
-INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'qghi81d22Wv3NNbidngvFaVD7Cn2KwsZZpVDbGVoKNk=', 1, N'nWfOG4Z4ZUzEftE5CNi2Mw==', N'kesha.tkachenko2017@mail.ru', NULL, NULL, 1, 0, CAST(N'2020-09-14T17:57:51.973' AS DateTime), CAST(N'2020-10-29T19:31:53.247' AS DateTime), CAST(N'2020-09-14T17:57:51.973' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
-GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'2e416d84-4e86-468a-8088-4d9a70ffb0de', N'1qVi3lCHBfY7U0x5zX6m9/8NYHqJ26bEUdR+ih3/m/8=', 1, N'HfVtgd/mfcwk9NGgA6zLag==', N'nnkkkn@ert.rt', NULL, NULL, 1, 0, CAST(N'2020-01-13T22:26:26.813' AS DateTime), CAST(N'2020-01-13T22:26:26.813' AS DateTime), CAST(N'2020-01-13T22:26:26.813' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
-INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'53446782-b6e0-43cf-a718-4e445e853160', N'9ELxxBzNJJ1xFKr2btLGEKFfSKRc9j84sgQroBs0POA=', 1, N'PSIdC42RZpDyZPLsv1yuEA==', N'kesha.tkachenko2017@mail.ru', NULL, NULL, 1, 0, CAST(N'2020-09-10T21:23:42.990' AS DateTime), CAST(N'2020-09-10T21:23:42.990' AS DateTime), CAST(N'2020-09-10T21:23:42.990' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
-GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'e407837f-efe8-4ac8-bf50-4fcf3674c9c6', N'UefYQxgYhG5LF55T11vyijCIKuRYut3G/WnZxY0y9BI=', 1, N'gP5Mur5191AAjm2iSd6DJw==', N'Vb@intelligent365.ru', NULL, NULL, 1, 0, CAST(N'2020-01-24T19:42:41.040' AS DateTime), CAST(N'2020-01-25T09:11:31.830' AS DateTime), CAST(N'2020-01-24T19:42:41.040' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
-GO
-INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'eb192af4-6fa7-4f34-ac02-5058cc5d424b', N'ztGDhzDq5lyOhurrSPdMkaIa+ekB1emq154PMlSJkT4=', 1, N'pasMYkLdVfB0JHf+vejq/Q==', N'frba', NULL, NULL, 1, 0, CAST(N'2020-10-08T20:18:57.443' AS DateTime), CAST(N'2020-10-08T20:18:57.443' AS DateTime), CAST(N'2020-10-08T20:18:57.443' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'3b767454-13e2-4213-a8d4-51d5b07b5fb1', N'Eoen3cBV1Ozy3Rwlb1mtbaFz3lonuFqrGHBxD/gDVjU=', 1, N'4UGT2cYSDikPzRBwTZxl1Q==', N'ashfaqshaikh85@gmail.com', NULL, NULL, 1, 0, CAST(N'2019-09-16T07:48:57.050' AS DateTime), CAST(N'2019-09-16T07:48:57.050' AS DateTime), CAST(N'2019-09-16T07:48:57.050' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
@@ -2793,6 +2353,8 @@ INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordForm
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', N'6G8FZ5L8xP2k2Ic//JjYVzI2B9KPlp5oaNtSVwV4sCA=', 1, N'krHpQwIhU72Z8bLl+lnebw==', N'kiberaleks@gmail.com', NULL, NULL, 1, 0, CAST(N'2020-01-25T07:23:31.887' AS DateTime), CAST(N'2020-06-28T15:42:41.883' AS DateTime), CAST(N'2020-01-25T07:23:31.887' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
+INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'0883b92a-7df3-4665-b6ab-67b60a2da118', N'p0d1ueqGxGiCRhi+tMWDZgZHCyo4grjPLru73eTcf7A=', 1, N'SxkN3JcB48c4tfjHF9xpZA==', N'Makvick1988@gmail.com', NULL, NULL, 1, 0, CAST(N'2020-09-14T19:46:05.883' AS DateTime), CAST(N'2020-09-14T19:46:05.883' AS DateTime), CAST(N'2020-09-14T19:46:05.883' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
+GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'ee678bfb-bf49-4050-aad3-6c5025d3f0e5', N'8ECY6G7FmPdtryFnbIbOV6innMf1/dytOczm8tIWwyY=', 1, N'ZM7Ci7eOHbBoU2yIndBv8Q==', N'reyrsk@ya.ru', NULL, NULL, 1, 0, CAST(N'2020-07-08T08:35:05.923' AS DateTime), CAST(N'2020-07-08T08:35:05.923' AS DateTime), CAST(N'2020-07-08T08:35:05.923' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'c11636fe-d0d9-4a60-8647-6f00f6154c29', N'NvE/uVcJMQXJaOyr1WiuqGfEdGejN55Gi4SmViF07KU=', 1, N'+5C1dcMmt4qLlUFLOfu5Tw==', N'dfgdfg@sdfgsdf.gh', NULL, NULL, 1, 0, CAST(N'2019-05-29T23:27:42.610' AS DateTime), CAST(N'2019-05-29T23:27:42.610' AS DateTime), CAST(N'2019-05-29T23:27:42.610' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
@@ -2801,13 +2363,15 @@ INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordForm
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'4d54d89b-7e4c-40a6-8638-739bdd618947', N'0YMhgD3+ahakqrhxs0AkSuGXEKHD9G9cMzdxo17Vrrg=', 1, N'OpTGBnuU0+56HnKRrWYHKQ==', N'lll@lll.ll', NULL, NULL, 1, 0, CAST(N'2020-03-08T11:19:37.117' AS DateTime), CAST(N'2020-03-08T11:19:37.117' AS DateTime), CAST(N'2020-03-08T11:19:37.117' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
-INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', N'K4kMwLhvh7mPX8+4Y19lfm1oUkPjscLnZ4Zj7Q3m7/Y=', 1, N'ho7gCpgxYuPDASuBXt7XOw==', N'mmm@mmm22.ru', NULL, NULL, 1, 0, CAST(N'2018-04-08T23:25:09.273' AS DateTime), CAST(N'2020-08-16T09:05:55.227' AS DateTime), CAST(N'2018-06-23T19:45:50.323' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
+INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', N'K4kMwLhvh7mPX8+4Y19lfm1oUkPjscLnZ4Zj7Q3m7/Y=', 1, N'ho7gCpgxYuPDASuBXt7XOw==', N'mmm@mmm22.ru', NULL, NULL, 1, 0, CAST(N'2018-04-08T23:25:09.273' AS DateTime), CAST(N'2020-10-03T15:49:57.477' AS DateTime), CAST(N'2018-06-23T19:45:50.323' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'5ff870c8-71e7-4738-b7c0-81a3162a3cb0', N'bLtzyQkwfa8sQ5Cq0j5vcDIqe9AWa3yd9LGxZovqOas=', 1, N'eiyaTqHxU+AUo9VOn28kkw==', N'dennismen360@mail.ru', NULL, NULL, 1, 0, CAST(N'2020-01-25T17:53:36.757' AS DateTime), CAST(N'2020-01-25T17:53:36.757' AS DateTime), CAST(N'2020-01-25T17:53:36.757' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'037bc9a7-a702-4f15-9695-830d47fc9197', N'atSwyoDT2qRCCNqJiIeAorpxeu29Yx6ihDvHcevmXsE=', 1, N'3EmGttvBV8Vz9mjIEineCw==', N'laricevan9@gmail.ru', NULL, NULL, 1, 0, CAST(N'2020-01-25T14:00:24.023' AS DateTime), CAST(N'2020-01-30T03:03:44.933' AS DateTime), CAST(N'2020-01-25T14:00:24.023' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'a4dbb6d6-0937-49ca-a2dc-83c522007c61', N'9cc6cJyL5h5Rs6RpzGPqKGkP9TuPVOgyJ9klVet4Nss=', 1, N'rJT6PeyG3Bb4gqGKfRmgOw==', N'Fghghhg@ffh.ru', NULL, NULL, 1, 0, CAST(N'2019-09-23T16:26:06.307' AS DateTime), CAST(N'2019-10-04T14:02:15.157' AS DateTime), CAST(N'2019-09-23T16:26:06.307' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
+GO
+INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'e8762a91-97fd-480c-95bd-87a8e4c95bd2', N'azV77Z4IRyuGrXOPn+UShbkxNVUGY4dwE7I15z9Sa0I=', 1, N'QP5+9XcqnzxU+MYbaeArYg==', N'fijog63759@rmomail.com', NULL, NULL, 1, 0, CAST(N'2020-09-24T22:25:54.667' AS DateTime), CAST(N'2020-09-24T22:25:54.667' AS DateTime), CAST(N'2020-09-24T22:25:54.667' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'26edc365-d524-48d2-b456-88abff129efd', N'jdwNp8Jxx6S12c/X0tBkQROCZcftuZlpxr2IrzuyV4Q=', 1, N'jvdX6MaecETShwJCsXiL+A==', N'gromi2k@yandex.ru', NULL, NULL, 1, 0, CAST(N'2020-01-25T20:14:13.203' AS DateTime), CAST(N'2020-01-25T20:14:13.203' AS DateTime), CAST(N'2020-01-25T20:14:13.203' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
@@ -2854,6 +2418,8 @@ GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'314bd290-5fc5-4a93-8131-db644b83aaed', N'vLHQgLJNtDkebbBSpdV+EcLArCtEYpmE7IlSrLPgwjs=', 1, N'7b8GeYa3FoIQBEJBU+XwUA==', N'qwer@wert.rt', NULL, NULL, 1, 0, CAST(N'2019-10-08T16:16:36.940' AS DateTime), CAST(N'2019-10-30T17:01:54.853' AS DateTime), CAST(N'2019-10-08T16:16:36.940' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'91dc9014-911a-43cf-b55f-dd4ace944035', N'JQh89muEYSoqn/7xd2qBBHH5oBMVkK8tvkH67W39Vpc=', 1, N'k4Usi1FKolzUjP/7m7JvGw==', N'wert@wert.rt', NULL, NULL, 1, 0, CAST(N'2019-10-03T09:48:59.873' AS DateTime), CAST(N'2019-10-04T09:54:08.947' AS DateTime), CAST(N'2019-10-03T09:48:59.873' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
+GO
+INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'705ef2c6-0e23-4f3e-a4b8-dfcc1ec27b6e', N'hDnWUwpRfunOyI5KnH74lQictluQGEjqQu8QxBHUu5I=', 1, N'DpukD0E5cn+maFw6L8wnSA==', N'Phenomen2019@mail.ru', NULL, NULL, 1, 0, CAST(N'2020-09-12T02:50:29.113' AS DateTime), CAST(N'2020-09-23T07:42:31.143' AS DateTime), CAST(N'2020-09-12T02:50:29.113' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'023461b1-28b3-4e5b-b5bc-e2a179b1b032', N'Jte6S1uPDwh15NapvY7qn1XDp9FyQm5H3ZAXTDaqob4=', 1, N't9dyKsETOiNlj+fF+PMPog==', N'nadinaleksandr1@gmail.com', NULL, NULL, 1, 0, CAST(N'2020-01-25T07:00:07.403' AS DateTime), CAST(N'2020-01-25T07:05:40.993' AS DateTime), CAST(N'2020-01-25T07:00:07.403' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
@@ -3393,13 +2959,11 @@ INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate
 GO
 INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2246, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 574,594287088901.', CAST(N'2020-07-29T11:01:58.753' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2247, N'53446782-b6e0-43cf-a718-4e445e853160', 0, 14, N'Учетная запись создана.', CAST(N'2020-09-11T00:23:44.883' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2247, N'705ef2c6-0e23-4f3e-a4b8-dfcc1ec27b6e', 0, 14, N'Учетная запись создана.', CAST(N'2020-09-12T05:50:30.017' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2248, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 0, 14, N'Учетная запись создана.', CAST(N'2020-09-14T20:57:53.863' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2248, N'0883b92a-7df3-4665-b6ab-67b60a2da118', 0, 14, N'Учетная запись создана.', CAST(N'2020-09-14T22:46:06.757' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (3248, N'eb192af4-6fa7-4f34-ac02-5058cc5d424b', 0, 14, N'Учетная запись создана.', CAST(N'2020-10-08T23:19:05.957' AS DateTime))
-GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (3249, N'bd4551af-fc28-4b85-b147-20a051676b21', 0, 14, N'Учетная запись создана.', CAST(N'2020-11-02T13:49:39.767' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2249, N'e8762a91-97fd-480c-95bd-87a8e4c95bd2', 0, 14, N'Учетная запись создана.', CAST(N'2020-09-25T01:25:55.710' AS DateTime))
 GO
 SET IDENTITY_INSERT [dbo].[Operations] OFF
 GO
@@ -3442,14 +3006,6 @@ GO
 INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (19, 25, N'AvailableTokensCount', N'4897995214', N'Количество доступных токенов', CAST(N'2020-01-08T01:35:25.490' AS DateTime))
 GO
 SET IDENTITY_INSERT [dbo].[Settings] OFF
-GO
-SET IDENTITY_INSERT [dbo].[TenderRequest] ON 
-GO
-INSERT [dbo].[TenderRequest] ([Id], [Description], [ProviderId], [ProviderName], [Cost], [CustomerId], [DateStart], [DateCompleted], [DateDelivered], [DateWin], [TenderId]) VALUES (1, N'Zavtra viezhau', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'qqq', 301, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', NULL, NULL, NULL, NULL, 1)
-GO
-INSERT [dbo].[TenderRequest] ([Id], [Description], [ProviderId], [ProviderName], [Cost], [CustomerId], [DateStart], [DateCompleted], [DateDelivered], [DateWin], [TenderId]) VALUES (2, N'заберу с адмиралтейской', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'qqq', 200, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', NULL, NULL, NULL, NULL, 1)
-GO
-SET IDENTITY_INSERT [dbo].[TenderRequest] OFF
 GO
 SET IDENTITY_INSERT [dbo].[TokensBuying] ON 
 GO
@@ -3505,39 +3061,39 @@ INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost]
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1020, 20000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10007191, 2001.4382, CAST(N'2020-01-19T20:33:07.967' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1021, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10028795041165275, 100.28795041165276, CAST(N'2020-01-22T08:00:09.447' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1021, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10028795041165277, 100.28795041165277, CAST(N'2020-01-22T08:00:09.447' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1022, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10028795041165275, 501.43975205826382, CAST(N'2020-01-22T08:00:21.333' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1022, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10028795041165277, 501.43975205826382, CAST(N'2020-01-22T08:00:21.333' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1023, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10028795041165275, 1002.8795041165276, CAST(N'2020-01-22T08:00:37.197' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1023, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10028795041165277, 1002.8795041165276, CAST(N'2020-01-22T08:00:37.197' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1024, 996, N'd605cfec-b531-4b21-a58c-074b035402af', 0.10028795041165275, 99.886798610006153, CAST(N'2020-01-22T11:32:56.957' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1024, 996, N'd605cfec-b531-4b21-a58c-074b035402af', 0.10028795041165277, 99.886798610006153, CAST(N'2020-01-22T11:32:56.957' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1025, 2990, N'16b1177f-e2c5-494d-bc58-fc6646a4b17f', 0.10028795041165275, 299.86097173084175, CAST(N'2020-01-22T13:38:11.787' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1025, 2990, N'16b1177f-e2c5-494d-bc58-fc6646a4b17f', 0.10028795041165277, 299.86097173084175, CAST(N'2020-01-22T13:38:11.787' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1026, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10038342387664397, 100.38342387664396, CAST(N'2020-01-23T08:02:18.590' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1026, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10038342387664397, 100.38342387664397, CAST(N'2020-01-23T08:02:18.590' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1027, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1003836234470545, 501.91811723527246, CAST(N'2020-01-23T08:06:01.827' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1028, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10045256626980988, 100.45256626980988, CAST(N'2020-01-24T06:59:07.847' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1028, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10045256626980989, 100.45256626980989, CAST(N'2020-01-24T06:59:07.847' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1029, 2000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10045258486557512, 200.90516973115021, CAST(N'2020-01-24T06:59:30.263' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1029, 2000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10045258486557511, 200.90516973115021, CAST(N'2020-01-24T06:59:30.263' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1030, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10045260346134032, 502.26301730670167, CAST(N'2020-01-24T06:59:53.413' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1030, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10045260346134033, 502.26301730670167, CAST(N'2020-01-24T06:59:53.413' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1031, 200, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10045261235506088, 20.090522471012175, CAST(N'2020-01-24T07:00:04.770' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1032, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1004526220574804, 1004.526220574804, CAST(N'2020-01-24T07:00:16.440' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1032, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10045262205748039, 1004.5262205748039, CAST(N'2020-01-24T07:00:16.440' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1033, 4000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10045265925008848, 401.81063700035389, CAST(N'2020-01-24T07:01:02.803' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1033, 4000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10045265925008849, 401.81063700035395, CAST(N'2020-01-24T07:01:02.803' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1034, 1, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10045266976104296, 0.10045266976104296, CAST(N'2020-01-24T07:01:15.097' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1035, 2000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10045272554995512, 200.90545109991024, CAST(N'2020-01-24T07:02:24.327' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1036, 995, N'5b976a52-96f6-4645-95ac-a77abb4c3a5a', 0.10048995124387344, 99.987501487654086, CAST(N'2020-01-24T19:49:37.370' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1036, 995, N'5b976a52-96f6-4645-95ac-a77abb4c3a5a', 0.10048995124387344, 99.987501487654072, CAST(N'2020-01-24T19:49:37.370' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1037, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.100529693682687, 1005.29693682687, CAST(N'2020-01-25T08:39:53.883' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1037, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10052969368268701, 1005.29693682687, CAST(N'2020-01-25T08:39:53.883' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1038, 50000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1005297050106445, 5026.4852505322251, CAST(N'2020-01-25T08:40:07.610' AS DateTime))
 GO
@@ -3547,13 +3103,13 @@ INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost]
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1041, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054140348257008, 199.97685152683189, CAST(N'2020-01-25T12:41:04.943' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1042, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054142047647584, 199.97688532771048, CAST(N'2020-01-25T12:41:25.673' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1042, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054142047647585, 199.97688532771048, CAST(N'2020-01-25T12:41:25.673' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1043, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054143018727917, 199.97690464249823, CAST(N'2020-01-25T12:41:37.763' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1043, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054143018727915, 199.97690464249823, CAST(N'2020-01-25T12:41:37.763' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1044, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054144070731606, 199.97692556685169, CAST(N'2020-01-25T12:41:50.323' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1044, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054144070731606, 199.97692556685166, CAST(N'2020-01-25T12:41:50.323' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1045, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054145365505381, 199.976951319902, CAST(N'2020-01-25T12:42:06.733' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1045, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054145365505379, 199.97695131990199, CAST(N'2020-01-25T12:42:06.733' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1046, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10056254299270193, 100.56254299270192, CAST(N'2020-01-25T19:56:24.397' AS DateTime))
 GO
@@ -3563,35 +3119,35 @@ INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost]
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1049, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1006047725095994, 503.023862547997, CAST(N'2020-01-26T09:37:16.887' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1050, 2000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10060479437271808, 201.20958874543615, CAST(N'2020-01-26T09:37:43.643' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1050, 2000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10060479437271809, 201.20958874543618, CAST(N'2020-01-26T09:37:43.643' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1051, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10062028684981852, 1006.2028684981852, CAST(N'2020-01-26T14:56:34.907' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1052, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10062029332871821, 503.101466643591, CAST(N'2020-01-26T14:56:42.300' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1052, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10062029332871819, 503.101466643591, CAST(N'2020-01-26T14:56:42.300' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1053, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10062190580695075, 100.62190580695076, CAST(N'2020-01-26T15:29:53.810' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1053, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10062190580695077, 100.62190580695076, CAST(N'2020-01-26T15:29:53.810' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1054, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10063073071044512, 100.63073071044512, CAST(N'2020-01-26T18:31:29.367' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1055, 500, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10063073638013945, 50.315368190069719, CAST(N'2020-01-26T18:31:36.697' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1055, 500, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10063073638013943, 50.315368190069719, CAST(N'2020-01-26T18:31:36.697' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1056, 19874, N'78642b4e-de5a-4b81-9cf4-723cae3ff5eb', 0.10063091781035741, 1999.9388605630431, CAST(N'2020-01-26T18:35:20.400' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1057, 500, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1006325822841109, 50.316291142055448, CAST(N'2020-01-26T19:09:35.250' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1058, 50000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10063956205804241, 5031.97810290212, CAST(N'2020-01-26T21:33:13.013' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1058, 50000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10063956205804239, 5031.97810290212, CAST(N'2020-01-26T21:33:13.013' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1059, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1006417985689352, 100.64179856893522, CAST(N'2020-01-26T22:19:13.140' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1059, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10064179856893521, 100.64179856893522, CAST(N'2020-01-26T22:19:13.140' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1060, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10064217929253476, 100.64217929253478, CAST(N'2020-01-26T22:27:03.403' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1060, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10064217929253477, 100.64217929253478, CAST(N'2020-01-26T22:27:03.403' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1061, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10065908106600628, 1006.5908106600627, CAST(N'2020-01-27T03:26:16.427' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1061, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10065908106600628, 1006.5908106600629, CAST(N'2020-01-27T03:26:16.427' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1062, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10068048194643849, 100.68048194643848, CAST(N'2020-01-27T10:46:28.413' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1062, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10068048194643849, 100.68048194643849, CAST(N'2020-01-27T10:46:28.413' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1063, 9930, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10068620485350524, 999.814014195307, CAST(N'2020-01-27T12:44:11.003' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1064, 9931, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10068633370676602, 999.91598004189348, CAST(N'2020-01-27T12:46:49.670' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1064, 9931, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10068633370676602, 999.91598004189336, CAST(N'2020-01-27T12:46:49.670' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1065, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1006914053488344, 1006.9140534883441, CAST(N'2020-01-27T14:31:07.470' AS DateTime))
 GO
@@ -3599,27 +3155,27 @@ INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost]
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1067, 1985, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10073336302925802, 199.95572561307716, CAST(N'2020-01-28T04:05:17.467' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1068, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.100748585824535, 503.74292912267504, CAST(N'2020-01-28T09:18:11.067' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1068, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10074858582453501, 503.74292912267504, CAST(N'2020-01-28T09:18:11.067' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1069, 1985, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10075014277198566, 199.98903340239153, CAST(N'2020-01-28T09:50:11.490' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1070, 9915, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10085461019312517, 999.97346006483588, CAST(N'2020-01-29T20:47:40.200' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1070, 9915, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10085461019312515, 999.97346006483588, CAST(N'2020-01-29T20:47:40.200' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1071, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1008550883150217, 504.27544157510846, CAST(N'2020-01-29T20:57:29.753' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1071, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1008550883150217, 504.27544157510852, CAST(N'2020-01-29T20:57:29.753' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1072, 1983, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10085625645636841, 199.99795655297857, CAST(N'2020-01-29T21:21:28.887' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1073, 9911, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1008926404419238, 999.94695941990676, CAST(N'2020-01-30T08:59:50.080' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1074, 9907, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10093916655316552, 1000.0043230422108, CAST(N'2020-01-31T00:06:00.217' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1074, 9907, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10093916655316551, 1000.0043230422107, CAST(N'2020-01-31T00:06:00.217' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1075, 1979, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10104046466657723, 199.95907957515641, CAST(N'2020-02-01T09:54:31.527' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1075, 1979, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10104046466657725, 199.95907957515638, CAST(N'2020-02-01T09:54:31.527' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1076, 4946, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10107927901366121, 499.93811400156824, CAST(N'2020-02-01T23:09:49.600' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1076, 4946, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10107927901366119, 499.93811400156824, CAST(N'2020-02-01T23:09:49.600' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1077, 4946, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10107930748879028, 499.93825483955681, CAST(N'2020-02-01T23:10:24.733' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1077, 4946, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10107930748879029, 499.93825483955681, CAST(N'2020-02-01T23:10:24.733' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1078, 9844, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10158129869652093, 999.96630436855185, CAST(N'2020-02-08T20:29:09.473' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1078, 9844, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10158129869652091, 999.96630436855185, CAST(N'2020-02-08T20:29:09.473' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1079, 19683, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1016069996652389, 1999.9305744108972, CAST(N'2020-02-09T04:24:29.627' AS DateTime))
 GO
@@ -3629,47 +3185,47 @@ INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost]
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1082, 49183, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10166022880634094, 4999.9550333822663, CAST(N'2020-02-09T22:28:59.893' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1083, 983, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10166207722793276, 99.933821915057891, CAST(N'2020-02-09T23:06:38.103' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1083, 983, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10166207722793275, 99.933821915057891, CAST(N'2020-02-09T23:06:38.103' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1084, 19659, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10172966765005756, 1999.9035363324815, CAST(N'2020-02-10T21:14:23.857' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1085, 49149, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10173101458956696, 4999.9776360626265, CAST(N'2020-02-10T21:41:48.330' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1086, 982, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10175911797781292, 99.927453854212274, CAST(N'2020-02-11T06:25:15.597' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1086, 982, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10175911797781291, 99.927453854212274, CAST(N'2020-02-11T06:25:15.597' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1087, 982, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10175912862534534, 99.927464310089121, CAST(N'2020-02-11T06:25:28.857' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1088, 982, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10175913517767296, 99.92747074447486, CAST(N'2020-02-11T06:25:36.687' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1088, 982, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10175913517767297, 99.92747074447486, CAST(N'2020-02-11T06:25:36.687' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1089, 15000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1017841762798246, 1526.7626441973691, CAST(N'2020-02-11T14:55:06.767' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1089, 15000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10178417627982461, 1526.7626441973691, CAST(N'2020-02-11T14:55:06.767' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1090, 49116, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10179938825955227, 4999.97875375617, CAST(N'2020-02-11T20:04:33.467' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1090, 49116, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10179938825955229, 4999.97875375617, CAST(N'2020-02-11T20:04:33.467' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1091, 982, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10180025433710412, 99.967849759036241, CAST(N'2020-02-11T20:22:10.587' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1092, 3500, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1019867227332842, 356.95352956649464, CAST(N'2020-02-14T09:06:06.963' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1092, 3500, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10198672273328419, 356.95352956649464, CAST(N'2020-02-14T09:06:06.963' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1093, 1956, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10220132368960969, 199.90578913687651, CAST(N'2020-02-17T07:13:11.773' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1093, 1956, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10220132368960967, 199.90578913687651, CAST(N'2020-02-17T07:13:11.773' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1094, 9665, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10346470688537082, 999.986392047109, CAST(N'2020-03-05T09:29:04.717' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1095, 9665, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10346471271474264, 999.98644838798748, CAST(N'2020-03-05T09:29:11.550' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1095, 9665, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10346471271474263, 999.98644838798748, CAST(N'2020-03-05T09:29:11.550' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1096, 2000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10392810395845016, 207.85620791690033, CAST(N'2020-03-11T14:51:34.297' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1097, 9609, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10402430323260614, 999.56952976211244, CAST(N'2020-03-12T21:58:53.247' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1098, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10402586309049236, 520.12931545246192, CAST(N'2020-03-12T22:29:56.337' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1098, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10402586309049237, 520.12931545246192, CAST(N'2020-03-12T22:29:56.337' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1099, 24024, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 0.10447729943666236, 2509.9626416663764, CAST(N'2020-03-18T23:05:35.190' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1100, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10447747350857196, 104.47747350857196, CAST(N'2020-03-18T23:09:02.407' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1100, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10447747350857195, 104.47747350857195, CAST(N'2020-03-18T23:09:02.407' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1101, 9567, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10451772541817418, 999.92107907567242, CAST(N'2020-03-19T11:38:09.523' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1102, 95428, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10479068460984288, 9999.9654509480843, CAST(N'2020-03-23T02:24:56.767' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1102, 95428, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10479068460984287, 9999.9654509480843, CAST(N'2020-03-23T02:24:56.767' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1103, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1049078155255328, 104.90781552553278, CAST(N'2020-03-24T16:09:41.983' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1103, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10490781552553279, 104.90781552553278, CAST(N'2020-03-24T16:09:41.983' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1104, 94545, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10576932017978338, 9999.96037639762, CAST(N'2020-04-05T00:42:49.007' AS DateTime))
 GO
@@ -3679,7 +3235,7 @@ INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost]
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1107, 56000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10596456803742554, 5934.0158100958306, CAST(N'2020-04-07T14:44:44.457' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1108, 94303, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1060406263316008, 9999.94918494895, CAST(N'2020-04-08T14:41:59.343' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1108, 94303, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10604062633160079, 9999.94918494895, CAST(N'2020-04-08T14:41:59.343' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1109, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10604176660743342, 106.04176660743342, CAST(N'2020-04-08T15:04:15.100' AS DateTime))
 GO
@@ -3687,43 +3243,43 @@ INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost]
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1111, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10607200765644084, 530.36003828220419, CAST(N'2020-04-09T00:06:11.123' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1112, 94218, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10613605758191164, 9999.9270732525511, CAST(N'2020-04-09T20:56:10.343' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1112, 94218, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10613605758191165, 9999.9270732525511, CAST(N'2020-04-09T20:56:10.343' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1113, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10698545614704529, 106.98545614704528, CAST(N'2020-04-20T23:08:18.793' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1114, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10751991963762608, 107.51991963762607, CAST(N'2020-04-27T21:27:32.457' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1114, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10751991963762608, 107.51991963762609, CAST(N'2020-04-27T21:27:32.457' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1115, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1078492106067059, 107.8492106067059, CAST(N'2020-05-02T02:57:03.420' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1116, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10784921321084295, 107.84921321084296, CAST(N'2020-05-02T02:57:06.637' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1116, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10784921321084297, 107.84921321084296, CAST(N'2020-05-02T02:57:06.637' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1117, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10784921581498004, 107.84921581498004, CAST(N'2020-05-02T02:57:09.723' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1118, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10802962183435004, 108.02962183435004, CAST(N'2020-05-04T11:01:02.800' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1118, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10802962183435005, 108.02962183435005, CAST(N'2020-05-04T11:01:02.800' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1119, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10843850375797168, 108.43850375797167, CAST(N'2020-05-09T17:21:07.557' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1120, 92135, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10853564396345142, 9999.9315565725956, CAST(N'2020-05-10T23:26:44.800' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1121, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10853569899920416, 108.53569899920414, CAST(N'2020-05-10T23:27:47.403' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1121, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10853569899920415, 108.53569899920414, CAST(N'2020-05-10T23:27:47.403' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1122, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1085358850724634, 542.67942536231692, CAST(N'2020-05-10T23:31:20.967' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1123, 100, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10855363807353911, 10.855363807353912, CAST(N'2020-05-11T04:21:30.253' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1123, 100, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10855363807353911, 10.855363807353911, CAST(N'2020-05-11T04:21:30.253' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1124, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10867788874292826, 108.67788874292826, CAST(N'2020-05-12T19:01:46.760' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1125, 91926, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1087825588614645, 9999.9455058989861, CAST(N'2020-05-14T02:38:08.947' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1126, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10878266480494188, 1087.826648049419, CAST(N'2020-05-14T02:40:09.990' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1126, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10878266480494189, 1087.826648049419, CAST(N'2020-05-14T02:40:09.990' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1127, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1099125327409473, 109.9125327409473, CAST(N'2020-05-28T11:57:25.897' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1128, 90889, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11002334886791317, 9999.91215525576, CAST(N'2020-05-29T21:55:35.090' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1128, 90889, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11002334886791317, 9999.912155255759, CAST(N'2020-05-29T21:55:35.090' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1129, 2500, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1100233692354551, 275.05842308863777, CAST(N'2020-05-29T21:55:58.007' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1130, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1100884284912436, 550.442142456218, CAST(N'2020-05-30T17:31:33.513' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1130, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11008842849124359, 550.442142456218, CAST(N'2020-05-30T17:31:33.513' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1131, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11008843292164054, 1100.8843292164054, CAST(N'2020-05-30T17:31:38.697' AS DateTime))
 GO
@@ -3733,29 +3289,29 @@ INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost]
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1134, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11151803510003006, 111.51803510003006, CAST(N'2020-06-17T16:15:26.743' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1135, 89671, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11151806741337772, 9999.9366230249943, CAST(N'2020-06-17T16:16:02.237' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1135, 89671, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11151806741337773, 9999.9366230249943, CAST(N'2020-06-17T16:16:02.237' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1136, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1115199065814165, 557.59953290708245, CAST(N'2020-06-17T16:50:11.120' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1137, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11160322110170444, 1116.0322110170446, CAST(N'2020-06-18T17:48:05.117' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1137, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11160322110170445, 1116.0322110170446, CAST(N'2020-06-18T17:48:05.117' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1138, 23978, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 0.11247198880880165, 2696.8533476574457, CAST(N'2020-06-29T12:31:20.770' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1139, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11267409412537158, 1126.7409412537161, CAST(N'2020-07-02T00:03:24.957' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1139, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11267409412537158, 1126.7409412537159, CAST(N'2020-07-02T00:03:24.957' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1140, 42000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11388481603034346, 4783.1622732744254, CAST(N'2020-07-16T21:36:01.327' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (2140, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11403256701668241, 1140.325670166824, CAST(N'2020-07-18T16:43:44.783' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (2141, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11403257344141932, 570.16286720709661, CAST(N'2020-07-18T16:43:51.367' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (2141, 5000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11403257344141933, 570.16286720709661, CAST(N'2020-07-18T16:43:51.367' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (2142, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11403276159442941, 114.0327615944294, CAST(N'2020-07-18T16:47:16.630' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (2142, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11403276159442939, 114.03276159442939, CAST(N'2020-07-18T16:47:16.630' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (2143, 87694, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11403279830721184, 9999.9922147526358, CAST(N'2020-07-18T16:47:56.380' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (2144, 50000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11439199279674617, 5719.5996398373072, CAST(N'2020-07-23T01:17:42.127' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (2144, 50000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11439199279674615, 5719.5996398373072, CAST(N'2020-07-23T01:17:42.127' AS DateTime))
 GO
-INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (2145, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11469283762783392, 1146.9283762783391, CAST(N'2020-07-26T17:30:52.533' AS DateTime))
+INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (2145, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11469283762783393, 1146.9283762783393, CAST(N'2020-07-26T17:30:52.533' AS DateTime))
 GO
 INSERT [dbo].[TokensBuying] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (2146, 87114, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.11479189949652602, 9999.9815327403667, CAST(N'2020-07-27T22:30:05.737' AS DateTime))
 GO
@@ -3771,11 +3327,11 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (2, 0.100143871710481, 
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (3, 0.100215885168628, CAST(N'2020-01-21T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (4, 0.10028795041165275, CAST(N'2020-01-22T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (4, 0.10028795041165277, CAST(N'2020-01-22T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (5, 0.10036006747679378, CAST(N'2020-01-23T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (6, 0.10043223640131636, CAST(N'2020-01-24T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (6, 0.10043223640131635, CAST(N'2020-01-24T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (7, 0.10050445722251254, CAST(N'2020-01-25T01:00:01.667' AS DateTime))
 GO
@@ -3787,15 +3343,15 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (10, 0.1007214314394660
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (11, 0.10079386022081416, CAST(N'2020-01-29T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (12, 0.10086634108569896, CAST(N'2020-01-30T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (12, 0.10086634108569895, CAST(N'2020-01-30T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (13, 0.10093887407157368, CAST(N'2020-01-31T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (14, 0.10101145921591856, CAST(N'2020-02-01T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (14, 0.10101145921591855, CAST(N'2020-02-01T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (15, 0.10108409655624072, CAST(N'2020-02-02T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (16, 0.10115678613007433, CAST(N'2020-02-03T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (16, 0.10115678613007431, CAST(N'2020-02-03T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (17, 0.10122952797498044, CAST(N'2020-02-04T01:00:01.667' AS DateTime))
 GO
@@ -3807,7 +3363,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (20, 0.1014480675121505
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (21, 0.10152101881749856, CAST(N'2020-02-08T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (22, 0.10159402258213024, CAST(N'2020-02-09T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (22, 0.10159402258213023, CAST(N'2020-02-09T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (23, 0.10166707884376904, CAST(N'2020-02-10T01:00:01.667' AS DateTime))
 GO
@@ -3815,47 +3371,47 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (24, 0.1017401876401655
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (25, 0.10181334900909762, CAST(N'2020-02-12T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (26, 0.10188656298837008, CAST(N'2020-02-13T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (26, 0.10188656298837007, CAST(N'2020-02-13T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (27, 0.101959829615815, CAST(N'2020-02-14T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (28, 0.10203314892929172, CAST(N'2020-02-15T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (28, 0.10203314892929173, CAST(N'2020-02-15T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (29, 0.10210652096668678, CAST(N'2020-02-16T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (30, 0.10217994576591392, CAST(N'2020-02-17T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (31, 0.10225342336491421, CAST(N'2020-02-18T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (31, 0.10225342336491419, CAST(N'2020-02-18T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (32, 0.10232695380165592, CAST(N'2020-02-19T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (32, 0.10232695380165591, CAST(N'2020-02-19T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (33, 0.10240053711413467, CAST(N'2020-02-20T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (34, 0.10247417334037344, CAST(N'2020-02-21T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (34, 0.10247417334037345, CAST(N'2020-02-21T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (35, 0.10254786251842252, CAST(N'2020-02-22T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (36, 0.10262160468635952, CAST(N'2020-02-23T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (37, 0.10269539988228948, CAST(N'2020-02-24T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (37, 0.10269539988228947, CAST(N'2020-02-24T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (38, 0.10276924814434482, CAST(N'2020-02-25T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (39, 0.10284314951068542, CAST(N'2020-02-26T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (40, 0.10291710401949857, CAST(N'2020-02-27T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (40, 0.10291710401949855, CAST(N'2020-02-27T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (41, 0.10299111170899895, CAST(N'2020-02-28T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (41, 0.10299111170899897, CAST(N'2020-02-28T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (42, 0.10306517261742892, CAST(N'2020-02-29T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (42, 0.10306517261742891, CAST(N'2020-02-29T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (43, 0.1031392867830581, CAST(N'2020-03-01T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (44, 0.10321345424418379, CAST(N'2020-03-02T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (45, 0.10328767503913081, CAST(N'2020-03-03T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (45, 0.10328767503913079, CAST(N'2020-03-03T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (46, 0.10336194920625144, CAST(N'2020-03-04T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (46, 0.10336194920625143, CAST(N'2020-03-04T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (47, 0.10343627678392564, CAST(N'2020-03-05T01:00:01.667' AS DateTime))
 GO
@@ -3865,7 +3421,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (49, 0.1035850923245925
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (50, 0.10365958036448315, CAST(N'2020-03-08T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (51, 0.10373412196872324, CAST(N'2020-03-09T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (51, 0.10373412196872325, CAST(N'2020-03-09T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (52, 0.10380871717583096, CAST(N'2020-03-10T01:00:01.667' AS DateTime))
 GO
@@ -3873,11 +3429,11 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (53, 0.1038833660243521
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (54, 0.1039580685528602, CAST(N'2020-03-12T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (55, 0.10403282479995656, CAST(N'2020-03-13T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (55, 0.10403282479995657, CAST(N'2020-03-13T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (56, 0.10410763480427022, CAST(N'2020-03-14T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (57, 0.10418249860445795, CAST(N'2020-03-15T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (57, 0.10418249860445797, CAST(N'2020-03-15T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (58, 0.10425741623920444, CAST(N'2020-03-16T01:00:01.667' AS DateTime))
 GO
@@ -3885,13 +3441,13 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (59, 0.1043323877472220
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (60, 0.10440741316725108, CAST(N'2020-03-18T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (61, 0.10448249253805964, CAST(N'2020-03-19T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (61, 0.10448249253805965, CAST(N'2020-03-19T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (62, 0.10455762589844377, CAST(N'2020-03-20T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (63, 0.10463281328722732, CAST(N'2020-03-21T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (63, 0.10463281328722733, CAST(N'2020-03-21T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (64, 0.10470805474326216, CAST(N'2020-03-22T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (64, 0.10470805474326217, CAST(N'2020-03-22T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (65, 0.10478335030542806, CAST(N'2020-03-23T01:00:01.667' AS DateTime))
 GO
@@ -3903,39 +3459,39 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (68, 0.105009562017929,
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (69, 0.1050850743939761, CAST(N'2020-03-27T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (70, 0.1051606410709728, CAST(N'2020-03-28T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (70, 0.10516064107097281, CAST(N'2020-03-28T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (71, 0.10523626208796696, CAST(N'2020-03-29T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (71, 0.10523626208796695, CAST(N'2020-03-29T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (72, 0.1053119374840344, CAST(N'2020-03-30T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (73, 0.10538766729827916, CAST(N'2020-03-31T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (73, 0.10538766729827917, CAST(N'2020-03-31T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (74, 0.10546345156983336, CAST(N'2020-04-01T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (75, 0.10553929033785722, CAST(N'2020-04-02T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (76, 0.10561518364153916, CAST(N'2020-04-03T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (76, 0.10561518364153917, CAST(N'2020-04-03T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (77, 0.10569113152009579, CAST(N'2020-04-04T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (77, 0.10569113152009581, CAST(N'2020-04-04T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (78, 0.10576713401277192, CAST(N'2020-04-05T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (78, 0.10576713401277191, CAST(N'2020-04-05T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (79, 0.10584319115884049, CAST(N'2020-04-06T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (80, 0.1059193029976028, CAST(N'2020-04-07T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (80, 0.10591930299760281, CAST(N'2020-04-07T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (81, 0.1059954695683884, CAST(N'2020-04-08T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (81, 0.10599546956838839, CAST(N'2020-04-08T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (82, 0.10607169091055502, CAST(N'2020-04-09T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (83, 0.10614796706348879, CAST(N'2020-04-10T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (84, 0.10622429806660416, CAST(N'2020-04-11T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (84, 0.10622429806660415, CAST(N'2020-04-11T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (85, 0.10630068395934383, CAST(N'2020-04-12T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (85, 0.10630068395934385, CAST(N'2020-04-12T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (86, 0.106377124781179, CAST(N'2020-04-13T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (86, 0.10637712478117901, CAST(N'2020-04-13T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (87, 0.10645362057160916, CAST(N'2020-04-14T01:00:01.667' AS DateTime))
 GO
@@ -3945,23 +3501,23 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (89, 0.1066067772163944
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (90, 0.1066834381498908, CAST(N'2020-04-17T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (91, 0.1067601542102644, CAST(N'2020-04-18T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (91, 0.10676015421026439, CAST(N'2020-04-18T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (92, 0.106836925437157, CAST(N'2020-04-19T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (92, 0.10683692543715699, CAST(N'2020-04-19T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (93, 0.10691375187023886, CAST(N'2020-04-20T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (94, 0.10699063354920876, CAST(N'2020-04-21T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (94, 0.10699063354920875, CAST(N'2020-04-21T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (95, 0.10706757051379398, CAST(N'2020-04-22T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (96, 0.10714456280375044, CAST(N'2020-04-23T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (96, 0.10714456280375045, CAST(N'2020-04-23T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (97, 0.10722161045886264, CAST(N'2020-04-24T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (98, 0.1072987135189436, CAST(N'2020-04-25T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (99, 0.10737587202383508, CAST(N'2020-04-26T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (99, 0.10737587202383507, CAST(N'2020-04-26T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (100, 0.1074530860134074, CAST(N'2020-04-27T01:00:01.667' AS DateTime))
 GO
@@ -3969,19 +3525,19 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (101, 0.107530355527559
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (102, 0.10760768060621952, CAST(N'2020-04-29T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (103, 0.10768506128934344, CAST(N'2020-04-30T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (103, 0.10768506128934345, CAST(N'2020-04-30T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (104, 0.1077624976169166, CAST(N'2020-05-01T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (104, 0.10776249761691661, CAST(N'2020-05-01T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (105, 0.10783998962895294, CAST(N'2020-05-02T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (106, 0.10791753736549511, CAST(N'2020-05-03T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (106, 0.10791753736549513, CAST(N'2020-05-03T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (107, 0.10799514086661466, CAST(N'2020-05-04T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (108, 0.10807280017241185, CAST(N'2020-05-05T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (109, 0.10815051532301584, CAST(N'2020-05-06T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (109, 0.10815051532301583, CAST(N'2020-05-06T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (110, 0.1082282863585846, CAST(N'2020-05-07T01:00:01.667' AS DateTime))
 GO
@@ -3991,21 +3547,21 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (112, 0.108383996245392
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (113, 0.10846193517709304, CAST(N'2020-05-10T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (114, 0.10853993015467887, CAST(N'2020-05-11T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (114, 0.10853993015467889, CAST(N'2020-05-11T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (115, 0.10861798121845312, CAST(N'2020-05-12T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (116, 0.10869608840874732, CAST(N'2020-05-13T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (116, 0.10869608840874731, CAST(N'2020-05-13T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (117, 0.10877425176592204, CAST(N'2020-05-14T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (118, 0.10885247133036692, CAST(N'2020-05-15T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (118, 0.10885247133036691, CAST(N'2020-05-15T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (119, 0.10893074714250058, CAST(N'2020-05-16T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (120, 0.10900907924277074, CAST(N'2020-05-17T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (121, 0.10908746767165424, CAST(N'2020-05-18T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (121, 0.10908746767165423, CAST(N'2020-05-18T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (122, 0.10916591246965691, CAST(N'2020-05-19T01:00:01.667' AS DateTime))
 GO
@@ -4017,15 +3573,15 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (125, 0.109401585483876
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (126, 0.1094802561639978, CAST(N'2020-05-23T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (127, 0.10955898341620532, CAST(N'2020-05-24T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (127, 0.10955898341620533, CAST(N'2020-05-24T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (128, 0.10963776728117992, CAST(N'2020-05-25T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (129, 0.10971660779963184, CAST(N'2020-05-26T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (129, 0.10971660779963183, CAST(N'2020-05-26T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (130, 0.10979550501230054, CAST(N'2020-05-27T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (131, 0.10987445895995487, CAST(N'2020-05-28T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (131, 0.10987445895995489, CAST(N'2020-05-28T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (132, 0.109953469683393, CAST(N'2020-05-29T01:00:01.667' AS DateTime))
 GO
@@ -4033,25 +3589,25 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (133, 0.110032537223442
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (134, 0.1101116616209597, CAST(N'2020-05-31T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (135, 0.11019084291683132, CAST(N'2020-06-01T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (135, 0.11019084291683133, CAST(N'2020-06-01T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (136, 0.11027008115197284, CAST(N'2020-06-02T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (136, 0.11027008115197283, CAST(N'2020-06-02T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (137, 0.11034937636732919, CAST(N'2020-06-03T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (137, 0.11034937636732921, CAST(N'2020-06-03T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (138, 0.11042872860387495, CAST(N'2020-06-04T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (139, 0.110508137902614, CAST(N'2020-06-05T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (140, 0.11058760430457976, CAST(N'2020-06-06T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (140, 0.11058760430457977, CAST(N'2020-06-06T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (141, 0.1106671278508352, CAST(N'2020-06-07T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (142, 0.11074670858247274, CAST(N'2020-06-08T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (143, 0.11082634654061441, CAST(N'2020-06-09T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (143, 0.11082634654061439, CAST(N'2020-06-09T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (144, 0.11090604176641176, CAST(N'2020-06-10T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (144, 0.11090604176641175, CAST(N'2020-06-10T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (145, 0.11098579430104598, CAST(N'2020-06-11T01:00:01.667' AS DateTime))
 GO
@@ -4071,53 +3627,53 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (152, 0.111545670156360
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (153, 0.11162588264776996, CAST(N'2020-06-19T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (154, 0.11170615281998196, CAST(N'2020-06-20T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (154, 0.11170615281998197, CAST(N'2020-06-20T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (155, 0.11178648071447482, CAST(N'2020-06-21T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (156, 0.1118668663727566, CAST(N'2020-06-22T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (157, 0.11194730983636524, CAST(N'2020-06-23T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (157, 0.11194730983636525, CAST(N'2020-06-23T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (158, 0.11202781114686858, CAST(N'2020-06-24T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (159, 0.11210837034586428, CAST(N'2020-06-25T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (159, 0.11210837034586429, CAST(N'2020-06-25T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (160, 0.11218898747498, CAST(N'2020-06-26T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (161, 0.11226966257587326, CAST(N'2020-06-27T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (162, 0.11235039569023156, CAST(N'2020-06-28T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (162, 0.11235039569023157, CAST(N'2020-06-28T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (163, 0.11243118685977242, CAST(N'2020-06-29T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (164, 0.11251203612624328, CAST(N'2020-06-30T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (164, 0.11251203612624329, CAST(N'2020-06-30T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (165, 0.11259294353142169, CAST(N'2020-07-01T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (165, 0.11259294353142167, CAST(N'2020-07-01T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (166, 0.11267390911711513, CAST(N'2020-07-02T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (166, 0.11267390911711511, CAST(N'2020-07-02T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (167, 0.11275493292516124, CAST(N'2020-07-03T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (167, 0.11275493292516123, CAST(N'2020-07-03T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (168, 0.11283601499742772, CAST(N'2020-07-04T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (168, 0.11283601499742771, CAST(N'2020-07-04T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (169, 0.11291715537581236, CAST(N'2020-07-05T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (170, 0.11299835410224313, CAST(N'2020-07-06T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (170, 0.11299835410224311, CAST(N'2020-07-06T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (171, 0.11307961121867804, CAST(N'2020-07-07T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (171, 0.11307961121867803, CAST(N'2020-07-07T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (172, 0.1131609267671054, CAST(N'2020-07-08T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (172, 0.11316092676710539, CAST(N'2020-07-08T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (173, 0.11324230078954362, CAST(N'2020-07-09T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (174, 0.11332373332804138, CAST(N'2020-07-10T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (175, 0.11340522442467756, CAST(N'2020-07-11T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (175, 0.11340522442467757, CAST(N'2020-07-11T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (176, 0.11348677412156136, CAST(N'2020-07-12T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (177, 0.11356838246083216, CAST(N'2020-07-13T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (177, 0.11356838246083217, CAST(N'2020-07-13T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (178, 0.11365004948465976, CAST(N'2020-07-14T01:00:01.667' AS DateTime))
 GO
@@ -4125,13 +3681,13 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (179, 0.113731775235244
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (180, 0.11381355975481584, CAST(N'2020-07-16T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (181, 0.11389540308563552, CAST(N'2020-07-17T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (181, 0.11389540308563553, CAST(N'2020-07-17T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (182, 0.11397730526999442, CAST(N'2020-07-18T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (183, 0.11405926635021409, CAST(N'2020-07-19T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (183, 0.11405926635021407, CAST(N'2020-07-19T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (184, 0.11414128636864653, CAST(N'2020-07-20T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (184, 0.11414128636864651, CAST(N'2020-07-20T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (185, 0.1142233653676742, CAST(N'2020-07-21T01:00:01.667' AS DateTime))
 GO
@@ -4141,13 +3697,13 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (187, 0.114387700477197
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (188, 0.11446995667261078, CAST(N'2020-07-24T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (189, 0.11455227201845404, CAST(N'2020-07-25T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (189, 0.11455227201845405, CAST(N'2020-07-25T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (190, 0.11463464655726252, CAST(N'2020-07-26T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (191, 0.11471708033160184, CAST(N'2020-07-27T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (192, 0.11479957338406828, CAST(N'2020-07-28T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (192, 0.11479957338406829, CAST(N'2020-07-28T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (193, 0.11488212575728878, CAST(N'2020-07-29T01:00:01.667' AS DateTime))
 GO
@@ -4165,7 +3721,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (199, 0.115378688123417
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (200, 0.11546165693804734, CAST(N'2020-08-05T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (201, 0.11554468541555148, CAST(N'2020-08-06T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (201, 0.11554468541555149, CAST(N'2020-08-06T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (202, 0.11562777359883382, CAST(N'2020-08-07T01:00:01.667' AS DateTime))
 GO
@@ -4175,7 +3731,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (204, 0.115794129254501
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (205, 0.11587739681284846, CAST(N'2020-08-10T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (206, 0.1159607242488966, CAST(N'2020-08-11T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (206, 0.11596072424889659, CAST(N'2020-08-11T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (207, 0.11604411160570397, CAST(N'2020-08-12T01:00:01.667' AS DateTime))
 GO
@@ -4185,9 +3741,9 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (209, 0.116211066253983
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (210, 0.1162946336317268, CAST(N'2020-08-15T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (211, 0.1163782611027714, CAST(N'2020-08-16T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (211, 0.11637826110277139, CAST(N'2020-08-16T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (212, 0.1164619487103304, CAST(N'2020-08-17T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (212, 0.11646194871033039, CAST(N'2020-08-17T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (213, 0.11654569649764798, CAST(N'2020-08-18T01:00:01.667' AS DateTime))
 GO
@@ -4197,7 +3753,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (215, 0.116713372784691
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (216, 0.11679730137106062, CAST(N'2020-08-21T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (217, 0.11688129031047656, CAST(N'2020-08-22T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (217, 0.11688129031047655, CAST(N'2020-08-22T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (218, 0.1169653396463388, CAST(N'2020-08-23T01:00:01.667' AS DateTime))
 GO
@@ -4207,7 +3763,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (220, 0.117133619681157
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (221, 0.11721785046707062, CAST(N'2020-08-26T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (222, 0.11730214182334148, CAST(N'2020-08-27T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (222, 0.11730214182334149, CAST(N'2020-08-27T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (223, 0.11738649379352666, CAST(N'2020-08-28T01:00:01.667' AS DateTime))
 GO
@@ -4215,33 +3771,33 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (224, 0.117470906421213
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (225, 0.11755537975002108, CAST(N'2020-08-30T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (226, 0.11763991382359933, CAST(N'2020-08-31T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (226, 0.11763991382359931, CAST(N'2020-08-31T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (227, 0.11772450868562986, CAST(N'2020-09-01T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (228, 0.11780916437982572, CAST(N'2020-09-02T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (228, 0.11780916437982571, CAST(N'2020-09-02T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (229, 0.11789388094993124, CAST(N'2020-09-03T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (230, 0.11797865843972231, CAST(N'2020-09-04T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (230, 0.11797865843972233, CAST(N'2020-09-04T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (231, 0.11806349689300633, CAST(N'2020-09-05T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (232, 0.11814839635362208, CAST(N'2020-09-06T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (232, 0.11814839635362209, CAST(N'2020-09-06T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (233, 0.11823335686543998, CAST(N'2020-09-07T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (234, 0.11831837847236192, CAST(N'2020-09-08T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (235, 0.1184034612183214, CAST(N'2020-09-09T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (235, 0.11840346121832139, CAST(N'2020-09-09T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (236, 0.11848860514728347, CAST(N'2020-09-10T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (236, 0.11848860514728349, CAST(N'2020-09-10T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (237, 0.1185738103032449, CAST(N'2020-09-11T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (238, 0.11865907673023396, CAST(N'2020-09-12T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (238, 0.11865907673023397, CAST(N'2020-09-12T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (239, 0.11874440447231068, CAST(N'2020-09-13T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (239, 0.11874440447231069, CAST(N'2020-09-13T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (240, 0.11882979357356673, CAST(N'2020-09-14T01:00:01.667' AS DateTime))
 GO
@@ -4251,13 +3807,13 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (242, 0.119000756030142
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (243, 0.11908632947380334, CAST(N'2020-09-17T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (244, 0.11917196445332796, CAST(N'2020-09-18T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (244, 0.11917196445332795, CAST(N'2020-09-18T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (245, 0.11925766101296634, CAST(N'2020-09-19T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (246, 0.11934341919700076, CAST(N'2020-09-20T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (247, 0.11942923904974533, CAST(N'2020-09-21T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (247, 0.11942923904974531, CAST(N'2020-09-21T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (248, 0.11951512061554598, CAST(N'2020-09-22T01:00:01.667' AS DateTime))
 GO
@@ -4265,17 +3821,17 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (249, 0.119601063938780
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (250, 0.119687069063859, CAST(N'2020-09-24T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (251, 0.1197731360352228, CAST(N'2020-09-25T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (251, 0.11977313603522281, CAST(N'2020-09-25T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (252, 0.11985926489734576, CAST(N'2020-09-26T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (252, 0.11985926489734575, CAST(N'2020-09-26T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (253, 0.11994545569473344, CAST(N'2020-09-27T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (253, 0.11994545569473343, CAST(N'2020-09-27T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (254, 0.12003170847192352, CAST(N'2020-09-28T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (255, 0.12011802327348568, CAST(N'2020-09-29T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (255, 0.12011802327348567, CAST(N'2020-09-29T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (256, 0.12020440014402165, CAST(N'2020-09-30T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (256, 0.12020440014402163, CAST(N'2020-09-30T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (257, 0.1202908391281652, CAST(N'2020-10-01T01:00:01.667' AS DateTime))
 GO
@@ -4283,23 +3839,23 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (258, 0.120377340270582
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (259, 0.12046390361597084, CAST(N'2020-10-03T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (260, 0.12055052920906108, CAST(N'2020-10-04T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (260, 0.12055052920906109, CAST(N'2020-10-04T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (261, 0.12063721709461532, CAST(N'2020-10-05T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (262, 0.12072396731742806, CAST(N'2020-10-06T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (263, 0.120810779922326, CAST(N'2020-10-07T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (263, 0.12081077992232601, CAST(N'2020-10-07T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (264, 0.12089765495416815, CAST(N'2020-10-08T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (265, 0.12098459245784568, CAST(N'2020-10-09T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (265, 0.12098459245784569, CAST(N'2020-10-09T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (266, 0.12107159247828211, CAST(N'2020-10-10T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (266, 0.12107159247828213, CAST(N'2020-10-10T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (267, 0.12115865506043326, CAST(N'2020-10-11T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (268, 0.1212457802492872, CAST(N'2020-10-12T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (268, 0.12124578024928721, CAST(N'2020-10-12T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (269, 0.12133296808986448, CAST(N'2020-10-13T01:00:01.667' AS DateTime))
 GO
@@ -4307,41 +3863,41 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (270, 0.121420218627217
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (271, 0.12150753190643274, CAST(N'2020-10-15T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (272, 0.12159490797262663, CAST(N'2020-10-16T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (272, 0.12159490797262665, CAST(N'2020-10-16T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (273, 0.12168234687094975, CAST(N'2020-10-17T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (273, 0.12168234687094977, CAST(N'2020-10-17T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (274, 0.12176984864658466, CAST(N'2020-10-18T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (275, 0.12185741334474642, CAST(N'2020-10-19T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (276, 0.12194504101068264, CAST(N'2020-10-20T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (276, 0.12194504101068263, CAST(N'2020-10-20T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (277, 0.12203273168967339, CAST(N'2020-10-21T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (277, 0.12203273168967341, CAST(N'2020-10-21T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (278, 0.12212048542703144, CAST(N'2020-10-22T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (278, 0.12212048542703145, CAST(N'2020-10-22T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (279, 0.12220830226810205, CAST(N'2020-10-23T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (279, 0.12220830226810203, CAST(N'2020-10-23T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (280, 0.12229618225826304, CAST(N'2020-10-24T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (280, 0.12229618225826303, CAST(N'2020-10-24T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (281, 0.12238412544292494, CAST(N'2020-10-25T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (282, 0.12247213186753096, CAST(N'2020-10-26T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (282, 0.12247213186753095, CAST(N'2020-10-26T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (283, 0.12256020157755689, CAST(N'2020-10-27T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (284, 0.12264833461851132, CAST(N'2020-10-28T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (284, 0.12264833461851131, CAST(N'2020-10-28T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (285, 0.12273653103593549, CAST(N'2020-10-29T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (286, 0.12282479087540343, CAST(N'2020-10-30T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (287, 0.12291311418252192, CAST(N'2020-10-31T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (287, 0.12291311418252193, CAST(N'2020-10-31T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (288, 0.1230015010029306, CAST(N'2020-11-01T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (288, 0.12300150100293059, CAST(N'2020-11-01T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (289, 0.1230899513823018, CAST(N'2020-11-02T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (289, 0.12308995138230179, CAST(N'2020-11-02T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (290, 0.12317846536634081, CAST(N'2020-11-03T01:00:01.667' AS DateTime))
 GO
@@ -4349,15 +3905,15 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (291, 0.123267043000785
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (292, 0.1233556843314076, CAST(N'2020-11-05T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (293, 0.12344438940401033, CAST(N'2020-11-06T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (293, 0.12344438940401031, CAST(N'2020-11-06T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (294, 0.12353315826443072, CAST(N'2020-11-07T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (294, 0.12353315826443073, CAST(N'2020-11-07T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (295, 0.12362199095853868, CAST(N'2020-11-08T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (296, 0.12371088753223695, CAST(N'2020-11-09T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (296, 0.12371088753223697, CAST(N'2020-11-09T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (297, 0.12379984803146141, CAST(N'2020-11-10T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (297, 0.12379984803146139, CAST(N'2020-11-10T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (298, 0.12388887250218082, CAST(N'2020-11-11T01:00:01.667' AS DateTime))
 GO
@@ -4369,17 +3925,17 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (301, 0.124156330203493
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (302, 0.12424561102054282, CAST(N'2020-11-15T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (303, 0.12433495603942768, CAST(N'2020-11-16T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (303, 0.12433495603942769, CAST(N'2020-11-16T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (304, 0.12442436530631564, CAST(N'2020-11-17T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (304, 0.12442436530631565, CAST(N'2020-11-17T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (305, 0.12451383886740744, CAST(N'2020-11-18T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (305, 0.12451383886740743, CAST(N'2020-11-18T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (306, 0.12460337676893696, CAST(N'2020-11-19T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (306, 0.12460337676893697, CAST(N'2020-11-19T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (307, 0.12469297905717153, CAST(N'2020-11-20T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (307, 0.12469297905717151, CAST(N'2020-11-20T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (308, 0.12478264577841151, CAST(N'2020-11-21T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (308, 0.12478264577841153, CAST(N'2020-11-21T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (309, 0.12487237697899078, CAST(N'2020-11-22T01:00:01.667' AS DateTime))
 GO
@@ -4407,7 +3963,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (320, 0.125863689106612
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (321, 0.12595419768544861, CAST(N'2020-12-04T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (322, 0.12604477134900419, CAST(N'2020-12-05T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (322, 0.12604477134900421, CAST(N'2020-12-05T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (323, 0.12613541014408128, CAST(N'2020-12-06T01:00:01.667' AS DateTime))
 GO
@@ -4443,7 +3999,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (338, 0.127502839781653
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (339, 0.12759452707374033, CAST(N'2020-12-22T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (340, 0.12768628029815909, CAST(N'2020-12-23T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (340, 0.12768628029815907, CAST(N'2020-12-23T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (341, 0.12777809950232147, CAST(N'2020-12-24T01:00:01.667' AS DateTime))
 GO
@@ -4491,9 +4047,9 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (362, 0.129721628440393
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (363, 0.12981491126340525, CAST(N'2021-01-15T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (364, 0.12990826116609475, CAST(N'2021-01-16T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (364, 0.12990826116609477, CAST(N'2021-01-16T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (365, 0.13000167819669933, CAST(N'2021-01-17T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (365, 0.13000167819669931, CAST(N'2021-01-17T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (366, 0.13009516240349056, CAST(N'2021-01-18T01:00:01.667' AS DateTime))
 GO
@@ -4605,7 +4161,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (419, 0.135147233739593
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (420, 0.13524441811537558, CAST(N'2021-03-13T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (421, 0.13534167237644237, CAST(N'2021-03-14T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (421, 0.13534167237644235, CAST(N'2021-03-14T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (422, 0.13543899657304825, CAST(N'2021-03-15T01:00:01.667' AS DateTime))
 GO
@@ -4625,7 +4181,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (429, 0.136122228373359
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (430, 0.13622011386778279, CAST(N'2021-03-23T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (431, 0.13631806975166513, CAST(N'2021-03-24T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (431, 0.13631806975166511, CAST(N'2021-03-24T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (432, 0.13641609607562352, CAST(N'2021-03-25T01:00:01.667' AS DateTime))
 GO
@@ -4635,7 +4191,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (434, 0.136612360246418
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (435, 0.13671059819467213, CAST(N'2021-03-28T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (436, 0.13680890678583393, CAST(N'2021-03-29T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (436, 0.13680890678583391, CAST(N'2021-03-29T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (437, 0.1369072860707036, CAST(N'2021-03-30T01:00:01.667' AS DateTime))
 GO
@@ -4717,7 +4273,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (475, 0.140698588549689
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (476, 0.14079976490471549, CAST(N'2021-05-08T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (477, 0.14090101401565849, CAST(N'2021-05-09T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (477, 0.14090101401565847, CAST(N'2021-05-09T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (478, 0.14100233593483713, CAST(N'2021-05-10T01:00:01.667' AS DateTime))
 GO
@@ -4725,9 +4281,9 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (479, 0.141103730714607
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (480, 0.14120519840736476, CAST(N'2021-05-12T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (481, 0.14130673906553953, CAST(N'2021-05-13T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (481, 0.14130673906553951, CAST(N'2021-05-13T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (482, 0.14140835274160157, CAST(N'2021-05-14T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (482, 0.14140835274160155, CAST(N'2021-05-14T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (483, 0.14151003948805804, CAST(N'2021-05-15T01:00:01.667' AS DateTime))
 GO
@@ -4821,7 +4377,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (527, 0.146057399857933
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (528, 0.1461624297341711, CAST(N'2021-06-29T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (529, 0.14626753513739291, CAST(N'2021-06-30T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (529, 0.14626753513739293, CAST(N'2021-06-30T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (530, 0.14637271612191025, CAST(N'2021-07-01T01:00:01.667' AS DateTime))
 GO
@@ -4849,7 +4405,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (541, 0.147534710889327
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (542, 0.14764080309992775, CAST(N'2021-07-13T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (543, 0.14774697160143693, CAST(N'2021-07-14T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (543, 0.14774697160143691, CAST(N'2021-07-14T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (544, 0.14785321644871549, CAST(N'2021-07-15T01:00:01.667' AS DateTime))
 GO
@@ -4881,7 +4437,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (557, 0.149241371961940
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (558, 0.14934869143251797, CAST(N'2021-07-29T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (559, 0.14945608807652713, CAST(N'2021-07-30T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (559, 0.14945608807652711, CAST(N'2021-07-30T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (560, 0.14956356194946294, CAST(N'2021-07-31T01:00:01.667' AS DateTime))
 GO
@@ -4889,7 +4445,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (561, 0.149671113106860
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (562, 0.14977874160429594, CAST(N'2021-08-02T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (563, 0.14988644749738361, CAST(N'2021-08-03T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (563, 0.14988644749738359, CAST(N'2021-08-03T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (564, 0.14999423084177896, CAST(N'2021-08-04T01:00:01.667' AS DateTime))
 GO
@@ -4901,7 +4457,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (567, 0.150318046139964
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (568, 0.15042613984694328, CAST(N'2021-08-08T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (569, 0.15053431128410719, CAST(N'2021-08-09T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (569, 0.15053431128410721, CAST(N'2021-08-09T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (570, 0.15064256050735161, CAST(N'2021-08-10T01:00:01.667' AS DateTime))
 GO
@@ -4971,7 +4527,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (602, 0.154147943295989
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (603, 0.15425879108201335, CAST(N'2021-09-12T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (604, 0.15436971857868045, CAST(N'2021-09-13T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (604, 0.15436971857868043, CAST(N'2021-09-13T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (605, 0.15448072584331035, CAST(N'2021-09-14T01:00:01.667' AS DateTime))
 GO
@@ -5023,7 +4579,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (628, 0.157056041341544
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (629, 0.15716898034087368, CAST(N'2021-10-08T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (630, 0.15728200055463681, CAST(N'2021-10-09T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (630, 0.15728200055463679, CAST(N'2021-10-09T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (631, 0.15739510204123564, CAST(N'2021-10-10T01:00:01.667' AS DateTime))
 GO
@@ -5079,7 +4635,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (656, 0.160249224564468
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (657, 0.16036445978185279, CAST(N'2021-11-05T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (658, 0.16047977786488191, CAST(N'2021-11-06T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (658, 0.16047977786488193, CAST(N'2021-11-06T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (659, 0.16059517887314456, CAST(N'2021-11-07T01:00:01.667' AS DateTime))
 GO
@@ -5117,7 +4673,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (675, 0.162452921627917
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (676, 0.16256974152385972, CAST(N'2021-11-24T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (677, 0.16268664542498951, CAST(N'2021-11-25T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (677, 0.16268664542498953, CAST(N'2021-11-25T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (678, 0.16280363339171464, CAST(N'2021-11-26T01:00:01.667' AS DateTime))
 GO
@@ -5199,7 +4755,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (716, 0.167312069988340
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (717, 0.16743238409786915, CAST(N'2022-01-04T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (718, 0.16755278472527391, CAST(N'2022-01-05T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (718, 0.16755278472527393, CAST(N'2022-01-05T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (719, 0.16767327193276987, CAST(N'2022-01-06T01:00:01.667' AS DateTime))
 GO
@@ -5213,7 +4769,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (723, 0.168156087809531
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (724, 0.16827700885227576, CAST(N'2022-01-11T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (725, 0.16839801684934139, CAST(N'2022-01-12T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (725, 0.16839801684934141, CAST(N'2022-01-12T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (726, 0.16851911186325777, CAST(N'2022-01-13T01:00:01.667' AS DateTime))
 GO
@@ -5329,7 +4885,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (781, 0.175315192399145
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (782, 0.17544126155399992, CAST(N'2022-03-10T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (783, 0.17556742136518341, CAST(N'2022-03-11T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (783, 0.17556742136518339, CAST(N'2022-03-11T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (784, 0.17569367189788709, CAST(N'2022-03-12T01:00:01.667' AS DateTime))
 GO
@@ -5403,9 +4959,9 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (818, 0.180040637888707
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (819, 0.1801701051114136, CAST(N'2022-04-16T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (820, 0.1802996654339992, CAST(N'2022-04-17T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (820, 0.18029966543399922, CAST(N'2022-04-17T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (821, 0.1804293189234128, CAST(N'2022-04-18T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (821, 0.18042931892341282, CAST(N'2022-04-18T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (822, 0.18055906564665064, CAST(N'2022-04-19T01:00:01.667' AS DateTime))
 GO
@@ -5425,7 +4981,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (829, 0.181469908894206
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (830, 0.18160040390569215, CAST(N'2022-04-27T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (831, 0.18173099275614071, CAST(N'2022-04-28T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (831, 0.18173099275614074, CAST(N'2022-04-28T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (832, 0.18186167551303167, CAST(N'2022-04-29T01:00:01.667' AS DateTime))
 GO
@@ -5435,29 +4991,29 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (834, 0.182123323016301
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (835, 0.1822542878978827, CAST(N'2022-05-02T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (836, 0.18238534695631009, CAST(N'2022-05-03T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (836, 0.18238534695631006, CAST(N'2022-05-03T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (837, 0.18251650025930635, CAST(N'2022-05-04T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (838, 0.18264774787464283, CAST(N'2022-05-05T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (839, 0.18277908987013947, CAST(N'2022-05-06T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (839, 0.18277908987013949, CAST(N'2022-05-06T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (840, 0.18291052631366511, CAST(N'2022-05-07T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (841, 0.18304205727313727, CAST(N'2022-05-08T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (842, 0.18317368281652241, CAST(N'2022-05-09T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (842, 0.18317368281652238, CAST(N'2022-05-09T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (843, 0.18330540301183573, CAST(N'2022-05-10T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (844, 0.18343721792714152, CAST(N'2022-05-11T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (844, 0.18343721792714154, CAST(N'2022-05-11T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (845, 0.18356912763055297, CAST(N'2022-05-12T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (845, 0.18356912763055294, CAST(N'2022-05-12T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (846, 0.18370113219023207, CAST(N'2022-05-13T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (847, 0.18383323167439009, CAST(N'2022-05-14T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (847, 0.18383323167439006, CAST(N'2022-05-14T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (848, 0.18396542615128711, CAST(N'2022-05-15T01:00:01.667' AS DateTime))
 GO
@@ -5465,7 +5021,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (849, 0.184097715689232
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (850, 0.18423010035658463, CAST(N'2022-05-17T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (851, 0.18436258022175103, CAST(N'2022-05-18T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (851, 0.18436258022175106, CAST(N'2022-05-18T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (852, 0.18449515535318853, CAST(N'2022-05-19T01:00:01.667' AS DateTime))
 GO
@@ -5479,7 +5035,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (856, 0.185026409912507
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (857, 0.18515946240387551, CAST(N'2022-05-24T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (858, 0.18529261057329011, CAST(N'2022-05-25T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (858, 0.18529261057329013, CAST(N'2022-05-25T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (859, 0.1854258544895534, CAST(N'2022-05-26T01:00:01.667' AS DateTime))
 GO
@@ -5489,7 +5045,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (861, 0.185692629838081
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (862, 0.1858261614081981, CAST(N'2022-05-29T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (863, 0.18595978900086671, CAST(N'2022-05-30T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (863, 0.18595978900086674, CAST(N'2022-05-30T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (864, 0.18609351268513727, CAST(N'2022-05-31T01:00:01.667' AS DateTime))
 GO
@@ -5499,11 +5055,11 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (866, 0.186361248604931
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (867, 0.18649526097880337, CAST(N'2022-06-03T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (868, 0.18662936972097319, CAST(N'2022-06-04T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (868, 0.18662936972097322, CAST(N'2022-06-04T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (869, 0.18676357490073955, CAST(N'2022-06-05T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (870, 0.18689787658745063, CAST(N'2022-06-06T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (870, 0.18689787658745066, CAST(N'2022-06-06T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (871, 0.18703227485050469, CAST(N'2022-06-07T01:00:01.667' AS DateTime))
 GO
@@ -5517,11 +5073,11 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (875, 0.187570835055860
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (876, 0.18770571724334892, CAST(N'2022-06-12T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (877, 0.18784069642461865, CAST(N'2022-06-13T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (877, 0.18784069642461862, CAST(N'2022-06-13T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (878, 0.18797577266941756, CAST(N'2022-06-14T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (879, 0.18811094604754416, CAST(N'2022-06-15T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (879, 0.18811094604754414, CAST(N'2022-06-15T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (880, 0.18824621662884691, CAST(N'2022-06-16T01:00:01.667' AS DateTime))
 GO
@@ -5535,7 +5091,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (884, 0.188788272384550
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (885, 0.18892403003122216, CAST(N'2022-06-21T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (886, 0.18905988530121759, CAST(N'2022-06-22T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (886, 0.18905988530121762, CAST(N'2022-06-22T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (887, 0.18919583826473771, CAST(N'2022-06-23T01:00:01.667' AS DateTime))
 GO
@@ -5547,9 +5103,9 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (890, 0.189604284019212
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (891, 0.1897406284598509, CAST(N'2022-06-27T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (892, 0.18987707094577641, CAST(N'2022-06-28T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (892, 0.18987707094577638, CAST(N'2022-06-28T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (893, 0.19001361154749347, CAST(N'2022-06-29T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (893, 0.19001361154749349, CAST(N'2022-06-29T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (894, 0.1901502503355573, CAST(N'2022-06-30T01:00:01.667' AS DateTime))
 GO
@@ -5557,39 +5113,39 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (895, 0.190286987380573
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (896, 0.19042382275319897, CAST(N'2022-07-02T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (897, 0.19056075652414081, CAST(N'2022-07-03T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (897, 0.19056075652414078, CAST(N'2022-07-03T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (898, 0.1906977887641573, CAST(N'2022-07-04T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (899, 0.1908349195440576, CAST(N'2022-07-05T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (900, 0.19097214893470177, CAST(N'2022-07-06T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (900, 0.19097214893470174, CAST(N'2022-07-06T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (901, 0.19110947700700068, CAST(N'2022-07-07T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (902, 0.19124690383191639, CAST(N'2022-07-08T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (902, 0.19124690383191642, CAST(N'2022-07-08T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (903, 0.19138442948046192, CAST(N'2022-07-09T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (903, 0.19138442948046194, CAST(N'2022-07-09T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (904, 0.19152205402370137, CAST(N'2022-07-10T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (904, 0.19152205402370134, CAST(N'2022-07-10T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (905, 0.19165977753274979, CAST(N'2022-07-11T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (906, 0.19179760007877361, CAST(N'2022-07-12T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (906, 0.19179760007877358, CAST(N'2022-07-12T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (907, 0.19193552173299025, CAST(N'2022-07-13T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (907, 0.19193552173299022, CAST(N'2022-07-13T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (908, 0.19207354256666839, CAST(N'2022-07-14T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (908, 0.19207354256666842, CAST(N'2022-07-14T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (909, 0.1922116626511281, CAST(N'2022-07-15T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (910, 0.19234988205774051, CAST(N'2022-07-16T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (910, 0.19234988205774053, CAST(N'2022-07-16T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (911, 0.19248820085792823, CAST(N'2022-07-17T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (911, 0.19248820085792825, CAST(N'2022-07-17T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (912, 0.1926266191231652, CAST(N'2022-07-18T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (913, 0.19276513692497663, CAST(N'2022-07-19T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (913, 0.19276513692497665, CAST(N'2022-07-19T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (914, 0.19290375433493939, CAST(N'2022-07-20T01:00:01.667' AS DateTime))
 GO
@@ -5609,7 +5165,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (921, 0.193876871256179
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (922, 0.19401628811430016, CAST(N'2022-07-28T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (923, 0.19415580522708317, CAST(N'2022-07-29T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (923, 0.19415580522708315, CAST(N'2022-07-29T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (924, 0.19429542266662195, CAST(N'2022-07-30T01:00:01.667' AS DateTime))
 GO
@@ -5619,7 +5175,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (926, 0.194574958814598
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (927, 0.1947148776674823, CAST(N'2022-08-02T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (928, 0.19485489713601295, CAST(N'2022-08-03T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (928, 0.19485489713601298, CAST(N'2022-08-03T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (929, 0.19499501729254348, CAST(N'2022-08-04T01:00:01.667' AS DateTime))
 GO
@@ -5627,11 +5183,11 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (930, 0.195135238209478
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (931, 0.195275559959275, CAST(N'2022-08-06T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (932, 0.19541598261444176, CAST(N'2022-08-07T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (932, 0.19541598261444174, CAST(N'2022-08-07T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (933, 0.19555650624753981, CAST(N'2022-08-08T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (933, 0.19555650624753979, CAST(N'2022-08-08T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (934, 0.19569713093118241, CAST(N'2022-08-09T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (934, 0.19569713093118238, CAST(N'2022-08-09T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (935, 0.195837856738035, CAST(N'2022-08-10T01:00:01.667' AS DateTime))
 GO
@@ -5653,43 +5209,43 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (943, 0.196967312365530
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (944, 0.19710895155985289, CAST(N'2022-08-19T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (945, 0.1972506926069196, CAST(N'2022-08-20T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (945, 0.19725069260691958, CAST(N'2022-08-20T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (946, 0.19739253557997319, CAST(N'2022-08-21T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (946, 0.19739253557997322, CAST(N'2022-08-21T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (947, 0.19753448055230877, CAST(N'2022-08-22T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (948, 0.19767652759727392, CAST(N'2022-08-23T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (948, 0.19767652759727394, CAST(N'2022-08-23T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (949, 0.19781867678826912, CAST(N'2022-08-24T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (949, 0.19781867678826914, CAST(N'2022-08-24T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (950, 0.19796092819874761, CAST(N'2022-08-25T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (950, 0.19796092819874758, CAST(N'2022-08-25T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (951, 0.1981032819022153, CAST(N'2022-08-26T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (952, 0.19824573797223119, CAST(N'2022-08-27T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (953, 0.19838829648240705, CAST(N'2022-08-28T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (953, 0.19838829648240702, CAST(N'2022-08-28T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (954, 0.19853095750640751, CAST(N'2022-08-29T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (954, 0.19853095750640754, CAST(N'2022-08-29T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (955, 0.1986737211179504, CAST(N'2022-08-30T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (956, 0.19881658739080632, CAST(N'2022-08-31T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (957, 0.19895955639879903, CAST(N'2022-09-01T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (957, 0.19895955639879906, CAST(N'2022-09-01T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (958, 0.19910262821580543, CAST(N'2022-09-02T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (959, 0.19924580291575544, CAST(N'2022-09-03T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (959, 0.19924580291575542, CAST(N'2022-09-03T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (960, 0.19938908057263213, CAST(N'2022-09-04T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (961, 0.19953246126047192, CAST(N'2022-09-05T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (962, 0.19967594505336431, CAST(N'2022-09-06T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (962, 0.19967594505336433, CAST(N'2022-09-06T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (963, 0.19981953202545225, CAST(N'2022-09-07T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (963, 0.19981953202545222, CAST(N'2022-09-07T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (964, 0.19996322225093172, CAST(N'2022-09-08T01:00:01.667' AS DateTime))
 GO
@@ -5697,7 +5253,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (965, 0.200107015804052
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (966, 0.20025091275911705, CAST(N'2022-09-10T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (967, 0.20039491319048217, CAST(N'2022-09-11T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (967, 0.20039491319048214, CAST(N'2022-09-11T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (968, 0.20053901717255743, CAST(N'2022-09-12T01:00:01.667' AS DateTime))
 GO
@@ -5705,21 +5261,21 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (969, 0.200683224779806
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (970, 0.20082753608674536, CAST(N'2022-09-14T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (971, 0.20097195116794531, CAST(N'2022-09-15T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (971, 0.20097195116794533, CAST(N'2022-09-15T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (972, 0.20111647009803019, CAST(N'2022-09-16T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (972, 0.20111647009803021, CAST(N'2022-09-16T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (973, 0.20126109295167771, CAST(N'2022-09-17T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (974, 0.20140581980361927, CAST(N'2022-09-18T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (975, 0.20155065072864009, CAST(N'2022-09-19T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (975, 0.20155065072864006, CAST(N'2022-09-19T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (976, 0.20169558580157904, CAST(N'2022-09-20T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (977, 0.20184062509732895, CAST(N'2022-09-21T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (978, 0.20198576869083645, CAST(N'2022-09-22T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (978, 0.20198576869083643, CAST(N'2022-09-22T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (979, 0.202131016657102, CAST(N'2022-09-23T01:00:01.667' AS DateTime))
 GO
@@ -5729,15 +5285,15 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (981, 0.202421826008179
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (982, 0.2025673875432617, CAST(N'2022-09-26T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (983, 0.20271305375164408, CAST(N'2022-09-27T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (983, 0.20271305375164406, CAST(N'2022-09-27T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (984, 0.20285882470859687, CAST(N'2022-09-28T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (985, 0.20300470048944483, CAST(N'2022-09-29T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (986, 0.20315068116956681, CAST(N'2022-09-30T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (986, 0.20315068116956678, CAST(N'2022-09-30T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (987, 0.20329676682439585, CAST(N'2022-10-01T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (987, 0.20329676682439582, CAST(N'2022-10-01T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (988, 0.20344295752941924, CAST(N'2022-10-02T01:00:01.667' AS DateTime))
 GO
@@ -5747,7 +5303,7 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (990, 0.203735654392269
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (991, 0.20388216070134341, CAST(N'2022-10-05T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (992, 0.20402877236310377, CAST(N'2022-10-06T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (992, 0.20402877236310374, CAST(N'2022-10-06T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (993, 0.20417548945331004, CAST(N'2022-10-07T01:00:01.667' AS DateTime))
 GO
@@ -5755,11 +5311,11 @@ INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (994, 0.204322312047775
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (995, 0.20446924022236948, CAST(N'2022-10-09T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (996, 0.20461627405301341, CAST(N'2022-10-10T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (996, 0.20461627405301339, CAST(N'2022-10-10T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (997, 0.2047634136156849, CAST(N'2022-10-11T01:00:01.667' AS DateTime))
 GO
-INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (998, 0.20491065898641592, CAST(N'2022-10-12T01:00:01.667' AS DateTime))
+INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (998, 0.20491065898641594, CAST(N'2022-10-12T01:00:01.667' AS DateTime))
 GO
 INSERT [dbo].[TokensCost] ([Id], [Value], [Date]) VALUES (999, 0.20505801024129308, CAST(N'2022-10-13T01:00:01.667' AS DateTime))
 GO
@@ -5787,27 +5343,27 @@ INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost
 GO
 INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1008, 1000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1003835903199823, 100.3835903199823, CAST(N'2020-01-23T08:05:17.807' AS DateTime))
 GO
-INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1009, 100, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10038360001571074, 10.038360001571077, CAST(N'2020-01-23T08:05:36.167' AS DateTime))
+INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1009, 100, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10038360001571074, 10.038360001571075, CAST(N'2020-01-23T08:05:36.167' AS DateTime))
 GO
-INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1010, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054117204175812, 199.97639119105688, CAST(N'2020-01-25T12:36:18.587' AS DateTime))
+INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1010, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054117204175811, 199.97639119105688, CAST(N'2020-01-25T12:36:18.587' AS DateTime))
 GO
 INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1011, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.100541395390234, 199.97683543117543, CAST(N'2020-01-25T12:40:54.473' AS DateTime))
 GO
-INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1012, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054140833797172, 199.97686118422575, CAST(N'2020-01-25T12:41:10.183' AS DateTime))
+INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1012, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054140833797173, 199.97686118422578, CAST(N'2020-01-25T12:41:10.183' AS DateTime))
 GO
-INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1013, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.1005414253318775, 199.97689498510431, CAST(N'2020-01-25T12:41:31.930' AS DateTime))
+INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1013, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.1005414253318775, 199.97689498510434, CAST(N'2020-01-25T12:41:31.930' AS DateTime))
 GO
-INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1014, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.1005414358519144, 199.97691590945777, CAST(N'2020-01-25T12:41:44.940' AS DateTime))
+INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1014, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054143585191441, 199.97691590945777, CAST(N'2020-01-25T12:41:44.940' AS DateTime))
 GO
-INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1015, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.1005414447534841, 199.97693361467989, CAST(N'2020-01-25T12:41:55.533' AS DateTime))
+INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1015, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.1005414447534841, 199.97693361467987, CAST(N'2020-01-25T12:41:55.533' AS DateTime))
 GO
 INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1016, 1989, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0.10054145689198824, 199.97695775816459, CAST(N'2020-01-25T12:42:10.930' AS DateTime))
 GO
 INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1017, 4946, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10107930342091472, 499.93823471984416, CAST(N'2020-02-01T23:10:19.850' AS DateTime))
 GO
-INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1018, 100, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1016070904429132, 10.16070904429132, CAST(N'2020-02-09T04:26:20.730' AS DateTime))
+INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1018, 100, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.10160709044291319, 10.16070904429132, CAST(N'2020-02-09T04:26:20.730' AS DateTime))
 GO
-INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1019, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1087826043908928, 1087.8260439089281, CAST(N'2020-05-14T02:39:00.740' AS DateTime))
+INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1019, 10000, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 0.1087826043908928, 1087.8260439089279, CAST(N'2020-05-14T02:39:00.740' AS DateTime))
 GO
 INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost], [WhenDate]) VALUES (1020, 24024, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 0.1122584369374917, 2696.8966889863004, CAST(N'2020-06-26T21:21:27.973' AS DateTime))
 GO
@@ -5815,133 +5371,119 @@ INSERT [dbo].[TokensSelling] ([Id], [Count], [UserId], [CostOneToken], [FullCost
 GO
 SET IDENTITY_INSERT [dbo].[TokensSelling] OFF
 GO
-SET IDENTITY_INSERT [dbo].[Users] ON 
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'd605cfec-b531-4b21-a58c-074b035402af', N'Yaexcluziv', 0, CAST(N'2020-07-26T23:50:40.643' AS DateTime), NULL, 797184, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (1, N'234ee901-21d6-4952-b871-b815b148fe46', N'd605cfec-b531-4b21-a58c-074b035402af', N'Yaexcluziv', 0, CAST(N'2020-07-26T23:50:40.643' AS DateTime), NULL, 797184, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'b98b7ebc-4d5e-405b-88d8-087421c50b8e', N'hhh', 0, CAST(N'2019-06-01T16:02:48.657' AS DateTime), N'', 704037, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (2, N'234ee901-21d6-4952-b871-b815b148fe46', N'b98b7ebc-4d5e-405b-88d8-087421c50b8e', N'hhh', 0, CAST(N'2019-06-01T16:02:48.657' AS DateTime), N'', 704037, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', N'Маким', 0, CAST(N'2020-07-26T13:29:17.657' AS DateTime), NULL, 751789, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (3, N'234ee901-21d6-4952-b871-b815b148fe46', N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', N'Маким', 0, CAST(N'2020-07-26T13:29:17.657' AS DateTime), NULL, 751789, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'f42ba606-48bf-45ef-9ea4-1ee8c44add71', N'kkkr', 0, CAST(N'2019-08-23T23:32:27.873' AS DateTime), N'', 906826, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (4, N'234ee901-21d6-4952-b871-b815b148fe46', N'f42ba606-48bf-45ef-9ea4-1ee8c44add71', N'kkkr', 0, CAST(N'2019-08-23T23:32:27.873' AS DateTime), N'', 906826, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'90553147-77ee-4561-b0f7-1f239afac377', N'Hhhgg', 0, CAST(N'2019-07-09T20:09:44.703' AS DateTime), N'', 441934, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (5, N'234ee901-21d6-4952-b871-b815b148fe46', N'90553147-77ee-4561-b0f7-1f239afac377', N'Hhhgg', 0, CAST(N'2019-07-09T20:09:44.703' AS DateTime), N'', 441934, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'69c917b6-c2a7-4fc6-9b13-310ce4b09d33', N'mmmkkk', 0, CAST(N'2020-01-14T05:31:31.833' AS DateTime), NULL, 39543, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (55, N'234ee901-21d6-4952-b871-b815b148fe46', N'bd4551af-fc28-4b85-b147-20a051676b21', N'admin', 0, CAST(N'2020-11-02T10:49:39.833' AS DateTime), NULL, 86709, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'497b82eb-2f1f-410d-a71c-36b45111b74b', N'alex', 0, CAST(N'2020-03-31T09:56:46.117' AS DateTime), NULL, 236952, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (6, N'234ee901-21d6-4952-b871-b815b148fe46', N'69c917b6-c2a7-4fc6-9b13-310ce4b09d33', N'mmmkkk', 0, CAST(N'2020-01-14T05:31:31.833' AS DateTime), NULL, 39543, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'2e416d84-4e86-468a-8088-4d9a70ffb0de', N'kkkkkk', 0, CAST(N'2020-01-15T19:53:43.910' AS DateTime), NULL, 900746, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (7, N'234ee901-21d6-4952-b871-b815b148fe46', N'497b82eb-2f1f-410d-a71c-36b45111b74b', N'alex', 0, CAST(N'2020-03-31T09:56:46.117' AS DateTime), NULL, 236952, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'e407837f-efe8-4ac8-bf50-4fcf3674c9c6', N'Intelligent', 0, CAST(N'2020-01-25T09:11:32.127' AS DateTime), NULL, 948032, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (8, N'234ee901-21d6-4952-b871-b815b148fe46', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'qqq', 0, CAST(N'2020-10-29T19:31:53.780' AS DateTime), NULL, 591821, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'3b767454-13e2-4213-a8d4-51d5b07b5fb1', N'ashfaq', 0, CAST(N'2019-09-16T07:48:58.157' AS DateTime), NULL, 926928, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (9, N'234ee901-21d6-4952-b871-b815b148fe46', N'2e416d84-4e86-468a-8088-4d9a70ffb0de', N'kkkkkk', 0, CAST(N'2020-01-15T19:53:43.910' AS DateTime), NULL, 900746, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'f95dea8f-3fae-4c54-be1d-572e5dfe9116', N'mmm422t', 0, CAST(N'2019-10-02T21:34:45.233' AS DateTime), NULL, 994016, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (10, N'234ee901-21d6-4952-b871-b815b148fe46', N'53446782-b6e0-43cf-a718-4e445e853160', N'Necromant', 0, CAST(N'2020-09-11T18:01:25.340' AS DateTime), NULL, 840105, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'b1e3c30f-91b1-48c1-a2e4-5c8cc7b75dc7', N'nnn', 0, CAST(N'2019-08-24T12:49:22.433' AS DateTime), N'', 911744, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (11, N'234ee901-21d6-4952-b871-b815b148fe46', N'e407837f-efe8-4ac8-bf50-4fcf3674c9c6', N'Intelligent', 0, CAST(N'2020-01-25T09:11:32.127' AS DateTime), NULL, 948032, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'31c4e8bb-9c5b-45d7-8fa0-65c75f87e121', N'Crax', 0, CAST(N'2020-04-27T20:02:59.693' AS DateTime), NULL, 738646, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (12, N'234ee901-21d6-4952-b871-b815b148fe46', N'eb192af4-6fa7-4f34-ac02-5058cc5d424b', N'www', 0, CAST(N'2020-10-08T20:19:12.347' AS DateTime), NULL, 419340, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', N'Antares', 0, CAST(N'2020-06-29T01:32:10.577' AS DateTime), NULL, 861572, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (13, N'234ee901-21d6-4952-b871-b815b148fe46', N'3b767454-13e2-4213-a8d4-51d5b07b5fb1', N'ashfaq', 0, CAST(N'2019-09-16T07:48:58.157' AS DateTime), NULL, 926928, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'0883b92a-7df3-4665-b6ab-67b60a2da118', N'Максим', 0, CAST(N'2020-09-14T19:46:07.273' AS DateTime), NULL, 430069, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (14, N'234ee901-21d6-4952-b871-b815b148fe46', N'f95dea8f-3fae-4c54-be1d-572e5dfe9116', N'mmm422t', 0, CAST(N'2019-10-02T21:34:45.233' AS DateTime), NULL, 994016, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'ee678bfb-bf49-4050-aad3-6c5025d3f0e5', N'brsk', 0, CAST(N'2020-07-09T06:59:51.217' AS DateTime), NULL, 547539, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (15, N'234ee901-21d6-4952-b871-b815b148fe46', N'b1e3c30f-91b1-48c1-a2e4-5c8cc7b75dc7', N'nnn', 0, CAST(N'2019-08-24T12:49:22.433' AS DateTime), N'', 911744, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'c11636fe-d0d9-4a60-8647-6f00f6154c29', N'dddddd', 0, CAST(N'2019-05-29T23:30:27.900' AS DateTime), N'', 826476, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (16, N'234ee901-21d6-4952-b871-b815b148fe46', N'31c4e8bb-9c5b-45d7-8fa0-65c75f87e121', N'Crax', 0, CAST(N'2020-04-27T20:02:59.693' AS DateTime), NULL, 738646, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'78642b4e-de5a-4b81-9cf4-723cae3ff5eb', N'Николай', 0, CAST(N'2020-01-26T20:08:41.400' AS DateTime), NULL, 774826, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (17, N'234ee901-21d6-4952-b871-b815b148fe46', N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', N'Antares', 0, CAST(N'2020-06-29T01:32:10.577' AS DateTime), NULL, 861572, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'4d54d89b-7e4c-40a6-8638-739bdd618947', N'lll', 0, CAST(N'2020-03-08T11:21:14.627' AS DateTime), NULL, 354503, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (18, N'234ee901-21d6-4952-b871-b815b148fe46', N'ee678bfb-bf49-4050-aad3-6c5025d3f0e5', N'brsk', 0, CAST(N'2020-07-09T06:59:51.217' AS DateTime), NULL, 547539, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', N'mmm', 0, CAST(N'2020-10-03T15:49:57.477' AS DateTime), N'', 452288, N'8-999-321-55-55', 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (19, N'234ee901-21d6-4952-b871-b815b148fe46', N'c11636fe-d0d9-4a60-8647-6f00f6154c29', N'dddddd', 0, CAST(N'2019-05-29T23:30:27.900' AS DateTime), N'', 826476, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'5ff870c8-71e7-4738-b7c0-81a3162a3cb0', N'dennismen', 0, CAST(N'2020-01-25T17:53:37.020' AS DateTime), NULL, 996548, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (20, N'234ee901-21d6-4952-b871-b815b148fe46', N'78642b4e-de5a-4b81-9cf4-723cae3ff5eb', N'Николай', 0, CAST(N'2020-01-26T20:08:41.400' AS DateTime), NULL, 774826, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'037bc9a7-a702-4f15-9695-830d47fc9197', N'Ranetka', 0, CAST(N'2020-01-30T03:03:45.433' AS DateTime), NULL, 423959, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (21, N'234ee901-21d6-4952-b871-b815b148fe46', N'4d54d89b-7e4c-40a6-8638-739bdd618947', N'lll', 0, CAST(N'2020-03-08T11:21:14.627' AS DateTime), NULL, 354503, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'a4dbb6d6-0937-49ca-a2dc-83c522007c61', N'nnnnkkk', 0, CAST(N'2019-10-04T14:02:15.637' AS DateTime), NULL, 94750, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (22, N'234ee901-21d6-4952-b871-b815b148fe46', N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', N'mmm', 0, CAST(N'2020-08-16T11:17:18.843' AS DateTime), N'', 452288, N'8-999-321-55-55', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'e8762a91-97fd-480c-95bd-87a8e4c95bd2', N'Андрей', 0, CAST(N'2020-09-24T22:25:56.007' AS DateTime), NULL, 318131, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (23, N'234ee901-21d6-4952-b871-b815b148fe46', N'5ff870c8-71e7-4738-b7c0-81a3162a3cb0', N'dennismen', 0, CAST(N'2020-01-25T17:53:37.020' AS DateTime), NULL, 996548, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'26edc365-d524-48d2-b456-88abff129efd', N'Gromi2k', 0, CAST(N'2020-01-25T20:14:14.483' AS DateTime), NULL, 887299, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (24, N'234ee901-21d6-4952-b871-b815b148fe46', N'037bc9a7-a702-4f15-9695-830d47fc9197', N'Ranetka', 0, CAST(N'2020-01-30T03:03:45.433' AS DateTime), NULL, 423959, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'17dd7a4a-66e6-47a2-ad13-89dba1ccadb7', N'Dmitrii', 0, CAST(N'2020-01-25T08:06:22.300' AS DateTime), NULL, 974693, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (25, N'234ee901-21d6-4952-b871-b815b148fe46', N'a4dbb6d6-0937-49ca-a2dc-83c522007c61', N'nnnnkkk', 0, CAST(N'2019-10-04T14:02:15.637' AS DateTime), NULL, 94750, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'd0672d7a-632f-4901-a9d1-8b72e6c35869', N'maps', 0, CAST(N'2020-04-17T08:28:06.240' AS DateTime), NULL, 782276, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (26, N'234ee901-21d6-4952-b871-b815b148fe46', N'26edc365-d524-48d2-b456-88abff129efd', N'Gromi2k', 0, CAST(N'2020-01-25T20:14:14.483' AS DateTime), NULL, 887299, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'cad96d26-bfd4-48a3-8999-8e18a4d02357', N'Dmitriy', 0, CAST(N'2019-08-24T19:38:46.787' AS DateTime), NULL, 614324, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (27, N'234ee901-21d6-4952-b871-b815b148fe46', N'17dd7a4a-66e6-47a2-ad13-89dba1ccadb7', N'Dmitrii', 0, CAST(N'2020-01-25T08:06:22.300' AS DateTime), NULL, 974693, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'1e256f7a-97fc-453a-9f0b-957c99c75b06', N'Sm1le', 0, CAST(N'2018-12-17T17:29:28.063' AS DateTime), N'', 962296, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (28, N'234ee901-21d6-4952-b871-b815b148fe46', N'd0672d7a-632f-4901-a9d1-8b72e6c35869', N'maps', 0, CAST(N'2020-04-17T08:28:06.240' AS DateTime), NULL, 782276, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'5b976a52-96f6-4645-95ac-a77abb4c3a5a', N'Onward', 0, CAST(N'2020-01-24T16:48:13.300' AS DateTime), NULL, 866724, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (29, N'234ee901-21d6-4952-b871-b815b148fe46', N'cad96d26-bfd4-48a3-8999-8e18a4d02357', N'Dmitriy', 0, CAST(N'2019-08-24T19:38:46.787' AS DateTime), NULL, 614324, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'9350b6bd-62dc-4e69-86fc-abd4fdfed066', N'kkke', 0, CAST(N'2019-08-24T12:50:19.637' AS DateTime), NULL, 715388, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (30, N'234ee901-21d6-4952-b871-b815b148fe46', N'1e256f7a-97fc-453a-9f0b-957c99c75b06', N'Sm1le', 0, CAST(N'2018-12-17T17:29:28.063' AS DateTime), N'', 962296, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'8c335406-4e98-462f-90ca-ac158cdd1142', N'Kantemir', 0, CAST(N'2020-01-25T17:53:52.323' AS DateTime), NULL, 803187, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (31, N'234ee901-21d6-4952-b871-b815b148fe46', N'5b976a52-96f6-4645-95ac-a77abb4c3a5a', N'Onward', 0, CAST(N'2020-01-24T16:48:13.300' AS DateTime), NULL, 866724, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'd9112c68-192f-40f5-b678-ad25e61d092e', N'kkk', 0, CAST(N'2019-08-23T23:28:22.187' AS DateTime), N'', 719017, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (32, N'234ee901-21d6-4952-b871-b815b148fe46', N'9350b6bd-62dc-4e69-86fc-abd4fdfed066', N'kkke', 0, CAST(N'2019-08-24T12:50:19.637' AS DateTime), NULL, 715388, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'4f8e9d04-5c62-405a-8011-b207702f3b54', N'qwer', 0, CAST(N'2019-07-09T19:52:43.577' AS DateTime), N'', 688961, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (33, N'234ee901-21d6-4952-b871-b815b148fe46', N'8c335406-4e98-462f-90ca-ac158cdd1142', N'Kantemir', 0, CAST(N'2020-01-25T17:53:52.323' AS DateTime), NULL, 803187, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'709c2b20-4bb0-4369-bd80-b53ed855eb19', N'mmrrr', 0, CAST(N'2019-12-28T21:52:00.770' AS DateTime), NULL, 613952, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (34, N'234ee901-21d6-4952-b871-b815b148fe46', N'd9112c68-192f-40f5-b678-ad25e61d092e', N'kkk', 0, CAST(N'2019-08-23T23:28:22.187' AS DateTime), N'', 719017, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'ff342ff7-3798-4f20-8c15-bb16ad9e3100', N'Макстм', 0, CAST(N'2020-03-19T14:41:49.413' AS DateTime), NULL, 231639, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (35, N'234ee901-21d6-4952-b871-b815b148fe46', N'4f8e9d04-5c62-405a-8011-b207702f3b54', N'qwer', 0, CAST(N'2019-07-09T19:52:43.577' AS DateTime), N'', 688961, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'0677b5f2-2ec7-4bbe-89f7-c6ed48cb9dca', N'freebar4ik', 0, CAST(N'2020-01-24T19:05:33.550' AS DateTime), NULL, 132866, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (36, N'234ee901-21d6-4952-b871-b815b148fe46', N'709c2b20-4bb0-4369-bd80-b53ed855eb19', N'mmrrr', 0, CAST(N'2019-12-28T21:52:00.770' AS DateTime), NULL, 613952, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', N'Павел Суворов', 0, CAST(N'2020-01-23T19:29:33.030' AS DateTime), NULL, 123043, N' 79286664808', 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (37, N'234ee901-21d6-4952-b871-b815b148fe46', N'ff342ff7-3798-4f20-8c15-bb16ad9e3100', N'Макстм', 0, CAST(N'2020-03-19T14:41:49.413' AS DateTime), NULL, 231639, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', N'Maksimrentoolo', 0, CAST(N'2020-01-14T19:30:06.837' AS DateTime), NULL, 529238, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (38, N'234ee901-21d6-4952-b871-b815b148fe46', N'0677b5f2-2ec7-4bbe-89f7-c6ed48cb9dca', N'freebar4ik', 0, CAST(N'2020-01-24T19:05:33.550' AS DateTime), NULL, 132866, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'f7db8012-d9f1-4cfd-b8c3-ce067edd6d19', N'lol1212', 0, CAST(N'2020-01-26T12:26:57.047' AS DateTime), NULL, 551658, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (39, N'234ee901-21d6-4952-b871-b815b148fe46', N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', N'Павел Суворов', 0, CAST(N'2020-01-23T19:29:33.030' AS DateTime), NULL, 123043, N' 79286664808', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'a52f6fd5-0b77-4345-b7e1-ce1ede063d64', N'mmmm', 0, CAST(N'2019-06-02T02:11:44.807' AS DateTime), N'', 968299, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (40, N'234ee901-21d6-4952-b871-b815b148fe46', N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', N'Maksimrentoolo', 0, CAST(N'2020-01-14T19:30:06.837' AS DateTime), NULL, 529238, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'61066082-72b4-477f-92dc-d1af87de7de9', N'rrr', 0, CAST(N'2020-04-29T14:25:03.680' AS DateTime), NULL, 575586, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (41, N'234ee901-21d6-4952-b871-b815b148fe46', N'f7db8012-d9f1-4cfd-b8c3-ce067edd6d19', N'lol1212', 0, CAST(N'2020-01-26T12:26:57.047' AS DateTime), NULL, 551658, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'cddd0879-5144-4527-a449-d39c7642aac5', N'kkkk', 0, CAST(N'2019-10-02T18:28:42.643' AS DateTime), NULL, 179591, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (42, N'234ee901-21d6-4952-b871-b815b148fe46', N'a52f6fd5-0b77-4345-b7e1-ce1ede063d64', N'mmmm', 0, CAST(N'2019-06-02T02:11:44.807' AS DateTime), N'', 968299, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'f574ce33-7829-4678-81cb-d7daa7fe550b', N'mmm22', 0, CAST(N'2019-09-27T14:08:42.763' AS DateTime), NULL, 402868, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (43, N'234ee901-21d6-4952-b871-b815b148fe46', N'61066082-72b4-477f-92dc-d1af87de7de9', N'rrr', 0, CAST(N'2020-04-29T14:25:03.680' AS DateTime), NULL, 575586, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'f4b751df-6328-4553-8f4c-db280ef332d3', N'qwerqwer', 0, CAST(N'2018-12-17T14:43:57.383' AS DateTime), N'', 200842, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (44, N'234ee901-21d6-4952-b871-b815b148fe46', N'cddd0879-5144-4527-a449-d39c7642aac5', N'kkkk', 0, CAST(N'2019-10-02T18:28:42.643' AS DateTime), NULL, 179591, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'314bd290-5fc5-4a93-8131-db644b83aaed', N'kkkuuu', 0, CAST(N'2019-10-30T17:01:54.853' AS DateTime), NULL, 559633, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (45, N'234ee901-21d6-4952-b871-b815b148fe46', N'f574ce33-7829-4678-81cb-d7daa7fe550b', N'mmm22', 0, CAST(N'2019-09-27T14:08:42.763' AS DateTime), NULL, 402868, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'91dc9014-911a-43cf-b55f-dd4ace944035', N'bbb', 0, CAST(N'2019-10-04T09:54:08.947' AS DateTime), NULL, 468866, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (46, N'234ee901-21d6-4952-b871-b815b148fe46', N'f4b751df-6328-4553-8f4c-db280ef332d3', N'qwerqwer', 0, CAST(N'2018-12-17T14:43:57.383' AS DateTime), N'', 200842, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'705ef2c6-0e23-4f3e-a4b8-dfcc1ec27b6e', N'Sergchudakov', 0, CAST(N'2020-09-23T07:42:31.690' AS DateTime), NULL, 13489, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (47, N'234ee901-21d6-4952-b871-b815b148fe46', N'314bd290-5fc5-4a93-8131-db644b83aaed', N'kkkuuu', 0, CAST(N'2019-10-30T17:01:54.853' AS DateTime), NULL, 559633, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'023461b1-28b3-4e5b-b5bc-e2a179b1b032', N'Nadinaleksandr1', 0, CAST(N'2020-01-25T07:05:55.580' AS DateTime), NULL, 882380, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (48, N'234ee901-21d6-4952-b871-b815b148fe46', N'91dc9014-911a-43cf-b55f-dd4ace944035', N'bbb', 0, CAST(N'2019-10-04T09:54:08.947' AS DateTime), NULL, 468866, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'996da0e7-d189-47a3-8436-e54b1572872d', N'EgorIgorevich', 0, CAST(N'2020-01-27T14:21:37.730' AS DateTime), NULL, 402420, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (49, N'234ee901-21d6-4952-b871-b815b148fe46', N'023461b1-28b3-4e5b-b5bc-e2a179b1b032', N'Nadinaleksandr1', 0, CAST(N'2020-01-25T07:05:55.580' AS DateTime), NULL, 882380, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'20a94868-76d0-456d-8268-e7c1318f03d3', N'mmmyyy', 0, CAST(N'2019-07-26T14:15:04.167' AS DateTime), N'', 132536, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (50, N'234ee901-21d6-4952-b871-b815b148fe46', N'996da0e7-d189-47a3-8436-e54b1572872d', N'EgorIgorevich', 0, CAST(N'2020-01-27T14:21:37.730' AS DateTime), NULL, 402420, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'dc40c4f1-f346-48fe-b4b3-fc629df690ff', N'Yyy', 0, CAST(N'2019-10-03T06:09:23.130' AS DateTime), NULL, 304252, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (51, N'234ee901-21d6-4952-b871-b815b148fe46', N'20a94868-76d0-456d-8268-e7c1318f03d3', N'mmmyyy', 0, CAST(N'2019-07-26T14:15:04.167' AS DateTime), N'', 132536, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'16b1177f-e2c5-494d-bc58-fc6646a4b17f', N'Lanasimones', 0, CAST(N'2020-01-22T10:37:37.560' AS DateTime), NULL, 886373, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (52, N'234ee901-21d6-4952-b871-b815b148fe46', N'dc40c4f1-f346-48fe-b4b3-fc629df690ff', N'Yyy', 0, CAST(N'2019-10-03T06:09:23.130' AS DateTime), NULL, 304252, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
-GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (53, N'234ee901-21d6-4952-b871-b815b148fe46', N'16b1177f-e2c5-494d-bc58-fc6646a4b17f', N'Lanasimones', 0, CAST(N'2020-01-22T10:37:37.560' AS DateTime), NULL, 886373, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
-GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName]) VALUES (54, N'234ee901-21d6-4952-b871-b815b148fe46', N'9891d3d6-e7eb-4911-98f5-fdde0c32b9cf', N'Mary', 0, CAST(N'2020-02-07T02:52:07.017' AS DateTime), NULL, 802380, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
-GO
-SET IDENTITY_INSERT [dbo].[Users] OFF
+INSERT [dbo].[Users] ([ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'9891d3d6-e7eb-4911-98f5-fdde0c32b9cf', N'Mary', 0, CAST(N'2020-02-07T02:52:07.017' AS DateTime), NULL, 802380, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
 INSERT [dbo].[UsersInRoles] ([UserId], [RoleId]) VALUES (N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', N'8b6f8834-7b96-43e1-9dec-16115fd48554')
 GO
 INSERT [dbo].[UsersInRoles] ([UserId], [RoleId]) VALUES (N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', N'211ee111-19d6-4951-b87c-b215b542fe11')
 GO
 INSERT [dbo].[UsersInRoles] ([UserId], [RoleId]) VALUES (N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', N'234ee951-11d6-2151-b87c-b815b542fe41')
-GO
-SET IDENTITY_INSERT [dbo].[UserViews] ON 
-GO
-INSERT [dbo].[UserViews] ([Id], [ObjectId], [Type], [UserId], [Date]) VALUES (1, 20041, 1, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-09-18T19:41:39.783' AS DateTime))
-GO
-INSERT [dbo].[UserViews] ([Id], [ObjectId], [Type], [UserId], [Date]) VALUES (2, 20041, 1, N'eb192af4-6fa7-4f34-ac02-5058cc5d424b', CAST(N'2020-10-08T23:19:40.247' AS DateTime))
-GO
-SET IDENTITY_INSERT [dbo].[UserViews] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Wallets] ON 
 GO
@@ -5981,7 +5523,7 @@ INSERT [dbo].[Wallets] ([Id], [UserId], [CurrencyId], [Value], [CreateDate]) VAL
 GO
 INSERT [dbo].[Wallets] ([Id], [UserId], [CurrencyId], [Value], [CreateDate]) VALUES (1017, N'5b976a52-96f6-4645-95ac-a77abb4c3a5a', 8, 995, CAST(N'2020-01-24T19:49:37.447' AS DateTime))
 GO
-INSERT [dbo].[Wallets] ([Id], [UserId], [CurrencyId], [Value], [CreateDate]) VALUES (1018, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1, 10.020077259151025, CAST(N'2020-01-25T12:33:28.300' AS DateTime))
+INSERT [dbo].[Wallets] ([Id], [UserId], [CurrencyId], [Value], [CreateDate]) VALUES (1018, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1, 10.020077259151023, CAST(N'2020-01-25T12:33:28.300' AS DateTime))
 GO
 INSERT [dbo].[Wallets] ([Id], [UserId], [CurrencyId], [Value], [CreateDate]) VALUES (1019, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 8, 0, CAST(N'2020-01-25T12:36:05.280' AS DateTime))
 GO
@@ -5989,7 +5531,7 @@ INSERT [dbo].[Wallets] ([Id], [UserId], [CurrencyId], [Value], [CreateDate]) VAL
 GO
 INSERT [dbo].[Wallets] ([Id], [UserId], [CurrencyId], [Value], [CreateDate]) VALUES (1021, N'78642b4e-de5a-4b81-9cf4-723cae3ff5eb', 8, 19874, CAST(N'2020-01-26T18:35:20.417' AS DateTime))
 GO
-INSERT [dbo].[Wallets] ([Id], [UserId], [CurrencyId], [Value], [CreateDate]) VALUES (1022, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 1, 0.0013308665561453379, CAST(N'2020-03-18T23:04:28.950' AS DateTime))
+INSERT [dbo].[Wallets] ([Id], [UserId], [CurrencyId], [Value], [CreateDate]) VALUES (1022, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 1, 0.0013308665561453381, CAST(N'2020-03-18T23:04:28.950' AS DateTime))
 GO
 INSERT [dbo].[Wallets] ([Id], [UserId], [CurrencyId], [Value], [CreateDate]) VALUES (1023, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 8, 0, CAST(N'2020-03-18T23:05:35.203' AS DateTime))
 GO
@@ -6232,174 +5774,6 @@ GO
 INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (10115, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 20036, CAST(N'2020-08-16T12:15:34.080' AS DateTime))
 GO
 INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (10116, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 20039, CAST(N'2020-08-16T14:06:01.230' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (10117, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-18T19:42:25.227' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (10118, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-18T20:32:28.377' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20117, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-23T16:06:27.170' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20118, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-23T16:19:02.420' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20119, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-23T16:25:41.993' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20120, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-23T16:28:33.110' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20121, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-23T16:28:55.140' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20122, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-23T16:29:54.167' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20123, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-23T16:33:39.713' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20124, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-23T16:36:06.420' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20125, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-23T16:45:10.720' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20126, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T14:09:18.657' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20127, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T14:13:15.887' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20128, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T14:14:40.127' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20129, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T14:16:05.910' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20130, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T14:19:54.977' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20131, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T14:23:56.730' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20132, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T14:26:00.980' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20133, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T14:26:40.303' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20134, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T14:43:31.180' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20135, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T14:49:56.737' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20136, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T15:18:05.153' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20137, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T15:24:15.617' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20138, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T15:28:18.570' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20139, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T15:30:39.450' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20140, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T15:33:39.083' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20141, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T15:37:31.117' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20142, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T15:39:54.673' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20143, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T15:40:07.520' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20144, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T15:40:15.317' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20145, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T16:41:12.270' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20146, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T16:41:12.283' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20147, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T16:42:24.420' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20148, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T16:43:51.047' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20149, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T16:44:23.500' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20150, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T16:44:45.380' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20151, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T16:45:47.927' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20152, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T16:48:42.257' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20153, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T16:50:09.800' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20154, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T16:52:06.780' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20155, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T17:02:03.630' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20156, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T17:06:19.117' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20157, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T17:06:22.180' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20158, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T17:09:40.883' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (20159, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-09-24T17:10:19.910' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30117, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20035, CAST(N'2020-09-28T20:34:07.403' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30118, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20035, CAST(N'2020-09-28T20:34:31.240' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30119, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20035, CAST(N'2020-09-28T20:34:45.543' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30120, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-07T22:51:03.280' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30121, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-08T17:32:06.183' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30122, N'eb192af4-6fa7-4f34-ac02-5058cc5d424b', 20041, CAST(N'2020-10-08T23:19:41.603' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30123, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-13T20:08:47.823' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30124, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-14T18:41:27.430' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30125, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-14T18:42:21.513' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30126, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-14T19:35:01.760' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30127, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-14T19:41:30.640' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30128, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-14T19:52:57.677' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30129, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-27T23:27:36.190' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30130, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T15:23:50.260' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30131, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T15:32:02.060' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30132, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T15:47:33.940' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30133, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T18:07:12.950' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30134, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T18:07:27.360' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30135, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T18:17:00.370' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30136, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T19:49:50.147' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30137, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T19:50:16.750' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30138, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T19:55:55.637' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30139, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T19:58:03.573' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30140, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 27, CAST(N'2020-10-28T20:00:07.303' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30141, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T20:08:20.960' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30142, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T20:10:49.410' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30143, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T20:12:34.777' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30144, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20035, CAST(N'2020-10-28T20:31:48.450' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30145, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 10035, CAST(N'2020-10-28T20:32:08.533' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30146, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T20:32:15.793' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30147, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T20:32:35.530' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30148, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T20:35:26.567' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30149, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T20:35:39.370' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30150, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T20:35:48.720' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30151, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T20:35:56.247' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30152, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T20:36:44.870' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30153, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T20:45:50.957' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30154, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T20:46:04.623' AS DateTime))
-GO
-INSERT [dbo].[Watched] ([Id], [UserId], [AdvertId], [Created]) VALUES (30155, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 20041, CAST(N'2020-10-28T22:36:40.520' AS DateTime))
 GO
 SET IDENTITY_INSERT [dbo].[Watched] OFF
 GO
@@ -6725,17 +6099,41 @@ INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) V
 GO
 INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20155, N'a678e715-5987-4b59-8007-cd8b1a5186a8', 10032, CAST(N'2020-09-09T10:27:51.380' AS DateTime))
 GO
-INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20156, N'e66611e5-b628-4ae4-a4df-e82cfec5dc64', 20041, CAST(N'2020-09-17T22:00:39.473' AS DateTime))
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20156, N'56d87ff4-0130-49b0-b396-b2e4f3d2de77', 10035, CAST(N'2020-09-15T14:36:23.343' AS DateTime))
 GO
-INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (30156, N'745e93d6-a2b3-4f65-9bac-79040420725f', 20041, CAST(N'2020-10-14T19:33:23.107' AS DateTime))
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20157, N'62f8d54d-2768-4038-99f3-d173ce94e790', 10029, CAST(N'2020-09-15T17:11:25.340' AS DateTime))
 GO
-INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (30157, N'59860016-61a7-491a-994b-b2c84a1731ae', 20041, CAST(N'2020-10-27T23:14:53.207' AS DateTime))
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20158, N'03957df5-8ae5-4a67-854f-4e95badd090c', 20041, CAST(N'2020-09-17T18:09:17.093' AS DateTime))
 GO
-INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (30158, N'59860016-61a7-491a-994b-b2c84a1731ae', 20041, CAST(N'2020-10-27T23:15:45.680' AS DateTime))
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20159, N'd3b1fc02-c094-40b2-90b8-ab21120206f8', 30, CAST(N'2020-09-17T18:15:10.210' AS DateTime))
+GO
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20160, N'b904817d-91ab-4cbe-a5dd-fdb2d7f3ea62', 20041, CAST(N'2020-09-20T00:33:39.250' AS DateTime))
+GO
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20161, N'609ff289-ed0c-42cd-bb09-eef4c0cff9f4', 10029, CAST(N'2020-09-20T04:11:22.517' AS DateTime))
+GO
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20162, N'02b9e435-2e38-461e-8cb4-6d00f810933a', 31, CAST(N'2020-09-20T07:46:04.110' AS DateTime))
+GO
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20163, N'97fd27b3-5840-4613-89c7-c58362509a7b', 10034, CAST(N'2020-09-23T15:20:30.180' AS DateTime))
+GO
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20164, N'97fd27b3-5840-4613-89c7-c58362509a7b', 20035, CAST(N'2020-09-23T15:20:36.230' AS DateTime))
+GO
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20165, N'a44f533c-8f5e-4ad5-a0ad-35a9a131645a', 10032, CAST(N'2020-09-23T15:24:36.643' AS DateTime))
+GO
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20166, N'97fd27b3-5840-4613-89c7-c58362509a7b', 10032, CAST(N'2020-09-23T15:31:31.350' AS DateTime))
+GO
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20167, N'd83a245f-f138-4684-9b18-9fe3ef11af97', 10031, CAST(N'2020-09-26T11:09:02.463' AS DateTime))
+GO
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20168, N'267a92ba-5ad1-4d5a-a53b-c7fd6816ab8e', 10033, CAST(N'2020-09-29T19:29:13.767' AS DateTime))
+GO
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20169, N'7924fdcf-d476-43b0-b96a-be25dbc23ad7', 20035, CAST(N'2020-09-29T20:22:28.400' AS DateTime))
+GO
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20170, N'7924fdcf-d476-43b0-b96a-be25dbc23ad7', 20035, CAST(N'2020-09-30T01:00:54.533' AS DateTime))
+GO
+INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) VALUES (20171, N'8af2dea8-da0f-4f77-b53e-24d2e37d6bc6', 20035, CAST(N'2020-10-03T18:20:26.867' AS DateTime))
 GO
 SET IDENTITY_INSERT [dbo].[WatchedByCookies] OFF
 GO
-/****** Object:  Index [IX_Referrals]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  Index [IX_Referrals]    Script Date: 09.10.2020 15:48:17 ******/
 ALTER TABLE [dbo].[Referrals] ADD  CONSTRAINT [IX_Referrals] UNIQUE NONCLUSTERED 
 (
 	[ReferralUserId] ASC
@@ -6780,8 +6178,6 @@ GO
 ALTER TABLE [dbo].[Currencies] ADD  CONSTRAINT [DF_Cryptocurrencies2_IsValid]  DEFAULT ((1)) FOR [IsValid]
 GO
 ALTER TABLE [dbo].[DailyStatistics] ADD  CONSTRAINT [DF_DailyStatistics_Date]  DEFAULT (getdate()) FOR [Date]
-GO
-ALTER TABLE [dbo].[DialogMessages] ADD  CONSTRAINT [DF_DialogMessages_Date]  DEFAULT (getdate()) FOR [Date]
 GO
 ALTER TABLE [dbo].[Exceptions] ADD  CONSTRAINT [DF_Exceptions_WhenDate]  DEFAULT (getdate()) FOR [WhenDate]
 GO
@@ -6849,13 +6245,11 @@ ALTER TABLE [dbo].[TenderRequest] ADD  CONSTRAINT [DF_TenderRequest_DateStart]  
 GO
 ALTER TABLE [dbo].[Tenders] ADD  CONSTRAINT [DF_Tenders_Cost]  DEFAULT ((0)) FOR [Cost]
 GO
-ALTER TABLE [dbo].[Tenders] ADD  CONSTRAINT [DF_Tenders_Status]  DEFAULT ((0)) FOR [Status]
+ALTER TABLE [dbo].[Tenders] ADD  CONSTRAINT [DF_Tenders_Status]  DEFAULT ((1)) FOR [Status]
 GO
 ALTER TABLE [dbo].[Tenders] ADD  CONSTRAINT [DF_Tenders_Created]  DEFAULT (getdate()) FOR [Created]
 GO
 ALTER TABLE [dbo].[Tenders] ADD  CONSTRAINT [DF_Tenders_CurrencyId]  DEFAULT ((1)) FOR [CurrencyId]
-GO
-ALTER TABLE [dbo].[Tenders] ADD  CONSTRAINT [DF_Tenders_CategoryId]  DEFAULT ((0)) FOR [CategoryId]
 GO
 ALTER TABLE [dbo].[TokensBuying] ADD  CONSTRAINT [DF_TokensBuying_WhenDate]  DEFAULT (getdate()) FOR [WhenDate]
 GO
@@ -6953,11 +6347,12 @@ REFERENCES [dbo].[Users] ([UserId])
 GO
 ALTER TABLE [dbo].[Watched] CHECK CONSTRAINT [FK_Watched_Users]
 GO
-/****** Object:  StoredProcedure [dbo].[spAddAdvert]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spAddAdvert]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+
 CREATE PROCEDURE  [dbo].[spAddAdvert]
 @Category int, 
 @Name nvarchar(50),
@@ -6997,7 +6392,7 @@ BEGIN
 	@YouTubeUrl)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spAddFavorites]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spAddFavorites]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7015,7 +6410,7 @@ BEGIN
    END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spAddFavoritesByCookies]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spAddFavoritesByCookies]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7033,7 +6428,7 @@ BEGIN
    END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spAddWatched]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spAddWatched]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7046,7 +6441,7 @@ BEGIN
     VALUES (@UserId, @advertId)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spAddWatchedByCookies]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spAddWatchedByCookies]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7059,35 +6454,7 @@ BEGIN
     VALUES (@uid, @advertId)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetChats]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE  [dbo].[spGetChats]
-(@userId uniqueidentifier)
-AS
-BEGIN
-
-
-SELECT chats.Id
-	, (CASE WHEN chats.ChatType = 1 THEN ( 
-	
-	SELECT users.UserName FROM [dbo].ChatUsers AS chatUsers 
-	LEFT JOIN [dbo].Users AS users 
-	ON (users.UserId = chatUsers.UserId) 
-	WHERE chatUsers.UserId != @userId AND chatUsers.ChatId = chats.Id
-	
-	) ELSE chats.ChatName END ) AS ChatName
-
-
-FROM [dbo].[Chats] AS chats
-LEFT JOIN [dbo].ChatUsers AS chatUsers ON (chatUsers.ChatId = chats.Id) WHERE chatUsers.UserId = @userId
-
-END
-
-GO
-/****** Object:  StoredProcedure [dbo].[spGetChatsForUser]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spGetChatsForUser]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7115,29 +6482,7 @@ LEFT JOIN [dbo].ChatUsers AS chatUsers ON (chatUsers.ChatId = chats.Id) WHERE ch
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[spGetComments]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE  [dbo].[spGetComments]
-@objectId bigint, @userId uniqueidentifier
-AS
-BEGIN
-	SELECT [Id]
-      ,[UserId]
-      ,[AdvertId]
-      ,[Comment]
-      ,[Date]
-      ,[Likes]
-      ,[DisLikes]
-      ,[Type]
-  FROM [Comments]
-	where [UserId] = @userId
-	ORDER BY [Date] ASC
-END
-GO
-/****** Object:  StoredProcedure [dbo].[spGetCommentsForUser]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spGetCommentsForUser]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7148,11 +6493,11 @@ AS
 BEGIN
 
 
-	SELECT cmnts.[Id]
+	SELECT [Id]
       ,[cmnts].[UserId]
-      ,cmnts.[AdvertId]
-      ,cmnts.[Comment]
-      ,cmnts.[Date]
+      ,[AdvertId]
+      ,[Comment]
+      ,[Date]
 	  ,[usrs].[UserName]
 	  ,(SELECT COUNT(*) FROM [dbo].[Likes] AS lks WHERE lks.CommentId = cmnts.Id) AS LikesCount
 	  ,(SELECT COUNT(*) FROM [dbo].[DisLikes] AS dlks WHERE dlks.CommentId = cmnts.Id) AS DisLikesCount
@@ -7163,73 +6508,15 @@ BEGIN
 	  ,CONVERT(BIT, (CASE when  EXISTS (SELECT * FROM [dbo].[Likes] 
 	  WHERE CommentId = Id AND UserId = @userId) then 1 ELSE 0 END) ) AS HaveLiked
 
-      ,cmnts.[Type]
+      ,[Type]
   FROM [Comments] AS cmnts
   JOIN [Users] AS usrs 
   ON(cmnts.UserId = usrs.UserId)
 	WHERE [AdvertId] = @advertId
 	ORDER BY [Date] ASC
 END
-
-GRANT EXECUTE
-    ON OBJECT::[dbo].[spGetCommentsForUser] TO PUBLIC
-    AS [dbo];
 GO
-/****** Object:  StoredProcedure [dbo].[spGetComplaintsByRecipier]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE  [dbo].[spGetComplaintsByRecipier]
-(@userId uniqueidentifier)
-AS
-BEGIN
-
-
-SELECT cpts.[Id]
-      ,[Message]
-      ,[СomplaintType]
-      ,[ObjectId]
-      ,[ObjectType]
-      ,[UserSender]
-      ,[UserRecipier]
-      ,[Data]
-	  ,usrs.UserName AS UserRecipierName
-	  , (SELECT FIRST_VALUE(UserName) OVER(ORDER BY Id) FROM [dbo].[Users] WHERE UserId = UserSender) AS UserSenderName
-  FROM [dbo].[Complaints] as cpts 
-  LEFT JOIN [dbo].[Users] as usrs ON( cpts.UserRecipier = usrs.UserId) WHERE cpts.UserRecipier = @userId 
-
-END
-
-GO
-/****** Object:  StoredProcedure [dbo].[spGetComplaintsBySender]    Script Date: 02.11.2020 16:36:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE  [dbo].[spGetComplaintsBySender]
-(@userId uniqueidentifier)
-AS
-BEGIN
-
-
-SELECT cpts.[Id]
-      ,[Message]
-      ,[СomplaintType]
-      ,[ObjectId]
-      ,[ObjectType]
-      ,[UserSender]
-      ,[UserRecipier]
-      ,[Data]
-	  ,usrs.UserName AS UserSenderName
-	  , (SELECT FIRST_VALUE(UserName) OVER(ORDER BY Id) FROM [dbo].[Users] WHERE UserId = UserRecipier) AS UserRecipierName
-  FROM [dbo].[Complaints] as cpts 
-  LEFT JOIN [dbo].[Users] as usrs ON( cpts.UserSender = usrs.UserId) WHERE cpts.UserSender = @userId 
-
-END
-
-GO
-/****** Object:  StoredProcedure [dbo].[spGetFavorites]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spGetFavorites]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7259,7 +6546,7 @@ BEGIN
 	ORDER BY CreatedFavorites DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetFavoritesByCookies]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spGetFavoritesByCookies]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7289,7 +6576,7 @@ BEGIN
 	ORDER BY CreatedFavorites DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetLast200TokensOperations]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spGetLast200TokensOperations]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7321,7 +6608,7 @@ BEGIN
     ORDER BY [WhenDate] desc
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetLoginStatisticLastDayActive]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spGetLoginStatisticLastDayActive]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7340,7 +6627,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[spGetLoginStatisticLastHourActive]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spGetLoginStatisticLastHourActive]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7359,7 +6646,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[spGetTokenCostToday]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spGetTokenCostToday]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7374,7 +6661,7 @@ BEGIN
   WHERE CONVERT(date, [Date]) = CONVERT(date, getdate())
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetUserAdverts]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spGetUserAdverts]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7400,7 +6687,7 @@ BEGIN
 	ORDER BY a.[Created] DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetWatched]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spGetWatched]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7430,7 +6717,7 @@ BEGIN
 	ORDER BY CreatedFavorites DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetWatchedByCookies]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spGetWatchedByCookies]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7460,7 +6747,7 @@ BEGIN
 	ORDER BY CreatedFavorites DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spUpdateQiwiAccountBalance]    Script Date: 02.11.2020 16:36:25 ******/
+/****** Object:  StoredProcedure [dbo].[spUpdateQiwiAccountBalance]    Script Date: 09.10.2020 15:48:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
