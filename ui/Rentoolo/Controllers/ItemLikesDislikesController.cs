@@ -54,27 +54,11 @@ namespace Rentoolo.Controllers
         {
             if (itemld.Type == "like")
             {
-                ItemLikes like = new ItemLikes()
-                {
-                    Date = DateTime.Now,
-                    ObjectType = itemld.ObjectType,
-                    ObjectId = itemld.ObjectId,
-                    UserId = itemld.UserId
-                };
-
-                DataHelper.LikeItem(like);
-
+                DataHelper.LikeUnlikeItem(itemld);
             }
             else
             {
-                ItemDislikes dislike = new ItemDislikes()
-                {
-                    Date = DateTime.Now,
-                    ObjectType = itemld.ObjectType,
-                    ObjectId = itemld.ObjectId,
-                    UserId = itemld.UserId
-                };
-                DataHelper.DisLikeItem(dislike);
+                DataHelper.DisLikeUnDislikeItem(itemld);
             }
             
         }
