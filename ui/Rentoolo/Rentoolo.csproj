@@ -1142,6 +1142,7 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ChatsController.cs" />
+    <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\GetTokensCostController.cs" />
     <Compile Include="Controllers\InstructionController.cs" />

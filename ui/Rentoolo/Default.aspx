@@ -524,9 +524,22 @@
 
 
                                     <div>
-                                        Город:
-                                        <input type="text" name="city" />
-                                        <br />
+                                        <div>
+                                            Город:
+                                            <input type="text" name="city" list="cities" />
+                                            <br />
+                                            <datalist id="cities">
+
+                                                <% foreach (var city in AllCities)
+                                                    { %>
+                                                    
+                                                    <option>
+                                                        <%=city %>
+                                                    </option>
+
+                                                <%} %>
+                                            </datalist>
+                                        </div>
 
                                         Только в названии:
                                         <input type="checkbox" name="onlyInName" />

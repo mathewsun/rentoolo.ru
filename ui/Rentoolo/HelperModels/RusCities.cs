@@ -12,7 +12,7 @@ namespace Rentoolo.HelperModels
 
         public static bool CitiesExists = false;
 
-        public static string[] AllRusCities;
+        public static string[] AllRusCities = new string[0];
         
         public static void InitAllCities()
         {
