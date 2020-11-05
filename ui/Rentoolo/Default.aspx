@@ -23,7 +23,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="assets/css/toolkit.css?422" rel="stylesheet">
-    <link href="assets/css/application.css?22" rel="stylesheet">
+    <link href="assets/css/application.css?23" rel="stylesheet">
     <link href="assets/css/additional.css?88822" rel="stylesheet">
 
     <meta name="yandex-verification" content="f9c03f80c16c0af8" />
@@ -504,46 +504,44 @@
                                             <asp:Button ID="ButtonSearch" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
                                         </div>
                                     </div>
+                                    <div class="main-find__checkbox-label">
+                                        <input type="checkbox" name="onlyInName" />
+                                        <span>Только в названии</span>
+                                    </div>
                                     <div>
                                         &nbsp;
                                         <br />
                                     </div>
-                                    <div>
-                                        Диапазон дат:
+                                    <div class="main-find_date">
+                                        <span>Диапазон дат:</span>
                                         <input type="date" id="StartDate" placeholder="StartDate">
                                         <input type="date" id="EndDate" placeholder="EndDate">
                                     </div>
 
-                                    <div>
-                                        Диапазон стоимоcти: 
+                                    <div class="main-find_price">
+                                        <span>Диапазон стоимоcти:</span> 
                                         <input type="number" name="startPrice" placeholder="startPrice" />
                                         <input type="number" name="endPrice" placeholder="endPrice" />
                                         <br />
                                     </div>
 
+                                    <div class="city-sortby__wrap">
+                                        <div>
+                                            <span>Город:</span>
+                                            <input type="text" name="city" />
+                                        </div>
 
-
-                                    <div>
-                                        Город:
-                                        <input type="text" name="city" />
-                                        <br />
-
-                                        Только в названии:
-                                        <input type="checkbox" name="onlyInName" />
+                                        <div class="sortby">
+                                            <span>Sort:</span>
+                                            <input type="text" name="sortBy" list="sortBy" />
+                                            <datalist id="sortBy">
+                                                <option>by date</option>
+                                                <option>by price</option>
+                                                <option>by date descendance</option>
+                                                <option>by price descendance</option>
+                                            </datalist>
+                                        </div>
                                     </div>
-
-                                    <div>
-                                        Sort:
-                                        <input type="text" name="sortBy" list="sortBy" />
-                                        <datalist id="sortBy">
-                                            <option>by date</option>
-                                            <option>by price</option>
-                                            <option>by date descendance</option>
-                                            <option>by price descendance</option>
-                                        </datalist>
-
-                                    </div>
-
                                 </div>
                             </div>
                         </li>
