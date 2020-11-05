@@ -534,7 +534,7 @@
 
                                     <div>
                                         Sort:
-                                        <input type="text" name="sortBy" list="sortBy" />
+                                        <input type="text" name="sortBy" list="sortBy" value="by date" />
                                         <datalist id="sortBy">
                                             <option>by date</option>
                                             <option>by price</option>

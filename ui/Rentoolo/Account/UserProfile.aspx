@@ -15,6 +15,7 @@
                     <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Cоздать диалог" />
                 </div>
 
+                текущий ник - <%= CurUser.UniqueUserName %>
                 <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                 <asp:Button ID="Button3" runat="server" Text="Задать уникальное имя" OnClick="Button3_Click" />
 

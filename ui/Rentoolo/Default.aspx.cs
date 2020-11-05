@@ -70,6 +70,9 @@ namespace Rentoolo
                 }
 
 
+                // test
+                string userIP = Request.RequestContext.HttpContext.Request.UserHostAddress;
+
 
                 SellFilter sellFilter = new SellFilter()
                 {

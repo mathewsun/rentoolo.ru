@@ -59,12 +59,43 @@ namespace Rentoolo.Model
         }
 
 
-        public static void SetUserUniqueId(Guid userId, string uniqueName)
+        public static Users GetUserByNickName(string name)
         {
             using (var dc = new RentooloEntities())
             {
-                dc.Users.First(x => x.UserId == userId).UniqueUserName = uniqueName;
-                dc.SaveChanges();
+                Users user = dc.Users.FirstOrDefault(x => x.UniqueUserName == name);
+
+                return user;
+            }
+        }
+
+
+        public static bool ContainsUserNickName(string nick)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Users.FirstOrDefault(x => x.UniqueUserName == nick)==null?false:true;
+            }
+        }
+
+
+        public static bool SetUserUniqueId(Guid userId, string uniqueName)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                if (!ContainsUserNickName(uniqueName))
+                {
+                    if (uniqueName[0] != '@') uniqueName = "@" + uniqueName;
+
+                    dc.Users.First(x => x.UserId == userId).UniqueUserName = uniqueName;
+                    dc.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
             }
         }
 
