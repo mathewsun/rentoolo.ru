@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Rentoolo.HelperModels;
 using Rentoolo.Model;
 
 namespace Rentoolo.Account
@@ -12,6 +13,8 @@ namespace Rentoolo.Account
         public fnGetUserWallets_Result UserWalletRURT;
 
         public Users CurrentUser;
+
+        public string[] AllCities = RusCities.AllRusCities;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -47,6 +50,13 @@ namespace Rentoolo.Account
             //CurrentUser.UniqueUserName = "@" + uniqueUserName;
             //DataHelper.UpdateUser(CurrentUser);
 
+        }
+
+        protected void ButtonCity_Click(object sender, EventArgs e)
+        {
+            string city = Request.Form["selectedCity"];
+
+            DataHelper.SetUserCity(User, city);
         }
     }
 }

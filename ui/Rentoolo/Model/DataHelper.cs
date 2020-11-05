@@ -141,6 +141,7 @@ namespace Rentoolo.Model
             }
         }
 
+
         public static void UpdateUser(Users user)
         {
             using (var ctx = new RentooloEntities())
@@ -149,6 +150,16 @@ namespace Rentoolo.Model
                 obj.Pwd = user.Pwd;
                 obj.PublicId = user.PublicId;
                 obj.Communication = user.Communication;
+                ctx.SaveChanges();
+            }
+        }
+
+        public static void SetUserCity(Users user, string city)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.Users.FirstOrDefault(x => x.UserId == user.UserId);
+                obj.SelectedCity = city;
                 ctx.SaveChanges();
             }
         }

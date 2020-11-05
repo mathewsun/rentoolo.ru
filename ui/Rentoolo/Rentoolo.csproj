@@ -488,6 +488,8 @@
     <Content Include="Manager\Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="AdditionalData\rus_cities.json" />
+    <Content Include="HelperModels\rus_cities2.json" />
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -495,8 +497,6 @@
     <Content Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="AdditionalData\rus_cities.json" />
-    <Content Include="HelperModels\rus_cities2.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
     <Content Include="Default.aspx" />
