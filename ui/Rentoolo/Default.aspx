@@ -515,7 +515,7 @@
                                     </div>--%>
 
                                     <div>
-                                        Цена: 
+                                        Диапазон стоимости: 
                                         <input type="number" name="startPrice" placeholder="startPrice" />
                                         <input type="number" name="endPrice" placeholder="endPrice" />
                                         <br />

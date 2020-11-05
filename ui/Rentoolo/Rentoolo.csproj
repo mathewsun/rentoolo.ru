@@ -495,6 +495,8 @@
     <Content Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="AdditionalData\rus_cities.json" />
+    <Content Include="HelperModels\rus_cities2.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
     <Content Include="Default.aspx" />
@@ -1157,6 +1159,7 @@
     <Compile Include="CreateComplaint.aspx.designer.cs">
       <DependentUpon>CreateComplaint.aspx</DependentUpon>
     </Compile>
+    <Compile Include="HelperModels\RusCities.cs" />
     <Compile Include="HelperModels\StateStructs.cs" />
     <Compile Include="Model\Adverts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
