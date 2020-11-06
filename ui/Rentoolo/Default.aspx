@@ -519,9 +519,9 @@
                                     </div>
 
                                     <div class="main-find_price">
-                                        <span>Диапазон стоимоcти:</span> 
-                                        <input type="number" name="startPrice" placeholder="startPrice" />
-                                        <input type="number" name="endPrice" placeholder="endPrice" />
+                                        <span>Цена:</span> 
+                                        <input type="number" name="startPrice" placeholder="От" />
+                                        <input type="number" name="endPrice" placeholder="До" />
                                         <br />
                                     </div>
 
