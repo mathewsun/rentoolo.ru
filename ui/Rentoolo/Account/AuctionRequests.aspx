@@ -9,14 +9,14 @@
         <div>
 
             <% foreach(var item in AuctionRequestList){  %>
-
+                
                 <div>
                     Name : <%= item.Name %> <br />
                     Price: <%= item.Price %> <br />
                     Description: <%= item.Description %>
 
                 </div>
-
+                
             <% } %>
 
         </div>

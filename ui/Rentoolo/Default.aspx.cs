@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
+using Rentoolo.HelperModels;
 using Rentoolo.Model;
 
 namespace Rentoolo
@@ -13,6 +14,8 @@ namespace Rentoolo
         public List<Adverts> ListAdverts;
 
         public string AdvertsCount;
+
+        public string[] AllCities = RusCities.AllRusCities;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -69,6 +72,9 @@ namespace Rentoolo
 
                 }
 
+
+                // test
+                string userIP = Request.RequestContext.HttpContext.Request.UserHostAddress;
 
 
                 SellFilter sellFilter = new SellFilter()

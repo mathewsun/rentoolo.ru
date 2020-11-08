@@ -1,0 +1,1082 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Necromant\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Necromant\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Rentoolo.648440801.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Necromant\source\repos\rentoolo\rentoolo.ru\ui" t="IncludeFlat">
+      <e p="Newtonsoft.Json-master\Src\Newtonsoft.Json" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Bson" t="Include">
+          <e p="BsonBinaryType.cs" t="Include" />
+          <e p="BsonBinaryWriter.cs" t="Include" />
+          <e p="BsonObjectId.cs" t="Include" />
+          <e p="BsonReader.cs" t="Include" />
+          <e p="BsonToken.cs" t="Include" />
+          <e p="BsonType.cs" t="Include" />
+          <e p="BsonWriter.cs" t="Include" />
+        </e>
+        <e p="ConstructorHandling.cs" t="Include" />
+        <e p="Converters" t="Include">
+          <e p="BinaryConverter.cs" t="Include" />
+          <e p="BsonObjectIdConverter.cs" t="Include" />
+          <e p="CustomCreationConverter.cs" t="Include" />
+          <e p="DataSetConverter.cs" t="Include" />
+          <e p="DataTableConverter.cs" t="Include" />
+          <e p="DateTimeConverterBase.cs" t="Include" />
+          <e p="DiscriminatedUnionConverter.cs" t="Include" />
+          <e p="EntityKeyMemberConverter.cs" t="Include" />
+          <e p="ExpandoObjectConverter.cs" t="Include" />
+          <e p="IsoDateTimeConverter.cs" t="Include" />
+          <e p="JavaScriptDateTimeConverter.cs" t="Include" />
+          <e p="KeyValuePairConverter.cs" t="Include" />
+          <e p="RegexConverter.cs" t="Include" />
+          <e p="StringEnumConverter.cs" t="Include" />
+          <e p="VersionConverter.cs" t="Include" />
+          <e p="XmlNodeConverter.cs" t="Include" />
+        </e>
+        <e p="DateFormatHandling.cs" t="Include" />
+        <e p="DateParseHandling.cs" t="Include" />
+        <e p="DateTimeZoneHandling.cs" t="Include" />
+        <e p="DefaultValueHandling.cs" t="Include" />
+        <e p="Dynamic.snk" t="Include" />
+        <e p="FloatFormatHandling.cs" t="Include" />
+        <e p="FloatParseHandling.cs" t="Include" />
+        <e p="FormatterAssemblyStyle.cs" t="Include" />
+        <e p="Formatting.cs" t="Include" />
+        <e p="IArrayPool.cs" t="Include" />
+        <e p="IJsonLineInfo.cs" t="Include" />
+        <e p="JsonArrayAttribute.cs" t="Include" />
+        <e p="JsonConstructorAttribute.cs" t="Include" />
+        <e p="JsonContainerAttribute.cs" t="Include" />
+        <e p="JsonConvert.cs" t="Include" />
+        <e p="JsonConverter.cs" t="Include" />
+        <e p="JsonConverterAttribute.cs" t="Include" />
+        <e p="JsonConverterCollection.cs" t="Include" />
+        <e p="JsonDictionaryAttribute.cs" t="Include" />
+        <e p="JsonException.cs" t="Include" />
+        <e p="JsonExtensionDataAttribute.cs" t="Include" />
+        <e p="JsonIgnoreAttribute.cs" t="Include" />
+        <e p="JsonObjectAttribute.cs" t="Include" />
+        <e p="JsonPosition.cs" t="Include" />
+        <e p="JsonPropertyAttribute.cs" t="Include" />
+        <e p="JsonReader.cs" t="Include" />
+        <e p="JsonReaderException.cs" t="Include" />
+        <e p="JsonRequiredAttribute.cs" t="Include" />
+        <e p="JsonSerializationException.cs" t="Include" />
+        <e p="JsonSerializer.cs" t="Include" />
+        <e p="JsonSerializerSettings.cs" t="Include" />
+        <e p="JsonTextReader.cs" t="Include" />
+        <e p="JsonTextWriter.cs" t="Include" />
+        <e p="JsonToken.cs" t="Include" />
+        <e p="JsonValidatingReader.cs" t="Include" />
+        <e p="JsonWriter.cs" t="Include" />
+        <e p="JsonWriterException.cs" t="Include" />
+        <e p="Linq" t="Include">
+          <e p="CommentHandling.cs" t="Include" />
+          <e p="Extensions.cs" t="Include" />
+          <e p="IJEnumerable.cs" t="Include" />
+          <e p="JArray.cs" t="Include" />
+          <e p="JConstructor.cs" t="Include" />
+          <e p="JContainer.cs" t="Include" />
+          <e p="JEnumerable.cs" t="Include" />
+          <e p="JObject.cs" t="Include" />
+          <e p="JProperty.cs" t="Include" />
+          <e p="JPropertyDescriptor.cs" t="Include" />
+          <e p="JPropertyKeyedCollection.cs" t="Include" />
+          <e p="JRaw.cs" t="Include" />
+          <e p="JsonLoadSettings.cs" t="Include" />
+          <e p="JsonMergeSettings.cs" t="Include" />
+          <e p="JsonPath" t="Include">
+            <e p="ArrayIndexFilter.cs" t="Include" />
+            <e p="ArrayMultipleIndexFilter.cs" t="Include" />
+            <e p="ArraySliceFilter.cs" t="Include" />
+            <e p="FieldFilter.cs" t="Include" />
+            <e p="FieldMultipleFilter.cs" t="Include" />
+            <e p="JPath.cs" t="Include" />
+            <e p="PathFilter.cs" t="Include" />
+            <e p="QueryExpression.cs" t="Include" />
+            <e p="QueryFilter.cs" t="Include" />
+            <e p="RootFilter.cs" t="Include" />
+            <e p="ScanFilter.cs" t="Include" />
+            <e p="ScanMultipleFilter.cs" t="Include" />
+          </e>
+          <e p="JToken.cs" t="Include" />
+          <e p="JTokenEqualityComparer.cs" t="Include" />
+          <e p="JTokenReader.cs" t="Include" />
+          <e p="JTokenType.cs" t="Include" />
+          <e p="JTokenWriter.cs" t="Include" />
+          <e p="JValue.cs" t="Include" />
+          <e p="MergeArrayHandling.cs" t="Include" />
+          <e p="MergeNullValueHandling.cs" t="Include" />
+        </e>
+        <e p="MemberSerialization.cs" t="Include" />
+        <e p="MetadataPropertyHandling.cs" t="Include" />
+        <e p="MissingMemberHandling.cs" t="Include" />
+        <e p="Newtonsoft.Json.Net40.csproj" t="IncludeRecursive" />
+        <e p="NullValueHandling.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="ObjectCreationHandling.cs" t="Include" />
+        <e p="PreserveReferencesHandling.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="ReferenceLoopHandling.cs" t="Include" />
+        <e p="Required.cs" t="Include" />
+        <e p="Schema" t="Include">
+          <e p="Extensions.cs" t="Include" />
+          <e p="JsonSchema.cs" t="Include" />
+          <e p="JsonSchemaBuilder.cs" t="Include" />
+          <e p="JsonSchemaConstants.cs" t="Include" />
+          <e p="JsonSchemaException.cs" t="Include" />
+          <e p="JsonSchemaGenerator.cs" t="Include" />
+          <e p="JsonSchemaModel.cs" t="Include" />
+          <e p="JsonSchemaModelBuilder.cs" t="Include" />
+          <e p="JsonSchemaNode.cs" t="Include" />
+          <e p="JsonSchemaNodeCollection.cs" t="Include" />
+          <e p="JsonSchemaResolver.cs" t="Include" />
+          <e p="JsonSchemaType.cs" t="Include" />
+          <e p="JsonSchemaWriter.cs" t="Include" />
+          <e p="UndefinedSchemaIdHandling.cs" t="Include" />
+          <e p="ValidationEventArgs.cs" t="Include" />
+          <e p="ValidationEventHandler.cs" t="Include" />
+        </e>
+        <e p="Serialization" t="Include">
+          <e p="CachedAttributeGetter.cs" t="Include" />
+          <e p="CamelCaseNamingStrategy.cs" t="Include" />
+          <e p="CamelCasePropertyNamesContractResolver.cs" t="Include" />
+          <e p="DefaultContractResolver.cs" t="Include" />
+          <e p="DefaultNamingStrategy.cs" t="Include" />
+          <e p="DefaultReferenceResolver.cs" t="Include" />
+          <e p="DefaultSerializationBinder.cs" t="Include" />
+          <e p="DiagnosticsTraceWriter.cs" t="Include" />
+          <e p="DynamicValueProvider.cs" t="Include" />
+          <e p="ErrorContext.cs" t="Include" />
+          <e p="ErrorEventArgs.cs" t="Include" />
+          <e p="ExpressionValueProvider.cs" t="Include" />
+          <e p="IAttributeProvider.cs" t="Include" />
+          <e p="IContractResolver.cs" t="Include" />
+          <e p="IReferenceResolver.cs" t="Include" />
+          <e p="ISerializationBinder.cs" t="Include" />
+          <e p="ITraceWriter.cs" t="Include" />
+          <e p="IValueProvider.cs" t="Include" />
+          <e p="JsonArrayContract.cs" t="Include" />
+          <e p="JsonContainerContract.cs" t="Include" />
+          <e p="JsonContract.cs" t="Include" />
+          <e p="JsonDictionaryContract.cs" t="Include" />
+          <e p="JsonDynamicContract.cs" t="Include" />
+          <e p="JsonFormatterConverter.cs" t="Include" />
+          <e p="JsonISerializableContract.cs" t="Include" />
+          <e p="JsonLinqContract.cs" t="Include" />
+          <e p="JsonObjectContract.cs" t="Include" />
+          <e p="JsonPrimitiveContract.cs" t="Include" />
+          <e p="JsonProperty.cs" t="Include" />
+          <e p="JsonPropertyCollection.cs" t="Include" />
+          <e p="JsonSerializerInternalBase.cs" t="Include" />
+          <e p="JsonSerializerInternalReader.cs" t="Include" />
+          <e p="JsonSerializerInternalWriter.cs" t="Include" />
+          <e p="JsonSerializerProxy.cs" t="Include" />
+          <e p="JsonStringContract.cs" t="Include" />
+          <e p="JsonTypeReflector.cs" t="Include" />
+          <e p="MemoryTraceWriter.cs" t="Include" />
+          <e p="NamingStrategy.cs" t="Include" />
+          <e p="ObjectConstructor.cs" t="Include" />
+          <e p="OnErrorAttribute.cs" t="Include" />
+          <e p="ReflectionAttributeProvider.cs" t="Include" />
+          <e p="ReflectionValueProvider.cs" t="Include" />
+          <e p="SerializationBinderAdapter.cs" t="Include" />
+          <e p="SnakeCaseNamingStrategy.cs" t="Include" />
+          <e p="TraceJsonReader.cs" t="Include" />
+          <e p="TraceJsonWriter.cs" t="Include" />
+        </e>
+        <e p="SerializationBinder.cs" t="Include" />
+        <e p="StringEscapeHandling.cs" t="Include" />
+        <e p="TraceLevel.cs" t="Include" />
+        <e p="TypeNameAssemblyFormatHandling.cs" t="Include" />
+        <e p="TypeNameHandling.cs" t="Include" />
+        <e p="Utilities" t="Include">
+          <e p="Base64Encoder.cs" t="Include" />
+          <e p="BidirectionalDictionary.cs" t="Include" />
+          <e p="CollectionUtils.cs" t="Include" />
+          <e p="CollectionWrapper.cs" t="Include" />
+          <e p="ConvertUtils.cs" t="Include" />
+          <e p="DateTimeParser.cs" t="Include" />
+          <e p="DateTimeUtils.cs" t="Include" />
+          <e p="DictionaryWrapper.cs" t="Include" />
+          <e p="DynamicProxy.cs" t="Include" />
+          <e p="DynamicProxyMetaObject.cs" t="Include" />
+          <e p="DynamicReflectionDelegateFactory.cs" t="Include" />
+          <e p="DynamicUtils.cs" t="Include" />
+          <e p="EnumUtils.cs" t="Include" />
+          <e p="EnumValue.cs" t="Include" />
+          <e p="ExpressionReflectionDelegateFactory.cs" t="Include" />
+          <e p="FSharpUtils.cs" t="Include" />
+          <e p="ILGeneratorExtensions.cs" t="Include" />
+          <e p="ImmutableCollectionsUtils.cs" t="Include" />
+          <e p="JavaScriptUtils.cs" t="Include" />
+          <e p="JsonTokenUtils.cs" t="Include" />
+          <e p="LateBoundReflectionDelegateFactory.cs" t="Include" />
+          <e p="LinqBridge.cs" t="Include" />
+          <e p="MathUtils.cs" t="Include" />
+          <e p="MethodCall.cs" t="Include" />
+          <e p="MiscellaneousUtils.cs" t="Include" />
+          <e p="PropertyNameTable.cs" t="Include" />
+          <e p="ReflectionDelegateFactory.cs" t="Include" />
+          <e p="ReflectionObject.cs" t="Include" />
+          <e p="ReflectionUtils.cs" t="Include" />
+          <e p="StringBuffer.cs" t="Include" />
+          <e p="StringReference.cs" t="Include" />
+          <e p="StringUtils.cs" t="Include" />
+          <e p="ThreadSafeStore.cs" t="Include" />
+          <e p="TypeExtensions.cs" t="Include" />
+          <e p="ValidationUtils.cs" t="Include" />
+        </e>
+        <e p="WriteState.cs" t="Include" />
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="rentoolo" t="IncludeRecursive">
+        <e p="403.aspx" t="Include" />
+        <e p="403.aspx.cs" t="Include" />
+        <e p="403.aspx.designer.cs" t="Include" />
+        <e p="404.aspx" t="Include" />
+        <e p="404.aspx.cs" t="Include" />
+        <e p="404.aspx.designer.cs" t="Include" />
+        <e p="500.aspx" t="Include" />
+        <e p="500.aspx.cs" t="Include" />
+        <e p="500.aspx.designer.cs" t="Include" />
+        <e p="About.aspx" t="Include" />
+        <e p="About.aspx.cs" t="Include" />
+        <e p="About.aspx.designer.cs" t="Include" />
+        <e p="Account" t="Include">
+          <e p="AddItem.aspx" t="Include" />
+          <e p="AddItem.aspx.cs" t="Include" />
+          <e p="AddItem.aspx.designer.cs" t="Include" />
+          <e p="AddItemCar.aspx" t="Include" />
+          <e p="AddItemCar.aspx.cs" t="Include" />
+          <e p="AddItemCar.aspx.designer.cs" t="Include" />
+          <e p="Auction.aspx" t="Include" />
+          <e p="Auction.aspx.cs" t="Include" />
+          <e p="Auction.aspx.designer.cs" t="Include" />
+          <e p="AuctionInfo.aspx" t="Include" />
+          <e p="AuctionInfo.aspx.cs" t="Include" />
+          <e p="AuctionInfo.aspx.designer.cs" t="Include" />
+          <e p="AuctionRequests.aspx" t="Include" />
+          <e p="AuctionRequests.aspx.cs" t="Include" />
+          <e p="AuctionRequests.aspx.designer.cs" t="Include" />
+          <e p="Auctions.aspx" t="Include" />
+          <e p="Auctions.aspx.cs" t="Include" />
+          <e p="Auctions.aspx.designer.cs" t="Include" />
+          <e p="Auto.aspx" t="Include" />
+          <e p="Auto.aspx.cs" t="Include" />
+          <e p="Auto.aspx.designer.cs" t="Include" />
+          <e p="Cabinet.aspx" t="Include" />
+          <e p="Cabinet.aspx.cs" t="Include" />
+          <e p="Cabinet.aspx.designer.cs" t="Include" />
+          <e p="CashIn.aspx" t="Include" />
+          <e p="CashIn.aspx.cs" t="Include" />
+          <e p="CashIn.aspx.designer.cs" t="Include" />
+          <e p="CashOut.aspx" t="Include" />
+          <e p="CashOut.aspx.cs" t="Include" />
+          <e p="CashOut.aspx.designer.cs" t="Include" />
+          <e p="Category.aspx" t="Include" />
+          <e p="Category.aspx.cs" t="Include" />
+          <e p="Category.aspx.designer.cs" t="Include" />
+          <e p="DeviceSettings.aspx" t="Include" />
+          <e p="DeviceSettings.aspx.cs" t="Include" />
+          <e p="DeviceSettings.aspx.designer.cs" t="Include" />
+          <e p="Exchange.aspx" t="Include" />
+          <e p="Exchange.aspx.cs" t="Include" />
+          <e p="Exchange.aspx.designer.cs" t="Include" />
+          <e p="Login.aspx" t="Include" />
+          <e p="Login.aspx.cs" t="Include" />
+          <e p="Login.aspx.designer.cs" t="Include" />
+          <e p="LoginStatistics.aspx" t="Include" />
+          <e p="LoginStatistics.aspx.cs" t="Include" />
+          <e p="LoginStatistics.aspx.designer.cs" t="Include" />
+          <e p="Manage.aspx" t="Include" />
+          <e p="Manage.aspx.cs" t="Include" />
+          <e p="Manage.aspx.designer.cs" t="Include" />
+          <e p="ManageTopUserControl.ascx" t="Include" />
+          <e p="ManageTopUserControl.ascx.cs" t="Include" />
+          <e p="ManageTopUserControl.ascx.designer.cs" t="Include" />
+          <e p="Menu.ascx" t="Include" />
+          <e p="Menu.ascx.cs" t="Include" />
+          <e p="Menu.ascx.designer.cs" t="Include" />
+          <e p="Moto.aspx" t="Include" />
+          <e p="Moto.aspx.cs" t="Include" />
+          <e p="Moto.aspx.designer.cs" t="Include" />
+          <e p="MyAdverts.aspx" t="Include" />
+          <e p="MyAdverts.aspx.cs" t="Include" />
+          <e p="MyAdverts.aspx.designer.cs" t="Include" />
+          <e p="OkResult.aspx" t="Include" />
+          <e p="OkResult.aspx.cs" t="Include" />
+          <e p="OkResult.aspx.designer.cs" t="Include" />
+          <e p="OpenAuthProviders.ascx" t="Include" />
+          <e p="OpenAuthProviders.ascx.cs" t="Include" />
+          <e p="OpenAuthProviders.ascx.designer.cs" t="Include" />
+          <e p="Operations.aspx" t="Include" />
+          <e p="Operations.aspx.cs" t="Include" />
+          <e p="Operations.aspx.designer.cs" t="Include" />
+          <e p="Payment.aspx" t="Include" />
+          <e p="Payment.aspx.cs" t="Include" />
+          <e p="Payment.aspx.designer.cs" t="Include" />
+          <e p="Profit.aspx" t="Include" />
+          <e p="Profit.aspx.cs" t="Include" />
+          <e p="Profit.aspx.designer.cs" t="Include" />
+          <e p="Referrals.aspx" t="Include" />
+          <e p="Referrals.aspx.cs" t="Include" />
+          <e p="Referrals.aspx.designer.cs" t="Include" />
+          <e p="RegisterExternalLogin.aspx" t="Include" />
+          <e p="RegisterExternalLogin.aspx.cs" t="Include" />
+          <e p="RegisterExternalLogin.aspx.designer.cs" t="Include" />
+          <e p="Rent" t="Include" />
+          <e p="Rent.aspx" t="Include" />
+          <e p="Rent.aspx.cs" t="Include" />
+          <e p="Rent.aspx.designer.cs" t="Include" />
+          <e p="Result.ashx" t="Include" />
+          <e p="Result.ashx.cs" t="Include" />
+          <e p="SelectCategory.aspx" t="Include" />
+          <e p="SelectCategory.aspx.cs" t="Include" />
+          <e p="SelectCategory.aspx.designer.cs" t="Include" />
+          <e p="Sell" t="Include">
+            <e p="Business.aspx" t="Include" />
+            <e p="Business.aspx.cs" t="Include" />
+            <e p="Business.aspx.designer.cs" t="Include" />
+          </e>
+          <e p="SellCategory.aspx" t="Include" />
+          <e p="SellCategory.aspx.cs" t="Include" />
+          <e p="SellCategory.aspx.designer.cs" t="Include" />
+          <e p="Service.aspx" t="Include" />
+          <e p="Service.aspx.cs" t="Include" />
+          <e p="Service.aspx.designer.cs" t="Include" />
+          <e p="Settings.aspx" t="Include" />
+          <e p="Settings.aspx.cs" t="Include" />
+          <e p="Settings.aspx.designer.cs" t="Include" />
+          <e p="Shop.aspx" t="Include" />
+          <e p="Shop.aspx.cs" t="Include" />
+          <e p="Shop.aspx.designer.cs" t="Include" />
+          <e p="SignUp.aspx" t="Include" />
+          <e p="SignUp.aspx.cs" t="Include" />
+          <e p="SignUp.aspx.designer.cs" t="Include" />
+          <e p="TenderViews" t="Include">
+            <e p="CreateTender.aspx" t="Include" />
+            <e p="CreateTender.aspx.cs" t="Include" />
+            <e p="CreateTender.aspx.designer.cs" t="Include" />
+            <e p="Tender.aspx" t="Include" />
+            <e p="Tender.aspx.cs" t="Include" />
+            <e p="Tender.aspx.designer.cs" t="Include" />
+            <e p="TenderInfo.aspx" t="Include" />
+            <e p="TenderInfo.aspx.cs" t="Include" />
+            <e p="TenderInfo.aspx.designer.cs" t="Include" />
+            <e p="TenderRequests.aspx" t="Include" />
+            <e p="TenderRequests.aspx.cs" t="Include" />
+            <e p="TenderRequests.aspx.designer.cs" t="Include" />
+            <e p="TenderRequestView.aspx" t="Include" />
+            <e p="TenderRequestView.aspx.cs" t="Include" />
+            <e p="TenderRequestView.aspx.designer.cs" t="Include" />
+            <e p="UsersTenderRequests.aspx" t="Include" />
+            <e p="UsersTenderRequests.aspx.cs" t="Include" />
+            <e p="UsersTenderRequests.aspx.designer.cs" t="Include" />
+            <e p="UsersTenders.aspx" t="Include" />
+            <e p="UsersTenders.aspx.cs" t="Include" />
+            <e p="UsersTenders.aspx.designer.cs" t="Include" />
+            <e p="WinedTenderRequest.aspx" t="Include" />
+            <e p="WinedTenderRequest.aspx.cs" t="Include" />
+            <e p="WinedTenderRequest.aspx.designer.cs" t="Include" />
+          </e>
+          <e p="TokensBuying.aspx" t="Include" />
+          <e p="TokensBuying.aspx.cs" t="Include" />
+          <e p="TokensBuying.aspx.designer.cs" t="Include" />
+          <e p="TokensSelling.aspx" t="Include" />
+          <e p="TokensSelling.aspx.cs" t="Include" />
+          <e p="TokensSelling.aspx.designer.cs" t="Include" />
+          <e p="Transport.aspx" t="Include" />
+          <e p="Transport.aspx.cs" t="Include" />
+          <e p="Transport.aspx.designer.cs" t="Include" />
+          <e p="UserComplaints.aspx" t="Include" />
+          <e p="UserComplaints.aspx.cs" t="Include" />
+          <e p="UserComplaints.aspx.designer.cs" t="Include" />
+          <e p="UserComplaintView.aspx" t="Include" />
+          <e p="UserComplaintView.aspx.cs" t="Include" />
+          <e p="UserComplaintView.aspx.designer.cs" t="Include" />
+          <e p="UserProfile.aspx" t="Include" />
+          <e p="UserProfile.aspx.cs" t="Include" />
+          <e p="UserProfile.aspx.designer.cs" t="Include" />
+          <e p="Vacancy.aspx" t="Include" />
+          <e p="Vacancy.aspx.cs" t="Include" />
+          <e p="Vacancy.aspx.designer.cs" t="Include" />
+          <e p="Watched.aspx" t="Include" />
+          <e p="Watched.aspx.cs" t="Include" />
+          <e p="Watched.aspx.designer.cs" t="Include" />
+          <e p="Web.config" t="Include" />
+        </e>
+        <e p="AddItem.html" t="Include" />
+        <e p="AddItem_test.aspx" t="Include" />
+        <e p="AddItem_test.aspx.cs" t="Include" />
+        <e p="AddItem_test.aspx.designer.cs" t="Include" />
+        <e p="AdditionalData" t="Include">
+          <e p="rus_cities.json" t="Include" />
+        </e>
+        <e p="Admin" t="Include">
+          <e p="Admin.aspx" t="Include" />
+          <e p="Admin.aspx.cs" t="Include" />
+          <e p="Admin.aspx.designer.cs" t="Include" />
+          <e p="AdminMenu.ascx" t="Include" />
+          <e p="AdminMenu.ascx.cs" t="Include" />
+          <e p="AdminMenu.ascx.designer.cs" t="Include" />
+          <e p="ArticleOne.aspx" t="Include" />
+          <e p="ArticleOne.aspx.cs" t="Include" />
+          <e p="ArticleOne.aspx.designer.cs" t="Include" />
+          <e p="Articles.aspx" t="Include" />
+          <e p="Articles.aspx.cs" t="Include" />
+          <e p="Articles.aspx.designer.cs" t="Include" />
+          <e p="CashIns.aspx" t="Include" />
+          <e p="CashIns.aspx.cs" t="Include" />
+          <e p="CashIns.aspx.designer.cs" t="Include" />
+          <e p="CashOuts.aspx" t="Include" />
+          <e p="CashOuts.aspx.cs" t="Include" />
+          <e p="CashOuts.aspx.designer.cs" t="Include" />
+          <e p="Clients.aspx" t="Include" />
+          <e p="Clients.aspx.cs" t="Include" />
+          <e p="Clients.aspx.designer.cs" t="Include" />
+          <e p="DatabaseTables.aspx" t="Include" />
+          <e p="DatabaseTables.aspx.cs" t="Include" />
+          <e p="DatabaseTables.aspx.designer.cs" t="Include" />
+          <e p="Exceptions.aspx" t="Include" />
+          <e p="Exceptions.aspx.cs" t="Include" />
+          <e p="Exceptions.aspx.designer.cs" t="Include" />
+          <e p="Ips.aspx" t="Include" />
+          <e p="Ips.aspx.cs" t="Include" />
+          <e p="Ips.aspx.designer.cs" t="Include" />
+          <e p="LoginStatistics.aspx" t="Include" />
+          <e p="LoginStatistics.aspx.cs" t="Include" />
+          <e p="LoginStatistics.aspx.designer.cs" t="Include" />
+          <e p="LoginStatisticsToday.aspx" t="Include" />
+          <e p="LoginStatisticsToday.aspx.cs" t="Include" />
+          <e p="LoginStatisticsToday.aspx.designer.cs" t="Include" />
+          <e p="News.aspx" t="Include" />
+          <e p="News.aspx.cs" t="Include" />
+          <e p="News.aspx.designer.cs" t="Include" />
+          <e p="NewsOne.aspx" t="Include" />
+          <e p="NewsOne.aspx.cs" t="Include" />
+          <e p="NewsOne.aspx.designer.cs" t="Include" />
+          <e p="Operations.aspx" t="Include" />
+          <e p="Operations.aspx.cs" t="Include" />
+          <e p="Operations.aspx.designer.cs" t="Include" />
+          <e p="Payments.aspx" t="Include" />
+          <e p="Payments.aspx.cs" t="Include" />
+          <e p="Payments.aspx.designer.cs" t="Include" />
+          <e p="Referrals.aspx" t="Include" />
+          <e p="Referrals.aspx.cs" t="Include" />
+          <e p="Referrals.aspx.designer.cs" t="Include" />
+          <e p="Result.ashx" t="Include" />
+          <e p="Result.ashx.cs" t="Include" />
+          <e p="Setting.aspx" t="Include" />
+          <e p="Setting.aspx.cs" t="Include" />
+          <e p="Setting.aspx.designer.cs" t="Include" />
+          <e p="Settings.aspx" t="Include" />
+          <e p="Settings.aspx.cs" t="Include" />
+          <e p="Settings.aspx.designer.cs" t="Include" />
+          <e p="Statistics.aspx" t="Include" />
+          <e p="Statistics.aspx.cs" t="Include" />
+          <e p="Statistics.aspx.designer.cs" t="Include" />
+          <e p="User.aspx" t="Include" />
+          <e p="User.aspx.cs" t="Include" />
+          <e p="User.aspx.designer.cs" t="Include" />
+          <e p="Users.aspx" t="Include" />
+          <e p="Users.aspx.cs" t="Include" />
+          <e p="Users.aspx.designer.cs" t="Include" />
+          <e p="Web.config" t="Include" />
+        </e>
+        <e p="AdminMaster.Master" t="Include" />
+        <e p="AdminMaster.Master.cs" t="Include" />
+        <e p="AdminMaster.Master.designer.cs" t="Include" />
+        <e p="Advert.aspx" t="Include" />
+        <e p="Advert.aspx.cs" t="Include" />
+        <e p="Advert.aspx.designer.cs" t="Include" />
+        <e p="App_Data" t="Include" />
+        <e p="App_Start" t="Include">
+          <e p="AuthConfig.cs" t="Include" />
+          <e p="BundleConfig.cs" t="Include" />
+        </e>
+        <e p="Article.aspx" t="Include" />
+        <e p="Article.aspx.cs" t="Include" />
+        <e p="Article.aspx.designer.cs" t="Include" />
+        <e p="Articles.aspx" t="Include" />
+        <e p="Articles.aspx.cs" t="Include" />
+        <e p="Articles.aspx.designer.cs" t="Include" />
+        <e p="assets" t="Include">
+          <e p="css" t="Include">
+            <e p="additional.css" t="Include" />
+            <e p="application.css" t="Include" />
+            <e p="docs.css" t="Include" />
+            <e p="jQuery.Brazzers-Carousel.css" t="Include" />
+            <e p="photoSlider.css" t="Include" />
+            <e p="sweet-alert.css" t="Include" />
+            <e p="toolkit.css" t="Include" />
+          </e>
+          <e p="fonts" t="Include">
+            <e p="toolkit-entypo.eot" t="Include" />
+            <e p="toolkit-entypo.ttf" t="Include" />
+            <e p="toolkit-entypo.woff" t="Include" />
+            <e p="toolkit-entypo.woff2" t="Include" />
+          </e>
+          <e p="img" t="Include">
+            <e p="add_icon_1_1_20.png" t="Include" />
+            <e p="add_icon_1_1_2_20.png" t="Include" />
+            <e p="add_icon_1_8_1_20.png" t="Include" />
+            <e p="add_icon_1_8_1_40.png" t="Include" />
+            <e p="add_icon_1_8_2_20.png" t="Include" />
+            <e p="add_icon_1_8_2_40.png" t="Include" />
+            <e p="addphoto.png" t="Include" />
+            <e p="addphoto.svg" t="Include" />
+            <e p="avatar-dhg.png" t="Include" />
+            <e p="avatar-fat.jpg" t="Include" />
+            <e p="avatar-mdo.png" t="Include" />
+            <e p="banner_1.jpg" t="Include" />
+            <e p="brand-white.png" t="Include" />
+            <e p="brand.png" t="Include" />
+            <e p="delete.svg" t="Include" />
+            <e p="favorite_20.png" t="Include" />
+            <e p="favorite_dark_20.png" t="Include" />
+            <e p="favorite_light_20.png" t="Include" />
+            <e p="iceland.jpg" t="Include" />
+            <e p="icon_edit.png" t="Include" />
+            <e p="instagram_1.jpg" t="Include" />
+            <e p="instagram_10.jpg" t="Include" />
+            <e p="instagram_11.jpg" t="Include" />
+            <e p="instagram_12.jpg" t="Include" />
+            <e p="instagram_13.jpg" t="Include" />
+            <e p="instagram_14.jpg" t="Include" />
+            <e p="instagram_15.jpg" t="Include" />
+            <e p="instagram_16.jpg" t="Include" />
+            <e p="instagram_17.jpg" t="Include" />
+            <e p="instagram_18.jpg" t="Include" />
+            <e p="instagram_2.jpg" t="Include" />
+            <e p="instagram_3.jpg" t="Include" />
+            <e p="instagram_4.jpg" t="Include" />
+            <e p="instagram_5.jpg" t="Include" />
+            <e p="instagram_6.jpg" t="Include" />
+            <e p="instagram_7.jpg" t="Include" />
+            <e p="instagram_8.jpg" t="Include" />
+            <e p="instagram_9.jpg" t="Include" />
+            <e p="kurier-piter.jpg" t="Include" />
+            <e p="liked.png" t="Include" />
+            <e p="neliked.jpg" t="Include" />
+            <e p="notLiked.jpg" t="Include" />
+            <e p="position.png" t="Include" />
+            <e p="qiwi_and_cards.jpg" t="Include" />
+            <e p="settings-icon-50.png" t="Include" />
+            <e p="slready16.png" t="Include" />
+            <e p="unsplash_1.jpg" t="Include" />
+            <e p="unsplash_2.jpg" t="Include" />
+            <e p="varianty-planirovki-3-h-komnatnoj-kvartiry-v-hrushchevke-7.jpg" t="Include" />
+            <e p="vk_black.png" t="Include" />
+            <e p="vk_white.png" t="Include" />
+            <e p="yellow-green.ico" t="Include" />
+            <e p="yellow-green.png" t="Include" />
+          </e>
+          <e p="js" t="Include">
+            <e p="application.js" t="Include" />
+            <e p="chart.js" t="Include" />
+            <e p="dropzone" t="Include">
+              <e p="basic.css" t="Include" />
+              <e p="dropzone-amd-module.js" t="Include" />
+              <e p="dropzone.css" t="Include" />
+              <e p="dropzone.js" t="Include" />
+              <e p="min" t="Include">
+                <e p="basic.min.css" t="Include" />
+                <e p="dropzone-amd-module.min.js" t="Include" />
+                <e p="dropzone.min.css" t="Include" />
+                <e p="dropzone.min.js" t="Include" />
+              </e>
+            </e>
+            <e p="format.js" t="Include" />
+            <e p="jquery-2.2.4.js" t="Include" />
+            <e p="jQuery.Brazzers-Carousel.js" t="Include" />
+            <e p="jquery.min.js" t="Include" />
+            <e p="js.cookie.js" t="Include" />
+            <e p="jsonUtils.js" t="Include" />
+            <e p="popper.min.js" t="Include" />
+            <e p="sweet-alert.min.js" t="Include" />
+            <e p="toolkit.js" t="Include" />
+            <e p="utils.js" t="Include" />
+          </e>
+          <e p="json" t="Include">
+            <e p="categories.json" t="Include" />
+            <e p="categories_ru.json" t="Include" />
+          </e>
+        </e>
+        <e p="Auctions.aspx" t="Include" />
+        <e p="Auctions.aspx.cs" t="Include" />
+        <e p="Auctions.aspx.designer.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="bootstrap" t="Include">
+          <e p="index.html" t="Include" />
+        </e>
+        <e p="Bundle.config" t="Include" />
+        <e p="Business.aspx" t="Include" />
+        <e p="Business.aspx.cs" t="Include" />
+        <e p="Business.aspx.designer.cs" t="Include" />
+        <e p="Category.aspx" t="Include" />
+        <e p="Category.aspx.cs" t="Include" />
+        <e p="Category.aspx.designer.cs" t="Include" />
+        <e p="ComplaintPage.aspx" t="Include" />
+        <e p="ComplaintPage.aspx.cs" t="Include" />
+        <e p="ComplaintPage.aspx.designer.cs" t="Include" />
+        <e p="ComplaintsPage.aspx" t="Include" />
+        <e p="ComplaintsPage.aspx.cs" t="Include" />
+        <e p="ComplaintsPage.aspx.designer.cs" t="Include" />
+        <e p="ConsumerElectronics.aspx" t="Include" />
+        <e p="ConsumerElectronics.aspx.cs" t="Include" />
+        <e p="ConsumerElectronics.aspx.designer.cs" t="Include" />
+        <e p="Contact.aspx" t="Include" />
+        <e p="Contact.aspx.cs" t="Include" />
+        <e p="Contact.aspx.designer.cs" t="Include" />
+        <e p="Controllers" t="Include">
+          <e p="ChatsController.cs" t="Include" />
+          <e p="CitiesController.cs" t="Include" />
+          <e p="CommentsController.cs" t="Include" />
+          <e p="GetTokensCostController.cs" t="Include" />
+          <e p="InstructionController.cs" t="Include" />
+          <e p="InstructionsController.cs" t="Include" />
+          <e p="ItemLikesDislikesController.cs" t="Include" />
+          <e p="KitchenModel" t="Include">
+            <e p="Recipe.cs" t="Include" />
+          </e>
+          <e p="LikesDislikesController.cs" t="Include" />
+          <e p="MessagesController.cs" t="Include" />
+          <e p="RecipeController.cs" t="Include" />
+          <e p="TopRecipesController.cs" t="Include" />
+        </e>
+        <e p="CreateComplaint.aspx" t="Include" />
+        <e p="CreateComplaint.aspx.cs" t="Include" />
+        <e p="CreateComplaint.aspx.designer.cs" t="Include" />
+        <e p="DataBase" t="Include">
+          <e p="alter" t="Include">
+            <e p="AlterUsers.sql" t="Include" />
+          </e>
+          <e p="fnGetAllUsers.sql" t="Include" />
+          <e p="fnGetTablesRows.sql" t="Include" />
+          <e p="fnGetUserWallets.sql" t="Include" />
+          <e p="Init" t="Include">
+            <e p="Init.sql" t="Include" />
+            <e p="init_041120.sql" t="Include" />
+            <e p="init_091020.sql" t="Include" />
+            <e p="init_110920.sql" t="Include" />
+            <e p="init_151020.sql" t="Include" />
+            <e p="init_230920.sql" t="Include" />
+            <e p="init_301020.sql" t="Include" />
+            <e p="init_301020_2.sql" t="Include" />
+          </e>
+          <e p="spAddFavorites.sql" t="Include" />
+          <e p="spAddFavoritesAuctions.sql" t="Include" />
+          <e p="spAddFavoritesAuctionsByCookies.sql" t="Include" />
+          <e p="spAddFavoritesByCookies.sql" t="Include" />
+          <e p="spAddWatched.sql" t="Include" />
+          <e p="spAddWatchedByCookies.sql" t="Include" />
+          <e p="spGetAdverts.sql" t="Include" />
+          <e p="spGetAuctions.sql" t="Include" />
+          <e p="spGetComments.sql" t="Include" />
+          <e p="spGetComplaintsByRecipier.txt" t="Include" />
+          <e p="spGetComplaintsBySender.sql" t="Include" />
+          <e p="spGetFavorites.sql" t="Include" />
+          <e p="spGetFavoritesByCookies.sql" t="Include" />
+          <e p="spGetLast200TokensOperations.sql" t="Include" />
+          <e p="spGetLoginStatisticLastDayActive.sql" t="Include" />
+          <e p="spGetLoginStatisticLastHourActive.sql" t="Include" />
+          <e p="spGetTokenCostToday.sql" t="Include" />
+          <e p="spGetUserAdverts.sql" t="Include" />
+          <e p="spGetWatched.sql" t="Include" />
+          <e p="spGetWatchedByCookies.sql" t="Include" />
+          <e p="spSetTokensCost.sql" t="Include" />
+          <e p="spUpdateQiwiAccountBalance.sql" t="Include" />
+          <e p="tables" t="Include">
+            <e p="Adverts.sql" t="Include" />
+            <e p="AuctionRequests.sql" t="Include" />
+            <e p="Auctions.sql" t="Include" />
+            <e p="Business.sql" t="Include" />
+            <e p="CashOuts.sql" t="Include" />
+            <e p="Comments.sql" t="Include" />
+            <e p="Complaints.sql" t="Include" />
+            <e p="Favorites.sql" t="Include" />
+            <e p="FavoritesByCookies.sql" t="Include" />
+            <e p="ItemDisLikes.sql" t="Include" />
+            <e p="ItemLikes.sql" t="Include" />
+            <e p="LoginStat.sql" t="Include" />
+            <e p="Phones.sql" t="Include" />
+            <e p="TenderRequest.sql" t="Include" />
+            <e p="Tenders.sql" t="Include" />
+            <e p="TokensBuying.sql" t="Include" />
+            <e p="TokensCost.sql" t="Include" />
+            <e p="TokensSelling.sql" t="Include" />
+            <e p="Users.sql" t="Include" />
+            <e p="Watched.sql" t="Include" />
+            <e p="WatchedByCookies.sql" t="Include" />
+          </e>
+        </e>
+        <e p="Default.aspx" t="Include" />
+        <e p="Default.aspx.cs" t="Include" />
+        <e p="Default.aspx.designer.cs" t="Include" />
+        <e p="docs" t="Include">
+          <e p="index.html" t="Include" />
+        </e>
+        <e p="Empty.aspx" t="Include" />
+        <e p="Empty.aspx.cs" t="Include" />
+        <e p="Empty.aspx.designer.cs" t="Include" />
+        <e p="Events.ashx" t="Include" />
+        <e p="Events.ashx.cs" t="Include" />
+        <e p="EventsController.cs" t="Include" />
+        <e p="Fail.aspx" t="Include" />
+        <e p="Fail.aspx.cs" t="Include" />
+        <e p="Fail.aspx.designer.cs" t="Include" />
+        <e p="FAQ.aspx" t="Include" />
+        <e p="FAQ.aspx.cs" t="Include" />
+        <e p="FAQ.aspx.designer.cs" t="Include" />
+        <e p="Favorites.aspx" t="Include" />
+        <e p="Favorites.aspx.cs" t="Include" />
+        <e p="Favorites.aspx.designer.cs" t="Include" />
+        <e p="Global.asax" t="Include" />
+        <e p="Global.asax.cs" t="Include" />
+        <e p="Help.aspx" t="Include" />
+        <e p="Help.aspx.cs" t="Include" />
+        <e p="Help.aspx.designer.cs" t="Include" />
+        <e p="HelperModels" t="Include">
+          <e p="rus_cities2.json" t="Include" />
+          <e p="RusCities.cs" t="Include" />
+          <e p="StateStructs.cs" t="Include" />
+        </e>
+        <e p="HobbyRest.aspx" t="Include" />
+        <e p="HobbyRest.aspx.cs" t="Include" />
+        <e p="HobbyRest.aspx.designer.cs" t="Include" />
+        <e p="HomeGarden.aspx" t="Include" />
+        <e p="HomeGarden.aspx.cs" t="Include" />
+        <e p="HomeGarden.aspx.designer.cs" t="Include" />
+        <e p="img" t="Include">
+          <e p="a" t="Include">
+            <e p="noPhoto.png" t="Include" />
+          </e>
+          <e p="kitchen" t="Include">
+            <e p="avatars" t="Include">
+              <e p="69179930_736853823483887_5740857891485646848_n.jpg" t="Include" />
+              <e p="69527679_631739310686765_4819614499147350016_n.jpg" t="Include" />
+              <e p="94671454_277769756585463_6526749104637214720_n.jpg" t="Include" />
+            </e>
+            <e p="falafel-s-ovoshami.jpg" t="Include" />
+            <e p="govadina-v-fruktovom-marinade.jpg" t="Include" />
+            <e p="kartofel-po-domashnemu-s-tushenimi-ovoshami.jpg" t="Include" />
+            <e p="sushi-set-i-rolli.jpg" t="Include" />
+            <e p="venskie-vafli.jpg" t="Include" />
+            <e p="vozdushnie-blini-na-pahte.jpg" t="Include" />
+          </e>
+        </e>
+        <e p="Job.aspx" t="Include" />
+        <e p="Job.aspx.cs" t="Include" />
+        <e p="Job.aspx.designer.cs" t="Include" />
+        <e p="login" t="Include">
+          <e p="index.html" t="Include" />
+        </e>
+        <e p="Manager" t="Include">
+          <e p="ManageAdvert.aspx" t="Include" />
+          <e p="ManageAdvert.aspx.cs" t="Include" />
+          <e p="ManageAdvert.aspx.designer.cs" t="Include" />
+          <e p="Web.config" t="Include" />
+        </e>
+        <e p="Model" t="Include">
+          <e p="Account.cs" t="Include" />
+          <e p="Adverts.cs" t="Include" />
+          <e p="AdvertsDataHelper.cs" t="Include" />
+          <e p="Applications.cs" t="Include" />
+          <e p="Articles.cs" t="Include" />
+          <e p="AuctionHelper.cs" t="Include" />
+          <e p="AuctionRequests.cs" t="Include" />
+          <e p="Auctions.cs" t="Include" />
+          <e p="AuctionsForPage.cs" t="Include" />
+          <e p="BasicPage.cs" t="Include" />
+          <e p="Business.cs" t="Include" />
+          <e p="CashIns.cs" t="Include" />
+          <e p="CashOuts.cs" t="Include" />
+          <e p="CashOutStates.cs" t="Include" />
+          <e p="CashOutTypesEnum.cs" t="Include" />
+          <e p="CategorieEnum.cs" t="Include" />
+          <e p="Categories.cs" t="Include" />
+          <e p="ChartsDates.cs" t="Include" />
+          <e p="ChatActiveUsers.cs" t="Include" />
+          <e p="ChatMessages.cs" t="Include" />
+          <e p="Chats.cs" t="Include" />
+          <e p="ChatUsers.cs" t="Include" />
+          <e p="CheckQiwiPayments.cs" t="Include" />
+          <e p="CommentForUser.cs" t="Include" />
+          <e p="Comments.cs" t="Include" />
+          <e p="Complaints.cs" t="Include" />
+          <e p="CryptHelper.cs" t="Include" />
+          <e p="Currencies.cs" t="Include" />
+          <e p="CurrenciesEnum.cs" t="Include" />
+          <e p="DailyStatistics.cs" t="Include" />
+          <e p="DataHelper.cs" t="Include" />
+          <e p="DeletedAdverts.cs" t="Include" />
+          <e p="DialogActiveUsers.cs" t="Include" />
+          <e p="DialogMessages.cs" t="Include" />
+          <e p="DialogsInfo.cs" t="Include" />
+          <e p="DisLikes.cs" t="Include" />
+          <e p="Exceptions.cs" t="Include" />
+          <e p="Favorites.cs" t="Include" />
+          <e p="FavoritesByCookies.cs" t="Include" />
+          <e p="FavoritesForPage.cs" t="Include" />
+          <e p="FavoritesHelper.cs" t="Include" />
+          <e p="fnGetAllUsers_Result.cs" t="Include" />
+          <e p="fnGetTablesRows_Result.cs" t="Include" />
+          <e p="fnGetUserReferralsSecondLevel_Result.cs" t="Include" />
+          <e p="fnGetUserReferralsThirdLevel_Result.cs" t="Include" />
+          <e p="fnGetUserWallets_Result.cs" t="Include" />
+          <e p="Helper.cs" t="Include" />
+          <e p="HelperStructs" t="Include">
+            <e p="StructsHelper.cs" t="Include" />
+          </e>
+          <e p="ImgUploadResult.cs" t="Include" />
+          <e p="ItemDislikes.cs" t="Include" />
+          <e p="ItemLikeDislike.cs" t="Include" />
+          <e p="ItemLikes.cs" t="Include" />
+          <e p="ItemLikesDislikes.cs" t="Include" />
+          <e p="Items.cs" t="Include" />
+          <e p="KitchenDataHelper.cs" t="Include" />
+          <e p="Likes.cs" t="Include" />
+          <e p="LoginStat.cs" t="Include" />
+          <e p="LoginStatistics.cs" t="Include" />
+          <e p="Memberships.cs" t="Include" />
+          <e p="Model1.Context.cs" t="Include" />
+          <e p="Model1.Context.tt" t="Include" />
+          <e p="Model1.cs" t="Include" />
+          <e p="Model1.Designer.cs" t="Include" />
+          <e p="Model1.edmx" t="Include" />
+          <e p="Model1.edmx.diagram" t="Include" />
+          <e p="Model1.tt" t="Include" />
+          <e p="News.cs" t="Include" />
+          <e p="Operations.cs" t="Include" />
+          <e p="OperationTypes.cs" t="Include" />
+          <e p="PaymentHelper.cs" t="Include" />
+          <e p="Payments.cs" t="Include" />
+          <e p="Phones.cs" t="Include" />
+          <e p="QiwiApi.cs" t="Include" />
+          <e p="QiwiCheckHistory.cs" t="Include" />
+          <e p="QiwiHelper.cs" t="Include" />
+          <e p="QiwiPayment.cs" t="Include" />
+          <e p="Recipes.cs" t="Include" />
+          <e p="Referrals.cs" t="Include" />
+          <e p="Roles.cs" t="Include" />
+          <e p="SellFilter.cs" t="Include" />
+          <e p="Settings.cs" t="Include" />
+          <e p="spGetChats_Result.cs" t="Include" />
+          <e p="spGetChatsForUser_Result.cs" t="Include" />
+          <e p="spGetComments_Result.cs" t="Include" />
+          <e p="spGetCommentsForUser_Result.cs" t="Include" />
+          <e p="spGetComplaintsByRecipier_Result.cs" t="Include" />
+          <e p="spGetComplaintsBySender_Result.cs" t="Include" />
+          <e p="spGetFavorites_Result.cs" t="Include" />
+          <e p="spGetFavoritesByCookies_Result.cs" t="Include" />
+          <e p="spGetLast200TokensOperations_Result.cs" t="Include" />
+          <e p="spGetTokenCostToday_Result.cs" t="Include" />
+          <e p="spGetUserAdverts_Result.cs" t="Include" />
+          <e p="spGetWatched_Result.cs" t="Include" />
+          <e p="spGetWatchedByCookies_Result.cs" t="Include" />
+          <e p="TenderRequest.cs" t="Include" />
+          <e p="Tenders.cs" t="Include" />
+          <e p="TendersHelper.cs" t="Include" />
+          <e p="TokensBuying.cs" t="Include" />
+          <e p="TokensCost.cs" t="Include" />
+          <e p="TokensDataHelper.cs" t="Include" />
+          <e p="TokensSelling.cs" t="Include" />
+          <e p="UpdateBalanceType.cs" t="Include" />
+          <e p="Users.cs" t="Include" />
+          <e p="UserSettings.cs" t="Include" />
+          <e p="UsersOpenAuthAccounts.cs" t="Include" />
+          <e p="UsersOpenAuthData.cs" t="Include" />
+          <e p="UserViews.cs" t="Include" />
+          <e p="Wallets.cs" t="Include" />
+          <e p="WalletsHelper.cs" t="Include" />
+          <e p="Watched.cs" t="Include" />
+          <e p="WatchedByCookies.cs" t="Include" />
+          <e p="WatchedHelper.cs" t="Include" />
+        </e>
+        <e p="News.aspx" t="Include" />
+        <e p="News.aspx.cs" t="Include" />
+        <e p="News.aspx.designer.cs" t="Include" />
+        <e p="notifications" t="Include">
+          <e p="index.html" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="PersonalGoods.aspx" t="Include" />
+        <e p="PersonalGoods.aspx.cs" t="Include" />
+        <e p="PersonalGoods.aspx.designer.cs" t="Include" />
+        <e p="Pets.aspx" t="Include" />
+        <e p="Pets.aspx.cs" t="Include" />
+        <e p="Pets.aspx.designer.cs" t="Include" />
+        <e p="profile" t="Include">
+          <e p="index.html" t="Include" />
+        </e>
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="PublishProfiles" t="Include">
+            <e p="FolderProfile.pubxml" t="Include" />
+            <e p="tropal.pubxml" t="Include" />
+          </e>
+        </e>
+        <e p="Realty.aspx" t="Include" />
+        <e p="Realty.aspx.cs" t="Include" />
+        <e p="Realty.aspx.designer.cs" t="Include" />
+        <e p="Rent" t="Include" />
+        <e p="Rent.aspx" t="Include" />
+        <e p="Rent.aspx.cs" t="Include" />
+        <e p="Rent.aspx.designer.cs" t="Include" />
+        <e p="Rentoolo.csproj" t="IncludeRecursive" />
+        <e p="Sell" t="Include" />
+        <e p="Services.aspx" t="Include" />
+        <e p="Services.aspx.cs" t="Include" />
+        <e p="Services.aspx.designer.cs" t="Include" />
+        <e p="Site.Master" t="Include" />
+        <e p="Site.Master.cs" t="Include" />
+        <e p="Site.Master.designer.cs" t="Include" />
+        <e p="SqlServerTypes" t="Include">
+          <e p="Loader.cs" t="Include" />
+          <e p="readme.htm" t="Include" />
+          <e p="x64" t="Include">
+            <e p="msvcr120.dll" t="Include" />
+            <e p="SqlServerSpatial140.dll" t="Include" />
+          </e>
+          <e p="x86" t="Include">
+            <e p="msvcr120.dll" t="Include" />
+            <e p="SqlServerSpatial140.dll" t="Include" />
+          </e>
+        </e>
+        <e p="Success.aspx" t="Include" />
+        <e p="Success.aspx.cs" t="Include" />
+        <e p="Success.aspx.designer.cs" t="Include" />
+        <e p="Template.aspx" t="Include" />
+        <e p="Template.aspx.cs" t="Include" />
+        <e p="Template.aspx.designer.cs" t="Include" />
+        <e p="Tender.aspx" t="Include" />
+        <e p="Tender.aspx.cs" t="Include" />
+        <e p="Tender.aspx.designer.cs" t="Include" />
+        <e p="Tenders.aspx" t="Include" />
+        <e p="Tenders.aspx.cs" t="Include" />
+        <e p="Tenders.aspx.designer.cs" t="Include" />
+        <e p="Test" t="Include">
+          <e p="dmitriyraspel.aspx" t="Include" />
+          <e p="dmitriyraspel.aspx.cs" t="Include" />
+          <e p="dmitriyraspel.aspx.designer.cs" t="Include" />
+          <e p="eoll73.aspx" t="Include" />
+          <e p="eoll73.aspx.cs" t="Include" />
+          <e p="eoll73.aspx.designer.cs" t="Include" />
+          <e p="GG-dotNET.aspx" t="Include" />
+          <e p="GG-dotNET.aspx.cs" t="Include" />
+          <e p="GG-dotNET.aspx.designer.cs" t="Include" />
+          <e p="Konstantin.aspx" t="Include" />
+          <e p="Konstantin.aspx.cs" t="Include" />
+          <e p="Konstantin.aspx.designer.cs" t="Include" />
+          <e p="matheweducation.aspx" t="Include" />
+          <e p="matheweducation.aspx.cs" t="Include" />
+          <e p="matheweducation.aspx.designer.cs" t="Include" />
+          <e p="Varkentin.aspx" t="Include" />
+          <e p="Varkentin.aspx.cs" t="Include" />
+          <e p="Varkentin.aspx.designer.cs" t="Include" />
+          <e p="VueTest.aspx" t="Include" />
+          <e p="VueTest.aspx.cs" t="Include" />
+          <e p="VueTest.aspx.designer.cs" t="Include" />
+        </e>
+        <e p="TestDir" t="Include">
+          <e p="TestPage.html" t="Include" />
+          <e p="WSServer.cs" t="Include" />
+        </e>
+        <e p="Tests" t="Include">
+          <e p="ChatTest2.html" t="Include" />
+        </e>
+        <e p="Tokens.aspx" t="Include" />
+        <e p="Tokens.aspx.cs" t="Include" />
+        <e p="Tokens.aspx.designer.cs" t="Include" />
+        <e p="TokensBuying.aspx" t="Include" />
+        <e p="TokensBuying.aspx.cs" t="Include" />
+        <e p="TokensBuying.aspx.designer.cs" t="Include" />
+        <e p="TokensCost.aspx" t="Include" />
+        <e p="TokensCost.aspx.cs" t="Include" />
+        <e p="TokensCost.aspx.designer.cs" t="Include" />
+        <e p="TokensOperations.aspx" t="Include" />
+        <e p="TokensOperations.aspx.cs" t="Include" />
+        <e p="TokensOperations.aspx.designer.cs" t="Include" />
+        <e p="TokensSelling.aspx" t="Include" />
+        <e p="TokensSelling.aspx.cs" t="Include" />
+        <e p="TokensSelling.aspx.designer.cs" t="Include" />
+        <e p="Transport.aspx" t="Include" />
+        <e p="Transport.aspx.cs" t="Include" />
+        <e p="Transport.aspx.designer.cs" t="Include" />
+        <e p="UpiController.cs" t="Include" />
+        <e p="UpiTestController.cs" t="Include" />
+        <e p="UserProfile.aspx" t="Include" />
+        <e p="UserProfile.aspx.cs" t="Include" />
+        <e p="UserProfile.aspx.designer.cs" t="Include" />
+        <e p="Web.config" t="Include" />
+        <e p="Web.Debug.config" t="Include" />
+        <e p="Web.Release.config" t="Include" />
+        <e p="Workers" t="Include">
+          <e p="AuctionsChecker.cs" t="Include" />
+        </e>
+        <e p="yandex_f9c03f80c16c0af8.html" t="Include" />
+      </e>
+      <e p="Rentoolo.sln" t="IncludeFlat" />
+      <e p="xNet-master" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Resources.Designer.cs" t="Include" />
+        <e p="Resources.resx" t="Include" />
+        <e p="xNet" t="Include">
+          <e p="Html.cs" t="Include" />
+          <e p="NetException.cs" t="Include" />
+          <e p="RequestParams.cs" t="Include" />
+          <e p="WinInet.cs" t="Include" />
+          <e p="~Http" t="Include">
+            <e p="CookieDictionary.cs" t="Include" />
+            <e p="Http.cs" t="Include" />
+            <e p="HttpException.cs" t="Include" />
+            <e p="HttpExceptionStatus.cs" t="Include" />
+            <e p="HttpHeader.cs" t="Include" />
+            <e p="HttpMethod.cs" t="Include" />
+            <e p="HttpRequest.cs" t="Include" />
+            <e p="HttpResponse.cs" t="Include" />
+            <e p="HttpStatusCode.cs" t="Include" />
+            <e p="~Content" t="Include">
+              <e p="BytesContent.cs" t="Include" />
+              <e p="FileContent.cs" t="Include" />
+              <e p="FormUrlEncodedContent.cs" t="Include" />
+              <e p="HttpContent.cs" t="Include" />
+              <e p="MultipartContent.cs" t="Include" />
+              <e p="StreamContent.cs" t="Include" />
+              <e p="StringContent.cs" t="Include" />
+            </e>
+            <e p="~Misc" t="Include">
+              <e p="DownloadProgressChangedEventArgs.cs" t="Include" />
+              <e p="UploadProgressChangedEventArgs.cs" t="Include" />
+            </e>
+          </e>
+          <e p="~Internal" t="Include">
+            <e p="ExceptionHelper.cs" t="Include" />
+            <e p="ProxyHelper.cs" t="Include" />
+            <e p="SafeNativeMethods.cs" t="Include" />
+          </e>
+          <e p="~Proxy" t="Include">
+            <e p="ChainProxyClient.cs" t="Include" />
+            <e p="HttpProxyClient.cs" t="Include" />
+            <e p="ProxyClient.cs" t="Include" />
+            <e p="ProxyException.cs" t="Include" />
+            <e p="ProxyType.cs" t="Include" />
+            <e p="Socks4aProxyClient.cs" t="Include" />
+            <e p="Socks4ProxyClient.cs" t="Include" />
+            <e p="Socks5ProxyClient.cs" t="Include" />
+          </e>
+        </e>
+        <e p="xNet.csproj" t="IncludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>

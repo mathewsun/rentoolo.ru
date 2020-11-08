@@ -18,32 +18,48 @@ namespace Rentoolo.Account
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            string id = Request.QueryString["id"];
+            // allowed urls:
+            // /Account/UserProfile.aspx?id=@10
+            // /Account/UserProfile.aspx?id=B98B7EBC-4D5E-405B-88D8-087421C50B8E
+            // /Account/UserProfile.aspx?nick=@someUsersNickName
 
-            if (id != null)
+
+
+            string id = Request.QueryString["id"];
+            string nickName = Request.QueryString["nick"];
+
+            if (nickName == null)
             {
-                if (id[0] != '@')
+
+
+                if (id != null)
                 {
-                    CurUser = DataHelper.GetUser(Guid.Parse(id));
+                    if (id[0] != '@')
+                    {
+                        CurUser = DataHelper.GetUser(Guid.Parse(id));
+                    }
+                    else
+                    {
+                        CurUser = DataHelper.GetUser(id);
+
+                        if (CurUser == null)
+                        {
+
+                            id = id.Trim("@".ToCharArray());
+                            CurUser = DataHelper.GetUser(Convert.ToInt32(id));
+                        }
+                    }
                 }
                 else
                 {
-                    CurUser = DataHelper.GetUser(id);
-
-                    if (CurUser == null)
-                    {
-
-                        id = id.Trim("@".ToCharArray());
-                        CurUser = DataHelper.GetUser(Convert.ToInt32(id));
-                    }
+                    CurUser = User;
                 }
+
             }
             else
             {
-                CurUser = User;
+                CurUser = DataHelper.GetUserByNickName(nickName);
             }
-
-            
 
 
             
@@ -114,8 +130,12 @@ namespace Rentoolo.Account
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            string name = TextBox2.Text;
-            DataHelper.SetUserUniqueId(CurUser.UserId, name);
+            if (CurUser.UserId == User.UserId)
+            {
+                string name = TextBox2.Text;
+                DataHelper.SetUserUniqueId(CurUser.UserId, name);
+            }
+            
         }
     }
 }

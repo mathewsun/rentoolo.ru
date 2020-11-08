@@ -14,6 +14,9 @@ namespace Rentoolo
         public Adverts AdvertItem = new Adverts();
         public int ViewsCount = 0;
 
+        public int ItemLikes = -1;
+        public int ItemDislikes = -1;
+
         // user which created advert
         public Users AnotherUser;
         
@@ -27,6 +30,13 @@ namespace Rentoolo
         {
             long id = Convert.ToInt64(Request.QueryString["id"]);
             advId = (int)id;
+
+
+            ItemLikes = DataHelper.GetItemLikes(0, advId);
+            ItemDislikes = DataHelper.GetItemDisLikes(0, advId);
+
+
+
 
             if(id == 0)
             {
