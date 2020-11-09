@@ -23,8 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21e503ab-1368-45c7-915e-c8f53e8488cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Rentoolo/Default.aspx" beforeDir="false" afterPath="$PROJECT_DIR$/Rentoolo/Default.aspx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rentoolo/assets/css/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/Rentoolo/assets/css/application.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Rentoolo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rentoolo/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1604601740513</updated>
-      <workItem from="1604601775683" duration="397000" />
+      <workItem from="1604601775683" duration="542000" />
     </task>
     <servers />
   </component>

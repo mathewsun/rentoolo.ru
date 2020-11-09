@@ -1748,8 +1748,8 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                var activeUser = dc.ChatActiveUsers.First(x => x.UserId == userId);
-                dc.ChatActiveUsers.Remove(activeUser);
+                var activeUser = dc.ChatActiveUsers.Where(x => x.UserId == userId);
+                dc.ChatActiveUsers.RemoveRange(activeUser);
                 dc.SaveChanges();
             }
         }
