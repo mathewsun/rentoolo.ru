@@ -341,7 +341,7 @@ strong {
 .main-find_price {
     /* width: 300px; */
     max-width: 100%;
-    display: inline-block;
+    /* display: inline-block; */
 }
 .main-find_date span,
 .main-find_price span {
@@ -361,4 +361,87 @@ strong {
 }
 .city-sortby__wrap span {
     display: block;
+}
+
+/* form front page -- inputs */
+.main-find__checkbox-label {
+    /* margin: 0.5em 0; */
+}
+
+.main-find_date input[type="date"],
+.main-find_price input[type="number"],
+.city-sortby__wrap input[type="text"] {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #1e3948;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    margin: 0.5em 0;
+    position: relative;
+    -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.main-find_date input[type="date"]:focus,
+.main-find_price input[type="number"]:focus,
+.city-sortby__wrap input[type="text"]:focus {
+    color: #1e3948;
+    background-color: #fff;
+    border-color: #98cbe8;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(48, 151, 209, 0.25);
+}
+
+.main-find_date,
+.main-find_price {
+    /* width: 300px; */
+    max-width: 100%;
+    /* display: inline-block; */
+    padding: 1em 0;
+}
+
+.main-find_date span,
+.main-find_price span {
+    display: block;
+    width: 280px;
+    margin-top: 1em;
+}
+
+.main-find_date input[type="date"],
+.main-find_price input[type="number"] {
+    width: 150px;
+    display: inline-block;
+}
+
+.city-sortby__wrap {
+    max-width: 758px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.city-sortby__wrap span {
+    display: block;
+    margin-top: 1em;
+}
+
+.search-input-group {
+    display: block;
+    width: 100%;
+}
+
+.search-input-group__main-input {
+    display: flex;
+    max-width: 758px;
+}
+
+.main-find__checkbox-label {
+    margin: 0.5em 0;
+}
+.search-input-group__main-input input[type="submit"] {
+    background-color: #71ceeb;
+    color: #ffffff;
 }
