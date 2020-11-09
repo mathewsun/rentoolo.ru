@@ -565,6 +565,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="AboutUser" Type="nvarchar(max)" />
           <Property Name="BirthDay" Type="datetime" />
           <Property Name="UniqueUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SelectedCity" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="UserSettings">
           <Key>
@@ -1738,6 +1739,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="AboutUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BirthDay" Type="DateTime" Precision="3" />
           <Property Name="UniqueUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SelectedCity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Applications" Relationship="Self.UserApplication" FromRole="Users" ToRole="Applications" />
           <NavigationProperty Name="CashIns" Relationship="Self.FK_CashIns_Users" FromRole="Users" ToRole="CashIns" />
           <NavigationProperty Name="Memberships" Relationship="Self.MembershipUser" FromRole="Users" ToRole="Memberships" />
@@ -2971,6 +2973,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
                 <ScalarProperty Name="AboutUser" ColumnName="AboutUser" />
                 <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
                 <ScalarProperty Name="UniqueUserName" ColumnName="UniqueUserName" />
+                <ScalarProperty Name="SelectedCity" ColumnName="SelectedCity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
