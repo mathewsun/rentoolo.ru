@@ -3,18 +3,11 @@ using Rentoolo.TestDir;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Rentoolo.Model
 {
     public static class DataHelper
     {
-
-
-        // TODO: reformat Model.edmx
-
-
         #region Пользователи
 
         public static Users GetUser(Guid userId)
@@ -74,7 +67,7 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                return dc.Users.FirstOrDefault(x => x.UniqueUserName == nick)==null?false:true;
+                return dc.Users.FirstOrDefault(x => x.UniqueUserName == nick) == null ? false : true;
             }
         }
 
@@ -95,7 +88,7 @@ namespace Rentoolo.Model
                 {
                     return false;
                 }
-                
+
             }
         }
 
@@ -898,7 +891,6 @@ namespace Rentoolo.Model
 
         #endregion
 
-
         #region Статьи
 
         public static List<Articles> GetArticles()
@@ -1229,7 +1221,6 @@ namespace Rentoolo.Model
 
         #endregion
 
-
         #region Comments
 
         public static void AddComment(Comments comment)
@@ -1272,7 +1263,6 @@ namespace Rentoolo.Model
 
 
         #endregion
-
 
         #region Likes/DisLikes
 
@@ -1376,7 +1366,6 @@ namespace Rentoolo.Model
 
         #endregion
 
-
         #region Item likes/dislikes
 
 
@@ -1408,7 +1397,8 @@ namespace Rentoolo.Model
                 if (liked)
                 {
                     UnLikeItem(ldItem.UserId);
-                }else if (HaveItemDisLiked(ldItem.UserId))
+                }
+                else if (HaveItemDisLiked(ldItem.UserId))
                 {
                     UnDisLikeItem(ldItem.UserId);
 
@@ -1442,7 +1432,9 @@ namespace Rentoolo.Model
                 if (disliked)
                 {
                     UnDisLikeItem(ldItem.UserId);
-                }else if (HaveItemLiked(ldItem.UserId)){
+                }
+                else if (HaveItemLiked(ldItem.UserId))
+                {
 
                     UnLikeItem(ldItem.UserId);
 
@@ -1580,7 +1572,6 @@ namespace Rentoolo.Model
         //    }
         //}
         #endregion
-
 
         // TODO: переписать сложные linq запросы на хранимые процедуры в БД
 
@@ -1720,7 +1711,6 @@ namespace Rentoolo.Model
 
 
         #endregion
-
 
         #region Chats
 
@@ -1873,7 +1863,6 @@ namespace Rentoolo.Model
 
         #endregion
 
-
         #region Complaints
 
         // use enums ComplaintType, ComplaintObjType in code where methods is called from StructsHelper and HelperStructs
@@ -1958,8 +1947,5 @@ namespace Rentoolo.Model
 
 
         #endregion
-
-
-
     }
 }
