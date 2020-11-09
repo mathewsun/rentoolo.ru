@@ -482,6 +482,7 @@
     <Content Include="TokensOperations.aspx" />
     <Content Include="Transport.aspx" />
     <Content Include="UserProfile.aspx" />
+    <Content Include="Vark\NewsVark.aspx" />
     <Content Include="yandex_f9c03f80c16c0af8.html" />
     <Content Include="assets\json\categories.json" />
     <Content Include="assets\json\categories_ru.json" />
@@ -1218,6 +1219,7 @@
     <Compile Include="Model\DailyStatistics.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataHelperVark.cs" />
     <Compile Include="Model\DeletedAdverts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1297,6 +1299,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\News.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsVark.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Operations.cs">
@@ -1682,6 +1687,12 @@
     </Compile>
     <Compile Include="UserProfile.aspx.designer.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vark\NewsVark.aspx.cs">
+      <DependentUpon>NewsVark.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vark\NewsVark.aspx.designer.cs">
+      <DependentUpon>NewsVark.aspx</DependentUpon>
     </Compile>
     <Compile Include="Workers\AuctionsChecker.cs" />
   </ItemGroup>
