@@ -159,10 +159,22 @@ namespace Rentoolo.Model
             using (var ctx = new RentooloEntities())
             {
                 var obj = ctx.Users.FirstOrDefault(x => x.UserId == user.UserId);
-                //obj.SelectedCity = city;
+                obj.SelectedCity = city;
                 ctx.SaveChanges();
             }
         }
+
+        public static void SetUserBirthDay(Users user)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.Users.FirstOrDefault(x => x.UserId == user.UserId);
+                obj.BirthDay = user.BirthDay;
+                ctx.SaveChanges();
+            }
+        }
+
+
 
 
         public static void SetUserUniqueName(Users user)

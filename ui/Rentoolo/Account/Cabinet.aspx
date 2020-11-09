@@ -104,6 +104,17 @@
 
                 </div>
 
+
+                <div>
+                    Дата рождения: <%= User.BirthDay %>
+                    <input name="birthDay" type="date" />
+                    <asp:Button ID="ButtonBirthDay" runat="server" Text="установить другую дату рождения" OnClick="ButtonBirthDay_Click" />
+
+
+
+
+                </div>
+
             </div>
         </div>
     </div>
