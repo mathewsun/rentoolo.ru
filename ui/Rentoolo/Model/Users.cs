@@ -47,6 +47,7 @@ namespace Rentoolo.Model
         public string AboutUser { get; set; }
         public Nullable<System.DateTime> BirthDay { get; set; }
         public string UniqueUserName { get; set; }
+        public string SelectedCity { get; set; }
     
         public virtual Applications Applications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
