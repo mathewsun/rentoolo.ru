@@ -84,7 +84,7 @@
 
                     <br />
 
-                    Выбранный город: <%= User.SelectedCity %>
+                    Выбранный город:<%-- <%=// User.SelectedCity %>--%>
                     <input name="selectedCity" type="text" list="cities"  />
 
                     <datalist id="cities">
