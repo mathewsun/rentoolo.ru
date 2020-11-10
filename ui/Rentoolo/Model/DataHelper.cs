@@ -175,7 +175,6 @@ namespace Rentoolo.Model
                     Value = 0
                 });
 
-
             }
         }
 
