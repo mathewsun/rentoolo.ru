@@ -164,6 +164,18 @@ namespace Rentoolo.Model
                 var obj = ctx.Users.FirstOrDefault(x => x.UserId == user.UserId);
                 obj.BirthDay = user.BirthDay;
                 ctx.SaveChanges();
+
+
+                AddOperation(new Operations()
+                {
+                    UserId = user.UserId,
+                    Type = (int)OperationTypesEnum.BirthDayChange,
+                    WhenDate = DateTime.Now,
+                    Comment = "",
+                    Value = 0
+                });
+
+
             }
         }
 

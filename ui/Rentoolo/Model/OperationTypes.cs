@@ -53,7 +53,12 @@ namespace Rentoolo.Model
         /// <summary>
         /// Продажа токенов
         /// </summary>
-        SellingTokens = 18
+        SellingTokens = 18,
+
+        /// <summary>
+        /// Смена или установление даты рождения
+        /// </summary>
+        BirthDayChange = 19
     }
 
     public class OperationTypes
