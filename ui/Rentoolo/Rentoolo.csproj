@@ -404,6 +404,7 @@
     <Content Include="DataBase\tables\Watched.sql" />
     <Content Include="DataBase\tables\WatchedByCookies.sql" />
     <Content Include="docs\index.html" />
+    <Content Include="Education\NewsEducation.aspx" />
     <Content Include="Empty.aspx" />
     <Content Include="Fail.aspx" />
     <Content Include="FAQ.aspx" />
@@ -1170,6 +1171,13 @@
     <Compile Include="CreateComplaint.aspx.designer.cs">
       <DependentUpon>CreateComplaint.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Education\NewsEducation.aspx.cs">
+      <DependentUpon>NewsEducation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Education\NewsEducation.aspx.designer.cs">
+      <DependentUpon>NewsEducation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="HelperModels\RusCities.cs" />
     <Compile Include="HelperModels\StateStructs.cs" />
     <Compile Include="Model\Adverts.cs">
@@ -1228,6 +1236,7 @@
     <Compile Include="Model\DailyStatistics.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataHelperEducation.cs" />
     <Compile Include="Model\DataHelperVark.cs" />
     <Compile Include="Model\DeletedAdverts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -1308,6 +1317,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\News.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsEducation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsVark.cs">
