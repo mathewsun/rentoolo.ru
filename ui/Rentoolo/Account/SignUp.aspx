@@ -65,27 +65,31 @@
 
                                 <div class="form-group">
                                     <asp:TextBox runat="server" CssClass="form-control login-input" ID="UserName" placeholder="Username" />
-                                    <div class="div-validation-error">
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorUserName" runat="server" ControlToValidate="UserName" CssClass="field-validation-error" ErrorMessage="*" /></div>
+                                </div>
+                                <div class="text-danger">
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorUserName" runat="server" ControlToValidate="UserName" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Введите имя пользователя" />
                                 </div>
 
                                 <div class="form-group">
-                                    <asp:TextBox runat="server" CssClass="form-control login-input" ID="Email" placeholder="Email" />
-                                    <div class="div-validation-error">
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Email" CssClass="field-validation-error" ErrorMessage="*" /></div>
+                                    <asp:TextBox runat="server" CssClass="form-control login-input" ID="Email" placeholder="Email" />  
                                 </div>
+                                <div class="text-danger">
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Email" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Введите email" />
+                                    <asp:RegularExpressionValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Email" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Введите корректный email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"/>
+                                 </div>
 
                                 <div class="form-group">
                                     <asp:TextBox runat="server" CssClass="form-control login-input" ID="Password" TextMode="Password" placeholder="Пароль" />
-                                    <div class="div-validation-error">
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ControlToValidate="Password" CssClass="field-validation-error" ErrorMessage="*" /></div>
+                                </div>
+                                <div class="text-danger">
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ControlToValidate="Password" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Введите пароль" />
                                 </div>
 
                                 <div class="form-group login-confirm">
                                     <asp:TextBox runat="server" CssClass="form-control login-input" ID="ConfirmPassword" TextMode="Password" placeholder="Подтверждение" />
-                                    <div class="div-validation-error">
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorConfirmPassword" runat="server" ControlToValidate="ConfirmPassword" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="*" />
-                                        <asp:CompareValidator ID="CompareValidatorConfirmPassword" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="*" />
+                                    <div class="text-danger">
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorConfirmPassword" runat="server" ControlToValidate="ConfirmPassword" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Подтвердите пароль" />
+                                        <asp:CompareValidator ID="CompareValidatorConfirmPassword" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Пароли не совпадают" />
                                     </div>
                                 </div>
 
