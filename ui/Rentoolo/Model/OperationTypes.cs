@@ -58,7 +58,17 @@ namespace Rentoolo.Model
         /// <summary>
         /// Смена или установление даты рождения
         /// </summary>
-        BirthDayChange = 19
+        BirthDayChange = 19,
+
+        /// <summary>
+        /// создание тендера
+        /// </summary>
+        TenderCreate = 20,
+
+        /// <summary>
+        /// обновление тендера
+        /// </summary>
+        TenderUpdate = 21
     }
 
     public class OperationTypes

@@ -82,7 +82,9 @@ namespace Rentoolo.Account
         protected void Button1_Click(object sender, EventArgs e)
         {
             DataHelper.CreateChatDialog(new Chats() {
-                OwnerId = User.UserId, ChatType = 1, ChatName = CurUser.UserName
+                OwnerId = User.UserId,
+                ChatType = 1,
+                ChatName = CurUser.UserName
             }, CurUser.UserId);
         }
 
