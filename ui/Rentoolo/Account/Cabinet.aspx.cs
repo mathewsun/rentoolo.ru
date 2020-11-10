@@ -58,5 +58,12 @@ namespace Rentoolo.Account
 
             DataHelper.SetUserCity(User, city);
         }
+
+        protected void ButtonBirthDay_Click(object sender, EventArgs e)
+        {
+            string date = Request.Form["birthDay"];
+            User.BirthDay = DateTime.Parse(date);
+            DataHelper.SetUserBirthDay(User);
+        }
     }
 }

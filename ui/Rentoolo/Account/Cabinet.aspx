@@ -84,7 +84,7 @@
 
                     <br />
 
-                    Выбранный город: <%= User.SelectedCity %>
+                    Выбранный город:<%-- <%=// User.SelectedCity %>--%>
                     <input name="selectedCity" type="text" list="cities"  />
 
                     <datalist id="cities">
@@ -99,6 +99,17 @@
                     </datalist>
 
                     <asp:Button ID="ButtonCity" runat="server" Text="выбрать город" OnClick="ButtonCity_Click" />
+
+
+
+                </div>
+
+
+                <div>
+                    Дата рождения: <%= User.BirthDay %>
+                    <input name="birthDay" type="date" />
+                    <asp:Button ID="ButtonBirthDay" runat="server" Text="установить другую дату рождения" OnClick="ButtonBirthDay_Click" />
+
 
 
 

@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <style>
+
+        .with-left-toolbar-container {
+            display: grid;
+            grid-template-columns: 20% 1fr;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Chat tests</h1>
+
+    <div id="app">
+
+        <div>
+            <div>
+                <h5>user configs</h5>
+                <div>
+                    UserId: {{userId}}
+                </div>
+                <input v-model="userId" />
+            </div>
+
+            <div>
+                <h5>
+                    Create chat
+                </h5>
+
+                <div>
+                    <input type="text" v-model="chatName" />
+                    <button @click="createChat">create</button>
+                </div>
+
+            </div>
+            <div>
+                <button @click="showHideChats()">show/hide chats</button>
+                <button @click="showHideMessages">show/hide messages</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="with-left-toolbar-container">
+            <div>
+
+
+                <div v-if="showChats">
+                    <div>
+                        <div v-for="(chat,index) in chats" :key="index">
+
+                            <button @click="getMessages(chat.Id)">
+
+
+
+                                {{chat.ChatName}}
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <h3>{{message1}} </h3>
+
+
+
+
+
+
+            </div>
+            <div>
+                <div>
+                    <div>
+                        <input v-model="message" />
+                    </div>
+                    <button @click="sendMessage">send</button>
+                </div>
+                <div v-if="showMessages">
+                    <div v-for="(message,index) in messages" :key="index">
+                        <div>
+                            From:{{message.FromUserId}} <br />
+                            Message: <br />
+                            {{message.Message}}
+                            <hr />
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+
+    let websock;
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            userId: "A55A7415-80E3-4DFD-93A1-3EA9D8D88329",
+            currentChatId: null,
+            message1: 'Hello Vue!',
+            showChats: true,
+            chats: [],
+            messages: [],
+            message: "",
+            showMessages: false,
+            ws: null,
+            chatName: ""
+        },
+        created: function () {
+            this.getChats();
+        },
+        methods: {
+
+
+            createChat() {
+
+                let url = "http://localhost:53225/api/Chats?anotheruser=";
+
+                let bodyData = {
+                    OwnerId: this.userId,
+                    chatName: this.chatName,
+                    chatType: 0
+                };
+
+                let data = {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(bodyData)
+                };
+
+                fetch(url, data)
+                    .then((response) => {
+
+                        return response;
+                    })
+                    .then((data) => {
+                        console.log(data);
+                    });
+
+            },
+            addMessage(msg) {
+                let jsonedMsg = JSON.parse(msg);
+                this.messages.unshift(jsonedMsg);
+            },
+
+            initWSConnection() {
+                console.log("this.msges");
+                console.log(this.messages);
+                const addMessage = this.addMessage;
+                const addMsg = function (msg) {
+                    console.log(this.messages);
+                    addMessage(msg);
+                }
+
+                let socket = new WebSocket("ws://localhost:8080");
+
+                let chatId = this.currentChatId;
+                let usrId = this.userId;
+
+
+                socket.onmessage = function (event) {
+                    console.log("Получены данные " + event.data);
+                    addMsg(event.data);
+                };
+
+                socket.onopen = function () {
+
+                    let data = {
+                        type: "initUser",
+                        chatId: chatId,
+                        userId: usrId
+                    }
+                    console.log("---------");
+                    console.log(data);
+
+                    socket.send(JSON.stringify(data));
+                };
+
+                socket.onclose = function (event) {
+                    if (event.wasClean) {
+                        alert('Соединение закрыто чисто');
+                    } else {
+                        alert('Обрыв соединения'); // например, "убит" процесс сервера
+                    }
+                    alert('Код: ' + event.code + ' причина: ' + event.reason);
+                };
+
+
+
+                socket.onerror = function (error) {
+                    alert("Ошибка " + error.message);
+                };
+
+
+
+
+
+                websock = socket;
+
+                console.log("this.msges");
+                console.log(this.messages);
+
+            },
+            showHideChats() {
+                this.showChats = !this.showChats;
+            },
+            showHideMessages() {
+                this.showMessages = !this.showMessages;
+            },
+            getChats() {
+                // dont forbid to change url
+                let url = "http://localhost:53225/api/chats/" + this.userId;
+                let data = {
+                    method: "GET",
+                };
+                fetch(url,data)
+                    .then((response) => {
+                        console.log(response);
+                        return response.json();
+                    })
+                    .then((data) => {
+                        console.log(data);
+                        this.chats = data;
+                    });
+
+            },
+            getMessages(chatId) {
+                let url = "http://localhost:53225/api/Messages/" + chatId;
+                this.currentChatId = chatId;
+                let data = {
+                    method: "GET"
+                };
+                fetch(url, data)
+                    .then((response) => {
+                        console.log("message list");
+                        console.log(response);
+                        return response.json();
+                    })
+                    .then((data) => {
+                        console.log(data);
+                        this.messages = data;
+                    });
+                this.showMessages = true;
+
+                this.initWSConnection();
+
+
+
+            },
+            sendMessage() {
+                let bodyData = {
+                    ChatId: this.currentChatId,
+                    Message: this.message,
+                    UserId: this.userId,
+
+                }
+
+                let url = "http://localhost:53225/api/Messages";
+
+                let data = {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(bodyData)
+                };
+
+
+
+
+
+
+                fetch(url, data)
+                    .then((response) => {
+
+                        return response;
+                    })
+                    .then((data) => {
+                        console.log(data);
+                    });
+
+                this.message = "";
+
+
+
+
+            }
+        }
+
+    })
+
+    </script>
+</body>
+</html>
