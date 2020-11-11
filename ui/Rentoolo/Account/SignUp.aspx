@@ -68,6 +68,7 @@
                                 </div>
                                 <div class="text-danger">
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorUserName" runat="server" ControlToValidate="UserName" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Введите имя пользователя" />
+                                         <asp:CustomValidator ID="Customvalidator1" runat="server" ControlToValidate="UserName" CssClass="field-validation-error" Display="Dynamic" OnServerValidate="Customvalidator1_ServerValidate" ErrorMessage="Такое имя занято :(" />
                                 </div>
 
                                 <div class="form-group">
