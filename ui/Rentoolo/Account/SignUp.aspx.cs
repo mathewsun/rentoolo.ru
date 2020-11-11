@@ -7,11 +7,14 @@ using Rentoolo.Model;
 using System.Net;
 using System.IO;
 using System.Web.Script.Serialization;
+using System.ServiceModel.Channels;
+using System.Runtime.Remoting.Messaging;
 
 namespace Rentoolo.Account
 {
     public partial class SignUp : System.Web.UI.Page
     {
+
         private int _refid = 0;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -38,9 +41,23 @@ namespace Rentoolo.Account
 
         protected void RegisterUser_CreatingUser(Object sender, LoginCancelEventArgs e)
         {
-            if (!Validate())
+            if (!ValidateCaptcha())
             {
                 e.Cancel = true;
+            }
+        }
+
+        public void Customvalidator1_ServerValidate(Object sender, ServerValidateEventArgs args)
+        {
+            Users user = DataHelper.GetUser(args.Value);
+
+            if (user == null)
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = false;
             }
         }
 
@@ -165,7 +182,7 @@ namespace Rentoolo.Account
             public string success { get; set; }
         }
 
-        public bool Validate()
+        public bool ValidateCaptcha()
         {
             string Response = Request["g-recaptcha-response"];//Getting Response String Append to Post Method
             bool Valid = false;

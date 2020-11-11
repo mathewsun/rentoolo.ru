@@ -60,6 +60,7 @@ namespace Rentoolo.Model
         public virtual DbSet<Memberships> Memberships { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<NewsEducation> NewsEducation { get; set; }
+        public virtual DbSet<NewsRaspel> NewsRaspel { get; set; }
         public virtual DbSet<NewsVark> NewsVark { get; set; }
         public virtual DbSet<Operations> Operations { get; set; }
         public virtual DbSet<Payments> Payments { get; set; }
