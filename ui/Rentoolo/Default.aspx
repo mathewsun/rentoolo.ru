@@ -23,7 +23,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="assets/css/toolkit.css?422" rel="stylesheet">
-    <link href="assets/css/application.css?22" rel="stylesheet">
+    <link href="assets/css/application.css?24" rel="stylesheet">
     <link href="assets/css/additional.css?88822" rel="stylesheet">
 
     <meta name="yandex-verification" content="f9c03f80c16c0af8" />
@@ -366,7 +366,7 @@
 
         <div class="container pt-4 pb-5">
             <div class="row">
-                <div class="col-lg-9">
+                <di class="col-lg-9">
 
                     <ul class="list-group media-list media-list-stream mb-4">
 
@@ -494,59 +494,90 @@
                         </li>
 
                         <li class="media list-group-item p-4">
-                            <div class="input-group">
+
+                            <div class="search-input-group">
+
+                                        <div class="search-input-group__main-input">
+                                            <input style="width: 100%" type="text" id="Text1" class="form-control" runat="server" placeholder="Поиск по объявлениям" />
+                                            <asp:Button ID="Button1" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
+                                        </div>
+                                    <div class="main-find__checkbox-label">
+                                        <input type="checkbox" name="onlyInName" />
+                                        <span>Только в названии</span>
+                                    </div>
+
+                                    <div class="main-find_price">
+                                        <span>Цена:</span> 
+                                        <input type="number" name="startPrice" placeholder="От" />
+                                        <input type="number" name="endPrice" placeholder="До" />
+                                    </div>
+                               
+
+         <%--                           <div class="main-find_date">
+                                        <span>Дата размещения:</span> 
+                                        <input type="date" id="StartDate" placeholder="От">
+                                        <input type="date" id="EndDate" placeholder="До">
+                                    </div>
+         51a73fc4667aa3e6c7e3a45ccc1c5b82545a2ee0 --%>
+
+
+                                <div class="city-sortby__wrap">
+                                        <div>
+                                            <span>Город:</span>
+                                            <input type="text" name="city" list="cities" />
+                                            <br />
+                                            <datalist id="cities">
+
+                                                <% foreach (var city in AllCities)
+                                                    { %>
+                                                    
+                                                    <option>
+                                                        <%=city %>
+                                                    </option>
+
+                                                <%} %>
+                                            </datalist>
+                                        </div><%-- citys end--%>
+
+                                        <div class="sortby">
+                                            <span>Sort:</span>
+                                            <input type="text" name="sortBy" list="sortBy" value="by date" />
+                                                <datalist id="sortBy">
+                                                     <option>by date</option>
+                                                     <option>by price</option>
+                                                     <option>by date descendance</option>
+                                                     <option>by price descendance</option>
+                                                </datalist>
+                                        </div><%-- sortby end--%>
+                                    </div><%-- city-sortby__wrap end--%>
+
+                            </div>
+                            <%-- end search-input-group--%>
+
+                <%--            <div class="input-group">
                                 <div class="rowed-grid">
                                     <div class="searchbar-grid">
                                         <div style="width: 100%">
-                                            <input style="width: 100%" type="text" id="InputSearch" class="form-control" runat="server" placeholder="Поиск по объявлениям">
+                                            <input style="width: 100%" type="text" id="InputSearch" class="form-control" runat="server" placeholder="Поиск по объявлениям" />
                                         </div>
                                         <div class="input-group-btn">
                                             <asp:Button ID="ButtonSearch" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
                                         </div>
                                     </div>
+                                    <div class="main-find__checkbox-label">
+                                        <input type="checkbox" name="onlyInName" />
+                                        <span>Только в названии</span>
+                                    </div>
                                     <div>
                                         &nbsp;
                                         <br />
                                     </div>
-                                    <div>
-                                        Диапазон дат:
-                                        <input type="date" id="StartDate" placeholder="StartDate">
-                                        <input type="date" id="EndDate" placeholder="EndDate">
-                                    </div>
 
-                                    <div>
-                                        Диапазон стоимоcти: 
-                                        <input type="number" name="startPrice" placeholder="startPrice" />
-                                        <input type="number" name="endPrice" placeholder="endPrice" />
-                                        <br />
-                                    </div>
+                                
+                                 </div> 
+                            </div> --%>
 
-
-
-                                    <div>
-                                        Город:
-                                        <input type="text" name="city" />
-                                        <br />
-
-                                        Только в названии:
-                                        <input type="checkbox" name="onlyInName" />
-                                    </div>
-
-                                    <div>
-                                        Sort:
-                                        <input type="text" name="sortBy" list="sortBy" />
-                                        <datalist id="sortBy">
-                                            <option>by date</option>
-                                            <option>by price</option>
-                                            <option>by date descendance</option>
-                                            <option>by price descendance</option>
-                                        </datalist>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </li>
+                            </li>
 
                         <li class="media list-group-item p-4">
 
@@ -580,44 +611,44 @@
                             </div>
                         </li>
                     </ul>
+            </div>
+            <div class="col-lg-3">
+                <div class="card mb-4 d-none d-lg-block">
+                    <div class="card-body">
+                        <h6 class="mb-3">Вы смотрели: <small>· <a href="/Account/Watched.aspx">Показать все</a></small></h6>
+                        <div data-grid="images" data-target-height="150">
+                            <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_2.jpg">
+                        </div>
+                        <p><strong>Ноутбук Acer Predator Heliios-300.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
+                    </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="card mb-4 d-none d-lg-block">
-                        <div class="card-body">
-                            <h6 class="mb-3">Вы смотрели: <small>· <a href="/Account/Watched.aspx">Показать все</a></small></h6>
-                            <div data-grid="images" data-target-height="150">
-                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_2.jpg">
-                            </div>
-                            <p><strong>Ноутбук Acer Predator Heliios-300.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
+                <div class="card mb-4 d-none d-lg-block">
+                    <div class="card-body">
+                        <h6 class="mb-3">Ваши объявления: <small>· <a href="/Account/MyAdverts.aspx">Показать все</a></small></h6>
+                        <div data-grid="images" data-target-height="150">
+                            <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/varianty-planirovki-3-h-komnatnoj-kvartiry-v-hrushchevke-7.jpg">
                         </div>
+                        <p><strong>3х комнатная квартира СЗАО Москва</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                     </div>
-                    <div class="card mb-4 d-none d-lg-block">
-                        <div class="card-body">
-                            <h6 class="mb-3">Ваши объявления: <small>· <a href="/Account/MyAdverts.aspx">Показать все</a></small></h6>
-                            <div data-grid="images" data-target-height="150">
-                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/varianty-planirovki-3-h-komnatnoj-kvartiry-v-hrushchevke-7.jpg">
-                            </div>
-                            <p><strong>3х комнатная квартира СЗАО Москва</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
+                </div>
+                <div class="card mb-4 d-none d-lg-block">
+                    <div class="card-body">
+                        <h6 class="mb-3">Избранное: <small>· <a href="/Favorites.aspx">Показать все</a></small></h6>
+                        <div data-grid="images" data-target-height="150">
+                            <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/kurier-piter.jpg">
                         </div>
+                        <p><strong>Курьер. Курьерские услуги. Санкт-Петербург.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
                     </div>
-                    <div class="card mb-4 d-none d-lg-block">
-                        <div class="card-body">
-                            <h6 class="mb-3">Избранное: <small>· <a href="/Favorites.aspx">Показать все</a></small></h6>
-                            <div data-grid="images" data-target-height="150">
-                                <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/kurier-piter.jpg">
-                            </div>
-                            <p><strong>Курьер. Курьерские услуги. Санкт-Петербург.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
-                        </div>
-                    </div>
+                </div>
 
-                    <div class="card card-link-list">
-                        <div class="card-body">
-                            © Rentoolo
+                <div class="card card-link-list">
+                    <div class="card-body">
+                        © Rentoolo
                             <a href="https://github.com/mathewsun/rentoolo.ru">GitHub</a>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
 
         <script src="assets/js/popper.min.js"></script>

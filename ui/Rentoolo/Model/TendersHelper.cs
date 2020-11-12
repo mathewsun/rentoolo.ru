@@ -68,6 +68,33 @@ namespace Rentoolo.Model
             }
         }
 
+        public static void UpdateAllTenderFields(Tenders oldItem, Tenders newItem)
+        {
+            oldItem.Id = newItem.Id;
+            oldItem.Name = newItem.Name;
+            oldItem.Description = newItem.Description;
+            oldItem.UserOwnerId = newItem.UserOwnerId;
+            oldItem.Cost = newItem.Cost;
+            oldItem.ImgUrls = newItem.ImgUrls;
+            oldItem.Status = newItem.Status;
+            oldItem.Created = newItem.Created;
+            oldItem.CurrencyId = newItem.CurrencyId;
+            oldItem.CategoryId = newItem.CategoryId;
+        }
+
+
+        public static void UpdateAllTender(Tenders tender,int oldTenderId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Tenders oldTender = dc.Tenders.First(x => x.Id == oldTenderId);
+                UpdateAllTenderFields(oldTender, tender);
+                dc.SaveChanges();
+            }
+
+        }
+
+
 
 
         #endregion

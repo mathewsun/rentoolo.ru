@@ -14,8 +14,8 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                var items = (DbSet<TEntity>) dc.GetType().GetProperty(typeof(TEntity).Name).GetValue(dc);
-                var item = items.AsEnumerable().FirstOrDefault(x => Convert.ToInt64(typeof(TEntity).GetProperty("Id").GetValue(x))  == id);
+                var items = (DbSet<TEntity>)dc.GetType().GetProperty(typeof(TEntity).Name).GetValue(dc);
+                var item = items.AsEnumerable().FirstOrDefault(x => Convert.ToInt64(typeof(TEntity).GetProperty("Id").GetValue(x)) == id);
                 return item;
             }
         }
@@ -65,37 +65,44 @@ namespace Rentoolo.Model
                 {
                     if (filter.OnlyInName)
                     {
-                        result = result.filterAdverts(filter.Search,true);
+                        //result = result.filterAdverts(filter.Search,true);
+                        result = result.Where(x => x.Name.Contains(filter.Search));
                     }
                     else
                     {
-                        result = result.filterAdverts(filter.Search,false);
+                        //result = result.filterAdverts(filter.Search, false);
+                        result = result.Where(x => x.Name.Contains(filter.Search) || x.Description.Contains(filter.Search));
                     }
                 }
 
                 if (filter.StartDate != null)
                 {
-                    result = result.filterAdverts((DateTime)filter.StartDate, false);
+                    //result = result.filterAdverts((DateTime)filter.StartDate, false);
+                    result = result.Where(x => x.Created >= filter.StartDate);
                 }
 
                 if (filter.EndDate != null)
                 {
-                    result = result.filterAdverts((DateTime)filter.EndDate, true);
+                    //result = result.filterAdverts((DateTime)filter.EndDate, true);
+                    result = result.Where(x => x.Created <= filter.EndDate);
                 }
 
                 if (filter.StartPrice != null)
                 {
-                    result = result.filterAdverts((double)filter.StartPrice, true);
+                    //result = result.filterAdverts((double)filter.StartPrice, true);
+                    result = result.Where(x => x.Price >= (double)filter.StartPrice);
                 }
 
-                if ((filter.EndPrice != null)&&(filter.EndPrice>=filter.StartPrice))
+                if ((filter.EndPrice != null) && (filter.EndPrice >= filter.StartPrice))
                 {
-                    result = result.filterAdverts((double)filter.EndPrice, false);
+                    //result = result.filterAdverts((double)filter.EndPrice, false);
+                    result = result.Where(x => x.Price <= (double)filter.EndPrice);
                 }
 
                 if (filter.City != null)
                 {
-                    result = result.filterAdverts(filter.City);
+                    //result = result.filterAdverts(filter.City);
+                    result = result.Where(x => x.Address.Contains(filter.City));
                 }
 
 
@@ -124,68 +131,69 @@ namespace Rentoolo.Model
         }
 
 
-        static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts,DateTime startDate, DateTime endDate)
-        {
-            return adverts.Where(x => x.Created >= startDate && x.Created <= endDate);
-        }
+        // unused
+        //static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, DateTime startDate, DateTime endDate)
+        //{
+        //    return adverts.Where(x => x.Created >= startDate && x.Created <= endDate);
+        //}
 
-        static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, DateTime startEndDate, bool isEndDate = false)
-        {
-            if (isEndDate)
-            {
-                return adverts.Where(x => x.Created <= startEndDate);
-            }
-            else
-            {
-                return adverts.Where(x => x.Created >= startEndDate);
-            }
-            
-        }
+        //static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, DateTime startEndDate, bool isEndDate = false)
+        //{
+        //    if (isEndDate)
+        //    {
+        //        return adverts.Where(x => x.Created <= startEndDate);
+        //    }
+        //    else
+        //    {
+        //        return adverts.Where(x => x.Created >= startEndDate);
+        //    }
 
-
-        static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, string city)
-        {
-            var list = adverts.Where(x => x.Address.Contains(city));
-            return list;
-        }
+        //}
 
 
-        static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, string filter, bool onlyInName)
-        {
-            IQueryable<Adverts> list;
-            if (onlyInName)
-            {
-                list = adverts.Where(x => x.Name.Contains(filter));
-            }
-            else
-            {
-                list = adverts.Where(x => x.Name.Contains(filter) || x.Description.Contains(filter));
-            }
-            
-            return list;
-        }
+        //static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, string city)
+        //{
+        //    var list = adverts.Where(x => x.Address.Contains(city));
+        //    return list;
+        //}
 
 
-        static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, SellFilter filter)
-        {
-            var list = adverts.Where(x => x.Name.Contains(filter.Search) || x.Description.Contains(filter.Search));
-            return list;
-        }
+        //static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, string filter, bool onlyInName)
+        //{
+        //    IQueryable<Adverts> list;
+        //    if (onlyInName)
+        //    {
+        //        list = adverts.Where(x => x.Name.Contains(filter));
+        //    }
+        //    else
+        //    {
+        //        list = adverts.Where(x => x.Name.Contains(filter) || x.Description.Contains(filter));
+        //    }
 
-        static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, double startEndPrice, bool isStartPrice = true)
-        {
-            IQueryable<Adverts> list;
-            if (isStartPrice)
-            {
-                list = adverts.Where(x => x.Price >= startEndPrice);
-            }
-            else
-            {
-                list = adverts.Where(x => x.Price <= startEndPrice);
-            }
-                
-            return list;
-        }
+        //    return list;
+        //}
+
+
+        //static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, SellFilter filter)
+        //{
+        //    var list = adverts.Where(x => x.Name.Contains(filter.Search) || x.Description.Contains(filter.Search));
+        //    return list;
+        //}
+
+        //static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, double startEndPrice, bool isStartPrice = true)
+        //{
+        //    IQueryable<Adverts> list;
+        //    if (isStartPrice)
+        //    {
+        //        list = adverts.Where(x => x.Price >= startEndPrice);
+        //    }
+        //    else
+        //    {
+        //        list = adverts.Where(x => x.Price <= startEndPrice);
+        //    }
+
+        //    return list;
+        //}
 
 
 
@@ -209,7 +217,7 @@ namespace Rentoolo.Model
                 {
                     var count = items.AsEnumerable().Where(x =>
                             typeof(TEntity).GetProperty("Name").GetValue(x).ToString().
-                                Contains(filter.Search) 
+                                Contains(filter.Search)
                             || typeof(TEntity).GetProperty("Description").GetValue(x).ToString().
                                 Contains(filter.Search)).Count();
 

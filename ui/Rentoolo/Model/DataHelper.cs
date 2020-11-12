@@ -3,18 +3,11 @@ using Rentoolo.TestDir;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Rentoolo.Model
 {
     public static class DataHelper
     {
-
-
-        // TODO: reformat Model.edmx
-
-
         #region Пользователи
 
         public static Users GetUser(Guid userId)
@@ -59,12 +52,43 @@ namespace Rentoolo.Model
         }
 
 
-        public static void SetUserUniqueId(Guid userId, string uniqueName)
+        public static Users GetUserByNickName(string name)
         {
             using (var dc = new RentooloEntities())
             {
-                dc.Users.First(x => x.UserId == userId).UniqueUserName = uniqueName;
-                dc.SaveChanges();
+                Users user = dc.Users.FirstOrDefault(x => x.UniqueUserName == name);
+
+                return user;
+            }
+        }
+
+
+        public static bool ContainsUserNickName(string nick)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Users.FirstOrDefault(x => x.UniqueUserName == nick) == null ? false : true;
+            }
+        }
+
+
+        public static bool SetUserUniqueId(Guid userId, string uniqueName)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                if (!ContainsUserNickName(uniqueName))
+                {
+                    if (uniqueName[0] != '@') uniqueName = "@" + uniqueName;
+
+                    dc.Users.First(x => x.UserId == userId).UniqueUserName = uniqueName;
+                    dc.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
             }
         }
 
@@ -110,6 +134,7 @@ namespace Rentoolo.Model
             }
         }
 
+
         public static void UpdateUser(Users user)
         {
             using (var ctx = new RentooloEntities())
@@ -121,6 +146,57 @@ namespace Rentoolo.Model
                 ctx.SaveChanges();
             }
         }
+
+        public static void SetUserCity(Users user, string city)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.Users.FirstOrDefault(x => x.UserId == user.UserId);
+                obj.SelectedCity = city;
+                ctx.SaveChanges();
+            }
+        }
+
+        public static void SetUserBirthDay(Users user)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.Users.FirstOrDefault(x => x.UserId == user.UserId);
+                obj.BirthDay = user.BirthDay;
+                ctx.SaveChanges();
+
+
+                AddOperation(new Operations()
+                {
+                    UserId = user.UserId,
+                    Type = (int)OperationTypesEnum.BirthDayChange,
+                    WhenDate = DateTime.Now,
+                    Comment = "",
+                    Value = 0
+                });
+
+            }
+        }
+
+
+
+
+        public static void SetUserUniqueName(Users user)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                // add проверки на уникальность
+                //bool containsName = dc.Users.Select(x => x.UniqueUserName.Contains(user.UniqueUserName))==null?true:false;
+                //if (!containsName)
+                //{
+                var obj = dc.Users.FirstOrDefault(x => x.UserId == user.UserId);
+                obj.UniqueUserName = user.UniqueUserName;
+                dc.SaveChanges();
+                //}
+            }
+        }
+
+
 
         public static void UpdateUserParametr(string userName, string parametr, String parametrValue)
         {
@@ -1127,8 +1203,6 @@ namespace Rentoolo.Model
 
         #endregion
 
-
-
         #region UserViews
 
         public static void TryAddUserView(UserViews userView)
@@ -1169,7 +1243,6 @@ namespace Rentoolo.Model
 
 
         #endregion
-
 
         #region Comments
 
@@ -1213,7 +1286,6 @@ namespace Rentoolo.Model
 
 
         #endregion
-
 
         #region Likes/DisLikes
 
@@ -1317,6 +1389,175 @@ namespace Rentoolo.Model
 
         #endregion
 
+        #region Item likes/dislikes
+
+
+        public static int GetItemLikes(int objType, long objId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var count = dc.ItemLikes.Count(x => x.ObjectType == objType && x.ObjectId == objId);
+                return count;
+            }
+        }
+
+
+        public static int GetItemDisLikes(int objType, long objId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var count = dc.ItemDislikes.Count(x => x.ObjectType == objType && x.ObjectId == objId);
+                return count;
+            }
+        }
+
+
+        public static void LikeUnlikeItem(ItemLikeDislike ldItem)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var liked = HaveItemLiked(ldItem.UserId);
+                if (liked)
+                {
+                    UnLikeItem(ldItem.UserId);
+                }
+                else if (HaveItemDisLiked(ldItem.UserId))
+                {
+                    UnDisLikeItem(ldItem.UserId);
+
+                    LikeItem(new ItemLikes()
+                    {
+                        UserId = ldItem.UserId,
+                        Date = DateTime.Now,
+                        ObjectType = ldItem.ObjectType,
+                        ObjectId = ldItem.ObjectId
+                    });
+                }
+                else
+                {
+                    LikeItem(new ItemLikes()
+                    {
+                        UserId = ldItem.UserId,
+                        Date = DateTime.Now,
+                        ObjectType = ldItem.ObjectType,
+                        ObjectId = ldItem.ObjectId
+                    });
+                }
+
+            }
+        }
+
+        public static void DisLikeUnDislikeItem(ItemLikeDislike ldItem)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var disliked = HaveItemDisLiked(ldItem.UserId);
+                if (disliked)
+                {
+                    UnDisLikeItem(ldItem.UserId);
+                }
+                else if (HaveItemLiked(ldItem.UserId))
+                {
+
+                    UnLikeItem(ldItem.UserId);
+
+                    DisLikeItem(new ItemDislikes()
+                    {
+                        UserId = ldItem.UserId,
+                        Date = DateTime.Now,
+                        ObjectType = ldItem.ObjectType,
+                        ObjectId = ldItem.ObjectId
+                    });
+                }
+                else
+                {
+                    DisLikeItem(new ItemDislikes()
+                    {
+                        UserId = ldItem.UserId,
+                        Date = DateTime.Now,
+                        ObjectType = ldItem.ObjectType,
+                        ObjectId = ldItem.ObjectId
+                    });
+                }
+
+            }
+        }
+
+
+
+
+        public static void LikeItem(ItemLikes item)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ItemLikes.Add(item);
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static void UnLikeItem(ItemLikes item)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ItemLikes.Remove(item);
+                dc.SaveChanges();
+            }
+        }
+
+        public static void UnLikeItem(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var items = dc.ItemLikes.Where(x => x.UserId == userId);
+                dc.ItemLikes.RemoveRange(items);
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static void DisLikeItem(ItemDislikes item)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ItemDislikes.Add(item);
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static void UnDisLikeItem(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var items = dc.ItemDislikes.Where(x => x.UserId == userId);
+                dc.ItemDislikes.RemoveRange(items);
+                dc.SaveChanges();
+            }
+        }
+
+
+
+        public static bool HaveItemLiked(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.ItemLikes.Select(x => x.UserId).Contains(userId);
+            }
+        }
+
+
+        public static bool HaveItemDisLiked(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.ItemDislikes.Select(x => x.UserId).Contains(userId);
+            }
+        }
+
+
+        #endregion
+
         #region Comments
 
         //public static List<spGetComments_Result> GetComments_Results(long objId, Guid userId)
@@ -1324,7 +1565,7 @@ namespace Rentoolo.Model
         //    using (var dc = new RentooloEntities())
         //    {
         //        List<spGetComments_Result> result = dc.spGetComments(objId, userId).ToList();
-                
+
         //        return result;
         //    }
         //}
@@ -1349,16 +1590,15 @@ namespace Rentoolo.Model
         //    using (var dc1 = new RentooloEntities())
         //    {
         //        List<spGetCommentsTestVarkent_Result> result1 = dc1.spGetCommentsTestVarkent(objId, userId).ToList();
-                
+
         //        return result1;
         //    }
         //}
         #endregion
 
-
         // TODO: переписать сложные linq запросы на хранимые процедуры в БД
 
-            // dialogs deprecated
+        // dialogs deprecated
         #region Dialogs
 
         //public static void CreateDialog(Guid user1, Guid user2)
@@ -1495,7 +1735,6 @@ namespace Rentoolo.Model
 
         #endregion
 
-
         #region Chats
 
 
@@ -1522,8 +1761,8 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                var activeUser = dc.ChatActiveUsers.First(x => x.UserId == userId);
-                dc.ChatActiveUsers.Remove(activeUser);
+                var activeUser = dc.ChatActiveUsers.Where(x => x.UserId == userId);
+                dc.ChatActiveUsers.RemoveRange(activeUser);
                 dc.SaveChanges();
             }
         }
@@ -1564,9 +1803,9 @@ namespace Rentoolo.Model
             }
         }
 
-        
 
-        public static List<Chats> GetChats(Guid userId ,int skipCount = 0)
+
+        public static List<Chats> GetChats(Guid userId, int skipCount = 0)
         {
             using (var dc = new RentooloEntities())
             {
@@ -1576,7 +1815,7 @@ namespace Rentoolo.Model
             }
         }
 
-        
+
 
 
         public static void AddChatUser(ChatUsers chatUser)
@@ -1610,7 +1849,7 @@ namespace Rentoolo.Model
                 dc.SaveChanges();
 
 
-                
+
 
                 var activeUsers = dc.ChatActiveUsers.Where(x => x.ChatId == message.ChatId).ToArray();
 
@@ -1647,12 +1886,11 @@ namespace Rentoolo.Model
 
         #endregion
 
-
         #region Complaints
 
         // use enums ComplaintType, ComplaintObjType in code where methods is called from StructsHelper and HelperStructs
 
-        
+
 
         public static Complaints GetComplaint(int complaintId)
         {
@@ -1667,7 +1905,7 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                return dc.Complaints.FirstOrDefault(x => x.СomplaintType == complaintType && x.ObjectType==complaintObjectType);
+                return dc.Complaints.FirstOrDefault(x => x.СomplaintType == complaintType && x.ObjectType == complaintObjectType);
             }
         }
 
@@ -1716,7 +1954,7 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                return dc.Complaints.Where(x => x.ObjectId==objectId && x.ObjectType == objectType).ToList();
+                return dc.Complaints.Where(x => x.ObjectId == objectId && x.ObjectType == objectType).ToList();
             }
         }
 
@@ -1732,8 +1970,5 @@ namespace Rentoolo.Model
 
 
         #endregion
-
-
-
     }
 }
