@@ -12,12 +12,13 @@ namespace Rentoolo.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class UserViews
+    public partial class NewsGGdotNET
     {
-        public long Id { get; set; }
-        public int ObjectId { get; set; }
-        public int Type { get; set; }
-        public System.Guid UserId { get; set; }
+        public int Id { get; set; }
+        public string Text { get; set; }
         public System.DateTime Date { get; set; }
+        public System.Guid AuthorId { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public bool Active { get; set; }
     }
 }

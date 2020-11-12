@@ -409,6 +409,7 @@
     <Content Include="Fail.aspx" />
     <Content Include="FAQ.aspx" />
     <Content Include="Favorites.aspx" />
+    <Content Include="GGdotNET\NewsGGdotNET.aspx" />
     <Content Include="Help.aspx" />
     <Content Include="HobbyRest.aspx" />
     <Content Include="HomeGarden.aspx" />
@@ -1179,6 +1180,13 @@
     <Compile Include="Education\NewsEducation.aspx.designer.cs">
       <DependentUpon>NewsEducation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GGdotNET\NewsGGdotNET.aspx.cs">
+      <DependentUpon>NewsGGdotNET.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GGdotNET\NewsGGdotNET.aspx.designer.cs">
+      <DependentUpon>NewsGGdotNET.aspx</DependentUpon>
+    </Compile>
     <Compile Include="HelperModels\RusCities.cs" />
     <Compile Include="HelperModels\StateStructs.cs" />
     <Compile Include="Model\Adverts.cs">
@@ -1238,6 +1246,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataHelperEducation.cs" />
+    <Compile Include="Model\DataHelperGGdotNET.cs" />
     <Compile Include="Model\DataHelperRaspel.cs" />
     <Compile Include="Model\DataHelperVark.cs" />
     <Compile Include="Model\DeletedAdverts.cs">
@@ -1322,6 +1331,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsEducation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsGGdotNET.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsRaspel.cs">
