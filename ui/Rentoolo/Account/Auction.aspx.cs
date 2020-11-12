@@ -11,8 +11,24 @@ namespace Rentoolo.Account
 {
     public partial class Auction : BasicPage
     {
+        Model.Auctions CurrentAuction=null;
+        int auctionId;
         protected void Page_Load(object sender, EventArgs e)
         {
+            string auctionId = Request.QueryString["auctionId"];
+            int? id = auctionId == null ? null : (int?)Convert.ToInt32(auctionId);
+
+            
+            if (id != null)
+            {
+                CurrentAuction = AuctionsHelper.GetAuction((int)id);
+                this.auctionId = (int)id;
+
+                TextBoxDescription.Text = CurrentAuction.Description;
+                TextBoxName.Text = CurrentAuction.Name;
+                TextBoxPrice.Text = CurrentAuction.StartPrice.ToString();
+                TextBoxDataEnd.Text = CurrentAuction.DataEnd.ToString();
+            }
 
         }
 
@@ -44,10 +60,23 @@ namespace Rentoolo.Account
             item.UserId = User.UserId;
 
             item.Created = DateTime.Now;
+            try
+            {
+                item.DataEnd = DateTime.Parse(TextBoxDataEnd.Text);
+            }catch(Exception ex)
+            {
+                
+            }
 
-            item.DataEnd = DateTime.Parse(TextBoxDataEnd.Text);
-
-            AuctionsHelper.AddAuction(item);
+            if (CurrentAuction != null)
+            {
+                AuctionsHelper.UpdateAuction(item, auctionId);
+            }
+            else
+            {
+                AuctionsHelper.AddAuction(item);
+            }
+                
 
             Response.Redirect("/Account/Auctions.aspx");
         }

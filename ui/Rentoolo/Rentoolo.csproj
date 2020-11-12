@@ -1723,6 +1723,7 @@
     </Compile>
     <Compile Include="Vark\NewsVark.aspx.cs">
       <DependentUpon>NewsVark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vark\NewsVark.aspx.designer.cs">
       <DependentUpon>NewsVark.aspx</DependentUpon>
