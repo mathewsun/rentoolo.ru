@@ -402,6 +402,7 @@
     <Content Include="Realty.aspx" />
     <Content Include="Rent.aspx" />
     <Content Include="Services.aspx" />
+    <Content Include="ShCodder\NewShCodder.aspx" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -1263,6 +1264,7 @@
     </Compile>
     <Compile Include="Model\DataHelperAezakmi.cs" />
     <Compile Include="Model\DataHelperAzizjan.cs" />
+    <Compile Include="Model\DataHelperShCodder.cs" />
     <Compile Include="Model\DataHelperEducation.cs" />
     <Compile Include="Model\DataHelperGGdotNET.cs" />
     <Compile Include="Model\DataHelperIlya.cs" />
@@ -1365,6 +1367,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsRaspel.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsShCodder.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsVark.cs">
@@ -1623,6 +1628,13 @@
     </Compile>
     <Compile Include="Services.aspx.designer.cs">
       <DependentUpon>Services.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShCodder\NewShCodder.aspx.cs">
+      <DependentUpon>NewShCodder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShCodder\NewShCodder.aspx.designer.cs">
+      <DependentUpon>NewShCodder.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

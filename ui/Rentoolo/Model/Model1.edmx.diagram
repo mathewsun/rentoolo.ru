@@ -65,6 +65,7 @@
         <EntityTypeShape EntityType="RentooloModel.Watched" Width="1.5" PointX="7.5" PointY="28.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.WatchedByCookies" Width="1.5" PointX="20.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Categories" Width="1.5" PointX="20.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.NewsShCodder" Width="1.5" PointX="21.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="RentooloModel.MembershipApplication" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.RoleApplication" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.UserApplication" ManuallyRouted="false" />
