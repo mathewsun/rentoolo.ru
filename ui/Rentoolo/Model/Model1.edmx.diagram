@@ -4,7 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f0aeed8bd2fa4aa8a22c04f06a118b22" Name="Diagram1">
+
+      <Diagram DiagramId="b393ab8d43be4e758e1b24daf6bdfea0" Name="Diagram1">
+
         <EntityTypeShape EntityType="RentooloModel.Adverts" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Applications" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Articles" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
@@ -37,8 +39,8 @@
         <EntityTypeShape EntityType="RentooloModel.LoginStatistics" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Memberships" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.News" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.NewsAzizjan" Width="1.5" PointX="14.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.NewsEducation" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.NewsEducation" Width="1.5" PointX="14.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentooloModel.NewsGGdotNET" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.NewsRaspel" Width="1.5" PointX="17.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.NewsVark" Width="1.5" PointX="7.5" PointY="16.125" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Operations" Width="1.5" PointX="17.75" PointY="7.75" IsExpanded="true" />
