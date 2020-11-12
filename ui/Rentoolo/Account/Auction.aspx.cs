@@ -11,7 +11,7 @@ namespace Rentoolo.Account
 {
     public partial class Auction : BasicPage
     {
-        Model.Auctions CurrentAuction=null;
+        public Model.Auctions CurrentAuction = new Model.Auctions();
         int auctionId;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,16 +24,17 @@ namespace Rentoolo.Account
                 CurrentAuction = AuctionsHelper.GetAuction((int)id);
                 this.auctionId = (int)id;
 
-                TextBoxDescription.Text = CurrentAuction.Description;
-                TextBoxName.Text = CurrentAuction.Name;
-                TextBoxPrice.Text = CurrentAuction.StartPrice.ToString();
-                TextBoxDataEnd.Text = CurrentAuction.DataEnd.ToString();
+                //TextBoxDescription.Text = CurrentAuction.Description;
+                //TextBoxName.Text = CurrentAuction.Name;
+                //TextBoxPrice.Text = CurrentAuction.StartPrice.ToString();
+                //TextBoxDataEnd.Text = CurrentAuction.DataEnd.ToString();
             }
 
         }
 
         protected void ButtonSave_Click(object sender, EventArgs e)
         {
+
             Model.Auctions item = new Model.Auctions();
 
             var objPhotos = Request.Form["AuctionPhotos"];
@@ -51,21 +52,24 @@ namespace Rentoolo.Account
                 item.ImgUrls = "[\"/img/a/noPhoto.png\"]";
             }
 
-            item.Name = TextBoxName.Text;
+            item.Name = Request.Form["auctionName"];
 
-            item.StartPrice = decimal.Parse(TextBoxPrice.Text);
+            string strPrice = Request.Form["startPrice"];
+            decimal price = decimal.Parse(strPrice);
+            item.StartPrice = price;
 
-            item.Description = TextBoxDescription.Text;
+            item.Description = Request.Form["description"];
 
             item.UserId = User.UserId;
 
             item.Created = DateTime.Now;
             try
             {
-                item.DataEnd = DateTime.Parse(TextBoxDataEnd.Text);
-            }catch(Exception ex)
+                item.DataEnd = DateTime.Parse(Request.Form["dateEnd"]);
+            }
+            catch (Exception ex)
             {
-                
+
             }
 
             if (CurrentAuction != null)
@@ -76,9 +80,72 @@ namespace Rentoolo.Account
             {
                 AuctionsHelper.AddAuction(item);
             }
-                
+
 
             Response.Redirect("/Account/Auctions.aspx");
+
+
+
+
+
+
+
+
+
+
+
+            //Model.Auctions item = new Model.Auctions();
+
+            //var objPhotos = Request.Form["AuctionPhotos"];
+
+            //if (objPhotos != null)
+            //{
+            //    String[] listPhotos = objPhotos.Split(',');
+
+            //    var jsonPhotos = JsonConvert.SerializeObject(listPhotos);
+
+            //    item.ImgUrls = jsonPhotos;
+            //}
+            //else
+            //{
+            //    item.ImgUrls = "[\"/img/a/noPhoto.png\"]";
+            //}
+
+            //item.Name = TextBoxName.Text;
+
+            //item.StartPrice = decimal.Parse(TextBoxPrice.Text);
+
+            //item.Description = TextBoxDescription.Text;
+
+            //item.UserId = User.UserId;
+
+            //item.Created = DateTime.Now;
+            //try
+            //{
+            //    item.DataEnd = DateTime.Parse(TextBoxDataEnd.Text);
+            //}catch(Exception ex)
+            //{
+
+            //}
+
+            //if (CurrentAuction != null)
+            //{
+            //    AuctionsHelper.UpdateAuction(item, auctionId);
+            //}
+            //else
+            //{
+            //    AuctionsHelper.AddAuction(item);
+            //}
+
+
+            //Response.Redirect("/Account/Auctions.aspx");
+
+
+
+
+
+
+
         }
     }
 }
