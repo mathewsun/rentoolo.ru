@@ -95,9 +95,6 @@ namespace Rentoolo
                 AdvertsCount = AdvertsDataHelper.GetAdvertsActiveCount(filter).ToString("N0");
 
 
-
-
-
                 //Random rnd = new Random();
 
                 //RandomInt = rnd.Next(-2, 2);

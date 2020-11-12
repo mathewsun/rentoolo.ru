@@ -12,7 +12,7 @@ namespace Rentoolo.Account
     {
         // не менять имя, при изменении имени на User будет конфликт имен при наследовании
         public Users CurUser;
-        public List<Chats> ChatList;
+        public List<Chats> ChatList = new List<Chats>();
         
 
         protected void Page_Load(object sender, EventArgs e)
@@ -62,14 +62,15 @@ namespace Rentoolo.Account
             }
 
 
+            if (CurUser.UserId != User.UserId)
+            {
+                ChatList = DataHelper.GetChats(User.UserId);
+            }
             
-            ChatList = DataHelper.GetChats(CurUser.UserId);
 
-            RptrComments.DataSource = ChatList;
-            RptrComments.DataBind();
+            //RptrComments.DataSource = ChatList;
+            //RptrComments.DataBind();
             
-
-
             if (!IsPostBack)
             {
                 
@@ -81,7 +82,9 @@ namespace Rentoolo.Account
         protected void Button1_Click(object sender, EventArgs e)
         {
             DataHelper.CreateChatDialog(new Chats() {
-                OwnerId = User.UserId, ChatType = 1, ChatName = CurUser.UserName
+                OwnerId = User.UserId,
+                ChatType = 1,
+                ChatName = CurUser.UserName
             }, CurUser.UserId);
         }
 
@@ -123,8 +126,9 @@ namespace Rentoolo.Account
 
         protected void Button2_Click1(object sender, EventArgs e)
         {
-
-            Chats chat = ChatList.FirstOrDefault(x => x.ChatName == TextBox1.Text);
+            string chatName = Request.Form["chatName"];
+            //Chats chat = ChatList.FirstOrDefault(x => x.ChatName == TextBox1.Text);
+            Chats chat = ChatList.FirstOrDefault(x => x.ChatName == chatName);
             DataHelper.AddChatUser(new ChatUsers() { ChatId = chat.Id, UserId = CurUser.UserId });
         }
 
