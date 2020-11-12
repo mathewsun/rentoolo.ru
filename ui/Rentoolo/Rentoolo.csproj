@@ -355,6 +355,7 @@
     <Content Include="DataBase\Init\init_041120.sql" />
     <Content Include="DataBase\Init\init_091020.sql" />
     <Content Include="DataBase\Init\init_110920.sql" />
+    <Content Include="DataBase\Init\init_121120_7.sql" />
     <Content Include="DataBase\Init\init_151020.sql" />
     <Content Include="DataBase\Init\init_230920.sql" />
     <Content Include="DataBase\Init\init_301020.sql" />
@@ -414,6 +415,7 @@
     <Content Include="Help.aspx" />
     <Content Include="HobbyRest.aspx" />
     <Content Include="HomeGarden.aspx" />
+    <Content Include="Ilya\News.aspx" />
     <Content Include="img\a\noPhoto.png" />
     <Content Include="img\kitchen\avatars\69179930_736853823483887_5740857891485646848_n.jpg" />
     <Content Include="img\kitchen\avatars\69527679_631739310686765_4819614499147350016_n.jpg" />
@@ -1197,6 +1199,13 @@
     </Compile>
     <Compile Include="HelperModels\RusCities.cs" />
     <Compile Include="HelperModels\StateStructs.cs" />
+    <Compile Include="Ilya\News.aspx.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ilya\News.aspx.designer.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Model\Adverts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1256,6 +1265,7 @@
     <Compile Include="Model\DataHelperAzizjan.cs" />
     <Compile Include="Model\DataHelperEducation.cs" />
     <Compile Include="Model\DataHelperGGdotNET.cs" />
+    <Compile Include="Model\DataHelperIlya.cs" />
     <Compile Include="Model\DataHelperRaspel.cs" />
     <Compile Include="Model\DataHelperVark.cs" />
     <Compile Include="Model\DeletedAdverts.cs">
@@ -1346,6 +1356,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsGGdotNET.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsIlya.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsRaspel.cs">
