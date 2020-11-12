@@ -338,6 +338,7 @@
     <Content Include="assets\js\utils.js" />
     <Content Include="Account\AuctionRequests.aspx" />
     <Content Include="Auctions.aspx" />
+    <Content Include="Azizjan\NewsAzizjan.aspx" />
     <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
     <Content Include="Category.aspx" />
@@ -1104,6 +1105,13 @@
     <Compile Include="Auctions.aspx.designer.cs">
       <DependentUpon>Auctions.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Azizjan\NewsAzizjan.aspx.cs">
+      <DependentUpon>NewsAzizjan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Azizjan\NewsAzizjan.aspx.designer.cs">
+      <DependentUpon>NewsAzizjan.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Business.aspx.cs">
       <DependentUpon>Business.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1237,6 +1245,7 @@
     <Compile Include="Model\DailyStatistics.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataHelperAzizjan.cs" />
     <Compile Include="Model\DataHelperEducation.cs" />
     <Compile Include="Model\DataHelperRaspel.cs" />
     <Compile Include="Model\DataHelperVark.cs" />
@@ -1319,6 +1328,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\News.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsAzizjan.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsEducation.cs">
