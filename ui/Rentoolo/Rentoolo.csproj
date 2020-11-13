@@ -256,6 +256,7 @@
     <Content Include="Admin\User.aspx" />
     <Content Include="Admin\Users.aspx" />
     <Content Include="Advert.aspx" />
+    <Content Include="Aezakmi128\NewsAezakmi.aspx" />
     <Content Include="Article.aspx" />
     <Content Include="Articles.aspx" />
     <Content Include="assets\css\additional.css" />
@@ -351,61 +352,6 @@
     <Content Include="ConsumerElectronics.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="CreateComplaint.aspx" />
-    <Content Include="DataBase\alter\AlterUsers.sql" />
-    <Content Include="DataBase\fnGetUserWallets.sql" />
-    <Content Include="DataBase\Init\Init.sql" />
-    <Content Include="DataBase\Init\init_041120.sql" />
-    <Content Include="DataBase\Init\init_091020.sql" />
-    <Content Include="DataBase\Init\init_110920.sql" />
-    <Content Include="DataBase\Init\init_151020.sql" />
-    <Content Include="DataBase\Init\init_230920.sql" />
-    <Content Include="DataBase\Init\init_301020.sql" />
-    <Content Include="DataBase\Init\init_301020_2.sql" />
-    <Content Include="DataBase\spAddFavoritesAuctions.sql" />
-    <Content Include="DataBase\spAddFavoritesAuctionsByCookies.sql" />
-    <Content Include="DataBase\spAddWatchedByCookies.sql" />
-    <Content Include="DataBase\spAddWatched.sql" />
-    <Content Include="DataBase\spGetComments.sql" />
-    <Content Include="DataBase\spGetComplaintsByRecipier.txt" />
-    <Content Include="DataBase\spGetComplaintsBySender.sql" />
-    <Content Include="DataBase\spGetTokenCostToday.sql" />
-    <Content Include="DataBase\spGetWatchedByCookies.sql" />
-    <Content Include="DataBase\spGetWatched.sql" />
-    <Content Include="DataBase\spGetLast200TokensOperations.sql" />
-    <Content Include="DataBase\spGetAuctions.sql" />
-    <Content Include="DataBase\spAddFavorites.sql" />
-    <Content Include="DataBase\spSetTokensCost.sql" />
-    <Content Include="DataBase\spUpdateQiwiAccountBalance.sql" />
-    <Content Include="DataBase\spGetUserAdverts.sql" />
-    <Content Include="DataBase\spGetAdverts.sql" />
-    <Content Include="DataBase\spGetFavorites.sql" />
-    <Content Include="DataBase\spAddFavoritesByCookies.sql" />
-    <Content Include="DataBase\spGetFavoritesByCookies.sql" />
-    <Content Include="DataBase\spGetLoginStatisticLastDayActive.sql" />
-    <Content Include="DataBase\spGetLoginStatisticLastHourActive.sql" />
-    <Content Include="DataBase\fnGetTablesRows.sql" />
-    <Content Include="DataBase\fnGetAllUsers.sql" />
-    <Content Include="DataBase\tables\AuctionRequests.sql" />
-    <Content Include="DataBase\tables\CashOuts.sql" />
-    <Content Include="DataBase\tables\Comments.sql" />
-    <Content Include="DataBase\tables\Complaints.sql" />
-    <Content Include="DataBase\tables\ItemDisLikes.sql" />
-    <Content Include="DataBase\tables\ItemLikes.sql" />
-    <Content Include="DataBase\tables\Phones.sql" />
-    <Content Include="DataBase\tables\LoginStat.sql" />
-    <Content Include="DataBase\tables\Auctions.sql" />
-    <Content Include="DataBase\tables\Business.sql" />
-    <Content Include="DataBase\tables\Adverts.sql" />
-    <Content Include="DataBase\tables\Favorites.sql" />
-    <Content Include="DataBase\tables\FavoritesByCookies.sql" />
-    <Content Include="DataBase\tables\TenderRequest.sql" />
-    <Content Include="DataBase\tables\Tenders.sql" />
-    <Content Include="DataBase\tables\TokensBuying.sql" />
-    <Content Include="DataBase\tables\TokensCost.sql" />
-    <Content Include="DataBase\tables\TokensSelling.sql" />
-    <Content Include="DataBase\tables\Users.sql" />
-    <Content Include="DataBase\tables\Watched.sql" />
-    <Content Include="DataBase\tables\WatchedByCookies.sql" />
     <Content Include="docs\index.html" />
     <Content Include="Education\NewsEducation.aspx" />
     <Content Include="Empty.aspx" />
@@ -416,6 +362,7 @@
     <Content Include="Help.aspx" />
     <Content Include="HobbyRest.aspx" />
     <Content Include="HomeGarden.aspx" />
+    <Content Include="Ilya\News.aspx" />
     <Content Include="img\a\noPhoto.png" />
     <Content Include="img\kitchen\avatars\69179930_736853823483887_5740857891485646848_n.jpg" />
     <Content Include="img\kitchen\avatars\69527679_631739310686765_4819614499147350016_n.jpg" />
@@ -1057,6 +1004,13 @@
     <Compile Include="Advert.aspx.designer.cs">
       <DependentUpon>Advert.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aezakmi128\NewsAezakmi.aspx.cs">
+      <DependentUpon>NewsAezakmi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aezakmi128\NewsAezakmi.aspx.designer.cs">
+      <DependentUpon>NewsAezakmi.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -1213,6 +1167,13 @@
     </Compile>
     <Compile Include="HelperModels\RusCities.cs" />
     <Compile Include="HelperModels\StateStructs.cs" />
+    <Compile Include="Ilya\News.aspx.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ilya\News.aspx.designer.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Model\Adverts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1269,9 +1230,11 @@
     <Compile Include="Model\DailyStatistics.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataHelperAezakmi.cs" />
     <Compile Include="Model\DataHelperAzizjan.cs" />
     <Compile Include="Model\DataHelperEducation.cs" />
     <Compile Include="Model\DataHelperGGdotNET.cs" />
+    <Compile Include="Model\DataHelperIlya.cs" />
     <Compile Include="Model\DataHelperRaspel.cs" />
     <Compile Include="Model\DataHelperVark.cs" />
     <Compile Include="Model\DeletedAdverts.cs">
@@ -1352,7 +1315,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\NewAezakmi.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\News.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsAzizjan.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsEducation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsGGdotNET.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsIlya.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsRaspel.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsVark.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Operations.cs">
