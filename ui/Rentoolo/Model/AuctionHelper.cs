@@ -29,6 +29,25 @@ namespace Rentoolo.Model
         }
 
 
+        public static void UpdateAllAuctionFields(Auctions oldItem, Auctions newItem)
+        {
+            oldItem.Name = newItem.Name;
+            oldItem.StartPrice = newItem.StartPrice;
+            oldItem.ImgUrls = newItem.ImgUrls;
+            oldItem.Description = newItem.Description;
+            oldItem.DataEnd = newItem.DataEnd;
+        }
+
+
+        public static void UpdateAuction(Auctions newItem,int oldItemId)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var updatedItem = ctx.Auctions.First(x=>x.Id==oldItemId);
+                UpdateAllAuctionFields(updatedItem, newItem);
+                ctx.SaveChanges();
+            }
+        }
 
 
 
