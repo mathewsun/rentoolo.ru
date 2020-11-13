@@ -58,6 +58,7 @@ namespace Rentoolo.Model
         public virtual DbSet<LoginStat> LoginStat { get; set; }
         public virtual DbSet<LoginStatistics> LoginStatistics { get; set; }
         public virtual DbSet<Memberships> Memberships { get; set; }
+        public virtual DbSet<NewAezakmi> NewAezakmi { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<NewsEducation> NewsEducation { get; set; }
         public virtual DbSet<NewsRaspel> NewsRaspel { get; set; }
