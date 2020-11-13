@@ -22,6 +22,5 @@ namespace Rentoolo.Model
         public Nullable<bool> Active { get; set; }
     
         public virtual Users Users { get; set; }
-        public virtual Users Users1 { get; set; }
     }
 }

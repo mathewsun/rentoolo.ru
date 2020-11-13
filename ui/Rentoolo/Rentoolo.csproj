@@ -237,7 +237,9 @@
     <Content Include="Admin\Articles.aspx" />
     <Content Include="Admin\CashIns.aspx" />
     <Content Include="Admin\CashOuts.aspx" />
+    <Content Include="Admin\CheckComplaint.aspx" />
     <Content Include="Admin\Clients.aspx" />
+    <Content Include="Admin\ComplaintsPage.aspx" />
     <Content Include="Admin\DatabaseTables.aspx" />
     <Content Include="Admin\Exceptions.aspx" />
     <Content Include="Admin\Ips.aspx" />
@@ -919,12 +921,26 @@
     <Compile Include="Admin\CashOuts.aspx.designer.cs">
       <DependentUpon>CashOuts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\CheckComplaint.aspx.cs">
+      <DependentUpon>CheckComplaint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CheckComplaint.aspx.designer.cs">
+      <DependentUpon>CheckComplaint.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Clients.aspx.cs">
       <DependentUpon>Clients.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Clients.aspx.designer.cs">
       <DependentUpon>Clients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ComplaintsPage.aspx.cs">
+      <DependentUpon>ComplaintsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ComplaintsPage.aspx.designer.cs">
+      <DependentUpon>ComplaintsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\DatabaseTables.aspx.cs">
       <DependentUpon>DatabaseTables.aspx</DependentUpon>
@@ -1337,21 +1353,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\News.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\NewsAzizjan.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\NewsEducation.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\NewsGGdotNET.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\NewsRaspel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\NewsVark.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Operations.cs">
