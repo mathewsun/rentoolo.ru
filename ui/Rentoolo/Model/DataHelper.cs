@@ -125,6 +125,19 @@ namespace Rentoolo.Model
             }
         }
 
+        public static Memberships GetUserMembershipByEmail(string email)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Memberships membership = dc.Memberships.FirstOrDefault(x => x.Email == email);
+
+                return membership;
+            }
+        }
+
+
+
+
         public static Users GetUserByRefId(int refId)
         {
             using (var ctx = new RentooloEntities())
