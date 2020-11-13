@@ -254,6 +254,7 @@
     <Content Include="Admin\User.aspx" />
     <Content Include="Admin\Users.aspx" />
     <Content Include="Advert.aspx" />
+    <Content Include="Aezakmi128\NewsAezakmi.aspx" />
     <Content Include="Article.aspx" />
     <Content Include="Articles.aspx" />
     <Content Include="assets\css\additional.css" />
@@ -1041,6 +1042,13 @@
     <Compile Include="Advert.aspx.designer.cs">
       <DependentUpon>Advert.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aezakmi128\NewsAezakmi.aspx.cs">
+      <DependentUpon>NewsAezakmi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aezakmi128\NewsAezakmi.aspx.designer.cs">
+      <DependentUpon>NewsAezakmi.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -1253,7 +1261,11 @@
     <Compile Include="Model\DailyStatistics.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+
+    <Compile Include="Model\DataHelperAezakmi.cs" />
+
     <Compile Include="Model\DataHelperAzizjan.cs" />
+
     <Compile Include="Model\DataHelperEducation.cs" />
     <Compile Include="Model\DataHelperGGdotNET.cs" />
     <Compile Include="Model\DataHelperRaspel.cs" />
@@ -1335,6 +1347,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewAezakmi.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\News.cs">
       <DependentUpon>Model1.tt</DependentUpon>
