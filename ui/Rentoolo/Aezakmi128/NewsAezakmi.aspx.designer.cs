@@ -7,20 +7,12 @@
 // </автоматически создаваемое>
 //------------------------------------------------------------------------------
 
-namespace Rentoolo.Account
+namespace Rentoolo.Aezakmi128
 {
 
 
-    public partial class Auction
+    public partial class Aezakmi
     {
-
-        /// <summary>
-        /// ButtonSave элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonSave;
+        
     }
 }
