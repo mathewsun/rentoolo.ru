@@ -86,6 +86,7 @@
         <AssociationConnector Association="RentooloModel.FK_Watched_Users" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName" ManuallyRouted="false" />
         <AssociationConnector Association="RentooloModel.UsersInRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RentooloModel.NewsIlya" Width="1.5" PointX="17.375" PointY="21.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
