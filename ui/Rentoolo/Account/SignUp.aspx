@@ -77,6 +77,7 @@
                                 <div class="text-danger">
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Email" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Введите email" />
                                     <asp:RegularExpressionValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Email" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Введите корректный email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"/>
+                                    <asp:CustomValidator ID="Customvalidator2" runat="server" ControlToValidate="Email" CssClass="field-validation-error" Display="Dynamic" OnServerValidate="Customvalidator2_ServerValidate" ErrorMessage="Упс, такой email уже занят ✖" />
                                  </div>
 
                                 <div class="form-group">

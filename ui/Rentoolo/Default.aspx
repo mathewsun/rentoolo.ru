@@ -366,7 +366,7 @@
 
         <div class="container pt-4 pb-5">
             <div class="row">
-                <di class="col-lg-9">
+                <div class="col-lg-9">
 
                     <ul class="list-group media-list media-list-stream mb-4">
 
