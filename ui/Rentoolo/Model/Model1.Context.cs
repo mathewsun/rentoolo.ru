@@ -63,6 +63,7 @@ namespace Rentoolo.Model
         public virtual DbSet<NewsAzizjan> NewsAzizjan { get; set; }
         public virtual DbSet<NewsEducation> NewsEducation { get; set; }
         public virtual DbSet<NewsGGdotNET> NewsGGdotNET { get; set; }
+        public virtual DbSet<NewsIlya> NewsIlya { get; set; }
         public virtual DbSet<NewsRaspel> NewsRaspel { get; set; }
         public virtual DbSet<NewsVark> NewsVark { get; set; }
         public virtual DbSet<Operations> Operations { get; set; }
@@ -86,7 +87,6 @@ namespace Rentoolo.Model
         public virtual DbSet<Watched> Watched { get; set; }
         public virtual DbSet<WatchedByCookies> WatchedByCookies { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
-        public virtual DbSet<NewsIlya> NewsIlya { get; set; }
     
         [DbFunction("RentooloEntities", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()

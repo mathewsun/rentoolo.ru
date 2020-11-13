@@ -1270,11 +1270,8 @@
     <Compile Include="Model\DailyStatistics.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-
     <Compile Include="Model\DataHelperAezakmi.cs" />
-
     <Compile Include="Model\DataHelperAzizjan.cs" />
-
     <Compile Include="Model\DataHelperEducation.cs" />
     <Compile Include="Model\DataHelperGGdotNET.cs" />
     <Compile Include="Model\DataHelperIlya.cs" />
