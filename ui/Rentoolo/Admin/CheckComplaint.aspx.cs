@@ -17,5 +17,11 @@ namespace Rentoolo.Admin
             Complaint = DataHelper.GetComplaint(Convert.ToInt32(id));
 
         }
+
+        protected void ButtonChangeStatus_Click(object sender, EventArgs e)
+        {
+            string status = Request.Form["status"];
+            DataHelper.SetComplaintStatus(Complaint.Id, status);
+        }
     }
 }

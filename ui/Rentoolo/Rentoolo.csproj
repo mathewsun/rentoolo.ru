@@ -255,6 +255,7 @@
     <Content Include="Admin\Statistics.aspx" />
     <Content Include="Admin\User.aspx" />
     <Content Include="Admin\Users.aspx" />
+    <Content Include="Admin\WebForm1.aspx" />
     <Content Include="Advert.aspx" />
     <Content Include="Aezakmi128\NewsAezakmi.aspx" />
     <Content Include="Article.aspx" />
@@ -997,6 +998,13 @@
     <Compile Include="Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Advert.aspx.cs">
       <DependentUpon>Advert.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1224,6 +1232,7 @@
     <Compile Include="Model\Complaints.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ComplaintsFilter.cs" />
     <Compile Include="Model\Currencies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
