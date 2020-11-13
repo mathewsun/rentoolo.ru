@@ -339,6 +339,7 @@
     <Content Include="assets\js\utils.js" />
     <Content Include="Account\AuctionRequests.aspx" />
     <Content Include="Auctions.aspx" />
+    <Content Include="Azizjan\NewsAzizjan.aspx" />
     <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
     <Content Include="Category.aspx" />
@@ -355,6 +356,7 @@
     <Content Include="DataBase\Init\init_041120.sql" />
     <Content Include="DataBase\Init\init_091020.sql" />
     <Content Include="DataBase\Init\init_110920.sql" />
+    <Content Include="DataBase\Init\init_121120_7.sql" />
     <Content Include="DataBase\Init\init_151020.sql" />
     <Content Include="DataBase\Init\init_230920.sql" />
     <Content Include="DataBase\Init\init_301020.sql" />
@@ -410,9 +412,11 @@
     <Content Include="Fail.aspx" />
     <Content Include="FAQ.aspx" />
     <Content Include="Favorites.aspx" />
+    <Content Include="GGdotNET\NewsGGdotNET.aspx" />
     <Content Include="Help.aspx" />
     <Content Include="HobbyRest.aspx" />
     <Content Include="HomeGarden.aspx" />
+    <Content Include="Ilya\News.aspx" />
     <Content Include="img\a\noPhoto.png" />
     <Content Include="img\kitchen\avatars\69179930_736853823483887_5740857891485646848_n.jpg" />
     <Content Include="img\kitchen\avatars\69527679_631739310686765_4819614499147350016_n.jpg" />
@@ -1112,6 +1116,13 @@
     <Compile Include="Auctions.aspx.designer.cs">
       <DependentUpon>Auctions.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Azizjan\NewsAzizjan.aspx.cs">
+      <DependentUpon>NewsAzizjan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Azizjan\NewsAzizjan.aspx.designer.cs">
+      <DependentUpon>NewsAzizjan.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Business.aspx.cs">
       <DependentUpon>Business.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1187,8 +1198,22 @@
     <Compile Include="Education\NewsEducation.aspx.designer.cs">
       <DependentUpon>NewsEducation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GGdotNET\NewsGGdotNET.aspx.cs">
+      <DependentUpon>NewsGGdotNET.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GGdotNET\NewsGGdotNET.aspx.designer.cs">
+      <DependentUpon>NewsGGdotNET.aspx</DependentUpon>
+    </Compile>
     <Compile Include="HelperModels\RusCities.cs" />
     <Compile Include="HelperModels\StateStructs.cs" />
+    <Compile Include="Ilya\News.aspx.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ilya\News.aspx.designer.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Model\Adverts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1246,7 +1271,10 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataHelperAezakmi.cs" />
+    <Compile Include="Model\DataHelperAzizjan.cs" />
     <Compile Include="Model\DataHelperEducation.cs" />
+    <Compile Include="Model\DataHelperGGdotNET.cs" />
+    <Compile Include="Model\DataHelperIlya.cs" />
     <Compile Include="Model\DataHelperRaspel.cs" />
     <Compile Include="Model\DataHelperVark.cs" />
     <Compile Include="Model\DeletedAdverts.cs">
@@ -1333,7 +1361,16 @@
     <Compile Include="Model\News.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\NewsAzizjan.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\NewsEducation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsGGdotNET.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsIlya.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsRaspel.cs">
@@ -1735,6 +1772,7 @@
     </Compile>
     <Compile Include="Vark\NewsVark.aspx.cs">
       <DependentUpon>NewsVark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vark\NewsVark.aspx.designer.cs">
       <DependentUpon>NewsVark.aspx</DependentUpon>

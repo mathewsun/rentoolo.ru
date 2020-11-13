@@ -10,12 +10,20 @@ namespace Rentoolo.Account.TenderViews
 {
     public partial class CreateTender : BasicPage
     {
+        // if tenderId != null 
+        // that means that tender is modifying
         int? tenderId = null;
-        Model.Tenders CurrentTender = new Model.Tenders();
+        public Model.Tenders CurrentTender = new Model.Tenders();
         protected void Page_Load(object sender, EventArgs e)
         {
             var id = Request.QueryString["tenderId"];
             tenderId = id == null ? null : (int?)Convert.ToInt32(id);
+            if (tenderId != null)
+            {
+                CurrentTender = TendersHelper.GetTenderById((int)tenderId);
+            }
+            
+
         }
 
         protected void ButtonAddTender_Click(object sender, EventArgs e)
