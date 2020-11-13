@@ -12,7 +12,7 @@ namespace Rentoolo.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class News
+    public partial class NewsVark
     {
         public int Id { get; set; }
         public string Text { get; set; }
@@ -22,6 +22,5 @@ namespace Rentoolo.Model
         public Nullable<bool> Active { get; set; }
     
         public virtual Users Users { get; set; }
-        public virtual Users Users1 { get; set; }
     }
 }

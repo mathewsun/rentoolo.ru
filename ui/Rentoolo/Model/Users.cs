@@ -19,6 +19,8 @@ namespace Rentoolo.Model
         {
             this.CashIns = new HashSet<CashIns>();
             this.News = new HashSet<News>();
+            this.News1 = new HashSet<News>();
+            this.NewsVark = new HashSet<NewsVark>();
             this.Referrals = new HashSet<Referrals>();
             this.Referrals1 = new HashSet<Referrals>();
             this.UserSettings = new HashSet<UserSettings>();
@@ -53,6 +55,10 @@ namespace Rentoolo.Model
         public virtual Memberships Memberships { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<News> News { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<News> News1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NewsVark> NewsVark { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Referrals> Referrals { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
