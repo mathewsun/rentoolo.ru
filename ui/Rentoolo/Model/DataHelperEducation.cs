@@ -14,5 +14,22 @@ namespace Rentoolo.Model
                 return list;
             }
         }
+
+        public static void AddNews(NewsEducation item)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                ctx.NewsEducation.Add(item);
+
+                try
+                {
+                    ctx.SaveChanges();
+                }
+                catch (System.Exception ex)
+                {
+                    DataHelper.AddException(ex);
+                }
+            }
+        }
     }
 }
