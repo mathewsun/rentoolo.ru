@@ -125,6 +125,19 @@ namespace Rentoolo.Model
             }
         }
 
+        public static Memberships GetUserMembershipByEmail(string email)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Memberships membership = dc.Memberships.FirstOrDefault(x => x.Email == email);
+
+                return membership;
+            }
+        }
+
+
+
+
         public static Users GetUserByRefId(int refId)
         {
             using (var ctx = new RentooloEntities())
@@ -164,6 +177,17 @@ namespace Rentoolo.Model
                 var obj = ctx.Users.FirstOrDefault(x => x.UserId == user.UserId);
                 obj.BirthDay = user.BirthDay;
                 ctx.SaveChanges();
+
+
+                AddOperation(new Operations()
+                {
+                    UserId = user.UserId,
+                    Type = (int)OperationTypesEnum.BirthDayChange,
+                    WhenDate = DateTime.Now,
+                    Comment = "",
+                    Value = 0
+                });
+
             }
         }
 
@@ -1923,6 +1947,11 @@ namespace Rentoolo.Model
             }
         }
 
+
+
+
+
+
         public static List<Complaints> GetComplaints(Guid userId, bool isRecipier)
         {
             using (var dc = new RentooloEntities())
@@ -1939,6 +1968,49 @@ namespace Rentoolo.Model
         }
 
 
+
+        public static List<Complaints> GetFilteredComplaints(ComplaintsFilter filter)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var res = dc.Complaints.Select(x => x);
+
+
+                if (filter.Status != null)
+                {
+                    res = res.Where(x => x.Status == filter.Status);
+                }
+                
+
+                if (filter.ObjectType != null && filter.ObjectType != 0)
+                {
+                    res = res.Where(x => x.ObjectType == filter.ObjectType);
+                }
+
+
+                if ((filter.ObjectId != null) && (filter.ObjectId != 0))
+                {
+                    res = res.Where(x => x.ObjectId == filter.ObjectId);
+                }
+
+                if (filter.UserRecipier != null)
+                {
+                    res = res.Where(x => x.UserRecipier == filter.UserRecipier);
+                }
+
+                if (filter.UserSender != null)
+                {
+                    res = res.Where(x => x.UserSender == filter.UserSender);
+                }
+
+
+
+                return res.ToList();
+            }
+        }
+
+
+
         public static List<Complaints> GetComplaints(int objectId, int objectType)
         {
             using (var dc = new RentooloEntities())
@@ -1948,10 +2020,21 @@ namespace Rentoolo.Model
         }
 
 
+        public static void SetComplaintStatus(int complaintId, string status)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Complaints.First(x => x.Id == complaintId).Status = (byte?)HelperStructs.StructsHelper.ComplaintStatus[status];
+                dc.SaveChanges();
+            }
+        }
+
+
         public static void AddComplaint(Complaints complaint)
         {
             using (var dc = new RentooloEntities())
             {
+                complaint.Status = 0;
                 dc.Complaints.Add(complaint);
                 dc.SaveChanges();
             }

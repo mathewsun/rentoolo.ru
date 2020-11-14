@@ -108,206 +108,208 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script type="text/javascript">
 
-    let websock;
+        let websock;
 
-    var app = new Vue({
-        el: '#app',
-        data: {
-            userId: "A55A7415-80E3-4DFD-93A1-3EA9D8D88329",
-            currentChatId: null,
-            message1: 'Hello Vue!',
-            showChats: true,
-            chats: [],
-            messages: [],
-            message: "",
-            showMessages: false,
-            ws: null,
-            chatName: ""
-        },
-        created: function () {
-            this.getChats();
-        },
-        methods: {
+        
 
-
-            createChat() {
-
-                let url = "http://localhost:53225/api/Chats?anotheruser=";
-
-                let bodyData = {
-                    OwnerId: this.userId,
-                    chatName: this.chatName,
-                    chatType: 0
-                };
-
-                let data = {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(bodyData)
-                };
-
-                fetch(url, data)
-                    .then((response) => {
-
-                        return response;
-                    })
-                    .then((data) => {
-                        console.log(data);
-                    });
-
+        var app = new Vue({
+            el: '#app',
+            data: {
+                userId: "A55A7415-80E3-4DFD-93A1-3EA9D8D88329",
+                currentChatId: null,
+                message1: 'Hello Vue!',
+                showChats: true,
+                chats: [],
+                messages: [],
+                message: "",
+                showMessages: false,
+                ws: null,
+                chatName: ""
             },
-            addMessage(msg) {
-                let jsonedMsg = JSON.parse(msg);
-                this.messages.unshift(jsonedMsg);
+            created: function () {
+                this.getChats();
             },
-
-            initWSConnection() {
-                console.log("this.msges");
-                console.log(this.messages);
-                const addMessage = this.addMessage;
-                const addMsg = function (msg) {
-                    console.log(this.messages);
-                    addMessage(msg);
-                }
-
-                let socket = new WebSocket("ws://localhost:8080");
-
-                let chatId = this.currentChatId;
-                let usrId = this.userId;
+            methods: {
 
 
-                socket.onmessage = function (event) {
-                    console.log("Получены данные " + event.data);
-                    addMsg(event.data);
-                };
+                createChat() {
 
-                socket.onopen = function () {
+                    let url = "/api/Chats?anotheruser=";
+
+                    let bodyData = {
+                        OwnerId: this.userId,
+                        chatName: this.chatName,
+                        chatType: 0
+                    };
 
                     let data = {
-                        type: "initUser",
-                        chatId: chatId,
-                        userId: usrId
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(bodyData)
+                    };
+
+                    fetch(url, data)
+                        .then((response) => {
+
+                            return response;
+                        })
+                        .then((data) => {
+                            console.log(data);
+                        });
+
+                },
+                addMessage(msg) {
+                    let jsonedMsg = JSON.parse(msg);
+                    this.messages.unshift(jsonedMsg);
+                },
+
+                initWSConnection() {
+                    console.log("this.msges");
+                    console.log(this.messages);
+                    const addMessage = this.addMessage;
+                    const addMsg = function (msg) {
+                        console.log(this.messages);
+                        addMessage(msg);
                     }
-                    console.log("---------");
-                    console.log(data);
 
-                    socket.send(JSON.stringify(data));
-                };
+                    let socket = new WebSocket("ws://localhost:8080");
 
-                socket.onclose = function (event) {
-                    if (event.wasClean) {
-                        alert('Соединение закрыто чисто');
-                    } else {
-                        alert('Обрыв соединения'); // например, "убит" процесс сервера
+                    let chatId = this.currentChatId;
+                    let usrId = this.userId;
+
+
+                    socket.onmessage = function (event) {
+                        console.log("Получены данные " + event.data);
+                        addMsg(event.data);
+                    };
+
+                    socket.onopen = function () {
+
+                        let data = {
+                            type: "initUser",
+                            chatId: chatId,
+                            userId: usrId
+                        }
+                        console.log("---------");
+                        console.log(data);
+
+                        socket.send(JSON.stringify(data));
+                    };
+
+                    socket.onclose = function (event) {
+                        if (event.wasClean) {
+                            alert('Соединение закрыто чисто');
+                        } else {
+                            alert('Обрыв соединения'); // например, "убит" процесс сервера
+                        }
+                        alert('Код: ' + event.code + ' причина: ' + event.reason);
+                    };
+
+
+
+                    socket.onerror = function (error) {
+                        alert("Ошибка " + error.message);
+                    };
+
+
+
+
+
+                    websock = socket;
+
+                    console.log("this.msges");
+                    console.log(this.messages);
+
+                },
+                showHideChats() {
+                    this.showChats = !this.showChats;
+                },
+                showHideMessages() {
+                    this.showMessages = !this.showMessages;
+                },
+                getChats() {
+                    // dont forbid to change url
+                    let url = "/api/chats/" + this.userId;
+                    let data = {
+                        method: "GET",
+                    };
+                    fetch(url,data)
+                        .then((response) => {
+                            console.log(response);
+                            return response.json();
+                        })
+                        .then((data) => {
+                            console.log(data);
+                            this.chats = data;
+                        });
+
+                },
+                getMessages(chatId) {
+                    let url = "/api/Messages/" + chatId;
+                    this.currentChatId = chatId;
+                    let data = {
+                        method: "GET"
+                    };
+                    fetch(url, data)
+                        .then((response) => {
+                            console.log("message list");
+                            console.log(response);
+                            return response.json();
+                        })
+                        .then((data) => {
+                            console.log(data);
+                            this.messages = data;
+                        });
+                    this.showMessages = true;
+
+                    this.initWSConnection();
+
+
+
+                },
+                sendMessage() {
+                    let bodyData = {
+                        ChatId: this.currentChatId,
+                        Message: this.message,
+                        UserId: this.userId,
+
                     }
-                    alert('Код: ' + event.code + ' причина: ' + event.reason);
-                };
+
+                    let url = "/api/Messages";
+
+                    let data = {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(bodyData)
+                    };
 
 
 
-                socket.onerror = function (error) {
-                    alert("Ошибка " + error.message);
-                };
 
 
 
+                    fetch(url, data)
+                        .then((response) => {
 
+                            return response;
+                        })
+                        .then((data) => {
+                            console.log(data);
+                        });
 
-                websock = socket;
-
-                console.log("this.msges");
-                console.log(this.messages);
-
-            },
-            showHideChats() {
-                this.showChats = !this.showChats;
-            },
-            showHideMessages() {
-                this.showMessages = !this.showMessages;
-            },
-            getChats() {
-                // dont forbid to change url
-                let url = "http://localhost:53225/api/chats/" + this.userId;
-                let data = {
-                    method: "GET",
-                };
-                fetch(url,data)
-                    .then((response) => {
-                        console.log(response);
-                        return response.json();
-                    })
-                    .then((data) => {
-                        console.log(data);
-                        this.chats = data;
-                    });
-
-            },
-            getMessages(chatId) {
-                let url = "http://localhost:53225/api/Messages/" + chatId;
-                this.currentChatId = chatId;
-                let data = {
-                    method: "GET"
-                };
-                fetch(url, data)
-                    .then((response) => {
-                        console.log("message list");
-                        console.log(response);
-                        return response.json();
-                    })
-                    .then((data) => {
-                        console.log(data);
-                        this.messages = data;
-                    });
-                this.showMessages = true;
-
-                this.initWSConnection();
+                    this.message = "";
 
 
 
-            },
-            sendMessage() {
-                let bodyData = {
-                    ChatId: this.currentChatId,
-                    Message: this.message,
-                    UserId: this.userId,
 
                 }
-
-                let url = "http://localhost:53225/api/Messages";
-
-                let data = {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(bodyData)
-                };
-
-
-
-
-
-
-                fetch(url, data)
-                    .then((response) => {
-
-                        return response;
-                    })
-                    .then((data) => {
-                        console.log(data);
-                    });
-
-                this.message = "";
-
-
-
-
             }
-        }
 
-    })
+        })
 
     </script>
 </body>
