@@ -71,6 +71,7 @@ namespace Rentoolo.Model.HelperStructs
 
         public static Dictionary<string, byte> ComplaintStatus = new Dictionary<string, byte>()
         {
+            {"in progress", 0 },
             {"accept", 1 },
             {"reject", 2 }
         };

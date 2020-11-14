@@ -9,7 +9,13 @@
                 <input type="text" name="objectType" placeholder="objectType"  />
                 <input type="text" name="userSender" placeholder="userSender"  />
                 <input type="text" name="userRecipier" placeholder="userRecipier"  />
-                <input type="text" name="status" placeholder="status"  />
+                <input type="text" name="status" placeholder="status" list="statusList"   />
+                <datalist id="statusList">
+                    <option>in progress</option>
+                    <option>accept</option>
+                    <option>reject</option>
+                </datalist>
+
             </div>
             <asp:Button ID="ButtonFilter" runat="server" Text="filter" OnClick="ButtonFilter_Click" />
         </div>

@@ -1,4 +1,5 @@
 ﻿using Rentoolo.Model;
+using Rentoolo.Model.HelperStructs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +18,14 @@ namespace Rentoolo.Admin
             string objectType = Request.QueryString["objectType"];
             string userSender = Request.QueryString["userSender"];
             string userRecipie = Request.QueryString["userRecipie"];
-            string status = Request.QueryString["userStatus"];
+            string status = Request.QueryString["status"];
 
             Model.ComplaintsFilter filter = new ComplaintsFilter()
             {
-                ObjectId = objectId == null ? null : (int?)Convert.ToInt32(objectId),
-                ObjectType = objectType == null ? null : (int?)Convert.ToInt32(objectType),
-                UserSender = userSender == null ? null : (Guid?)Guid.Parse(userSender),
-                UserRecipier = userRecipie == null ? null : (Guid?)Guid.Parse(userRecipie),
+                ObjectId = objectId == null || objectId == "" ? null : (int?)Convert.ToInt32(objectId),
+                ObjectType = objectType == null || objectType == "" ? null : (int?)Convert.ToInt32(objectType),
+                UserSender = userSender == null || userSender == "" ? null : (Guid?)Guid.Parse(userSender),
+                UserRecipier = userRecipie == null || userRecipie == "" ? null : (Guid?)Guid.Parse(userRecipie),
                 Status = status == null ? null : (byte?)Convert.ToByte(status)
 
             };
@@ -57,17 +58,21 @@ namespace Rentoolo.Admin
 
         protected void ButtonFilter_Click(object sender, EventArgs e)
         {
-            string objectId = Request.QueryString["objectId"];
-            string objectType = Request.QueryString["objectType"];
-            string userSender = Request.QueryString["userSender"];
-            string userRecipie = Request.QueryString["userRecipie"];
-            string status = Request.QueryString["status"];
+            string objectId = Request.Form["objectId"];
+            string objectType = Request.Form["objectType"];
+            string userSender = Request.Form["userSender"];
+            string userRecipie = Request.Form["userRecipie"];
+            string status = Request.Form["status"];
 
             string urlQuery = "?" + addToQStr("objectId", objectId, true);
             urlQuery += addToQStr("objectType", objectType);
             urlQuery += addToQStr("userSender", userSender);
             urlQuery += addToQStr("userRecipie", userRecipie);
-            urlQuery += addToQStr("status", status);
+            if (StructsHelper.ComplaintStatus.ContainsKey(status))
+            {
+                urlQuery += addToQStr("status", StructsHelper.ComplaintStatus[status].ToString());
+            }
+            
 
 
             Response.Redirect("ComplaintsPage.aspx" + urlQuery);

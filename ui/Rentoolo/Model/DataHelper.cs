@@ -1980,7 +1980,7 @@ namespace Rentoolo.Model
                 {
                     res = res.Where(x => x.Status == filter.Status);
                 }
-
+                
 
                 if (filter.ObjectType != null && filter.ObjectType != 0)
                 {
@@ -2034,6 +2034,7 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
+                complaint.Status = 0;
                 dc.Complaints.Add(complaint);
                 dc.SaveChanges();
             }
