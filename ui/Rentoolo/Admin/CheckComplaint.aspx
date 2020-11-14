@@ -4,6 +4,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
 
+        <h4>
+            <a href="<%= NavLink %>">
+                перейти к обьявлению для проверки
+            </a>
+        </h4>
         <div>
             <div><%=Complaint.Id%></div>
             <div><%=Complaint.Message%></div>
