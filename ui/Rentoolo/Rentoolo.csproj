@@ -353,6 +353,7 @@
     <Content Include="Contact.aspx" />
     <Content Include="CreateComplaint.aspx" />
     <Content Include="docs\index.html" />
+    <Content Include="Education\AddNewsEducation.aspx" />
     <Content Include="Education\NewsEducation.aspx" />
     <Content Include="Empty.aspx" />
     <Content Include="Fail.aspx" />
@@ -452,6 +453,9 @@
     </EntityDeploy>
     <Content Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Education\Web.config">
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
@@ -1150,6 +1154,13 @@
     </Compile>
     <Compile Include="CreateComplaint.aspx.designer.cs">
       <DependentUpon>CreateComplaint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Education\AddNewsEducation.aspx.cs">
+      <DependentUpon>AddNewsEducation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Education\AddNewsEducation.aspx.designer.cs">
+      <DependentUpon>AddNewsEducation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Education\NewsEducation.aspx.cs">
       <DependentUpon>NewsEducation.aspx</DependentUpon>
