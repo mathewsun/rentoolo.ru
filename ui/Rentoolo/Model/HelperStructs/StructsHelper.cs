@@ -68,6 +68,20 @@ namespace Rentoolo.Model.HelperStructs
         };
 
 
+
+        public static Dictionary<string, byte> ComplaintStatus = new Dictionary<string, byte>()
+        {
+            {"in progress", 0 },
+            {"accept", 1 },
+            {"reject", 2 }
+        };
+
+
+
+
+
+
+
         // some Tables have field Type which is assigned to some site section
         //and this struct is made to help get value of Type field 
 

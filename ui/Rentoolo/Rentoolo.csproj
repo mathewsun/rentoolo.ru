@@ -237,7 +237,9 @@
     <Content Include="Admin\Articles.aspx" />
     <Content Include="Admin\CashIns.aspx" />
     <Content Include="Admin\CashOuts.aspx" />
+    <Content Include="Admin\CheckComplaint.aspx" />
     <Content Include="Admin\Clients.aspx" />
+    <Content Include="Admin\ComplaintsPage.aspx" />
     <Content Include="Admin\DatabaseTables.aspx" />
     <Content Include="Admin\Exceptions.aspx" />
     <Content Include="Admin\Ips.aspx" />
@@ -350,63 +352,8 @@
     <Content Include="ConsumerElectronics.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="CreateComplaint.aspx" />
-    <Content Include="DataBase\alter\AlterUsers.sql" />
-    <Content Include="DataBase\fnGetUserWallets.sql" />
-    <Content Include="DataBase\Init\Init.sql" />
-    <Content Include="DataBase\Init\init_041120.sql" />
-    <Content Include="DataBase\Init\init_091020.sql" />
-    <Content Include="DataBase\Init\init_110920.sql" />
-    <Content Include="DataBase\Init\init_121120_7.sql" />
-    <Content Include="DataBase\Init\init_151020.sql" />
-    <Content Include="DataBase\Init\init_230920.sql" />
-    <Content Include="DataBase\Init\init_301020.sql" />
-    <Content Include="DataBase\Init\init_301020_2.sql" />
-    <Content Include="DataBase\spAddFavoritesAuctions.sql" />
-    <Content Include="DataBase\spAddFavoritesAuctionsByCookies.sql" />
-    <Content Include="DataBase\spAddWatchedByCookies.sql" />
-    <Content Include="DataBase\spAddWatched.sql" />
-    <Content Include="DataBase\spGetComments.sql" />
-    <Content Include="DataBase\spGetComplaintsByRecipier.txt" />
-    <Content Include="DataBase\spGetComplaintsBySender.sql" />
-    <Content Include="DataBase\spGetTokenCostToday.sql" />
-    <Content Include="DataBase\spGetWatchedByCookies.sql" />
-    <Content Include="DataBase\spGetWatched.sql" />
-    <Content Include="DataBase\spGetLast200TokensOperations.sql" />
-    <Content Include="DataBase\spGetAuctions.sql" />
-    <Content Include="DataBase\spAddFavorites.sql" />
-    <Content Include="DataBase\spSetTokensCost.sql" />
-    <Content Include="DataBase\spUpdateQiwiAccountBalance.sql" />
-    <Content Include="DataBase\spGetUserAdverts.sql" />
-    <Content Include="DataBase\spGetAdverts.sql" />
-    <Content Include="DataBase\spGetFavorites.sql" />
-    <Content Include="DataBase\spAddFavoritesByCookies.sql" />
-    <Content Include="DataBase\spGetFavoritesByCookies.sql" />
-    <Content Include="DataBase\spGetLoginStatisticLastDayActive.sql" />
-    <Content Include="DataBase\spGetLoginStatisticLastHourActive.sql" />
-    <Content Include="DataBase\fnGetTablesRows.sql" />
-    <Content Include="DataBase\fnGetAllUsers.sql" />
-    <Content Include="DataBase\tables\AuctionRequests.sql" />
-    <Content Include="DataBase\tables\CashOuts.sql" />
-    <Content Include="DataBase\tables\Comments.sql" />
-    <Content Include="DataBase\tables\Complaints.sql" />
-    <Content Include="DataBase\tables\ItemDisLikes.sql" />
-    <Content Include="DataBase\tables\ItemLikes.sql" />
-    <Content Include="DataBase\tables\Phones.sql" />
-    <Content Include="DataBase\tables\LoginStat.sql" />
-    <Content Include="DataBase\tables\Auctions.sql" />
-    <Content Include="DataBase\tables\Business.sql" />
-    <Content Include="DataBase\tables\Adverts.sql" />
-    <Content Include="DataBase\tables\Favorites.sql" />
-    <Content Include="DataBase\tables\FavoritesByCookies.sql" />
-    <Content Include="DataBase\tables\TenderRequest.sql" />
-    <Content Include="DataBase\tables\Tenders.sql" />
-    <Content Include="DataBase\tables\TokensBuying.sql" />
-    <Content Include="DataBase\tables\TokensCost.sql" />
-    <Content Include="DataBase\tables\TokensSelling.sql" />
-    <Content Include="DataBase\tables\Users.sql" />
-    <Content Include="DataBase\tables\Watched.sql" />
-    <Content Include="DataBase\tables\WatchedByCookies.sql" />
     <Content Include="docs\index.html" />
+    <Content Include="Education\AddNewsEducation.aspx" />
     <Content Include="Education\NewsEducation.aspx" />
     <Content Include="Empty.aspx" />
     <Content Include="Fail.aspx" />
@@ -506,6 +453,9 @@
     </EntityDeploy>
     <Content Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Education\Web.config">
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
@@ -922,12 +872,26 @@
     <Compile Include="Admin\CashOuts.aspx.designer.cs">
       <DependentUpon>CashOuts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\CheckComplaint.aspx.cs">
+      <DependentUpon>CheckComplaint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CheckComplaint.aspx.designer.cs">
+      <DependentUpon>CheckComplaint.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Clients.aspx.cs">
       <DependentUpon>Clients.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Clients.aspx.designer.cs">
       <DependentUpon>Clients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ComplaintsPage.aspx.cs">
+      <DependentUpon>ComplaintsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ComplaintsPage.aspx.designer.cs">
+      <DependentUpon>ComplaintsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\DatabaseTables.aspx.cs">
       <DependentUpon>DatabaseTables.aspx</DependentUpon>
@@ -1191,6 +1155,13 @@
     <Compile Include="CreateComplaint.aspx.designer.cs">
       <DependentUpon>CreateComplaint.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Education\AddNewsEducation.aspx.cs">
+      <DependentUpon>AddNewsEducation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Education\AddNewsEducation.aspx.designer.cs">
+      <DependentUpon>AddNewsEducation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Education\NewsEducation.aspx.cs">
       <DependentUpon>NewsEducation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1264,6 +1235,7 @@
     <Compile Include="Model\Complaints.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ComplaintsFilter.cs" />
     <Compile Include="Model\Currencies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -22,5 +22,6 @@ namespace Rentoolo.Model
         public System.Guid UserSender { get; set; }
         public System.Guid UserRecipier { get; set; }
         public System.DateTime Data { get; set; }
+        public Nullable<byte> Status { get; set; }
     }
 }

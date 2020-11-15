@@ -61,6 +61,20 @@ namespace Rentoolo.Account
             }
         }
 
+        public void Customvalidator2_ServerValidate(Object sender, ServerValidateEventArgs a)
+        {
+            Model.Memberships email = DataHelper.GetUserMembershipByEmail(a.Value);
+
+            if (email == null)
+            {
+                a.IsValid = true;
+            }
+            else
+            {
+                a.IsValid = false;
+            }
+        }
+
         protected void RegisterUser_CreatedUser(object sender, EventArgs e)
         {
             FormsAuthentication.SetAuthCookie(RegisterUser.UserName, createPersistentCookie: false);
