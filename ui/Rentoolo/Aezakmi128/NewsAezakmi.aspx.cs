@@ -16,5 +16,6 @@ namespace Rentoolo.Aezakmi128
         {
             ListNews = DataHelperAezakmi.GetActiveNewsLast5();
         }
+
     }
 }
