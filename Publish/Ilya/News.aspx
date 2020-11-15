@@ -1,12 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NewsAezakmi.aspx.cs" Inherits="Rentoolo.Aezakmi128.Aezakmi" %>
+﻿<%@ Page Title="Title" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="News.aspx.cs" Inherits="Rentoolo.Ilya.News" %>
+
+<%@ Import Namespace="Rentoolo.Model" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-
     <hgroup class="title">
-       <h1><%: Title %></h1>
+        <h1><%: Title %></h1>
     </hgroup>
     <br />
     <% foreach (var item in ListNews)

@@ -15,6 +15,23 @@ namespace Rentoolo.Model
 
                 return list;
             }
+
+        }
+        public static void AddNews(NewAezakmi item)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+
+                ctx.NewAezakmi.Add(item);
+                try
+                {
+                    ctx.SaveChanges();
+                }
+                catch (System.Exception ex)
+                {
+                    DataHelper.AddException(ex);
+                }
+            }
         }
     }
 }
