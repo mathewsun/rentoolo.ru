@@ -228,6 +228,7 @@
     <Content Include="Account\UserComplaintView.aspx" />
     <Content Include="Account\UserProfile.aspx" />
     <Content Include="Account\Vacancy.aspx" />
+    <Content Include="Account\ViewedItems.aspx" />
     <Content Include="Account\Watched.aspx" />
     <Content Include="AddItem.html" />
     <Content Include="AddItem_test.aspx" />
@@ -812,6 +813,13 @@
     </Compile>
     <Compile Include="Account\Vacancy.aspx.designer.cs">
       <DependentUpon>Vacancy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ViewedItems.aspx.cs">
+      <DependentUpon>ViewedItems.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ViewedItems.aspx.designer.cs">
+      <DependentUpon>ViewedItems.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Watched.aspx.cs">
       <DependentUpon>Watched.aspx</DependentUpon>

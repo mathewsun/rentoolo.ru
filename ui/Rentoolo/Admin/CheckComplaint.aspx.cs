@@ -1,4 +1,5 @@
 ﻿using Rentoolo.Model;
+using Rentoolo.Model.HelperStructs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,14 @@ namespace Rentoolo.Admin
     public partial class CheckComplaint : System.Web.UI.Page
     {
         public Model.Complaints Complaint = new Complaints();
+        public string NavLink = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             string id = Request.QueryString["id"];
             Complaint = DataHelper.GetComplaint(Convert.ToInt32(id));
+
+            NavLink = "/" +StructsHelper.ComplaintObjTypeName[Complaint.ObjectType] + ".aspx?id=" + Complaint.ObjectId.ToString();
+            
 
         }
 
