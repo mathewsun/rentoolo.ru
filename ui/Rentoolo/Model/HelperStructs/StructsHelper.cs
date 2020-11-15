@@ -48,7 +48,7 @@ namespace Rentoolo.Model.HelperStructs
             {2, "Account/AuctionInfo" },
             {3, "Tender" }
         };
-        
+
 
 
         public static Dictionary<int, string> ComplaintTypeName = new Dictionary<int, string>()
@@ -85,8 +85,8 @@ namespace Rentoolo.Model.HelperStructs
         public static Dictionary<string, byte> ComplaintStatus = new Dictionary<string, byte>()
         {
             {"in progress", 0 },
-            {"accept", 1 },
-            {"reject", 2 }
+            {"block advert", 1 },
+            {"reject complaint", 2 }
         };
 
 

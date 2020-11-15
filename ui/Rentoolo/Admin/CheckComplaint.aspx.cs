@@ -18,7 +18,7 @@ namespace Rentoolo.Admin
             string id = Request.QueryString["id"];
             Complaint = DataHelper.GetComplaint(Convert.ToInt32(id));
 
-            NavLink = "" +StructsHelper.ComplaintObjTypeName[Complaint.ObjectType] + ".aspx?id=" + Complaint.ObjectId.ToString();
+            NavLink = "/" +StructsHelper.ComplaintObjTypeName[Complaint.ObjectType] + ".aspx?id=" + Complaint.ObjectId.ToString();
             
 
         }
