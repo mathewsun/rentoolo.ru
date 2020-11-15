@@ -60,15 +60,17 @@
 
                         <div class="form-group">
                             <asp:TextBox runat="server" CssClass="form-control login-input" ID="UserName" placeholder="Username" />
-                            <div class="div-validation-error">
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorUserName" runat="server" ControlToValidate="UserName" CssClass="field-validation-error" ErrorMessage="*" /></div>
+                        </div>
+                        <div class="text-danger">
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorUserName" runat="server" ControlToValidate="UserName" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Введите имя пользователя" />
                         </div>
 
                         <div class="form-group mb-3">
                             <asp:TextBox runat="server" CssClass="form-control login-input" ID="Password" TextMode="Password" placeholder="Пароль" />
-                            <div class="div-validation-error">
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ControlToValidate="Password" CssClass="field-validation-error" ErrorMessage="*" /></div>
-                        </div>
+                       </div>
+                        <div class="text-danger">
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ControlToValidate="Password" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Введите пароль" />
+                       </div>
                         
                         <div class="form-group">
                             <div class="g-recaptcha" data-sitekey="6Lf4W6QUAAAAAPK2AR7Ms8SsI9_KuJ0l8XZWaTWD"></div>
