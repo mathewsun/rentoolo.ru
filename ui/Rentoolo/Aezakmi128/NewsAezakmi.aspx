@@ -6,7 +6,7 @@
 
 
     <hgroup class="title">
-        <h1><%: Title %></h1>
+       <h1><%: Title %></h1>
     </hgroup>
     <br />
     <% foreach (var item in ListNews)
