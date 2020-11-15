@@ -25,6 +25,19 @@
         }
 
 
+        .like{
+            width: 40px;
+            height: 40px;
+        }
+
+        .dislike{
+            width: 40px;
+            height: 40px;
+            transform: rotate(180deg);
+        }
+
+
+
     </style>
 
     <script>
@@ -175,6 +188,117 @@
 
         </div>
         <div>
+            <div id="vue-ld-app">
+                {{message}}
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="button" @click="likeItem" >
+                                    <img src="assets/img/notLiked.jpg" class="like" /> 
+                                </div>
+                        
+                            </td>
+                            <td>
+                                <%= ItemLikes %>
+                            </td>
+                            <td>
+                                <div class="button" @click="disLikeItem"  >
+                                    <img src="assets/img/Liked.png" class="dislike"  /> 
+                                </div>
+                        
+                            </td>
+                            <td>
+                                <%= ItemDislikes %>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+            <script type="text/javascript">
+
+                let itemldApp = new Vue({
+                    el: '#vue-ld-app',
+                    data: {
+                        message: 'Привет, Vue!',
+                        comments: []
+                    },
+                    methods: {
+                        likeItem() {
+
+
+
+                            let url = 'api/itemLikesDislikes';
+
+                            let jsonData = {
+                                Type: "like",
+                                UserId: "<%=User.UserId %>",
+                                ObjectType: 0,
+                                ObjectId: <%= AdvertItem.Id %>
+                            }
+
+                            let data =
+                            {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(jsonData)
+                            }
+
+                            
+
+                            //console.log
+
+                            fetch(url, data)
+                                .then((response) => {
+                                    return response.json();
+                                })
+                                .then((data) => {
+                                    console.log(data);
+                                    this.comments = data;
+                                });
+
+                        },
+                        disLikeItem() {
+
+                            let url = 'api/itemLikesDislikes';
+
+
+                            let jsonData = {
+                                Type: "dislike",
+                                UserId: "<%=User.UserId %>",
+                                ObjectType: 0,
+                                ObjectId: <%= AdvertItem.Id %>
+                            }
+
+
+                            let data =
+                            {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(jsonData)
+                            }
+
+                            fetch(url, data)
+                                .then((response) => {
+                                    return response.json();
+                                })
+                                .then((data) => {
+                                    console.log(data);
+                                    this.comments = data;
+                                });
+
+                        }
+                    }
+                    
+                })
+
+
+            </script>
+
+        </div>
+        <div>
             <div>
                 <h3>
                     Добавить комментарий:
@@ -210,7 +334,7 @@
                 <script type="text/javascript">
 
 
-                    var app = new Vue({
+                    let app = new Vue({
                         el: '#vue-app',
                         data: {
                             message: 'Привет, Vue!',
