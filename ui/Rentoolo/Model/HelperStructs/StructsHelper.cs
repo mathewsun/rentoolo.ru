@@ -23,19 +23,32 @@ namespace Rentoolo.Model.HelperStructs
     public static class StructsHelper
     {
 
-        public static Dictionary<ComplaintType, string> complaintTypeName = new Dictionary<ComplaintType, string>()
+
+        public static class HelperWithEnums
+        {
+            public static Dictionary<ComplaintType, string> complaintTypeName = new Dictionary<ComplaintType, string>()
         {
             {ComplaintType.Insult, "insult" },
             {ComplaintType.Spam, "spam" }
         };
 
 
-        public static Dictionary<ComplaintObjType, string> complaintObjTypeName = new Dictionary<ComplaintObjType, string>()
+            public static Dictionary<ComplaintObjType, string> complaintObjTypeName = new Dictionary<ComplaintObjType, string>()
         {
             {ComplaintObjType.Advert, "Advert" },
             {ComplaintObjType.Auction, "Auction" },
             {ComplaintObjType.Tender, "Tender" }
         };
+        }
+
+
+        public static Dictionary<int, string> ComplaintTypePageName = new Dictionary<int, string>()
+        {
+            {1, "Advert" },
+            {2, "Account/AuctionInfo" },
+            {3, "Tender" }
+        };
+
 
 
         public static Dictionary<int, string> ComplaintTypeName = new Dictionary<int, string>()
@@ -66,6 +79,20 @@ namespace Rentoolo.Model.HelperStructs
             { "Auction",2 },
             { "Tender",3 }
         };
+
+
+
+        public static Dictionary<string, byte> ComplaintStatus = new Dictionary<string, byte>()
+        {
+            {"in progress", 0 },
+            {"block advert", 1 },
+            {"reject complaint", 2 }
+        };
+
+
+
+
+
 
 
         // some Tables have field Type which is assigned to some site section

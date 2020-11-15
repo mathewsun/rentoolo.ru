@@ -228,6 +228,7 @@
     <Content Include="Account\UserComplaintView.aspx" />
     <Content Include="Account\UserProfile.aspx" />
     <Content Include="Account\Vacancy.aspx" />
+    <Content Include="Account\ViewedItems.aspx" />
     <Content Include="Account\Watched.aspx" />
     <Content Include="AddItem.html" />
     <Content Include="AddItem_test.aspx" />
@@ -237,7 +238,9 @@
     <Content Include="Admin\Articles.aspx" />
     <Content Include="Admin\CashIns.aspx" />
     <Content Include="Admin\CashOuts.aspx" />
+    <Content Include="Admin\CheckComplaint.aspx" />
     <Content Include="Admin\Clients.aspx" />
+    <Content Include="Admin\ComplaintsPage.aspx" />
     <Content Include="Admin\DatabaseTables.aspx" />
     <Content Include="Admin\Exceptions.aspx" />
     <Content Include="Admin\Ips.aspx" />
@@ -254,6 +257,7 @@
     <Content Include="Admin\User.aspx" />
     <Content Include="Admin\Users.aspx" />
     <Content Include="Advert.aspx" />
+    <Content Include="Aezakmi128\AddNewsAezakmi.aspx" />
     <Content Include="Aezakmi128\NewsAezakmi.aspx" />
     <Content Include="Article.aspx" />
     <Content Include="Articles.aspx" />
@@ -351,6 +355,7 @@
     <Content Include="Contact.aspx" />
     <Content Include="CreateComplaint.aspx" />
     <Content Include="docs\index.html" />
+    <Content Include="Education\AddNewsEducation.aspx" />
     <Content Include="Education\NewsEducation.aspx" />
     <Content Include="Empty.aspx" />
     <Content Include="Fail.aspx" />
@@ -450,6 +455,12 @@
     </EntityDeploy>
     <Content Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Education\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Aezakmi128\Web.config">
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
@@ -803,6 +814,13 @@
     <Compile Include="Account\Vacancy.aspx.designer.cs">
       <DependentUpon>Vacancy.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\ViewedItems.aspx.cs">
+      <DependentUpon>ViewedItems.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ViewedItems.aspx.designer.cs">
+      <DependentUpon>ViewedItems.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Watched.aspx.cs">
       <DependentUpon>Watched.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -866,12 +884,26 @@
     <Compile Include="Admin\CashOuts.aspx.designer.cs">
       <DependentUpon>CashOuts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\CheckComplaint.aspx.cs">
+      <DependentUpon>CheckComplaint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CheckComplaint.aspx.designer.cs">
+      <DependentUpon>CheckComplaint.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Clients.aspx.cs">
       <DependentUpon>Clients.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Clients.aspx.designer.cs">
       <DependentUpon>Clients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ComplaintsPage.aspx.cs">
+      <DependentUpon>ComplaintsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ComplaintsPage.aspx.designer.cs">
+      <DependentUpon>ComplaintsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\DatabaseTables.aspx.cs">
       <DependentUpon>DatabaseTables.aspx</DependentUpon>
@@ -987,6 +1019,13 @@
     </Compile>
     <Compile Include="Advert.aspx.designer.cs">
       <DependentUpon>Advert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aezakmi128\AddNewsAezakmi.aspx.cs">
+      <DependentUpon>AddNewsAezakmi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aezakmi128\AddNewsAezakmi.aspx.designer.cs">
+      <DependentUpon>AddNewsAezakmi.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aezakmi128\NewsAezakmi.aspx.cs">
       <DependentUpon>NewsAezakmi.aspx</DependentUpon>
@@ -1135,6 +1174,13 @@
     <Compile Include="CreateComplaint.aspx.designer.cs">
       <DependentUpon>CreateComplaint.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Education\AddNewsEducation.aspx.cs">
+      <DependentUpon>AddNewsEducation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Education\AddNewsEducation.aspx.designer.cs">
+      <DependentUpon>AddNewsEducation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Education\NewsEducation.aspx.cs">
       <DependentUpon>NewsEducation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1208,6 +1254,7 @@
     <Compile Include="Model\Complaints.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ComplaintsFilter.cs" />
     <Compile Include="Model\Currencies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

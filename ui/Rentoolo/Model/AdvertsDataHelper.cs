@@ -105,19 +105,18 @@ namespace Rentoolo.Model
                     result = result.Where(x => x.Address.Contains(filter.City));
                 }
 
-
                 switch (filter.SortBy)
                 {
-                    case "by date":
+                    case "date":
                         result = result.OrderBy(x => x.Created);
                         break;
-                    case "by price":
+                    case "price":
                         result = result.OrderBy(x => x.Price);
                         break;
-                    case "by date descendance":
+                    case "date_desc":
                         result = result.OrderByDescending(x => x.Created);
                         break;
-                    case "by price descendance":
+                    case "price_desc":
                         result = result.OrderByDescending(x => x.Price);
                         break;
                     default:
@@ -125,11 +124,9 @@ namespace Rentoolo.Model
                         break;
                 }
 
-
                 return result.ToList();
             }
         }
-
 
         // unused
         //static IQueryable<Adverts> filterAdverts(this IQueryable<Adverts> adverts, DateTime startDate, DateTime endDate)

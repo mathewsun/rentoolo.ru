@@ -16,7 +16,7 @@ namespace Rentoolo.Model
 
         public string City { get; set; }
 
-        public string SortBy { get; set; } = "by date";
+        public string SortBy { get; set; } = "date";
     }
 
 }
