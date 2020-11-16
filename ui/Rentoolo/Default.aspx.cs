@@ -17,7 +17,7 @@ namespace Rentoolo
 
         public string[] AllCities = RusCities.AllRusCities;
 
-        public SellFilter PreviousFilter = new SellFilter();
+        public StrSellFilter PreviousFilter = new StrSellFilter();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -91,7 +91,7 @@ namespace Rentoolo
                 AdvertsCount = AdvertsDataHelper.GetAdvertsActiveCount(filter).ToString("N0");
 
 
-                PreviousFilter = sellFilter;
+                PreviousFilter.SetFilterValues(sellFilter);
 
 
 
@@ -161,7 +161,7 @@ namespace Rentoolo
 
             string queryStr = "?"+ "s=" + search;
 
-            queryStr += "&startDate=" + startDate + "&endDate=" + endDate;
+            //queryStr += "&startDate=" + startDate + "&endDate=" + endDate;
             queryStr += "&onlyInName=" + onlyInName;
             queryStr += "&startPrice=" + startPrice + "&endPrice=" + endPrice;
             queryStr += "&city=" + city;

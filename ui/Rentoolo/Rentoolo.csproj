@@ -354,6 +354,7 @@
     <Content Include="ConsumerElectronics.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="CreateComplaint.aspx" />
+    <Content Include="DataBase\CurrentSQLInit\init.sql" />
     <Content Include="DataBase\Init\init_161120.sql" />
     <Content Include="docs\index.html" />
     <Content Include="Education\AddNewsEducation.aspx" />

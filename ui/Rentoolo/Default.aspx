@@ -521,8 +521,8 @@
 
                                 <div class="main-find_price">
                                     <span>Цена:</span>
-                                    <input type="number" name="startPrice" placeholder="От" />
-                                    <input type="number" name="endPrice" placeholder="До" />
+                                    <input type="number" name="startPrice" placeholder="От" value="<%= PreviousFilter.StartPrice %>" />
+                                    <input type="number" name="endPrice" placeholder="До" value="<%= PreviousFilter.EndPrice %>" />
                                 </div>
 
 
@@ -537,7 +537,7 @@
                                 <div class="city-sortby__wrap">
                                     <div>
                                         <span style="float: left;">Город:</span>&nbsp;
-                                        <input type="text" name="city" list="cities" />
+                                        <input type="text" name="city" list="cities" value="<%= PreviousFilter.City %>" />
                                         <br />
                                         <datalist id="cities">
 
