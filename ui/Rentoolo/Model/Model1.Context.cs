@@ -82,7 +82,9 @@ namespace Rentoolo.Model
         public virtual DbSet<UserSettings> UserSettings { get; set; }
         public virtual DbSet<UsersOpenAuthAccounts> UsersOpenAuthAccounts { get; set; }
         public virtual DbSet<UsersOpenAuthData> UsersOpenAuthData { get; set; }
+        public virtual DbSet<UsersSearches> UsersSearches { get; set; }
         public virtual DbSet<UserViews> UserViews { get; set; }
+        public virtual DbSet<ViewedObjects> ViewedObjects { get; set; }
         public virtual DbSet<Wallets> Wallets { get; set; }
         public virtual DbSet<Watched> Watched { get; set; }
         public virtual DbSet<WatchedByCookies> WatchedByCookies { get; set; }

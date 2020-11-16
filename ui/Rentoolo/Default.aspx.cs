@@ -17,6 +17,8 @@ namespace Rentoolo
 
         public string[] AllCities = RusCities.AllRusCities;
 
+        public SellFilter PreviousFilter = new SellFilter();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -87,6 +89,11 @@ namespace Rentoolo
                 ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(sellFilter);
 
                 AdvertsCount = AdvertsDataHelper.GetAdvertsActiveCount(filter).ToString("N0");
+
+
+                PreviousFilter = sellFilter;
+
+
 
                 //Random rnd = new Random();
 

@@ -1252,11 +1252,11 @@ namespace Rentoolo.Model
             }
         }
 
-        public static List<UserViews> GetUserViews(int? type,Guid userId, DateTime? startDate, DateTime? endDate)
+        public static List<UserViews> GetUserViews(int? type, Guid userId, DateTime? startDate, DateTime? endDate)
         {
             using (var dc = new RentooloEntities())
             {
-                var result = dc.UserViews.Where(x => x.UserId==userId);
+                var result = dc.UserViews.Where(x => x.UserId == userId);
                 if (type != null)
                 {
                     result = result.Where(x => x.Type == (int)type);
@@ -2017,7 +2017,7 @@ namespace Rentoolo.Model
                 {
                     res = res.Where(x => x.Status == filter.Status);
                 }
-                
+
 
                 if (filter.ObjectType != null && filter.ObjectType != 0)
                 {
@@ -2079,5 +2079,57 @@ namespace Rentoolo.Model
 
 
         #endregion
+
+
+        #region filters
+
+        public static UsersSearches GetLastUserSearch(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.UsersSearches.OrderBy(x => x.Date).First(xNet => xNet.UserId == userId);
+            }
+        }
+
+        public static void RemoveSearches(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.UsersSearches.RemoveRange(dc.UsersSearches.Where(x => x.UserId == userId));
+            }
+        }
+
+        public static void AddSearch(UsersSearches search)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.UsersSearches.Add(search);
+                dc.SaveChanges();
+            }
+        }
+
+
+
+
+        public static SellFilter ConvertUserSearch(SellFilter filter, UsersSearches search)
+        {
+            filter.Search = search.Search;
+            filter.StartDate = search.StartDate;
+            filter.EndDate = search.EndDate;
+            filter.OnlyInName = (bool)search.OnlyInName == null ? false : (bool)search.OnlyInName;
+            filter.StartPrice = search.StartPrice;
+            filter.EndPrice = search.EndPrice;
+            filter.City = search.City;
+            filter.SortBy = search.SortBy;
+
+            return filter;
+        }
+
+
+
+        #endregion
+
+
+
     }
 }
