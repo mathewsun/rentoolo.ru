@@ -2116,7 +2116,7 @@ namespace Rentoolo.Model
             filter.Search = search.Search;
             filter.StartDate = search.StartDate;
             filter.EndDate = search.EndDate;
-            filter.OnlyInName = (bool)search.OnlyInName == null ? false : (bool)search.OnlyInName==true?"on":;
+            filter.OnlyInName = (bool)search.OnlyInName == null ? false : (bool)search.OnlyInName==true;
             filter.StartPrice = search.StartPrice;
             filter.EndPrice = search.EndPrice;
             filter.City = search.City;

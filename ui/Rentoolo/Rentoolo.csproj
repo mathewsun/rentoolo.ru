@@ -1157,6 +1157,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AvatarsController.cs" />
     <Compile Include="Controllers\ChatsController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
@@ -1781,6 +1782,7 @@
   <ItemGroup>
     <Folder Include="Account\Rent\" />
     <Folder Include="App_Data\" />
+    <Folder Include="assets\img\avatars\" />
     <Folder Include="bin\" />
     <Folder Include="Rent\" />
     <Folder Include="Sell\" />

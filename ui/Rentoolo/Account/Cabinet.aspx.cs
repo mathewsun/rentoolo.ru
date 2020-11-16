@@ -65,5 +65,13 @@ namespace Rentoolo.Account
             User.BirthDay = DateTime.Parse(date);
             DataHelper.SetUserBirthDay(User);
         }
+
+        protected void ButtonSaveAvatar_Click(object sender, EventArgs e)
+        {
+            string data = Request.Form["avatarka"];
+
+            var a = 4;
+
+        }
     }
 }
