@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Rentoolo.Model.HelperStructs;
 using Rentoolo.TestDir;
 using System;
 using System.Collections.Generic;
@@ -1243,6 +1244,42 @@ namespace Rentoolo.Model
         }
 
 
+        public static List<UserViews> GetUserViews(int objectId, int type)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.UserViews.Where(x => (x.ObjectId == objectId) && (x.Type == type)).ToList();
+            }
+        }
+
+        public static List<UserViews> GetUserViews(int? type,Guid userId, DateTime? startDate, DateTime? endDate)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var result = dc.UserViews.Where(x => x.UserId==userId);
+                if (type != null)
+                {
+                    result = result.Where(x => x.Type == (int)type);
+                }
+
+
+                if (startDate != null)
+                {
+                    result = result.Where(x => x.Date >= startDate);
+                }
+
+                if (endDate != null)
+                {
+                    result = result.Where(x => x.Date <= endDate);
+                }
+
+                return result.ToList();
+            }
+        }
+
+
+
+
         public static int GetUserViewsCount(int objectId, int type)
         {
             using (var dc = new RentooloEntities())
@@ -2024,7 +2061,7 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                dc.Complaints.First(x => x.Id == complaintId).Status = (byte?)HelperStructs.StructsHelper.ComplaintStatus[status];
+                dc.Complaints.First(x => x.Id == complaintId).Status = (byte?)StructsHelper.ComplaintStatus[status];
                 dc.SaveChanges();
             }
         }
