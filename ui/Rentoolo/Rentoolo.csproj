@@ -354,6 +354,8 @@
     <Content Include="ConsumerElectronics.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="CreateComplaint.aspx" />
+    <Content Include="DataBase\CurrentSQLInit\init.sql" />
+    <Content Include="DataBase\Init\init_161120.sql" />
     <Content Include="docs\index.html" />
     <Content Include="Education\AddNewsEducation.aspx" />
     <Content Include="Education\NewsEducation.aspx" />
@@ -449,18 +451,18 @@
     </Content>
     <Content Include="AdditionalData\rus_cities.json" />
     <Content Include="HelperModels\rus_cities2.json" />
+    <Content Include="Education\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Aezakmi128\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
-    <Content Include="Education\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Aezakmi128\Web.config">
-      <SubType>Designer</SubType>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
@@ -1155,6 +1157,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AvatarsController.cs" />
     <Compile Include="Controllers\ChatsController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
@@ -1560,7 +1563,13 @@
     <Compile Include="Model\UsersOpenAuthData.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\UsersSearches.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\UserViews.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ViewedObjects.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Wallets.cs">
@@ -1773,6 +1782,7 @@
   <ItemGroup>
     <Folder Include="Account\Rent\" />
     <Folder Include="App_Data\" />
+    <Folder Include="assets\img\avatars\" />
     <Folder Include="bin\" />
     <Folder Include="Rent\" />
     <Folder Include="Sell\" />

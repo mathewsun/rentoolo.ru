@@ -12,6 +12,65 @@
         </div>
         <div class="additem-category">
             <div class="additem-right additem__way" cid="1001">
+
+
+                <div>
+                    <input type="file" name="avatarka" id="fileInput">
+
+                        <img src="https://www.wallpaperup.com/uploads/wallpapers/2016/05/08/947390/1f2d86bf06762856282747aa5f624fac-1000.jpg">
+                        
+                        </img>
+                    </input>
+
+                    <asp:Button ID="ButtonSaveAvatar" runat="server" Text="set avatar" OnClick="ButtonSaveAvatar_Click" />
+
+                </div>
+
+                <script type="text/javascript">
+
+                    window.onload = function () {
+
+
+                        let fileInput = document.getElementById("fileInput");
+                        fileInput.onclick = function (e) {
+                            console.log(e);
+
+                            let file = e.target.files[0];
+
+                            let reader = new FileReader();
+                            reader.readAsArrayBuffer(file);
+
+                            let arr = reader.result;
+
+                            console.log(arr);
+
+                        }
+
+                        fileInput.onchange = function (e) {
+                            console.log(e);
+
+                            let file = e.target.files[0];
+
+                            let reader = new FileReader();
+                            console.log(e.target.files[0]);
+                            //reader.readAsArrayBuffer(file);
+
+
+                            //let arr = reader.result;
+
+                            reader.readAsText(file);
+                            let arr2 = reader.result;
+
+                            //console.log(arr);
+                            console.log(arr2);
+
+                        }
+
+                    }
+
+                </script>
+
+
                 <table class="marginTable cabinetTable">
                     <tr>
                         <td>Логин:
@@ -85,15 +144,15 @@
                     <br />
 
                     Выбранный город:<%-- <%=// User.SelectedCity %>--%>
-                    <input name="selectedCity" type="text" list="cities"  />
+                    <input name="selectedCity" type="text" list="cities" />
 
                     <datalist id="cities">
                         <% foreach (var city in AllCities)
-                          { %>
-                                                    
-                            <option>
-                                <%=city %>
-                            </option>
+                            { %>
+
+                        <option>
+                            <%=city %>
+                        </option>
 
                         <%} %>
                     </datalist>
