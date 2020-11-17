@@ -11,7 +11,7 @@ namespace Rentoolo
 {
 
 
-    public partial class Craftsman
+    public partial class CraftsManResume
     {
 
         /// <summary>
