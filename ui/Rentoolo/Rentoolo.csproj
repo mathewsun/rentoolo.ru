@@ -432,6 +432,7 @@
     <Content Include="TestDir\TestPage.html" />
     <Content Include="Test\dmitriyraspel.aspx" />
     <Content Include="Test\eoll73.aspx" />
+    <Content Include="Test\FormTest.html" />
     <Content Include="Test\GG-dotNET.aspx" />
     <Content Include="Test\Konstantin.aspx" />
     <Content Include="Test\matheweducation.aspx" />

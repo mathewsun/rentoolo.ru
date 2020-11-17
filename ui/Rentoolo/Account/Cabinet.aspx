@@ -14,7 +14,7 @@
             <div class="additem-right additem__way" cid="1001">
 
 
-                <div>
+                <%--<div>
                     <input type="file" name="avatarka" id="fileInput">
 
                         <img src="https://www.wallpaperup.com/uploads/wallpapers/2016/05/08/947390/1f2d86bf06762856282747aa5f624fac-1000.jpg">
@@ -24,7 +24,12 @@
 
                     <asp:Button ID="ButtonSaveAvatar" runat="server" Text="set avatar" OnClick="ButtonSaveAvatar_Click" />
 
-                </div>
+                </div>--%>
+
+                <form action="/api/Avatars" method="post" enctype="multipart/form-data">
+                    <input type="file" name="uploadedFile" /><br>
+                    <input type="submit" value="Загрузить" />
+                </form>
 
                 <script type="text/javascript">
 
@@ -53,15 +58,11 @@
 
                             let reader = new FileReader();
                             console.log(e.target.files[0]);
-                            //reader.readAsArrayBuffer(file);
 
+                            reader.readAsArrayBuffer(file);
 
-                            //let arr = reader.result;
-
-                            reader.readAsText(file);
                             let arr2 = reader.result;
 
-                            //console.log(arr);
                             console.log(arr2);
 
                         }
