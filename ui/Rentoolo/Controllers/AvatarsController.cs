@@ -56,12 +56,6 @@ namespace Rentoolo.Controllers
             }
 
 
-
-            for(int  a = 0; a < 3; a++)
-            {
-                var s = 3;
-            }
-
             Image img; 
 
             using (var bs = new MemoryStream(buffer))
@@ -69,14 +63,48 @@ namespace Rentoolo.Controllers
                 img = Image.FromStream(bs);
             }
 
-            var f = File.Create("some.jpg");
-
-            f.Write(buffer, 0, buffer.Length);
+            var f = File.Create("C:/Users/Necromant/Desktop/testssome.jpg");
+            try
+            {
+                f.Write(buffer, 0, buffer.Length);
+                f.Flush();
+            }
+            catch(Exception e)
+            {
+                var se = e.ToString();
+            }
+            
             f.Close();
 
 
-            
+            int pixLenOst = buffer.Length % 3;
+            int pixelsLen = buffer.Length/3;
 
+            byte[][] pixels = new byte[buffer.Length/3][];
+
+            for (int i = 0; i < pixelsLen-pixLenOst; i++)
+            {
+                pixels[i] = new byte[3] { buffer[i*3], buffer[i*3+1], buffer[i*3+2] }; 
+            }
+
+
+
+            var bitmap = new Bitmap(file.Width, file.Height);
+
+            for (int x = 0; x < file.Height; x++)
+            {
+                for (int y = 0; y<file.Width; y++)
+                {
+                    bitmap.SetPixel(y,x, Color.FromArgb(pixels[x + y][0], pixels[x + y][1], pixels[x + y][2]));
+                }
+            }
+
+            img = Image.FromHbitmap(bitmap.GetHbitmap());
+            var f2 = File.Create("C:/Users/Necromant/Desktop/tests/some2.jpg");
+
+            img.Save(f2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            var size = img.Size;
 
         }
 
