@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Rentoolo.CraftsMan
+namespace Rentoolo.ShCodder
 {
 
 
-    public partial class Freelance
+    public partial class NewShCodder
     {
     }
 }
