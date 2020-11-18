@@ -1,4 +1,5 @@
-﻿using Rentoolo.HelperModels;
+﻿using Newtonsoft.Json;
+using Rentoolo.HelperModels;
 using Rentoolo.Model;
 using System;
 using System.Collections.Generic;
@@ -98,8 +99,8 @@ namespace Rentoolo.CraftsMan
             }
 
          
-    }
-        protected void ButtonSearch_Click(object sender, EventArgs e)
+        }
+            protected void ButtonSearch_Click(object sender, EventArgs e)
         {
             string search = String.Format("{0}", Request.Form["InputSearch"]);
 
@@ -127,11 +128,81 @@ namespace Rentoolo.CraftsMan
 
             Response.Redirect("/Default.aspx" + queryStr);
         }
-        public void LoginStatus1_LoggedOut(Object sender, System.EventArgs e)
+            public void LoginStatus1_LoggedOut(Object sender, System.EventArgs e)
         {
             Session.Remove("User");
 
             Response.Redirect("/");
+        }
+
+        protected void ButtonOrder_Click(object sender, EventArgs e)
+        {
+            string category = Request.QueryString["cat"];
+            string nameTask = String.Format("{0}", Request.Form["ctl00$MainContent$input_nameTask"]);
+            string description = String.Format("{0}", Request.Form["ctl00$MainContent$input_description"]);
+            string price = String.Format("{0}", Request.Form["ctl00$MainContent$price_value"]);
+            //string video = String.Format("{0}", Request.Form["ctl00$MainContent$input_video"]);
+            //string place = String.Format("{0}", Request.Form["ctl00$MainContent$additem_place"]);
+            string phone = String.Format("{0}", Request.Form["ctl00$MainContent$phonenum"]);
+            
+          
+
+            //TODO добавить в табл
+            //string firstName = String.Format("{0}", Request.Form["ctl00$MainContent$input_firstName"]);
+            //string lastName = String.Format("{0}", Request.Form["ctl00$MainContent$input_lastName"]);
+
+            //var objPhotos = Request.Form[""];
+
+         
+
+            Rentoolo.Model.CraftsMan order = new Model.CraftsMan();
+
+            //if (objPhotos != null)
+            //{
+            //    String[] listPhotos = objPhotos.Split(',');
+
+            //    var jsonPhotos = JsonConvert.SerializeObject(listPhotos);
+
+            //    order.ImgUrls = jsonPhotos;
+            //}
+            //else
+            //{
+            //    order.ImgUrls = "[\"/img/a/noPhoto.png\"]";
+            //}
+
+            //try
+            //{
+            //    order.Category = Int32.Parse(category);
+            //}
+            //catch { }
+
+            
+
+            order.Description = description;
+
+
+
+            try
+            {
+                order.Price = double.Parse(price);
+            }
+            catch { }
+
+            //order.video = video;
+
+            //order.Address = place;
+
+            order.Phone = phone;
+
+            //order.YouTubeUrl = video;
+
+            //order.CreatedUserId = User.UserId;
+
+            order.Created = DateTime.Now;
+
+            CraftsManDataHelper.AddCraftsMan(order);
+
+            Response.Redirect("MyAdverts.aspx");
         }
     }
 }

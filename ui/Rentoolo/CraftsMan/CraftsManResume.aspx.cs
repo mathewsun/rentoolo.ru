@@ -21,26 +21,6 @@ namespace Rentoolo
         //    Response.Redirect("~/CraftsMan/RepairSpecialists.aspx");
         //}
 
-        //protected void Click_Freelance(object sender, EventArgs e)
-        //{
-        //    Session.Clear();
-        //    Response.Redirect("~/CraftsMan/Freelance.aspx");
-        //}
-        //protected void Click_TutorsAndCoaches(object sender, EventArgs e)
-        //{
-        //    Session.Clear();
-        //    Response.Redirect("~/CraftsMan/TutorsAndCoaches.aspx");
-        //}
-        //protected void Click_DomesticStaff(object sender, EventArgs e)
-        //{
-        //    Session.Clear();
-        //    Response.Redirect("~/CraftsMan/DomesticStaff.aspx");
-        //}
-        //protected void Click_Artists(object sender, EventArgs e)
-        //{
-        //    Session.Clear();
-        //    Response.Redirect("~/CraftsMan/Artists.aspx");
-        //}
-        //#endregion
+ 
     }
 }
