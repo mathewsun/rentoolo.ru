@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Rentoolo.Model.HelperStructs;
 using Rentoolo.TestDir;
 using System;
 using System.Collections.Generic;
@@ -124,6 +125,19 @@ namespace Rentoolo.Model
                 return membership;
             }
         }
+
+        public static Memberships GetUserMembershipByEmail(string email)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Memberships membership = dc.Memberships.FirstOrDefault(x => x.Email == email);
+
+                return membership;
+            }
+        }
+
+
+
 
         public static Users GetUserByRefId(int refId)
         {
@@ -1230,6 +1244,42 @@ namespace Rentoolo.Model
         }
 
 
+        public static List<UserViews> GetUserViews(int objectId, int type)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.UserViews.Where(x => (x.ObjectId == objectId) && (x.Type == type)).ToList();
+            }
+        }
+
+        public static List<UserViews> GetUserViews(int? type, Guid userId, DateTime? startDate, DateTime? endDate)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var result = dc.UserViews.Where(x => x.UserId == userId);
+                if (type != null)
+                {
+                    result = result.Where(x => x.Type == (int)type);
+                }
+
+
+                if (startDate != null)
+                {
+                    result = result.Where(x => x.Date >= startDate);
+                }
+
+                if (endDate != null)
+                {
+                    result = result.Where(x => x.Date <= endDate);
+                }
+
+                return result.ToList();
+            }
+        }
+
+
+
+
         public static int GetUserViewsCount(int objectId, int type)
         {
             using (var dc = new RentooloEntities())
@@ -1934,6 +1984,11 @@ namespace Rentoolo.Model
             }
         }
 
+
+
+
+
+
         public static List<Complaints> GetComplaints(Guid userId, bool isRecipier)
         {
             using (var dc = new RentooloEntities())
@@ -1950,6 +2005,49 @@ namespace Rentoolo.Model
         }
 
 
+
+        public static List<Complaints> GetFilteredComplaints(ComplaintsFilter filter)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var res = dc.Complaints.Select(x => x);
+
+
+                if (filter.Status != null)
+                {
+                    res = res.Where(x => x.Status == filter.Status);
+                }
+
+
+                if (filter.ObjectType != null && filter.ObjectType != 0)
+                {
+                    res = res.Where(x => x.ObjectType == filter.ObjectType);
+                }
+
+
+                if ((filter.ObjectId != null) && (filter.ObjectId != 0))
+                {
+                    res = res.Where(x => x.ObjectId == filter.ObjectId);
+                }
+
+                if (filter.UserRecipier != null)
+                {
+                    res = res.Where(x => x.UserRecipier == filter.UserRecipier);
+                }
+
+                if (filter.UserSender != null)
+                {
+                    res = res.Where(x => x.UserSender == filter.UserSender);
+                }
+
+
+
+                return res.ToList();
+            }
+        }
+
+
+
         public static List<Complaints> GetComplaints(int objectId, int objectType)
         {
             using (var dc = new RentooloEntities())
@@ -1959,10 +2057,21 @@ namespace Rentoolo.Model
         }
 
 
+        public static void SetComplaintStatus(int complaintId, string status)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Complaints.First(x => x.Id == complaintId).Status = (byte?)StructsHelper.ComplaintStatus[status];
+                dc.SaveChanges();
+            }
+        }
+
+
         public static void AddComplaint(Complaints complaint)
         {
             using (var dc = new RentooloEntities())
             {
+                complaint.Status = 0;
                 dc.Complaints.Add(complaint);
                 dc.SaveChanges();
             }
@@ -1970,5 +2079,57 @@ namespace Rentoolo.Model
 
 
         #endregion
+
+
+        #region filters
+
+        public static UsersSearches GetLastUserSearch(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.UsersSearches.OrderBy(x => x.Date).First(xNet => xNet.UserId == userId);
+            }
+        }
+
+        public static void RemoveSearches(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.UsersSearches.RemoveRange(dc.UsersSearches.Where(x => x.UserId == userId));
+            }
+        }
+
+        public static void AddSearch(UsersSearches search)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.UsersSearches.Add(search);
+                dc.SaveChanges();
+            }
+        }
+
+
+
+
+        public static SellFilter ConvertUserSearch(SellFilter filter, UsersSearches search)
+        {
+            filter.Search = search.Search;
+            filter.StartDate = search.StartDate;
+            filter.EndDate = search.EndDate;
+            filter.OnlyInName = (bool)search.OnlyInName == null ? false : (bool)search.OnlyInName==true;
+            filter.StartPrice = search.StartPrice;
+            filter.EndPrice = search.EndPrice;
+            filter.City = search.City;
+            filter.SortBy = search.SortBy;
+
+            return filter;
+        }
+
+
+
+        #endregion
+
+
+
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RentooloModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище RentooloModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adverts">
           <Key>
             <PropertyRef Name="Id" />
@@ -112,8 +112,8 @@
           <Property Name="PaymentNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="Result" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Rentoolo.dbo.Categories" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="Id" />
@@ -188,6 +188,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="UserSender" Type="uniqueidentifier" Nullable="false" />
           <Property Name="UserRecipier" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Data" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" />
         </EntityType>
         <EntityType Name="Currencies">
           <Key>
@@ -379,6 +380,17 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="FailedPasswordAnswerAttemptWindowsStart" Type="datetime" Nullable="false" />
           <Property Name="Comment" Type="nvarchar" MaxLength="256" />
         </EntityType>
+        <EntityType Name="NewAezakmi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Authorld" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="News">
           <Key>
             <PropertyRef Name="Id" />
@@ -417,6 +429,17 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="AuthorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsIlya">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="AuthorId" Type="uniqueidentifier" Nullable="false" />
@@ -651,6 +674,22 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="MembershipUserName" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="HasLocalPassword" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="UsersSearches">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Search" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="OnlyInName" Type="bit" />
+          <Property Name="StartPrice" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="EndPrice" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="SortBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserViews">
           <Key>
             <PropertyRef Name="Id" />
@@ -659,6 +698,16 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="ObjectId" Type="int" Nullable="false" />
           <Property Name="Type" Type="int" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewedObjects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ObjectId" Type="bigint" Nullable="false" />
+          <Property Name="ObjectType" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Wallets">
@@ -1047,7 +1096,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Parameter Name="number" Type="nvarchar" Mode="In" />
           <Parameter Name="balance" Type="float" Mode="In" />
         </Function>
-        <EntityContainer Name="RentooloModelStoreContainer">
+        <EntityContainer Name="Хранилище RentooloModelContainer">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
@@ -1079,10 +1128,12 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <EntitySet Name="LoginStat" EntityType="Self.LoginStat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginStatistics" EntityType="Self.LoginStatistics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Memberships" EntityType="Self.Memberships" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewAezakmi" EntityType="Self.NewAezakmi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsAzizjan" EntityType="Self.NewsAzizjan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsEducation" EntityType="Self.NewsEducation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsGGdotNET" EntityType="Self.NewsGGdotNET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsIlya" EntityType="Self.NewsIlya" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsRaspel" EntityType="Self.NewsRaspel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsVark" EntityType="Self.NewsVark" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
@@ -1102,7 +1153,9 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersSearches" EntityType="Self.UsersSearches" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserViews" EntityType="Self.UserViews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewedObjects" EntityType="Self.ViewedObjects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Watched" EntityType="Self.Watched" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WatchedByCookies" EntityType="Self.WatchedByCookies" Schema="dbo" store:Type="Tables" />
@@ -1400,6 +1453,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="UserSender" Type="Guid" Nullable="false" />
           <Property Name="UserRecipier" Type="Guid" Nullable="false" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" />
         </EntityType>
         <EntityType Name="Currencies">
           <Key>
@@ -1594,6 +1648,17 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <NavigationProperty Name="Applications" Relationship="Self.MembershipApplication" FromRole="Memberships" ToRole="Applications" />
           <NavigationProperty Name="Users" Relationship="Self.MembershipUser" FromRole="Memberships" ToRole="Users" />
         </EntityType>
+        <EntityType Name="NewAezakmi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Authorld" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
         <EntityType Name="News">
           <Key>
             <PropertyRef Name="Id" />
@@ -1634,6 +1699,17 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuthorId" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsIlya">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="AuthorId" Type="Guid" Nullable="false" />
@@ -1880,6 +1956,22 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="HasLocalPassword" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="UsersOpenAuthAccounts" Relationship="Self.FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName" FromRole="UsersOpenAuthData" ToRole="UsersOpenAuthAccounts" />
         </EntityType>
+        <EntityType Name="UsersSearches">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Search" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="OnlyInName" Type="Boolean" />
+          <Property Name="StartPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EndPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SortBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserViews">
           <Key>
             <PropertyRef Name="Id" />
@@ -1888,6 +1980,16 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="ObjectId" Type="Int32" Nullable="false" />
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ViewedObjects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="ObjectId" Type="Int64" Nullable="false" />
+          <Property Name="ObjectType" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Wallets">
@@ -2122,7 +2224,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RentooloEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RentooloEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="Articles" EntityType="Self.Articles" />
@@ -2154,10 +2256,12 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <EntitySet Name="LoginStat" EntityType="Self.LoginStat" />
           <EntitySet Name="LoginStatistics" EntityType="Self.LoginStatistics" />
           <EntitySet Name="Memberships" EntityType="Self.Memberships" />
+          <EntitySet Name="NewAezakmi" EntityType="Self.NewAezakmi" />
           <EntitySet Name="News" EntityType="Self.News" />
           <EntitySet Name="NewsAzizjan" EntityType="Self.NewsAzizjan" />
           <EntitySet Name="NewsEducation" EntityType="Self.NewsEducation" />
           <EntitySet Name="NewsGGdotNET" EntityType="Self.NewsGGdotNET" />
+          <EntitySet Name="NewsIlya" EntityType="Self.NewsIlya" />
           <EntitySet Name="NewsRaspel" EntityType="Self.NewsRaspel" />
           <EntitySet Name="NewsVark" EntityType="Self.NewsVark" />
           <EntitySet Name="Operations" EntityType="Self.Operations" />
@@ -2176,7 +2280,9 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <EntitySet Name="UserSettings" EntityType="Self.UserSettings" />
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" />
+          <EntitySet Name="UsersSearches" EntityType="Self.UsersSearches" />
           <EntitySet Name="UserViews" EntityType="Self.UserViews" />
+          <EntitySet Name="ViewedObjects" EntityType="Self.ViewedObjects" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" />
           <EntitySet Name="Watched" EntityType="Self.Watched" />
           <EntitySet Name="WatchedByCookies" EntityType="Self.WatchedByCookies" />
@@ -2479,7 +2585,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="RentooloModelStoreContainer" CdmEntityContainer="RentooloEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentooloModelContainer" CdmEntityContainer="RentooloEntities1">
           <EntitySetMapping Name="Adverts">
             <EntityTypeMapping TypeName="RentooloModel.Adverts">
               <MappingFragment StoreEntitySet="Adverts">
@@ -2660,6 +2766,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
                 <ScalarProperty Name="UserSender" ColumnName="UserSender" />
                 <ScalarProperty Name="UserRecipier" ColumnName="UserRecipier" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2870,6 +2977,18 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="NewAezakmi">
+            <EntityTypeMapping TypeName="RentooloModel.NewAezakmi">
+              <MappingFragment StoreEntitySet="NewAezakmi">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Authorld" ColumnName="Authorld" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="News">
             <EntityTypeMapping TypeName="RentooloModel.News">
               <MappingFragment StoreEntitySet="News">
@@ -2909,6 +3028,18 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <EntitySetMapping Name="NewsGGdotNET">
             <EntityTypeMapping TypeName="RentooloModel.NewsGGdotNET">
               <MappingFragment StoreEntitySet="NewsGGdotNET">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsIlya">
+            <EntityTypeMapping TypeName="RentooloModel.NewsIlya">
+              <MappingFragment StoreEntitySet="NewsIlya">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -3153,6 +3284,23 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UsersSearches">
+            <EntityTypeMapping TypeName="RentooloModel.UsersSearches">
+              <MappingFragment StoreEntitySet="UsersSearches">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Search" ColumnName="Search" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="OnlyInName" ColumnName="OnlyInName" />
+                <ScalarProperty Name="StartPrice" ColumnName="StartPrice" />
+                <ScalarProperty Name="EndPrice" ColumnName="EndPrice" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="SortBy" ColumnName="SortBy" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UserViews">
             <EntityTypeMapping TypeName="RentooloModel.UserViews">
               <MappingFragment StoreEntitySet="UserViews">
@@ -3160,6 +3308,17 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
                 <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewedObjects">
+            <EntityTypeMapping TypeName="RentooloModel.ViewedObjects">
+              <MappingFragment StoreEntitySet="ViewedObjects">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3214,7 +3373,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               <ScalarProperty Name="UserId" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetAllUsers" FunctionImportName="fnGetAllUsers">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetAllUsers" FunctionImportName="fnGetAllUsers">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetAllUsers_Result">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -3228,7 +3387,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetTablesRows" FunctionImportName="fnGetTablesRows">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetTablesRows" FunctionImportName="fnGetTablesRows">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetTablesRows_Result">
                 <ScalarProperty Name="TableName" ColumnName="TableName" />
@@ -3236,7 +3395,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetUserReferralsSecondLevel" FunctionImportName="fnGetUserReferralsSecondLevel">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserReferralsSecondLevel" FunctionImportName="fnGetUserReferralsSecondLevel">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetUserReferralsSecondLevel_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3249,7 +3408,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetUserReferralsThirdLevel" FunctionImportName="fnGetUserReferralsThirdLevel">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserReferralsThirdLevel" FunctionImportName="fnGetUserReferralsThirdLevel">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetUserReferralsThirdLevel_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3262,7 +3421,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="RentooloModel.Store.fnGetUserWallets" FunctionImportName="fnGetUserWallets">
+          <FunctionImportMapping FunctionName="Хранилище RentooloModel.fnGetUserWallets" FunctionImportName="fnGetUserWallets">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.fnGetUserWallets_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3273,12 +3432,12 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spAddAdvert" FunctionName="RentooloModel.Store.spAddAdvert" />
-          <FunctionImportMapping FunctionImportName="spAddFavorites" FunctionName="RentooloModel.Store.spAddFavorites" />
-          <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="RentooloModel.Store.spAddFavoritesByCookies" />
-          <FunctionImportMapping FunctionImportName="spAddWatched" FunctionName="RentooloModel.Store.spAddWatched" />
-          <FunctionImportMapping FunctionImportName="spAddWatchedByCookies" FunctionName="RentooloModel.Store.spAddWatchedByCookies" />
-          <FunctionImportMapping FunctionImportName="spGetChats" FunctionName="RentooloModel.Store.spGetChats">
+          <FunctionImportMapping FunctionImportName="spAddAdvert" FunctionName="Хранилище RentooloModel.spAddAdvert" />
+          <FunctionImportMapping FunctionImportName="spAddFavorites" FunctionName="Хранилище RentooloModel.spAddFavorites" />
+          <FunctionImportMapping FunctionImportName="spAddFavoritesByCookies" FunctionName="Хранилище RentooloModel.spAddFavoritesByCookies" />
+          <FunctionImportMapping FunctionImportName="spAddWatched" FunctionName="Хранилище RentooloModel.spAddWatched" />
+          <FunctionImportMapping FunctionImportName="spAddWatchedByCookies" FunctionName="Хранилище RentooloModel.spAddWatchedByCookies" />
+          <FunctionImportMapping FunctionImportName="spGetChats" FunctionName="Хранилище RentooloModel.spGetChats">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetChats_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3286,7 +3445,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetChatsForUser" FunctionName="RentooloModel.Store.spGetChatsForUser">
+          <FunctionImportMapping FunctionImportName="spGetChatsForUser" FunctionName="Хранилище RentooloModel.spGetChatsForUser">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetChatsForUser_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3294,7 +3453,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetComments" FunctionName="RentooloModel.Store.spGetComments">
+          <FunctionImportMapping FunctionImportName="spGetComments" FunctionName="Хранилище RentooloModel.spGetComments">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetComments_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3308,7 +3467,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetCommentsForUser" FunctionName="RentooloModel.Store.spGetCommentsForUser">
+          <FunctionImportMapping FunctionImportName="spGetCommentsForUser" FunctionName="Хранилище RentooloModel.spGetCommentsForUser">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetCommentsForUser_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3325,7 +3484,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetComplaintsByRecipier" FunctionName="RentooloModel.Store.spGetComplaintsByRecipier">
+          <FunctionImportMapping FunctionImportName="spGetComplaintsByRecipier" FunctionName="Хранилище RentooloModel.spGetComplaintsByRecipier">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetComplaintsByRecipier_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3341,7 +3500,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetComplaintsBySender" FunctionName="RentooloModel.Store.spGetComplaintsBySender">
+          <FunctionImportMapping FunctionImportName="spGetComplaintsBySender" FunctionName="Хранилище RentooloModel.spGetComplaintsBySender">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetComplaintsBySender_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3357,7 +3516,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetFavorites" FunctionName="RentooloModel.Store.spGetFavorites">
+          <FunctionImportMapping FunctionImportName="spGetFavorites" FunctionName="Хранилище RentooloModel.spGetFavorites">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetFavorites_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3377,7 +3536,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetFavoritesByCookies" FunctionName="RentooloModel.Store.spGetFavoritesByCookies">
+          <FunctionImportMapping FunctionImportName="spGetFavoritesByCookies" FunctionName="Хранилище RentooloModel.spGetFavoritesByCookies">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetFavoritesByCookies_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3397,7 +3556,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetLast200TokensOperations" FunctionName="RentooloModel.Store.spGetLast200TokensOperations">
+          <FunctionImportMapping FunctionImportName="spGetLast200TokensOperations" FunctionName="Хранилище RentooloModel.spGetLast200TokensOperations">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetLast200TokensOperations_Result">
                 <ScalarProperty Name="Count" ColumnName="Count" />
@@ -3409,9 +3568,9 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastDayActive" FunctionName="RentooloModel.Store.spGetLoginStatisticLastDayActive" />
-          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastHourActive" FunctionName="RentooloModel.Store.spGetLoginStatisticLastHourActive" />
-          <FunctionImportMapping FunctionImportName="spGetTokenCostToday" FunctionName="RentooloModel.Store.spGetTokenCostToday">
+          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastDayActive" FunctionName="Хранилище RentooloModel.spGetLoginStatisticLastDayActive" />
+          <FunctionImportMapping FunctionImportName="spGetLoginStatisticLastHourActive" FunctionName="Хранилище RentooloModel.spGetLoginStatisticLastHourActive" />
+          <FunctionImportMapping FunctionImportName="spGetTokenCostToday" FunctionName="Хранилище RentooloModel.spGetTokenCostToday">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetTokenCostToday_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3420,7 +3579,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetUserAdverts" FunctionName="RentooloModel.Store.spGetUserAdverts">
+          <FunctionImportMapping FunctionImportName="spGetUserAdverts" FunctionName="Хранилище RentooloModel.spGetUserAdverts">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetUserAdverts_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3437,7 +3596,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetWatched" FunctionName="RentooloModel.Store.spGetWatched">
+          <FunctionImportMapping FunctionImportName="spGetWatched" FunctionName="Хранилище RentooloModel.spGetWatched">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetWatched_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3457,7 +3616,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetWatchedByCookies" FunctionName="RentooloModel.Store.spGetWatchedByCookies">
+          <FunctionImportMapping FunctionImportName="spGetWatchedByCookies" FunctionName="Хранилище RentooloModel.spGetWatchedByCookies">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RentooloModel.spGetWatchedByCookies_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -3477,7 +3636,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spUpdateQiwiAccountBalance" FunctionName="RentooloModel.Store.spUpdateQiwiAccountBalance" />
+          <FunctionImportMapping FunctionImportName="spUpdateQiwiAccountBalance" FunctionName="Хранилище RentooloModel.spUpdateQiwiAccountBalance" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -3495,7 +3654,7 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

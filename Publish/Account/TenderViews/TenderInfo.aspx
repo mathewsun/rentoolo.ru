@@ -19,7 +19,7 @@
 
                 <p>
                     Owner:  <br />
-                        <a href="Account/UserProfile.aspx?id=<%=UserId %>" >
+                        <a href="/Account/UserProfile.aspx?id=<%=UserId %>" >
                             <%= UserName %>
                         </a>
                 </p>

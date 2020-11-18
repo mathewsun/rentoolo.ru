@@ -11,11 +11,11 @@
 
         <div>
             Создать тендер:<br />
-            <input name="tenderName" type="text" placeholder="название тендера" />
-            <input name="tenderCost" type="number" placeholder="стартовая цена" />
-            <input name="tenderDescription" type="text" placeholder="описание" />
+            <input name="tenderName" type="text" placeholder="название тендера" value="<%=CurrentTender.Name %>" />
+            <input name="tenderCost" type="number" placeholder="стартовая цена" value="<%=CurrentTender.Cost %>" />
+            <input name="tenderDescription" type="text" placeholder="описание" value="<%=CurrentTender.Description %>" />
             <br />
-            <asp:Button ID="ButtonAddRequest" runat="server" Text="Создать тендер" OnClick="ButtonAddTender_Click" />
+            <asp:Button ID="ButtonAddRequest" runat="server" Text="Создать/редактировать тендер" OnClick="ButtonAddTender_Click" />
         </div>
 
 

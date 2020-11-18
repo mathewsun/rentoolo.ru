@@ -17,6 +17,8 @@ namespace Rentoolo
 
         public string[] AllCities = RusCities.AllRusCities;
 
+        public StrSellFilter PreviousFilter = new StrSellFilter();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -33,9 +35,7 @@ namespace Rentoolo
 
                 string city = Request.QueryString["city"];
 
-                string sortBy = Request.QueryString["sortBy"];
-
-
+                string sortBy = Request.QueryString["sort"];
 
                 SellFilter filter = new SellFilter
                 {
@@ -69,13 +69,10 @@ namespace Rentoolo
                     {
                         endPrice = endPrice2;
                     }
-
                 }
-
 
                 // test
                 string userIP = Request.RequestContext.HttpContext.Request.UserHostAddress;
-
 
                 SellFilter sellFilter = new SellFilter()
                 {
@@ -91,8 +88,11 @@ namespace Rentoolo
 
                 ListAdverts = AdvertsDataHelper.GetAdvertsForMainPage(sellFilter);
 
-
                 AdvertsCount = AdvertsDataHelper.GetAdvertsActiveCount(filter).ToString("N0");
+
+
+                PreviousFilter.SetFilterValues(sellFilter);
+
 
 
                 //Random rnd = new Random();
@@ -106,7 +106,6 @@ namespace Rentoolo
                 //UsersCountOnline = DataHelper.GetSettingByName("UsersCountOnline").Value;
 
                 //UsersCountOnline = (Convert.ToInt32(UsersCountOnline) + RandomInt).ToString();
-
             }
         }
 
@@ -162,15 +161,13 @@ namespace Rentoolo
 
             string queryStr = "?"+ "s=" + search;
 
-            queryStr += "&startDate=" + startDate + "&endDate=" + endDate;
+            //queryStr += "&startDate=" + startDate + "&endDate=" + endDate;
             queryStr += "&onlyInName=" + onlyInName;
             queryStr += "&startPrice=" + startPrice + "&endPrice=" + endPrice;
             queryStr += "&city=" + city;
-            queryStr += "&sortBy=" + sortBy;
-
+            queryStr += "&sort=" + sortBy;
 
             Response.Redirect("/Default.aspx" + queryStr);
-
         }
     }
 }
