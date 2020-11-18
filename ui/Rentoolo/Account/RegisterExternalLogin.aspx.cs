@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
+using DotNetOpenAuth.GoogleOAuth2;
+using DotNetOpenAuth;
 using Microsoft.AspNet.Membership.OpenAuth;
+using Rentoolo.Model;
 
 namespace Rentoolo.Account
 {
@@ -32,11 +36,11 @@ namespace Rentoolo.Account
             private set { ViewState["ProviderUserName"] = value; }
         }
 
-        protected void Page_Load()
+        protected void Page_Load(System.Web.UI.WebControls.LoginCancelEventArgs e)
         {
             if (!IsPostBack)
             {
-                ProcessProviderResult();
+                ProcessProviderResult(e);
             }
         }
 
@@ -50,10 +54,10 @@ namespace Rentoolo.Account
             RedirectToReturnUrl();
         }
 
-        private void ProcessProviderResult()
+        private void ProcessProviderResult(System.Web.UI.WebControls.LoginCancelEventArgs e)
         {
-            // Process the result from an auth provider in the request
-            ProviderName = OpenAuth.GetProviderNameFromCurrentRequest();
+            string redirectUrl = "~/Account/RegisterExternalLogin.aspx";
+            var authResult = VerifyAuthentication(redirectUrl);
 
             if (String.IsNullOrEmpty(ProviderName))
             {
@@ -61,16 +65,12 @@ namespace Rentoolo.Account
             }
 
             // Build the redirect url for OpenAuth verification
-            var redirectUrl = "~/Account/RegisterExternalLogin.aspx";
             var returnUrl = Request.QueryString["ReturnUrl"];
             if (!String.IsNullOrEmpty(returnUrl))
             {
                 redirectUrl += "?ReturnUrl=" + HttpUtility.UrlEncode(returnUrl);
             }
 
-            // Verify the OpenAuth payload
-            var authResult = OpenAuth.VerifyAuthentication(redirectUrl);
-            ProviderDisplayName = OpenAuth.GetProviderDisplayName(ProviderName);
             if (!authResult.IsSuccessful)
             {
                 Title = "External login failed";
@@ -83,17 +83,25 @@ namespace Rentoolo.Account
                 return;
             }
 
+
             // User has logged in with provider successfully
             // Check if user is already registered locally
-            if (OpenAuth.Login(authResult.Provider, authResult.ProviderUserId, createPersistentCookie: false))
-            {
-                RedirectToReturnUrl();
-            }
+            //не пашет
+            //if (OpenAuth.Login(authResult.Provider, authResult.ProviderUserId, createPersistentCookie: false))
+            //{
+            //    RedirectToReturnUrl();
+            //}
 
-            // Store the provider details in ViewState
-            ProviderName = authResult.Provider;
-            ProviderUserId = authResult.ProviderUserId;
-            ProviderUserName = authResult.UserName;
+            using (var ctx = new RentooloEntities())
+            {
+                var users = ctx.UsersOpenAuthAccounts.Where(x => x.ProviderName == authResult.Provider
+                && x.ProviderUserId == authResult.ProviderUserId).ToList();
+                if (users.Count > 0)
+                {
+                    //впустить
+                    RedirectToReturnUrl();
+                }
+            }
 
             // Strip the query string from action
             Form.Action = ResolveUrl(redirectUrl);
@@ -118,6 +126,8 @@ namespace Rentoolo.Account
                 return;
             }
 
+            VerifyAuthentication("~/Account/RegisterExternalLogin.aspx");
+            // создаётся запись в users потом краш
             var createResult = OpenAuth.CreateUser(ProviderName, ProviderUserId, ProviderUserName, userName.Text);
             if (!createResult.IsSuccessful)
             {
@@ -146,6 +156,19 @@ namespace Rentoolo.Account
             {
                 Response.Redirect("~/");
             }
+        }
+
+        private AuthenticationResult VerifyAuthentication(string redirectUrl)
+        {
+            GoogleOAuth2Client.RewriteRequest();
+            AuthenticationResult authResult = OpenAuth.VerifyAuthentication(redirectUrl);
+
+            ProviderName = OpenAuth.GetProviderNameFromCurrentRequest();
+            ProviderDisplayName = OpenAuth.GetProviderDisplayName(ProviderName);
+            ProviderUserId = authResult.ProviderUserId;
+            ProviderUserName = authResult.UserName;
+
+            return authResult;
         }
     }
 }

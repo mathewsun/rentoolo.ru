@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Membership.OpenAuth;
+using DotNetOpenAuth.GoogleOAuth2;
 
 namespace Rentoolo
 {
@@ -26,6 +27,10 @@ namespace Rentoolo
             //    clientSecret: "your Microsoft account client secret");
 
             //OpenAuth.AuthenticationClients.AddGoogle();
+            var client = new GoogleOAuth2Client("337461708184-a40ahhpbvn24h2ub6gbqn6ljn2h1ath9.apps.googleusercontent.com",
+                "iDDgWvaWH6RdOMUzdWAyfLpP");
+            var extraData = new Dictionary<string, string>();
+            OpenAuth.AuthenticationClients.Add("Google", () => client, extraData);
         }
     }
 }
