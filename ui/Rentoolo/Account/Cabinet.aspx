@@ -14,62 +14,115 @@
             <div class="additem-right additem__way" cid="1001">
 
 
-                <%--<div>
-                    <input type="file" name="avatarka" id="fileInput">
+            <br />
 
-                        <img src="https://www.wallpaperup.com/uploads/wallpapers/2016/05/08/947390/1f2d86bf06762856282747aa5f624fac-1000.jpg">
-                        
-                        </img>
-                    </input>
+            <div>
+                <input type="file" id="f" />
+            </div>
 
-                    <asp:Button ID="ButtonSaveAvatar" runat="server" Text="set avatar" OnClick="ButtonSaveAvatar_Click" />
+            <script type="text/javascript">
 
-                </div>--%>
+                window.onload = function () {
 
-                <form action="/api/Avatars" method="post" enctype="multipart/form-data">
-                    <input type="file" name="uploadedFile" /><br>
-                    <input type="submit" value="Загрузить" />
-                </form>
+                    let finput = document.getElementById('f');
+                    finput.onchange = function (e) {
+                        let imgHeight = 0, imgWidth = 0;
+                        let f = e.target.files[0];
 
-                <script type="text/javascript">
+                        let img = new Image();
 
-                    window.onload = function () {
+                        let reader = new FileReader();
 
-
-                        let fileInput = document.getElementById("fileInput");
-                        fileInput.onclick = function (e) {
+                        img.onload = function (e) {
                             console.log(e);
+                            console.log("is img");
+                            imgHeight = this.width;
+                            imgWidth = this.height;
 
-                            let file = e.target.files[0];
+                            console.log(imgHeight);
+                            console.log(imgWidth);
 
-                            let reader = new FileReader();
-                            reader.readAsArrayBuffer(file);
-
-                            let arr = reader.result;
-
-                            console.log(arr);
+                            reader.readAsArrayBuffer(f);
 
                         }
 
-                        fileInput.onchange = function (e) {
-                            console.log(e);
+                        img.src = URL.createObjectURL(f);
 
-                            let file = e.target.files[0];
 
-                            let reader = new FileReader();
-                            console.log(e.target.files[0]);
 
-                            reader.readAsArrayBuffer(file);
+                        console.log(e.target.files[0]);
 
-                            let arr2 = reader.result;
 
-                            console.log(arr2);
 
+                        reader.onloadend = function (e) {
+
+
+
+                            let buf = reader.result;
+                            console.log(buf);
+                            let uintbuf = new Uint8Array(buf);
+                            //console.log(uintbuf);
+
+
+
+                            sendFile(uintbuf, imgHeight, imgWidth);
                         }
+
+
 
                     }
 
-                </script>
+                }
+
+                function sendFile(buffer, height, width) {
+
+
+
+                    let url = "/api/Avatars";
+
+                    //console.log(buffer.toString());
+
+                    let data = {
+                        Buffer: buffer.toString(),
+                        FileName: "some.jpg",
+                        UserId: "4BB6FE84-B80E-4B7A-A62E-1D2CB44A014E",
+                        Height: height,
+                        Width: width
+                    };
+
+                    fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    }).then((data) => {
+                        console.log(data);
+                    });
+
+
+                }
+
+
+
+
+
+
+
+
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 <table class="marginTable cabinetTable">
