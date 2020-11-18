@@ -257,6 +257,7 @@
     <Content Include="Admin\User.aspx" />
     <Content Include="Admin\Users.aspx" />
     <Content Include="Advert.aspx" />
+    <Content Include="AdvertCar.aspx" />
     <Content Include="Aezakmi128\AddNewsAezakmi.aspx" />
     <Content Include="Aezakmi128\NewsAezakmi.aspx" />
     <Content Include="Article.aspx" />
@@ -1022,6 +1023,13 @@
     </Compile>
     <Compile Include="Advert.aspx.designer.cs">
       <DependentUpon>Advert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdvertCar.aspx.cs">
+      <DependentUpon>AdvertCar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdvertCar.aspx.designer.cs">
+      <DependentUpon>AdvertCar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aezakmi128\AddNewsAezakmi.aspx.cs">
       <DependentUpon>AddNewsAezakmi.aspx</DependentUpon>
