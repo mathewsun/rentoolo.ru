@@ -1279,109 +1279,16 @@ namespace Rentoolo.Model
             }
         }
 
-        public static IQueryable<UserViews> GetUserViewsQuery(int? type, Guid userId, DateTime? startDate, DateTime? endDate)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                var result = dc.UserViews.Where(x => x.UserId == userId);
-                if (type != null)
-                {
-                    result = result.Where(x => x.Type == (int)type);
-                }
-
-
-                if (startDate != null)
-                {
-                    result = result.Where(x => x.Date >= startDate);
-                }
-
-                if (endDate != null)
-                {
-                    result = result.Where(x => x.Date <= endDate);
-                }
-
-                return result;
-            }
-        }
 
 
 
-        
-
-
-        public static List<SelIItem> GetSellItems(int? type, Guid userId, DateTime? startDate, DateTime? endDate)
-        {
-            var views = GetUserViewsQuery(type, userId, startDate, endDate);
-
-            using (var dc = new RentooloEntities())
-            {
-                IQueryable<SelIItem> items;
-                switch (type)
-                {
-                    case 1:
-                        items = (IQueryable<SelIItem>)dc.Adverts.Where(a => views.Select(y => y.UserId).Contains(a.CreatedUserId))
-                            .Select(p => new SelIItem()
-                            {
-                                Name = p.Name,
-                                Type = 1,
-                                Id = p.Id
-                            });
-                        break;
-                    default:
-                        items = (IQueryable<SelIItem>)views.Select(x => new SelIItem()
-                        {
-                            Id = x.ObjectId,
-                            Type = x.Type,
-                            Name = "uncategorised" + x.Type.ToString()
-
-                        });
-
-                        break;
-
-
-                }
-
-                return items.ToList();
-            }
-
-        }
-
-
-
-        public static List<SelIItem> GetSellItems(IQueryable<UserViews> views, int type)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                switch (type)
-                {
-                    case 1:
-                        var items = dc.Adverts.Where(a => views.Select(y => y.UserId).Contains(a.CreatedUserId))
-                            .Select(p => new SelIItem()
-                            {
-                                Name = p.Name,
-                                Type = 1,
-                            }).ToList();
-                        return items;
-                    default:
-                        return new List<SelIItem>();
-
-                }
-            }
-
-        }
-
-
-
-
-        public static List<SelIItem> GetSellItems2(int type, Guid userId, DateTime? startDate, DateTime? endDate)
+        public static List<SelIItem> GetSellItems(int type, Guid userId, DateTime? startDate, DateTime? endDate)
         {
             using (var dc = new RentooloEntities())
             {
                 var views = dc.UserViews.Where(x => x.UserId == userId);
 
                 views = views.Where(x => x.Type == (int)type);
-                
-
 
                 if (startDate != null)
                 {
@@ -1393,25 +1300,47 @@ namespace Rentoolo.Model
                     views = views.Where(x => x.Date <= endDate);
                 }
 
-                var testViews = views.ToList();
+
+                IQueryable<SelIItem> items;
 
                 switch (type)
                 {
                     case 1:
-                        var items = dc.Adverts.Where(a => views.Select(y => (long)y.ObjectId).Contains(a.Id))
+                        var filteredAdverts = dc.Adverts.Where(a => views.Select(v => (long)v.ObjectId).Contains(a.Id));
+
+                        items = filteredAdverts
                             .Select(p => new SelIItem()
                             {
-                                // TODO: разобраться ккак получит id обьекта
                                 Name = p.Name,
                                 Type = 1,
                                 Id = p.Id
-                                // Id = 0 //y.ObjectId
-                            }).ToList();
+                            });
 
-                        // var items2 = from t in dc.Adverts where views.Select(y => (long)y.ObjectId).Contains(t.Id) select t;
+                        return items.ToList();
+                    case 2:
+                        var filteredTenders = dc.Tenders.Where(a => views.Select(v => (long)v.ObjectId).Contains(a.Id));
 
+                        items = filteredTenders
+                            .Select(p => new SelIItem()
+                            {
+                                Name = p.Name,
+                                Type = 1,
+                                Id = p.Id
+                            });
 
-                        return items;
+                        return items.ToList();
+                    case 3:
+                        var filteredAuctions = dc.Auctions.Where(a => views.Select(v => (long)v.ObjectId).Contains(a.Id));
+
+                        items = filteredAuctions
+                            .Select(p => new SelIItem()
+                            {
+                                Name = p.Name,
+                                Type = 1,
+                                Id = p.Id
+                            });
+
+                        return items.ToList();
                     default:
                         return new List<SelIItem>();
 

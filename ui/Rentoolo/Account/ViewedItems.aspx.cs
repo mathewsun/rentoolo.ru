@@ -11,7 +11,6 @@ namespace Rentoolo.Account
 {
     public partial class ViewedItems : BasicPage
     {
-        //public List<Model.UserViews> Views = new List<Model.UserViews>();
         public List<Model.SelIItem> SellItemViews = new List<SelIItem>();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -27,7 +26,7 @@ namespace Rentoolo.Account
             startDate = startDateS == null || startDateS == "" ? null : (DateTime?)DateTime.Parse(startDateS);
             endDate = endDateS == null || endDateS == "" ? null : (DateTime?)DateTime.Parse(endDateS);
 
-            int categoryType = 1;
+            int categoryType;
             if (category != null)
             {
                 if (StructsHelper.ViewedType.ContainsKey(category))
@@ -52,9 +51,7 @@ namespace Rentoolo.Account
             }
 
 
-            var userViewsQuery = DataHelper.GetUserViewsQuery(categoryType, User.UserId, startDate, endDate);
-
-            SellItemViews = DataHelper.GetSellItems2(categoryType,User.UserId,startDate,endDate);
+            SellItemViews = DataHelper.GetSellItems(categoryType,User.UserId,startDate,endDate);
 
         }
 

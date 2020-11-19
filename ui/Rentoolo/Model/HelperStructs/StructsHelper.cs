@@ -96,7 +96,9 @@ namespace Rentoolo.Model.HelperStructs
         public static Dictionary<string, int> ViewedType = new Dictionary<string, int>
         {
             { "product", 1 },
-            { "vacancy", 2 },
+            { "vacancy", 22 },
+            { "tender", 2 },
+            { "auction", 3 }
         };
 
 
@@ -104,7 +106,9 @@ namespace Rentoolo.Model.HelperStructs
         // page name(url) by it category
         public static Dictionary<int, string> TypePage = new Dictionary<int, string>
         {
-            { 1, "/Advert.aspx" }
+            { 1, "/Advert.aspx" },
+            { 2, "/Tender.aspx" },
+            { 3, "/Account/AuctionInfo.aspx" }
         };
 
 
