@@ -1223,12 +1223,14 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                var views = dc.UserViews.Where(x => x.UserId == userView.UserId).OrderBy(x => x.Date);
-                if (views.Any())
-                {
-                    int count = views.Count();
+                var views = dc.UserViews.OrderByDescending(x => x.Date)
+                        .FirstOrDefault(x => x.UserId == userView.UserId 
+                        && x.ObjectId == userView.ObjectId && x.Type == userView.Type);
 
-                    if ((views.ToArray()[count - 1].Date.Date - DateTime.Now.Date).Days >= 1)
+                if (views != null)
+                {
+                    
+                    if ((views.Date.Date - DateTime.Now.Date).Days >= 1)
                     {
                         dc.UserViews.Add(userView);
                         dc.SaveChanges();
@@ -2116,7 +2118,7 @@ namespace Rentoolo.Model
             filter.Search = search.Search;
             filter.StartDate = search.StartDate;
             filter.EndDate = search.EndDate;
-            filter.OnlyInName = (bool)search.OnlyInName == null ? false : (bool)search.OnlyInName;
+            filter.OnlyInName = (bool)search.OnlyInName == null ? false : (bool)search.OnlyInName == true;
             filter.StartPrice = search.StartPrice;
             filter.EndPrice = search.EndPrice;
             filter.City = search.City;
