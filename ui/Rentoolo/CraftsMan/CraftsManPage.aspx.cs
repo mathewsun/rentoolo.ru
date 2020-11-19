@@ -12,8 +12,6 @@ namespace Rentoolo.CraftsMan
 {
     public partial class CraftsManPage : System.Web.UI.Page
     {
-
-
         public List<Rentoolo.Model.CraftsMan> ListCraftsMan;
 
         public string CraftsManCount;
@@ -22,8 +20,11 @@ namespace Rentoolo.CraftsMan
 
         public SellFilter PreviousFilter = new SellFilter();
 
+      
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 //ListNews = DataHelper.GetActiveNewsLast5();
@@ -97,7 +98,6 @@ namespace Rentoolo.CraftsMan
                 PreviousFilter = sellFilter;
 
             }
-
          
         }
             protected void ButtonSearch_Click(object sender, EventArgs e)
@@ -137,25 +137,29 @@ namespace Rentoolo.CraftsMan
 
         protected void ButtonOrder_Click(object sender, EventArgs e)
         {
-            string category = Request.QueryString["cat"];
-            string nameTask = String.Format("{0}", Request.Form["ctl00$MainContent$input_nameTask"]);
-            string description = String.Format("{0}", Request.Form["ctl00$MainContent$input_description"]);
-            string price = String.Format("{0}", Request.Form["ctl00$MainContent$price_value"]);
+           
+            string nameTask = String.Format("{0}", Request.Form["MainContent$input_nameTask"]);
+            string description = String.Format("{0}", Request.Form["MainContent$input_description"]);
+            string price = String.Format("{0}", Request.Form["MainContent$price_value"]);
             //string video = String.Format("{0}", Request.Form["ctl00$MainContent$input_video"]);
             //string place = String.Format("{0}", Request.Form["ctl00$MainContent$additem_place"]);
-            string phone = String.Format("{0}", Request.Form["ctl00$MainContent$phonenum"]);
-            
+            string phone = String.Format("{0}", Request.Form["MainContent$phone"]);
           
-
+            
+            
             //TODO добавить в табл
-            //string firstName = String.Format("{0}", Request.Form["ctl00$MainContent$input_firstName"]);
-            //string lastName = String.Format("{0}", Request.Form["ctl00$MainContent$input_lastName"]);
+            string firstName = String.Format("{0}", Request.Form["MainContent$input_firstName"]);
+            string lastName = String.Format("{0}", Request.Form["MainContent$input_lastName"]);
+            string address = String.Format("{0}", Request.Form["MainContent$address"]);
+            string email = String.Format("{0}", Request.Form["MainContent$email"]);
+            string country = String.Format("{0}", Request.Form["MainContent$country"]);
+            string region = String.Format("{0}", Request.Form["MainContent$region"]);
 
             //var objPhotos = Request.Form[""];
 
-         
 
-            Rentoolo.Model.CraftsMan order = new Model.CraftsMan();
+
+            Rentoolo.Model.CraftsManOrder order = new Model.CraftsManOrder();
 
             //if (objPhotos != null)
             //{
@@ -174,14 +178,7 @@ namespace Rentoolo.CraftsMan
             //{
             //    order.Category = Int32.Parse(category);
             //}
-            //catch { }
-
-            
-
-            order.Description = description;
-
-
-
+            //catch { } 
             try
             {
                 order.Price = double.Parse(price);
@@ -192,17 +189,21 @@ namespace Rentoolo.CraftsMan
 
             //order.Address = place;
 
-            order.Phone = phone;
-
             //order.YouTubeUrl = video;
 
             //order.CreatedUserId = User.UserId;
 
             order.Created = DateTime.Now;
+            order.Address = address;
+            order.NameTask = nameTask;
+            order.Description = description;
+            order.Phone = phone;
+           
 
-            CraftsManDataHelper.AddCraftsMan(order);
 
-            Response.Redirect("MyAdverts.aspx");
+            CraftsManDataHelper.AddCraftsManOrdrer(order);
+
+            //Response.Redirect("MyAdverts.aspx");
         }
     }
 }
