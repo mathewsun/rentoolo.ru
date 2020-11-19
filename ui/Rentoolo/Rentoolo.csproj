@@ -257,6 +257,7 @@
     <Content Include="Admin\User.aspx" />
     <Content Include="Admin\Users.aspx" />
     <Content Include="Advert.aspx" />
+    <Content Include="AdvertCar.aspx" />
     <Content Include="Aezakmi128\AddNewsAezakmi.aspx" />
     <Content Include="Aezakmi128\NewsAezakmi.aspx" />
     <Content Include="Article.aspx" />
@@ -404,6 +405,7 @@
     <Content Include="Realty.aspx" />
     <Content Include="Rent.aspx" />
     <Content Include="Services.aspx" />
+    <Content Include="ShCodder\NewShCodder.aspx" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -1023,6 +1025,13 @@
     <Compile Include="Advert.aspx.designer.cs">
       <DependentUpon>Advert.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdvertCar.aspx.cs">
+      <DependentUpon>AdvertCar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdvertCar.aspx.designer.cs">
+      <DependentUpon>AdvertCar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aezakmi128\AddNewsAezakmi.aspx.cs">
       <DependentUpon>AddNewsAezakmi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1259,6 +1268,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ComplaintsFilter.cs" />
+    <Compile Include="Model\CraftsMan.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CraftsManOrder.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Currencies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1267,6 +1282,7 @@
     </Compile>
     <Compile Include="Model\DataHelperAezakmi.cs" />
     <Compile Include="Model\DataHelperAzizjan.cs" />
+    <Compile Include="Model\DataHelperShCodder.cs" />
     <Compile Include="Model\DataHelperEducation.cs" />
     <Compile Include="Model\DataHelperGGdotNET.cs" />
     <Compile Include="Model\DataHelperIlya.cs" />
@@ -1369,6 +1385,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsRaspel.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsShCodder.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsVark.cs">
@@ -1634,6 +1653,13 @@
     </Compile>
     <Compile Include="Services.aspx.designer.cs">
       <DependentUpon>Services.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShCodder\NewShCodder.aspx.cs">
+      <DependentUpon>NewShCodder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShCodder\NewShCodder.aspx.designer.cs">
+      <DependentUpon>NewShCodder.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
