@@ -108,6 +108,14 @@ namespace Rentoolo.Model.HelperStructs
         };
 
 
+
+        // page name(url) by it category
+        public static Dictionary<int, string> TypePage = new Dictionary<int, string>
+        {
+            { 1, "/Advert.aspx" }
+        };
+
+
         public enum ViewKeys
         {
             Product = 0,

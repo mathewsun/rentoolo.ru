@@ -16,9 +16,16 @@
             <asp:Button ID="ButtonSearch" runat="server" Text="show" OnClick="ButtonSearch_Click" />
         </div>
         <div>
-            <% foreach (var item in Views)
+            <% foreach (var item in SellItemViews)
                 { %>
-
+                    
+                    <div>
+                        <a href="ViewedItems.aspx?redirect=true&category=<%=item.Type %>&objectId=<%=item.Id %>">
+                            <%=item.Name %>
+                        </a>
+                        
+                    </div>
+                    
 
             <%} %>
         </div>

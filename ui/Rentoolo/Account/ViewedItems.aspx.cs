@@ -11,7 +11,8 @@ namespace Rentoolo.Account
 {
     public partial class ViewedItems : BasicPage
     {
-        public List<Model.UserViews> Views = new List<Model.UserViews>();
+        //public List<Model.UserViews> Views = new List<Model.UserViews>();
+        public List<Model.SelIItem> SellItemViews = new List<SelIItem>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,9 +20,12 @@ namespace Rentoolo.Account
             string startDateS = Request.QueryString["startDate"];
             string endDateS = Request.QueryString["endDate"];
 
+            bool isRedirect = Request.QueryString["redirect"] == "true";
+            string objectId = Request.QueryString["objectId"];
+
             DateTime? startDate, endDate;
-            startDate = startDateS == null ? null : (DateTime?)DateTime.Parse(startDateS);
-            endDate = endDateS == null ? null : (DateTime?)DateTime.Parse(endDateS);
+            startDate = startDateS == null || startDateS == "" ? null : (DateTime?)DateTime.Parse(startDateS);
+            endDate = endDateS == null || endDateS == "" ? null : (DateTime?)DateTime.Parse(endDateS);
 
             int? categoryType = null;
             if (category != null)
@@ -29,7 +33,16 @@ namespace Rentoolo.Account
                 categoryType = StructsHelper.ViewedType[category];
             }
 
-            Views = DataHelper.GetUserViews(categoryType, User.UserId, startDate, endDate);
+            if (isRedirect)
+            {
+                string pageURl = StructsHelper.TypePage[(int)categoryType] + "?id=" + category;
+                Response.Redirect(pageURl);
+            }
+
+
+
+
+            SellItemViews = DataHelper.GetSellItems(categoryType, User.UserId, startDate, endDate);
 
         }
 
@@ -57,7 +70,7 @@ namespace Rentoolo.Account
             string startDate = Request.Form["startDate"];
             string endDate = Request.Form["endDate"];
 
-            
+
             string query = "?" + tryAddToQuery("category", category, true);
             query += tryAddToQuery("startDate", startDate);
             query += tryAddToQuery("endDate", endDate);

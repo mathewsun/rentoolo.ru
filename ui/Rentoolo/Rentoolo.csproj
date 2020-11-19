@@ -1392,6 +1392,7 @@
     <Compile Include="Model\Roles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\SelIItem.cs" />
     <Compile Include="Model\Settings.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
