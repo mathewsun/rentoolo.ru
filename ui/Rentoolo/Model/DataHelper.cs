@@ -1305,6 +1305,10 @@ namespace Rentoolo.Model
         }
 
 
+
+        
+
+
         public static List<SelIItem> GetSellItems(int? type, Guid userId, DateTime? startDate, DateTime? endDate)
         {
             var views = GetUserViewsQuery(type, userId, startDate, endDate);
@@ -1359,9 +1363,61 @@ namespace Rentoolo.Model
                             }).ToList();
                         return items;
                     default:
-                        return null;
+                        return new List<SelIItem>();
 
                 }
+            }
+
+        }
+
+
+
+
+        public static List<SelIItem> GetSellItems2(int type, Guid userId, DateTime? startDate, DateTime? endDate)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var views = dc.UserViews.Where(x => x.UserId == userId);
+
+                views = views.Where(x => x.Type == (int)type);
+                
+
+
+                if (startDate != null)
+                {
+                    views = views.Where(x => x.Date >= startDate);
+                }
+
+                if (endDate != null)
+                {
+                    views = views.Where(x => x.Date <= endDate);
+                }
+
+                var testViews = views.ToList();
+
+                switch (type)
+                {
+                    case 1:
+                        var items = dc.Adverts.Where(a => views.Select(y => (long)y.ObjectId).Contains(a.Id))
+                            .Select(p => new SelIItem()
+                            {
+                                // TODO: разобраться ккак получит id обьекта
+                                Name = p.Name,
+                                Type = 1,
+                                Id = p.Id
+                                // Id = 0 //y.ObjectId
+                            }).ToList();
+
+                        // var items2 = from t in dc.Adverts where views.Select(y => (long)y.ObjectId).Contains(t.Id) select t;
+
+
+                        return items;
+                    default:
+                        return new List<SelIItem>();
+
+                }
+
+
             }
 
         }

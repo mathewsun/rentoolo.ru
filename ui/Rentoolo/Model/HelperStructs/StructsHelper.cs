@@ -89,16 +89,8 @@ namespace Rentoolo.Model.HelperStructs
             {"reject complaint", 2 }
         };
 
-
-
-
-
-
-
         // some Tables have field Type which is assigned to some site section
         //and this struct is made to help get value of Type field 
-
-
 
         // in table UserViews field Type
         public static Dictionary<string, int> ViewedType = new Dictionary<string, int>

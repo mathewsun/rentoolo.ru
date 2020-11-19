@@ -27,22 +27,34 @@ namespace Rentoolo.Account
             startDate = startDateS == null || startDateS == "" ? null : (DateTime?)DateTime.Parse(startDateS);
             endDate = endDateS == null || endDateS == "" ? null : (DateTime?)DateTime.Parse(endDateS);
 
-            int? categoryType = null;
+            int categoryType = 1;
             if (category != null)
             {
-                categoryType = StructsHelper.ViewedType[category];
+                if (StructsHelper.ViewedType.ContainsKey(category))
+                {
+                    categoryType = StructsHelper.ViewedType[category];
+                }
+                else
+                {
+                    categoryType = 1;
+                }
+
+            }
+            else
+            {
+                categoryType = 1;
             }
 
             if (isRedirect)
             {
-                string pageURl = StructsHelper.TypePage[(int)categoryType] + "?id=" + category;
+                string pageURl = StructsHelper.TypePage[(int)categoryType] + "?id=" + objectId;
                 Response.Redirect(pageURl);
             }
 
 
+            var userViewsQuery = DataHelper.GetUserViewsQuery(categoryType, User.UserId, startDate, endDate);
 
-
-            SellItemViews = DataHelper.GetSellItems(categoryType, User.UserId, startDate, endDate);
+            SellItemViews = DataHelper.GetSellItems2(categoryType,User.UserId,startDate,endDate);
 
         }
 
