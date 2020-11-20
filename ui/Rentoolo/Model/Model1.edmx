@@ -1164,10 +1164,6 @@
         <Function Name="spGetWatchedByCookies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="uid" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="spUpdateQiwiAccountBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="number" Type="nvarchar" Mode="In" />
-          <Parameter Name="balance" Type="float" Mode="In" />
-        </Function>
         <EntityContainer Name="Хранилище RentooloModelContainer">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
@@ -2589,10 +2585,6 @@
           <FunctionImport Name="spGetWatchedByCookies" ReturnType="Collection(RentooloModel.spGetWatchedByCookies_Result)">
             <Parameter Name="uid" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="spUpdateQiwiAccountBalance">
-            <Parameter Name="number" Mode="In" Type="String" />
-            <Parameter Name="balance" Mode="In" Type="Double" />
-          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spGetChats_Result">
           <Property Type="Int64" Name="Id" Nullable="false" />
@@ -3864,7 +3856,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spUpdateQiwiAccountBalance" FunctionName="Хранилище RentooloModel.spUpdateQiwiAccountBalance" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

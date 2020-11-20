@@ -363,18 +363,5 @@ namespace Rentoolo.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetWatchedByCookies_Result>("spGetWatchedByCookies", uidParameter);
         }
-    
-        public virtual int spUpdateQiwiAccountBalance(string number, Nullable<double> balance)
-        {
-            var numberParameter = number != null ?
-                new ObjectParameter("number", number) :
-                new ObjectParameter("number", typeof(string));
-    
-            var balanceParameter = balance.HasValue ?
-                new ObjectParameter("balance", balance) :
-                new ObjectParameter("balance", typeof(double));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdateQiwiAccountBalance", numberParameter, balanceParameter);
-        }
     }
 }
