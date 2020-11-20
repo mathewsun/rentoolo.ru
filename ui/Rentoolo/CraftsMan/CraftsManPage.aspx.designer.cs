@@ -15,15 +15,6 @@ namespace Rentoolo.CraftsMan
     {
 
         /// <summary>
-        /// AddOrder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddOrder;
-
-        /// <summary>
         /// Text1 control.
         /// </summary>
         /// <remarks>
@@ -40,77 +31,5 @@ namespace Rentoolo.CraftsMan
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-
-        /// <summary>
-        /// CardControl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Rentoolo.CraftsMan.UserControl.CardControl CardControl;
-
-        /// <summary>
-        /// CardControl1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Rentoolo.CraftsMan.UserControl.CardControl CardControl1;
-
-        /// <summary>
-        /// CardControl2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Rentoolo.CraftsMan.UserControl.CardControl CardControl2;
-
-        /// <summary>
-        /// CardControl3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Rentoolo.CraftsMan.UserControl.CardControl CardControl3;
-
-        /// <summary>
-        /// CardControl5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Rentoolo.CraftsMan.UserControl.CardControl CardControl5;
-
-        /// <summary>
-        /// CardControl4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Rentoolo.CraftsMan.UserControl.CardControl CardControl4;
-
-        /// <summary>
-        /// CardControl6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Rentoolo.CraftsMan.UserControl.CardControl CardControl6;
-
-        /// <summary>
-        /// CardControl7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Rentoolo.CraftsMan.UserControl.CardControl CardControl7;
     }
 }
