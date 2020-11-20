@@ -4,13 +4,13 @@ using System.Web;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using DotNetOpenAuth.GoogleOAuth2;
-using DotNetOpenAuth;
 using Microsoft.AspNet.Membership.OpenAuth;
 using Rentoolo.Model;
-
+using System.Collections.Generic;
+using System.Web.UI;
 namespace Rentoolo.Account
 {
-    public partial class RegisterExternalLogin : System.Web.UI.Page
+    public partial class RegisterExternalLogin : Page
     {
         protected string ProviderName
         {
@@ -36,17 +36,24 @@ namespace Rentoolo.Account
             private set { ViewState["ProviderUserName"] = value; }
         }
 
-        protected void Page_Load(System.Web.UI.WebControls.LoginCancelEventArgs e)
+        protected string ProviderUserEmail
         {
+            get { return (string)ViewState["ProviderUserEmail"] ?? String.Empty; }
+            private set { ViewState["ProviderUserEmail"] = value; }
+        }
+
+        protected void Page_Load()
+        {
+
             if (!IsPostBack)
             {
-                ProcessProviderResult(e);
+                ProcessProviderResult();
             }
         }
 
         protected void logIn_Click(object sender, EventArgs e)
         {
-            CreateAndLoginUser();
+            CreateUser();
         }
 
         protected void cancel_Click(object sender, EventArgs e)
@@ -54,21 +61,16 @@ namespace Rentoolo.Account
             RedirectToReturnUrl();
         }
 
-        private void ProcessProviderResult(System.Web.UI.WebControls.LoginCancelEventArgs e)
+        private void ProcessProviderResult()
         {
-            string redirectUrl = "~/Account/RegisterExternalLogin.aspx";
-            var authResult = VerifyAuthentication(redirectUrl);
 
+            AuthenticationResult authResult = VerifyAuthentication("~/Account/RegisterExternalLogin.aspx");
+
+            bool hasEmail = authResult.ExtraData.TryGetValue("email", out string email);
+            ProviderUserEmail = email;
             if (String.IsNullOrEmpty(ProviderName))
             {
                 Response.Redirect(FormsAuthentication.LoginUrl);
-            }
-
-            // Build the redirect url for OpenAuth verification
-            var returnUrl = Request.QueryString["ReturnUrl"];
-            if (!String.IsNullOrEmpty(returnUrl))
-            {
-                redirectUrl += "?ReturnUrl=" + HttpUtility.UrlEncode(returnUrl);
             }
 
             if (!authResult.IsSuccessful)
@@ -83,64 +85,41 @@ namespace Rentoolo.Account
                 return;
             }
 
-
-            // User has logged in with provider successfully
-            // Check if user is already registered locally
-            //не пашет
+            //краш
             //if (OpenAuth.Login(authResult.Provider, authResult.ProviderUserId, createPersistentCookie: false))
             //{
             //    RedirectToReturnUrl();
             //}
 
-            using (var ctx = new RentooloEntities())
-            {
-                var users = ctx.UsersOpenAuthAccounts.Where(x => x.ProviderName == authResult.Provider
-                && x.ProviderUserId == authResult.ProviderUserId).ToList();
-                if (users.Count > 0)
-                {
-                    //впустить
-                    RedirectToReturnUrl();
-                }
-            }
+            Login();
 
-            // Strip the query string from action
-            Form.Action = ResolveUrl(redirectUrl);
-
-            if (User.Identity.IsAuthenticated)
+            userName.Text = authResult.UserName;
+            if (hasEmail)
             {
-                // User is already authenticated, add the external login and redirect to return url
-                OpenAuth.AddAccountToExistingUser(ProviderName, ProviderUserId, ProviderUserName, User.Identity.Name);
-                RedirectToReturnUrl();
+                Email.Enabled = false;
+                Email.Text = ProviderUserEmail;
             }
             else
             {
-                // User is new, ask for their desired membership name
-                userName.Text = authResult.UserName;
+                Email.Enabled = true;
             }
+
         }
 
-        private void CreateAndLoginUser()
+        private void Login()
         {
-            if (!IsValid)
+            using (var ctx = new RentooloEntities())
             {
-                return;
-            }
-
-            VerifyAuthentication("~/Account/RegisterExternalLogin.aspx");
-            // создаётся запись в users потом краш
-            var createResult = OpenAuth.CreateUser(ProviderName, ProviderUserId, ProviderUserName, userName.Text);
-            if (!createResult.IsSuccessful)
-            {
-
-                ModelState.AddModelError("UserName", createResult.ErrorMessage);
-
-            }
-            else
-            {
-                // User created & associated OK
-                if (OpenAuth.Login(ProviderName, ProviderUserId, createPersistentCookie: false))
+                UsersOpenAuthAccounts userOpenAuthAccounts = ctx.UsersOpenAuthAccounts.Where(c => c.ProviderName == ProviderName
+                && c.ProviderUserId == ProviderUserId).FirstOrDefault();
+                if (userOpenAuthAccounts != null)
                 {
-                    RedirectToReturnUrl();
+                    FormsAuthentication.SetAuthCookie(userOpenAuthAccounts.MembershipUserName, createPersistentCookie: false);
+                    Response.Redirect("~/Account/Cabinet.aspx");
+                }
+                else
+                {
+                    return;
                 }
             }
         }
@@ -160,15 +139,99 @@ namespace Rentoolo.Account
 
         private AuthenticationResult VerifyAuthentication(string redirectUrl)
         {
-            GoogleOAuth2Client.RewriteRequest();
-            AuthenticationResult authResult = OpenAuth.VerifyAuthentication(redirectUrl);
+            try
+            {
+                GoogleOAuth2Client.RewriteRequest();
+                AuthenticationResult _authResult = OpenAuth.VerifyAuthentication(redirectUrl);
 
-            ProviderName = OpenAuth.GetProviderNameFromCurrentRequest();
-            ProviderDisplayName = OpenAuth.GetProviderDisplayName(ProviderName);
-            ProviderUserId = authResult.ProviderUserId;
-            ProviderUserName = authResult.UserName;
+                ProviderName = OpenAuth.GetProviderNameFromCurrentRequest();
+                ProviderDisplayName = OpenAuth.GetProviderDisplayName(ProviderName);
+                ProviderUserId = _authResult.ProviderUserId;
+                ProviderUserName = _authResult.UserName;
 
-            return authResult;
+                return _authResult;
+            }
+            catch (ArgumentException ex)
+            {
+                Response.Redirect("~/Account/Login.aspx");
+                return null;
+            }
         }
+
+        private void CreateUser()
+        {
+            // проверить входные данные
+
+            // создаёт пользователя или добавлет пользователю возможность входа через соц сети
+            MembershipUser membershipUser;
+            Users user;
+            if (Membership.GetUser(userName.Text) == null)
+            {
+                membershipUser = Membership.CreateUser(userName.Text, Password.Text, ProviderUserEmail);
+                user = DataHelper.GetUser((Guid)membershipUser.ProviderUserKey);
+
+                user.Pwd = Password.Text;// pwd это пароль??
+                user.PublicId = DataHelper.GenerateUserPublicId();
+                DataHelper.UpdateUser(user);
+            }
+            else
+            {
+                membershipUser = Membership.GetUser();
+                if (membershipUser == null)
+                {
+                    ModelState.AddModelError("Provider", String.Format("Этот логин занят", ProviderDisplayName));
+                    return;
+                }
+            }
+
+            AddAccountToExistingUser(Membership.ApplicationName, membershipUser.UserName);
+        }
+
+        private void AddAccountToExistingUser(string AplicationName, string MembershipUserName)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                UsersOpenAuthAccounts userOpenAuthAccounts = new UsersOpenAuthAccounts();
+
+                userOpenAuthAccounts.ApplicationName = AplicationName;
+                userOpenAuthAccounts.ProviderName = ProviderName;
+                userOpenAuthAccounts.ProviderUserId = ProviderUserId;
+                userOpenAuthAccounts.ProviderUserName = ProviderUserName;
+                userOpenAuthAccounts.MembershipUserName = MembershipUserName;
+
+                UsersOpenAuthData usersOpenAuthData = new UsersOpenAuthData();
+
+                usersOpenAuthData.ApplicationName = AplicationName;
+                usersOpenAuthData.MembershipUserName = MembershipUserName;
+                usersOpenAuthData.HasLocalPassword = true;
+
+
+                userOpenAuthAccounts.UsersOpenAuthData = usersOpenAuthData;
+                usersOpenAuthData.UsersOpenAuthAccounts.Add(userOpenAuthAccounts);
+
+                ctx.UsersOpenAuthAccounts.Add(userOpenAuthAccounts);
+                ctx.UsersOpenAuthData.Add(usersOpenAuthData);
+                try
+                {
+                    ctx.SaveChanges();
+                    Login();
+                }
+                catch
+                {
+                    ModelState.AddModelError("Provider", String.Format("Аккаунт уже создан и привязан к другой учётной записи."));
+                    Trace.Warn("OpenAuth", String.Format("Аккаунт уже создан и привязан к другой учётной записи)"));
+                    userNameForm.Visible = false;
+                    return;
+                }
+            }
+
+            //поидее должно так работать))
+            // но хз чё там происходит и выдаёт странную ошибку)
+            //OpenAuth.UsersAccountsTableName = "UsersOpenAuthAccounts";
+            //OpenAuth.UsersDataTableName = "UsersOpenAuthData";
+            //OpenAuth.AddAccountToExistingUser(ProviderName, ProviderUserId, ProviderUserName, user.UserName);
+            //OpenAuth.AddLocalPassword(user.UserName, Password.Text);
+        }
+
     }
 }
