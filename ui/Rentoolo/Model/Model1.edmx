@@ -489,6 +489,17 @@
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="NewsMrshkVV">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="AuthorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="NewsRaspel">
           <Key>
             <PropertyRef Name="Id" />
@@ -1197,6 +1208,7 @@
           <EntitySet Name="NewsEducation" EntityType="Self.NewsEducation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsGGdotNET" EntityType="Self.NewsGGdotNET" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsIlya" EntityType="Self.NewsIlya" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsMrshkVV" EntityType="Self.NewsMrshkVV" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsRaspel" EntityType="Self.NewsRaspel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsVark" EntityType="Self.NewsVark" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
@@ -1832,6 +1844,17 @@
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="NewsMrshkVV">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuthorId" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
         <EntityType Name="NewsRaspel">
           <Key>
             <PropertyRef Name="Id" />
@@ -2396,6 +2419,7 @@
           <EntitySet Name="NewsEducation" EntityType="Self.NewsEducation" />
           <EntitySet Name="NewsGGdotNET" EntityType="Self.NewsGGdotNET" />
           <EntitySet Name="NewsIlya" EntityType="Self.NewsIlya" />
+          <EntitySet Name="NewsMrshkVV" EntityType="Self.NewsMrshkVV" />
           <EntitySet Name="NewsRaspel" EntityType="Self.NewsRaspel" />
           <EntitySet Name="NewsVark" EntityType="Self.NewsVark" />
           <EntitySet Name="Operations" EntityType="Self.Operations" />
@@ -3220,6 +3244,18 @@
           <EntitySetMapping Name="NewsIlya">
             <EntityTypeMapping TypeName="RentooloModel.NewsIlya">
               <MappingFragment StoreEntitySet="NewsIlya">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsMrshkVV">
+            <EntityTypeMapping TypeName="RentooloModel.NewsMrshkVV">
+              <MappingFragment StoreEntitySet="NewsMrshkVV">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
