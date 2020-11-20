@@ -23,8 +23,6 @@ namespace Rentoolo.Controllers
             public string FileName { get; set; }
             public string Buffer { get; set; }
 
-            public int Width { get; set; }
-            public int Height { get; set; }
         }
 
 
@@ -49,13 +47,15 @@ namespace Rentoolo.Controllers
             Bitmap bmpImage = new Bitmap(img);
             return bmpImage.Clone(cropArea, bmpImage.PixelFormat);
         }
+
+        private Image resizeImage(Image imgToResize, Size size)
+        {
+            return (Image)(new Bitmap(imgToResize, size));
+        }
         public void Post([FromBody] AvatarFile file)
         {
             var projectDir = AppDomain.CurrentDomain.BaseDirectory.Replace('\\', '/');
             projectDir += "assets/img/avatars/";
-
-            int weidth = 400;
-            int height = 400;
 
 
             string[] nums = file.Buffer.Trim().Split(',');
@@ -67,7 +67,7 @@ namespace Rentoolo.Controllers
             }
 
 
-            Image img, img2;
+            Image img, croppedImg, resizedImg;
 
             using (var bs = new MemoryStream(buffer))
             {
@@ -77,6 +77,7 @@ namespace Rentoolo.Controllers
 
             int hdelta = 0;
             int wdelta = 0;
+
 
             if (img.Width > img.Height)
             {
@@ -94,83 +95,16 @@ namespace Rentoolo.Controllers
             Rectangle cloneRect = new Rectangle(startPoint, newImgSize);
 
 
-            img2 = cropImage(img, cloneRect);
+            croppedImg = cropImage(img, cloneRect);
+
+            resizedImg = resizeImage(croppedImg, new Size(400, 400));
 
 
             using (var ms = new MemoryStream())
             {
-                img2.Save(ms, ImageFormat.Png);
+                resizedImg.Save(ms, ImageFormat.Png);
                 buffer = ms.ToArray();
-
             }
-
-
-            //using (var bs = new MemoryStream(buffer))
-            //{
-            //    img2 = Image.FromStream(bs);
-
-            //}
-
-
-
-            //int hdelta = 0;
-            //int wdelta = 0;
-
-            //if (img.Width > img.Height)
-            //{
-            //    wdelta = img.Width - img.Height;
-            //}
-            //else if (img.Width < img.Height)
-            //{
-            //    hdelta = img.Height - img.Width;
-            //}
-
-
-            //var startPoint = new Point( wdelta / 2,  hdelta / 2);
-            //var newImgSize = new Size(img.Width - wdelta, img.Height - hdelta);
-
-            //Bitmap fromImgBitmap = img as Bitmap;
-
-            //var imgBitmap = new Bitmap(img.Width - wdelta, img.Height - hdelta);
-
-            //var r = new Rectangle(startPoint, newImgSize);
-
-            //Graphics g = Graphics.FromImage((Image)imgBitmap);
-
-            //g.DrawImage(img, img.Width - wdelta / 2, img.Height - hdelta / 2, img.Width - wdelta, img.Height - hdelta);
-
-
-
-            //img = imgBitmap as Image;
-
-            //for (int x = startPoint.X; x < newImgSize.Width; x++)
-            //{
-            //    for (int y = startPoint.Y; y < newImgSize.Height; y++)
-            //    {
-            //        var color = fromImgBitmap.GetPixel(startPoint.X + x, startPoint.Y + y);
-            //        imgBitmap.SetPixel(x, y, color);
-            //    }
-            //}
-
-
-
-
-
-
-
-
-            //using (var ms = new MemoryStream())
-            //{
-            //    img.Save(ms, ImageFormat.Png);
-            //    buffer = ms.ToArray();
-            //}
-
-            //using (var ms = new MemoryStream())
-            //{
-            //    imgBitmap.Save(ms, ImageFormat.Png);
-            //    buffer = ms.ToArray();
-            //}
-
 
 
             var f = File.Create(projectDir + file.UserId.ToString() + ".png");
@@ -188,62 +122,8 @@ namespace Rentoolo.Controllers
             f.Close();
             f.Dispose();
 
-            //int pixLenOst = buffer.Length % 3;
-            //int pixelsLen = buffer.Length/3;
-
-            //byte[][] pixels = new byte[buffer.Length/3][];
-
-            //for (int i = 0; i < pixelsLen-pixLenOst; i++)
-            //{
-            //    pixels[i] = new byte[3] { buffer[i*3], buffer[i*3+1], buffer[i*3+2] }; 
-            //}
-
-            //var bitmap = new Bitmap(file.Width, file.Height);
-
-            //for (int x = 0; x < file.Height; x++)
-            //{
-            //    for (int y = 0; y<file.Width; y++)
-            //    {
-            //        bitmap.SetPixel(y,x, Color.FromArgb(pixels[x + y][0], pixels[x + y][1], pixels[x + y][2]));
-            //    }
-            //}
-
-            //img = Image.FromHbitmap(bitmap.GetHbitmap());
-            //var f2 = File.Create("C:/Users/Necromant/Desktop/tests/some.jpg");
-
-            //img.Save(f2, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-            //f2.Flush();
-            //f2.Close();
-
-            //var size = img.Size;
 
         }
-
-
-        void cropImage(Image img,int x, int y, int weight, int height)
-        {
-
-            Rectangle cropRect = new Rectangle(x,y,weight,height);
-            Bitmap src = img as Bitmap;
-            Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
-
-            using (Graphics g = Graphics.FromImage(target))
-            {
-                g.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height),
-                                 cropRect,
-                                 GraphicsUnit.Pixel);
-
-                
-            }
-
-
-
-
-        }
-
-
-
 
 
 

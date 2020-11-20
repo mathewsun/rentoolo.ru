@@ -16,6 +16,8 @@
 
             <br />
 
+                <img src="/assets/img/avatars/<%=User.UserId %>.png" />
+
             <div>
                 <input type="file" id="f" />
             </div>
@@ -26,7 +28,7 @@
 
                     let finput = document.getElementById('f');
                     finput.onchange = function (e) {
-                        let imgHeight = 0, imgWidth = 0;
+
                         let f = e.target.files[0];
 
                         let img = new Image();
@@ -34,60 +36,32 @@
                         let reader = new FileReader();
 
                         img.onload = function (e) {
-                            console.log(e);
-                            console.log("is img");
-                            imgHeight = this.width;
-                            imgWidth = this.height;
-
-                            console.log(imgHeight);
-                            console.log(imgWidth);
-
+                            
                             reader.readAsArrayBuffer(f);
-
                         }
 
                         img.src = URL.createObjectURL(f);
 
-
-
-                        console.log(e.target.files[0]);
-
-
-
                         reader.onloadend = function (e) {
 
-
-
                             let buf = reader.result;
-                            console.log(buf);
                             let uintbuf = new Uint8Array(buf);
-                            //console.log(uintbuf);
 
-
-
-                            sendFile(uintbuf, imgHeight, imgWidth);
+                            sendFile(uintbuf);
                         }
-
-
 
                     }
 
                 }
 
-                function sendFile(buffer, height, width) {
-
-
+                function sendFile(buffer) {
 
                     let url = "/api/Avatars";
-
-                    //console.log(buffer.toString());
 
                     let data = {
                         Buffer: buffer.toString(),
                         FileName: "some.jpg",
-                        UserId: "4BB6FE84-B80E-4B7A-A62E-1D2CB44A014E",
-                        Height: height,
-                        Width: width
+                        UserId: "<%=User.UserId %>"
                     };
 
                     fetch(url, {
