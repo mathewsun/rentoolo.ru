@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CraftsManPage.aspx.cs" Inherits="Rentoolo.CraftsMan.CraftsManPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CraftsManTasks.aspx.cs" Inherits="Rentoolo.CraftsMan.CraftsManTasks" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-
     <link href='assets/css.css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="content/toolkit.css" rel="stylesheet">
     <link href="content/application.css" rel="stylesheet">
@@ -155,10 +154,8 @@
         async defer>
 
     </script>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
     <li class="media list-group-item p-4" style="margin-top: auto">
 
         <div class="search-input-group">
@@ -213,8 +210,8 @@
             </div>
             <%-- city-sortby__wrap end--%>
         </div>
-        <%-- end search-input-group--%>
-        <%--            <div class="input-group">
+    <%-- end search-input-group--%>
+    <%--            <div class="input-group">
                                 <div class="rowed-grid">
                                     <div class="searchbar-grid">
                                         <div style="width: 100%">
@@ -236,14 +233,14 @@
                             </div> --%>
     </li>
 
-    <h4 class="mb-4">Специалисты</h4>
+    <h4 class="mb-4">Биржа Заданий</h4>
     <div class="card-columns">
-        <%foreach (Rentoolo.Model.CraftsMan item in ListCraftsMan)
+        <%foreach (Rentoolo.Model.CraftsManOrder item in ListCraftsManOrder)
             {%>
         <div class="card">
             <div class="card-body">
                 <img class="card-img-top" src="<%=item.ImgUrls %>" alt="Card image">
-                <h4 class="card-title"><%= item.Сraft %></h4>
+                <h4 class="card-title"><%= item.NameTask %></h4>
                 <p class="card-text"><%= item.Description %></p>
             </div>
         </div>
