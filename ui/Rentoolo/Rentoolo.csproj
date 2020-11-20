@@ -392,6 +392,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="MrshkVV\NewsMrshkVV.aspx" />
     <Content Include="News.aspx" />
     <Content Include="notifications\index.html" />
     <Content Include="packages.config" />
@@ -1282,6 +1283,7 @@
     </Compile>
     <Compile Include="Model\DataHelperAezakmi.cs" />
     <Compile Include="Model\DataHelperAzizjan.cs" />
+    <Compile Include="Model\DataHelperMrshkVV.cs" />
     <Compile Include="Model\DataHelperShCodder.cs" />
     <Compile Include="Model\DataHelperEducation.cs" />
     <Compile Include="Model\DataHelperGGdotNET.cs" />
@@ -1382,6 +1384,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsIlya.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsMrshkVV.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsRaspel.cs">
@@ -1604,6 +1609,13 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\WatchedHelper.cs" />
+    <Compile Include="MrshkVV\NewsMrshkVV.aspx.cs">
+      <DependentUpon>NewsMrshkVV.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MrshkVV\NewsMrshkVV.aspx.designer.cs">
+      <DependentUpon>NewsMrshkVV.aspx</DependentUpon>
+    </Compile>
     <Compile Include="News.aspx.cs">
       <DependentUpon>News.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
