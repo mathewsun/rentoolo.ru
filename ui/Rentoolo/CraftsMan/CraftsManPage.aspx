@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CraftsManPage.aspx.cs" Inherits="Rentoolo.CraftsMan.CraftsManPage" %>
 
+<%@ Register Src="~/CraftsMan/UserControl/CardControl.ascx" TagPrefix="uc1" TagName="CardControl" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 
     <link href='assets/css.css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
@@ -12,7 +15,6 @@
                 column-count: 2;
             }
         }
-
         @media (min-width: 768px) {
             .card-columns {
                 column-count: 3;
@@ -31,6 +33,129 @@
             }
         }
     </style>
+    <script>
+         $(document).ready(function () {
+             $("div#mdropzone").dropzone({
+                 url: "/api/upi",
+                 addRemoveLinks: true,
+                 resizeWidth: 800,
+                 resizeHeight: 600,
+                 resizeMethod: 'contain',
+                 resizeQuality: 1.0,
+                 dictDefaultMessage: "Add photos",
+                 success: function (file, response) {
+                     var filaName = response;
+                     file.previewElement.classList.add("dz-success");
+                     $("#my-dropzone").append($('<input type="hidden" name="AdvertPhotos" ' + 'value="' + filaName + '">'));
+                 }
+             });
+
+             setLocation();
+
+             var wto;
+             $("#additem_place").change(function () {
+                 clearTimeout(wto);
+                 wto = setTimeout(function () {
+
+                     var address = $("#additem_place").val();
+
+                     var address = address.split(' ').join('+');
+
+                     var googleUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo";
+
+                     $.get(googleUrl, function (data) {
+
+                         var firstResult = data.results[0];
+
+                         var latlng = firstResult.geometry.location.lat + ',' + firstResult.geometry.location.lng;
+
+                         var mapCenter = { lat: firstResult.geometry.location.lat, lng: firstResult.geometry.location.lng };
+
+                         document.getElementById("latgeo").value = firstResult.geometry.location.lat;
+                         document.getElementById("lnggeo").value = firstResult.geometry.location.lng;
+
+                         var map = new google.maps.Map(document.getElementById('map'), { zoom: 17, center: mapCenter });
+                         // The marker, positioned at Uluru
+                         var marker = new google.maps.Marker({ position: mapCenter, map: map });
+                     });
+                 }, 1000);
+             });
+
+             
+        });
+     </script>
+    <script>
+        function setLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+
+                    var innerHTMLgeo = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+
+                    document.getElementById("latgeo").value = position.coords.latitude;
+                    document.getElementById("lnggeo").value = position.coords.longitude;
+
+                    var latlng = position.coords.latitude + ',' + position.coords.longitude;
+
+                    var googleUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlng + "&key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo";
+
+                    var mapCenter = { lat: position.coords.latitude, lng: position.coords.longitude };
+
+                    $.get(googleUrl, function (data) {
+
+                        var firstResult = data.results[0];
+
+                        $("#additem_place").val(firstResult.formatted_address);
+
+                        var map = new google.maps.Map(document.getElementById('map'), { zoom: 17, center: mapCenter });
+                        // The marker, positioned at Uluru
+                        var marker = new google.maps.Marker({ position: mapCenter, map: map });
+                    });
+                },
+                    function (error) {
+                        // On error code..
+                    },
+                    { timeout: 30000, enableHighAccuracy: true, maximumAge: 75000 }
+                );
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    x.innerHTML = "An unknown error occurred."
+                    break;
+            }
+        }
+    </script>
+    <script>
+        var autocomplete;
+        function initAutocomplete() {
+            autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById('additem_place'), { types: ['geocode'] });
+
+            autocomplete.setFields(['address_component']);
+
+            autocomplete.addListener('place_changed', fillInAddress);
+        }
+        function fillInAddress() {
+            var place = autocomplete.getPlace();
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo&libraries=places&callback=initAutocomplete"
+        async defer>
+
+    </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -118,8 +243,7 @@
                                     </div>
                                     <input type="text" class="form-control" id="username" placeholder="Username" required>
                                     <div class="invalid-feedback" style="width: 100%;">
-                                        Your username is required.
-           
+                                        Your username is required
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +259,7 @@
 
                             <div class="mb-3">
                                 <label for="address">Адрес</label>
-                                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                                <input type="text" class="form-control" id="address" placeholder="пр.Мира,9/1a" required>
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
          
@@ -163,8 +287,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="state">Регион</label>
-                                    <select class="custom-select d-block w-100" id="state" required>
+                                    <label for="region">Регион</label>
+                                    <select class="custom-select d-block w-100" id="region" required>
                                         <option value="">Выбрать...</option>
                                         <option>пример</option>
                                     </select>
@@ -195,8 +319,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
                     <asp:Button ID="AddOrder" runat="server" CssClass="additem-button" Text="Добавить" OnClick="ButtonOrder_Click" />
                 </div>
             </div>
@@ -286,73 +409,17 @@
                             </div> --%>
 
     </li>
+
     <h4 class="mb-4">Специалисты</h4>
     <div class="card-columns">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">1 Card title</h4>
-                <p class="card-text">Card Text..</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">2 Card title</h4>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">3 Card title</h4>
-                <p class="card-text">Card Text..</p>
-                <p class="card-text">Card Text..</p>
-                <p class="card-text">Card Text..</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">4 Card title</h4>
-                <p class="card-text">Card Text..</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">5 Card title</h4>
-                <p class="card-text">Card Text..</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">6 Card title</h4>
-                <p class="card-text">Card Text..</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">7 Card title</h4>
-                <p class="card-text">Card Text..</p>
-                <p class="card-text">Card Text..</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">8 Card title</h4>
-                <p class="card-text">Card Text..</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">9. Card title</h4>
-                <p class="card-text">Card Text..</p>
-                <p class="card-text">Card Text..</p>
-                <p class="card-text">Card Text..</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <img class="card-img-top" src="../assets/img/instagram_10.jpg" alt="Card image">
-                <h4 class="card-title">10 Card title</h4>
-                <p class="card-text">Card Text..</p>
-            </div>
-        </div>
+        <uc1:CardControl runat="server" id="CardControl" />
+        <uc1:CardControl runat="server" id="CardControl1" />
+        <uc1:CardControl runat="server" id="CardControl2" />
+        <uc1:CardControl runat="server" id="CardControl3" />
+        <uc1:CardControl runat="server" id="CardControl5" />
+        <uc1:CardControl runat="server" id="CardControl4" />
+        <uc1:CardControl runat="server" id="CardControl6" />
+        <uc1:CardControl runat="server" id="CardControl7" />
     </div>
 
     <script src="js/jquery.min.js"></script>
