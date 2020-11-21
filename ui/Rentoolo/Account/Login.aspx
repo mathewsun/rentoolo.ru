@@ -51,7 +51,7 @@
     <div class="container-fluid container-fill-height">
         <div class="container-content-middle">
             <form id="form1" role="form" class="mx-auto text-center app-login-form" runat="server">
-                <asp:Login runat="server" ViewStateMode="Disabled" RenderOuterTable="false" OnLoggingIn="On_LoggingIn" DisplayRememberMe="False" OnLoggedIn="Unnamed1_LoggedIn">
+                <asp:Login id="Login1" runat="server" ViewStateMode="Disabled" RenderOuterTable="false" OnLoggingIn="On_LoggingIn" OnAuthenticate="Authenticate" DisplayRememberMe="False">
                     <LayoutTemplate>
                         <a href="/" class="app-brand mb-5">
                             <span class="logo-text" style="margin-right: -3px;">Rent</span>
