@@ -24,21 +24,21 @@ namespace Rentoolo
         protected global::System.Web.UI.WebControls.LoginView LoginView1;
 
         /// <summary>
-        /// InputSearch элемент управления.
+        /// Text1 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText InputSearch;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
 
         /// <summary>
-        /// ButtonSearch элемент управления.
+        /// Button1 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonSearch;
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

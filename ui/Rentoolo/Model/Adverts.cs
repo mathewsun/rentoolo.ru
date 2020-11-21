@@ -30,5 +30,8 @@ namespace Rentoolo.Model
         public bool IsApproved { get; set; }
         public Nullable<System.DateTime> WhenAdminApproved { get; set; }
         public Nullable<int> Subcategory { get; set; }
+        public string Color { get; set; }
+        public string Vin { get; set; }
+        public string Brand { get; set; }
     }
 }

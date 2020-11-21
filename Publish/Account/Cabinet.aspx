@@ -70,6 +70,51 @@
                 <div style="padding-top: 15px;">
                     <a href="/Account/DeviceSettings.aspx" class="button-changePassword settingButton">Device Settings</a>
                 </div>
+
+                <div>
+                    Текущая ссылка на профиль:
+
+
+
+                    Уникальная ссылка на профиль пользователя ( <%= User.UniqueUserName %> ):
+                    <input type="text" name="uniqueName" />
+
+                    <asp:Button ID="ButtonSetUniqName" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Set name" OnClick="ButtonSetUniqName_Click" />
+
+
+                    <br />
+
+                    Выбранный город:<%-- <%=// User.SelectedCity %>--%>
+                    <input name="selectedCity" type="text" list="cities"  />
+
+                    <datalist id="cities">
+                        <% foreach (var city in AllCities)
+                          { %>
+                                                    
+                            <option>
+                                <%=city %>
+                            </option>
+
+                        <%} %>
+                    </datalist>
+
+                    <asp:Button ID="ButtonCity" runat="server" Text="выбрать город" OnClick="ButtonCity_Click" />
+
+
+
+                </div>
+
+
+                <div>
+                    Дата рождения: <%= User.BirthDay %>
+                    <input name="birthDay" type="date" />
+                    <asp:Button ID="ButtonBirthDay" runat="server" Text="установить другую дату рождения" OnClick="ButtonBirthDay_Click" />
+
+
+
+
+                </div>
+
             </div>
         </div>
     </div>

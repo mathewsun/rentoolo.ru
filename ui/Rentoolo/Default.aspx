@@ -23,10 +23,11 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="assets/css/toolkit.css?422" rel="stylesheet">
-    <link href="assets/css/application.css?22" rel="stylesheet">
+    <link href="assets/css/application.css?244" rel="stylesheet">
     <link href="assets/css/additional.css?88822" rel="stylesheet">
 
     <meta name="yandex-verification" content="f9c03f80c16c0af8" />
+    <meta name="google-site-verification" content="BfIjGZxsZYqrNnWTzlNb6Whynn4y6hOC5amjYpEcDLk" />
 
     <link href="assets/css/jQuery.Brazzers-Carousel.css?22" rel="stylesheet">
 
@@ -37,6 +38,26 @@
             width: 1px;
             min-width: 100%;
             *width: 100%;
+        }
+
+
+        .searchbar-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 80% 20%;
+        }
+
+
+        .rowed-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-row-gap: 5px;
+        }
+
+        .margin-block {
+            margin-bottom: 5px;
+            margin-top: 5px;
         }
     </style>
 
@@ -101,6 +122,8 @@
                     innerHtml;
                 $(this).html(trimmedHtml);
             });
+
+            selectElementSortBy();
         });
 
         $(window).resize(function () {
@@ -120,6 +143,17 @@
                 $(".href-photoContainer").attr("href", "#");
             }
         });
+
+        function selectElementSortBy() {
+
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var s = url.searchParams.get("sort");
+
+            if (s == null) { s = "date";}
+            let element = document.getElementById("sortBy");
+            element.value = s;
+        }
     </script>
 
     <!-- Yandex.Metrika counter -->
@@ -473,12 +507,88 @@
                         </li>
 
                         <li class="media list-group-item p-4">
-                            <div class="input-group">
-                                <input type="text" id="InputSearch" class="form-control" runat="server" placeholder="Поиск по объявлениям">
-                                <div class="input-group-btn">
-                                    <asp:Button ID="ButtonSearch" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
+
+                            <div class="search-input-group">
+
+                                <div class="search-input-group__main-input">
+                                    <input style="width: 100%" type="text" id="Text1" class="form-control" runat="server" placeholder="Поиск по объявлениям" />
+                                    <asp:Button ID="Button1" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
                                 </div>
+                                <div class="main-find__checkbox-label">
+                                    <input type="checkbox" name="onlyInName" />
+                                    <span>Только в названии</span>
+                                </div>
+
+                                <div class="main-find_price">
+                                    <span>Цена:</span>
+                                    <input type="number" name="startPrice" placeholder="От" value="<%= PreviousFilter.StartPrice %>" />
+                                    <input type="number" name="endPrice" placeholder="До" value="<%= PreviousFilter.EndPrice %>" />
+                                </div>
+
+
+                                <%--                           <div class="main-find_date">
+                                        <span>Дата размещения:</span> 
+                                        <input type="date" id="StartDate" placeholder="От">
+                                        <input type="date" id="EndDate" placeholder="До">
+                                    </div>
+         51a73fc4667aa3e6c7e3a45ccc1c5b82545a2ee0 --%>
+
+
+                                <div class="city-sortby__wrap">
+                                    <div>
+                                        <span style="float: left;">Город:</span>&nbsp;
+                                        <input type="text" name="city" list="cities" value="<%= PreviousFilter.City %>" />
+                                        <br />
+                                        <datalist id="cities">
+
+                                            <% foreach (var city in AllCities)
+                                                { %>
+
+                                            <option>
+                                                <%=city %>
+                                            </option>
+
+                                            <%} %>
+                                        </datalist>
+                                    </div>
+                                    <%-- citys end--%>
+
+                                    <div class="sortby">
+                                        <select name="sortBy" id="sortBy">
+                                            <option value="date">По дате</option>
+                                            <option value="price">По цене</option>
+                                            <option value="radius">По удаленности</option>
+                                        </select>
+                                    </div>
+                                    <%-- sortby end--%>
+                                </div>
+                                <%-- city-sortby__wrap end--%>
                             </div>
+                            <%-- end search-input-group--%>
+
+                            <%--            <div class="input-group">
+                                <div class="rowed-grid">
+                                    <div class="searchbar-grid">
+                                        <div style="width: 100%">
+                                            <input style="width: 100%" type="text" id="InputSearch" class="form-control" runat="server" placeholder="Поиск по объявлениям" />
+                                        </div>
+                                        <div class="input-group-btn">
+                                            <asp:Button ID="ButtonSearch" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
+                                        </div>
+                                    </div>
+                                    <div class="main-find__checkbox-label">
+                                        <input type="checkbox" name="onlyInName" />
+                                        <span>Только в названии</span>
+                                    </div>
+                                    <div>
+                                        &nbsp;
+                                        <br />
+                                    </div>
+
+                                
+                                 </div> 
+                            </div> --%>
+
                         </li>
 
                         <li class="media list-group-item p-4">

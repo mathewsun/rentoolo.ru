@@ -1,20 +1,14 @@
 ﻿using Newtonsoft.Json;
+using Rentoolo.Model.HelperStructs;
 using Rentoolo.TestDir;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Rentoolo.Model
 {
     public static class DataHelper
     {
-
-
-        // TODO: reformat Model.edmx
-
-
         #region Пользователи
 
         public static Users GetUser(Guid userId)
@@ -26,6 +20,81 @@ namespace Rentoolo.Model
                 return user;
             }
         }
+
+        public static Users GetUser(string userName)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Users user = dc.Users.FirstOrDefault(x => x.UserName == userName);
+
+                return user;
+            }
+        }
+
+        //public static Users GetUser(string userId)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        Users user = dc.Users.FirstOrDefault(x => x.UniqueUserName == userId);
+
+        //        return user;
+        //    }
+        //}
+
+
+        public static Users GetUser(int userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Users user = dc.Users.FirstOrDefault(x => x.Id == userId);
+
+                return user;
+            }
+        }
+
+
+        public static Users GetUserByNickName(string name)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Users user = dc.Users.FirstOrDefault(x => x.UniqueUserName == name);
+
+                return user;
+            }
+        }
+
+
+        public static bool ContainsUserNickName(string nick)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Users.FirstOrDefault(x => x.UniqueUserName == nick) == null ? false : true;
+            }
+        }
+
+
+        public static bool SetUserUniqueId(Guid userId, string uniqueName)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                if (!ContainsUserNickName(uniqueName))
+                {
+                    if (uniqueName[0] != '@') uniqueName = "@" + uniqueName;
+
+                    dc.Users.First(x => x.UserId == userId).UniqueUserName = uniqueName;
+                    dc.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+        }
+
+
+
 
         public static Guid GetUserId(string userName)
         {
@@ -57,6 +126,19 @@ namespace Rentoolo.Model
             }
         }
 
+        public static Memberships GetUserMembershipByEmail(string email)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                Memberships membership = dc.Memberships.FirstOrDefault(x => x.Email == email);
+
+                return membership;
+            }
+        }
+
+
+
+
         public static Users GetUserByRefId(int refId)
         {
             using (var ctx = new RentooloEntities())
@@ -65,6 +147,7 @@ namespace Rentoolo.Model
                 return obj;
             }
         }
+
 
         public static void UpdateUser(Users user)
         {
@@ -77,6 +160,57 @@ namespace Rentoolo.Model
                 ctx.SaveChanges();
             }
         }
+
+        public static void SetUserCity(Users user, string city)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.Users.FirstOrDefault(x => x.UserId == user.UserId);
+                obj.SelectedCity = city;
+                ctx.SaveChanges();
+            }
+        }
+
+        public static void SetUserBirthDay(Users user)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.Users.FirstOrDefault(x => x.UserId == user.UserId);
+                obj.BirthDay = user.BirthDay;
+                ctx.SaveChanges();
+
+
+                AddOperation(new Operations()
+                {
+                    UserId = user.UserId,
+                    Type = (int)OperationTypesEnum.BirthDayChange,
+                    WhenDate = DateTime.Now,
+                    Comment = "",
+                    Value = 0
+                });
+
+            }
+        }
+
+
+
+
+        public static void SetUserUniqueName(Users user)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                // add проверки на уникальность
+                //bool containsName = dc.Users.Select(x => x.UniqueUserName.Contains(user.UniqueUserName))==null?true:false;
+                //if (!containsName)
+                //{
+                var obj = dc.Users.FirstOrDefault(x => x.UserId == user.UserId);
+                obj.UniqueUserName = user.UniqueUserName;
+                dc.SaveChanges();
+                //}
+            }
+        }
+
+
 
         public static void UpdateUserParametr(string userName, string parametr, String parametrValue)
         {
@@ -1083,20 +1217,20 @@ namespace Rentoolo.Model
 
         #endregion
 
-
-
         #region UserViews
 
         public static void TryAddUserView(UserViews userView)
         {
             using (var dc = new RentooloEntities())
             {
-                var views = dc.UserViews.Where(x => x.UserId == userView.UserId).OrderBy(x => x.Date);
-                if (views.Any())
-                {
-                    int count = views.Count();
+                var views = dc.UserViews.OrderByDescending(x => x.Date)
+                        .FirstOrDefault(x => x.UserId == userView.UserId
+                        && x.ObjectId == userView.ObjectId && x.Type == userView.Type);
 
-                    if ((views.ToArray()[count - 1].Date.Date - DateTime.Now.Date).Days >= 1)
+                if (views != null)
+                {
+
+                    if ((views.Date.Date - DateTime.Now.Date).Days >= 1)
                     {
                         dc.UserViews.Add(userView);
                         dc.SaveChanges();
@@ -1112,6 +1246,127 @@ namespace Rentoolo.Model
         }
 
 
+        public static List<UserViews> GetUserViews(int objectId, int type)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.UserViews.Where(x => (x.ObjectId == objectId) && (x.Type == type)).ToList();
+            }
+        }
+
+        public static List<UserViews> GetUserViews(int? type, Guid userId, DateTime? startDate, DateTime? endDate)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var result = dc.UserViews.Where(x => x.UserId == userId);
+                if (type != null)
+                {
+                    result = result.Where(x => x.Type == (int)type);
+                }
+
+
+                if (startDate != null)
+                {
+                    result = result.Where(x => x.Date >= startDate);
+                }
+
+                if (endDate != null)
+                {
+                    result = result.Where(x => x.Date <= endDate);
+                }
+
+                return result.ToList();
+            }
+        }
+
+
+
+
+        public static List<SelIItem> GetSellItems(int type, Guid userId, DateTime? startDate, DateTime? endDate)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var views = dc.UserViews.Where(x => x.UserId == userId);
+
+                views = views.Where(x => x.Type == (int)type);
+
+                if (startDate != null)
+                {
+                    views = views.Where(x => x.Date >= startDate);
+                }
+
+                if (endDate != null)
+                {
+                    views = views.Where(x => x.Date <= endDate);
+                }
+
+
+                IQueryable<SelIItem> items;
+
+                switch (type)
+                {
+                    case 1:
+                        var filteredAdverts = dc.Adverts.Where(a => views.Select(v => (long)v.ObjectId).Contains(a.Id));
+
+                        items = filteredAdverts
+                            .Select(p => new SelIItem()
+                            {
+                                Name = p.Name,
+                                Type = 1,
+                                Id = p.Id
+                            });
+
+                        return items.ToList();
+                    case 2:
+                        var filteredTenders = dc.Tenders.Where(a => views.Select(v => (long)v.ObjectId).Contains(a.Id));
+
+                        items = filteredTenders
+                            .Select(p => new SelIItem()
+                            {
+                                Name = p.Name,
+                                Type = 1,
+                                Id = p.Id
+                            });
+
+                        return items.ToList();
+                    case 3:
+                        var filteredAuctions = dc.Auctions.Where(a => views.Select(v => (long)v.ObjectId).Contains(a.Id));
+
+                        items = filteredAuctions
+                            .Select(p => new SelIItem()
+                            {
+                                Name = p.Name,
+                                Type = 1,
+                                Id = p.Id
+                            });
+
+                        return items.ToList();
+                    default:
+                        return new List<SelIItem>();
+
+                }
+
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public static int GetUserViewsCount(int objectId, int type)
         {
             using (var dc = new RentooloEntities())
@@ -1125,7 +1380,6 @@ namespace Rentoolo.Model
 
 
         #endregion
-
 
         #region Comments
 
@@ -1169,7 +1423,6 @@ namespace Rentoolo.Model
 
 
         #endregion
-
 
         #region Likes/DisLikes
 
@@ -1273,6 +1526,175 @@ namespace Rentoolo.Model
 
         #endregion
 
+        #region Item likes/dislikes
+
+
+        public static int GetItemLikes(int objType, long objId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var count = dc.ItemLikes.Count(x => x.ObjectType == objType && x.ObjectId == objId);
+                return count;
+            }
+        }
+
+
+        public static int GetItemDisLikes(int objType, long objId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var count = dc.ItemDislikes.Count(x => x.ObjectType == objType && x.ObjectId == objId);
+                return count;
+            }
+        }
+
+
+        public static void LikeUnlikeItem(ItemLikeDislike ldItem)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var liked = HaveItemLiked(ldItem.UserId);
+                if (liked)
+                {
+                    UnLikeItem(ldItem.UserId);
+                }
+                else if (HaveItemDisLiked(ldItem.UserId))
+                {
+                    UnDisLikeItem(ldItem.UserId);
+
+                    LikeItem(new ItemLikes()
+                    {
+                        UserId = ldItem.UserId,
+                        Date = DateTime.Now,
+                        ObjectType = ldItem.ObjectType,
+                        ObjectId = ldItem.ObjectId
+                    });
+                }
+                else
+                {
+                    LikeItem(new ItemLikes()
+                    {
+                        UserId = ldItem.UserId,
+                        Date = DateTime.Now,
+                        ObjectType = ldItem.ObjectType,
+                        ObjectId = ldItem.ObjectId
+                    });
+                }
+
+            }
+        }
+
+        public static void DisLikeUnDislikeItem(ItemLikeDislike ldItem)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var disliked = HaveItemDisLiked(ldItem.UserId);
+                if (disliked)
+                {
+                    UnDisLikeItem(ldItem.UserId);
+                }
+                else if (HaveItemLiked(ldItem.UserId))
+                {
+
+                    UnLikeItem(ldItem.UserId);
+
+                    DisLikeItem(new ItemDislikes()
+                    {
+                        UserId = ldItem.UserId,
+                        Date = DateTime.Now,
+                        ObjectType = ldItem.ObjectType,
+                        ObjectId = ldItem.ObjectId
+                    });
+                }
+                else
+                {
+                    DisLikeItem(new ItemDislikes()
+                    {
+                        UserId = ldItem.UserId,
+                        Date = DateTime.Now,
+                        ObjectType = ldItem.ObjectType,
+                        ObjectId = ldItem.ObjectId
+                    });
+                }
+
+            }
+        }
+
+
+
+
+        public static void LikeItem(ItemLikes item)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ItemLikes.Add(item);
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static void UnLikeItem(ItemLikes item)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ItemLikes.Remove(item);
+                dc.SaveChanges();
+            }
+        }
+
+        public static void UnLikeItem(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var items = dc.ItemLikes.Where(x => x.UserId == userId);
+                dc.ItemLikes.RemoveRange(items);
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static void DisLikeItem(ItemDislikes item)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ItemDislikes.Add(item);
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static void UnDisLikeItem(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var items = dc.ItemDislikes.Where(x => x.UserId == userId);
+                dc.ItemDislikes.RemoveRange(items);
+                dc.SaveChanges();
+            }
+        }
+
+
+
+        public static bool HaveItemLiked(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.ItemLikes.Select(x => x.UserId).Contains(userId);
+            }
+        }
+
+
+        public static bool HaveItemDisLiked(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.ItemDislikes.Select(x => x.UserId).Contains(userId);
+            }
+        }
+
+
+        #endregion
+
         #region Comments
 
         //public static List<spGetComments_Result> GetComments_Results(long objId, Guid userId)
@@ -1280,7 +1702,7 @@ namespace Rentoolo.Model
         //    using (var dc = new RentooloEntities())
         //    {
         //        List<spGetComments_Result> result = dc.spGetComments(objId, userId).ToList();
-                
+
         //        return result;
         //    }
         //}
@@ -1305,16 +1727,15 @@ namespace Rentoolo.Model
         //    using (var dc1 = new RentooloEntities())
         //    {
         //        List<spGetCommentsTestVarkent_Result> result1 = dc1.spGetCommentsTestVarkent(objId, userId).ToList();
-                
+
         //        return result1;
         //    }
         //}
         #endregion
 
-
         // TODO: переписать сложные linq запросы на хранимые процедуры в БД
 
-            // dialogs deprecated
+        // dialogs deprecated
         #region Dialogs
 
         //public static void CreateDialog(Guid user1, Guid user2)
@@ -1451,7 +1872,6 @@ namespace Rentoolo.Model
 
         #endregion
 
-
         #region Chats
 
 
@@ -1478,8 +1898,8 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                var activeUser = dc.ChatActiveUsers.First(x => x.UserId == userId);
-                dc.ChatActiveUsers.Remove(activeUser);
+                var activeUser = dc.ChatActiveUsers.Where(x => x.UserId == userId);
+                dc.ChatActiveUsers.RemoveRange(activeUser);
                 dc.SaveChanges();
             }
         }
@@ -1520,9 +1940,9 @@ namespace Rentoolo.Model
             }
         }
 
-        
 
-        public static List<Chats> GetChats(Guid userId ,int skipCount = 0)
+
+        public static List<Chats> GetChats(Guid userId, int skipCount = 0)
         {
             using (var dc = new RentooloEntities())
             {
@@ -1531,6 +1951,7 @@ namespace Rentoolo.Model
                 return chats.ToList();
             }
         }
+
 
 
 
@@ -1565,7 +1986,7 @@ namespace Rentoolo.Model
                 dc.SaveChanges();
 
 
-                
+
 
                 var activeUsers = dc.ChatActiveUsers.Where(x => x.ChatId == message.ChatId).ToArray();
 
@@ -1601,6 +2022,201 @@ namespace Rentoolo.Model
 
 
         #endregion
+
+        #region Complaints
+
+        // use enums ComplaintType, ComplaintObjType in code where methods is called from StructsHelper and HelperStructs
+
+
+
+        public static Complaints GetComplaint(int complaintId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Complaints.FirstOrDefault(x => x.Id == complaintId);
+            }
+        }
+
+
+        public static Complaints GetComplaint(int complaintType, int complaintObjectType)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Complaints.FirstOrDefault(x => x.СomplaintType == complaintType && x.ObjectType == complaintObjectType);
+            }
+        }
+
+        public static List<spGetComplaintsByRecipier_Result> GetComplaintsByRecipier(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.spGetComplaintsByRecipier(userId).ToList();
+            }
+        }
+
+        public static List<spGetComplaintsBySender_Result> GetComplaintsBySender(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.spGetComplaintsBySender(userId).ToList();
+            }
+        }
+
+
+        public static List<Complaints> GetComplaints(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Complaints.Where(x => x.UserSender == userId).ToList();
+            }
+        }
+
+
+
+
+
+
+        public static List<Complaints> GetComplaints(Guid userId, bool isRecipier)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                if (isRecipier)
+                {
+                    return dc.Complaints.Where(x => x.UserRecipier == userId).ToList();
+                }
+                else
+                {
+                    return dc.Complaints.Where(x => x.UserSender == userId).ToList();
+                }
+            }
+        }
+
+
+
+        public static List<Complaints> GetFilteredComplaints(ComplaintsFilter filter)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var res = dc.Complaints.Select(x => x);
+
+
+                if (filter.Status != null)
+                {
+                    res = res.Where(x => x.Status == filter.Status);
+                }
+
+
+                if (filter.ObjectType != null && filter.ObjectType != 0)
+                {
+                    res = res.Where(x => x.ObjectType == filter.ObjectType);
+                }
+
+
+                if ((filter.ObjectId != null) && (filter.ObjectId != 0))
+                {
+                    res = res.Where(x => x.ObjectId == filter.ObjectId);
+                }
+
+                if (filter.UserRecipier != null)
+                {
+                    res = res.Where(x => x.UserRecipier == filter.UserRecipier);
+                }
+
+                if (filter.UserSender != null)
+                {
+                    res = res.Where(x => x.UserSender == filter.UserSender);
+                }
+
+
+
+                return res.ToList();
+            }
+        }
+
+
+
+        public static List<Complaints> GetComplaints(int objectId, int objectType)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Complaints.Where(x => x.ObjectId == objectId && x.ObjectType == objectType).ToList();
+            }
+        }
+
+
+        public static void SetComplaintStatus(int complaintId, string status)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Complaints.First(x => x.Id == complaintId).Status = (byte?)StructsHelper.ComplaintStatus[status];
+                dc.SaveChanges();
+            }
+        }
+
+
+        public static void AddComplaint(Complaints complaint)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                complaint.Status = 0;
+                dc.Complaints.Add(complaint);
+                dc.SaveChanges();
+            }
+        }
+
+
+        #endregion
+
+
+        #region filters
+
+        public static UsersSearches GetLastUserSearch(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.UsersSearches.OrderBy(x => x.Date).First(xNet => xNet.UserId == userId);
+            }
+        }
+
+        public static void RemoveSearches(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.UsersSearches.RemoveRange(dc.UsersSearches.Where(x => x.UserId == userId));
+            }
+        }
+
+        public static void AddSearch(UsersSearches search)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.UsersSearches.Add(search);
+                dc.SaveChanges();
+            }
+        }
+
+
+
+
+        public static SellFilter ConvertUserSearch(SellFilter filter, UsersSearches search)
+        {
+            filter.Search = search.Search;
+            filter.StartDate = search.StartDate;
+            filter.EndDate = search.EndDate;
+            filter.OnlyInName = (bool)search.OnlyInName == null ? false : (bool)search.OnlyInName == true;
+            filter.StartPrice = search.StartPrice;
+            filter.EndPrice = search.EndPrice;
+            filter.City = search.City;
+            filter.SortBy = search.SortBy;
+
+            return filter;
+        }
+
+
+
+        #endregion
+
+
 
     }
 }

@@ -62,6 +62,9 @@
         <div>
             <asp:HyperLink ID="HyperLink15" NavigateUrl="DatabaseTables.aspx" runat="server">Таблицы в БД</asp:HyperLink>
         </div>
+        <div>
+            <asp:HyperLink ID="HyperLink17" NavigateUrl="ComplaintsPage.aspx" runat="server">Список жалоб</asp:HyperLink>
+        </div>
         <div class="clear"></div>
     </div>
 

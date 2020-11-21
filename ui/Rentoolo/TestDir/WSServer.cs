@@ -24,8 +24,10 @@ namespace Rentoolo.TestDir
 
         public static void SendMessageToUser(string userId, string data)
         {
-            userId = userId.ToLower();
+            
             connectedUsersSockets[userId].Send(data);
+            // a55a7415-80e3-4dfd-92a1-3ea9d8d88329
+            // a55a7415-80e3-4dfd-93a1-3ea9d8d88329
         }
 
         static void removeUser(IWebSocketConnection conn)
@@ -40,7 +42,7 @@ namespace Rentoolo.TestDir
 
         static void addUser(string userId, IWebSocketConnection conn)
         {
-            userId = userId.ToLower();
+            
             connectedUsers[conn] = userId;
             connectedUsersSockets[userId] = conn;
         }
@@ -48,7 +50,7 @@ namespace Rentoolo.TestDir
 
         public static void Serve()
         {
-            server = new WebSocketServer("ws://0.0.0.0:8080");
+            server = new WebSocketServer("ws://0.0.0.0:62434");
             server.Start(socket =>
             {
                 

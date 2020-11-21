@@ -9,6 +9,7 @@ using System.Web.Security;
 using Rentoolo;
 using System.Web.Http;
 using Rentoolo.TestDir;
+using Rentoolo.HelperModels;
 
 namespace Rentoolo
 {
@@ -23,8 +24,11 @@ namespace Rentoolo
             AuthConfig.RegisterOpenAuth();
             WSServer.Serve();
 
+            RusCities.InitAllCities();
+
             RegisterRoutes(RouteTable.Routes);
 
+            SqlServerTypes.Utilities.LoadNativeAssemblies(Server.MapPath("~/bin"));
         }
 
         void Application_End(object sender, EventArgs e)
