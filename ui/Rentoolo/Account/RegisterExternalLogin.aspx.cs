@@ -51,16 +51,6 @@ namespace Rentoolo.Account
             }
         }
 
-        protected void logIn_Click(object sender, EventArgs e)
-        {
-            CreateUser();
-        }
-
-        protected void cancel_Click(object sender, EventArgs e)
-        {
-            RedirectToReturnUrl();
-        }
-
         private void ProcessProviderResult()
         {
 
@@ -68,6 +58,7 @@ namespace Rentoolo.Account
 
             bool hasEmail = authResult.ExtraData.TryGetValue("email", out string email);
             ProviderUserEmail = email;
+
             if (String.IsNullOrEmpty(ProviderName))
             {
                 Response.Redirect(FormsAuthentication.LoginUrl);
@@ -76,8 +67,6 @@ namespace Rentoolo.Account
             if (!authResult.IsSuccessful)
             {
                 Title = "External login failed";
-                userNameForm.Visible = false;
-
                 ModelState.AddModelError("Provider", String.Format("External login {0} failed.", ProviderDisplayName));
 
                 // To view this error, enable page tracing in web.config (<system.web><trace enabled="true"/></system.web>) and visit ~/Trace.axd
@@ -85,24 +74,7 @@ namespace Rentoolo.Account
                 return;
             }
 
-            //краш
-            //if (OpenAuth.Login(authResult.Provider, authResult.ProviderUserId, createPersistentCookie: false))
-            //{
-            //    RedirectToReturnUrl();
-            //}
-
-            Login();
-
-            userName.Text = authResult.UserName;
-            if (hasEmail)
-            {
-                Email.Enabled = false;
-                Email.Text = ProviderUserEmail;
-            }
-            else
-            {
-                Email.Enabled = true;
-            }
+            CreateUserAndLogin(hasEmail);
 
         }
 
@@ -115,7 +87,7 @@ namespace Rentoolo.Account
                 if (userOpenAuthAccounts != null)
                 {
                     FormsAuthentication.SetAuthCookie(userOpenAuthAccounts.MembershipUserName, createPersistentCookie: false);
-                    Response.Redirect("~/Account/Cabinet.aspx");
+                    RedirectToReturnUrl();
                 }
                 else
                 {
@@ -126,14 +98,15 @@ namespace Rentoolo.Account
 
         private void RedirectToReturnUrl()
         {
-            var returnUrl = Request.QueryString["ReturnUrl"];
-            if (!String.IsNullOrEmpty(returnUrl) && OpenAuth.IsLocalUrl(returnUrl))
+            var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+
+            if (string.IsNullOrEmpty(returnUrl))
             {
-                Response.Redirect(returnUrl);
+                Response.Redirect("~/Account/Cabinet");
             }
             else
             {
-                Response.Redirect("~/");
+                Response.Redirect(string.Format("~/{0}", returnUrl.Replace("%2f", "/")));
             }
         }
 
@@ -158,33 +131,36 @@ namespace Rentoolo.Account
             }
         }
 
-        private void CreateUser()
+        private void CreateUserAndLogin(bool hasEmail)
         {
-            // проверить входные данные
-
-            // создаёт пользователя или добавлет пользователю возможность входа через соц сети
             MembershipUser membershipUser;
             Users user;
-            if (Membership.GetUser(userName.Text) == null)
-            {
-                membershipUser = Membership.CreateUser(userName.Text, Password.Text, ProviderUserEmail);
-                user = DataHelper.GetUser((Guid)membershipUser.ProviderUserKey);
 
-                user.Pwd = Password.Text;// pwd это пароль??
-                user.PublicId = DataHelper.GenerateUserPublicId();
-                DataHelper.UpdateUser(user);
+            Login();
+
+            var MembershipsUserName = ProviderUserName + Membership.GeneratePassword(20, 0);
+            // тут добавил пару символов, потому что, то что прилетает это имя и фамиля,
+            // думаю они будут часто повторяться
+            // либо как то убрать уникальность с никнеймов
+
+            if (hasEmail)
+            {
+                membershipUser = Membership.CreateUser(MembershipsUserName, Membership.GeneratePassword(8, 1)
+                                , ProviderUserEmail);
             }
             else
             {
-                membershipUser = Membership.GetUser();
-                if (membershipUser == null)
-                {
-                    ModelState.AddModelError("Provider", String.Format("Этот логин занят", ProviderDisplayName));
-                    return;
-                }
+                membershipUser = Membership.CreateUser(MembershipsUserName, Membership.GeneratePassword(8, 1));
             }
 
+            user = DataHelper.GetUser((Guid)membershipUser.ProviderUserKey);
+
+            user.PublicId = DataHelper.GenerateUserPublicId();
+            DataHelper.UpdateUser(user);
+
             AddAccountToExistingUser(Membership.ApplicationName, membershipUser.UserName);
+
+            Login();
         }
 
         private void AddAccountToExistingUser(string AplicationName, string MembershipUserName)
@@ -214,24 +190,15 @@ namespace Rentoolo.Account
                 try
                 {
                     ctx.SaveChanges();
-                    Login();
                 }
                 catch
                 {
                     ModelState.AddModelError("Provider", String.Format("Аккаунт уже создан и привязан к другой учётной записи."));
                     Trace.Warn("OpenAuth", String.Format("Аккаунт уже создан и привязан к другой учётной записи)"));
-                    userNameForm.Visible = false;
+
                     return;
                 }
             }
-
-            //поидее должно так работать))
-            // но хз чё там происходит и выдаёт странную ошибку)
-            //OpenAuth.UsersAccountsTableName = "UsersOpenAuthAccounts";
-            //OpenAuth.UsersDataTableName = "UsersOpenAuthData";
-            //OpenAuth.AddAccountToExistingUser(ProviderName, ProviderUserId, ProviderUserName, user.UserName);
-            //OpenAuth.AddLocalPassword(user.UserName, Password.Text);
         }
-
     }
 }
