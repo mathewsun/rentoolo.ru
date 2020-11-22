@@ -14,62 +14,89 @@
             <div class="additem-right additem__way" cid="1001">
 
 
-                <%--<div>
-                    <input type="file" name="avatarka" id="fileInput">
+            <br />
 
-                        <img src="https://www.wallpaperup.com/uploads/wallpapers/2016/05/08/947390/1f2d86bf06762856282747aa5f624fac-1000.jpg">
-                        
-                        </img>
-                    </input>
+                <img src="/assets/img/avatars/<%=User.UserId %>.png" />
 
-                    <asp:Button ID="ButtonSaveAvatar" runat="server" Text="set avatar" OnClick="ButtonSaveAvatar_Click" />
+            <div>
+                <input type="file" id="f" />
+            </div>
 
-                </div>--%>
+            <script type="text/javascript">
 
-                <form action="/api/Avatars" method="post" enctype="multipart/form-data">
-                    <input type="file" name="uploadedFile" /><br>
-                    <input type="submit" value="Загрузить" />
-                </form>
+                window.onload = function () {
 
-                <script type="text/javascript">
+                    let finput = document.getElementById('f');
+                    finput.onchange = function (e) {
 
-                    window.onload = function () {
+                        let f = e.target.files[0];
 
+                        let img = new Image();
 
-                        let fileInput = document.getElementById("fileInput");
-                        fileInput.onclick = function (e) {
-                            console.log(e);
+                        let reader = new FileReader();
 
-                            let file = e.target.files[0];
-
-                            let reader = new FileReader();
-                            reader.readAsArrayBuffer(file);
-
-                            let arr = reader.result;
-
-                            console.log(arr);
-
+                        img.onload = function (e) {
+                            
+                            reader.readAsArrayBuffer(f);
                         }
 
-                        fileInput.onchange = function (e) {
-                            console.log(e);
+                        img.src = URL.createObjectURL(f);
 
-                            let file = e.target.files[0];
+                        reader.onloadend = function (e) {
 
-                            let reader = new FileReader();
-                            console.log(e.target.files[0]);
+                            let buf = reader.result;
+                            let uintbuf = new Uint8Array(buf);
 
-                            reader.readAsArrayBuffer(file);
-
-                            let arr2 = reader.result;
-
-                            console.log(arr2);
-
+                            sendFile(uintbuf);
                         }
 
                     }
 
-                </script>
+                }
+
+                function sendFile(buffer) {
+
+                    let url = "/api/Avatars";
+
+                    let data = {
+                        Buffer: buffer.toString(),
+                        FileName: "some.jpg",
+                        UserId: "<%=User.UserId %>"
+                    };
+
+                    fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    }).then((data) => {
+                        console.log(data);
+                    });
+
+
+                }
+
+
+
+
+
+
+
+
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 <table class="marginTable cabinetTable">

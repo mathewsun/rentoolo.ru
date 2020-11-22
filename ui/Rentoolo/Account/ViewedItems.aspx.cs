@@ -11,7 +11,7 @@ namespace Rentoolo.Account
 {
     public partial class ViewedItems : BasicPage
     {
-        public List<Model.UserViews> Views = new List<Model.UserViews>();
+        public List<Model.SelIItem> SellItemViews = new List<SelIItem>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,17 +19,39 @@ namespace Rentoolo.Account
             string startDateS = Request.QueryString["startDate"];
             string endDateS = Request.QueryString["endDate"];
 
-            DateTime? startDate, endDate;
-            startDate = startDateS == null ? null : (DateTime?)DateTime.Parse(startDateS);
-            endDate = endDateS == null ? null : (DateTime?)DateTime.Parse(endDateS);
+            bool isRedirect = Request.QueryString["redirect"] == "true";
+            string objectId = Request.QueryString["objectId"];
 
-            int? categoryType = null;
+            DateTime? startDate, endDate;
+            startDate = startDateS == null || startDateS == "" ? null : (DateTime?)DateTime.Parse(startDateS);
+            endDate = endDateS == null || endDateS == "" ? null : (DateTime?)DateTime.Parse(endDateS);
+
+            int categoryType;
             if (category != null)
             {
-                categoryType = StructsHelper.ViewedType[category];
+                if (StructsHelper.ViewedType.ContainsKey(category))
+                {
+                    categoryType = StructsHelper.ViewedType[category];
+                }
+                else
+                {
+                    categoryType = 1;
+                }
+
+            }
+            else
+            {
+                categoryType = 1;
             }
 
-            Views = DataHelper.GetUserViews(categoryType, User.UserId, startDate, endDate);
+            if (isRedirect)
+            {
+                string pageURl = StructsHelper.TypePage[(int)categoryType] + "?id=" + objectId;
+                Response.Redirect(pageURl);
+            }
+
+
+            SellItemViews = DataHelper.GetSellItems(categoryType,User.UserId,startDate,endDate);
 
         }
 
@@ -57,7 +79,7 @@ namespace Rentoolo.Account
             string startDate = Request.Form["startDate"];
             string endDate = Request.Form["endDate"];
 
-            
+
             string query = "?" + tryAddToQuery("category", category, true);
             query += tryAddToQuery("startDate", startDate);
             query += tryAddToQuery("endDate", endDate);

@@ -1223,12 +1223,14 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                var views = dc.UserViews.Where(x => x.UserId == userView.UserId).OrderBy(x => x.Date);
-                if (views.Any())
-                {
-                    int count = views.Count();
+                var views = dc.UserViews.OrderByDescending(x => x.Date)
+                        .FirstOrDefault(x => x.UserId == userView.UserId
+                        && x.ObjectId == userView.ObjectId && x.Type == userView.Type);
 
-                    if ((views.ToArray()[count - 1].Date.Date - DateTime.Now.Date).Days >= 1)
+                if (views != null)
+                {
+
+                    if ((views.Date.Date - DateTime.Now.Date).Days >= 1)
                     {
                         dc.UserViews.Add(userView);
                         dc.SaveChanges();
@@ -1276,6 +1278,91 @@ namespace Rentoolo.Model
                 return result.ToList();
             }
         }
+
+
+
+
+        public static List<SelIItem> GetSellItems(int type, Guid userId, DateTime? startDate, DateTime? endDate)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var views = dc.UserViews.Where(x => x.UserId == userId);
+
+                views = views.Where(x => x.Type == (int)type);
+
+                if (startDate != null)
+                {
+                    views = views.Where(x => x.Date >= startDate);
+                }
+
+                if (endDate != null)
+                {
+                    views = views.Where(x => x.Date <= endDate);
+                }
+
+
+                IQueryable<SelIItem> items;
+
+                switch (type)
+                {
+                    case 1:
+                        var filteredAdverts = dc.Adverts.Where(a => views.Select(v => (long)v.ObjectId).Contains(a.Id));
+
+                        items = filteredAdverts
+                            .Select(p => new SelIItem()
+                            {
+                                Name = p.Name,
+                                Type = 1,
+                                Id = p.Id
+                            });
+
+                        return items.ToList();
+                    case 2:
+                        var filteredTenders = dc.Tenders.Where(a => views.Select(v => (long)v.ObjectId).Contains(a.Id));
+
+                        items = filteredTenders
+                            .Select(p => new SelIItem()
+                            {
+                                Name = p.Name,
+                                Type = 1,
+                                Id = p.Id
+                            });
+
+                        return items.ToList();
+                    case 3:
+                        var filteredAuctions = dc.Auctions.Where(a => views.Select(v => (long)v.ObjectId).Contains(a.Id));
+
+                        items = filteredAuctions
+                            .Select(p => new SelIItem()
+                            {
+                                Name = p.Name,
+                                Type = 1,
+                                Id = p.Id
+                            });
+
+                        return items.ToList();
+                    default:
+                        return new List<SelIItem>();
+
+                }
+
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2116,7 +2203,7 @@ namespace Rentoolo.Model
             filter.Search = search.Search;
             filter.StartDate = search.StartDate;
             filter.EndDate = search.EndDate;
-            filter.OnlyInName = (bool)search.OnlyInName == null ? false : (bool)search.OnlyInName==true;
+            filter.OnlyInName = (bool)search.OnlyInName == null ? false : (bool)search.OnlyInName == true;
             filter.StartPrice = search.StartPrice;
             filter.EndPrice = search.EndPrice;
             filter.City = search.City;
@@ -2125,6 +2212,35 @@ namespace Rentoolo.Model
             return filter;
         }
 
+
+
+        #endregion
+
+        #region exchange items/products/adverts
+
+        public static List<spGetExchangeProducts_Result> GetExchangeItems(string search)
+        {
+            using(var dc = new RentooloEntities())
+            {
+                return dc.spGetExchangeProducts(search).ToList();
+            }
+        }
+
+        public static void AddExchangeItem(ExchangeProducts exchangeItem, Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var advert = AdvertsDataHelper.GetAdvert(exchangeItem.AdvertId);
+
+                if(advert.CreatedUserId == userId)
+                {
+                    dc.ExchangeProducts.Add(exchangeItem);
+                    dc.SaveChanges();
+                }
+
+                
+            }
+        }
 
 
         #endregion

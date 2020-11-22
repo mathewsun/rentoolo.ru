@@ -41,6 +41,8 @@ namespace Rentoolo.Model
         public virtual DbSet<ChatUsers> ChatUsers { get; set; }
         public virtual DbSet<Comments> Comments { get; set; }
         public virtual DbSet<Complaints> Complaints { get; set; }
+        public virtual DbSet<CraftsMan> CraftsMan { get; set; }
+        public virtual DbSet<CraftsManOrder> CraftsManOrder { get; set; }
         public virtual DbSet<Currencies> Currencies { get; set; }
         public virtual DbSet<DailyStatistics> DailyStatistics { get; set; }
         public virtual DbSet<DeletedAdverts> DeletedAdverts { get; set; }
@@ -49,6 +51,7 @@ namespace Rentoolo.Model
         public virtual DbSet<DialogsInfo> DialogsInfo { get; set; }
         public virtual DbSet<DisLikes> DisLikes { get; set; }
         public virtual DbSet<Exceptions> Exceptions { get; set; }
+        public virtual DbSet<ExchangeProducts> ExchangeProducts { get; set; }
         public virtual DbSet<Favorites> Favorites { get; set; }
         public virtual DbSet<FavoritesByCookies> FavoritesByCookies { get; set; }
         public virtual DbSet<ItemDislikes> ItemDislikes { get; set; }
@@ -60,10 +63,14 @@ namespace Rentoolo.Model
         public virtual DbSet<Memberships> Memberships { get; set; }
         public virtual DbSet<NewAezakmi> NewAezakmi { get; set; }
         public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<News_towardsbackwards> News_towardsbackwards { get; set; }
+        public virtual DbSet<NewsAntares> NewsAntares { get; set; }
         public virtual DbSet<NewsAzizjan> NewsAzizjan { get; set; }
         public virtual DbSet<NewsEducation> NewsEducation { get; set; }
+        public virtual DbSet<NewsEoll73> NewsEoll73 { get; set; }
         public virtual DbSet<NewsGGdotNET> NewsGGdotNET { get; set; }
         public virtual DbSet<NewsIlya> NewsIlya { get; set; }
+        public virtual DbSet<NewsMrshkVV> NewsMrshkVV { get; set; }
         public virtual DbSet<NewsRaspel> NewsRaspel { get; set; }
         public virtual DbSet<NewsVark> NewsVark { get; set; }
         public virtual DbSet<Operations> Operations { get; set; }
@@ -89,47 +96,48 @@ namespace Rentoolo.Model
         public virtual DbSet<Watched> Watched { get; set; }
         public virtual DbSet<WatchedByCookies> WatchedByCookies { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<NewsShCodder> NewsShCodder { get; set; }
     
-        [DbFunction("RentooloEntities1", "fnGetAllUsers")]
+        [DbFunction("RentooloEntities", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetAllUsers_Result>("[RentooloEntities1].[fnGetAllUsers]()");
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetAllUsers_Result>("[RentooloEntities].[fnGetAllUsers]()");
         }
     
-        [DbFunction("RentooloEntities1", "fnGetTablesRows")]
+        [DbFunction("RentooloEntities", "fnGetTablesRows")]
         public virtual IQueryable<fnGetTablesRows_Result> fnGetTablesRows()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetTablesRows_Result>("[RentooloEntities1].[fnGetTablesRows]()");
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetTablesRows_Result>("[RentooloEntities].[fnGetTablesRows]()");
         }
     
-        [DbFunction("RentooloEntities1", "fnGetUserReferralsSecondLevel")]
+        [DbFunction("RentooloEntities", "fnGetUserReferralsSecondLevel")]
         public virtual IQueryable<fnGetUserReferralsSecondLevel_Result> fnGetUserReferralsSecondLevel(Nullable<System.Guid> userId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserReferralsSecondLevel_Result>("[RentooloEntities1].[fnGetUserReferralsSecondLevel](@userId)", userIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserReferralsSecondLevel_Result>("[RentooloEntities].[fnGetUserReferralsSecondLevel](@userId)", userIdParameter);
         }
     
-        [DbFunction("RentooloEntities1", "fnGetUserReferralsThirdLevel")]
+        [DbFunction("RentooloEntities", "fnGetUserReferralsThirdLevel")]
         public virtual IQueryable<fnGetUserReferralsThirdLevel_Result> fnGetUserReferralsThirdLevel(Nullable<System.Guid> userId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserReferralsThirdLevel_Result>("[RentooloEntities1].[fnGetUserReferralsThirdLevel](@userId)", userIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserReferralsThirdLevel_Result>("[RentooloEntities].[fnGetUserReferralsThirdLevel](@userId)", userIdParameter);
         }
     
-        [DbFunction("RentooloEntities1", "fnGetUserWallets")]
+        [DbFunction("RentooloEntities", "fnGetUserWallets")]
         public virtual IQueryable<fnGetUserWallets_Result> fnGetUserWallets(Nullable<System.Guid> userId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserWallets_Result>("[RentooloEntities1].[fnGetUserWallets](@userId)", userIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetUserWallets_Result>("[RentooloEntities].[fnGetUserWallets](@userId)", userIdParameter);
         }
     
         public virtual int spAddAdvert(Nullable<int> category, string name, string description, Nullable<System.Guid> createdUserId, Nullable<double> price, string address, string phone, Nullable<int> messageType, System.Data.Entity.Spatial.DbGeography position, string imgUrls, string youTubeUrl)
@@ -295,6 +303,15 @@ namespace Rentoolo.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetComplaintsBySender_Result>("spGetComplaintsBySender", userIdParameter);
         }
     
+        public virtual ObjectResult<spGetExchangeProducts_Result> spGetExchangeProducts(string query)
+        {
+            var queryParameter = query != null ?
+                new ObjectParameter("query", query) :
+                new ObjectParameter("query", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetExchangeProducts_Result>("spGetExchangeProducts", queryParameter);
+        }
+    
         public virtual ObjectResult<spGetFavorites_Result> spGetFavorites(Nullable<System.Guid> userId)
         {
             var userIdParameter = userId.HasValue ?
@@ -358,19 +375,6 @@ namespace Rentoolo.Model
                 new ObjectParameter("uid", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetWatchedByCookies_Result>("spGetWatchedByCookies", uidParameter);
-        }
-    
-        public virtual int spUpdateQiwiAccountBalance(string number, Nullable<double> balance)
-        {
-            var numberParameter = number != null ?
-                new ObjectParameter("number", number) :
-                new ObjectParameter("number", typeof(string));
-    
-            var balanceParameter = balance.HasValue ?
-                new ObjectParameter("balance", balance) :
-                new ObjectParameter("balance", typeof(double));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdateQiwiAccountBalance", numberParameter, balanceParameter);
         }
     }
 }
