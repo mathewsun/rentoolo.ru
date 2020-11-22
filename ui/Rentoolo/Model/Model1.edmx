@@ -456,6 +456,17 @@
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="NewsAntares">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="authorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="createDate" Type="datetime" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="NewsAzizjan">
           <Key>
             <PropertyRef Name="Id" />
@@ -1212,6 +1223,7 @@
           <EntitySet Name="NewAezakmi" EntityType="Self.NewAezakmi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News_towardsbackwards" EntityType="Self.News_towardsbackwards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsAntares" EntityType="Self.NewsAntares" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsAzizjan" EntityType="Self.NewsAzizjan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsEducation" EntityType="Self.NewsEducation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsGGdotNET" EntityType="Self.NewsGGdotNET" Schema="dbo" store:Type="Tables" />
@@ -1818,6 +1830,17 @@
           <Property Name="AuthorId" Type="Guid" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsAntares">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="authorId" Type="Guid" Nullable="false" />
+          <Property Name="createDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="NewsAzizjan">
           <Key>
@@ -2435,6 +2458,7 @@
           <EntitySet Name="NewAezakmi" EntityType="Self.NewAezakmi" />
           <EntitySet Name="News" EntityType="Self.News" />
           <EntitySet Name="News_towardsbackwards" EntityType="Self.News_towardsbackwards" />
+          <EntitySet Name="NewsAntares" EntityType="Self.NewsAntares" />
           <EntitySet Name="NewsAzizjan" EntityType="Self.NewsAzizjan" />
           <EntitySet Name="NewsEducation" EntityType="Self.NewsEducation" />
           <EntitySet Name="NewsGGdotNET" EntityType="Self.NewsGGdotNET" />
@@ -3230,6 +3254,18 @@
                 <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsAntares">
+            <EntityTypeMapping TypeName="RentooloModel.NewsAntares">
+              <MappingFragment StoreEntitySet="NewsAntares">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="authorId" ColumnName="authorId" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="active" ColumnName="active" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
