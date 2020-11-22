@@ -1224,12 +1224,12 @@ namespace Rentoolo.Model
             using (var dc = new RentooloEntities())
             {
                 var views = dc.UserViews.OrderByDescending(x => x.Date)
-                        .FirstOrDefault(x => x.UserId == userView.UserId 
+                        .FirstOrDefault(x => x.UserId == userView.UserId
                         && x.ObjectId == userView.ObjectId && x.Type == userView.Type);
 
                 if (views != null)
                 {
-                    
+
                     if ((views.Date.Date - DateTime.Now.Date).Days >= 1)
                     {
                         dc.UserViews.Add(userView);
@@ -1278,6 +1278,91 @@ namespace Rentoolo.Model
                 return result.ToList();
             }
         }
+
+
+
+
+        public static List<SelIItem> GetSellItems(int type, Guid userId, DateTime? startDate, DateTime? endDate)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var views = dc.UserViews.Where(x => x.UserId == userId);
+
+                views = views.Where(x => x.Type == (int)type);
+
+                if (startDate != null)
+                {
+                    views = views.Where(x => x.Date >= startDate);
+                }
+
+                if (endDate != null)
+                {
+                    views = views.Where(x => x.Date <= endDate);
+                }
+
+
+                IQueryable<SelIItem> items;
+
+                switch (type)
+                {
+                    case 1:
+                        var filteredAdverts = dc.Adverts.Where(a => views.Select(v => (long)v.ObjectId).Contains(a.Id));
+
+                        items = filteredAdverts
+                            .Select(p => new SelIItem()
+                            {
+                                Name = p.Name,
+                                Type = 1,
+                                Id = p.Id
+                            });
+
+                        return items.ToList();
+                    case 2:
+                        var filteredTenders = dc.Tenders.Where(a => views.Select(v => (long)v.ObjectId).Contains(a.Id));
+
+                        items = filteredTenders
+                            .Select(p => new SelIItem()
+                            {
+                                Name = p.Name,
+                                Type = 1,
+                                Id = p.Id
+                            });
+
+                        return items.ToList();
+                    case 3:
+                        var filteredAuctions = dc.Auctions.Where(a => views.Select(v => (long)v.ObjectId).Contains(a.Id));
+
+                        items = filteredAuctions
+                            .Select(p => new SelIItem()
+                            {
+                                Name = p.Name,
+                                Type = 1,
+                                Id = p.Id
+                            });
+
+                        return items.ToList();
+                    default:
+                        return new List<SelIItem>();
+
+                }
+
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

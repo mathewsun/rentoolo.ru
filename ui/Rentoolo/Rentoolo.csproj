@@ -392,7 +392,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="MrshkVV\NewsMrshkVV.aspx" />
     <Content Include="News.aspx" />
+    <Content Include="NewsAntares\NewsAntares.aspx" />
     <Content Include="notifications\index.html" />
     <Content Include="packages.config" />
     <Content Include="Admin\Web.config">
@@ -432,6 +434,7 @@
     <Content Include="assets\fonts\toolkit-entypo.woff2" />
     <Content Include="Events.ashx" />
     <Content Include="TestDir\TestPage.html" />
+    <Content Include="Test\Antares.aspx" />
     <Content Include="Test\dmitriyraspel.aspx" />
     <Content Include="Test\eoll73.aspx" />
     <Content Include="Test\FormTest.html" />
@@ -1281,7 +1284,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataHelperAezakmi.cs" />
+    <Compile Include="Model\DataHelperAntares.cs" />
     <Compile Include="Model\DataHelperAzizjan.cs" />
+    <Compile Include="Model\DataHelperMrshkVV.cs" />
     <Compile Include="Model\DataHelperShCodder.cs" />
     <Compile Include="Model\DataHelperEducation.cs" />
     <Compile Include="Model\DataHelperGGdotNET.cs" />
@@ -1372,6 +1377,9 @@
     <Compile Include="Model\News.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\NewsAntares.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\NewsAzizjan.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1382,6 +1390,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsIlya.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsMrshkVV.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsRaspel.cs">
@@ -1411,6 +1422,7 @@
     <Compile Include="Model\Roles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\SelIItem.cs" />
     <Compile Include="Model\Settings.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1603,12 +1615,26 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\WatchedHelper.cs" />
+    <Compile Include="MrshkVV\NewsMrshkVV.aspx.cs">
+      <DependentUpon>NewsMrshkVV.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MrshkVV\NewsMrshkVV.aspx.designer.cs">
+      <DependentUpon>NewsMrshkVV.aspx</DependentUpon>
+    </Compile>
     <Compile Include="News.aspx.cs">
       <DependentUpon>News.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="News.aspx.designer.cs">
       <DependentUpon>News.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsAntares\NewsAntares.aspx.cs">
+      <DependentUpon>NewsAntares.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsAntares\NewsAntares.aspx.designer.cs">
+      <DependentUpon>NewsAntares.aspx</DependentUpon>
     </Compile>
     <Compile Include="PersonalGoods.aspx.cs">
       <DependentUpon>PersonalGoods.aspx</DependentUpon>
@@ -1697,6 +1723,13 @@
       <DependentUpon>Tenders.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestDir\WSServer.cs" />
+    <Compile Include="Test\Antares.aspx.cs">
+      <DependentUpon>Antares.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\Antares.aspx.designer.cs">
+      <DependentUpon>Antares.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Test\dmitriyraspel.aspx.cs">
       <DependentUpon>dmitriyraspel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
