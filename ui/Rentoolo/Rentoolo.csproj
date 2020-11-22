@@ -361,6 +361,7 @@
     <Content Include="Education\AddNewsEducation.aspx" />
     <Content Include="Education\NewsEducation.aspx" />
     <Content Include="Empty.aspx" />
+    <Content Include="Eoll73\NewsEoll73.aspx" />
     <Content Include="Fail.aspx" />
     <Content Include="FAQ.aspx" />
     <Content Include="Favorites.aspx" />
@@ -394,6 +395,7 @@
     </Content>
     <Content Include="MrshkVV\NewsMrshkVV.aspx" />
     <Content Include="News.aspx" />
+    <Content Include="NewsAntares\NewsAntares.aspx" />
     <Content Include="notifications\index.html" />
     <Content Include="packages.config" />
     <Content Include="Admin\Web.config">
@@ -433,6 +435,7 @@
     <Content Include="assets\fonts\toolkit-entypo.woff2" />
     <Content Include="Events.ashx" />
     <Content Include="TestDir\TestPage.html" />
+    <Content Include="Test\Antares.aspx" />
     <Content Include="Test\dmitriyraspel.aspx" />
     <Content Include="Test\eoll73.aspx" />
     <Content Include="Test\FormTest.html" />
@@ -1202,6 +1205,13 @@
     <Compile Include="Education\NewsEducation.aspx.designer.cs">
       <DependentUpon>NewsEducation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Eoll73\NewsEoll73.aspx.cs">
+      <DependentUpon>NewsEoll73.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Eoll73\NewsEoll73.aspx.designer.cs">
+      <DependentUpon>NewsEoll73.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GGdotNET\NewsGGdotNET.aspx.cs">
       <DependentUpon>NewsGGdotNET.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1282,7 +1292,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataHelperAezakmi.cs" />
+    <Compile Include="Model\DataHelperAntares.cs" />
     <Compile Include="Model\DataHelperAzizjan.cs" />
+    <Compile Include="Model\DataHelperEoll73.cs" />
     <Compile Include="Model\DataHelperMrshkVV.cs" />
     <Compile Include="Model\DataHelperShCodder.cs" />
     <Compile Include="Model\DataHelperEducation.cs" />
@@ -1374,10 +1386,16 @@
     <Compile Include="Model\News.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\NewsAntares.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\NewsAzizjan.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsEducation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsEoll73.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsGGdotNET.cs">
@@ -1623,6 +1641,13 @@
     <Compile Include="News.aspx.designer.cs">
       <DependentUpon>News.aspx</DependentUpon>
     </Compile>
+    <Compile Include="NewsAntares\NewsAntares.aspx.cs">
+      <DependentUpon>NewsAntares.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsAntares\NewsAntares.aspx.designer.cs">
+      <DependentUpon>NewsAntares.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PersonalGoods.aspx.cs">
       <DependentUpon>PersonalGoods.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1710,6 +1735,13 @@
       <DependentUpon>Tenders.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestDir\WSServer.cs" />
+    <Compile Include="Test\Antares.aspx.cs">
+      <DependentUpon>Antares.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\Antares.aspx.designer.cs">
+      <DependentUpon>Antares.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Test\dmitriyraspel.aspx.cs">
       <DependentUpon>dmitriyraspel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
