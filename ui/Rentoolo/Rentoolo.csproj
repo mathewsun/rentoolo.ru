@@ -366,6 +366,7 @@
     <Content Include="Education\AddNewsEducation.aspx" />
     <Content Include="Education\NewsEducation.aspx" />
     <Content Include="Empty.aspx" />
+    <Content Include="Eoll73\AddNewsEoll73.aspx" />
     <Content Include="Eoll73\NewsEoll73.aspx" />
     <Content Include="ExchangeProductsPage.aspx" />
     <Content Include="Fail.aspx" />
@@ -477,6 +478,9 @@
     </EntityDeploy>
     <Content Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Eoll73\Web.config">
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
@@ -1225,6 +1229,13 @@
     </Compile>
     <Compile Include="Education\NewsEducation.aspx.designer.cs">
       <DependentUpon>NewsEducation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Eoll73\AddNewsEoll73.aspx.cs">
+      <DependentUpon>AddNewsEoll73.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Eoll73\AddNewsEoll73.aspx.designer.cs">
+      <DependentUpon>AddNewsEoll73.aspx</DependentUpon>
     </Compile>
     <Compile Include="Eoll73\NewsEoll73.aspx.cs">
       <DependentUpon>NewsEoll73.aspx</DependentUpon>
