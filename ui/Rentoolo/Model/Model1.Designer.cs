@@ -1,7 +1,8 @@
-﻿// T4 code generation is enabled for model 'D:\Папа\МэтьюБатькович\work\rentoolo.ru\ui\Rentoolo\Model\Model1.edmx'. 
-// To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
-// property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
-// is open in the designer.
+
+// Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
+// на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
+// открыта в конструкторе.
+
 
 // If no context and entity classes have been generated, it may be because you created an empty model but
 // have not yet chosen which version of Entity Framework to use. To generate a context class and entity

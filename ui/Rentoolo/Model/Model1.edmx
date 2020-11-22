@@ -445,6 +445,17 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="Active" Type="bit" />
         </EntityType>
+        <EntityType Name="News_towardsbackwards">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="AuthorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="NewsAntares">
           <Key>
             <PropertyRef Name="Id" />
@@ -1222,6 +1233,7 @@ warning 6002: The table/view 'Rentoolo.dbo.NewsShCodder' does not have a primary
           <EntitySet Name="Memberships" EntityType="Self.Memberships" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewAezakmi" EntityType="Self.NewAezakmi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News_towardsbackwards" EntityType="Self.News_towardsbackwards" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsAntares" EntityType="Self.NewsAntares" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsAzizjan" EntityType="Self.NewsAzizjan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsEducation" EntityType="Self.NewsEducation" Schema="dbo" store:Type="Tables" />
@@ -1819,6 +1831,17 @@ warning 6002: The table/view 'Rentoolo.dbo.NewsShCodder' does not have a primary
           <Property Name="Active" Type="Boolean" />
           <NavigationProperty Name="Users" Relationship="Self.FK_News_Users" FromRole="News" ToRole="Users" />
           <NavigationProperty Name="Users1" Relationship="Self.FK_NewsVark_Users" FromRole="News" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="News_towardsbackwards">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuthorId" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="NewsAntares">
           <Key>
@@ -2457,6 +2480,7 @@ warning 6002: The table/view 'Rentoolo.dbo.NewsShCodder' does not have a primary
           <EntitySet Name="Memberships" EntityType="Self.Memberships" />
           <EntitySet Name="NewAezakmi" EntityType="Self.NewAezakmi" />
           <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="News_towardsbackwards" EntityType="Self.News_towardsbackwards" />
           <EntitySet Name="NewsAntares" EntityType="Self.NewsAntares" />
           <EntitySet Name="NewsAzizjan" EntityType="Self.NewsAzizjan" />
           <EntitySet Name="NewsEducation" EntityType="Self.NewsEducation" />
@@ -3237,6 +3261,18 @@ warning 6002: The table/view 'Rentoolo.dbo.NewsShCodder' does not have a primary
             <EntityTypeMapping TypeName="RentooloModel.News">
               <MappingFragment StoreEntitySet="News">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News_towardsbackwards">
+            <EntityTypeMapping TypeName="RentooloModel.News_towardsbackwards">
+              <MappingFragment StoreEntitySet="News_towardsbackwards">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />

@@ -447,6 +447,7 @@
     <Content Include="Test\VueTest.aspx" />
     <Content Include="TokensCost.aspx" />
     <Content Include="TokensOperations.aspx" />
+    <Content Include="towardsbackwards\NewsTowardsbackwards.aspx" />
     <Content Include="Transport.aspx" />
     <Content Include="UserProfile.aspx" />
     <Content Include="Vark\NewsVark.aspx" />
@@ -1271,14 +1272,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CheckQiwiPayments.cs" />
-    <Compile Include="Model\CommentForUser.cs" />
     <Compile Include="Model\Comments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Complaints.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ComplaintsFilter.cs" />
     <Compile Include="Model\CraftsMan.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1291,6 +1290,9 @@
     <Compile Include="Model\DailyStatistics.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataHelperTowardsbackwards.cs" />
+    <Compile Include="Model\CommentForUser.cs" />
+    <Compile Include="Model\ComplaintsFilter.cs" />
     <Compile Include="Model\DataHelperAezakmi.cs" />
     <Compile Include="Model\DataHelperAntares.cs" />
     <Compile Include="Model\DataHelperAzizjan.cs" />
@@ -1414,6 +1416,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsVark.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\News_towardsbackwards.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Operations.cs">
@@ -1825,6 +1830,13 @@
     </Compile>
     <Compile Include="TokensSelling.aspx.designer.cs">
       <DependentUpon>TokensSelling.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="towardsbackwards\NewsTowardsbackwards.aspx.cs">
+      <DependentUpon>NewsTowardsbackwards.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="towardsbackwards\NewsTowardsbackwards.aspx.designer.cs">
+      <DependentUpon>NewsTowardsbackwards.aspx</DependentUpon>
     </Compile>
     <Compile Include="Transport.aspx.cs">
       <DependentUpon>Transport.aspx</DependentUpon>
