@@ -4,3 +4,5 @@
 /ui/.vs
 packages
 /ui/Rentoolo/img/a
+/ui/Rentoolo/Model/CraftsMan.cs
+/ui/Rentoolo/Model/CraftsManOrder.cs
