@@ -189,6 +189,7 @@
     <Content Include="Account\CashIn.aspx" />
     <Content Include="Account\CashOut.aspx" />
     <Content Include="Account\Category.aspx" />
+    <Content Include="Account\CreateExchangeItem.aspx" />
     <Content Include="Account\DeviceSettings.aspx" />
     <Content Include="Account\Exchange.aspx" />
     <Content Include="Account\Login.aspx" />
@@ -206,6 +207,7 @@
     <Content Include="Account\Referrals.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Account\Rent.aspx" />
+    <Content Include="Account\SelectAdvertToExchange.aspx" />
     <Content Include="Account\SelectCategory.aspx" />
     <Content Include="Account\SellCategory.aspx" />
     <Content Include="Account\Sell\Business.aspx" />
@@ -357,11 +359,15 @@
     <Content Include="CreateComplaint.aspx" />
     <Content Include="DataBase\CurrentSQLInit\init.sql" />
     <Content Include="DataBase\Init\init_161120.sql" />
+    <Content Include="DataBase\Init\init_221120_6.sql" />
+    <Content Include="DataBase\storedProcedures\spGetExchangeProducts.sql" />
+    <Content Include="DataBase\tables\ExchangeProducts.sql" />
     <Content Include="docs\index.html" />
     <Content Include="Education\AddNewsEducation.aspx" />
     <Content Include="Education\NewsEducation.aspx" />
     <Content Include="Empty.aspx" />
     <Content Include="Eoll73\NewsEoll73.aspx" />
+    <Content Include="ExchangeProductsPage.aspx" />
     <Content Include="Fail.aspx" />
     <Content Include="FAQ.aspx" />
     <Content Include="Favorites.aspx" />
@@ -576,6 +582,13 @@
     <Compile Include="Account\Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\CreateExchangeItem.aspx.cs">
+      <DependentUpon>CreateExchangeItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\CreateExchangeItem.aspx.designer.cs">
+      <DependentUpon>CreateExchangeItem.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\DeviceSettings.aspx.cs">
       <DependentUpon>DeviceSettings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -669,6 +682,13 @@
     </Compile>
     <Compile Include="Account\Result.ashx.cs">
       <DependentUpon>Result.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SelectAdvertToExchange.aspx.cs">
+      <DependentUpon>SelectAdvertToExchange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SelectAdvertToExchange.aspx.designer.cs">
+      <DependentUpon>SelectAdvertToExchange.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SelectCategory.aspx.cs">
       <DependentUpon>SelectCategory.aspx</DependentUpon>
@@ -1213,6 +1233,13 @@
     <Compile Include="Eoll73\NewsEoll73.aspx.designer.cs">
       <DependentUpon>NewsEoll73.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ExchangeProductsPage.aspx.cs">
+      <DependentUpon>ExchangeProductsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExchangeProductsPage.aspx.designer.cs">
+      <DependentUpon>ExchangeProductsPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GGdotNET\NewsGGdotNET.aspx.cs">
       <DependentUpon>NewsGGdotNET.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1320,6 +1347,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Exceptions.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ExchangeProducts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Favorites.cs">
@@ -1459,6 +1489,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetComplaintsBySender_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetExchangeProducts_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetFavoritesByCookies_Result.cs">

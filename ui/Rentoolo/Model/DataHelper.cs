@@ -2216,6 +2216,35 @@ namespace Rentoolo.Model
 
         #endregion
 
+        #region exchange items/products/adverts
+
+        public static List<spGetExchangeProducts_Result> GetExchangeItems(string search)
+        {
+            using(var dc = new RentooloEntities())
+            {
+                return dc.spGetExchangeProducts(search).ToList();
+            }
+        }
+
+        public static void AddExchangeItem(ExchangeProducts exchangeItem, Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var advert = AdvertsDataHelper.GetAdvert(exchangeItem.AdvertId);
+
+                if(advert.CreatedUserId == userId)
+                {
+                    dc.ExchangeProducts.Add(exchangeItem);
+                    dc.SaveChanges();
+                }
+
+                
+            }
+        }
+
+
+        #endregion
+
 
 
     }

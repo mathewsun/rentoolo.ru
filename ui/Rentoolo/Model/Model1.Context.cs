@@ -51,6 +51,7 @@ namespace Rentoolo.Model
         public virtual DbSet<DialogsInfo> DialogsInfo { get; set; }
         public virtual DbSet<DisLikes> DisLikes { get; set; }
         public virtual DbSet<Exceptions> Exceptions { get; set; }
+        public virtual DbSet<ExchangeProducts> ExchangeProducts { get; set; }
         public virtual DbSet<Favorites> Favorites { get; set; }
         public virtual DbSet<FavoritesByCookies> FavoritesByCookies { get; set; }
         public virtual DbSet<ItemDislikes> ItemDislikes { get; set; }
@@ -300,6 +301,15 @@ namespace Rentoolo.Model
                 new ObjectParameter("userId", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetComplaintsBySender_Result>("spGetComplaintsBySender", userIdParameter);
+        }
+    
+        public virtual ObjectResult<spGetExchangeProducts_Result> spGetExchangeProducts(string query)
+        {
+            var queryParameter = query != null ?
+                new ObjectParameter("query", query) :
+                new ObjectParameter("query", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetExchangeProducts_Result>("spGetExchangeProducts", queryParameter);
         }
     
         public virtual ObjectResult<spGetFavorites_Result> spGetFavorites(Nullable<System.Guid> userId)
