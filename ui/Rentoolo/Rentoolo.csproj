@@ -361,6 +361,7 @@
     <Content Include="Education\AddNewsEducation.aspx" />
     <Content Include="Education\NewsEducation.aspx" />
     <Content Include="Empty.aspx" />
+    <Content Include="Eoll73\NewsEoll73.aspx" />
     <Content Include="Fail.aspx" />
     <Content Include="FAQ.aspx" />
     <Content Include="Favorites.aspx" />
@@ -1205,6 +1206,13 @@
     <Compile Include="Education\NewsEducation.aspx.designer.cs">
       <DependentUpon>NewsEducation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Eoll73\NewsEoll73.aspx.cs">
+      <DependentUpon>NewsEoll73.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Eoll73\NewsEoll73.aspx.designer.cs">
+      <DependentUpon>NewsEoll73.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GGdotNET\NewsGGdotNET.aspx.cs">
       <DependentUpon>NewsGGdotNET.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1288,6 +1296,7 @@
     <Compile Include="Model\DataHelperAezakmi.cs" />
     <Compile Include="Model\DataHelperAntares.cs" />
     <Compile Include="Model\DataHelperAzizjan.cs" />
+    <Compile Include="Model\DataHelperEoll73.cs" />
     <Compile Include="Model\DataHelperMrshkVV.cs" />
     <Compile Include="Model\DataHelperShCodder.cs" />
     <Compile Include="Model\DataHelperEducation.cs" />
@@ -1386,6 +1395,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsEducation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsEoll73.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsGGdotNET.cs">

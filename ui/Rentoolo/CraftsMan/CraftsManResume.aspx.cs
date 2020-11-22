@@ -20,10 +20,8 @@ namespace Rentoolo
 
             string craft = String.Format("{0}", Request.Form["MainContent$input_craft"]);
             string description = String.Format("{0}", Request.Form["MainContent$input_description"]);
-            string price = String.Format("{0}", Request.Form["MainContent$price_value"]);
+            string price = String.Format("{0}", Request.Form["MainContent$input_price"]);
             string phone = String.Format("{0}", Request.Form["MainContent$resPhone"]);
-
-            //TODO добавить в табл
             string firstName = String.Format("{0}", Request.Form["MainContent$input_firstName"]);
             string lastName = String.Format("{0}", Request.Form["MainContent$input_lastName"]);
             string address = String.Format("{0}", Request.Form["MainContent$address"]);
@@ -59,11 +57,15 @@ namespace Rentoolo
             catch { }
 
             //resume.CreatedUserId = User.UserId;
-            //resume.Craft
+            resume.Сraft = craft;
             resume.Created = DateTime.Now;
             resume.Address = address;
             resume.Description = description;
             resume.Phone = phone;
+            resume.FirstName = firstName;
+            resume.LastName = lastName;
+            resume.Region = region;
+            resume.Country = country;
             CraftsManDataHelper.AddCraftsMan(resume);
 
             //Response.Redirect("");
