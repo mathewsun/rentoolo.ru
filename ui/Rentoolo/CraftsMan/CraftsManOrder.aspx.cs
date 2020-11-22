@@ -19,10 +19,8 @@ namespace Rentoolo.CraftsMan
 
             string nameTask = String.Format("{0}", Request.Form["MainContent$input_nameTask"]);
             string description = String.Format("{0}", Request.Form["MainContent$input_description"]);
-            string price = String.Format("{0}", Request.Form["MainContent$price_value"]);
+            string price = String.Format("{0}", Request.Form["MainContent$input_price"]);
             string phone = String.Format("{0}", Request.Form["MainContent$phone"]);
-
-            //TODO добавить в табл
             string firstName = String.Format("{0}", Request.Form["MainContent$input_firstName"]);
             string lastName = String.Format("{0}", Request.Form["MainContent$input_lastName"]);
             string address = String.Format("{0}", Request.Form["MainContent$address"]);
@@ -62,8 +60,6 @@ namespace Rentoolo.CraftsMan
 
             //order.video = video;
 
-            //order.Address = place;
-
             //order.YouTubeUrl = video;
 
             //order.CreatedUserId = User.UserId;
@@ -73,6 +69,10 @@ namespace Rentoolo.CraftsMan
             order.NameTask = nameTask;
             order.Description = description;
             order.Phone = phone;
+            order.FirstName = firstName;
+            order.LastName = lastName;
+            order.Region = region;
+            order.Country = country;
 
             CraftsManDataHelper.AddCraftsManOrder(order);
 

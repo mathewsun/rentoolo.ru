@@ -111,7 +111,7 @@
         <form>
             <div class="form-group">
                 <label for="price_value">Установите приемлемую сумму оплаты</label>
-                <input type="range" class="custom-range" min="0" max="500" id="price_value">
+                <input type="number"  id="input_price" >
             </div>
         </form>
         <div class="col-12 col-md-auto">
