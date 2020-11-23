@@ -13,9 +13,13 @@ namespace Rentoolo
         public List<spGetExchangeProducts_Result> ExchangeItems;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string search = Request.QueryString["s"] == null ? "" : Request.QueryString["s"];
+            string search = Request.QueryString["search"] == null ? "" : Request.QueryString["search"];
+
+            search = "%" + search + "%";
 
             ExchangeItems = DataHelper.GetExchangeItems(search);
+
+            var a = 5;
         }
 
         protected void ButtonSearch_Click(object sender, EventArgs e)

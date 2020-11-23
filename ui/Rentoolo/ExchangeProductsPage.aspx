@@ -4,6 +4,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
         <div>
+            <h2>
+                Exchange
+            </h2>
+        </div>
+        <div>
             <input type="text" name="search" />
             <asp:Button ID="ButtonSearch" runat="server" Text="search" OnClick="ButtonSearch_Click" />
 
@@ -17,6 +22,8 @@
                         <h4>
                             <%= item.Name %>
                         </h4>
+                        <%= item.Header %> <br />
+                        <%= item.Comment %>
                     </div>
 
             <% } %>
