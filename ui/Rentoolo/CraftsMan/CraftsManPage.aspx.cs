@@ -86,7 +86,7 @@ namespace Rentoolo.CraftsMan
                         SortBy = sortBy
                     };
 
-                    ListCraftsMan = CraftsManDataHelper.GetCraftsManForMainPage(sellFilter);
+                ListCraftsMan = CraftsManDataHelper.GetCraftsMan();
 
                     CraftsManCount = CraftsManDataHelper.GetCraftsManActiveCount(filter).ToString("N0");
 

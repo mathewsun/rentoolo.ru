@@ -4,7 +4,6 @@
     <link href='assets/css.css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="content/toolkit.css" rel="stylesheet">
     <link href="content/application.css" rel="stylesheet">
-
     <style>
         @media (min-width: 576px) {
             .card-columns {
@@ -30,58 +29,6 @@
             }
         }
     </style>
-
-    <script>
-        $(document).ready(function () {
-            $("div#mdropzone").dropzone({
-                url: "/api/upi",
-                addRemoveLinks: true,
-                resizeWidth: 800,
-                resizeHeight: 600,
-                resizeMethod: 'contain',
-                resizeQuality: 1.0,
-                dictDefaultMessage: "Add photos",
-                success: function (file, response) {
-                    var filaName = response;
-                    file.previewElement.classList.add("dz-success");
-                    $("#my-dropzone").append($('<input type="hidden" name="AdvertPhotos" ' + 'value="' + filaName + '">'));
-                }
-            });
-
-            setLocation();
-
-            var wto;
-            $("#additem_place").change(function () {
-                clearTimeout(wto);
-                wto = setTimeout(function () {
-
-                    var address = $("#additem_place").val();
-
-                    var address = address.split(' ').join('+');
-
-                    var googleUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo";
-
-                    $.get(googleUrl, function (data) {
-
-                        var firstResult = data.results[0];
-
-                        var latlng = firstResult.geometry.location.lat + ',' + firstResult.geometry.location.lng;
-
-                        var mapCenter = { lat: firstResult.geometry.location.lat, lng: firstResult.geometry.location.lng };
-
-                        document.getElementById("latgeo").value = firstResult.geometry.location.lat;
-                        document.getElementById("lnggeo").value = firstResult.geometry.location.lng;
-
-                        var map = new google.maps.Map(document.getElementById('map'), { zoom: 17, center: mapCenter });
-                        // The marker, positioned at Uluru
-                        var marker = new google.maps.Marker({ position: mapCenter, map: map });
-                    });
-                }, 1000);
-            });
-
-
-        });
-    </script>
     <script>
         function setLocation() {
             if (navigator.geolocation) {
@@ -150,9 +97,7 @@
             var place = autocomplete.getPlace();
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo&libraries=places&callback=initAutocomplete"
-        async defer>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo&libraries=places&callback=initAutocomplete" async defer>
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -210,8 +155,8 @@
             </div>
             <%-- city-sortby__wrap end--%>
         </div>
-    <%-- end search-input-group--%>
-    <%--            <div class="input-group">
+        <%-- end search-input-group--%>
+        <%--            <div class="input-group">
                                 <div class="rowed-grid">
                                     <div class="searchbar-grid">
                                         <div style="width: 100%">
@@ -235,15 +180,15 @@
 
     <h4 class="mb-4">Биржа Заданий</h4>
     <div class="card-columns">
-        <%foreach (Rentoolo.Model.CraftsManOrder item in ListCraftsManOrder)
+        <%foreach (var item in ListCraftsManOrder)
             {%>
-        <div class="card">
-            <div class="card-body">
-                <img class="card-img-top" src="<%=item.ImgUrls %>" alt="Card image">
-                <h4 class="card-title"><%= item.NameTask %></h4>
-                <p class="card-text"><%= item.Description %></p>
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img-top" src="<%=item.ImgUrls %>" alt="Card image">
+                    <h4 class="card-title"><%= item.NameTask %></h4>
+                    <p class="card-text"><%= item.Description %></p>
+                </div>
             </div>
-        </div>
         <%} %>
     </div>
 
