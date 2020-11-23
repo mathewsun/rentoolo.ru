@@ -2220,9 +2220,17 @@ namespace Rentoolo.Model
 
         public static List<spGetExchangeProducts_Result> GetExchangeItems(string search)
         {
-            using(var dc = new RentooloEntities())
+            using (var dc = new RentooloEntities())
             {
                 return dc.spGetExchangeProducts(search).ToList();
+            }
+        }
+
+        public static ExchangeProducts GetExchangeItem(long id)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.ExchangeProducts.FirstOrDefault(x => x.Id == id);
             }
         }
 
@@ -2232,13 +2240,11 @@ namespace Rentoolo.Model
             {
                 var advert = AdvertsDataHelper.GetAdvert(exchangeItem.AdvertId);
 
-                if(advert.CreatedUserId == userId)
+                if (advert.CreatedUserId == userId)
                 {
                     dc.ExchangeProducts.Add(exchangeItem);
                     dc.SaveChanges();
                 }
-
-                
             }
         }
 
@@ -2251,20 +2257,14 @@ namespace Rentoolo.Model
 
         public static void AddExchangeItemRequest(ExchangeItemRequests request)
         {
-            using(var dc = new RentooloEntities())
+            using (var dc = new RentooloEntities())
             {
                 dc.ExchangeItemRequests.Add(request);
                 dc.SaveChanges();
             }
         }
 
-
-
-
-
         #endregion
-
-
 
     }
 }

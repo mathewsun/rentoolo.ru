@@ -252,6 +252,7 @@
     <Content Include="Account\CreateExchangeItem.aspx" />
     <Content Include="Account\DeviceSettings.aspx" />
     <Content Include="Account\Exchange.aspx" />
+    <Content Include="Account\ExchangeItemView.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\LoginStatistics.aspx" />
     <Content Include="Account\Manage.aspx" />
@@ -421,6 +422,7 @@
     <Content Include="DataBase\Init\init_161120.sql" />
     <Content Include="DataBase\Init\init_221120_6.sql" />
     <Content Include="DataBase\Init\init_231120.sql" />
+    <Content Include="DataBase\storedProcedures\spGetExchangeItemRequests.sql" />
     <Content Include="DataBase\storedProcedures\spGetExchangeProducts.sql" />
     <Content Include="DataBase\tables\ExchangeProducts.sql" />
     <Content Include="docs\index.html" />
@@ -667,6 +669,13 @@
     </Compile>
     <Compile Include="Account\Exchange.aspx.designer.cs">
       <DependentUpon>Exchange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ExchangeItemView.aspx.cs">
+      <DependentUpon>ExchangeItemView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ExchangeItemView.aspx.designer.cs">
+      <DependentUpon>ExchangeItemView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\LoginStatistics.aspx.cs">
       <DependentUpon>LoginStatistics.aspx</DependentUpon>
