@@ -317,6 +317,15 @@
           <Property Name="WhenDate" Type="datetime" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" />
         </EntityType>
+        <EntityType Name="ExchangeItemRequests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExchangeItemId" Type="bigint" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="WantedExchangeItemId" Type="bigint" Nullable="false" />
+        </EntityType>
         <EntityType Name="ExchangeProducts">
           <Key>
             <PropertyRef Name="Id" />
@@ -326,6 +335,7 @@
           <Property Name="Comment" Type="nvarchar(max)" />
           <Property Name="WantedObject" Type="nvarchar" MaxLength="50" />
           <Property Name="Header" Type="nvarchar" MaxLength="50" />
+          <Property Name="SelectedRequestId" Type="bigint" />
         </EntityType>
         <EntityType Name="Favorites">
           <Key>
@@ -1189,6 +1199,9 @@
         <Function Name="spGetComplaintsBySender" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
         </Function>
+        <Function Name="spGetExchangeItemRequests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="exchangeItemId" Type="bigint" Mode="In" />
+        </Function>
         <Function Name="spGetExchangeProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="query" Type="nvarchar" Mode="In" />
         </Function>
@@ -1236,6 +1249,7 @@
           <EntitySet Name="DialogsInfo" EntityType="Self.DialogsInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DisLikes" EntityType="Self.DisLikes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Exceptions" EntityType="Self.Exceptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExchangeItemRequests" EntityType="Self.ExchangeItemRequests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExchangeProducts" EntityType="Self.ExchangeProducts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Favorites" EntityType="Self.Favorites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FavoritesByCookies" EntityType="Self.FavoritesByCookies" Schema="dbo" store:Type="Tables" />
@@ -1715,6 +1729,15 @@
           <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UserId" Type="Guid" />
         </EntityType>
+        <EntityType Name="ExchangeItemRequests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExchangeItemId" Type="Int64" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WantedExchangeItemId" Type="Int64" Nullable="false" />
+        </EntityType>
         <EntityType Name="ExchangeProducts">
           <Key>
             <PropertyRef Name="Id" />
@@ -1724,6 +1747,7 @@
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="WantedObject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Header" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SelectedRequestId" Type="Int64" />
         </EntityType>
         <EntityType Name="Favorites">
           <Key>
@@ -2495,6 +2519,7 @@
           <EntitySet Name="DialogsInfo" EntityType="Self.DialogsInfo" />
           <EntitySet Name="DisLikes" EntityType="Self.DisLikes" />
           <EntitySet Name="Exceptions" EntityType="Self.Exceptions" />
+          <EntitySet Name="ExchangeItemRequests" EntityType="Self.ExchangeItemRequests" />
           <EntitySet Name="ExchangeProducts" EntityType="Self.ExchangeProducts" />
           <EntitySet Name="Favorites" EntityType="Self.Favorites" />
           <EntitySet Name="FavoritesByCookies" EntityType="Self.FavoritesByCookies" />
@@ -2665,6 +2690,9 @@
           <FunctionImport Name="spGetComplaintsBySender" ReturnType="Collection(RentooloModel.spGetComplaintsBySender_Result)">
             <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
+          <FunctionImport Name="spGetExchangeItemRequests" ReturnType="Collection(RentooloModel.spGetExchangeItemRequests_Result)">
+            <Parameter Name="exchangeItemId" Mode="In" Type="Int64" />
+          </FunctionImport>
           <FunctionImport Name="spGetExchangeProducts" ReturnType="Collection(RentooloModel.spGetExchangeProducts_Result)">
             <Parameter Name="query" Mode="In" Type="String" />
           </FunctionImport>
@@ -2742,6 +2770,12 @@
           <Property Type="DateTime" Name="Data" Nullable="false" Precision="23" />
           <Property Type="String" Name="UserSenderName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="UserRecipierName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetExchangeItemRequests_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Color" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="advertId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="spGetExchangeProducts_Result">
           <Property Type="Int64" Name="Id" Nullable="false" />
@@ -3177,6 +3211,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ExchangeItemRequests">
+            <EntityTypeMapping TypeName="RentooloModel.ExchangeItemRequests">
+              <MappingFragment StoreEntitySet="ExchangeItemRequests">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExchangeItemId" ColumnName="ExchangeItemId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="WantedExchangeItemId" ColumnName="WantedExchangeItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ExchangeProducts">
             <EntityTypeMapping TypeName="RentooloModel.ExchangeProducts">
               <MappingFragment StoreEntitySet="ExchangeProducts">
@@ -3185,6 +3229,7 @@
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="WantedObject" ColumnName="WantedObject" />
                 <ScalarProperty Name="Header" ColumnName="Header" />
+                <ScalarProperty Name="SelectedRequestId" ColumnName="SelectedRequestId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3900,6 +3945,16 @@
                 <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="UserSenderName" ColumnName="UserSenderName" />
                 <ScalarProperty Name="UserRecipierName" ColumnName="UserRecipierName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetExchangeItemRequests" FunctionName="Хранилище RentooloModel.spGetExchangeItemRequests">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.spGetExchangeItemRequests_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="advertId" ColumnName="advertId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

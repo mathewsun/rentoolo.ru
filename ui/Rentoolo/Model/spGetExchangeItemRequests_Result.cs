@@ -10,15 +10,12 @@
 namespace Rentoolo.Model
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ExchangeProducts
+    public partial class spGetExchangeItemRequests_Result
     {
-        public long Id { get; set; }
-        public long AdvertId { get; set; }
-        public string Comment { get; set; }
-        public string WantedObject { get; set; }
-        public string Header { get; set; }
-        public Nullable<long> SelectedRequestId { get; set; }
+        public long id { get; set; }
+        public string Name { get; set; }
+        public string Color { get; set; }
+        public Nullable<long> advertId { get; set; }
     }
 }

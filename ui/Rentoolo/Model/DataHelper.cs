@@ -2246,6 +2246,25 @@ namespace Rentoolo.Model
         #endregion
 
 
+        #region exchangeItemRequests
+
+
+        public static void AddExchangeItemRequest(ExchangeItemRequests request)
+        {
+            using(var dc = new RentooloEntities())
+            {
+                dc.ExchangeItemRequests.Add(request);
+                dc.SaveChanges();
+            }
+        }
+
+
+
+
+
+        #endregion
+
+
 
     }
 }

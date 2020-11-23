@@ -51,6 +51,7 @@ namespace Rentoolo.Model
         public virtual DbSet<DialogsInfo> DialogsInfo { get; set; }
         public virtual DbSet<DisLikes> DisLikes { get; set; }
         public virtual DbSet<Exceptions> Exceptions { get; set; }
+        public virtual DbSet<ExchangeItemRequests> ExchangeItemRequests { get; set; }
         public virtual DbSet<ExchangeProducts> ExchangeProducts { get; set; }
         public virtual DbSet<Favorites> Favorites { get; set; }
         public virtual DbSet<FavoritesByCookies> FavoritesByCookies { get; set; }
@@ -301,6 +302,15 @@ namespace Rentoolo.Model
                 new ObjectParameter("userId", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetComplaintsBySender_Result>("spGetComplaintsBySender", userIdParameter);
+        }
+    
+        public virtual ObjectResult<spGetExchangeItemRequests_Result> spGetExchangeItemRequests(Nullable<long> exchangeItemId)
+        {
+            var exchangeItemIdParameter = exchangeItemId.HasValue ?
+                new ObjectParameter("exchangeItemId", exchangeItemId) :
+                new ObjectParameter("exchangeItemId", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetExchangeItemRequests_Result>("spGetExchangeItemRequests", exchangeItemIdParameter);
         }
     
         public virtual ObjectResult<spGetExchangeProducts_Result> spGetExchangeProducts(string query)

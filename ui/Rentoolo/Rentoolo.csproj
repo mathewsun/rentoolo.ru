@@ -420,6 +420,7 @@
     <Content Include="DataBase\CurrentSQLInit\init.sql" />
     <Content Include="DataBase\Init\init_161120.sql" />
     <Content Include="DataBase\Init\init_221120_6.sql" />
+    <Content Include="DataBase\Init\init_231120.sql" />
     <Content Include="DataBase\storedProcedures\spGetExchangeProducts.sql" />
     <Content Include="DataBase\tables\ExchangeProducts.sql" />
     <Content Include="docs\index.html" />
@@ -532,15 +533,15 @@
     <Content Include="Aezakmi128\Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Eoll73\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
-    <Content Include="Eoll73\Web.config">
-      <SubType>Designer</SubType>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
@@ -1420,6 +1421,9 @@
     <Compile Include="Model\Exceptions.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ExchangeItemRequests.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ExchangeProducts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1560,6 +1564,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetComplaintsBySender_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGetExchangeItemRequests_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetExchangeProducts_Result.cs">
