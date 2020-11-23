@@ -31,58 +31,6 @@
             }
         }
     </style>
-
-    <script>
-        $(document).ready(function () {
-            $("div#mdropzone").dropzone({
-                url: "/api/upi",
-                addRemoveLinks: true,
-                resizeWidth: 800,
-                resizeHeight: 600,
-                resizeMethod: 'contain',
-                resizeQuality: 1.0,
-                dictDefaultMessage: "Add photos",
-                success: function (file, response) {
-                    var filaName = response;
-                    file.previewElement.classList.add("dz-success");
-                    $("#my-dropzone").append($('<input type="hidden" name="AdvertPhotos" ' + 'value="' + filaName + '">'));
-                }
-            });
-
-            setLocation();
-
-            var wto;
-            $("#additem_place").change(function () {
-                clearTimeout(wto);
-                wto = setTimeout(function () {
-
-                    var address = $("#additem_place").val();
-
-                    var address = address.split(' ').join('+');
-
-                    var googleUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo";
-
-                    $.get(googleUrl, function (data) {
-
-                        var firstResult = data.results[0];
-
-                        var latlng = firstResult.geometry.location.lat + ',' + firstResult.geometry.location.lng;
-
-                        var mapCenter = { lat: firstResult.geometry.location.lat, lng: firstResult.geometry.location.lng };
-
-                        document.getElementById("latgeo").value = firstResult.geometry.location.lat;
-                        document.getElementById("lnggeo").value = firstResult.geometry.location.lng;
-
-                        var map = new google.maps.Map(document.getElementById('map'), { zoom: 17, center: mapCenter });
-                        // The marker, positioned at Uluru
-                        var marker = new google.maps.Marker({ position: mapCenter, map: map });
-                    });
-                }, 1000);
-            });
-
-
-        });
-    </script>
     <script>
         function setLocation() {
             if (navigator.geolocation) {
@@ -177,12 +125,6 @@
                 <input type="number" name="startPrice" placeholder="От" />
                 <input type="number" name="endPrice" placeholder="До" />
             </div>
-            <%--<div class="main-find_date">
-                 <span>Дата размещения:</span> 
-                 <input type="date" id="StartDate" placeholder="От">
-                 <input type="date" id="EndDate" placeholder="До">
-                                    </div>
-         51a73fc4667aa3e6c7e3a45ccc1c5b82545a2ee0 --%>
             <div class="city-sortby__wrap">
                 <div>
                     <span style="float: left;">Город:</span>&nbsp;
@@ -235,10 +177,9 @@
                                  </div> 
                             </div> --%>
     </li>
-
     <h4 class="mb-4">Специалисты</h4>
     <div class="card-columns">
-        <%foreach (Rentoolo.Model.CraftsMan item in ListCraftsMan)
+        <%foreach (var item in ListCraftsMan)
             {%>
         <div class="card">
             <div class="card-body">

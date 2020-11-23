@@ -1,4 +1,5 @@
-﻿using Rentoolo.Model;
+﻿using Newtonsoft.Json;
+using Rentoolo.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,42 +18,43 @@ namespace Rentoolo
 
         protected void ButtonResume_Click(object sender, EventArgs e)
         {
+            string craft = String.Format("{0}", Request.Form["ctl00$MainContent$input_craft"]);
+            string description = String.Format("{0}", Request.Form["ctl00$MainContent$input_description"]);
+            string price = String.Format("{0}", Request.Form["ctl00$MainContent$input_price"]);
+            string phone = String.Format("{0}", Request.Form["ctl00$MainContent$phone"]);
+            string firstName = String.Format("{0}", Request.Form["ctl00$MainContent$input_firstName"]);
+            string lastName = String.Format("{0}", Request.Form["ctl00$MainContent$input_lastName"]);
+            string address = String.Format("{0}", Request.Form["ctl00$MainContent$address"]);
+            string email = String.Format("{0}", Request.Form["ctl00$MainContent$email"]);
+            string country = String.Format("{0}", Request.Form["ctl00$MainContent$country"]);
+            string region = String.Format("{0}", Request.Form["ctl00$MainContent$region"]);
+            var objPhotos = Request.Form["ResumePhotos"];
 
-            string craft = String.Format("{0}", Request.Form["MainContent$input_craft"]);
-            string description = String.Format("{0}", Request.Form["MainContent$input_description"]);
-            string price = String.Format("{0}", Request.Form["MainContent$input_price"]);
-            string phone = String.Format("{0}", Request.Form["MainContent$resPhone"]);
-            string firstName = String.Format("{0}", Request.Form["MainContent$input_firstName"]);
-            string lastName = String.Format("{0}", Request.Form["MainContent$input_lastName"]);
-            string address = String.Format("{0}", Request.Form["MainContent$address"]);
-            string email = String.Format("{0}", Request.Form["MainContent$email"]);
-            string country = String.Format("{0}", Request.Form["MainContent$country"]);
-            string region = String.Format("{0}", Request.Form["MainContent$region"]);
-
-            //var objPhotos = Request.Form[""];
             Rentoolo.Model.CraftsMan resume = new Model.CraftsMan();
 
-            //if (objPhotos != null)
-            //{
-            //    String[] listPhotos = objPhotos.Split(',');
+            if (objPhotos != null)
+            {
+                String[] listPhotos = objPhotos.Split(',');
 
-            //    var jsonPhotos = JsonConvert.SerializeObject(listPhotos);
+                var jsonPhotos = JsonConvert.SerializeObject(listPhotos);
 
-            //    order.ImgUrls = jsonPhotos;
-            //}
-            //else
-            //{
-            //    order.ImgUrls = "[\"/img/a/noPhoto.png\"]";
-            //}
-
-            //try
-            //{
-            //    order.Category = Int32.Parse(category);
-            //}
-            //catch { } 
+                resume.ImgUrls = jsonPhotos;
+            }
+            else
+            {
+                resume.ImgUrls = "[\"/img/a/noPhoto.png\"]";
+            }
             try
             {
-                resume.Price = double.Parse(price);
+                int category = 1;
+                resume.Category = category;
+
+                resume.Id = category;  // TODO переделать
+            }
+            catch { }
+            try
+            {
+                resume.Price = float.Parse(price);
             }
             catch { }
 
@@ -66,9 +68,11 @@ namespace Rentoolo
             resume.LastName = lastName;
             resume.Region = region;
             resume.Country = country;
+            resume.Email = email;
+
             CraftsManDataHelper.AddCraftsMan(resume);
 
-            //Response.Redirect("");
+            Response.Redirect("CraftsManTasks.aspx");
         }
 
     }
