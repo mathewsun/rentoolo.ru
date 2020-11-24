@@ -11,7 +11,7 @@
 
         .grid-view{
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 40% 40%;
         }
 
         .black-text{
@@ -24,6 +24,14 @@
 
         .medium-button{
             width: 20%;
+        }
+
+        .item-without-img-wrap{
+            display: inline-block;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            vertical-align: bottom;
+            overflow: hidden; 
         }
 
 
@@ -44,14 +52,24 @@
         </div>
 
 
-        <div>
+        <div class="grid-view">
 
             <% foreach (var tender in TendersList)
                 { %>
-                    <div class="item-wrap" >
-                        <a href="Tender.aspx?id=<%= tender.Id %>">
-                            <%= tender.Name %>
-                        </a>
+                    <div class="item-wrap item-without-img-wrap">
+                        <h4>
+                            <a href="Tender.aspx?id=<%= tender.Id %>">
+                                <%= tender.Name %>
+                            </a>
+                        </h4>
+                        <h4>
+                            <%= tender.Cost %> ₽
+                             
+                        </h4>
+                        <div>
+                            <%= tender.Description %>
+                        </div>
+
                     </div>
 
 
