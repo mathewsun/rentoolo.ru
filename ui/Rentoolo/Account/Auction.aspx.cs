@@ -12,7 +12,7 @@ namespace Rentoolo.Account
     public partial class Auction : BasicPage
     {
         public Model.Auctions CurrentAuction = new Model.Auctions();
-        int auctionId;
+        int? auctionId = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             string auctionId = Request.QueryString["auctionId"];
@@ -72,9 +72,9 @@ namespace Rentoolo.Account
 
             }
 
-            if (CurrentAuction != null)
+            if (auctionId!=null)
             {
-                AuctionsHelper.UpdateAuction(item, auctionId);
+                AuctionsHelper.UpdateAuction(item,(int) auctionId);
             }
             else
             {

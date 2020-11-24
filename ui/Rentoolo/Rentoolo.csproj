@@ -1608,6 +1608,7 @@
     <Compile Include="Model\Tenders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\TendersFilter.cs" />
     <Compile Include="Model\TendersHelper.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
