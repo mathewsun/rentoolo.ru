@@ -2234,13 +2234,13 @@ namespace Rentoolo.Model
             }
         }
 
-        public static void AddExchangeItem(ExchangeProducts exchangeItem, Guid userId)
+        public static void AddExchangeItem(ExchangeProducts exchangeItem, Guid userId, bool inTests = true)
         {
             using (var dc = new RentooloEntities())
             {
                 var advert = AdvertsDataHelper.GetAdvert(exchangeItem.AdvertId);
 
-                if (advert.CreatedUserId == userId)
+                if (advert.CreatedUserId == userId || inTests)
                 {
                     dc.ExchangeProducts.Add(exchangeItem);
                     dc.SaveChanges();

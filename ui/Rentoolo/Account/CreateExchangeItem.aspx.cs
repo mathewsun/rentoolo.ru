@@ -10,12 +10,12 @@ namespace Rentoolo.Account
 {
     public partial class CreateExchangeItem : BasicPage
     {
-        Adverts advert;
+        public Adverts AdvertItem;
         protected void Page_Load(object sender, EventArgs e)
         {
             string id = Request.QueryString["id"];
 
-            advert = AdvertsDataHelper.GetAdvert(Convert.ToInt64(id));
+            AdvertItem = AdvertsDataHelper.GetAdvert(Convert.ToInt64(id));
 
         }
 

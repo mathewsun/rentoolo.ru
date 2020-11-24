@@ -20,6 +20,7 @@
                     
                     <div>
                         <h4>
+                            <a href="Account/ExchangeItemView.aspx?id=<%= item.Id %>"
                             <%= item.Name %>
                         </h4>
                         <%= item.Header %> <br />

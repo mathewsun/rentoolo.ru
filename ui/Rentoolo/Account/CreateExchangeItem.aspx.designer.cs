@@ -15,6 +15,15 @@ namespace Rentoolo.Account
     {
 
         /// <summary>
+        /// category_hidden элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden category_hidden;
+
+        /// <summary>
         /// ButtonCreate элемент управления.
         /// </summary>
         /// <remarks>

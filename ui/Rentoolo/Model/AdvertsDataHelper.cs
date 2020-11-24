@@ -29,6 +29,17 @@ namespace Rentoolo.Model
             }
         }
 
+        public static List<Adverts> GetAdverts(Guid userId)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var list = ctx.Adverts.Where(x=>x.CreatedUserId == userId).OrderByDescending(x => x.Created).ToList();
+
+                return list;
+            }
+        }
+
+
         public static Adverts GetAdvert(long id)
         {
             using (var dc = new RentooloEntities())
