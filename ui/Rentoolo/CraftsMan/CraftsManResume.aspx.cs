@@ -28,7 +28,7 @@ namespace Rentoolo
             string email = String.Format("{0}", Request.Form["ctl00$MainContent$email"]);
             string country = String.Format("{0}", Request.Form["ctl00$MainContent$country"]);
             string region = String.Format("{0}", Request.Form["ctl00$MainContent$region"]);
-            var objPhotos = Request.Form["ResumePhotos"];
+            var objPhotos = String.Format("{0}", Request.Form["ResumePhotos"]);
 
             Rentoolo.Model.CraftsMan resume = new Model.CraftsMan();
 
@@ -42,7 +42,7 @@ namespace Rentoolo
             }
             else
             {
-                resume.ImgUrls = "[\"/img/a/noPhoto.png\"]";
+                resume.ImgUrls = "[\"/img/kitchen/falafel-s-ovoshami.jpg\"]";
             }
             try
             {

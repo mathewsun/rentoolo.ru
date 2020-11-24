@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CraftsManOrder.aspx.cs" Inherits="Rentoolo.CraftsMan.CraftsManOrder" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style>
+        #map {
+            height: 300px;
+            width: 100%;
+        }
+    </style>
     <script src="/assets/js/dropzone/dropzone.js"></script>
     <link href="/assets/js/dropzone/dropzone.css" rel="stylesheet">
     <link href="/assets/js/dropzone/basic.css" rel="stylesheet">
@@ -21,7 +27,7 @@
                     $("#my-dropzone").append($('<input type="hidden" name="OrderPhotos" ' + 'value="' + filaName + '">'));
                 }
             });
-        }
+        });
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -55,9 +61,9 @@
                 </div>
             </div>
         </div>
-        <div class="additem-category">
+          <div class="additem-category">
             <div class="additem-left">
-                <span class="additem-title">Добавте Фотографии</span>
+                <span class="additem-title">Фотографии</span>
             </div>
             <div class="additem-right">
                 <div id="mdropzone" class="dropzone"></div>
@@ -132,7 +138,10 @@
                 </div>
             </div>
         </div>
-        <hr class="mb-4">
-        <asp:Button ID="addOrder" runat="server" CssClass="additem-button" Text="Добавить" OnClick="ButtonOrder_Click" />
+        <div class="additem-category">
+            <div class="additem-right additem-go">
+                <asp:Button ID="addOrder" runat="server" CssClass="additem-button" Text="Добавить" OnClick="ButtonOrder_Click" />
+            </div>
+        </div>
     </div>
 </asp:Content>

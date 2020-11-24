@@ -1,10 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CraftsManResume.aspx.cs" Inherits="Rentoolo.CraftsManResume" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style>
+        #map {
+            height: 300px;
+            width: 100%;
+        }
+    </style>
     <script src="/assets/js/dropzone/dropzone.js"></script>
     <link href="/assets/js/dropzone/dropzone.css" rel="stylesheet">
     <link href="/assets/js/dropzone/basic.css" rel="stylesheet">
     <script src="/assets/js/jsonUtils.js?2"></script>
+
     <script>
         $(document).ready(function () {
             $("div#mdropzone").dropzone({
@@ -16,13 +23,12 @@
                 resizeQuality: 1.0,
                 dictDefaultMessage: "Add photos",
                 success: function (file, response) {
-                    var filaName = response;
+                    var filaName = response.Message;
                     file.previewElement.classList.add("dz-success");
                     $("#my-dropzone").append($('<input type="hidden" name="ResumePhotos" ' + 'value="' + filaName + '">'));
                 }
             });
-            setLocation();
-        }
+        });
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -70,7 +76,7 @@
         <div class="row justify-content-md-center">
             <div class="col-md-6 mb-3">
                 <label for="lastName">Фамилия</label>
-                <input type="text" class="form-control" id="input_lastName" runat="server" placeholder="" value="" required >
+                <input type="text" class="form-control" id="input_lastName" runat="server" placeholder="" value="" required>
                 <div class="invalid-feedback">
                     Valid first name is required.
            
@@ -132,8 +138,36 @@
            
                 </div>
             </div>
+            <div class="additem-category additem-check__wrap">
+                <div class="additem-left">
+                    <span class="additem-title">Способ связи</span>
+                </div>
+                <div class="additem-right">
+                    <div class="additem-checkbox">
+                        <input type="radio" class="checkbox" id="phoneandmess" name="contact" checked runat="server">
+                        <label class="checkbox-label" for="phoneandmess">
+                            По телефону и в сообщениях
+                        </label>
+                    </div>
+                    <div class="additem-checkbox">
+                        <input type="radio" class="checkbox" id="onlyphone" name="contact" runat="server">
+                        <label class="checkbox-label" for="onlyphone">
+                            Только по телефону
+                        </label>
+                    </div>
+                    <div class="additem-checkbox">
+                        <input type="radio" class="checkbox" id="message" name="contact" runat="server">
+                        <label class="checkbox-label" for="message">
+                            Только в сообщениях
+                        </label>
+                    </div>
+                </div>
+            </div>
         </div>
-        <hr class="mb-4">
-        <asp:Button runat="server" ID="addOrder" CssClass="additem-button" Text="Добавить" OnClick="ButtonResume_Click" />
+        <div class="additem-category">
+            <div class="additem-right additem-go">
+                <asp:Button runat="server" ID="addOrder" CssClass="additem-button" Text="Добавить" OnClick="ButtonResume_Click" />
+            </div>
+        </div>
     </div>
 </asp:Content>
