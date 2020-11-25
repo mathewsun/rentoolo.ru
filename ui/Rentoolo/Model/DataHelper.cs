@@ -2264,6 +2264,25 @@ namespace Rentoolo.Model
             }
         }
 
+        public static List<ExchangeItemRequests> GetExchangeItemRequests(long id)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.ExchangeItemRequests.Where(x => x.WantedExchangeItemId == id).ToList();
+            }
+        }
+
+
+        public static ExchangeItemRequests GetExchangeItemRequest(long id)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.ExchangeItemRequests.First(x => x.Id == id);
+            }
+        }
+
+
+
         #endregion
 
     }
