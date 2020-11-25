@@ -115,29 +115,25 @@
          
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-5 mb-3">
-                <label for="country">Страна</label>
-                <select class="custom-select d-block w-100" id="country" required>
-                    <option value="">Choose...</option>
-                    <option>United States</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please select a valid country.
-           
-                </div>
-            </div>
+  <div class="row">
             <div class="col-md-4 mb-3">
-                <label for="region">Регион</label>
-                <select class="custom-select d-block w-100" id="region" required>
-                    <option value="">Выбрать...</option>
-                    <option>пример</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please provide a valid state.
-           
-                </div>
+
+                <span style="float: left;">Город:</span>&nbsp;
+                                        <input type="text" class="form-control" name="city" list="cities" />
+                <br />
+                <datalist id="cities">
+
+                    <% foreach (var city in AllCities)
+                        { %>
+
+                    <option>
+                        <%=city %>
+                    </option>
+
+                    <%} %>
+                </datalist>
             </div>
+        </div>
             <div class="additem-category additem-check__wrap">
                 <div class="additem-left">
                     <span class="additem-title">Способ связи</span>
@@ -169,5 +165,5 @@
                 <asp:Button runat="server" ID="addOrder" CssClass="additem-button" Text="Добавить" OnClick="ButtonResume_Click" />
             </div>
         </div>
-    </div>
+   
 </asp:Content>
