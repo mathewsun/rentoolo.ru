@@ -69,6 +69,9 @@
                         <div>
                             <%= tender.Description %>
                         </div>
+                        <div>
+                            <%=tender.Created.ToString().Split(' ')[0] %>
+                        </div>
 
                     </div>
 
