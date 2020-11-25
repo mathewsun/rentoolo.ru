@@ -323,6 +323,7 @@
     <Content Include="AdvertCar.aspx" />
     <Content Include="Aezakmi128\AddNewsAezakmi.aspx" />
     <Content Include="Aezakmi128\NewsAezakmi.aspx" />
+    <Content Include="AlexPigalyov\NewsAlexPigalyov.aspx" />
     <Content Include="Article.aspx" />
     <Content Include="Articles.aspx" />
     <Content Include="assets\css\additional.css" />
@@ -1145,6 +1146,13 @@
     <Compile Include="Aezakmi128\NewsAezakmi.aspx.designer.cs">
       <DependentUpon>NewsAezakmi.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AlexPigalyov\NewsAlexPigalyov.aspx.cs">
+      <DependentUpon>NewsAlexPigalyov.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlexPigalyov\NewsAlexPigalyov.aspx.designer.cs">
+      <DependentUpon>NewsAlexPigalyov.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -1398,6 +1406,7 @@
     <Compile Include="Model\DailyStatistics.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataHelperAlexPigalyov.cs" />
     <Compile Include="Model\DataHelperTowardsbackwards.cs" />
     <Compile Include="Model\CommentForUser.cs" />
     <Compile Include="Model\ComplaintsFilter.cs" />
@@ -1500,6 +1509,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\News.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsAlexPigalyov.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsAntares.cs">
