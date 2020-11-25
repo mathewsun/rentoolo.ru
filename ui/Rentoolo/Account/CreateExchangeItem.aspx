@@ -130,21 +130,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div>
         <input type="text" name="header" placeholder="header" />
         <input type="text" name="wanted" placeholder="wanted" />

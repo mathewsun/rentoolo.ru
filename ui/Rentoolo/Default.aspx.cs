@@ -74,9 +74,12 @@ namespace Rentoolo
                 // test
                 string userIP = Request.RequestContext.HttpContext.Request.UserHostAddress;
 
+
+                string searchStr = (Request.QueryString["s"] == "") || (Request.QueryString["s"] == null) ? null : Request.QueryString["s"];
+
                 SellFilter sellFilter = new SellFilter()
                 {
-                    Search = Request.QueryString["s"],
+                    Search = searchStr,
                     StartDate = startDate2,
                     EndDate = endDate2,
                     City = city,
@@ -143,7 +146,7 @@ namespace Rentoolo
 
         protected void ButtonSearch_Click(object sender, EventArgs e)
         {
-            string search = String.Format("{0}", Request.Form["InputSearch"]);
+            string search = Request.Form["InputSearch"];
 
             // creating query string(queryStr) for redirect to this page with search parameters
 

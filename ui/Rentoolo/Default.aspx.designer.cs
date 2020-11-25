@@ -24,15 +24,6 @@ namespace Rentoolo
         protected global::System.Web.UI.WebControls.LoginView LoginView1;
 
         /// <summary>
-        /// Text1 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
-
-        /// <summary>
         /// Button1 элемент управления.
         /// </summary>
         /// <remarks>
