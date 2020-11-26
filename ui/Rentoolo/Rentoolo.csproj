@@ -16,8 +16,8 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <TargetFrameworkProfile />
@@ -422,6 +422,11 @@
     <Content Include="ComplaintsPage.aspx" />
     <Content Include="ConsumerElectronics.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="CraftsMan\CraftsManOrder.aspx" />
+    <Content Include="CraftsMan\CraftsManPage.aspx" />
+    <Content Include="CraftsMan\CraftsManProfile.aspx" />
+    <Content Include="CraftsMan\CraftsManResume.aspx" />
+    <Content Include="CraftsMan\CraftsManTasks.aspx" />
     <Content Include="CreateComplaint.aspx" />
     <Content Include="DataBase\CurrentSQLInit\init.sql" />
     <Content Include="DataBase\Init\init_161120.sql" />
@@ -543,15 +548,15 @@
     <Content Include="Eoll73\Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="AlexPigalyov\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
-    <Content Include="AlexPigalyov\Web.config">
-      <SubType>Designer</SubType>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
@@ -1322,6 +1327,41 @@
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\TopRecipesController.cs" />
+    <Compile Include="CraftsMan\CraftsManOrder.aspx.cs">
+      <DependentUpon>CraftsManOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CraftsMan\CraftsManOrder.aspx.designer.cs">
+      <DependentUpon>CraftsManOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CraftsMan\CraftsManPage.aspx.cs">
+      <DependentUpon>CraftsManPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CraftsMan\CraftsManPage.aspx.designer.cs">
+      <DependentUpon>CraftsManPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CraftsMan\CraftsManProfile.aspx.cs">
+      <DependentUpon>CraftsManProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CraftsMan\CraftsManProfile.aspx.designer.cs">
+      <DependentUpon>CraftsManProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CraftsMan\CraftsManResume.aspx.cs">
+      <DependentUpon>CraftsManResume.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CraftsMan\CraftsManResume.aspx.designer.cs">
+      <DependentUpon>CraftsManResume.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CraftsMan\CraftsManTasks.aspx.cs">
+      <DependentUpon>CraftsManTasks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CraftsMan\CraftsManTasks.aspx.designer.cs">
+      <DependentUpon>CraftsManTasks.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CreateComplaint.aspx.cs">
       <DependentUpon>CreateComplaint.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1429,6 +1469,13 @@
     <Compile Include="Model\Complaints.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\CraftsMan.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CraftsManDataHelper.cs" />
+    <Compile Include="Model\CraftsManOrder.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Currencies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1511,6 +1558,7 @@
     <Compile Include="Model\Likes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\LikesDisLikes.cs" />
     <Compile Include="Model\LoginStat.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1563,6 +1611,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsIlya.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsMrshkVV.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsRaspel.cs">
@@ -1775,7 +1826,15 @@
     <Compile Include="Model\UsersOpenAuthData.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\UsersSearches.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\UserViews.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ViewedChat.cs" />
+    <Compile Include="Model\ViewedDialogInfo.cs" />
+    <Compile Include="Model\ViewedObjects.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Wallets.cs">
@@ -2067,7 +2126,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53205</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53222/</IISUrl>
+          <IISUrl>http://localhost:59917/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
