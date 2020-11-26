@@ -44,6 +44,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery, Version=1.7.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.1.7.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery.UI.Combined, Version=1.8.20.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.UI.Combined.1.8.20\lib\net45\AspNet.ScriptManager.jQuery.UI.Combined.dll</HintPath>
+    </Reference>
     <Reference Include="DotNetOpenAuth.AspNet, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetOpenAuth.AspNet.4.3.4.13329\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
     </Reference>
@@ -121,21 +130,40 @@
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Fleck, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fleck.1.1.0\lib\net45\Fleck.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Membership.OpenAuth, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Membership.OpenAuth.1.0.0\lib\net45\Microsoft.AspNet.Membership.OpenAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.0.0\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=736440c9b414ea16, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeContracts.Unofficial.1.0.0.0\lib\Net35\Microsoft.Contracts.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ScriptManager.MSAjax, Version=4.5.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.4.5.6\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms, Version=4.5.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.4.5.6\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -149,7 +177,6 @@
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
@@ -162,31 +189,17 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    <Reference Include="System.Web.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -195,43 +208,12 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="AspNet.ScriptManager.jQuery">
-      <HintPath>..\packages\AspNet.ScriptManager.jQuery.1.7.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
-    </Reference>
-    <Reference Include="AspNet.ScriptManager.jQuery.UI.Combined">
-      <HintPath>..\packages\AspNet.ScriptManager.jQuery.UI.Combined.1.8.20\lib\net45\AspNet.ScriptManager.jQuery.UI.Combined.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ScriptManager.MSAjax, Version=4.5.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.4.5.6\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ScriptManager.WebForms, Version=4.5.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.4.5.6\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Membership.OpenAuth, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.AspNet.Membership.OpenAuth.1.0.0\lib\net45\Microsoft.AspNet.Membership.OpenAuth.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="WebGrease">
-      <Private>True</Private>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
-    </Reference>
-    <Reference Include="Antlr3.Runtime">
-      <Private>True</Private>
-      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.0.0\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -249,12 +231,8 @@
     <Content Include="Account\CashIn.aspx" />
     <Content Include="Account\CashOut.aspx" />
     <Content Include="Account\Category.aspx" />
-    <Content Include="Account\CreateExchangeItem.aspx" />
     <Content Include="Account\DeviceSettings.aspx" />
     <Content Include="Account\Exchange.aspx" />
-    <Content Include="Account\ExchangeItemRequest.aspx" />
-    <Content Include="Account\ExchangeItemRequests.aspx" />
-    <Content Include="Account\ExchangeItemView.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\LoginStatistics.aspx" />
     <Content Include="Account\Manage.aspx" />
@@ -270,7 +248,6 @@
     <Content Include="Account\Referrals.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Account\Rent.aspx" />
-    <Content Include="Account\SelectAdvertToExchange.aspx" />
     <Content Include="Account\SelectCategory.aspx" />
     <Content Include="Account\SellCategory.aspx" />
     <Content Include="Account\Sell\Business.aspx" />
@@ -430,16 +407,10 @@
     <Content Include="CreateComplaint.aspx" />
     <Content Include="DataBase\CurrentSQLInit\init.sql" />
     <Content Include="DataBase\Init\init_161120.sql" />
-    <Content Include="DataBase\Init\init_221120_6.sql" />
-    <Content Include="DataBase\Init\init_231120.sql" />
-    <Content Include="DataBase\storedProcedures\spGetExchangeItemRequests.sql" />
-    <Content Include="DataBase\storedProcedures\spGetExchangeProducts.sql" />
-    <Content Include="DataBase\tables\ExchangeProducts.sql" />
     <Content Include="docs\index.html" />
     <Content Include="Education\AddNewsEducation.aspx" />
     <Content Include="Education\NewsEducation.aspx" />
     <Content Include="Empty.aspx" />
-    <Content Include="Eoll73\AddNewsEoll73.aspx" />
     <Content Include="Eoll73\NewsEoll73.aspx" />
     <Content Include="ExchangeProductsPage.aspx" />
     <Content Include="Fail.aspx" />
@@ -477,7 +448,6 @@
     <Content Include="News.aspx" />
     <Content Include="NewsAntares\NewsAntares.aspx" />
     <Content Include="notifications\index.html" />
-    <Content Include="packages.config" />
     <Content Include="Admin\Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -487,6 +457,15 @@
     <Content Include="Raspel\NewsRaspel.aspx" />
     <Content Include="Realty.aspx" />
     <Content Include="Rent.aspx" />
+    <EntityDeploy Include="Model\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="AlexPigalyov\Web.config" />
+    <None Include="packages.config" />
     <Content Include="Services.aspx" />
     <Content Include="ShCodder\NewShCodder.aspx" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -544,19 +523,6 @@
     </Content>
     <Content Include="Aezakmi128\Web.config">
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Eoll73\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="AlexPigalyov\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <EntityDeploy Include="Model\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
@@ -662,13 +628,6 @@
     <Compile Include="Account\Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\CreateExchangeItem.aspx.cs">
-      <DependentUpon>CreateExchangeItem.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\CreateExchangeItem.aspx.designer.cs">
-      <DependentUpon>CreateExchangeItem.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Account\DeviceSettings.aspx.cs">
       <DependentUpon>DeviceSettings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -682,27 +641,6 @@
     </Compile>
     <Compile Include="Account\Exchange.aspx.designer.cs">
       <DependentUpon>Exchange.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\ExchangeItemRequest.aspx.cs">
-      <DependentUpon>ExchangeItemRequest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\ExchangeItemRequest.aspx.designer.cs">
-      <DependentUpon>ExchangeItemRequest.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\ExchangeItemRequests.aspx.cs">
-      <DependentUpon>ExchangeItemRequests.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\ExchangeItemRequests.aspx.designer.cs">
-      <DependentUpon>ExchangeItemRequests.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\ExchangeItemView.aspx.cs">
-      <DependentUpon>ExchangeItemView.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\ExchangeItemView.aspx.designer.cs">
-      <DependentUpon>ExchangeItemView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\LoginStatistics.aspx.cs">
       <DependentUpon>LoginStatistics.aspx</DependentUpon>
@@ -783,13 +721,6 @@
     </Compile>
     <Compile Include="Account\Result.ashx.cs">
       <DependentUpon>Result.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\SelectAdvertToExchange.aspx.cs">
-      <DependentUpon>SelectAdvertToExchange.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\SelectAdvertToExchange.aspx.designer.cs">
-      <DependentUpon>SelectAdvertToExchange.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SelectCategory.aspx.cs">
       <DependentUpon>SelectCategory.aspx</DependentUpon>
@@ -1174,14 +1105,12 @@
     </Compile>
     <Compile Include="AlexPigalyov\AddNewsAlexPigalyov.aspx.cs">
       <DependentUpon>AddNewsAlexPigalyov.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AlexPigalyov\AddNewsAlexPigalyov.aspx.designer.cs">
       <DependentUpon>AddNewsAlexPigalyov.aspx</DependentUpon>
     </Compile>
     <Compile Include="AlexPigalyov\NewsAlexPigalyov.aspx.cs">
       <DependentUpon>NewsAlexPigalyov.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AlexPigalyov\NewsAlexPigalyov.aspx.designer.cs">
       <DependentUpon>NewsAlexPigalyov.aspx</DependentUpon>
@@ -1260,7 +1189,6 @@
     </Compile>
     <Compile Include="BatrebleSs\NewsBatrebleSs.aspx.cs">
       <DependentUpon>NewsBatrebleSs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="BatrebleSs\NewsBatrebleSs.aspx.designer.cs">
       <DependentUpon>NewsBatrebleSs.aspx</DependentUpon>
@@ -1329,35 +1257,30 @@
     <Compile Include="Controllers\TopRecipesController.cs" />
     <Compile Include="CraftsMan\CraftsManOrder.aspx.cs">
       <DependentUpon>CraftsManOrder.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManOrder.aspx.designer.cs">
       <DependentUpon>CraftsManOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="CraftsMan\CraftsManPage.aspx.cs">
       <DependentUpon>CraftsManPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManPage.aspx.designer.cs">
       <DependentUpon>CraftsManPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="CraftsMan\CraftsManProfile.aspx.cs">
       <DependentUpon>CraftsManProfile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManProfile.aspx.designer.cs">
       <DependentUpon>CraftsManProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="CraftsMan\CraftsManResume.aspx.cs">
       <DependentUpon>CraftsManResume.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManResume.aspx.designer.cs">
       <DependentUpon>CraftsManResume.aspx</DependentUpon>
     </Compile>
     <Compile Include="CraftsMan\CraftsManTasks.aspx.cs">
       <DependentUpon>CraftsManTasks.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManTasks.aspx.designer.cs">
       <DependentUpon>CraftsManTasks.aspx</DependentUpon>
@@ -1383,13 +1306,6 @@
     <Compile Include="Education\NewsEducation.aspx.designer.cs">
       <DependentUpon>NewsEducation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Eoll73\AddNewsEoll73.aspx.cs">
-      <DependentUpon>AddNewsEoll73.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Eoll73\AddNewsEoll73.aspx.designer.cs">
-      <DependentUpon>AddNewsEoll73.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Eoll73\NewsEoll73.aspx.cs">
       <DependentUpon>NewsEoll73.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1399,7 +1315,6 @@
     </Compile>
     <Compile Include="ExchangeProductsPage.aspx.cs">
       <DependentUpon>ExchangeProductsPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ExchangeProductsPage.aspx.designer.cs">
       <DependentUpon>ExchangeProductsPage.aspx</DependentUpon>
@@ -1483,6 +1398,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataHelperAlexPigalyov.cs" />
+    <Compile Include="Model\DataHelperBatrebleSs.cs" />
     <Compile Include="Model\DataHelperTowardsbackwards.cs" />
     <Compile Include="Model\CommentForUser.cs" />
     <Compile Include="Model\ComplaintsFilter.cs" />
@@ -1490,7 +1406,6 @@
     <Compile Include="Model\DataHelperAntares.cs" />
     <Compile Include="Model\DataHelperAzizjan.cs" />
     <Compile Include="Model\DataHelperEoll73.cs" />
-    <Compile Include="Model\DataHelperBatrebleSs.cs" />
     <Compile Include="Model\DataHelperMrshkVV.cs" />
     <Compile Include="Model\DataHelperShCodder.cs" />
     <Compile Include="Model\DataHelperEducation.cs" />
@@ -2126,7 +2041,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53205</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59917/</IISUrl>
+          <IISUrl>http://localhost:53222/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
