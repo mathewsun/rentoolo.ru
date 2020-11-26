@@ -10,7 +10,7 @@ namespace Rentoolo.Account
 {
     public partial class CreateExchangeItem : BasicPage
     {
-        public Adverts AdvertItem;
+        public Model.Adverts AdvertItem;
         protected void Page_Load(object sender, EventArgs e)
         {
             string id = Request.QueryString["id"];

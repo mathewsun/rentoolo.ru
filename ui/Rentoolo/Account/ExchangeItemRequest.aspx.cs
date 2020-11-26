@@ -8,12 +8,15 @@ using System.Web.UI.WebControls;
 
 namespace Rentoolo.Account
 {
-    public partial class ExchangeItemRequest : System.Web.UI.Page
+    public partial class ExchangeItemRequest : BasicPage
     {
         public Model.ExchangeItemRequests itemRequest;
 
         public Model.Adverts ExchangeAdvert;
         public Model.Adverts WantedAdvert;
+
+        ExchangeProducts wantedExchangeItem;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             string id = Request.QueryString["id"];
@@ -21,11 +24,22 @@ namespace Rentoolo.Account
             itemRequest = DataHelper.GetExchangeItemRequest(Convert.ToInt64(id));
 
             ExchangeProducts exchangeItem = DataHelper.GetExchangeItem(itemRequest.ExchangeItemId);
-            ExchangeProducts wantedExchangeItem = DataHelper.GetExchangeItem(itemRequest.WantedExchangeItemId);
+            wantedExchangeItem = DataHelper.GetExchangeItem(itemRequest.WantedExchangeItemId);
 
             ExchangeAdvert = AdvertsDataHelper.GetAdvert(exchangeItem.AdvertId);
             WantedAdvert = AdvertsDataHelper.GetAdvert(wantedExchangeItem.AdvertId);
 
+
+        }
+
+        protected void ButtonAcceptRequest_Click(object sender, EventArgs e)
+        {
+            bool isDebug = true;
+
+            if(User.UserId == WantedAdvert.CreatedUserId || isDebug)
+            {
+                DataHelper.SetExchangeProductRequest(itemRequest, wantedExchangeItem);
+            }
 
         }
     }
