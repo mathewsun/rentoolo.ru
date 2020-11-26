@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CraftsManOrder.aspx.cs" Inherits="Rentoolo.CraftsMan.CraftsManOrder" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style>
+        #map {
+            height: 300px;
+            width: 100%;
+        }
+    </style>
     <script src="/assets/js/dropzone/dropzone.js"></script>
     <link href="/assets/js/dropzone/dropzone.css" rel="stylesheet">
     <link href="/assets/js/dropzone/basic.css" rel="stylesheet">
@@ -21,8 +27,152 @@
                     $("#my-dropzone").append($('<input type="hidden" name="OrderPhotos" ' + 'value="' + filaName + '">'));
                 }
             });
+
+            setLocation();
+
+            var wto;
+            $("#additem_place").change(function () {
+                clearTimeout(wto);
+                wto = setTimeout(function () {
+
+                    var address = $("#additem_place").val();
+
+                    var address = address.split(' ').join('+');
+
+                    var googleUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo";
+
+                    $.get(googleUrl, function (data) {
+
+                        var firstResult = data.results[0];
+
+                        var latlng = firstResult.geometry.location.lat + ',' + firstResult.geometry.location.lng;
+
+                        var mapCenter = { lat: firstResult.geometry.location.lat, lng: firstResult.geometry.location.lng };
+
+                        document.getElementById("latgeo").value = firstResult.geometry.location.lat;
+                        document.getElementById("lnggeo").value = firstResult.geometry.location.lng;
+
+                        var map = new google.maps.Map(document.getElementById('map'), { zoom: 17, center: mapCenter });
+                        // The marker, positioned at Uluru
+                        var marker = new google.maps.Marker({ position: mapCenter, map: map });
+                    });
+                }, 1000);
+            });
+            $.get("/assets/json/categories.json?4", function (data) {
+
+                var category = '<%=CategoryId%>';
+
+                var strFirstCategory = category.substring(0, 2);
+
+                var firstCategory = findJsonElementById(data, strFirstCategory);
+
+                if (firstCategory.name_ru !== undefined) {
+                    $("#category").html(firstCategory.name_ru);
+                }
+                else {
+                    $("#category").html(firstCategory.name);
+                }
+
+                var strSecondCategory = category.substring(0, 4);
+
+                if (strSecondCategory !== undefined) {
+                    if (strSecondCategory == strFirstCategory) return;
+                    var secondCategory = findJsonElementById(data, strSecondCategory);
+
+                    if (secondCategory.name_ru !== undefined) {
+                        $("#category").append("&nbsp;/&nbsp;" + secondCategory.name_ru);
+                    }
+                    else {
+                        $("#category").append("&nbsp;/&nbsp;" + secondCategory.name);
+                    }
+                }
+
+                var strThirdCategory = category.substring(0, 6);
+
+                if (strThirdCategory !== undefined) {
+                    if (strThirdCategory == strFirstCategory) return;
+                    var thirdCategory = findJsonElementById(data, strThirdCategory);
+
+                    if (thirdCategory.name_ru !== undefined) {
+                        $("#category").append("&nbsp;/&nbsp;" + thirdCategory.name_ru);
+                    }
+                    else {
+                        $("#category").append("&nbsp;/&nbsp;" + thirdCategory.name);
+                    }
+                }
+            });
+        });
+    </script>
+     <script>
+         function setLocation() {
+             if (navigator.geolocation) {
+                 navigator.geolocation.getCurrentPosition(function (position) {
+
+                     var innerHTMLgeo = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+
+                     document.getElementById("latgeo").value = position.coords.latitude;
+                     document.getElementById("lnggeo").value = position.coords.longitude;
+
+                     var latlng = position.coords.latitude + ',' + position.coords.longitude;
+
+                     var googleUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlng + "&key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo";
+
+                     var mapCenter = { lat: position.coords.latitude, lng: position.coords.longitude };
+
+                     $.get(googleUrl, function (data) {
+
+                         var firstResult = data.results[0];
+
+                         $("#additem_place").val(firstResult.formatted_address);
+
+                         var map = new google.maps.Map(document.getElementById('map'), { zoom: 17, center: mapCenter });
+                         // The marker, positioned at Uluru
+                         var marker = new google.maps.Marker({ position: mapCenter, map: map });
+                     });
+                 },
+                     function (error) {
+                         // On error code..
+                     },
+                     { timeout: 30000, enableHighAccuracy: true, maximumAge: 75000 }
+                 );
+             } else {
+                 x.innerHTML = "Geolocation is not supported by this browser.";
+             }
+         }
+
+         function showError(error) {
+             switch (error.code) {
+                 case error.PERMISSION_DENIED:
+                     x.innerHTML = "User denied the request for Geolocation."
+                     break;
+                 case error.POSITION_UNAVAILABLE:
+                     x.innerHTML = "Location information is unavailable."
+                     break;
+                 case error.TIMEOUT:
+                     x.innerHTML = "The request to get user location timed out."
+                     break;
+                 case error.UNKNOWN_ERROR:
+                     x.innerHTML = "An unknown error occurred."
+                     break;
+             }
+         }
+     </script>
+    <script>
+        var autocomplete;
+        function initAutocomplete() {
+            autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById('additem_place'), { types: ['geocode'] });
+
+            autocomplete.setFields(['address_component']);
+
+            autocomplete.addListener('place_changed', fillInAddress);
+        }
+        function fillInAddress() {
+            var place = autocomplete.getPlace();
         }
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo&libraries=places&callback=initAutocomplete"
+        async defer></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="additem">
@@ -57,11 +207,37 @@
         </div>
         <div class="additem-category">
             <div class="additem-left">
-                <span class="additem-title">Добавте Фотографии</span>
+                <span class="additem-title">Фотографии</span>
             </div>
             <div class="additem-right">
                 <div id="mdropzone" class="dropzone"></div>
                 <div id="my-dropzone" style="display: none;"></div>
+            </div>
+        </div>
+         <div class="additem-category">
+            <div class="additem-left">
+                <span class="additem-title">Место сделки</span>
+            </div>
+            <div class="additem-right additem-place">
+                <input type="text" id="additem_place" class="additem-input" required clientidmode="Static" runat="server">
+                <input type="hidden" id="latgeo" />
+                <input type="hidden" id="lnggeo" />
+                <input type="hidden" id="street_number_hidden" />
+                <input type="hidden" id="route_hidden" />
+                <input type="hidden" id="locality_hidden" />
+                <input type="hidden" id="administrative_area_level_1_hidden" />
+                <input type="hidden" id="country_hidden" />
+                <input type="hidden" id="postal_code_hidden" />
+            </div>
+        </div>
+        <div class="additem-category">
+            <div class="additem-left ">
+            </div>
+            <div class="additem-right additem-map">
+                <div class="additem-map">
+                    <div id="map"></div>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo&callback=initMap" async defer></script>
+                </div>
             </div>
         </div>
         <h4 class="mb-3">Ваши контаткты</h4>
@@ -109,30 +285,53 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-5 mb-3">
-                <label for="country">Страна</label>
-                <select class="custom-select d-block w-100" id="country" required>
-                    <option value="">Choose...</option>
-                    <option>United States</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please select a valid country.
-           
-                </div>
-            </div>
             <div class="col-md-4 mb-3">
-                <label for="region">Регион</label>
-                <select class="custom-select d-block w-100" id="region" required>
-                    <option value="">Выбрать...</option>
-                    <option>пример</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please provide a valid state.
-           
+
+                <span style="float: left;">Город:</span>&nbsp;
+                                        <input type="text" class="form-control" name="city" list="cities" />
+                <br />
+                <datalist id="cities">
+
+                    <% foreach (var city in AllCities)
+                        { %>
+
+                    <option>
+                        <%=city %>
+                    </option>
+
+                    <%} %>
+                </datalist>
+            </div>
+            </div>
+            <div class="additem-category additem-check__wrap">
+                <div class="additem-left">
+                    <span class="additem-title">Способ связи</span>
+                </div>
+                <div class="additem-right">
+                    <div class="additem-checkbox">
+                        <input type="radio" class="checkbox" id="phoneandmess" name="contact" checked runat="server">
+                        <label class="checkbox-label" for="phoneandmess">
+                            По телефону и в сообщениях
+                        </label>
+                    </div>
+                    <div class="additem-checkbox">
+                        <input type="radio" class="checkbox" id="onlyphone" name="contact" runat="server">
+                        <label class="checkbox-label" for="onlyphone">
+                            Только по телефону
+                        </label>
+                    </div>
+                    <div class="additem-checkbox">
+                        <input type="radio" class="checkbox" id="message" name="contact" runat="server">
+                        <label class="checkbox-label" for="message">
+                            Только в сообщениях
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
-        <hr class="mb-4">
-        <asp:Button ID="addOrder" runat="server" CssClass="additem-button" Text="Добавить" OnClick="ButtonOrder_Click" />
-    </div>
+        <div class="additem-category">
+            <div class="additem-right additem-go">
+                <asp:Button ID="addOrder" runat="server" CssClass="additem-button" Text="Добавить" OnClick="ButtonOrder_Click" />
+            </div>
+        </div>
 </asp:Content>

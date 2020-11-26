@@ -42,6 +42,15 @@ namespace Rentoolo.CraftsMan
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl input_price;
 
         /// <summary>
+        /// additem_place control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText additem_place;
+
+        /// <summary>
         /// input_lastName control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,33 @@ namespace Rentoolo.CraftsMan
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText phone;
+
+        /// <summary>
+        /// phoneandmess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton phoneandmess;
+
+        /// <summary>
+        /// onlyphone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton onlyphone;
+
+        /// <summary>
+        /// message control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton message;
 
         /// <summary>
         /// addOrder control.
