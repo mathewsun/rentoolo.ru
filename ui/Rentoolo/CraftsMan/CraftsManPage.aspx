@@ -99,7 +99,7 @@
             var place = autocomplete.getPlace();
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo&libraries=places&callback=initAutocomplete" async defer></script> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEM6pBamtfcOxQiIHbO9HY76xvNiUxgIo&libraries=places&callback=initAutocomplete" async defer></script>
     <script src="/assets/js/jquery-2.2.4.js"></script>
     <link href="/assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
     <script src="/assets/js/jQuery.Brazzers-Carousel.js"></script>
@@ -202,10 +202,13 @@
             {%>
         <div class="card">
             <div class="card-body">
-                <img class="card-img-top" src="<%=item.ImgUrls %>" alt="Card image">
-                <h4 class="card-title"><%= item.Сraft %></h4>
-                <p class="card-text"><%= item.Description %></p>
-                <button class="btn btn-primary" style="opacity: 0.75">Подробнее</button>
+                <a href="CraftsManProfile.aspx?id=<%= item.Id %>">
+                    <img class="card-img-top" src="<%=item.ImgUrls %>" alt="Card image">
+                    <h4 class="card-title"><%= item.Сraft %></h4>
+                    <p class="card-text"><%= item.Description %></p>
+                    <p class="card-text"><%= item.Id %></p>
+                </a>
+
             </div>
         </div>
         <%} %>
