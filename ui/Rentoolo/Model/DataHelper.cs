@@ -2218,6 +2218,16 @@ namespace Rentoolo.Model
 
         #region exchange items/products/adverts
 
+        public static void SetExchangeProductRequest(ExchangeItemRequests request, ExchangeProducts product)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var exchangeProduct = dc.ExchangeProducts.First(x=>x.Id == product.Id);
+                exchangeProduct.SelectedRequestId = request.Id;
+                dc.SaveChanges();
+            }
+        }
+
         public static List<spGetExchangeProducts_Result> GetExchangeItems(string search)
         {
             using (var dc = new RentooloEntities())

@@ -7,7 +7,7 @@
 
 
         
-    <%--<div class="advert">
+    <div class="advert">
 
         <div>
             <h5>
@@ -218,8 +218,12 @@
             </div>
         </div>
 
-    </div>--%>
+    </div>
 
+
+        <hr /><hr /><hr /><hr /><hr /><hr />
+        
+        <asp:Button ID="ButtonAcceptRequest" runat="server" Text="Select Request to Exchange" OnClick="ButtonAcceptRequest_Click" />
 
 
     </div>
