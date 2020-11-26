@@ -15,7 +15,7 @@
         </div>
 
         <div class="media-body-inline-grid" data-grid="images">
-            <div class="photoContainer" data='<%=AdvertItem.ImgUrls%>'></div>
+            <div class="photoContainer" data='<%= AdvertItem.ImgUrls%>'></div>
         </div>
         <div class="additem-category">
         </div>
