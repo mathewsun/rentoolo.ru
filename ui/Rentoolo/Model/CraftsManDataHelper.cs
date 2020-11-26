@@ -30,13 +30,12 @@ namespace Rentoolo.Model
             }
         }
 
-        public static CraftsMan GetCraftsMan(long id)
+        public static CraftsMan GetCraftsManById(int id)
         {
-            using (var dc = new RentooloEntities())
+            using (var ctx = new RentooloEntities())
             {
-                CraftsMan item = dc.CraftsMan.FirstOrDefault(x => x.Id == id);
-
-                return item;
+                var obj = ctx.CraftsMan.FirstOrDefault(x => x.Id == id);
+                return obj;
             }
         }
 
@@ -275,6 +274,20 @@ namespace Rentoolo.Model
                 }
             }
         }
+
+        #endregion
+
+        #region stProcedure
+
+        //public static List<spGetCraftsManById> spGetCraftsManById(int Id)
+        //{  
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        List<spGetCraftsManById> result = dc.spGetCraftsManById(Id).ToList();
+
+        //        return result;
+        //    }
+        //}
 
         #endregion
     }
