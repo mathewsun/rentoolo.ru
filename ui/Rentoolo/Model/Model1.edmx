@@ -188,6 +188,7 @@
           <Property Name="UserSender" Type="uniqueidentifier" Nullable="false" />
           <Property Name="UserRecipier" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Data" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" />
         </EntityType>
         <EntityType Name="CraftsMan">
           <Key>
@@ -476,6 +477,17 @@
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="NewsAlexPigalyov">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="AuthorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
         <EntityType Name="NewsAntares">
           <Key>
             <PropertyRef Name="Id" />
@@ -509,7 +521,7 @@
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="NewsEoll73">
+        <EntityType Name="NewsEducation">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -520,7 +532,7 @@
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="NewsGGdotNET">
+        <EntityType Name="NewsEoll73">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -547,6 +559,17 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="AuthorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsMrshkVV">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="AuthorId" Type="uniqueidentifier" Nullable="false" />
@@ -799,6 +822,22 @@
           <Property Name="MembershipUserName" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="HasLocalPassword" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="UsersSearches">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Search" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="OnlyInName" Type="bit" />
+          <Property Name="StartPrice" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="EndPrice" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="SortBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserViews">
           <Key>
             <PropertyRef Name="Id" />
@@ -807,6 +846,16 @@
           <Property Name="ObjectId" Type="int" Nullable="false" />
           <Property Name="Type" Type="int" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewedObjects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ObjectId" Type="bigint" Nullable="false" />
+          <Property Name="ObjectType" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Wallets">
@@ -1197,10 +1246,6 @@
         <Function Name="spGetWatchedByCookies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="uid" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="spUpdateQiwiAccountBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="number" Type="nvarchar" Mode="In" />
-          <Parameter Name="balance" Type="float" Mode="In" />
-        </Function>
         <EntityContainer Name="Хранилище RentooloModelContainer">
           <EntitySet Name="Adverts" EntityType="Self.Adverts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
@@ -1216,6 +1261,8 @@
           <EntitySet Name="ChatUsers" EntityType="Self.ChatUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Complaints" EntityType="Self.Complaints" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CraftsMan" EntityType="Self.CraftsMan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CraftsManOrder" EntityType="Self.CraftsManOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeletedAdverts" EntityType="Self.DeletedAdverts" Schema="dbo" store:Type="Tables" />
@@ -1238,6 +1285,7 @@
           <EntitySet Name="NewAezakmi" EntityType="Self.NewAezakmi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News_towardsbackwards" EntityType="Self.News_towardsbackwards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsAlexPigalyov" EntityType="Self.NewsAlexPigalyov" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsAntares" EntityType="Self.NewsAntares" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsAzizjan" EntityType="Self.NewsAzizjan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsBatrebleSs" EntityType="Self.NewsBatrebleSs" Schema="dbo" store:Type="Tables" />
@@ -1245,6 +1293,7 @@
           <EntitySet Name="NewsEoll73" EntityType="Self.NewsEoll73" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsGGdotNET" EntityType="Self.NewsGGdotNET" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsIlya" EntityType="Self.NewsIlya" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsMrshkVV" EntityType="Self.NewsMrshkVV" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsRaspel" EntityType="Self.NewsRaspel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsVark" EntityType="Self.NewsVark" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
@@ -1264,7 +1313,9 @@
           <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersSearches" EntityType="Self.UsersSearches" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserViews" EntityType="Self.UserViews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewedObjects" EntityType="Self.ViewedObjects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Watched" EntityType="Self.Watched" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WatchedByCookies" EntityType="Self.WatchedByCookies" Schema="dbo" store:Type="Tables" />
@@ -1572,6 +1623,7 @@
           <Property Name="UserSender" Type="Guid" Nullable="false" />
           <Property Name="UserRecipier" Type="Guid" Nullable="false" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" />
         </EntityType>
         <EntityType Name="CraftsMan">
           <Key>
@@ -1865,6 +1917,17 @@
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="NewsAlexPigalyov">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuthorId" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
         <EntityType Name="NewsAntares">
           <Key>
             <PropertyRef Name="Id" />
@@ -1898,7 +1961,7 @@
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="NewsEoll73">
+        <EntityType Name="NewsEducation">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -1909,7 +1972,7 @@
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="NewsGGdotNET">
+        <EntityType Name="NewsEoll73">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -1936,6 +1999,17 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuthorId" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsMrshkVV">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="AuthorId" Type="Guid" Nullable="false" />
@@ -2182,6 +2256,22 @@
           <Property Name="HasLocalPassword" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="UsersOpenAuthAccounts" Relationship="Self.FK_dbo_UsersOpenAuthAccounts_dbo_UsersOpenAuthData_ApplicationName_MembershipUserName" FromRole="UsersOpenAuthData" ToRole="UsersOpenAuthAccounts" />
         </EntityType>
+        <EntityType Name="UsersSearches">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Search" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="OnlyInName" Type="Boolean" />
+          <Property Name="StartPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EndPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SortBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserViews">
           <Key>
             <PropertyRef Name="Id" />
@@ -2190,6 +2280,16 @@
           <Property Name="ObjectId" Type="Int32" Nullable="false" />
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ViewedObjects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="ObjectId" Type="Int64" Nullable="false" />
+          <Property Name="ObjectType" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Wallets">
@@ -2455,6 +2555,8 @@
           <EntitySet Name="ChatUsers" EntityType="Self.ChatUsers" />
           <EntitySet Name="Comments" EntityType="Self.Comments" />
           <EntitySet Name="Complaints" EntityType="Self.Complaints" />
+          <EntitySet Name="CraftsMan" EntityType="Self.CraftsMan" />
+          <EntitySet Name="CraftsManOrder" EntityType="Self.CraftsManOrder" />
           <EntitySet Name="Currencies" EntityType="Self.Currencies" />
           <EntitySet Name="DailyStatistics" EntityType="Self.DailyStatistics" />
           <EntitySet Name="DeletedAdverts" EntityType="Self.DeletedAdverts" />
@@ -2477,6 +2579,7 @@
           <EntitySet Name="NewAezakmi" EntityType="Self.NewAezakmi" />
           <EntitySet Name="News" EntityType="Self.News" />
           <EntitySet Name="News_towardsbackwards" EntityType="Self.News_towardsbackwards" />
+          <EntitySet Name="NewsAlexPigalyov" EntityType="Self.NewsAlexPigalyov" />
           <EntitySet Name="NewsAntares" EntityType="Self.NewsAntares" />
           <EntitySet Name="NewsAzizjan" EntityType="Self.NewsAzizjan" />
           <EntitySet Name="NewsBatrebleSs" EntityType="Self.NewsBatrebleSs" />
@@ -2484,6 +2587,7 @@
           <EntitySet Name="NewsEoll73" EntityType="Self.NewsEoll73" />
           <EntitySet Name="NewsGGdotNET" EntityType="Self.NewsGGdotNET" />
           <EntitySet Name="NewsIlya" EntityType="Self.NewsIlya" />
+          <EntitySet Name="NewsMrshkVV" EntityType="Self.NewsMrshkVV" />
           <EntitySet Name="NewsRaspel" EntityType="Self.NewsRaspel" />
           <EntitySet Name="NewsVark" EntityType="Self.NewsVark" />
           <EntitySet Name="Operations" EntityType="Self.Operations" />
@@ -2502,7 +2606,9 @@
           <EntitySet Name="UserSettings" EntityType="Self.UserSettings" />
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" />
+          <EntitySet Name="UsersSearches" EntityType="Self.UsersSearches" />
           <EntitySet Name="UserViews" EntityType="Self.UserViews" />
+          <EntitySet Name="ViewedObjects" EntityType="Self.ViewedObjects" />
           <EntitySet Name="Wallets" EntityType="Self.Wallets" />
           <EntitySet Name="Watched" EntityType="Self.Watched" />
           <EntitySet Name="WatchedByCookies" EntityType="Self.WatchedByCookies" />
@@ -2656,10 +2762,6 @@
           </FunctionImport>
           <FunctionImport Name="spGetWatchedByCookies" ReturnType="Collection(RentooloModel.spGetWatchedByCookies_Result)">
             <Parameter Name="uid" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="spUpdateQiwiAccountBalance">
-            <Parameter Name="number" Mode="In" Type="String" />
-            <Parameter Name="balance" Mode="In" Type="Double" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spGetChats_Result">
@@ -3016,6 +3118,7 @@
                 <ScalarProperty Name="UserSender" ColumnName="UserSender" />
                 <ScalarProperty Name="UserRecipier" ColumnName="UserRecipier" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3330,9 +3433,33 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="NewsAlexPigalyov">
+            <EntityTypeMapping TypeName="RentooloModel.NewsAlexPigalyov">
+              <MappingFragment StoreEntitySet="NewsAlexPigalyov">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="NewsAntares">
             <EntityTypeMapping TypeName="RentooloModel.NewsAntares">
               <MappingFragment StoreEntitySet="NewsAntares">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="authorId" ColumnName="authorId" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsAzizjan">
+            <EntityTypeMapping TypeName="RentooloModel.NewsAzizjan">
+              <MappingFragment StoreEntitySet="NewsAzizjan">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -3393,6 +3520,18 @@
           <EntitySetMapping Name="NewsIlya">
             <EntityTypeMapping TypeName="RentooloModel.NewsIlya">
               <MappingFragment StoreEntitySet="NewsIlya">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsMrshkVV">
+            <EntityTypeMapping TypeName="RentooloModel.NewsMrshkVV">
+              <MappingFragment StoreEntitySet="NewsMrshkVV">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -3637,6 +3776,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UsersSearches">
+            <EntityTypeMapping TypeName="RentooloModel.UsersSearches">
+              <MappingFragment StoreEntitySet="UsersSearches">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Search" ColumnName="Search" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="OnlyInName" ColumnName="OnlyInName" />
+                <ScalarProperty Name="StartPrice" ColumnName="StartPrice" />
+                <ScalarProperty Name="EndPrice" ColumnName="EndPrice" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="SortBy" ColumnName="SortBy" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UserViews">
             <EntityTypeMapping TypeName="RentooloModel.UserViews">
               <MappingFragment StoreEntitySet="UserViews">
@@ -3644,6 +3800,17 @@
                 <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewedObjects">
+            <EntityTypeMapping TypeName="RentooloModel.ViewedObjects">
+              <MappingFragment StoreEntitySet="ViewedObjects">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4004,7 +4171,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spUpdateQiwiAccountBalance" FunctionName="Хранилище RentooloModel.spUpdateQiwiAccountBalance" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

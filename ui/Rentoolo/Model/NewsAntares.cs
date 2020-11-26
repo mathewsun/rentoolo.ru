@@ -12,13 +12,13 @@ namespace Rentoolo.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class NewsAlexPigalyov
+    public partial class NewsAntares
     {
         public int Id { get; set; }
-        public string Text { get; set; }
-        public System.DateTime Date { get; set; }
-        public System.Guid AuthorId { get; set; }
-        public System.DateTime CreateDate { get; set; }
-        public Nullable<bool> Active { get; set; }
+        public string text { get; set; }
+        public System.DateTime date { get; set; }
+        public System.Guid authorId { get; set; }
+        public System.DateTime createDate { get; set; }
+        public bool active { get; set; }
     }
 }

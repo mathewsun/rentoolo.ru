@@ -41,6 +41,8 @@ namespace Rentoolo.Model
         public virtual DbSet<ChatUsers> ChatUsers { get; set; }
         public virtual DbSet<Comments> Comments { get; set; }
         public virtual DbSet<Complaints> Complaints { get; set; }
+        public virtual DbSet<CraftsMan> CraftsMan { get; set; }
+        public virtual DbSet<CraftsManOrder> CraftsManOrder { get; set; }
         public virtual DbSet<Currencies> Currencies { get; set; }
         public virtual DbSet<DailyStatistics> DailyStatistics { get; set; }
         public virtual DbSet<DeletedAdverts> DeletedAdverts { get; set; }
@@ -63,12 +65,15 @@ namespace Rentoolo.Model
         public virtual DbSet<NewAezakmi> NewAezakmi { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<News_towardsbackwards> News_towardsbackwards { get; set; }
+        public virtual DbSet<NewsAlexPigalyov> NewsAlexPigalyov { get; set; }
+        public virtual DbSet<NewsAntares> NewsAntares { get; set; }
         public virtual DbSet<NewsAzizjan> NewsAzizjan { get; set; }
         public virtual DbSet<NewsBatrebleSs> NewsBatrebleSs { get; set; }
         public virtual DbSet<NewsEducation> NewsEducation { get; set; }
         public virtual DbSet<NewsEoll73> NewsEoll73 { get; set; }
         public virtual DbSet<NewsGGdotNET> NewsGGdotNET { get; set; }
         public virtual DbSet<NewsIlya> NewsIlya { get; set; }
+        public virtual DbSet<NewsMrshkVV> NewsMrshkVV { get; set; }
         public virtual DbSet<NewsRaspel> NewsRaspel { get; set; }
         public virtual DbSet<NewsVark> NewsVark { get; set; }
         public virtual DbSet<Operations> Operations { get; set; }
@@ -87,7 +92,9 @@ namespace Rentoolo.Model
         public virtual DbSet<UserSettings> UserSettings { get; set; }
         public virtual DbSet<UsersOpenAuthAccounts> UsersOpenAuthAccounts { get; set; }
         public virtual DbSet<UsersOpenAuthData> UsersOpenAuthData { get; set; }
+        public virtual DbSet<UsersSearches> UsersSearches { get; set; }
         public virtual DbSet<UserViews> UserViews { get; set; }
+        public virtual DbSet<ViewedObjects> ViewedObjects { get; set; }
         public virtual DbSet<Wallets> Wallets { get; set; }
         public virtual DbSet<Watched> Watched { get; set; }
         public virtual DbSet<WatchedByCookies> WatchedByCookies { get; set; }
@@ -380,19 +387,6 @@ namespace Rentoolo.Model
                 new ObjectParameter("uid", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetWatchedByCookies_Result>("spGetWatchedByCookies", uidParameter);
-        }
-    
-        public virtual int spUpdateQiwiAccountBalance(string number, Nullable<double> balance)
-        {
-            var numberParameter = number != null ?
-                new ObjectParameter("number", number) :
-                new ObjectParameter("number", typeof(string));
-    
-            var balanceParameter = balance.HasValue ?
-                new ObjectParameter("balance", balance) :
-                new ObjectParameter("balance", typeof(double));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdateQiwiAccountBalance", numberParameter, balanceParameter);
         }
     }
 }
