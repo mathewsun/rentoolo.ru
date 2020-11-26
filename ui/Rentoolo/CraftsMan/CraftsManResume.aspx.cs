@@ -1,16 +1,14 @@
 ﻿using Newtonsoft.Json;
+using Rentoolo.HelperModels;
 using Rentoolo.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Rentoolo
 {
     public partial class CraftsManResume : System.Web.UI.Page
     {
+        public string[] AllCities = RusCities.AllRusCities;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -26,9 +24,9 @@ namespace Rentoolo
             string lastName = String.Format("{0}", Request.Form["ctl00$MainContent$input_lastName"]);
             string address = String.Format("{0}", Request.Form["ctl00$MainContent$address"]);
             string email = String.Format("{0}", Request.Form["ctl00$MainContent$email"]);
-            string country = String.Format("{0}", Request.Form["ctl00$MainContent$country"]);
-            string region = String.Format("{0}", Request.Form["ctl00$MainContent$region"]);
-            var objPhotos = Request.Form["ResumePhotos"];
+            string city = String.Format("{0}", Request.Form["ctl00$MainContent$city"]);
+            
+            var objPhotos = String.Format("{0}", Request.Form["ResumePhotos"]);
 
             Rentoolo.Model.CraftsMan resume = new Model.CraftsMan();
 
@@ -42,7 +40,7 @@ namespace Rentoolo
             }
             else
             {
-                resume.ImgUrls = "[\"/img/a/noPhoto.png\"]";
+                resume.ImgUrls = "[\"/img/kitchen/falafel-s-ovoshami.jpg\"]";
             }
             try
             {
@@ -66,8 +64,7 @@ namespace Rentoolo
             resume.Phone = phone;
             resume.FirstName = firstName;
             resume.LastName = lastName;
-            resume.Region = region;
-            resume.Country = country;
+            resume.Region = city; //TODO переделать поля в бд
             resume.Email = email;
 
             CraftsManDataHelper.AddCraftsMan(resume);

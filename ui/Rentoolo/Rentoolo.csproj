@@ -412,6 +412,7 @@
     <Content Include="Account\AuctionRequests.aspx" />
     <Content Include="Auctions.aspx" />
     <Content Include="Azizjan\NewsAzizjan.aspx" />
+    <Content Include="BatrebleSs\NewsBatrebleSs.aspx" />
     <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
     <Content Include="Category.aspx" />
@@ -1252,6 +1253,13 @@
     <Compile Include="Azizjan\NewsAzizjan.aspx.designer.cs">
       <DependentUpon>NewsAzizjan.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BatrebleSs\NewsBatrebleSs.aspx.cs">
+      <DependentUpon>NewsBatrebleSs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BatrebleSs\NewsBatrebleSs.aspx.designer.cs">
+      <DependentUpon>NewsBatrebleSs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Business.aspx.cs">
       <DependentUpon>Business.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1421,12 +1429,6 @@
     <Compile Include="Model\Complaints.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\CraftsMan.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CraftsManOrder.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Currencies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1441,6 +1443,7 @@
     <Compile Include="Model\DataHelperAntares.cs" />
     <Compile Include="Model\DataHelperAzizjan.cs" />
     <Compile Include="Model\DataHelperEoll73.cs" />
+    <Compile Include="Model\DataHelperBatrebleSs.cs" />
     <Compile Include="Model\DataHelperMrshkVV.cs" />
     <Compile Include="Model\DataHelperShCodder.cs" />
     <Compile Include="Model\DataHelperEducation.cs" />
@@ -1547,6 +1550,9 @@
     <Compile Include="Model\NewsAzizjan.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\NewsBatrebleSs.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\NewsEducation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1557,9 +1563,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsIlya.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\NewsMrshkVV.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsRaspel.cs">
@@ -1772,13 +1775,7 @@
     <Compile Include="Model\UsersOpenAuthData.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\UsersSearches.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\UserViews.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ViewedObjects.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Wallets.cs">

@@ -19,8 +19,6 @@
         <EntityTypeShape EntityType="RentooloModel.ChatUsers" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Comments" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Complaints" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.CraftsMan" Width="1.5" PointX="11.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentooloModel.CraftsManOrder" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.Currencies" Width="1.5" PointX="8.25" PointY="25.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.DailyStatistics" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentooloModel.DeletedAdverts" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
