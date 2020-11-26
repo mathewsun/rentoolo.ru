@@ -7,19 +7,24 @@
         <div class="row">
             <div class="col">
                 <img class="container-fluid" src="../img/kitchen/avatars/94671454_277769756585463_6526749104637214720_n.jpg" />
-
+                <img class="container-fluid" src="<%=craftsMan.ImgUrls %>" />
             </div>
             <div class="col order-12">
-                <h1 class="name">Alan Doe</h1>
-                <h3 class="tagline">Full Stack Developer</h3>
+                <h1 class="bg-primary text-white"><%=craftsMan.FirstName %> <%=craftsMan.LastName %></h1>
+                <h3 class="bg-warning text-white"><%=craftsMan.Сraft %></h3>
             </div>
         </div>
     </div>
     <div class="container blue-color">
         <div class="col">
             <div class="container">
-                <h1 class="display-4">Немного о себе</h1>
-                <p class="lead">Следует отметить, что строго утвержденного шаблона резюме нет, но следующая информация должна быть в нем отражена обязательно: ФИО, контакты соискателя, опыт работы, основные достижения, сведения об образовании, как основном, так и дополнительном, профессиональные навыки. Остальное – Ваша фантазия и творческий подход. Основное внимание уделите Вашим функциональным обязанностям и достижениям в работе – данной информации работодатель уделяет больше всего внимания.</p>
+                <h1 class="display-4 bg-danger text-white">Контакты</h1>
+                <p class="lead"><%=craftsMan.Region %></p>
+                <hr />
+                 <p class="lead"><%=craftsMan.Phone %></p>
+                <hr />
+                 <p class="lead"><%=craftsMan.Email %></p>
+                <hr />
             </div>
         </div>
     </div>
@@ -51,8 +56,8 @@
     </div>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">Немного о себе</h1>
-            <p class="lead">Немного о себе.</p>
+            <h1 class="display-4 bg-dark text-white">Немного о себе</h1>
+            <p class="lead"><%=craftsMan.Description %></p>
         </div>
     </div>
 
