@@ -12,18 +12,13 @@ namespace Rentoolo.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class UsersSearches
+    public partial class NewsBatrebleSs
     {
-        public long Id { get; set; }
-        public string Search { get; set; }
-        public Nullable<System.DateTime> StartDate { get; set; }
-        public Nullable<System.DateTime> EndDate { get; set; }
-        public Nullable<bool> OnlyInName { get; set; }
-        public Nullable<decimal> StartPrice { get; set; }
-        public Nullable<decimal> EndPrice { get; set; }
-        public string City { get; set; }
-        public string SortBy { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public System.Guid UserId { get; set; }
+        public int Id { get; set; }
+        public string Text { get; set; }
+        public System.DateTime Date { get; set; }
+        public System.Guid AuthorId { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public bool Active { get; set; }
     }
 }
