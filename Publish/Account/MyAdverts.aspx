@@ -37,9 +37,19 @@
                     <%foreach (var item in ListItems)
                         { %>
                     <div class="list-item-wrap" style="display: none">
-                        <a href ="/Advert.aspx?id=<%=item.Id%>" title="<%=item.Name%>"><div class="photoContainer" data='<%=item.ImgUrls%>'></div></a>
+                        <a href="/Advert.aspx?id=<%=item.Id%>" title="<%=item.Name%>">
+                            <div class="photoContainer" data='<%=item.ImgUrls%>'></div>
+                        </a>
                         <div class="item-wrap-content">
+                            <%switch (item.Category)
+                                {
+                                    case 101010: %>
+                            <div class="item-wrap-name"><a href="/AdvertCar.aspx?id=<%=item.Id%>"><%=item.Name%></a></div>
+                            <%break; %>
+                            <%default: %>
                             <div class="item-wrap-name"><a href="/Advert.aspx?id=<%=item.Id%>"><%=item.Name%></a></div>
+                            <%break; %>
+                            <%} %>
                             <div class="item-wrap-cost"><%=item.Price%> ₽<%--<%=item.CurrencyAcronim%>--%></div>
                             <div class="item-wrap__description">
                                 <p><%=item.Category%></p>
