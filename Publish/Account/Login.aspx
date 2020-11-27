@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Вход" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Rentoolo.Account.Login" %>
+<%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +51,7 @@
     <div class="container-fluid container-fill-height">
         <div class="container-content-middle">
             <form id="form1" role="form" class="mx-auto text-center app-login-form" runat="server">
-                <asp:Login runat="server" ViewStateMode="Disabled" RenderOuterTable="false" OnLoggingIn="On_LoggingIn" DisplayRememberMe="False" OnLoggedIn="Unnamed1_LoggedIn">
+                <asp:Login id="Login1" runat="server" ViewStateMode="Disabled" RenderOuterTable="false" OnLoggingIn="On_LoggingIn" OnAuthenticate="Authenticate" DisplayRememberMe="False">
                     <LayoutTemplate>
                         <a href="/" class="app-brand mb-5">
                             <span class="logo-text" style="margin-right: -3px;">Rent</span>
@@ -71,11 +72,11 @@
                         <div class="text-danger">
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ControlToValidate="Password" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Введите пароль" />
                        </div>
-                        
+
                         <div class="form-group">
                             <div class="g-recaptcha" data-sitekey="6Lf4W6QUAAAAAPK2AR7Ms8SsI9_KuJ0l8XZWaTWD"></div>
                         </div>
-                        
+
                         <div class="mb-5">
                             <asp:Button ID="ButtonLogin" runat="server" CssClass="btn btn-primary" CommandName="Login" Text="Вход" />
                             <button type="button" class="btn btn-secondary" onclick="location.href='/Account/SignUp?ReturnUrl='">Регистрация</button>
@@ -84,6 +85,11 @@
                         <footer class="screen-login">
                             <a href="#" class="text-muted">Забыли пароль</a>
                         </footer>
+                         <div class="col-md-4">
+                            <section id="socialLoginForm">
+                                <uc:OpenAuthProviders runat="server" ID="OpenAuthLogin" />
+                            </section>
+                        </div>
                     </LayoutTemplate>
                 </asp:Login>
             </form>
