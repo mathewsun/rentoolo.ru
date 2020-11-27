@@ -17,6 +17,7 @@
             $("div#mdropzone").dropzone({
                 url: "/api/upi",
                 addRemoveLinks: true,
+                acceptedFiles: ".jpeg,.jpg,.png,.gif",
                 resizeWidth: 800,
                 resizeHeight: 600,
                 resizeMethod: 'contain',
