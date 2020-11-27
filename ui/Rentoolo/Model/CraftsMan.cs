@@ -19,17 +19,17 @@ namespace Rentoolo.Model
         public string Сraft { get; set; }
         public string Description { get; set; }
         public System.DateTime Created { get; set; }
-        public System.Guid CreatedUserId { get; set; }
         public double Price { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
-        public int MessageType { get; set; }
-        public int CompletedTasks { get; set; }
         public System.Data.Entity.Spatial.DbGeography Position { get; set; }
         public string ImgUrls { get; set; }
         public string YouTubeUrl { get; set; }
-        public bool IsApproved { get; set; }
-        public Nullable<System.DateTime> WhenAdminApproved { get; set; }
         public Nullable<int> Subcategory { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Country { get; set; }
+        public string Region { get; set; }
     }
 }

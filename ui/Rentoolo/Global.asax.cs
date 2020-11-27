@@ -102,6 +102,10 @@ namespace Rentoolo
                 "Account/Login",
                 "~/Account/Login.aspx");
 
+            routes.MapPageRoute("RegisterExternalLogin",
+                "Account/RegisterExternalLogin",
+                "~/Account/RegisterExternalLogin.aspx");
+
             routes.MapPageRoute("rentAddItemRoute",
                 "Account/Rent",
                 "~/Account/Rent.aspx");
