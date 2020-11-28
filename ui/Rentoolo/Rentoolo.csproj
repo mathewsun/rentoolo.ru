@@ -374,6 +374,7 @@
     <Content Include="Account\AuctionRequests.aspx" />
     <Content Include="Auctions.aspx" />
     <Content Include="Azizjan\NewsAzizjan.aspx" />
+    <Content Include="BatrebleSs\AddNewsBatrebleSs.aspx" />
     <Content Include="BatrebleSs\NewsBatrebleSs.aspx" />
     <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
@@ -506,6 +507,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Aezakmi128\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="BatrebleSs\Web.config">
       <SubType>Designer</SubType>
     </Content>
     <None Include="packages.config" />
@@ -1090,12 +1094,14 @@
     </Compile>
     <Compile Include="AlexPigalyov\AddNewsAlexPigalyov.aspx.cs">
       <DependentUpon>AddNewsAlexPigalyov.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AlexPigalyov\AddNewsAlexPigalyov.aspx.designer.cs">
       <DependentUpon>AddNewsAlexPigalyov.aspx</DependentUpon>
     </Compile>
     <Compile Include="AlexPigalyov\NewsAlexPigalyov.aspx.cs">
       <DependentUpon>NewsAlexPigalyov.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AlexPigalyov\NewsAlexPigalyov.aspx.designer.cs">
       <DependentUpon>NewsAlexPigalyov.aspx</DependentUpon>
@@ -1172,8 +1178,16 @@
     <Compile Include="Azizjan\NewsAzizjan.aspx.designer.cs">
       <DependentUpon>NewsAzizjan.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BatrebleSs\AddNewsBatrebleSs.aspx.cs">
+      <DependentUpon>AddNewsBatrebleSs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BatrebleSs\AddNewsBatrebleSs.aspx.designer.cs">
+      <DependentUpon>AddNewsBatrebleSs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BatrebleSs\NewsBatrebleSs.aspx.cs">
       <DependentUpon>NewsBatrebleSs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="BatrebleSs\NewsBatrebleSs.aspx.designer.cs">
       <DependentUpon>NewsBatrebleSs.aspx</DependentUpon>
@@ -1242,30 +1256,35 @@
     <Compile Include="Controllers\TopRecipesController.cs" />
     <Compile Include="CraftsMan\CraftsManOrder.aspx.cs">
       <DependentUpon>CraftsManOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManOrder.aspx.designer.cs">
       <DependentUpon>CraftsManOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="CraftsMan\CraftsManPage.aspx.cs">
       <DependentUpon>CraftsManPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManPage.aspx.designer.cs">
       <DependentUpon>CraftsManPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="CraftsMan\CraftsManProfile.aspx.cs">
       <DependentUpon>CraftsManProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManProfile.aspx.designer.cs">
       <DependentUpon>CraftsManProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="CraftsMan\CraftsManResume.aspx.cs">
       <DependentUpon>CraftsManResume.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManResume.aspx.designer.cs">
       <DependentUpon>CraftsManResume.aspx</DependentUpon>
     </Compile>
     <Compile Include="CraftsMan\CraftsManTasks.aspx.cs">
       <DependentUpon>CraftsManTasks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManTasks.aspx.designer.cs">
       <DependentUpon>CraftsManTasks.aspx</DependentUpon>
@@ -1300,6 +1319,7 @@
     </Compile>
     <Compile Include="ExchangeProductsPage.aspx.cs">
       <DependentUpon>ExchangeProductsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ExchangeProductsPage.aspx.designer.cs">
       <DependentUpon>ExchangeProductsPage.aspx</DependentUpon>
