@@ -7,27 +7,11 @@
 // </автоматически создаваемое>
 //------------------------------------------------------------------------------
 
-namespace Rentoolo.Account {
-    
-    
-    public partial class RegisterExternalLogin {
-        
-        /// <summary>
-        /// userNameForm элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder userNameForm;
-        
-        /// <summary>
-        /// userName элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userName;
+namespace Rentoolo.Account
+{
+
+
+    public partial class RegisterExternalLogin
+    {
     }
 }

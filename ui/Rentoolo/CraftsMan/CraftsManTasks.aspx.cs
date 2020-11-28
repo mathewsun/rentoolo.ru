@@ -23,7 +23,6 @@ namespace Rentoolo.CraftsMan
         {
             if (!IsPostBack)
             {
-
                 DateTime startDate, endDate;
                 DateTime? startDate2 = null, endDate2 = null;
 
@@ -82,7 +81,7 @@ namespace Rentoolo.CraftsMan
                     SortBy = sortBy
                 };
 
-                ListCraftsManOrder = CraftsManDataHelper.GetCraftsManOrderForMainPage(sellFilter);
+                ListCraftsManOrder = CraftsManDataHelper.GetCraftsManOrder();
 
                 CraftsManCount = CraftsManDataHelper.GetCraftsManActiveCount(filter).ToString("N0");
 

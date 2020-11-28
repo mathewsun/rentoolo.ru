@@ -186,6 +186,34 @@ namespace Rentoolo.Model
         }
 
 
+        public static List<Tenders> GetTenders(TendersFilter filter)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var tenders = dc.Tenders.Select(x => x);
+
+                if (filter.Name != null)
+                {
+                    tenders = tenders.Where(x => x.Name == filter.Name);
+                }
+
+                if (filter.MinCost != null)
+                {
+                    tenders = tenders.Where(x => x.Cost >= filter.MinCost);
+                }
+
+                if (filter.MaxCost != null)
+                {
+                    tenders = tenders.Where(x => x.Cost <= filter.MaxCost);
+                }
+
+                
+
+
+                return tenders.ToList();
+            }
+        }
+
 
         public static List<Tenders> GetTenders(string name, int category)
         {

@@ -2216,7 +2216,84 @@ namespace Rentoolo.Model
 
         #endregion
 
+        #region exchange items/products/adverts
 
+        public static void SetExchangeProductRequest(ExchangeItemRequests request, ExchangeProducts product)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var exchangeProduct = dc.ExchangeProducts.First(x=>x.Id == product.Id);
+                exchangeProduct.SelectedRequestId = request.Id;
+                dc.SaveChanges();
+            }
+        }
+
+        public static List<spGetExchangeProducts_Result> GetExchangeItems(string search)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.spGetExchangeProducts(search).ToList();
+            }
+        }
+
+        public static ExchangeProducts GetExchangeItem(long id)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.ExchangeProducts.FirstOrDefault(x => x.Id == id);
+            }
+        }
+
+        public static void AddExchangeItem(ExchangeProducts exchangeItem, Guid userId, bool inTests = true)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var advert = AdvertsDataHelper.GetAdvert(exchangeItem.AdvertId);
+
+                if (advert.CreatedUserId == userId || inTests)
+                {
+                    dc.ExchangeProducts.Add(exchangeItem);
+                    dc.SaveChanges();
+                }
+            }
+        }
+
+
+        #endregion
+
+
+        #region exchangeItemRequests
+
+
+        public static void AddExchangeItemRequest(ExchangeItemRequests request)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ExchangeItemRequests.Add(request);
+                dc.SaveChanges();
+            }
+        }
+
+        public static List<ExchangeItemRequests> GetExchangeItemRequests(long id)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.ExchangeItemRequests.Where(x => x.WantedExchangeItemId == id).ToList();
+            }
+        }
+
+
+        public static ExchangeItemRequests GetExchangeItemRequest(long id)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.ExchangeItemRequests.First(x => x.Id == id);
+            }
+        }
+
+
+
+        #endregion
 
     }
 }

@@ -511,7 +511,7 @@
                             <div class="search-input-group">
 
                                 <div class="search-input-group__main-input">
-                                    <input style="width: 100%" type="text" id="Text1" class="form-control" runat="server" placeholder="Поиск по объявлениям" />
+                                    <input style="width: 100%" name="InputSearch" type="text"  class="form-control"  placeholder="Поиск по объявлениям" />
                                     <asp:Button ID="Button1" runat="server" CssClass="btn btn-secondary align-self-stretch" Text="Найти" OnClick="ButtonSearch_Click" />
                                 </div>
                                 <div class="main-find__checkbox-label">
@@ -521,8 +521,8 @@
 
                                 <div class="main-find_price">
                                     <span>Цена:</span>
-                                    <input type="number" name="startPrice" placeholder="От" />
-                                    <input type="number" name="endPrice" placeholder="До" />
+                                    <input type="number" name="startPrice" placeholder="От" value="<%= PreviousFilter.StartPrice %>" />
+                                    <input type="number" name="endPrice" placeholder="До" value="<%= PreviousFilter.EndPrice %>" />
                                 </div>
 
 
@@ -537,7 +537,7 @@
                                 <div class="city-sortby__wrap">
                                     <div>
                                         <span style="float: left;">Город:</span>&nbsp;
-                                        <input type="text" name="city" list="cities" />
+                                        <input type="text" name="city" list="cities" value="<%= PreviousFilter.City %>" />
                                         <br />
                                         <datalist id="cities">
 
@@ -621,6 +621,8 @@
                                     <%} %>
                                 </div>
                             </div>
+
+
                         </li>
                     </ul>
                 </div>
