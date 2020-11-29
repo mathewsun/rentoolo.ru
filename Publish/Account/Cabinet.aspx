@@ -12,6 +12,93 @@
         </div>
         <div class="additem-category">
             <div class="additem-right additem__way" cid="1001">
+
+
+            <br />
+
+                <img src="/assets/img/avatars/<%=User.UserId %>.png" />
+
+            <div>
+                <input type="file" id="f" />
+            </div>
+
+            <script type="text/javascript">
+
+                window.onload = function () {
+
+                    let finput = document.getElementById('f');
+                    finput.onchange = function (e) {
+
+                        let f = e.target.files[0];
+
+                        let img = new Image();
+
+                        let reader = new FileReader();
+
+                        img.onload = function (e) {
+                            
+                            reader.readAsArrayBuffer(f);
+                        }
+
+                        img.src = URL.createObjectURL(f);
+
+                        reader.onloadend = function (e) {
+
+                            let buf = reader.result;
+                            let uintbuf = new Uint8Array(buf);
+
+                            sendFile(uintbuf);
+                        }
+
+                    }
+
+                }
+
+                function sendFile(buffer) {
+
+                    let url = "/api/Avatars";
+
+                    let data = {
+                        Buffer: buffer.toString(),
+                        FileName: "some.jpg",
+                        UserId: "<%=User.UserId %>"
+                    };
+
+                    fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    }).then((data) => {
+                        console.log(data);
+                    });
+
+
+                }
+
+
+
+
+
+
+
+
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <table class="marginTable cabinetTable">
                     <tr>
                         <td>Логин:
@@ -85,15 +172,15 @@
                     <br />
 
                     Выбранный город:<%-- <%=// User.SelectedCity %>--%>
-                    <input name="selectedCity" type="text" list="cities"  />
+                    <input name="selectedCity" type="text" list="cities" />
 
                     <datalist id="cities">
                         <% foreach (var city in AllCities)
-                          { %>
-                                                    
-                            <option>
-                                <%=city %>
-                            </option>
+                            { %>
+
+                        <option>
+                            <%=city %>
+                        </option>
 
                         <%} %>
                     </datalist>

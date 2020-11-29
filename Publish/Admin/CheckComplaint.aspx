@@ -4,6 +4,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
 
+        <h4>
+            <a href="<%= NavLink %>">
+                перейти к обьявлению для проверки
+            </a>
+        </h4>
         <div>
             <div><%=Complaint.Id%></div>
             <div><%=Complaint.Message%></div>
@@ -14,8 +19,8 @@
         <input type="text" list="complaintTypes" name="status" />
         <datalist id="complaintTypes">
             <%--see values in StructsHelper ComplaintStatus struct--%>
-            <option>accept</option>
-            <option>reject</option>
+            <option>block advert</option>
+            <option>reject complaint</option>
         </datalist>
         <asp:Button ID="ButtonChangeStatus" runat="server" Text="set status" OnClick="ButtonChangeStatus_Click" />
 

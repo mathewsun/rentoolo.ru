@@ -24,7 +24,7 @@
                             <%= UserName %>
                         </a>
                 </p>
-                <p>
+                <p style="word-break: break-all;">
                     Description: 
                     <%= tender.Description %>
                 </p>
