@@ -24,6 +24,15 @@ namespace Rentoolo
         protected global::System.Web.UI.HtmlControls.HtmlInputText input_craft;
 
         /// <summary>
+        /// input_description control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea input_description;
+
+        /// <summary>
         /// input_price control.
         /// </summary>
         /// <remarks>

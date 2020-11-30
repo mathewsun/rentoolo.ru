@@ -45,7 +45,7 @@
             <hr class="mb-4">
             <div class="additem-category additem-text__wrap">
                 <label for="input_description" runat="server">Опишите Ваш опыт работы</label>
-                <textarea class="form-control" id="input_description" rows="10"></textarea>
+                <textarea class="form-control" id="input_description" runat="server" rows="10"></textarea>
             </div>
         </div>
         <div class="additem-category">
@@ -119,7 +119,7 @@
             <div class="col-md-4 mb-3">
 
                 <span style="float: left;">Город:</span>&nbsp;
-                                        <input type="text" class="form-control" name="city" list="cities" />
+                                        <input type="text" runat="server" class="form-control" name="city" list="cities" />
                 <br />
                 <datalist id="cities">
 
@@ -159,7 +159,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+         </div>
         <div class="additem-category">
             <div class="additem-right additem-go">
                 <asp:Button runat="server" ID="addOrder" CssClass="additem-button" Text="Добавить" OnClick="ButtonResume_Click" />

@@ -159,13 +159,13 @@ namespace Rentoolo.Model
             }
         }
 
-        public static CraftsManOrder GetCraftsManOrder(long id)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                CraftsManOrder item = dc.CraftsManOrder.FirstOrDefault(x => x.Id == id);
 
-                return item;
+        public static CraftsManOrder GetCraftsManOrderById(int id)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                var obj = ctx.CraftsManOrder.FirstOrDefault(x => x.Id == id);
+                return obj;
             }
         }
 
