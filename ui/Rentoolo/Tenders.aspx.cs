@@ -49,8 +49,6 @@ namespace Rentoolo
             }
 
 
-
-
             TendersFilter filter = new TendersFilter()
             {
                 Name = name,

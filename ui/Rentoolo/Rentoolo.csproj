@@ -218,6 +218,7 @@
     <Content Include="Account\Category.aspx" />
     <Content Include="Account\DeviceSettings.aspx" />
     <Content Include="Account\Exchange.aspx" />
+    <Content Include="Account\ExchangeItemView.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\LoginStatistics.aspx" />
     <Content Include="Account\Manage.aspx" />
@@ -626,6 +627,13 @@
     </Compile>
     <Compile Include="Account\Exchange.aspx.designer.cs">
       <DependentUpon>Exchange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ExchangeItemView.aspx.cs">
+      <DependentUpon>ExchangeItemView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ExchangeItemView.aspx.designer.cs">
+      <DependentUpon>ExchangeItemView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\LoginStatistics.aspx.cs">
       <DependentUpon>LoginStatistics.aspx</DependentUpon>
@@ -1090,12 +1098,14 @@
     </Compile>
     <Compile Include="AlexPigalyov\AddNewsAlexPigalyov.aspx.cs">
       <DependentUpon>AddNewsAlexPigalyov.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AlexPigalyov\AddNewsAlexPigalyov.aspx.designer.cs">
       <DependentUpon>AddNewsAlexPigalyov.aspx</DependentUpon>
     </Compile>
     <Compile Include="AlexPigalyov\NewsAlexPigalyov.aspx.cs">
       <DependentUpon>NewsAlexPigalyov.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AlexPigalyov\NewsAlexPigalyov.aspx.designer.cs">
       <DependentUpon>NewsAlexPigalyov.aspx</DependentUpon>
@@ -1174,6 +1184,7 @@
     </Compile>
     <Compile Include="BatrebleSs\NewsBatrebleSs.aspx.cs">
       <DependentUpon>NewsBatrebleSs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="BatrebleSs\NewsBatrebleSs.aspx.designer.cs">
       <DependentUpon>NewsBatrebleSs.aspx</DependentUpon>
@@ -1242,30 +1253,35 @@
     <Compile Include="Controllers\TopRecipesController.cs" />
     <Compile Include="CraftsMan\CraftsManOrder.aspx.cs">
       <DependentUpon>CraftsManOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManOrder.aspx.designer.cs">
       <DependentUpon>CraftsManOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="CraftsMan\CraftsManPage.aspx.cs">
       <DependentUpon>CraftsManPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManPage.aspx.designer.cs">
       <DependentUpon>CraftsManPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="CraftsMan\CraftsManProfile.aspx.cs">
       <DependentUpon>CraftsManProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManProfile.aspx.designer.cs">
       <DependentUpon>CraftsManProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="CraftsMan\CraftsManResume.aspx.cs">
       <DependentUpon>CraftsManResume.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManResume.aspx.designer.cs">
       <DependentUpon>CraftsManResume.aspx</DependentUpon>
     </Compile>
     <Compile Include="CraftsMan\CraftsManTasks.aspx.cs">
       <DependentUpon>CraftsManTasks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CraftsMan\CraftsManTasks.aspx.designer.cs">
       <DependentUpon>CraftsManTasks.aspx</DependentUpon>
@@ -1300,6 +1316,7 @@
     </Compile>
     <Compile Include="ExchangeProductsPage.aspx.cs">
       <DependentUpon>ExchangeProductsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ExchangeProductsPage.aspx.designer.cs">
       <DependentUpon>ExchangeProductsPage.aspx</DependentUpon>
