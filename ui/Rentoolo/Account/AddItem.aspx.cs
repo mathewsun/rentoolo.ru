@@ -18,14 +18,27 @@ namespace Rentoolo.Account
 
         public string CategoryId;
 
+        public Model.Adverts Advert = new Adverts();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             CategoryId = Request.QueryString["cat"];
 
-            if(string.IsNullOrEmpty(CategoryId))
+            if (string.IsNullOrEmpty(CategoryId))
             {
                 Response.Redirect("/Account/Category");
             }
+
+            bool isRedacting = Request.QueryString["redact"] == null ? false : true;
+
+            if (isRedacting)
+            {
+                long advId = Convert.ToInt64(Request.QueryString["advId"]);
+                Advert = AdvertsDataHelper.GetAdvert(advId);
+
+            }
+
+
 
             //CategoryName = CategoryHelper.GetCategoryName(CategoryId);
         }
