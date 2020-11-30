@@ -28,20 +28,13 @@ namespace Rentoolo.Account.TenderViews
 
         protected void ButtonAddTender_Click(object sender, EventArgs e)
         {
-            //string tname = TextBoxTName.Text;
-            //string description = TextBoxTDescription.Text;
-            //int cost = Convert.ToInt32(TextBoxTCost.Text);
-
-
+            
             string tname = Request.Form["tenderName"];
             string description = Request.Form["tenderDescription"];
             int cost = Convert.ToInt32(Request.Form["tenderCost"]);
 
-
-
             var tender = new Model.Tenders()
             {
-
                 Name = tname,
                 Description = description,
                 Cost = cost,
@@ -79,7 +72,6 @@ namespace Rentoolo.Account.TenderViews
                     Value = 0
                 });
             }
-
 
 
         }
