@@ -17,13 +17,13 @@ namespace Rentoolo
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            var name = Request.Form["name"];
-            var strMinCost = Request.Form["minCost"];
-            var strMaxCost = Request.Form["maxCost"];
-            var strStartDate = Request.Form["startDate"];
-            var strEndDate = Request.Form["endDate"];
-            var category = Convert.ToInt16(Request.Form["category"]);
-            var mode = Convert.ToInt16(Request.Form["mode"]);
+            var name = Request.QueryString["name"];
+            var strMinCost = Request.QueryString["minCost"];
+            var strMaxCost = Request.QueryString["maxCost"];
+            var strStartDate = Request.QueryString["startDate"];
+            var strEndDate = Request.QueryString["endDate"];
+            var category = Convert.ToInt16(Request.QueryString["category"]);
+            var mode = Convert.ToInt16(Request.QueryString["mode"]);
 
             double? minCost = null, maxCost = null;
             DateTime? startDate = null, endDate = null;
@@ -59,51 +59,6 @@ namespace Rentoolo
             };
 
             TendersList = TendersHelper.GetTenders(filter);
-
-
-            //if (name != null && strMinCost != null && strStartDate != null && category != null)
-            //{
-            //    minCost = Convert.ToDouble(strMinCost);
-            //    maxCost = Convert.ToDouble(strMaxCost);
-            //    startDate = DateTime.Parse(strStartDate);
-            //    endDate = DateTime.Parse(strEndDate);
-
-            //    TendersList = TendersHelper.GetTenders(name, startDate, endDate, minCost, maxCost, category, mode);
-
-            //}
-            //else if (name != null && strMinCost != null && strStartDate != null && category == null)
-            //{
-            //    minCost = Convert.ToDouble(strMinCost);
-            //    maxCost = Convert.ToDouble(strMaxCost);
-            //    startDate = DateTime.Parse(strStartDate);
-            //    endDate = DateTime.Parse(strEndDate);
-
-            //    TendersList = TendersHelper.GetTenders(name, startDate, endDate, minCost, maxCost);
-            //}
-            //else if (name != null && strMinCost != null && strStartDate == null && category == null)
-            //{
-            //    minCost = Convert.ToDouble(strMinCost);
-            //    maxCost = Convert.ToDouble(strMaxCost);
-
-            //    TendersList = TendersHelper.GetTenders(name, minCost, maxCost);
-            //}
-            //else if (name != null && strStartDate != null && category == null)
-            //{
-            //    startDate = DateTime.Parse(strStartDate);
-            //    endDate = DateTime.Parse(strEndDate);
-
-            //    TendersList = TendersHelper.GetTenders(name, startDate, endDate);
-            //}
-            //else if (name != null && category != null)
-            //{
-            //    TendersList = TendersHelper.GetTenders(name, category);
-            //}
-            //else
-            //{
-            //    TendersList = TendersHelper.GetAllTenders();
-            //}
-
-            var s = 6;
 
         }
 
