@@ -224,6 +224,7 @@
     <Content Include="404.aspx" />
     <Content Include="500.aspx" />
     <Content Include="About.aspx" />
+    <Content Include="Account\UpdateItem.aspx" />
     <Content Include="Account\AddItem.aspx" />
     <Content Include="Account\AddItemCar.aspx" />
     <Content Include="Account\Auction.aspx" />
@@ -563,6 +564,13 @@
     </Compile>
     <Compile Include="500.aspx.designer.cs">
       <DependentUpon>500.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\UpdateItem.aspx.cs">
+      <DependentUpon>UpdateItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\UpdateItem.aspx.designer.cs">
+      <DependentUpon>UpdateItem.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\AddItem.aspx.cs">
       <DependentUpon>AddItem.aspx</DependentUpon>
@@ -1279,6 +1287,7 @@
     <Compile Include="Controllers\KitchenModel\Recipe.cs" />
     <Compile Include="Controllers\LikesDislikesController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\MVC\DefaultController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TopRecipesController.cs" />
@@ -2049,6 +2058,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Shared\SiteMaster.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -38,6 +38,8 @@ namespace Rentoolo.Controllers
         public string Get(Guid id)
         {
 
+            
+
             return "value";
         }
 

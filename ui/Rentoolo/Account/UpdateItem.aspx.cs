@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace Rentoolo.Account
 {
-    public partial class AddItem : BasicPage
+    public partial class UpdateItem : BasicPage
     {
         //public string Category;
 
@@ -40,20 +40,29 @@ namespace Rentoolo.Account
             }
 
 
-
+            var a = 5;
             //CategoryName = CategoryHelper.GetCategoryName(CategoryId);
         }
 
         protected void ButtonAddItem_Click(object sender, EventArgs e)
         {
+            //string category = Request.QueryString["cat"];
+            //string name = String.Format("{0}", Request.Form["ctl00$MainContent$input_name"]);
+            //string description = String.Format("{0}", Request.Form["ctl00$MainContent$input_text"]);
+            //string price = String.Format("{0}", Request.Form["ctl00$MainContent$price_value"]);
+            //string video = String.Format("{0}", Request.Form["ctl00$MainContent$input_video"]);
+            //string place = String.Format("{0}", Request.Form["ctl00$MainContent$additem_place"]);
+            //string phone = String.Format("{0}", Request.Form["ctl00$MainContent$phonenum"]);
+            //string messageType = String.Format("{0}", Request.Form["ctl00$MainContent$contact"]);
+
             string category = Request.QueryString["cat"];
-            string name = String.Format("{0}", Request.Form["ctl00$MainContent$input_name"]);
-            string description = String.Format("{0}", Request.Form["ctl00$MainContent$input_text"]);
-            string price = String.Format("{0}", Request.Form["ctl00$MainContent$price_value"]);
-            string video = String.Format("{0}", Request.Form["ctl00$MainContent$input_video"]);
-            string place = String.Format("{0}", Request.Form["ctl00$MainContent$additem_place"]);
-            string phone = String.Format("{0}", Request.Form["ctl00$MainContent$phonenum"]);
-            string messageType = String.Format("{0}", Request.Form["ctl00$MainContent$contact"]);
+            string name = Request.Form["input_name"];
+            string description = Request.Form["input_text"];
+            string price = Request.Form["price_value"];
+            string video = Request.Form["input_video"];
+            string place = Request.Form["additem_place"];
+            string phone = Request.Form["phonenum"];
+            string messageType = Request.Form["contact"];
 
             var objPhotos = Request.Form["AdvertPhotos"];
 
