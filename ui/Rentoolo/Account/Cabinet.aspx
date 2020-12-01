@@ -22,8 +22,8 @@
 	        justify-content: center;
 	        align-items: center;
 	        flex-direction: column;
-	        width: 300px;
-	        height: 300px;
+	        width: 100px;
+	        height: 100px;
 	        outline: 2px dashed #5d5d5d;
 	        outline-offset: -12px;
 	        background-color: #e0f2f7;
@@ -32,8 +32,8 @@
         }
 
         #upload-container img {
-	        width: 90%;
-            height: 90%;
+	        width: 70%;
+            height: 70%;
 	        margin-bottom: -30px;
 	        user-select: none;
         }

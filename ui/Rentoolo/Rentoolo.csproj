@@ -224,6 +224,7 @@
     <Content Include="404.aspx" />
     <Content Include="500.aspx" />
     <Content Include="About.aspx" />
+    <Content Include="Account\UpdateItem.aspx" />
     <Content Include="Account\AddItem.aspx" />
     <Content Include="Account\AddItemCar.aspx" />
     <Content Include="Account\Auction.aspx" />
@@ -562,6 +563,13 @@
     </Compile>
     <Compile Include="500.aspx.designer.cs">
       <DependentUpon>500.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\UpdateItem.aspx.cs">
+      <DependentUpon>UpdateItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\UpdateItem.aspx.designer.cs">
+      <DependentUpon>UpdateItem.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\AddItem.aspx.cs">
       <DependentUpon>AddItem.aspx</DependentUpon>
