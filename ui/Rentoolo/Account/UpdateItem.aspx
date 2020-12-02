@@ -263,6 +263,9 @@
             <div class="additem-left">
                 <span class="additem-title">Фотографии</span>
             </div>
+            <div>
+                
+            </div>
             <div class="additem-right">
                 <div id="mdropzone" class="dropzone"></div>
                 <div id="my-dropzone" style="display: none;"></div>
