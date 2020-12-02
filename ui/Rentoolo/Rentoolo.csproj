@@ -394,6 +394,7 @@
     <Content Include="Account\AuctionRequests.aspx" />
     <Content Include="Auctions.aspx" />
     <Content Include="Azizjan\NewsAzizjan.aspx" />
+    <Content Include="BatrebleSs\AddNewsBatrebleSs.aspx" />
     <Content Include="BatrebleSs\NewsBatrebleSs.aspx" />
     <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
@@ -527,6 +528,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Aezakmi128\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="BatrebleSs\Web.config">
       <SubType>Designer</SubType>
     </Content>
     <None Include="packages.config" />
@@ -1211,6 +1215,13 @@
     </Compile>
     <Compile Include="Azizjan\NewsAzizjan.aspx.designer.cs">
       <DependentUpon>NewsAzizjan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BatrebleSs\AddNewsBatrebleSs.aspx.cs">
+      <DependentUpon>AddNewsBatrebleSs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BatrebleSs\AddNewsBatrebleSs.aspx.designer.cs">
+      <DependentUpon>AddNewsBatrebleSs.aspx</DependentUpon>
     </Compile>
     <Compile Include="BatrebleSs\NewsBatrebleSs.aspx.cs">
       <DependentUpon>NewsBatrebleSs.aspx</DependentUpon>
