@@ -206,11 +206,11 @@
             {%>
         <div class="card">
             <div class="card-body">
-                <div class="photoContainer" data='<%=item.ImgUrls%>'></div>
-                <img class="card-img-top" src="<%=item.ImgUrls %>" alt="Card image">
-                <h4 class="card-title"><%= item.NameTask %></h4>
-                <p class="card-text"><%= item.Description %></p>
-                <button class="btn btn-primary" style="opacity: 0.75">Подробнее</button>
+                <a href="CraftsManTaskDetails.aspx?id=<%= item.Id %>">
+                    <img class="card-img-top" src="<%=item.ImgUrls %>" alt="Card image">
+                    <h4 class="card-title"><%= item.NameTask %></h4>
+                    <p class="card-text"><%= item.Description %></p>
+                </a>
             </div>
         </div>
         <%} %>
