@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web;
 using Rentoolo.Model;
+using System.Drawing;
 
 namespace Rentoolo
 {
@@ -20,7 +21,6 @@ namespace Rentoolo
 
         public async Task<HttpResponseMessage> Post()
         {
-            Dictionary<string, object> dict = new Dictionary<string, object>();
             try
             {
                 var httpRequest = HttpContext.Current.Request;
@@ -47,20 +47,19 @@ namespace Rentoolo
                         var extension = ext.ToLower();
                         if (!AllowedFileExtensions.Contains(extension))
                         {
-                            var message = string.Format("Please Upload image of type .jpg,.gif,.png.");
-
-                            dict.Add("error", message);
-                            return Request.CreateResponse(HttpStatusCode.BadRequest, dict);
+                            return Request.CreateResponse(HttpStatusCode.BadRequest, string.Format("Please Upload image of type .jpg,.gif,.png."));
                         }
                         else if (postedFile.ContentLength > MaxContentLength)
                         {
-                            var message = string.Format("Please Upload a file upto 1 mb.");
-
-                            dict.Add("error", message);
-                            return Request.CreateResponse(HttpStatusCode.BadRequest, dict);
+                            return Request.CreateResponse(HttpStatusCode.BadRequest, string.Format("Please Upload a file upto 1 mb."));
                         }
                         else
                         {
+                            Image image = Image.FromStream(postedFile.InputStream);
+                            if(image.Width < 100 || image.Height < 100)
+                            {
+                                return Request.CreateResponse(HttpStatusCode.BadRequest, string.Format("Please Upload image with a minimum resolution of 100x100px"));
+                            }
                             //if needed write the code to update the table
 
                             //Userimage myfolder name where i want to save my image
@@ -70,15 +69,11 @@ namespace Rentoolo
 
                     return Request.CreateResponse(HttpStatusCode.Created, fileUrl);
                 }
-                var res = string.Format("Please Upload a image.");
-                dict.Add("error", res);
-                return Request.CreateResponse(HttpStatusCode.NotFound, dict);
+                return Request.CreateResponse(HttpStatusCode.NotFound, string.Format("Please Upload a image."));
             }
             catch (Exception ex)
             {
-                var res = string.Format("some Message");
-                dict.Add("error", res);
-                return Request.CreateResponse(HttpStatusCode.NotFound, dict);
+                return Request.CreateResponse(HttpStatusCode.NotFound, string.Format("some Message"));
             }
         }
 

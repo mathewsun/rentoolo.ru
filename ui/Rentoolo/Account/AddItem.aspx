@@ -17,11 +17,20 @@
             $("div#mdropzone").dropzone({
                 url: "/api/upi",
                 addRemoveLinks: true,
+                acceptedFiles: ".jpeg,.jpg,.png,.gif",
                 resizeWidth: 800,
                 resizeHeight: 600,
                 resizeMethod: 'contain',
                 resizeQuality: 1.0,
                 dictDefaultMessage: "Add photos",
+                init: function () {
+                    this.on("thumbnail", function (file) {
+                        if (file.width < 100 || file.height < 100) {
+                            alert("Minimum Image resolution 100x100px")
+                            this.removeFile(file);
+                        }
+                    });
+                },
                 success: function (file, response) {
                     var filaName = response;
                     file.previewElement.classList.add("dz-success");
