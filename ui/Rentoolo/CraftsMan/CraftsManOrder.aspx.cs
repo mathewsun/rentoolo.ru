@@ -9,8 +9,6 @@ namespace Rentoolo.CraftsMan
     {
         public string[] AllCities = RusCities.AllRusCities;
 
-        public string CategoryId { get; set; }
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -18,17 +16,16 @@ namespace Rentoolo.CraftsMan
 
         protected void ButtonOrder_Click(object sender, EventArgs e)
         {
-            string nameTask = String.Format("{0}", Request.Form["ctl00$MainContent$input_nameTask"]);
-            string description = String.Format("{0}", Request.Form["ctl00$MainContent$input_description"]);
-            string price = String.Format("{0}", Request.Form["ctl00$MainContent$input_price"]);
-            string phone = String.Format("{0}", Request.Form["ctl00$MainContent$phone"]);
-            string firstName = String.Format("{0}", Request.Form["ctl00$MainContent$input_firstName"]);
-            string lastName = String.Format("{0}", Request.Form["ctl00$MainContent$input_lastName"]);
-            string address = String.Format("{0}", Request.Form["ctl00$MainContent$address"]);
-            string email = String.Format("{0}", Request.Form["ctl00$MainContent$email"]);
-            string city = String.Format("{0}", Request.Form["ctl00$MainContent$city"]);
-            string place = String.Format("{0}", Request.Form["ctl00$MainContent$additem_place"]);
-            string category = String.Format("{0}", Request.Form["ctl00$MainContent$input_price"]);// TODO переделать
+            string nameTask = Request.Form["input_nameTask"];
+            string description = Request.Form["input_description"];
+            string price = Request.Form["input_price"];
+            string phone = Request.Form["phone"];
+            string firstName = Request.Form["input_firstName"];
+            string lastName = Request.Form["address"];
+            string email = Request.Form["email"];
+            string city = Request.Form["city"];
+            string place = Request.Form["additem_place"];
+            string address = Request.Form["address"];
 
             var objPhotos = Request.Form["OrderPhotos"];
 
@@ -47,11 +44,6 @@ namespace Rentoolo.CraftsMan
                 order.ImgUrls = "[\"/img/a/noPhoto.png\"]";
             }
 
-            try
-            {
-                order.Category = Int32.Parse(category);
-            }
-            catch { }
             try
             {
                 order.Price = double.Parse(price);

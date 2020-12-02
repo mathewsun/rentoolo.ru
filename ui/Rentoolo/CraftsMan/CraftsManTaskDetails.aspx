@@ -64,5 +64,9 @@
             </div>
         </div>
     </div>
-
+    <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+        <a class="btn btn-outline-success" href="CraftsManConnection.aspx?id=<%= order.Id %>" role="button">Выбрать</a>
+        <a class="btn btn-outline-danger" href="CraftsManTasks.aspx" role="button">Другие варианты</a>  
+    </div>
 </asp:Content>
+

@@ -12,7 +12,7 @@
     <link href="/assets/js/dropzone/basic.css" rel="stylesheet">
     <script src="/assets/js/jsonUtils.js?2"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function () { 
             $("div#mdropzone").dropzone({
                 url: "/api/upi",
                 addRemoveLinks: true,
@@ -60,7 +60,7 @@
             });
             $.get("/assets/json/categories.json?4", function (data) {
 
-                var category = '<%=CategoryId%>';
+                <%--var category = '<%=%>';--%>
 
                 var strFirstCategory = category.substring(0, 2);
 
@@ -188,7 +188,7 @@
             <hr class="mb-4">
             <div class="additem-category additem-text__wrap">
                 <label for="input_description">Опишите детали задачи</label>
-                <textarea class="form-control" id="input_description" runat="server" rows="5"></textarea>
+                <textarea class="form-control" id="input_description" name="input_description" runat="server" rows="5"></textarea>
             </div>
         </div>
         <div class="additem-category">
@@ -196,7 +196,7 @@
                 <span class="additem-title">Укажите приемлемую цену услуг</span>
             </div>
             <div class="additem-right">
-                <input type="number" id="input_price" class="additem-input additem__input-price" maxlength="14" required runat="server">
+                <input type="number" id="input_price" name="input_price" class="additem-input additem__input-price" maxlength="14" required runat="server">
                 <span class="price__value">₽</span>
                 <div class="price__popup">
                     Какую цену указать
@@ -244,7 +244,7 @@
         <div class="row justify-content-md-center">
             <div class="col-md-6 mb-3">
                 <label for="lastName">Фамилия</label>
-                <input type="text" class="form-control" runat="server" id="input_lastName" placeholder="" value="" required>
+                <input type="text" class="form-control"  id="input_lastName" name="input_lastName" placeholder="" value="" required>
                 <div class="invalid-feedback">
                     Valid first name is required.
            
@@ -252,7 +252,7 @@
             </div>
             <div class="col-md-6 mb-3">
                 <label for="firstName">Имя</label>
-                <input type="text" class="form-control" runat="server" id="input_firstName" placeholder="" value="" required>
+                <input type="text" class="form-control"  id="input_firstName" name="input_firstName" placeholder="" value="" required>
                 <div class="invalid-feedback">
                     Valid last name is required.
            
@@ -261,7 +261,7 @@
         </div>
         <div class="mb-3">
             <label for="email">Email <span class="text-muted">(Optional)</span></label>
-            <input type="email" class="form-control" runat="server" id="email" placeholder="you@example.com">
+            <input type="email" class="form-control"  id="email" placeholder="you@example.com">
             <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
          
@@ -270,7 +270,7 @@
 
         <div class="mb-3">
             <label for="address">Адрес</label>
-            <input type="text" class="form-control" runat="server" id="address" placeholder="пр.Мира,9/1a" required>
+            <input type="text" class="form-control"  id="address" name="address" placeholder="пр.Мира,9/1a" required>
             <div class="invalid-feedback">
                 Please enter your shipping address.
          
@@ -278,7 +278,7 @@
         </div>
         <div class="mb-3">
             <label for="phone">Телефон</label>
-            <input type="text" class="form-control" runat="server" id="phone" placeholder="+7999-888-77-66" required>
+            <input type="text" class="form-control"  id="phone" name="phone" placeholder="+7999-888-77-66" required>
             <div class="invalid-feedback">
                 Please enter your phone.
          
@@ -309,19 +309,19 @@
                 </div>
                 <div class="additem-right">
                     <div class="additem-checkbox">
-                        <input type="radio" class="checkbox" id="phoneandmess" name="contact" checked runat="server">
+                        <input type="radio" class="checkbox" id="phoneandmess" name="contact" checked >
                         <label class="checkbox-label" for="phoneandmess">
                             По телефону и в сообщениях
                         </label>
                     </div>
                     <div class="additem-checkbox">
-                        <input type="radio" class="checkbox" id="onlyphone" name="contact" runat="server">
+                        <input type="radio" class="checkbox" id="onlyphone" name="contact" >
                         <label class="checkbox-label" for="onlyphone">
                             Только по телефону
                         </label>
                     </div>
                     <div class="additem-checkbox">
-                        <input type="radio" class="checkbox" id="message" name="contact" runat="server">
+                        <input type="radio" class="checkbox" id="message" name="contact" >
                         <label class="checkbox-label" for="message">
                             Только в сообщениях
                         </label>

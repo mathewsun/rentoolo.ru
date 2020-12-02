@@ -21,9 +21,9 @@
                 <h1 class="display-4 bg-danger text-white">Контакты</h1>
                 <p class="lead"><%=craftsMan.Region %></p>
                 <hr />
-                 <p class="lead"><%=craftsMan.Phone %></p>
+                <p class="lead"><%=craftsMan.Phone %></p>
                 <hr />
-                 <p class="lead"><%=craftsMan.Email %></p>
+                <p class="lead"><%=craftsMan.Email %></p>
                 <hr />
             </div>
         </div>
@@ -60,5 +60,8 @@
             <p class="lead"><%=craftsMan.Description %></p>
         </div>
     </div>
-
+    <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+        <a class="btn btn-outline-success" href="CraftsManConnection.aspx?id=<%= craftsMan.Id %>" role="button">Выбрать</a>
+        <a class="btn btn-outline-danger" href="CraftsManPage.aspx" role="button">Другие варианты</a>  
+    </div>
 </asp:Content>
