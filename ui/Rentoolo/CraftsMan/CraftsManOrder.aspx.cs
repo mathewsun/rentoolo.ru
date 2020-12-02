@@ -20,7 +20,8 @@ namespace Rentoolo.CraftsMan
         {
             string nameTask = String.Format("{0}", Request.Form["ctl00$MainContent$input_nameTask"]);
             string description = String.Format("{0}", Request.Form["ctl00$MainContent$input_description"]);
-            string price = String.Format("{0}", Request.Form["ctl00$MainContent$input_price"]);
+            string price = Request.Form["input_price"]; //String.Format("{0}", Request.Form["ctl00$MainContent$input_price"]);
+
             string phone = String.Format("{0}", Request.Form["ctl00$MainContent$phone"]);
             string firstName = String.Format("{0}", Request.Form["ctl00$MainContent$input_firstName"]);
             string lastName = String.Format("{0}", Request.Form["ctl00$MainContent$input_lastName"]);

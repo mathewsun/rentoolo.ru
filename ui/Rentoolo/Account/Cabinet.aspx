@@ -133,8 +133,6 @@
                     let uploadImg = 'https://habrastorage.org/webt/dr/qg/cs/drqgcsoh1mosho2swyk3kk_mtwi.png';
 
 
-
-
                     imgContainer = document.getElementById('imgContainer');
                     imgContainer.style.visibility = "inherit";
                     img.src = uploadImg;
@@ -203,23 +201,7 @@
 
 
 
-
-
-
-
             </script>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                 <table class="marginTable cabinetTable">
