@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Chats.aspx.cs" Inherits="Rentoolo.ChatFront.Chats" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ChatPage.aspx.cs" Inherits="Rentoolo.ChatFront.ChatPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 
     <head>
@@ -9,6 +9,15 @@
             .with-left-toolbar-container {
                 display: grid;
                 grid-template-columns: 20% 1fr;
+            }
+
+
+            .chat-template{
+
+                display: grid;
+                grid-template: 'chats messages';
+                grid-template-columns: 20% 1fr;
+
             }
 
 
@@ -45,7 +54,7 @@
             }
     
             .chat-box{
-              height: 500px;
+              height: 900px;
               overflow: auto;
             }
 
@@ -64,38 +73,125 @@
             <h1>Chat tests</h1>
             <div class="button" @click="hideMetaInfo">show/hide meta info</div>
 
-            <div>
+            
+                    <div v-if="metaInfo">
+                        <div>
+                            <h5>user configs</h5>
+                            <div>
+                                UserId: {{userId}}
+                            </div>
+                        </div>
 
-                <div v-if="metaInfo">
+                        <div>
+                            <h5>
+                                Create chat
+                            </h5>
 
-                    <%--<div>
-                        <div class="container">
+                            <div>
+                                <input type="text" v-model="chatName" />
+                                <div class="button" @click="createChat" >create</div>
+                            </div>
+
+                        </div>
+                    
+                        <div v-if="inChat">
+                            add new user in chat:<br />
+                            <input type="text" v-model="newUserId" />
+                            <div class="button" @click="addNewChatUser">add</div>
+                        </div>
+                    </div>
+
+            <div class="chat-template">
+
+                <div id="chats">
+                    <div class="with-left-toolbar-container">
+                        <div>
+
+                            <div v-if="showChats">
+                                <div>
+                                    <div v-for="(chat,index) in chats" :key="index">
+
+                                        <div class="button" @click="getMessages(chat.Id)">
+
+                                            {{chat.ChatName}}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>{{message1}} </h3>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="messages">
+
+                        <div class="container" id="msgcont">
                              <div class="chat-box row">
-                               <div class="col-md-12 chat-item">
-                                Test Message 1
+                               <div class="col-md-12 chat-item" v-for="(message,index) in messages" :key="index">
+                                    <div>
+                                        From:{{message.FromUserId}} <br />
+                                        Message: <br />
+                                        {{message.Message}}
+                                        
+                                    </div>
                                </div>
-       
-                               <div class="col-md-12 chat-item">
-                                Test Message 2
+                               <div id="bottom">
+                                   bottom
                                </div>
-       
-                               <div class="col-md-12 chat-item">
-                                Test Message 3
-                               </div> 
-       
-                               <div class="col-md-12 chat-item">
-                                Test Message 4
-                               </div> 
+                               
                              </div>
-    </div>
-    
-                         <div class="chat-footer">
-                           <div class="container">
-                             <input class="form-control" type="text" placeholder="Message" />
+                        </div>
+
+                    <div class="chat-footer">
+                           <div class="container" style="display: flex">
+                               
+                             <input class="form-control"  v-model="message" type="text" placeholder="Message" />
+                             <div class="button" @click="sendMessage">send</div>
                            </div>
                          </div>
-                    </div>--%>
 
+                </div>
+
+            </div>
+
+
+
+
+<%--            <div>
+
+                <div>
+
+                    
+                    <div v-if="metaInfo">
+                        <div>
+                            <h5>user configs</h5>
+                            <div>
+                                UserId: {{userId}}
+                            </div>
+                        </div>
+
+                        <div>
+                            <h5>
+                                Create chat
+                            </h5>
+
+                            <div>
+                                <input type="text" v-model="chatName" />
+                                <div class="button" @click="createChat" >create</div>
+                            </div>
+
+                        </div>
+                    
+                        <div v-if="inChat">
+                            add new user in chat:<br />
+                            <input type="text" v-model="newUserId" />
+                            <div class="button" @click="addNewChatUser">add</div>
+                        </div>
+                    </div>
 
                     <div>
                         <div class="container" id="msgcont">
@@ -125,32 +221,6 @@
                     </div>
 
 
-                    <div>
-                        <div>
-                            <h5>user configs</h5>
-                            <div>
-                                UserId: {{userId}}
-                            </div>
-                        </div>
-
-                        <div>
-                            <h5>
-                                Create chat
-                            </h5>
-
-                            <div>
-                                <input type="text" v-model="chatName" />
-                                <div class="button" @click="createChat" >create</div>
-                            </div>
-
-                        </div>
-                    
-                        <div v-if="inChat">
-                            add new user in chat:<br />
-                            <input type="text" v-model="newUserId" />
-                            <div class="button" @click="addNewChatUser">add</div>
-                        </div>
-                    </div>
                 </div>
                 
 
@@ -176,32 +246,9 @@
 
                     </div>
 
-
-<%--                    <div>
-                        <div>
-                            <div>
-                                <input v-model="message" />
-                            </div>
-                            <div class="button" @click="sendMessage">send</div>
-                        </div>
-                        <div v-if="showMessages">
-                            <div v-for="(message,index) in messages" :key="index">
-                                <div>
-                                    From:{{message.FromUserId}} <br />
-                                    Message: <br />
-                                    {{message.Message}}
-                                    <hr />
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>--%>
-
-
                 </div>
 
-            </div>
+            </div>--%>
 
 
         </div>
@@ -209,12 +256,13 @@
         <script type="text/javascript">
 
             function gotoBottom(id) {
+                id = 'bottom';
                 var element = document.getElementById(id);
-                console.log(element);
-                console.log(element.scrollHeight);
-                //element.scrollIntoView({ block: "end", behavior: "smooth" });
+                //console.log(element);
+                //console.log(element.scrollHeight);
+                element.scrollIntoView({ block: "end", behavior: "smooth" });
 
-                element.scrollTop = element.scrollHeight;
+                //element.scrollTop = element.scrollHeight;
 
 
 

@@ -401,6 +401,7 @@
     <Content Include="Business.aspx" />
     <Content Include="Category.aspx" />
     <Content Include="ChatFront\Chat3.html" />
+    <Content Include="ChatFront\ChatPage.aspx" />
     <Content Include="ChatFront\Chats.aspx" />
     <Content Include="ComplaintPage.aspx" />
     <Content Include="ComplaintsPage.aspx" />
@@ -1251,6 +1252,13 @@
     </Compile>
     <Compile Include="Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatFront\ChatPage.aspx.cs">
+      <DependentUpon>ChatPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChatFront\ChatPage.aspx.designer.cs">
+      <DependentUpon>ChatPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChatFront\Chats.aspx.cs">
       <DependentUpon>Chats.aspx</DependentUpon>
