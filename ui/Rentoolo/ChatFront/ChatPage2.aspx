@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ChatPage.aspx.cs" Inherits="Rentoolo.ChatFront.ChatPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ChatPage2.aspx.cs" Inherits="Rentoolo.ChatFront.ChatPage2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 
     <head>
@@ -12,12 +12,10 @@
             }
 
 
-            .chat-template{
-
+            .chat-template {
                 display: grid;
                 grid-template: 'chats messages';
                 grid-template-columns: 20% 80%;
-
             }
 
 
@@ -34,39 +32,62 @@
                 width: 200px;
             }
 
-            div.button:active {
-                color: red;
-                box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
-            }
+                div.button:active {
+                    color: red;
+                    box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+                }
 
-            .chat-item{
-              background-color: #ffe1e1;
-              margin-top: 10px;
-              margin-bottom: 10px;
-              margin-left: 30px;
-              border-radius: 30px;
-              padding: 20px;
-              word-break: break-all;
-            }
-    
-            .chat-footer{
-              background-color: #dfeeff;
-              padding: 10px;
-            }
-    
-            .chat-box{
-              height: 400px;
-              overflow: auto;
-            }
-
-
-            #messages{
-                border: medium;
-                border-bottom-color: blue;
-                border-bottom-width: medium;
+            .chat-item {
+                background-color: #ffe1e1;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-left: 30px;
+                border-radius: 30px;
+                padding: 20px;
+                word-break: break-all;
                 
             }
 
+            .chat-footer {
+                background-color: #dfeeff;
+                padding: 10px;
+            }
+
+            .chat-box {
+                height: 450px;
+                overflow: auto;
+            }
+
+
+
+
+
+            #chat-container {
+                display: grid;
+                grid-template: 'chats-podstilka messages' '. chat-footer';
+                grid-template-columns: 20% 80%;
+            }
+
+            #chats {
+                background-color: cyan;
+                position: absolute;
+                overflow: auto;
+                height: 450px;
+                
+            }
+
+            /*#messages {
+                border: medium;
+                border-bottom-color: blue;
+                border-bottom-width: medium;
+                background-color: bisque;
+                overflow: auto;
+                height: 500px;
+            }*/
+
+            #messages{
+                background-color: cyan;
+            }
 
 
         </style>
@@ -76,14 +97,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        
         <div id="app">
 
-            <h1>Chat tests</h1>
             <div class="button" @click="hideMetaInfo">show/hide meta info</div>
 
-            
-                    <div v-if="metaInfo">
+            <div v-if="metaInfo">
                         <div>
                             <h5>user configs</h5>
                             <div>
@@ -108,104 +127,45 @@
                             <input type="text" v-model="newUserId" />
                             <div class="button" @click="addNewChatUser">add</div>
                         </div>
-                    </div>
-
-            <div class="chat-template">
-
-                <div id="chats">
-                    <div >
-                        <div>
-
-                            <div v-if="showChats">
-                                <div>
-                                    <div v-for="(chat,index) in chats" :key="index">
-
-                                        <div class="button" style="width: 100%" @click="getMessages(chat.Id)">
-
-                                            {{chat.ChatName}}
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3>{{message1}} </h3>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div id="messages">
-
-                        <div class="container" id="msgcont">
-                             <div class="chat-box row">
-                               <div class="col-md-12 chat-item" v-for="(message,index) in messages" :key="index">
-                                    <div>
-                                        From:{{message.FromUserId}} <br />
-                                        Message: <br />
-                                        {{message.Message}}
-                                        
-                                    </div>
-                               </div>
-                               <div id="bottom">
-                                   bottom
-                               </div>
-                               
-                             </div>
-                        </div>
-
-                    <div class="chat-footer">
-                           <div class="container" style="display: flex">
-                               
-                             <input class="form-control"  v-model="message" type="text" placeholder="Message" />
-                             <div class="button" @click="sendMessage">send</div>
-                           </div>
-                         </div>
-
-                </div>
-
             </div>
 
 
-
-
-<%--            <div>
-
-                <div>
-
+            <div id="chat-container">
+                <div id="chats">
                     
-                    <div v-if="metaInfo">
-                        <div>
-                            <h5>user configs</h5>
-                            <div>
-                                UserId: {{userId}}
-                            </div>
-                        </div>
+                    <%--<div v-for="(i, index) in Array.from(Array(80).keys())" :key="index">
+                        {{i}}
+                        A
+                    </div>--%>
 
                         <div>
-                            <h5>
-                                Create chat
-                            </h5>
+                          <div v-for="(chat,index) in chats" :key="index">
 
-                            <div>
-                                <input type="text" v-model="chatName" />
-                                <div class="button" @click="createChat" >create</div>
+                            <div class="btn btn-block btn-primary btn-info" style="width: 100%; margin-top:10px;" @click="getMessages(chat.Id)">
+
+                                {{chat.ChatName}}
                             </div>
 
-                        </div>
-                    
-                        <div v-if="inChat">
-                            add new user in chat:<br />
-                            <input type="text" v-model="newUserId" />
-                            <div class="button" @click="addNewChatUser">add</div>
-                        </div>
-                    </div>
+                           </div>
+                         </div>                    
+
+
+
+                </div>
+                <div id="chats-podstilka">
+
+                </div>
+                <div id="messages">
+
+                    <%--<div v-for="(i, index) in Array.from(Array(20).keys())" :key="index">
+                        {{i}} BB
+                    </div>--%>
 
                     <div>
+                        
                         <div class="container" id="msgcont">
-                             <div class="chat-box row">
-                               <div class="col-md-12 chat-item" v-for="(message,index) in messages" :key="index">
+                             <div class="chat-box row" id="mc">
+                               <div class="col-md-12 chat-item " style="max-width: 90%;" v-for="(message,index) in messages" :key="index">
                                     <div>
                                         From:{{message.FromUserId}} <br />
                                         Message: <br />
@@ -219,45 +179,22 @@
                                
                              </div>
                         </div>
-    
-                         <div class="chat-footer">
-                           <div class="container" style="display: flex">
+
+                    </div>
+                    
+                </div>
+                <div>
+
+                </div>
+                <div class="chat-footer" id="chat-footer">
+                    <div class="container" style="display: flex">
                                
-                             <input class="form-control"  v-model="message" type="text" placeholder="Message" />
-                             <div class="button" @click="sendMessage">send</div>
-                           </div>
-                         </div>
+                        <input class="form-control"  v-model="message" type="text" placeholder="Message" />
+                        <div class="btn btn-primary btn-warning " @click="sendMessage">send</div>
                     </div>
-
-
-                </div>
-                
-
-                <hr>
-
-                <div class="with-left-toolbar-container">
-                    <div>
-
-                        <div v-if="showChats">
-                            <div>
-                                <div v-for="(chat,index) in chats" :key="index">
-
-                                    <div class="button" @click="getMessages(chat.Id)">
-
-                                        {{chat.ChatName}}
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <h3>{{message1}} </h3>
-
-                    </div>
-
                 </div>
 
-            </div>--%>
+            </div>
 
 
         </div>
@@ -266,18 +203,39 @@
 
             function gotoBottom(id) {
                 id = 'bottom';
-                var element = document.getElementById(id);
+                let element = document.getElementById('bottom');
+
+                let scrollEL = document.getElementById('mc');
                 //console.log(element);
                 //console.log(element.scrollHeight);
-                element.scrollIntoView({ block: "end", behavior: "smooth" });
 
-                //element.scrollTop = element.scrollHeight;
+
+                element.scrollIntoView(
+                    {
+                        block: "center",
+                        behavior: "smooth",
+                        inline: "center"
+                    }
+                );
+
+                //element.scrollIntoView(false);
+
+                //scrollEL.scrollTo(0, scrollEL.scrollHeight + 1000);
+
+                console.log(scrollEL.scrollHeight);
+
+
+                //element.scrollIntoView(true);
+
+                
+
+                //element.scrollTop = 0;
 
 
 
                 //element.scrollTop = element.scrollHeight - element.clientHeight;
                 //element.scrollTop += 100;
-                
+
             }
 
             let websock;
@@ -367,6 +325,7 @@
                         socket.onmessage = function (event) {
                             //console.log("Получены данные " + event.data);
                             addMsg(event.data);
+                            gotoBottom('msgcont');
                         };
 
                         socket.onopen = function () {

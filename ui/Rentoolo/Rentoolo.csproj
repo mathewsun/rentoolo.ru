@@ -401,6 +401,7 @@
     <Content Include="Business.aspx" />
     <Content Include="Category.aspx" />
     <Content Include="ChatFront\Chat3.html" />
+    <Content Include="ChatFront\ChatPage2.aspx" />
     <Content Include="ChatFront\ChatPage.aspx" />
     <Content Include="ChatFront\Chats.aspx" />
     <Content Include="ComplaintPage.aspx" />
@@ -1253,6 +1254,13 @@
     <Compile Include="Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ChatFront\ChatPage2.aspx.cs">
+      <DependentUpon>ChatPage2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChatFront\ChatPage2.aspx.designer.cs">
+      <DependentUpon>ChatPage2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ChatFront\ChatPage.aspx.cs">
       <DependentUpon>ChatPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1307,6 +1315,7 @@
     <Compile Include="Controllers\LikesDislikesController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\MVC\DefaultController.cs" />
+    <Compile Include="Controllers\MVC\DialogController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TopRecipesController.cs" />
@@ -2064,6 +2073,7 @@
     <Folder Include="Data\" />
     <Folder Include="Rent\" />
     <Folder Include="Sell\" />
+    <Folder Include="Views\Dialog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config">

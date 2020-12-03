@@ -6,21 +6,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Rentoolo
+namespace Rentoolo.ChatFront
 {
-    public partial class UserProfile : BasicPage
+    public partial class ChatPage2 : BasicPage
     {
-
-        public Users AnotherUser;
+        public Users CurUser;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string id = Request.QueryString["id"];
-
-
-            AnotherUser = DataHelper.GetUser(Guid.Parse(id));
-
-
+            CurUser = User;
         }
     }
 }
