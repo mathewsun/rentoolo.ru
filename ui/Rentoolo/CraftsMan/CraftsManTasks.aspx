@@ -204,10 +204,13 @@
     <div class="card-columns">
         <%foreach (var item in ListCraftsManOrder)
             {%>
+
         <div class="card">
             <div class="card-body">
                 <a href="CraftsManTaskDetails.aspx?id=<%= item.Id %>">
-                    <img class="card-img-top" src="<%=item.ImgUrls %>" alt="Card image">
+                    <div class="media-body-inline-grid" data-grid="images">
+                        <div class="photoContainer" data='<%=item.ImgUrls%>'></div>
+                    </div>
                     <h4 class="card-title"><%= item.NameTask %></h4>
                     <p class="card-text"><%= item.Description %></p>
                 </a>

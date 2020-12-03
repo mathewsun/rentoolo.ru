@@ -183,12 +183,12 @@
         <div class="additem-right">
             <div class="additem-category additem-text__wrap">
                 <label for="input_nameTask">В двух словах, что вам нужно?</label>
-                <input type="text" id="input_nameTask" name="input_nameTask" runat="server" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                <input type="text" id="input_nameTask" name="input_nameTask"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
             </div>
             <hr class="mb-4">
             <div class="additem-category additem-text__wrap">
                 <label for="input_description">Опишите детали задачи</label>
-                <textarea class="form-control" id="input_description" name="input_description" runat="server" rows="5"></textarea>
+                <textarea class="form-control" id="input_description" name="input_description"  rows="5"></textarea>
             </div>
         </div>
         <div class="additem-category">
@@ -196,7 +196,7 @@
                 <span class="additem-title">Укажите приемлемую цену услуг</span>
             </div>
             <div class="additem-right">
-                <input type="number" id="input_price" name="input_price" class="additem-input additem__input-price" maxlength="14" required runat="server">
+                <input type="number" id="input_price" name="input_price" class="additem-input additem__input-price" maxlength="14" required >
                 <span class="price__value">₽</span>
                 <div class="price__popup">
                     Какую цену указать
@@ -219,7 +219,7 @@
                 <span class="additem-title">Место сделки</span>
             </div>
             <div class="additem-right additem-place">
-                <input type="text" id="additem_place" class="additem-input" required clientidmode="Static" runat="server">
+                <input type="text" id="additem_place" class="additem-input" required clientidmode="Static" >
                 <input type="hidden" id="latgeo" />
                 <input type="hidden" id="lnggeo" />
                 <input type="hidden" id="street_number_hidden" />

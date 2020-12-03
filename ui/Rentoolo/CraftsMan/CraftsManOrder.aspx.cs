@@ -31,8 +31,8 @@ namespace Rentoolo.CraftsMan
 
             Rentoolo.Model.CraftsManOrder order = new Model.CraftsManOrder();
 
-            if (objPhotos != null)
-            {
+             if (objPhotos != null)
+             {
                 String[] listPhotos = objPhotos.Split(',');
 
                 var jsonPhotos = JsonConvert.SerializeObject(listPhotos);

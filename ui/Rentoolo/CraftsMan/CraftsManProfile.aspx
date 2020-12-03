@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <img class="container-fluid" src="../img/kitchen/avatars/94671454_277769756585463_6526749104637214720_n.jpg" />
-                <img class="container-fluid" src="<%=craftsMan.ImgUrls %>" />
+                
+                <img class="container-fluid" src="<%=craftsMan.ImgUrls.Trim('[',']') %>" />
             </div>
             <div class="col order-12">
                 <h1 class="bg-primary text-white"><%=craftsMan.FirstName %> <%=craftsMan.LastName %></h1>
@@ -36,14 +36,9 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="../img/kitchen/falafel-s-ovoshami.jpg">
+                <img src=<%=craftsMan.ImgUrls.Trim('[',']') %> />
             </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="../img/kitchen/govadina-v-fruktovom-marinade.jpg" alt="Второй слайд">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="../img/kitchen/falafel-s-ovoshami.jpg" alt="Третий слайд">
-            </div>
+
         </div>
         <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -62,6 +57,6 @@
     </div>
     <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
         <a class="btn btn-outline-success" href="CraftsManConnection.aspx?id=<%= craftsMan.Id %>" role="button">Выбрать</a>
-        <a class="btn btn-outline-danger" href="CraftsManPage.aspx" role="button">Другие варианты</a>  
+        <a class="btn btn-outline-danger" href="CraftsManPage.aspx" role="button">Другие варианты</a>
     </div>
 </asp:Content>
