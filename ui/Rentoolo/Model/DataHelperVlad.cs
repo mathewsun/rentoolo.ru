@@ -14,5 +14,21 @@ namespace Rentoolo.Model
                 return list;
             }
         }
+
+        public static void AddNews(NewsVlad item)
+        {
+            using (var ctx = new RentooloEntities())
+            {
+                ctx.NewsVlad.Add(item);
+                try
+                {
+                    ctx.SaveChanges();
+                }
+                catch (System.Exception ex)
+                {
+                    DataHelper.AddException(ex);
+                }
+            }
+        }
     }
 }
