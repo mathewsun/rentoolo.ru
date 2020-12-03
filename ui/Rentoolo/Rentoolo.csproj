@@ -465,13 +465,6 @@
     <Content Include="Raspel\NewsRaspel.aspx" />
     <Content Include="Realty.aspx" />
     <Content Include="Rent.aspx" />
-    <EntityDeploy Include="Model\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="AlexPigalyov\Web.config" />
     <Content Include="Services.aspx" />
     <Content Include="ShCodder\NewShCodder.aspx" />
@@ -517,6 +510,7 @@
     <Content Include="Transport.aspx" />
     <Content Include="UserProfile.aspx" />
     <Content Include="Vark\NewsVark.aspx" />
+    <Content Include="Vlad\NewsVlad.aspx" />
     <Content Include="yandex_f9c03f80c16c0af8.html" />
     <Content Include="assets\json\categories.json" />
     <Content Include="assets\json\categories_ru.json" />
@@ -533,6 +527,13 @@
     </Content>
     <Content Include="BatrebleSs\Web.config">
       <SubType>Designer</SubType>
+    </Content>
+    <EntityDeploy Include="Model\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -1466,6 +1467,7 @@
     <Compile Include="Model\DataHelperIlya.cs" />
     <Compile Include="Model\DataHelperRaspel.cs" />
     <Compile Include="Model\DataHelperVark.cs" />
+    <Compile Include="Model\DataHelperVlad.cs" />
     <Compile Include="Model\DeletedAdverts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1593,6 +1595,9 @@
     <Compile Include="Model\NewsVark.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\NewsVlad.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\News_towardsbackwards.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1609,6 +1614,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Referrals.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Rent.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RentedTime.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Roles.cs">
@@ -2045,6 +2056,13 @@
     </Compile>
     <Compile Include="Vark\NewsVark.aspx.designer.cs">
       <DependentUpon>NewsVark.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vlad\NewsVlad.aspx.cs">
+      <DependentUpon>NewsVlad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vlad\NewsVlad.aspx.designer.cs">
+      <DependentUpon>NewsVlad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Workers\AuctionsChecker.cs" />
   </ItemGroup>
