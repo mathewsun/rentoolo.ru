@@ -180,6 +180,21 @@
             <h2>Оформление Заявки</h2>
         </div>
         <hr class="mb-4">
+            <div class="additem-right">
+                <div class="additem-category additem-text__wrap">
+                <label for="input_category">Сфера деятельности</label>
+                <select id="input_category" class="additem-input" required >
+                    <option value="">Выберите сферу деятельности</option>
+                    <option value="1">Репетиторы</option>
+                    <option value="2">Мастера по ремонту</option>
+                    <option value="3">Фрилансеры</option>
+                    <option value="4">Домашний персонал</option>
+                    <option value="5">Артисты</option>
+                    <option value="6">Доставка грузов</option>
+                </select>
+                    </div>
+            </div>
+        <hr class="mb-4">
         <div class="additem-right">
             <div class="additem-category additem-text__wrap">
                 <label for="input_nameTask">В двух словах, что вам нужно?</label>
@@ -193,7 +208,7 @@
         </div>
         <div class="additem-category">
             <div class="additem-left">
-                <span class="additem-title">Укажите приемлемую цену услуг</span>
+                <label for="input_price">Укажите приемлемую цену услуг</label>
             </div>
             <div class="additem-right">
                 <input type="number" id="input_price" name="input_price" class="additem-input additem__input-price" maxlength="14" required >
@@ -207,7 +222,7 @@
         </div>
         <div class="additem-category">
             <div class="additem-left">
-                <span class="additem-title">Фотографии</span>
+                <label for="mdropzone">Фотографии</label>
             </div>
             <div class="additem-right">
                 <div id="mdropzone" class="dropzone"></div>

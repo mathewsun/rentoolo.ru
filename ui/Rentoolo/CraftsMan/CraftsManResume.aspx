@@ -34,8 +34,24 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="additem">
         <div class="additem-category">
-            <h2>Добавить Резюме</h2>
+            <h2>Создать Резюме</h2>
         </div>
+        <hr class="mb-4">
+            <div class="additem-right">
+                <div class="additem-category additem-text__wrap">
+                <label for="input_category">Сфера деятельности</label>
+                <select id="input_category" class="additem-input" required >
+                    <option value="">Выберите сферу деятельности</option>
+                    <option value="1">Репетиторы</option>
+                    <option value="2">Мастера по ремонту</option>
+                    <option value="3">Фрилансеры</option>
+                    <option value="4">Домашний персонал</option>
+                    <option value="5">Артисты</option>
+                    <option value="6">Доставка грузов</option>
+                </select>
+                    </div>
+            </div>
+        
         <hr class="mb-4">
         <div class="additem-right">
             <div class="additem-category additem-text__wrap">
@@ -50,7 +66,7 @@
         </div>
         <div class="additem-category">
             <div class="additem-left">
-                <span class="additem-title">Укажите приемлемую цену за Ваши услуги</span>
+                <label for="input_price">Укажите приемлемую цену услуг</label>
             </div>
             <div class="additem-right">
                 <input type="number" id="input_price" name="input_price" class="additem-input additem__input-price"  required >
@@ -64,8 +80,8 @@
             </div>
         </div>
         <div class="additem-category">
-            <div class="additem-left">
-                <span class="additem-title">Фотографии</span>
+            <div class="additem-left">  
+                <label for="mdropzone">Фотографии</label>
             </div>
             <div class="additem-right">
                 <div id="mdropzone" class="dropzone"></div>

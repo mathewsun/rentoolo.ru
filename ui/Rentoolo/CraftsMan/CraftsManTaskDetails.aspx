@@ -28,17 +28,11 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
+
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src=<%=order.ImgUrls.Trim('[',']') %> /> 
-            </div>
             <div class="carousel-item">
                 <img src=<%=order.ImgUrls.Trim('[',']') %> /> 
-            </div>
-            <div class="carousel-item ">
-                <img src=<%=order.ImgUrls.Trim('[',']') %> /> 
-            </div>
-            
+            </div> 
         </div>
         <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -55,7 +49,6 @@
             <div class="container">
                 <h1 class="display-4 bg-danger text-white">Контакты</h1>
                 <h1 class="bg-primary text-white">Заказчик: <%=order.FirstName %> <%=order.LastName %></h1>
-
                 <p class="lead"><%=order.Region %></p>
                 <hr />
                 <p class="lead"><%=order.Phone %></p>
