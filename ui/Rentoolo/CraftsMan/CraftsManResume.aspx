@@ -34,26 +34,42 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="additem">
         <div class="additem-category">
-            <h2>Добавить Резюме</h2>
+            <h2>Создать Резюме</h2>
         </div>
+        <hr class="mb-4">
+            <div class="additem-right">
+                <div class="additem-category additem-text__wrap">
+                <label for="input_category">Сфера деятельности</label>
+                <select id="input_category" class="additem-input" required >
+                    <option value="">Выберите сферу деятельности</option>
+                    <option value="1">Репетиторы</option>
+                    <option value="2">Мастера по ремонту</option>
+                    <option value="3">Фрилансеры</option>
+                    <option value="4">Домашний персонал</option>
+                    <option value="5">Артисты</option>
+                    <option value="6">Доставка грузов</option>
+                </select>
+                    </div>
+            </div>
+        
         <hr class="mb-4">
         <div class="additem-right">
             <div class="additem-category additem-text__wrap">
                 <label for="input_craft">Укажите Вашу специальность</label>
-                <input type="text" id="input_craft" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" runat="server">
+                <input type="text" id="input_craft" name="input_craft" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"">
             </div>
             <hr class="mb-4">
             <div class="additem-category additem-text__wrap">
                 <label for="input_description" runat="server">Опишите Ваш опыт работы</label>
-                <textarea class="form-control" id="input_description" runat="server" rows="10"></textarea>
+                <textarea class="form-control" id="input_description" name="input_description"  rows="10"></textarea>
             </div>
         </div>
         <div class="additem-category">
             <div class="additem-left">
-                <span class="additem-title">Укажите приемлемую цену за Ваши услуги</span>
+                <label for="input_price">Укажите приемлемую цену услуг</label>
             </div>
             <div class="additem-right">
-                <input type="number" id="input_price" class="additem-input additem__input-price" maxlength="14" required runat="server">
+                <input type="number" id="input_price" name="input_price" class="additem-input additem__input-price"  required >
                 <span class="price__value">₽</span>
                 <div class="price__popup">
                     Какую цену указать
@@ -64,8 +80,8 @@
             </div>
         </div>
         <div class="additem-category">
-            <div class="additem-left">
-                <span class="additem-title">Фотографии</span>
+            <div class="additem-left">  
+                <label for="mdropzone">Фотографии</label>
             </div>
             <div class="additem-right">
                 <div id="mdropzone" class="dropzone"></div>
@@ -76,7 +92,7 @@
         <div class="row justify-content-md-center">
             <div class="col-md-6 mb-3">
                 <label for="lastName">Фамилия</label>
-                <input type="text" class="form-control" id="input_lastName" runat="server" placeholder="" value="" required>
+                <input type="text" class="form-control" id="input_lastName" name="input_lastName"  placeholder="" value="" required>
                 <div class="invalid-feedback">
                     Valid first name is required.
            
@@ -84,7 +100,7 @@
             </div>
             <div class="col-md-6 mb-3">
                 <label for="firstName">Имя</label>
-                <input type="text" class="form-control" id="input_firstName" runat="server" placeholder="" value="" required>
+                <input type="text" class="form-control" id="input_firstName" name="input_firstName"  placeholder="" value="" required>
                 <div class="invalid-feedback">
                     Valid last name is required.
            
@@ -93,7 +109,7 @@
         </div>
         <div class="mb-3">
             <label for="email">Email <span class="text-muted">(Optional)</span></label>
-            <input type="email" class="form-control" id="email" runat="server" placeholder="you@example.com">
+            <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
             <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
          
@@ -101,7 +117,7 @@
         </div>
         <div class="mb-3">
             <label for="address">Адрес</label>
-            <input type="text" class="form-control" runat="server" id="address" placeholder="пр.Мира,9/1a" required>
+            <input type="text" class="form-control"  id="address" name="address" placeholder="пр.Мира,9/1a" required>
             <div class="invalid-feedback">
                 Please enter your shipping address.
          
@@ -109,7 +125,7 @@
         </div>
         <div class="mb-3">
             <label for="phone">Телефон</label>
-            <input type="text" class="form-control" id="phone" runat="server" placeholder="+7999-888-77-66" required>
+            <input type="text" class="form-control" id="phone" name="phone"  placeholder="+7999-888-77-66" required>
             <div class="invalid-feedback">
                 Please enter your phone.
          
@@ -119,7 +135,7 @@
             <div class="col-md-4 mb-3">
 
                 <span style="float: left;">Город:</span>&nbsp;
-                                        <input type="text" runat="server" class="form-control" name="city" list="cities" />
+                                        <input type="text"  class="form-control" name="city" list="cities" />
                 <br />
                 <datalist id="cities">
 
@@ -140,19 +156,19 @@
                 </div>
                 <div class="additem-right">
                     <div class="additem-checkbox">
-                        <input type="radio" class="checkbox" id="phoneandmess" name="contact" checked runat="server">
+                        <input type="radio" class="checkbox" id="phoneandmess" name="contact" checked >
                         <label class="checkbox-label" for="phoneandmess">
                             По телефону и в сообщениях
                         </label>
                     </div>
                     <div class="additem-checkbox">
-                        <input type="radio" class="checkbox" id="onlyphone" name="contact" runat="server">
+                        <input type="radio" class="checkbox" id="onlyphone" name="contact" >
                         <label class="checkbox-label" for="onlyphone">
                             Только по телефону
                         </label>
                     </div>
                     <div class="additem-checkbox">
-                        <input type="radio" class="checkbox" id="message" name="contact" runat="server">
+                        <input type="radio" class="checkbox" id="message" name="contact">
                         <label class="checkbox-label" for="message">
                             Только в сообщениях
                         </label>

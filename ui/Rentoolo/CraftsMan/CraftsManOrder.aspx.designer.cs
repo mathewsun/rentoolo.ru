@@ -15,6 +15,7 @@ namespace Rentoolo.CraftsMan
     {
 
         /// <summary>
+
         /// input_nameTask элемент управления.
         /// </summary>
         /// <remarks>
@@ -115,6 +116,7 @@ namespace Rentoolo.CraftsMan
 
         /// <summary>
         /// addOrder элемент управления.
+
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.

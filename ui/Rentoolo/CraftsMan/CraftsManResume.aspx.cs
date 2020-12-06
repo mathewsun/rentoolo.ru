@@ -16,17 +16,17 @@ namespace Rentoolo
 
         protected void ButtonResume_Click(object sender, EventArgs e)
         {
-            string craft = String.Format("{0}", Request.Form["ctl00$MainContent$input_craft"]);
-            string description = String.Format("{0}", Request.Form["ctl00$MainContent$input_description"]);
-            string price = String.Format("{0}", Request.Form["ctl00$MainContent$input_price"]);
-            string phone = String.Format("{0}", Request.Form["ctl00$MainContent$phone"]);
-            string firstName = String.Format("{0}", Request.Form["ctl00$MainContent$input_firstName"]);
-            string lastName = String.Format("{0}", Request.Form["ctl00$MainContent$input_lastName"]);
-            string address = String.Format("{0}", Request.Form["ctl00$MainContent$address"]);
-            string email = String.Format("{0}", Request.Form["ctl00$MainContent$email"]);
-            string city = String.Format("{0}", Request.Form["ctl00$MainContent$city"]);
+            string craft = Request.Form["input_craft"];
+            string description =Request.Form["input_description"];
+            string price = Request.Form["input_price"];
+            string phone = Request.Form["phone"];
+            string firstName = Request.Form["input_firstName"];
+            string lastName = Request.Form["input_lastName"];
+            string address = Request.Form["address"];
+            string email = Request.Form["email"];
+            string city =  Request.Form["city"];
             
-            var objPhotos = String.Format("{0}", Request.Form["ResumePhotos"]);
+            var objPhotos = Request.Form["ResumePhotos"];
 
             Rentoolo.Model.CraftsMan resume = new Model.CraftsMan();
 
@@ -42,17 +42,10 @@ namespace Rentoolo
             {
                 resume.ImgUrls = "[\"/img/kitchen/falafel-s-ovoshami.jpg\"]";
             }
-            try
-            {
-                int category = 1;
-                resume.Category = category;
 
-                resume.Id = category;  // TODO переделать
-            }
-            catch { }
             try
             {
-                resume.Price = float.Parse(price);
+                resume.Price = double.Parse(price);
             }
             catch { }
 

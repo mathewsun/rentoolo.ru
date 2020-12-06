@@ -1,0 +1,41 @@
+[
+  {
+    "id": 30,
+    "name": "CraftsMan",
+    "name_ru": "Специалисты",
+    "subcategories": [
+      {
+        "id": 3010,
+        "name": "Tutors",
+        "name_ru": "Репетиторы"
+      },
+      {
+        "id": 3020,
+        "name": "Masters of repair",
+        "name_ru": "Мастера по ремонту"
+      },
+      {
+        "id": 3030,
+        "name": "Freelancers",
+        "name_ru": "Фрилансеры"
+      },
+      {
+        "id": 3040,
+        "name": "Home staff",
+        "name_ru": "Домашний персонал"
+      },
+      {
+        "id": 3050,
+        "name": "Artists",
+        "name_ru": "Артисты"
+      },
+      {
+        "id": 3040,
+        "name": "Delivery of cargo",
+        "name_ru": "Доставка грузов"
+      }
+
+
+    ]
+  }
+]
