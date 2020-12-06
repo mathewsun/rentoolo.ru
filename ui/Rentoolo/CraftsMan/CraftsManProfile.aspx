@@ -1,13 +1,32 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CraftsManProfile.aspx.cs" Inherits="Rentoolo.CraftsMan.CraftsManProfile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="/assets/css/jQuery.Brazzers-Carousel.css" rel="stylesheet">
+    <script src="/assets/js/jQuery.Brazzers-Carousel.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".photoContainer").each(function (index) {
+                var htmlString = '';
+                var imgUrls = $(this).attr("data");
+                JSON.parse(imgUrls,
+                    function (k, v) {
+                        if (k != "") {
+                            htmlString += "<img src='" + v + "' style='height: 600px; width: 700px;' alt='' />";
+                        }
+                    });
+
+                $(this).html(htmlString);
+            });
+
+            $(".photoContainer").brazzersCarousel();
+
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col">
-                
-                <img class="container-fluid" src="<%=craftsMan.ImgUrls.Trim('[',']') %>" />
+            <div class="col">     
             </div>
             <div class="col order-12">
                 <h1 class="bg-primary text-white"><%=craftsMan.FirstName %> <%=craftsMan.LastName %></h1>
@@ -28,26 +47,8 @@
             </div>
         </div>
     </div>
-    <div id="carousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src=<%=craftsMan.ImgUrls.Trim('[',']') %> />
-            </div>
-
-        </div>
-        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+    <div class="media-body-inline-grid" data-grid="images">
+        <div class="photoContainer" data='<%=craftsMan.ImgUrls%>'></div>
     </div>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
