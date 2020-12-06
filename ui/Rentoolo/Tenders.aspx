@@ -39,12 +39,22 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-
-        <h5>
+        <div>
+            <h5>
             Search by name:
-        </h5>
-            <input type="text" name="name" class="search-panel" />
-            <input type="submit" value="search" class="medium-button" />
+            </h5>
+            <div>
+                <input type="text" name="name" class="search-panel" />
+                <asp:Button ID="ButtonSearch" runat="server" Text="Search" class="medium-button" OnClick="ButtonSearch_Click" />
+            </div>
+            <div>
+                By price: <input type="number" placeholder="start price" name="startPrice" /> 
+                <input type="number" placeholder="end price" name="endPrice" />
+            </div>
+
+                
+        </div>
+        
 
 
         <div>

@@ -17,8 +17,11 @@ namespace Rentoolo
 
         public List<Rentoolo.Model.News> ListNews;
 
+        public bool WithAdvertising = true;
+
         protected void Page_Init(object sender, EventArgs e)
         {
+
             // The code below helps to protect against XSRF attacks
             var requestCookie = Request.Cookies[AntiXsrfTokenKey];
             Guid requestCookieGuidValue;
@@ -88,6 +91,7 @@ namespace Rentoolo
             //    }
             //    catch { }
             //}
+
 
             ListNews = DataHelper.GetActiveNewsLast5();
         }

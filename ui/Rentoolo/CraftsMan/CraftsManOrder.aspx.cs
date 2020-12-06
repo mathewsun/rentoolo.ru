@@ -16,6 +16,7 @@ namespace Rentoolo.CraftsMan
 
         protected void ButtonOrder_Click(object sender, EventArgs e)
         {
+
             string nameTask = Request.Form["input_nameTask"];
             string description = Request.Form["input_description"];
             string price = Request.Form["input_price"];
@@ -26,6 +27,7 @@ namespace Rentoolo.CraftsMan
             string city = Request.Form["city"];
             string place = Request.Form["additem_place"];
             string address = Request.Form["address"];
+
 
             var objPhotos = Request.Form["OrderPhotos"];
 

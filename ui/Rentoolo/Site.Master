@@ -45,6 +45,7 @@
     <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
 
 <!-- Yandex.Metrika counter -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script type="text/javascript" >
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
@@ -266,6 +267,8 @@
                     <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
 
                 </div>
+                <% if (WithAdvertising)
+                    { %>
                 <div class="col-lg-3">
                     <div class="card mb-4 d-none d-lg-block">
                         <div class="card-body">
@@ -302,6 +305,7 @@
                         </div>
                     </div>
                 </div>
+                <% } %>
             </div>
         </div>
 

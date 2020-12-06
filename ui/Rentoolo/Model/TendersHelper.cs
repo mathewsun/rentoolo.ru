@@ -194,7 +194,7 @@ namespace Rentoolo.Model
 
                 if (filter.Name != null)
                 {
-                    tenders = tenders.Where(x => x.Name == filter.Name);
+                    tenders = tenders.Where(x => x.Name.Contains(filter.Name));
                 }
 
                 if (filter.MinCost != null)
@@ -207,7 +207,7 @@ namespace Rentoolo.Model
                     tenders = tenders.Where(x => x.Cost <= filter.MaxCost);
                 }
 
-                
+
 
 
                 return tenders.ToList();
