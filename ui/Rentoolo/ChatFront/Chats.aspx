@@ -22,12 +22,35 @@
                 box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
                 border: 1px solid #CCC;
                 background: #DDD;
+                width: 200px;
             }
 
             div.button:active {
                 color: red;
                 box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
             }
+
+            .chat-item{
+              background-color: #ffe1e1;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              border-radius: 30px;
+              padding: 50px;
+              word-break: break-all;
+            }
+    
+            .chat-footer{
+              background-color: #dfeeff;
+              padding: 10px;
+            }
+    
+            .chat-box{
+              height: 500px;
+              overflow: auto;
+            }
+
+
+
         </style>
 
     </head>
@@ -39,38 +62,97 @@
         <div id="app">
 
             <h1>Chat tests</h1>
+            <div class="button" @click="hideMetaInfo">show/hide meta info</div>
 
             <div>
 
-                <div>
+                <div v-if="metaInfo">
+
+                    <%--<div>
+                        <div class="container">
+                             <div class="chat-box row">
+                               <div class="col-md-12 chat-item">
+                                Test Message 1
+                               </div>
+       
+                               <div class="col-md-12 chat-item">
+                                Test Message 2
+                               </div>
+       
+                               <div class="col-md-12 chat-item">
+                                Test Message 3
+                               </div> 
+       
+                               <div class="col-md-12 chat-item">
+                                Test Message 4
+                               </div> 
+                             </div>
+    </div>
+    
+                         <div class="chat-footer">
+                           <div class="container">
+                             <input class="form-control" type="text" placeholder="Message" />
+                           </div>
+                         </div>
+                    </div>--%>
+
+
                     <div>
-                        <h5>user configs</h5>
-                        <div>
-                            UserId: {{userId}}
+                        <div class="container" id="msgcont">
+                             <div class="chat-box row">
+                               <div class="col-md-12 chat-item" v-for="(message,index) in messages" :key="index">
+                                    <div>
+                                        From:{{message.FromUserId}} <br />
+                                        Message: <br />
+                                        {{message.Message}}
+                                        
+                                    </div>
+                               </div>
+                               <div id="bottom">
+                                   bottom
+                               </div>
+                               
+                             </div>
                         </div>
+    
+                         <div class="chat-footer">
+                           <div class="container" style="display: flex">
+                               
+                             <input class="form-control"  v-model="message" type="text" placeholder="Message" />
+                             <div class="button" @click="sendMessage">send</div>
+                           </div>
+                         </div>
                     </div>
 
-                    <div>
-                        <h5>
-                            Create chat
-                        </h5>
 
+                    <div>
                         <div>
-                            <input type="text" v-model="chatName" />
-                            <div class="button" @click="createChat" >create</div>
+                            <h5>user configs</h5>
+                            <div>
+                                UserId: {{userId}}
+                            </div>
                         </div>
 
-                    </div>
-                    <div>
-                        <%--<div class="button" @click="showHideChats()">show/hide chats</div>
-                        <div class="button" @click="showHideMessages">show/hide messages</div>--%>
-                    </div>
-                    <div v-if="inChat">
-                        add new user in chat:<br />
-                        <input type="text" v-model="newUserId" />
-                        <div class="button" @click="addNewChatUser">add</div>
+                        <div>
+                            <h5>
+                                Create chat
+                            </h5>
+
+                            <div>
+                                <input type="text" v-model="chatName" />
+                                <div class="button" @click="createChat" >create</div>
+                            </div>
+
+                        </div>
+                    
+                        <div v-if="inChat">
+                            add new user in chat:<br />
+                            <input type="text" v-model="newUserId" />
+                            <div class="button" @click="addNewChatUser">add</div>
+                        </div>
                     </div>
                 </div>
+                
 
                 <hr>
 
@@ -93,7 +175,9 @@
                         <h3>{{message1}} </h3>
 
                     </div>
-                    <div>
+
+
+<%--                    <div>
                         <div>
                             <div>
                                 <input v-model="message" />
@@ -112,7 +196,9 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
+
+
                 </div>
 
             </div>
@@ -122,7 +208,26 @@
 
         <script type="text/javascript">
 
+            function gotoBottom(id) {
+                var element = document.getElementById(id);
+                console.log(element);
+                console.log(element.scrollHeight);
+                //element.scrollIntoView({ block: "end", behavior: "smooth" });
+
+                element.scrollTop = element.scrollHeight;
+
+
+
+                //element.scrollTop = element.scrollHeight - element.clientHeight;
+                //element.scrollTop += 100;
+                
+            }
+
             let websock;
+
+
+            let serverDomain = "http://localhost:53222";
+            let wsServerDomain = "ws://localhost:4848";
 
             var app = new Vue({
                 el: '#app',
@@ -137,14 +242,19 @@
                     showMessages: false,
                     ws: null,
                     chatName: "",
-                    domain: "http://localhost:53222",
+                    domain: serverDomain,
                     inChat: false,
-                    newUserId: ""
+                    newUserId: "",
+                    metaInfo: true
                 },
                 created: function () {
                     this.getChats();
                 },
                 methods: {
+
+                    hideMetaInfo() {
+                        this.metaInfo = !this.metaInfo;
+                    },
 
 
                     createChat() {
@@ -171,32 +281,34 @@
                                 return response;
                             })
                             .then((data) => {
-                                console.log(data);
+                                //console.log(data);
                             });
 
                     },
                     addMessage(msg) {
                         let jsonedMsg = JSON.parse(msg);
-                        this.messages.unshift(jsonedMsg);
+                        //this.messages.unshift(jsonedMsg);
+                        this.messages.push(jsonedMsg);
+                        gotoBottom('msgcont');
                     },
 
                     initWSConnection() {
-                        console.log("this.msges");
-                        console.log(this.messages);
+                        //console.log("this.msges");
+                        //console.log(this.messages);
                         const addMessage = this.addMessage;
                         const addMsg = function (msg) {
-                            console.log(this.messages);
+                            //console.log(this.messages);
                             addMessage(msg);
                         }
 
-                        let socket = new WebSocket("ws://localhost:8080");
+                        let socket = new WebSocket(wsServerDomain);
 
                         let chatId = this.currentChatId;
                         let usrId = this.userId;
 
 
                         socket.onmessage = function (event) {
-                            console.log("Получены данные " + event.data);
+                            //console.log("Получены данные " + event.data);
                             addMsg(event.data);
                         };
 
@@ -207,8 +319,8 @@
                                 chatId: chatId,
                                 userId: usrId
                             }
-                            console.log("---------");
-                            console.log(data);
+                            //console.log("---------");
+                            //console.log(data);
 
                             socket.send(JSON.stringify(data));
                         };
@@ -234,8 +346,8 @@
 
                         websock = socket;
 
-                        console.log("this.msges");
-                        console.log(this.messages);
+                        //console.log("this.msges");
+                        //console.log(this.messages);
 
                     },
                     showHideChats() {
@@ -269,13 +381,14 @@
                         };
                         fetch(url, data)
                             .then((response) => {
-                                console.log("message list");
-                                console.log(response);
+                                //console.log("message list");
+                                //console.log(response);
                                 return response.json();
                             })
                             .then((data) => {
-                                console.log(data);
+                                //console.log(data);
                                 this.messages = data;
+                                gotoBottom('bottom');
                             });
                         this.showMessages = true;
 
@@ -310,7 +423,7 @@
                                 return response;
                             })
                             .then((data) => {
-                                console.log(data);
+                                //console.log(data);
                             });
 
                         this.message = "";
@@ -345,7 +458,7 @@
                                 return response;
                             })
                             .then((data) => {
-                                console.log(data);
+                                //console.log(data);
                             });
                     }
 

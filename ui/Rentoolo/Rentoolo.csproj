@@ -395,11 +395,14 @@
     <Content Include="Account\AuctionRequests.aspx" />
     <Content Include="Auctions.aspx" />
     <Content Include="Azizjan\NewsAzizjan.aspx" />
+    <Content Include="BatrebleSs\AddNewsBatrebleSs.aspx" />
     <Content Include="BatrebleSs\NewsBatrebleSs.aspx" />
     <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
     <Content Include="Category.aspx" />
     <Content Include="ChatFront\Chat3.html" />
+    <Content Include="ChatFront\ChatPage2.aspx" />
+    <Content Include="ChatFront\ChatPage.aspx" />
     <Content Include="ChatFront\Chats.aspx" />
     <Content Include="ComplaintPage.aspx" />
     <Content Include="ComplaintsPage.aspx" />
@@ -464,13 +467,6 @@
     <Content Include="Raspel\NewsRaspel.aspx" />
     <Content Include="Realty.aspx" />
     <Content Include="Rent.aspx" />
-    <EntityDeploy Include="Model\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="AlexPigalyov\Web.config" />
     <Content Include="Services.aspx" />
     <Content Include="ShCodder\NewShCodder.aspx" />
@@ -516,6 +512,8 @@
     <Content Include="Transport.aspx" />
     <Content Include="UserProfile.aspx" />
     <Content Include="Vark\NewsVark.aspx" />
+    <Content Include="Vlad\AddNewsVlad.aspx" />
+    <Content Include="Vlad\NewsVlad.aspx" />
     <Content Include="yandex_f9c03f80c16c0af8.html" />
     <Content Include="assets\json\categories.json" />
     <Content Include="assets\json\categories_ru.json" />
@@ -529,6 +527,16 @@
     </Content>
     <Content Include="Aezakmi128\Web.config">
       <SubType>Designer</SubType>
+    </Content>
+    <Content Include="BatrebleSs\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <EntityDeploy Include="Model\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -1220,6 +1228,13 @@
     <Compile Include="Azizjan\NewsAzizjan.aspx.designer.cs">
       <DependentUpon>NewsAzizjan.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BatrebleSs\AddNewsBatrebleSs.aspx.cs">
+      <DependentUpon>AddNewsBatrebleSs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BatrebleSs\AddNewsBatrebleSs.aspx.designer.cs">
+      <DependentUpon>AddNewsBatrebleSs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BatrebleSs\NewsBatrebleSs.aspx.cs">
       <DependentUpon>NewsBatrebleSs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1240,6 +1255,20 @@
     </Compile>
     <Compile Include="Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatFront\ChatPage2.aspx.cs">
+      <DependentUpon>ChatPage2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChatFront\ChatPage2.aspx.designer.cs">
+      <DependentUpon>ChatPage2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatFront\ChatPage.aspx.cs">
+      <DependentUpon>ChatPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChatFront\ChatPage.aspx.designer.cs">
+      <DependentUpon>ChatPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChatFront\Chats.aspx.cs">
       <DependentUpon>Chats.aspx</DependentUpon>
@@ -1288,6 +1317,7 @@
     <Compile Include="Controllers\LikesDislikesController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\MVC\DefaultController.cs" />
+    <Compile Include="Controllers\MVC\DialogController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TopRecipesController.cs" />
@@ -1455,6 +1485,7 @@
     <Compile Include="Model\DataHelperIlya.cs" />
     <Compile Include="Model\DataHelperRaspel.cs" />
     <Compile Include="Model\DataHelperVark.cs" />
+    <Compile Include="Model\DataHelperVlad.cs" />
     <Compile Include="Model\DeletedAdverts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1582,6 +1613,9 @@
     <Compile Include="Model\NewsVark.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\NewsVlad.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\News_towardsbackwards.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1598,6 +1632,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Referrals.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Rent.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RentedTime.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Roles.cs">
@@ -2035,6 +2075,20 @@
     <Compile Include="Vark\NewsVark.aspx.designer.cs">
       <DependentUpon>NewsVark.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vlad\AddNewsVlad.aspx.cs">
+      <DependentUpon>AddNewsVlad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vlad\AddNewsVlad.aspx.designer.cs">
+      <DependentUpon>AddNewsVlad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vlad\NewsVlad.aspx.cs">
+      <DependentUpon>NewsVlad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vlad\NewsVlad.aspx.designer.cs">
+      <DependentUpon>NewsVlad.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Workers\AuctionsChecker.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2045,6 +2099,7 @@
     <Folder Include="Data\" />
     <Folder Include="Rent\" />
     <Folder Include="Sell\" />
+    <Folder Include="Views\Dialog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config">
@@ -2060,6 +2115,9 @@
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Shared\SiteMaster.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Vlad\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

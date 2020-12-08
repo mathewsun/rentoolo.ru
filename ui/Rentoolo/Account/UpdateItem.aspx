@@ -229,7 +229,7 @@
                 <span class="additem-title">Название объявления</span>
             </div>
             <div class="additem-right additem__input-name">
-                <input type="text" name="input_name" class="additem-input" required >
+                <input type="text" value="<%= Advert.Name %>" name="input_name" class="additem-input" required >
             </div>
         </div>
 
@@ -238,7 +238,7 @@
                 <span class="additem-title">Описание объявления</span>
             </div>
             <div class="additem-right additem-input__text">
-                <textarea type="textarea" name="input_text" class="additem-input additem-input__text" ></textarea>
+                <textarea type="textarea" name="input_text" class="additem-input additem-input__text" ><%= Advert.Description %></textarea>
             </div>
         </div>
 
@@ -247,7 +247,7 @@
                 <span class="additem-title">Цена</span>
             </div>
             <div class="additem-right">
-                <input type="number" name="price_value" class="additem-input additem__input-price" maxlength="14" required >
+                <input type="number" value="<%= Advert.Price %>" name="price_value" class="additem-input additem__input-price" maxlength="14" required >
                 <span class="price__value">₽</span>
                 <div class="price__popup">
                     Какую цену указать
@@ -263,6 +263,9 @@
             <div class="additem-left">
                 <span class="additem-title">Фотографии</span>
             </div>
+            <div>
+                
+            </div>
             <div class="additem-right">
                 <div id="mdropzone" class="dropzone"></div>
                 <div id="my-dropzone" style="display: none;"></div>
@@ -273,7 +276,7 @@
                 <span class="additem-title">Видео с Youtube</span>
             </div>
             <div class="additem-right additem__video">
-                <input type="text" name="input_video" class="additem-input additem__input-video" placeholder=" Например: https://www.youtube.com/watch?v=vMad0HvQ0k" >
+                <input type="text" value="<%= Advert.YouTubeUrl %>" name="input_video" class="additem-input additem__input-video" placeholder=" Например: https://www.youtube.com/watch?v=vMad0HvQ0k" >
             </div>
         </div>
         <div class="additem-category">
@@ -287,7 +290,7 @@
                 <span class="additem-title">Место сделки</span>
             </div>
             <div class="additem-right additem-place">
-                <input type="text" name="additem_place" class="additem-input" required>
+                <input type="text" value="<%= Advert.Address %>" name="additem_place" class="additem-input" required>
                 <input type="hidden" id="latgeo" />
                 <input type="hidden" id="lnggeo" />
                 <input type="hidden" id="street_number_hidden" />
@@ -313,7 +316,7 @@
                 <span class="additem-title">Телефон</span>
             </div>
             <div class="additem-right additem-phone">
-                <input name="phonenum" type="text" class="additem-input" placeholder="+7(___)___-__-__" required >
+                <input name="phonenum" value="<%= Advert.Phone %>" type="text" class="additem-input" placeholder="+7(___)___-__-__" required >
             </div>
         </div>
         <div class="additem-category additem-check__wrap">

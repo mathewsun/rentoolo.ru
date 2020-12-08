@@ -45,7 +45,7 @@
             </h5>
             <div>
                 <input type="text" name="name" class="search-panel" />
-                <input type="submit" value="search" class="medium-button" />
+                <asp:Button ID="ButtonSearch" runat="server" Text="Search" class="medium-button" OnClick="ButtonSearch_Click" />
             </div>
             <div>
                 By price: <input type="number" placeholder="start price" name="startPrice" /> 

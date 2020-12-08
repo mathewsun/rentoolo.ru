@@ -76,11 +76,13 @@ namespace Rentoolo.Model
         public virtual DbSet<NewsMrshkVV> NewsMrshkVV { get; set; }
         public virtual DbSet<NewsRaspel> NewsRaspel { get; set; }
         public virtual DbSet<NewsVark> NewsVark { get; set; }
+        public virtual DbSet<NewsVlad> NewsVlad { get; set; }
         public virtual DbSet<Operations> Operations { get; set; }
         public virtual DbSet<Payments> Payments { get; set; }
         public virtual DbSet<Phones> Phones { get; set; }
         public virtual DbSet<Recipes> Recipes { get; set; }
         public virtual DbSet<Referrals> Referrals { get; set; }
+        public virtual DbSet<Rent> Rent { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Settings> Settings { get; set; }
         public virtual DbSet<TenderRequest> TenderRequest { get; set; }
@@ -100,6 +102,7 @@ namespace Rentoolo.Model
         public virtual DbSet<WatchedByCookies> WatchedByCookies { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<NewsShCodder> NewsShCodder { get; set; }
+        public virtual DbSet<RentedTime> RentedTime { get; set; }
     
         [DbFunction("RentooloEntities", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()

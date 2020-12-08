@@ -616,6 +616,17 @@
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="Active" Type="bit" />
         </EntityType>
+        <EntityType Name="NewsVlad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="AuthorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Operations">
           <Key>
             <PropertyRef Name="Id" />
@@ -676,6 +687,34 @@
           <Property Name="ReferrerUserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ReferralUserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WhenDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateStart" Type="date" Nullable="false" />
+          <Property Name="DateEnd" Type="date" />
+          <Property Name="RentType" Type="int" Nullable="false" />
+          <Property Name="DayRentPrice" Type="int" Nullable="false" />
+          <Property Name="HourRentPrice" Type="int" />
+          <Property Name="MinuteRentPrice" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Rentoolo.dbo.RentedTime" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="RentedTime">
+          <Key>
+            <PropertyRef Name="RentId" />
+            <PropertyRef Name="TimeStart" />
+            <PropertyRef Name="TimeEnd" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="RentId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TimeStart" Type="datetime" Nullable="false" />
+          <Property Name="TimeEnd" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -1296,11 +1335,13 @@
           <EntitySet Name="NewsMrshkVV" EntityType="Self.NewsMrshkVV" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsRaspel" EntityType="Self.NewsRaspel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsVark" EntityType="Self.NewsVark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsVlad" EntityType="Self.NewsVlad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Phones" EntityType="Self.Phones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recipes" EntityType="Self.Recipes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Referrals" EntityType="Self.Referrals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rent" EntityType="Self.Rent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TenderRequest" EntityType="Self.TenderRequest" Schema="dbo" store:Type="Tables" />
@@ -1337,6 +1378,14 @@
     [NewsShCodder].[CreateDate] AS [CreateDate], 
     [NewsShCodder].[Active] AS [Active]
     FROM [dbo].[NewsShCodder] AS [NewsShCodder]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RentedTime" EntityType="Self.RentedTime" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RentedTime].[RentId] AS [RentId], 
+    [RentedTime].[TimeStart] AS [TimeStart], 
+    [RentedTime].[TimeEnd] AS [TimeEnd], 
+    [RentedTime].[UserId] AS [UserId]
+    FROM [dbo].[RentedTime] AS [RentedTime]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CashIns_Users" Association="Self.FK_CashIns_Users">
             <End Role="Users" EntitySet="Users" />
@@ -2039,6 +2088,17 @@
           <Property Name="Active" Type="Boolean" />
           <NavigationProperty Name="Users" Relationship="Self.FK_NewsVark_Users1" FromRole="NewsVark" ToRole="Users" />
         </EntityType>
+        <EntityType Name="NewsVlad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuthorId" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
         <EntityType Name="Operations">
           <Key>
             <PropertyRef Name="Id" />
@@ -2101,6 +2161,20 @@
           <Property Name="WhenDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Referrals_Users" FromRole="Referrals" ToRole="Users" />
           <NavigationProperty Name="Users1" Relationship="Self.FK_Referrals_Users1" FromRole="Referrals" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Rent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateEnd" Type="DateTime" Precision="0" />
+          <Property Name="RentType" Type="Int32" Nullable="false" />
+          <Property Name="DayRentPrice" Type="Int32" Nullable="false" />
+          <Property Name="HourRentPrice" Type="Int32" />
+          <Property Name="MinuteRentPrice" Type="Int32" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -2352,6 +2426,18 @@
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="RentedTime">
+          <Key>
+            <PropertyRef Name="RentId" />
+            <PropertyRef Name="TimeStart" />
+            <PropertyRef Name="TimeEnd" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="RentId" Type="Guid" Nullable="false" />
+          <Property Name="TimeStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TimeEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+        </EntityType>
         <Association Name="MembershipApplication">
           <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
           <End Role="Memberships" Type="Self.Memberships" Multiplicity="*" />
@@ -2590,11 +2676,13 @@
           <EntitySet Name="NewsMrshkVV" EntityType="Self.NewsMrshkVV" />
           <EntitySet Name="NewsRaspel" EntityType="Self.NewsRaspel" />
           <EntitySet Name="NewsVark" EntityType="Self.NewsVark" />
+          <EntitySet Name="NewsVlad" EntityType="Self.NewsVlad" />
           <EntitySet Name="Operations" EntityType="Self.Operations" />
           <EntitySet Name="Payments" EntityType="Self.Payments" />
           <EntitySet Name="Phones" EntityType="Self.Phones" />
           <EntitySet Name="Recipes" EntityType="Self.Recipes" />
           <EntitySet Name="Referrals" EntityType="Self.Referrals" />
+          <EntitySet Name="Rent" EntityType="Self.Rent" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Settings" EntityType="Self.Settings" />
           <EntitySet Name="TenderRequest" EntityType="Self.TenderRequest" />
@@ -2614,6 +2702,7 @@
           <EntitySet Name="WatchedByCookies" EntityType="Self.WatchedByCookies" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
           <EntitySet Name="NewsShCodder" EntityType="Self.NewsShCodder" />
+          <EntitySet Name="RentedTime" EntityType="Self.RentedTime" />
           <AssociationSet Name="MembershipApplication" Association="Self.MembershipApplication">
             <End Role="Applications" EntitySet="Applications" />
             <End Role="Memberships" EntitySet="Memberships" />
@@ -3565,6 +3654,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="NewsVlad">
+            <EntityTypeMapping TypeName="RentooloModel.NewsVlad">
+              <MappingFragment StoreEntitySet="NewsVlad">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Operations">
             <EntityTypeMapping TypeName="RentooloModel.Operations">
               <MappingFragment StoreEntitySet="Operations">
@@ -3628,6 +3729,21 @@
                 <ScalarProperty Name="ReferrerUserId" ColumnName="ReferrerUserId" />
                 <ScalarProperty Name="ReferralUserId" ColumnName="ReferralUserId" />
                 <ScalarProperty Name="WhenDate" ColumnName="WhenDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rent">
+            <EntityTypeMapping TypeName="RentooloModel.Rent">
+              <MappingFragment StoreEntitySet="Rent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="RentType" ColumnName="RentType" />
+                <ScalarProperty Name="DayRentPrice" ColumnName="DayRentPrice" />
+                <ScalarProperty Name="HourRentPrice" ColumnName="HourRentPrice" />
+                <ScalarProperty Name="MinuteRentPrice" ColumnName="MinuteRentPrice" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3866,6 +3982,16 @@
                 <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentedTime">
+            <EntityTypeMapping TypeName="RentooloModel.RentedTime">
+              <MappingFragment StoreEntitySet="RentedTime">
+                <ScalarProperty Name="RentId" ColumnName="RentId" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

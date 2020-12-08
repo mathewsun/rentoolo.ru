@@ -12,8 +12,8 @@ namespace Rentoolo.CraftsMan
         protected void Page_Load(object sender, EventArgs e)
         {
             string strId = Request.QueryString["Id"];
-
             int id = Convert.ToInt32(strId);
+
             craftsMan = CraftsManDataHelper.GetCraftsManById(id);
         }
     }
