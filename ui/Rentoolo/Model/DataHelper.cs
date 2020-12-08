@@ -1905,6 +1905,31 @@ namespace Rentoolo.Model
         }
 
 
+        public static void CreateChatDialogIfNotExist(Guid userId1, Guid userId2)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var chats = dc.ChatUsers.Where(x => x.UserId == userId1 || x.UserId == userId2).Select(x=>x.ChatId);
+
+                var chat = dc.Chats.Where(x => chats.Contains(x.Id)).FirstOrDefault(x=>x.ChatType == 1);
+
+                bool exists = chat == null ? false : true;
+
+                if (!exists)
+                {
+
+                    var chatCreated = dc.Chats.Add(new Chats() { ChatType = 1 });
+                    
+                    dc.SaveChanges();
+
+                    // TODO: get created chat id and add users in it
+                    //long chatId = 
+
+                }
+
+
+            }
+        }
 
 
 
@@ -1912,6 +1937,7 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
+                chatInfo.ChatType = 1;
                 dc.Chats.Add(chatInfo);
                 dc.SaveChanges();
 

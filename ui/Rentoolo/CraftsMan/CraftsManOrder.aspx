@@ -211,7 +211,9 @@
                 <label for="input_price">Укажите приемлемую цену услуг</label>
             </div>
             <div class="additem-right">
-                <input type="number" id="input_price" name="input_price" class="additem-input additem__input-price" maxlength="14" required >
+
+                <input type="number" name="input_price" id="input_price" class="additem-input additem__input-price" maxlength="14" required >
+
                 <span class="price__value">₽</span>
                 <div class="price__popup">
                     Какую цену указать

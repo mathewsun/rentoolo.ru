@@ -11,6 +11,10 @@ using System.Web.Http;
 using Rentoolo.TestDir;
 using Rentoolo.HelperModels;
 
+using System.Web.Mvc;
+using System.Web.Routing;
+using System.Web.Optimization;
+
 namespace Rentoolo
 {
     public class Global : HttpApplication
@@ -29,6 +33,13 @@ namespace Rentoolo
             RegisterRoutes(RouteTable.Routes);
 
             SqlServerTypes.Utilities.LoadNativeAssemblies(Server.MapPath("~/bin"));
+
+            // init mvc
+            AreaRegistration.RegisterAllAreas();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            BundleConfig2.RegisterBundles(BundleTable.Bundles);
+
         }
 
         void Application_End(object sender, EventArgs e)

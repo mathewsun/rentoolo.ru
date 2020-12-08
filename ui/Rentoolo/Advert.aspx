@@ -132,7 +132,7 @@
 
         <div class="additem-category">
             <div class="additem-left additem-contact">
-                <a href="Account/UserProfile.aspx?id=<%=AdvertItem.CreatedUserId %>" >
+                <a href="/UserProfile.aspx?id=<%=AdvertItem.CreatedUserId %>" >
                     <%= AnotherUser.UserName %>
                 </a>
             </div>
