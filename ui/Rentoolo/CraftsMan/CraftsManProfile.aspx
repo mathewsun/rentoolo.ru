@@ -21,41 +21,41 @@
             $(".photoContainer").brazzersCarousel();
 
         });
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container">
-        <div class="row">
-            <div class="col">     
+     <div class="additem-category">
+            <div class="additem-left">
+                <span class="additem-title">Род трудовой деятельности:</span>
             </div>
-            <div class="col order-12">
-                <h1 class="bg-primary text-white"><%=craftsMan.FirstName %> <%=craftsMan.LastName %></h1>
-                <h3 class="bg-warning text-white"><%=craftsMan.Сraft %></h3>
+            <div class="additem-right">
+               <h1><%=craftsMan.Сraft %></h1>
+                <h3><%=craftsMan.FirstName %> <%=craftsMan.LastName %></h3>
             </div>
-        </div>
-    </div>
-    <div class="container blue-color">
+        </div> 
+    <div class="additem-left additem-contact">
         <div class="col">
             <div class="container">
-                <h1 class="display-4 bg-danger text-white">Контакты</h1>
+                <h1 class="additem-title">Контакты</h1>
+                <hr />
                 <p class="lead"><%=craftsMan.Region %></p>
-                <hr />
                 <p class="lead"><%=craftsMan.Phone %></p>
-                <hr />
                 <p class="lead"><%=craftsMan.Email %></p>
-                <hr />
             </div>
         </div>
     </div>
-    <div class="media-body-inline-grid" data-grid="images">
+    <div class="media-body-inline-grid " data-grid="images">
         <div class="photoContainer" data='<%=craftsMan.ImgUrls%>'></div>
     </div>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4 bg-dark text-white">Немного о себе</h1>
-            <p class="lead"><%=craftsMan.Description %></p>
+     <div class="additem-category additem-text__wrap">
+            <div class="additem-left">
+                <span class="additem-title">Немного о себе</span>
+            </div>
+            <div class="additem-right advert-description">
+                <%=craftsMan.Description %>
+            </div>
         </div>
-    </div>
     <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
         <a class="btn btn-outline-success" href="CraftsManConnection.aspx?id=<%= craftsMan.Id %>" role="button">Выбрать</a>
         <a class="btn btn-outline-danger" href="CraftsManPage.aspx" role="button">Другие варианты</a>

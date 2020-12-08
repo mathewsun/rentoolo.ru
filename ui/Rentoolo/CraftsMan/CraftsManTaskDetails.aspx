@@ -21,47 +21,38 @@
 
             $(".photoContainer").brazzersCarousel();
 
-        });
+        });  
     </script>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <div class="container">
-        <div class="row">
-            <div class="col">
+    <div class="additem-category">
+            <div class="additem-left">
+                <span class="additem-title">Задача:</span>
             </div>
-            <div class="col order-12">
-                <h1 class="bg-warning text-white"><%=order.NameTask %></h1>
+            <div class="additem-right">
+               <h1><%=order.NameTask %></h1>
+            </div>
+        </div> 
+     <div class="additem-category additem-text__wrap">
+            <div class="additem-left">
+                <span class="additem-title">Описание задачи</span>
+            </div>
+            <div class="additem-right advert-description">
+                <%=order.Description %>
             </div>
         </div>
-    </div>
-
-    <hr />
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">Детали задания</h1>
-            <p class="lead"><%=order.Description %></p>
-
-        </div>
-
-    </div>
-    <hr />
-    <div class="media-body-inline-grid" data-grid="images">
+     <div class="media-body-inline-grid" data-grid="images">
         <div class="photoContainer" data='<%=order.ImgUrls%>'></div>
     </div>
-    <hr />
-    <div class="container blue-color">
+    <div class="additem-left additem-contact">
         <div class="col">
             <div class="container">
-                <h1 class="display-4 bg-danger text-white">Контакты</h1>
-                <h1 class="bg-primary text-white">Заказчик: <%=order.FirstName %> <%=order.LastName %></h1>
+                <h1 class="additem-title">Контакты</h1>
+                <hr />
+                <p class="lead">Заказчик: <%=order.FirstName %> <%=order.LastName %></p>
                 <p class="lead"><%=order.Region %></p>
-                <hr />
                 <p class="lead"><%=order.Phone %></p>
-                <hr />
                 <p class="lead"><%=order.Email %></p>
-                <hr />
             </div>
         </div>
     </div>
@@ -69,15 +60,5 @@
         <a class="btn btn-outline-success" href="CraftsManConnection.aspx?id=<%= order.Id %>" role="button">Выбрать</a>
         <a class="btn btn-outline-danger" href="CraftsManTasks.aspx" role="button">Другие варианты</a>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/chart.js"></script>
-    <script src="js/toolkit.js"></script>
-    <script src="js/application.js"></script>
-    <script>
-        // execute/clear BS loaders for docs
-        $(function () { while (window.BS && window.BS.loader && window.BS.loader.length) { (window.BS.loader.pop())() } })
-    </script>
-
 </asp:Content>
 
