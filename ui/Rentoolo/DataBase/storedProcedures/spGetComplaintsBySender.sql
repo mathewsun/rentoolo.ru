@@ -1,4 +1,4 @@
-﻿USE [Rentoolo]
+USE [Rentoolo]
 GO
 /****** Object:  StoredProcedure [dbo].[spGetComplaintsBySender]    Script Date: 28.10.2020 11:03:04 ******/
 SET ANSI_NULLS ON
@@ -13,7 +13,7 @@ BEGIN
 
 SELECT cpts.[Id]
       ,[Message]
-      ,[СomplaintType]
+      ,[ComplaintType]
       ,[ObjectId]
       ,[ObjectType]
       ,[UserSender]

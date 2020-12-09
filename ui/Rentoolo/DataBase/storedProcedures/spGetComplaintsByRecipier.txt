@@ -13,7 +13,7 @@ BEGIN
 
 SELECT cpts.[Id]
       ,[Message]
-      ,[СomplaintType]
+      ,[ComplaintType]
       ,[ObjectId]
       ,[ObjectType]
       ,[UserSender]
