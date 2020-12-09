@@ -36,7 +36,7 @@ namespace Rentoolo
             Complaints complaint = new Complaints()
             {
                 Message = message,
-                СomplaintType = complaintType,
+                ComplaintType = complaintType,
                 ObjectType = complaintObjectType,
                 UserSender = userSender,
                 UserRecipier = userRecivier,

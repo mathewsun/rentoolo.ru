@@ -50,7 +50,7 @@ namespace Rentoolo
             catch { }
 
             //resume.CreatedUserId = User.UserId;
-            resume.Сraft = craft;
+            resume.Craft = craft;
             resume.Created = DateTime.Now;
             resume.Address = address;
             resume.Description = description;

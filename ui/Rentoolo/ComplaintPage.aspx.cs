@@ -33,7 +33,7 @@ namespace Rentoolo
 
             }
 
-            ComplaintTypeName = StructsHelper.ComplaintTypeName[Complaint.СomplaintType];
+            ComplaintTypeName = StructsHelper.ComplaintTypeName[Complaint.ComplaintType];
             ComplaintObjTypeName = StructsHelper.ComplaintObjTypeName[Complaint.ObjectType];
 
             UserReciever = DataHelper.GetUser(Complaint.UserRecipier).UserName;

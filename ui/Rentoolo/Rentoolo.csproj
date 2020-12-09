@@ -224,6 +224,8 @@
     <Content Include="404.aspx" />
     <Content Include="500.aspx" />
     <Content Include="About.aspx" />
+    <Content Include="Account\AddRent.aspx" />
+    <Content Include="Account\MyRents.aspx" />
     <Content Include="Account\UpdateItem.aspx" />
     <Content Include="Account\AddItem.aspx" />
     <Content Include="Account\AddItemCar.aspx" />
@@ -253,7 +255,6 @@
     <Content Include="Account\Profit.aspx" />
     <Content Include="Account\Referrals.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
-    <Content Include="Account\Rent.aspx" />
     <Content Include="Account\SelectCategory.aspx" />
     <Content Include="Account\SellCategory.aspx" />
     <Content Include="Account\Sell\Business.aspx" />
@@ -573,6 +574,19 @@
     <Compile Include="500.aspx.designer.cs">
       <DependentUpon>500.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\AddRent.aspx.cs">
+      <DependentUpon>AddRent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AddRent.aspx.designer.cs">
+      <DependentUpon>AddRent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\MyRents.aspx.cs">
+      <DependentUpon>MyRents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\MyRents.aspx.designer.cs">
+      <DependentUpon>MyRents.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\UpdateItem.aspx.cs">
       <DependentUpon>UpdateItem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -747,13 +761,6 @@
     </Compile>
     <Compile Include="Account\Referrals.aspx.designer.cs">
       <DependentUpon>Referrals.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Rent.aspx.cs">
-      <DependentUpon>Rent.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\Rent.aspx.designer.cs">
-      <DependentUpon>Rent.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Result.ashx.cs">
       <DependentUpon>Result.ashx</DependentUpon>
@@ -1640,6 +1647,8 @@
     <Compile Include="Model\RentedTime.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\RentForPage.cs" />
+    <Compile Include="Model\RentHelper.cs" />
     <Compile Include="Model\Roles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
