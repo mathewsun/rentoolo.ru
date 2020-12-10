@@ -37,7 +37,7 @@
                     <%foreach (var item in ListItems)
                       { %>
                           <div class="list-item-wrap" style="display: none">
-                              <a href="/Advert.aspx?id=<%=item.Id%>" title="<%=item.Title%>">
+                              <a href="/Rent.aspx?id=<%=item.Id%>" title="<%=item.Title%>">
                                   <div class="photoContainer" data='<%=item.ImgUrls%>'></div>
                               </a>
                               
