@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Вход" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Rentoolo.Account.Login" %>
 
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
+<%@ Register Src="~/Account/CaptchaUserControl.ascx" TagPrefix="uc" TagName="CaptchaUserControl" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,6 +59,7 @@
     <div class="container-fluid container-fill-height">
         <div class="container-content-middle">
             <form id="form1" role="form" class="mx-auto text-center app-login-form" runat="server">
+
                 <asp:Login ID="Login1" runat="server" ViewStateMode="Disabled" RenderOuterTable="false" OnLoggingIn="On_LoggingIn" OnAuthenticate="Authenticate" DisplayRememberMe="False">
                     <LayoutTemplate>
                         <a href="/" class="app-brand mb-5">
@@ -80,12 +82,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ControlToValidate="Password" CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Введите пароль" />
                         </div>
 
-                        <%if (!IsLocalhost)
-                            { %>
-                        <div class="form-group">
-                            <div class="g-recaptcha" data-sitekey="6Lf4W6QUAAAAAPK2AR7Ms8SsI9_KuJ0l8XZWaTWD"></div>
-                        </div>
-                        <%} %>
+                        <uc:CaptchaUserControl runat="server" ID="CaptchaUserControl1" />
 
                         <div class="mb-5">
                             <asp:Button ID="ButtonLogin" runat="server" CssClass="btn btn-primary" CommandName="Login" Text="Вход" />
@@ -96,12 +93,11 @@
                             <a href="#" class="text-muted">Забыли пароль</a>
                         </footer>
                         <div class="col-md-4">
-                            <section id="socialLoginForm">
-                                <uc:OpenAuthProviders runat="server" ID="OpenAuthLogin" />
-                            </section>
+                            <uc:OpenAuthProviders runat="server" ID="OpenAuthLogin" />
                         </div>
                     </LayoutTemplate>
                 </asp:Login>
+
             </form>
         </div>
     </div>

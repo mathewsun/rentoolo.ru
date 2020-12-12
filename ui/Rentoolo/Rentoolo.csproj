@@ -225,6 +225,7 @@
     <Content Include="500.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Account\AddRent.aspx" />
+    <Content Include="Account\CaptchaUserControl.ascx" />
     <Content Include="Account\MyRents.aspx" />
     <Content Include="Account\UpdateItem.aspx" />
     <Content Include="Account\AddItem.aspx" />
@@ -580,6 +581,13 @@
     </Compile>
     <Compile Include="Account\AddRent.aspx.designer.cs">
       <DependentUpon>AddRent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\CaptchaUserControl.ascx.cs">
+      <DependentUpon>CaptchaUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\CaptchaUserControl.ascx.designer.cs">
+      <DependentUpon>CaptchaUserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Account\MyRents.aspx.cs">
       <DependentUpon>MyRents.aspx</DependentUpon>

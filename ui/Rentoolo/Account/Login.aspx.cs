@@ -13,8 +13,7 @@ namespace Rentoolo.Account
 {
     public partial class Login : BasicPage
     {
-        public bool IsLocalhost { get; set;}
-
+        public bool IsLocalhost { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -83,7 +82,6 @@ namespace Rentoolo.Account
                 e.Cancel = false;
                 return;
             }
-
 
             if (!Validate())
             {
