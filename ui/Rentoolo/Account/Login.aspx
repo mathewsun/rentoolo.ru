@@ -19,7 +19,7 @@
     <link href="/assets/css/toolkit.css" rel="stylesheet">
 
     <link href="/assets/css/application.css" rel="stylesheet">
-    <link href="/assets/css/additional.css?7" rel="stylesheet">
+    <link href="/assets/css/additional.css?78" rel="stylesheet">
 
 
     <style>

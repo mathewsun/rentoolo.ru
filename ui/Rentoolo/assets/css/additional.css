@@ -24,6 +24,10 @@
     margin-bottom: 10px;
 }
 
+.open-auth-providers {
+    margin-top: 10px;
+}
+
 .field-validation-error {
 }
 
