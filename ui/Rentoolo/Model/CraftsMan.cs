@@ -16,7 +16,7 @@ namespace Rentoolo.Model
     {
         public long Id { get; set; }
         public int Category { get; set; }
-        public string Сraft { get; set; }
+        public string Craft { get; set; }
         public string Description { get; set; }
         public System.DateTime Created { get; set; }
         public double Price { get; set; }

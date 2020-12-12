@@ -583,6 +583,7 @@
     </Compile>
     <Compile Include="Account\MyRents.aspx.cs">
       <DependentUpon>MyRents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Account\MyRents.aspx.designer.cs">
       <DependentUpon>MyRents.aspx</DependentUpon>
