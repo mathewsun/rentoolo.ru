@@ -1,8 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="OpenAuthProviders.ascx.cs" Inherits="Rentoolo.Account.OpenAuthProviders" %>
 
 <fieldset class="open-auth-providers">
-    <legend>Вход через сервисы</legend>
-
     <asp:ListView runat="server" ID="providerDetails" ItemType="Microsoft.AspNet.Membership.OpenAuth.ProviderDetails"
         SelectMethod="GetProviderNames" ViewStateMode="Disabled">
         <ItemTemplate>
