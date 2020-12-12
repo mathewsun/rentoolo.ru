@@ -1,6 +1,6 @@
 USE [Rentoolo]
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnGetUserBalance]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetUserBalance]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -20,7 +20,7 @@ END;
 
 
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnGetUserBalanceByName]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetUserBalanceByName]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -38,7 +38,7 @@ END;
 
 
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -69,7 +69,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Memberships]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Memberships]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -100,7 +100,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnGetAllUsers]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetAllUsers]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -123,7 +123,7 @@ RETURN
 	ON u.[UserId] = m.[UserId]
 );
 GO
-/****** Object:  Table [dbo].[Referrals]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Referrals]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -139,7 +139,7 @@ CREATE TABLE [dbo].[Referrals](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnGetUserReferralsSecondLevel]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetUserReferralsSecondLevel]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -160,7 +160,7 @@ where rup1lvl.ReferrerUserId = @userId
 
 
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnGetUserReferralsThirdLevel]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetUserReferralsThirdLevel]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -183,7 +183,7 @@ where rup2lvl.ReferrerUserId = @userId
 
 
 GO
-/****** Object:  Table [dbo].[Wallets]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Wallets]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -200,7 +200,7 @@ CREATE TABLE [dbo].[Wallets](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Currencies]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Currencies]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -217,7 +217,7 @@ CREATE TABLE [dbo].[Currencies](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnGetUserWallets]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetUserWallets]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -239,7 +239,7 @@ RETURN
 );
 
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnGetTablesRows]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetTablesRows]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -268,7 +268,7 @@ RETURN
 
 
 GO
-/****** Object:  Table [dbo].[Adverts]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Adverts]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -299,7 +299,7 @@ CREATE TABLE [dbo].[Adverts](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Applications]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Applications]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -314,7 +314,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Articles]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Articles]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -331,7 +331,7 @@ CREATE TABLE [dbo].[Articles](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[AuctionRequests]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[AuctionRequests]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -349,7 +349,7 @@ CREATE TABLE [dbo].[AuctionRequests](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Auctions]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Auctions]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -369,7 +369,7 @@ CREATE TABLE [dbo].[Auctions](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Business]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Business]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -388,7 +388,7 @@ CREATE TABLE [dbo].[Business](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CashIns]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[CashIns]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -407,7 +407,7 @@ CREATE TABLE [dbo].[CashIns](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CashOuts]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[CashOuts]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -431,7 +431,7 @@ CREATE TABLE [dbo].[CashOuts](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Categories]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -444,7 +444,7 @@ CREATE TABLE [dbo].[Categories](
 	[ParentCategoryId] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ChatActiveUsers]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[ChatActiveUsers]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -459,7 +459,7 @@ CREATE TABLE [dbo].[ChatActiveUsers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ChatMessages]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[ChatMessages]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -476,7 +476,7 @@ CREATE TABLE [dbo].[ChatMessages](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Chats]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Chats]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -492,7 +492,7 @@ CREATE TABLE [dbo].[Chats](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ChatUsers]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[ChatUsers]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -507,7 +507,7 @@ CREATE TABLE [dbo].[ChatUsers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Comments]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Comments]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -528,7 +528,7 @@ CREATE TABLE [dbo].[Comments](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Complaints]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Complaints]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -536,7 +536,7 @@ GO
 CREATE TABLE [dbo].[Complaints](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Message] [nvarchar](max) NULL,
-	[СomplaintType] [int] NOT NULL,
+	[РЎomplaintType] [int] NOT NULL,
 	[ObjectId] [int] NOT NULL,
 	[ObjectType] [int] NOT NULL,
 	[UserSender] [uniqueidentifier] NOT NULL,
@@ -549,7 +549,7 @@ CREATE TABLE [dbo].[Complaints](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CraftsMan]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[CraftsMan]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -557,7 +557,7 @@ GO
 CREATE TABLE [dbo].[CraftsMan](
 	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Category] [int] NOT NULL,
-	[Сraft] [nvarchar](50) NOT NULL,
+	[РЎraft] [nvarchar](50) NOT NULL,
 	[Description] [nvarchar](4000) NOT NULL,
 	[Created] [datetime] NOT NULL,
 	[Price] [float] NOT NULL,
@@ -578,7 +578,7 @@ CREATE TABLE [dbo].[CraftsMan](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CraftsManOrder]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[CraftsManOrder]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -607,7 +607,7 @@ CREATE TABLE [dbo].[CraftsManOrder](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DailyStatistics]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[DailyStatistics]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -623,7 +623,7 @@ CREATE TABLE [dbo].[DailyStatistics](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DeletedAdverts]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[DeletedAdverts]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -651,7 +651,7 @@ CREATE TABLE [dbo].[DeletedAdverts](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DialogActiveUsers]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[DialogActiveUsers]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -666,7 +666,7 @@ CREATE TABLE [dbo].[DialogActiveUsers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DialogMessages]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[DialogMessages]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -683,7 +683,7 @@ CREATE TABLE [dbo].[DialogMessages](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DialogsInfo]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[DialogsInfo]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -698,7 +698,7 @@ CREATE TABLE [dbo].[DialogsInfo](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DisLikes]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[DisLikes]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -713,7 +713,7 @@ CREATE TABLE [dbo].[DisLikes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Exceptions]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Exceptions]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -729,7 +729,7 @@ CREATE TABLE [dbo].[Exceptions](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ExchangeItemRequests]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[ExchangeItemRequests]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -745,7 +745,7 @@ CREATE TABLE [dbo].[ExchangeItemRequests](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ExchangeProducts]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[ExchangeProducts]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -763,7 +763,7 @@ CREATE TABLE [dbo].[ExchangeProducts](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Favorites]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Favorites]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -779,7 +779,7 @@ CREATE TABLE [dbo].[Favorites](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FavoritesByCookies]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[FavoritesByCookies]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -795,7 +795,7 @@ CREATE TABLE [dbo].[FavoritesByCookies](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ItemDislikes]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[ItemDislikes]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -812,7 +812,7 @@ CREATE TABLE [dbo].[ItemDislikes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ItemLikes]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[ItemLikes]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -829,7 +829,7 @@ CREATE TABLE [dbo].[ItemLikes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Items]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Items]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -851,7 +851,7 @@ CREATE TABLE [dbo].[Items](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Likes]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Likes]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -866,7 +866,7 @@ CREATE TABLE [dbo].[Likes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LoginStat]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[LoginStat]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -883,7 +883,7 @@ CREATE TABLE [dbo].[LoginStat](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LoginStatistics]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[LoginStatistics]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -902,7 +902,7 @@ CREATE TABLE [dbo].[LoginStatistics](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NewAezakmi]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[NewAezakmi]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -920,7 +920,7 @@ CREATE TABLE [dbo].[NewAezakmi](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[News]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[News]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -938,7 +938,7 @@ CREATE TABLE [dbo].[News](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[News_towardsbackwards]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[News_towardsbackwards]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -956,7 +956,7 @@ CREATE TABLE [dbo].[News_towardsbackwards](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NewsAlexPigalyov]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[NewsAlexPigalyov]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -974,7 +974,7 @@ CREATE TABLE [dbo].[NewsAlexPigalyov](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NewsAntares]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[NewsAntares]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -992,7 +992,7 @@ CREATE TABLE [dbo].[NewsAntares](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NewsAzizjan]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[NewsAzizjan]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1010,7 +1010,7 @@ CREATE TABLE [dbo].[NewsAzizjan](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NewsBatrebleSs]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[NewsBatrebleSs]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1028,7 +1028,7 @@ CREATE TABLE [dbo].[NewsBatrebleSs](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NewsEducation]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[NewsEducation]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1046,7 +1046,7 @@ CREATE TABLE [dbo].[NewsEducation](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NewsEoll73]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[NewsEoll73]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1064,7 +1064,7 @@ CREATE TABLE [dbo].[NewsEoll73](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NewsGGdotNET]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[NewsGGdotNET]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1082,7 +1082,7 @@ CREATE TABLE [dbo].[NewsGGdotNET](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NewsIlya]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[NewsIlya]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1100,7 +1100,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NewsMrshkVV]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[NewsMrshkVV]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1118,7 +1118,7 @@ CREATE TABLE [dbo].[NewsMrshkVV](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NewsRaspel]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[NewsRaspel]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1136,7 +1136,7 @@ CREATE TABLE [dbo].[NewsRaspel](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NewsShCodder]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[NewsShCodder]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1150,7 +1150,7 @@ CREATE TABLE [dbo].[NewsShCodder](
 	[Active] [bit] NOT NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NewsVark]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[NewsVark]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1168,7 +1168,7 @@ CREATE TABLE [dbo].[NewsVark](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NewsVlad]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[NewsVlad]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1186,7 +1186,7 @@ CREATE TABLE [dbo].[NewsVlad](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Operations]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Operations]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1204,7 +1204,7 @@ CREATE TABLE [dbo].[Operations](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Payments]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Payments]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1222,7 +1222,7 @@ CREATE TABLE [dbo].[Payments](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Phones]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Phones]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1246,7 +1246,7 @@ CREATE TABLE [dbo].[Phones](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Recipes]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Recipes]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1266,7 +1266,7 @@ CREATE TABLE [dbo].[Recipes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Rent]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Rent]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1277,17 +1277,20 @@ CREATE TABLE [dbo].[Rent](
 	[Description] [nvarchar](max) NOT NULL,
 	[DateStart] [date] NOT NULL,
 	[DateEnd] [date] NULL,
+	[Created] [datetime] NOT NULL,
+	[UserOwnerId] [uniqueidentifier] NOT NULL,
 	[RentType] [int] NOT NULL,
 	[DayRentPrice] [int] NOT NULL,
 	[HourRentPrice] [int] NULL,
 	[MinuteRentPrice] [int] NULL,
+	[ImgUrls] [nvarchar](max) NOT NULL,
  CONSTRAINT [PK_Rent] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RentedTime]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[RentedTime]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1299,7 +1302,7 @@ CREATE TABLE [dbo].[RentedTime](
 	[UserId] [uniqueidentifier] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Roles]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Roles]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1315,7 +1318,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Settings]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Settings]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1333,7 +1336,7 @@ CREATE TABLE [dbo].[Settings](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TenderRequest]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[TenderRequest]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1356,7 +1359,7 @@ CREATE TABLE [dbo].[TenderRequest](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Tenders]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Tenders]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1378,7 +1381,7 @@ CREATE TABLE [dbo].[Tenders](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TokensBuying]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[TokensBuying]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1396,7 +1399,7 @@ CREATE TABLE [dbo].[TokensBuying](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TokensCost]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[TokensCost]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1411,7 +1414,7 @@ CREATE TABLE [dbo].[TokensCost](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TokensSelling]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[TokensSelling]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1429,7 +1432,7 @@ CREATE TABLE [dbo].[TokensSelling](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UserSettings]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[UserSettings]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1446,7 +1449,7 @@ CREATE TABLE [dbo].[UserSettings](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UsersInRoles]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[UsersInRoles]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1461,7 +1464,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UsersOpenAuthAccounts]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[UsersOpenAuthAccounts]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1481,7 +1484,7 @@ CREATE TABLE [dbo].[UsersOpenAuthAccounts](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UsersOpenAuthData]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[UsersOpenAuthData]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1497,7 +1500,7 @@ CREATE TABLE [dbo].[UsersOpenAuthData](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UsersSearches]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[UsersSearches]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1520,7 +1523,7 @@ CREATE TABLE [dbo].[UsersSearches](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UserViews]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[UserViews]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1537,7 +1540,7 @@ CREATE TABLE [dbo].[UserViews](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ViewedObjects]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[ViewedObjects]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1554,7 +1557,7 @@ CREATE TABLE [dbo].[ViewedObjects](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Watched]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[Watched]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1570,7 +1573,7 @@ CREATE TABLE [dbo].[Watched](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[WatchedByCookies]    Script Date: 03.12.2020 11:34:41 ******/
+/****** Object:  Table [dbo].[WatchedByCookies]    Script Date: 09.12.2020 2:03:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1588,49 +1591,49 @@ CREATE TABLE [dbo].[WatchedByCookies](
 GO
 SET IDENTITY_INSERT [dbo].[Adverts] ON 
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (27, 50, N'Холодильник Bosh', N'Новенький! Не пользовались.', CAST(N'2019-10-03T00:37:17.040' AS DateTime), N'f95dea8f-3fae-4c54-be1d-572e5dfe9116', 9900, N'Новый Арбат 78', N'+79864552545', 0, NULL, N'["/img/a/j7rMiCXWekmVM6TaCXnspg.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (27, 50, N'РҐРѕР»РѕРґРёР»СЊРЅРёРє Bosh', N'РќРѕРІРµРЅСЊРєРёР№! РќРµ РїРѕР»СЊР·РѕРІР°Р»РёСЃСЊ.', CAST(N'2019-10-03T00:37:17.040' AS DateTime), N'f95dea8f-3fae-4c54-be1d-572e5dfe9116', 9900, N'РќРѕРІС‹Р№ РђСЂР±Р°С‚ 78', N'+79864552545', 0, NULL, N'["/img/a/j7rMiCXWekmVM6TaCXnspg.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (28, 50, N'телевизор Samsung 55''', N'в хорошем состоянии', CAST(N'2019-10-11T20:33:25.107' AS DateTime), N'314bd290-5fc5-4a93-8131-db644b83aaed', 29000, N'Москва, Арбат 10', N'+7942557872', 0, NULL, N'["/img/a/zvUwKw2GuESIKa8MalcwHw.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (28, 50, N'С‚РµР»РµРІРёР·РѕСЂ Samsung 55''', N'РІ С…РѕСЂРѕС€РµРј СЃРѕСЃС‚РѕСЏРЅРёРё', CAST(N'2019-10-11T20:33:25.107' AS DateTime), N'314bd290-5fc5-4a93-8131-db644b83aaed', 29000, N'РњРѕСЃРєРІР°, РђСЂР±Р°С‚ 10', N'+7942557872', 0, NULL, N'["/img/a/zvUwKw2GuESIKa8MalcwHw.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (29, 50, N'горные лыжи Atomic Smoke Titanium', N'Откатал 3 сезона. В хорошем состоянии.
-В комплекте крепления, палки, чехол.', CAST(N'2019-10-11T20:50:50.260' AS DateTime), N'314bd290-5fc5-4a93-8131-db644b83aaed', 8450, N'Москва, Динамо', N'+7942557878', 0, NULL, N'["/img/a/sMFAAAITL06GeAXpGNqumA.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (29, 50, N'РіРѕСЂРЅС‹Рµ Р»С‹Р¶Рё Atomic Smoke Titanium', N'РћС‚РєР°С‚Р°Р» 3 СЃРµР·РѕРЅР°. Р’ С…РѕСЂРѕС€РµРј СЃРѕСЃС‚РѕСЏРЅРёРё.
+Р’ РєРѕРјРїР»РµРєС‚Рµ РєСЂРµРїР»РµРЅРёСЏ, РїР°Р»РєРё, С‡РµС…РѕР».', CAST(N'2019-10-11T20:50:50.260' AS DateTime), N'314bd290-5fc5-4a93-8131-db644b83aaed', 8450, N'РњРѕСЃРєРІР°, Р”РёРЅР°РјРѕ', N'+7942557878', 0, NULL, N'["/img/a/sMFAAAITL06GeAXpGNqumA.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (30, 50, N'Кофеварка ', N'Тестовое объявление с большим количеством картинок', CAST(N'2019-10-11T20:54:25.323' AS DateTime), N'314bd290-5fc5-4a93-8131-db644b83aaed', 3200, N'Москва, Кузьминки 20', N'+7942257872', 0, NULL, N'["/img/a/SIHdBzJ2xkeewPafXldijw.jpg","/img/a/br10SfqbBUSvK8jFPm1r3Q.jpg","/img/a/GcLH1ion40GwK8eK88m0Q.jpg","/img/a/mxsrgrPttUqWOQp0wBbQ.jpg","/img/a/wCkZwxQHxUa4W0CpWexR2g.jpg","/img/a/8bkqHlYySEmqCRWPeubGQ.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (30, 50, N'РљРѕС„РµРІР°СЂРєР° ', N'РўРµСЃС‚РѕРІРѕРµ РѕР±СЉСЏРІР»РµРЅРёРµ СЃ Р±РѕР»СЊС€РёРј РєРѕР»РёС‡РµСЃС‚РІРѕРј РєР°СЂС‚РёРЅРѕРє', CAST(N'2019-10-11T20:54:25.323' AS DateTime), N'314bd290-5fc5-4a93-8131-db644b83aaed', 3200, N'РњРѕСЃРєРІР°, РљСѓР·СЊРјРёРЅРєРё 20', N'+7942257872', 0, NULL, N'["/img/a/SIHdBzJ2xkeewPafXldijw.jpg","/img/a/br10SfqbBUSvK8jFPm1r3Q.jpg","/img/a/GcLH1ion40GwK8eK88m0Q.jpg","/img/a/mxsrgrPttUqWOQp0wBbQ.jpg","/img/a/wCkZwxQHxUa4W0CpWexR2g.jpg","/img/a/8bkqHlYySEmqCRWPeubGQ.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (31, 1010, N'хендай солярис', N'Практически новый', CAST(N'2019-10-26T13:54:46.850' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 300000, N'Новогиреево', N'+79864522542', 0, NULL, N'["/img/a/oWD62LoCh0Ki7lDEi64c8w.jpg","/img/a/qbt8Vq3gKU2tEnWH1l6LuA.jpg","/img/a/DU0vHVSLf0OOY5bwFefEMA.jpg","/img/a/UOsvIyfOc0ahpcP2o6VMEg.jpg","/img/a/VClzoRSFUOz9BjWDV7BDA.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (31, 1010, N'С…РµРЅРґР°Р№ СЃРѕР»СЏСЂРёСЃ', N'РџСЂР°РєС‚РёС‡РµСЃРєРё РЅРѕРІС‹Р№', CAST(N'2019-10-26T13:54:46.850' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 300000, N'РќРѕРІРѕРіРёСЂРµРµРІРѕ', N'+79864522542', 0, NULL, N'["/img/a/oWD62LoCh0Ki7lDEi64c8w.jpg","/img/a/qbt8Vq3gKU2tEnWH1l6LuA.jpg","/img/a/DU0vHVSLf0OOY5bwFefEMA.jpg","/img/a/UOsvIyfOc0ahpcP2o6VMEg.jpg","/img/a/VClzoRSFUOz9BjWDV7BDA.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (32, 1101, N'Магазин разливного пива', N'Оборотка 600.000 рублей.
-Чистая прибыль 200.000 рублей.', CAST(N'2019-10-26T14:29:49.840' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1200000, N'Воронеж', N'+79864889931', 0, NULL, N'["/img/a/FnmKKH4Ak2oMXMcgnLKHw.jpg","/img/a/nFulAD509kO262lg8wHqkQ.jpg","/img/a/N22eeOEoEaZCPPkw39Zkw.jpg","/img/a/DhaLb5TLUSEvgfAxgH77Q.jpg","/img/a/1Yg7WTepOUe4guNHxqZgSw.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (32, 1101, N'РњР°РіР°Р·РёРЅ СЂР°Р·Р»РёРІРЅРѕРіРѕ РїРёРІР°', N'РћР±РѕСЂРѕС‚РєР° 600.000 СЂСѓР±Р»РµР№.
+Р§РёСЃС‚Р°СЏ РїСЂРёР±С‹Р»СЊ 200.000 СЂСѓР±Р»РµР№.', CAST(N'2019-10-26T14:29:49.840' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1200000, N'Р’РѕСЂРѕРЅРµР¶', N'+79864889931', 0, NULL, N'["/img/a/FnmKKH4Ak2oMXMcgnLKHw.jpg","/img/a/nFulAD509kO262lg8wHqkQ.jpg","/img/a/N22eeOEoEaZCPPkw39Zkw.jpg","/img/a/DhaLb5TLUSEvgfAxgH77Q.jpg","/img/a/1Yg7WTepOUe4guNHxqZgSw.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10027, 50, N'7777', N'77777', CAST(N'2020-05-01T00:33:16.583' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 7777, N'Кочновский пр-д, 5 строение 7, Москва, Россия, 125319', N'+79864889122', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10027, 50, N'7777', N'77777', CAST(N'2020-05-01T00:33:16.583' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 7777, N'РљРѕС‡РЅРѕРІСЃРєРёР№ РїСЂ-Рґ, 5 СЃС‚СЂРѕРµРЅРёРµ 7, РњРѕСЃРєРІР°, Р РѕСЃСЃРёСЏ, 125319', N'+79864889122', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10028, 50, N'7777', N'777', CAST(N'2020-05-01T00:33:30.630' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 7777, N'Кочновский пр-д, 5 строение 7, Москва, Россия, 125319', N'+79864522542', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10028, 50, N'7777', N'777', CAST(N'2020-05-01T00:33:30.630' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 7777, N'РљРѕС‡РЅРѕРІСЃРєРёР№ РїСЂ-Рґ, 5 СЃС‚СЂРѕРµРЅРёРµ 7, РњРѕСЃРєРІР°, Р РѕСЃСЃРёСЏ, 125319', N'+79864522542', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10029, 50, N'2222 тест', N'3332', CAST(N'2020-05-01T00:43:06.323' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 4444, N'Кочновский пр-д, 5 строение 7, Москва, Россия, 125319', N'+79864522542', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10029, 50, N'2222 С‚РµСЃС‚', N'3332', CAST(N'2020-05-01T00:43:06.323' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 4444, N'РљРѕС‡РЅРѕРІСЃРєРёР№ РїСЂ-Рґ, 5 СЃС‚СЂРѕРµРЅРёРµ 7, РњРѕСЃРєРІР°, Р РѕСЃСЃРёСЏ, 125319', N'+79864522542', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10031, 1010, N'Ваз 2106', N'Любимая шестерочкв', CAST(N'2020-05-07T16:52:38.577' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 40000, N'ул. Старый Гай, 12, Москва, Россия, 111402', N'+79686399088', 0, NULL, N'["/img/a/V6bJ415pk00SmjqznXbZA.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10031, 1010, N'Р’Р°Р· 2106', N'Р›СЋР±РёРјР°СЏ С€РµСЃС‚РµСЂРѕС‡РєРІ', CAST(N'2020-05-07T16:52:38.577' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 40000, N'СѓР». РЎС‚Р°СЂС‹Р№ Р“Р°Р№, 12, РњРѕСЃРєРІР°, Р РѕСЃСЃРёСЏ, 111402', N'+79686399088', 0, NULL, N'["/img/a/V6bJ415pk00SmjqznXbZA.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10032, 50, N'Тест 4', N'Тестттт 4444', CAST(N'2020-05-30T17:45:32.733' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, N'ул. Вучетича, 28 корпус 3, Москва, Россия, 127206', N'+79864554545', 0, NULL, N'["/img/a/wcB4wOYDX0aj7Ef3GU4SQ.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10032, 50, N'РўРµСЃС‚ 4', N'РўРµСЃС‚С‚С‚С‚ 4444', CAST(N'2020-05-30T17:45:32.733' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, N'СѓР». Р’СѓС‡РµС‚РёС‡Р°, 28 РєРѕСЂРїСѓСЃ 3, РњРѕСЃРєРІР°, Р РѕСЃСЃРёСЏ, 127206', N'+79864554545', 0, NULL, N'["/img/a/wcB4wOYDX0aj7Ef3GU4SQ.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10033, 50, N'Тест 5', N'Тесттт;тттттттт 5', CAST(N'2020-05-30T17:46:36.037' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 200000, N'ул. Вучетича, 28 корпус 3, Москва, Россия, 127206', N'+79864554545', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10033, 50, N'РўРµСЃС‚ 5', N'РўРµСЃС‚С‚С‚;С‚С‚С‚С‚С‚С‚С‚С‚ 5', CAST(N'2020-05-30T17:46:36.037' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 200000, N'СѓР». Р’СѓС‡РµС‚РёС‡Р°, 28 РєРѕСЂРїСѓСЃ 3, РњРѕСЃРєРІР°, Р РѕСЃСЃРёСЏ, 127206', N'+79864554545', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10034, 1000, N'Готовый бизнес проект ', N'Как создавать красоту и деньги благодаря гальванике. Реализовать свой творческий потенциал и быть счастливым.
-В общем как превратить листья с деревьев в деньги?
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10034, 1000, N'Р“РѕС‚РѕРІС‹Р№ Р±РёР·РЅРµСЃ РїСЂРѕРµРєС‚ ', N'РљР°Рє СЃРѕР·РґР°РІР°С‚СЊ РєСЂР°СЃРѕС‚Сѓ Рё РґРµРЅСЊРіРё Р±Р»Р°РіРѕРґР°СЂСЏ РіР°Р»СЊРІР°РЅРёРєРµ. Р РµР°Р»РёР·РѕРІР°С‚СЊ СЃРІРѕР№ С‚РІРѕСЂС‡РµСЃРєРёР№ РїРѕС‚РµРЅС†РёР°Р» Рё Р±С‹С‚СЊ СЃС‡Р°СЃС‚Р»РёРІС‹Рј.
+Р’ РѕР±С‰РµРј РєР°Рє РїСЂРµРІСЂР°С‚РёС‚СЊ Р»РёСЃС‚СЊСЏ СЃ РґРµСЂРµРІСЊРµРІ РІ РґРµРЅСЊРіРё?
 https://upravlenec.e-autopay.com/p/5500/ps
-П.С.
-Целевая аудитория реализации продукта весь мир, уровень продаж зависит от вашего вклада. Помимо обучения гальванике, попутно расскажут как продавать в интернете.
-', CAST(N'2020-06-26T23:48:36.957' AS DateTime), N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 14970, N'Севастополь', N'79821395919', 0, NULL, N'["/img/a/g1TMt82J0WUJ8QHj8MhA.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+Рџ.РЎ.
+Р¦РµР»РµРІР°СЏ Р°СѓРґРёС‚РѕСЂРёСЏ СЂРµР°Р»РёР·Р°С†РёРё РїСЂРѕРґСѓРєС‚Р° РІРµСЃСЊ РјРёСЂ, СѓСЂРѕРІРµРЅСЊ РїСЂРѕРґР°Р¶ Р·Р°РІРёСЃРёС‚ РѕС‚ РІР°С€РµРіРѕ РІРєР»Р°РґР°. РџРѕРјРёРјРѕ РѕР±СѓС‡РµРЅРёСЏ РіР°Р»СЊРІР°РЅРёРєРµ, РїРѕРїСѓС‚РЅРѕ СЂР°СЃСЃРєР°Р¶СѓС‚ РєР°Рє РїСЂРѕРґР°РІР°С‚СЊ РІ РёРЅС‚РµСЂРЅРµС‚Рµ.
+', CAST(N'2020-06-26T23:48:36.957' AS DateTime), N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 14970, N'РЎРµРІР°СЃС‚РѕРїРѕР»СЊ', N'79821395919', 0, NULL, N'["/img/a/g1TMt82J0WUJ8QHj8MhA.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10035, 10, N'Skoda Oktavia', N'В хорошем состоянии.', CAST(N'2020-07-16T01:21:48.863' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100000, N'Тимирязевская ул., 38А строение 1, Москва, Россия, 127422', N'+79864889142', 0, NULL, N'["/img/a/e1pheumNfUSooc5OhG7K8w.png","/img/a/KzFZndm8GkCewRbzpDzTzQ.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (10035, 10, N'Skoda Oktavia', N'Р’ С…РѕСЂРѕС€РµРј СЃРѕСЃС‚РѕСЏРЅРёРё.', CAST(N'2020-07-16T01:21:48.863' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100000, N'РўРёРјРёСЂСЏР·РµРІСЃРєР°СЏ СѓР»., 38Рђ СЃС‚СЂРѕРµРЅРёРµ 1, РњРѕСЃРєРІР°, Р РѕСЃСЃРёСЏ, 127422', N'+79864889142', 0, NULL, N'["/img/a/e1pheumNfUSooc5OhG7K8w.png","/img/a/KzFZndm8GkCewRbzpDzTzQ.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (20035, 70, N'Микроволновка Samsung', N'Купили 5 лет назад. Отлично работает.
-Пользовались бережно.', CAST(N'2020-07-26T19:19:31.460' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, N'Ивановская ул., 34, Москва', N'+79864522542', 0, NULL, N'["/img/a/5pCX225yECrJK1EdRDIKw.jpg","/img/a/GSI4kgcK8UmITf7eW8ClSw.jpg","/img/a/9FtOlXC3KUWJ6D938o8Kmw.jpg","/img/a/1ubiLdqmUKpYsar4SsM1A.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (20035, 70, N'РњРёРєСЂРѕРІРѕР»РЅРѕРІРєР° Samsung', N'РљСѓРїРёР»Рё 5 Р»РµС‚ РЅР°Р·Р°Рґ. РћС‚Р»РёС‡РЅРѕ СЂР°Р±РѕС‚Р°РµС‚.
+РџРѕР»СЊР·РѕРІР°Р»РёСЃСЊ Р±РµСЂРµР¶РЅРѕ.', CAST(N'2020-07-26T19:19:31.460' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, N'РРІР°РЅРѕРІСЃРєР°СЏ СѓР»., 34, РњРѕСЃРєРІР°', N'+79864522542', 0, NULL, N'["/img/a/5pCX225yECrJK1EdRDIKw.jpg","/img/a/GSI4kgcK8UmITf7eW8ClSw.jpg","/img/a/9FtOlXC3KUWJ6D938o8Kmw.jpg","/img/a/1ubiLdqmUKpYsar4SsM1A.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (20041, 50, N'Шкаф-купе', N'3 секции.
-Купили несколько лет назад.
-В хорошем состоянии.', CAST(N'2020-08-16T14:17:19.717' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, N'Черняховского ул., 19 строение 15, Москва, Россия, 125319', N'+79864522542', 0, NULL, N'["/img/a/PkfH63NfykK5IDAhQC97g.jpg","/img/a/KBl6y2RkKptV35fV8rg.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (20041, 50, N'РЁРєР°С„-РєСѓРїРµ', N'3 СЃРµРєС†РёРё.
+РљСѓРїРёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ Р»РµС‚ РЅР°Р·Р°Рґ.
+Р’ С…РѕСЂРѕС€РµРј СЃРѕСЃС‚РѕСЏРЅРёРё.', CAST(N'2020-08-16T14:17:19.717' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, N'Р§РµСЂРЅСЏС…РѕРІСЃРєРѕРіРѕ СѓР»., 19 СЃС‚СЂРѕРµРЅРёРµ 15, РњРѕСЃРєРІР°, Р РѕСЃСЃРёСЏ, 125319', N'+79864522542', 0, NULL, N'["/img/a/PkfH63NfykK5IDAhQC97g.jpg","/img/a/KBl6y2RkKptV35fV8rg.jpg"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (20042, 50, N'Куртка', N'Новая куртка', CAST(N'2020-11-28T01:22:54.990' AS DateTime), N'eb8da0bb-1d3b-4324-a4cd-e0387266fe8e', 5000, N'Ulitsa Engel''sa, 49, Gorodets, Nizhegorodskaya oblast'', Russia, 606505', N'+79999999999', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Adverts] ([Id], [Category], [Name], [Description], [Created], [CreatedUserId], [Price], [Address], [Phone], [MessageType], [Position], [ImgUrls], [YouTubeUrl], [IsApproved], [WhenAdminApproved], [Subcategory], [Color], [Vin], [Brand]) VALUES (20042, 50, N'РљСѓСЂС‚РєР°', N'РќРѕРІР°СЏ РєСѓСЂС‚РєР°', CAST(N'2020-11-28T01:22:54.990' AS DateTime), N'eb8da0bb-1d3b-4324-a4cd-e0387266fe8e', 5000, N'Ulitsa Engel''sa, 49, Gorodets, Nizhegorodskaya oblast'', Russia, 606505', N'+79999999999', 0, NULL, N'["/img/a/noPhoto.png"]', N'', 0, NULL, NULL, NULL, NULL, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Adverts] OFF
 GO
@@ -1638,7 +1641,7 @@ INSERT [dbo].[Applications] ([ApplicationName], [ApplicationId], [Description]) 
 GO
 SET IDENTITY_INSERT [dbo].[Auctions] ON 
 GO
-INSERT [dbo].[Auctions] ([Id], [Name], [StartPrice], [Created], [UserId], [ImgUrls], [Description], [DataEnd]) VALUES (1, N'Первый аукцион', 1000.0000, CAST(N'2020-11-28T01:02:29.647' AS DateTime), N'eb8da0bb-1d3b-4324-a4cd-e0387266fe8e', NULL, N'Описание', NULL)
+INSERT [dbo].[Auctions] ([Id], [Name], [StartPrice], [Created], [UserId], [ImgUrls], [Description], [DataEnd]) VALUES (1, N'РџРµСЂРІС‹Р№ Р°СѓРєС†РёРѕРЅ', 1000.0000, CAST(N'2020-11-28T01:02:29.647' AS DateTime), N'eb8da0bb-1d3b-4324-a4cd-e0387266fe8e', NULL, N'РћРїРёСЃР°РЅРёРµ', NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Auctions] OFF
 GO
@@ -1704,59 +1707,55 @@ INSERT [dbo].[CashOuts] ([Id], [UserId], [Value], [WhenDate], [Sposob], [WhenAdm
 GO
 SET IDENTITY_INSERT [dbo].[CashOuts] OFF
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (10, N'Transport', N'Транспорт', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (10, N'Transport', N'РўСЂР°РЅСЃРїРѕСЂС‚', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (101, N'Auto', N'Автомобили', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (101, N'Auto', N'РђРІС‚РѕРјРѕР±РёР»Рё', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (102, N'Moto', N'Мотоциклы и мототехника', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (102, N'Moto', N'РњРѕС‚РѕС†РёРєР»С‹ Рё РјРѕС‚РѕС‚РµС…РЅРёРєР°', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (103, N'Truck', N'Грузовики и спецтехника', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (103, N'Truck', N'Р“СЂСѓР·РѕРІРёРєРё Рё СЃРїРµС†С‚РµС…РЅРёРєР°', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (104, N'WaterTransport', N'Водный транспорт', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (104, N'WaterTransport', N'Р’РѕРґРЅС‹Р№ С‚СЂР°РЅСЃРїРѕСЂС‚', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (105, N'SpareParts', N'Запчасти и аксессуары', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (105, N'SpareParts', N'Р—Р°РїС‡Р°СЃС‚Рё Рё Р°РєСЃРµСЃСЃСѓР°СЂС‹', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (20, N'Realty', N'Недвижимость', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (20, N'Realty', N'РќРµРґРІРёР¶РёРјРѕСЃС‚СЊ', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (201, N'Apartment', N'Квартиры', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (201, N'Apartment', N'РљРІР°СЂС‚РёСЂС‹', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (202, N'Room', N'Комнаты', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (202, N'Room', N'РљРѕРјРЅР°С‚С‹', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (203, N'House', N'Дома, дачи, коттеджи', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (203, N'House', N'Р”РѕРјР°, РґР°С‡Рё, РєРѕС‚С‚РµРґР¶Рё', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (204, N'Land', N'Земельные участки', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (204, N'Land', N'Р—РµРјРµР»СЊРЅС‹Рµ СѓС‡Р°СЃС‚РєРё', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (205, N'Garage', N'Гаражи и машиноместа', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (205, N'Garage', N'Р“Р°СЂР°Р¶Рё Рё РјР°С€РёРЅРѕРјРµСЃС‚Р°', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (206, N'CommercialRealEstate', N'Коммерческая недвижимость', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (206, N'CommercialRealEstate', N'РљРѕРјРјРµСЂС‡РµСЃРєР°СЏ РЅРµРґРІРёР¶РёРјРѕСЃС‚СЊ', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (207, N'RealEstateAbroad', N'Недвижимость за рубежом', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (207, N'RealEstateAbroad', N'РќРµРґРІРёР¶РёРјРѕСЃС‚СЊ Р·Р° СЂСѓР±РµР¶РѕРј', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (30, N'Job', N'Работа', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (30, N'Job', N'Р Р°Р±РѕС‚Р°', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (301, N'Vacancy', N'Вакансии', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (301, N'Vacancy', N'Р’Р°РєР°РЅСЃРёРё', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (302, N'Resume', N'Резюме', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (302, N'Resume', N'Р РµР·СЋРјРµ', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (40, N'Services', N'Услуги', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (40, N'Services', N'РЈСЃР»СѓРіРё', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (401, N'ItInternetTelecom', N'IT, интернет, телеком', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (401, N'ItInternetTelecom', N'IT, РёРЅС‚РµСЂРЅРµС‚, С‚РµР»РµРєРѕРј', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (4011, N'WebsiteDevelopmentMarketing', N'Cоздание и продвижение сайтов', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (40111, N'WebsiteDevelopment', N'РЎРѕР·РґР°РЅРёРµ СЃР°Р№С‚РѕРІ', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (40111, N'WebsiteDevelopment', N'Создание сайтов', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (40112, N'WebsiteMarketing', N'РџСЂРѕРґРІРёР¶РµРЅРёРµ СЃР°Р№С‚РѕРІ', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (40112, N'WebsiteMarketing', N'Продвижение сайтов', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (4012, N'SoftwareInstallationSetup', N'РЈСЃС‚Р°РЅРѕРІРєР° Рё РЅР°СЃС‚СЂРѕР№РєР° РџРћ', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (4012, N'SoftwareInstallationSetup', N'Установка и настройка ПО', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (4014, N'ItMaster', N'It РјР°СЃС‚РµСЂ РЅР° РІСЃРµ СЃР»СѓС‡Р°Рё', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (4013, N'SettingupInternetNetworks', N'Настройка интернета и сетей', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (50, N'PersonalGoods', N'Р›РёС‡РЅС‹Рµ РІРµС‰Рё', 1, NULL)
 GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (4014, N'ItMaster', N'It мастер на все случаи', 1, NULL)
-GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (50, N'PersonalGoods', N'Личные вещи', 1, NULL)
-GO
-INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (501, N'ClothesShoesAccessories', N'Одежда, обувь, аксессуары', 1, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [Name(Ru)], [OrderId], [ParentCategoryId]) VALUES (501, N'ClothesShoesAccessories', N'РћРґРµР¶РґР°, РѕР±СѓРІСЊ, Р°РєСЃРµСЃСЃСѓР°СЂС‹', 1, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[ChatActiveUsers] ON 
 GO
@@ -1782,9 +1781,9 @@ INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES
 GO
 INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (7, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'hmm..', CAST(N'2020-10-07T22:02:12.297' AS DateTime), 5)
 GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (8, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'йй', CAST(N'2020-10-07T22:07:37.470' AS DateTime), 5)
+INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (8, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'Р№Р№', CAST(N'2020-10-07T22:07:37.470' AS DateTime), 5)
 GO
-INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (9, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'ййййй', CAST(N'2020-10-07T22:11:26.073' AS DateTime), 5)
+INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (9, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'Р№Р№Р№Р№Р№', CAST(N'2020-10-07T22:11:26.073' AS DateTime), 5)
 GO
 INSERT [dbo].[ChatMessages] ([Id], [UserId], [Message], [Date], [ChatId]) VALUES (10, N'a55a7415-80e3-4dfd-92a1-3ea9d8d88329', N'among us', CAST(N'2020-10-07T22:16:24.263' AS DateTime), 9)
 GO
@@ -1890,9 +1889,9 @@ SET IDENTITY_INSERT [dbo].[Comments] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Complaints] ON 
 GO
-INSERT [dbo].[Complaints] ([Id], [Message], [СomplaintType], [ObjectId], [ObjectType], [UserSender], [UserRecipier], [Data], [Status]) VALUES (1, N'some message chto ochen ne ponravilos', 1, 20041, 1, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2020-10-27T23:28:47.867' AS DateTime), 1)
+INSERT [dbo].[Complaints] ([Id], [Message], [РЎomplaintType], [ObjectId], [ObjectType], [UserSender], [UserRecipier], [Data], [Status]) VALUES (1, N'some message chto ochen ne ponravilos', 1, 20041, 1, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2020-10-27T23:28:47.867' AS DateTime), 1)
 GO
-INSERT [dbo].[Complaints] ([Id], [Message], [СomplaintType], [ObjectId], [ObjectType], [UserSender], [UserRecipier], [Data], [Status]) VALUES (6, N'some zaloba', 1, 20041, 1, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-29T00:00:00.000' AS DateTime), 0)
+INSERT [dbo].[Complaints] ([Id], [Message], [РЎomplaintType], [ObjectId], [ObjectType], [UserSender], [UserRecipier], [Data], [Status]) VALUES (6, N'some zaloba', 1, 20041, 1, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-29T00:00:00.000' AS DateTime), 0)
 GO
 SET IDENTITY_INSERT [dbo].[Complaints] OFF
 GO
@@ -1936,7 +1935,7 @@ INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [D
 GO
 INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (9, 1, N'oug', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-02T22:19:16.427' AS DateTime))
 GO
-INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (10, 1, N'рффффф', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-02T22:21:43.307' AS DateTime))
+INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (10, 1, N'СЂС„С„С„С„С„', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-02T22:21:43.307' AS DateTime))
 GO
 INSERT [dbo].[DialogMessages] ([Id], [DialogInfoId], [Message], [FromUserId], [Date]) VALUES (11, 1, N'hmmmm', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', CAST(N'2020-10-02T22:24:23.057' AS DateTime))
 GO
@@ -1994,17 +1993,17 @@ SET IDENTITY_INSERT [dbo].[DisLikes] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Exceptions] ON 
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (1, N'Строка не найдена или изменена.', CAST(N'2019-07-12T00:51:12.257' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (1, N'РЎС‚СЂРѕРєР° РЅРµ РЅР°Р№РґРµРЅР° РёР»Рё РёР·РјРµРЅРµРЅР°.', CAST(N'2019-07-12T00:51:12.257' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (2, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2019-12-29T00:36:53.637' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (2, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2019-12-29T00:36:53.637' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (3, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2019-12-29T00:36:53.927' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (3, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2019-12-29T00:36:53.927' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (4, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2019-12-29T00:36:53.993' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (4, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2019-12-29T00:36:53.993' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (5, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2019-12-29T00:36:54.080' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (5, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2019-12-29T00:36:54.080' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (6, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2019-12-29T00:36:54.567' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (6, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2019-12-29T00:36:54.567' AS DateTime), NULL)
 GO
 INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (7, N'Object reference not set to an instance of an object.', CAST(N'2019-12-29T00:52:15.477' AS DateTime), NULL)
 GO
@@ -2042,45 +2041,45 @@ INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (23, N'Ob
 GO
 INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (24, N'Object reference not set to an instance of an object.', CAST(N'2020-01-14T00:48:48.633' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (25, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T00:57:02.923' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (25, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T00:57:02.923' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (26, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T00:57:10.550' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (26, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T00:57:10.550' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (27, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T00:57:11.683' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (27, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T00:57:11.683' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (28, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T00:57:34.577' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (28, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T00:57:34.577' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (29, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:00:05.750' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (29, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:00:05.750' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (30, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:00:31.490' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (30, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:00:31.490' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (31, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:00:31.537' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (31, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:00:31.537' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (32, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:00:31.590' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (32, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:00:31.590' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (33, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:00:31.630' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (33, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:00:31.630' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (34, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:00:41.063' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (34, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:00:41.063' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (35, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:03:58.727' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (35, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:03:58.727' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (36, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:03:58.793' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (36, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:03:58.793' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (37, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:03:58.850' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (37, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:03:58.850' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (38, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:03:58.887' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (38, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:03:58.887' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (39, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:04:56.313' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (39, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:04:56.313' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (40, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:04:56.353' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (40, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:04:56.353' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (41, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:13:53.077' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (41, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:13:53.077' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (42, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:13:53.130' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (42, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:13:53.130' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (43, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:13:53.167' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (43, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:13:53.167' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (44, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-14T01:13:53.217' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (44, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-14T01:13:53.217' AS DateTime), NULL)
 GO
 INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (45, N'Object reference not set to an instance of an object.', CAST(N'2020-01-21T13:04:09.100' AS DateTime), NULL)
 GO
@@ -2114,13 +2113,13 @@ INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (59, N'Ob
 GO
 INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (60, N'Object reference not set to an instance of an object.', CAST(N'2020-01-24T05:57:36.917' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (61, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-24T06:46:08.517' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (61, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-24T06:46:08.517' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (62, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-24T06:46:08.567' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (62, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-24T06:46:08.567' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (63, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-24T06:46:08.617' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (63, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-24T06:46:08.617' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (64, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-01-24T06:46:08.657' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (64, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-01-24T06:46:08.657' AS DateTime), NULL)
 GO
 INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (65, N'Object reference not set to an instance of an object.', CAST(N'2020-01-24T17:14:52.780' AS DateTime), NULL)
 GO
@@ -2204,7 +2203,7 @@ INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (104, N'O
 GO
 INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (105, N'Object reference not set to an instance of an object.', CAST(N'2020-03-18T23:09:43.217' AS DateTime), NULL)
 GO
-INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (106, N'Ссылка на объект не указывает на экземпляр объекта.', CAST(N'2020-07-02T00:01:24.143' AS DateTime), NULL)
+INSERT [dbo].[Exceptions] ([Id], [Value], [WhenDate], [UserId]) VALUES (106, N'РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РЅР° СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°.', CAST(N'2020-07-02T00:01:24.143' AS DateTime), NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Exceptions] OFF
 GO
@@ -3384,7 +3383,7 @@ INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordForm
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'3b767454-13e2-4213-a8d4-51d5b07b5fb1', N'Eoen3cBV1Ozy3Rwlb1mtbaFz3lonuFqrGHBxD/gDVjU=', 1, N'4UGT2cYSDikPzRBwTZxl1Q==', N'ashfaqshaikh85@gmail.com', NULL, NULL, 1, 0, CAST(N'2019-09-16T07:48:57.050' AS DateTime), CAST(N'2019-09-16T07:48:57.050' AS DateTime), CAST(N'2019-09-16T07:48:57.050' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
-INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'f95dea8f-3fae-4c54-be1d-572e5dfe9116', N'5SoJELyLeIksnDPNRaIzVoiCbf494/FUanpnTsKgnTg=', 1, N'TBLKsAOUNk4shiwM1QsxrA==', N'Fghуgg@ffh.ru', NULL, NULL, 1, 0, CAST(N'2019-10-02T21:34:44.667' AS DateTime), CAST(N'2019-10-02T21:34:44.667' AS DateTime), CAST(N'2019-10-02T21:34:44.667' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
+INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'f95dea8f-3fae-4c54-be1d-572e5dfe9116', N'5SoJELyLeIksnDPNRaIzVoiCbf494/FUanpnTsKgnTg=', 1, N'TBLKsAOUNk4shiwM1QsxrA==', N'FghСѓgg@ffh.ru', NULL, NULL, 1, 0, CAST(N'2019-10-02T21:34:44.667' AS DateTime), CAST(N'2019-10-02T21:34:44.667' AS DateTime), CAST(N'2019-10-02T21:34:44.667' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'b1e3c30f-91b1-48c1-a2e4-5c8cc7b75dc7', N'0FgbF9kMT73o0b2yClopwWlwg9M6yF8Kbt/lOx3DGZ0=', 1, N'Vr6pbjUR1QeUs0I+kKO8KQ==', N'nnn@ert.rt', NULL, NULL, 1, 0, CAST(N'2019-08-24T12:44:51.830' AS DateTime), CAST(N'2019-08-24T12:44:51.830' AS DateTime), CAST(N'2019-08-24T12:44:51.830' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
@@ -3462,7 +3461,7 @@ INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordForm
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'996da0e7-d189-47a3-8436-e54b1572872d', N'WjTBu9/DUvLq0GMGriWcGFTnfQP5Pz+yUZ6wreHhzYk=', 1, N'63SFwiaoJG9ujvkZBPVyrQ==', N'egorigorevichk@mail.ru', NULL, NULL, 1, 0, CAST(N'2020-01-27T14:21:36.233' AS DateTime), CAST(N'2020-01-27T14:21:36.233' AS DateTime), CAST(N'2020-01-27T14:21:36.233' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
-INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'20a94868-76d0-456d-8268-e7c1318f03d3', N'CtoEgdB36ixKYO5lBR7rdOh8htgWelow8rwQElS/z90=', 1, N'ChNt8aptlfhHn2jCkayfqg==', N'qwer@wqрttпert.er', NULL, NULL, 1, 0, CAST(N'2019-07-26T14:15:03.497' AS DateTime), CAST(N'2019-07-26T14:15:03.497' AS DateTime), CAST(N'2019-07-26T14:15:03.497' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
+INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'20a94868-76d0-456d-8268-e7c1318f03d3', N'CtoEgdB36ixKYO5lBR7rdOh8htgWelow8rwQElS/z90=', 1, N'ChNt8aptlfhHn2jCkayfqg==', N'qwer@wqСЂttРїert.er', NULL, NULL, 1, 0, CAST(N'2019-07-26T14:15:03.497' AS DateTime), CAST(N'2019-07-26T14:15:03.497' AS DateTime), CAST(N'2019-07-26T14:15:03.497' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
 INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordFormat], [PasswordSalt], [Email], [PasswordQuestion], [PasswordAnswer], [IsApproved], [IsLockedOut], [CreateDate], [LastLoginDate], [LastPasswordChangedDate], [LastLockoutDate], [FailedPasswordAttemptCount], [FailedPasswordAttemptWindowStart], [FailedPasswordAnswerAttemptCount], [FailedPasswordAnswerAttemptWindowsStart], [Comment]) VALUES (N'234ee901-21d6-4952-b871-b815b148fe46', N'dc40c4f1-f346-48fe-b4b3-fc629df690ff', N'h9T5e1Hb3xCi2invLmVD+WPYJoITse7Yc2lFrtGnzpA=', 1, N'rqshTAvZXAz2IWdyx8T/KQ==', N'Fgh@ffh.ruh', NULL, NULL, 1, 0, CAST(N'2019-10-02T19:18:03.867' AS DateTime), CAST(N'2019-10-02T19:18:03.867' AS DateTime), CAST(N'2019-10-02T19:18:03.867' AS DateTime), CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), 0, CAST(N'1754-01-01T00:00:00.000' AS DateTime), NULL)
 GO
@@ -3472,95 +3471,95 @@ INSERT [dbo].[Memberships] ([ApplicationId], [UserId], [Password], [PasswordForm
 GO
 SET IDENTITY_INSERT [dbo].[NewAezakmi] ON 
 GO
-INSERT [dbo].[NewAezakmi] ([id], [Text], [Date], [Authorld], [CreateDate], [Active]) VALUES (1, N'Первая новость', CAST(N'2020-11-13T06:38:20.100' AS DateTime), N'8710f37b-2be9-4b58-999c-c387f98086da', CAST(N'2020-11-13T06:38:20.100' AS DateTime), 1)
+INSERT [dbo].[NewAezakmi] ([id], [Text], [Date], [Authorld], [CreateDate], [Active]) VALUES (1, N'РџРµСЂРІР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-13T06:38:20.100' AS DateTime), N'8710f37b-2be9-4b58-999c-c387f98086da', CAST(N'2020-11-13T06:38:20.100' AS DateTime), 1)
 GO
-INSERT [dbo].[NewAezakmi] ([id], [Text], [Date], [Authorld], [CreateDate], [Active]) VALUES (2, N'Вторая ность ', CAST(N'2020-11-13T06:38:49.573' AS DateTime), N'8710f37b-2be9-4b58-999c-c387f98086da', CAST(N'2020-11-13T06:38:49.573' AS DateTime), 0)
+INSERT [dbo].[NewAezakmi] ([id], [Text], [Date], [Authorld], [CreateDate], [Active]) VALUES (2, N'Р’С‚РѕСЂР°СЏ РЅРѕСЃС‚СЊ ', CAST(N'2020-11-13T06:38:49.573' AS DateTime), N'8710f37b-2be9-4b58-999c-c387f98086da', CAST(N'2020-11-13T06:38:49.573' AS DateTime), 0)
 GO
-INSERT [dbo].[NewAezakmi] ([id], [Text], [Date], [Authorld], [CreateDate], [Active]) VALUES (4, N'Работа окончена', CAST(N'2020-11-13T07:57:45.827' AS DateTime), N'8710f37b-2be9-4b58-999c-c387f98086da', CAST(N'2020-11-13T07:57:45.827' AS DateTime), 1)
+INSERT [dbo].[NewAezakmi] ([id], [Text], [Date], [Authorld], [CreateDate], [Active]) VALUES (4, N'Р Р°Р±РѕС‚Р° РѕРєРѕРЅС‡РµРЅР°', CAST(N'2020-11-13T07:57:45.827' AS DateTime), N'8710f37b-2be9-4b58-999c-c387f98086da', CAST(N'2020-11-13T07:57:45.827' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[NewAezakmi] OFF
 GO
 SET IDENTITY_INSERT [dbo].[News] ON 
 GO
-INSERT [dbo].[News] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'Запуст проекта! Открытая регистрация пользователей.', CAST(N'2019-05-01T08:30:00.000' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2019-01-01T08:30:00.000' AS DateTime), 1)
+INSERT [dbo].[News] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'Р—Р°РїСѓСЃС‚ РїСЂРѕРµРєС‚Р°! РћС‚РєСЂС‹С‚Р°СЏ СЂРµРіРёСЃС‚СЂР°С†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.', CAST(N'2019-05-01T08:30:00.000' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2019-01-01T08:30:00.000' AS DateTime), 1)
 GO
-INSERT [dbo].[News] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (2, N'Стала доступна возможность пополнять баланс и производить покупку и продажу токенов. Пополнение через сервис Qiwi с возможностью оплаты по пластиковой карте. Так же доступна возможность мгновенного вывода средств.', CAST(N'2019-12-29T01:23:26.000' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2019-12-29T01:23:26.750' AS DateTime), 1)
+INSERT [dbo].[News] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (2, N'РЎС‚Р°Р»Р° РґРѕСЃС‚СѓРїРЅР° РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРїРѕР»РЅСЏС‚СЊ Р±Р°Р»Р°РЅСЃ Рё РїСЂРѕРёР·РІРѕРґРёС‚СЊ РїРѕРєСѓРїРєСѓ Рё РїСЂРѕРґР°Р¶Сѓ С‚РѕРєРµРЅРѕРІ. РџРѕРїРѕР»РЅРµРЅРёРµ С‡РµСЂРµР· СЃРµСЂРІРёСЃ Qiwi СЃ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊСЋ РѕРїР»Р°С‚С‹ РїРѕ РїР»Р°СЃС‚РёРєРѕРІРѕР№ РєР°СЂС‚Рµ. РўР°Рє Р¶Рµ РґРѕСЃС‚СѓРїРЅР° РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РјРіРЅРѕРІРµРЅРЅРѕРіРѕ РІС‹РІРѕРґР° СЃСЂРµРґСЃС‚РІ.', CAST(N'2019-12-29T01:23:26.000' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2019-12-29T01:23:26.750' AS DateTime), 1)
 GO
-INSERT [dbo].[News] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'С сегодняшнего дня стоимость токенов увеличивается постояно по ставке 30% годовых. В сутки стоимость растет на 0.07191%.', CAST(N'2020-01-19T07:49:13.000' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2020-01-19T07:49:13.180' AS DateTime), 1)
+INSERT [dbo].[News] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'РЎ СЃРµРіРѕРґРЅСЏС€РЅРµРіРѕ РґРЅСЏ СЃС‚РѕРёРјРѕСЃС‚СЊ С‚РѕРєРµРЅРѕРІ СѓРІРµР»РёС‡РёРІР°РµС‚СЃСЏ РїРѕСЃС‚РѕСЏРЅРѕ РїРѕ СЃС‚Р°РІРєРµ 30% РіРѕРґРѕРІС‹С…. Р’ СЃСѓС‚РєРё СЃС‚РѕРёРјРѕСЃС‚СЊ СЂР°СЃС‚РµС‚ РЅР° 0.07191%.', CAST(N'2020-01-19T07:49:13.000' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2020-01-19T07:49:13.180' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[News] OFF
 GO
 SET IDENTITY_INSERT [dbo].[News_towardsbackwards] ON 
 GO
-INSERT [dbo].[News_towardsbackwards] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'Первая новость', CAST(N'2020-11-21T17:15:39.583' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-21T17:15:39.583' AS DateTime), 1)
+INSERT [dbo].[News_towardsbackwards] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'РџРµСЂРІР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-21T17:15:39.583' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-21T17:15:39.583' AS DateTime), 1)
 GO
-INSERT [dbo].[News_towardsbackwards] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (6, N'Вторая новость', CAST(N'2020-11-22T11:19:50.780' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-22T11:19:50.780' AS DateTime), 1)
+INSERT [dbo].[News_towardsbackwards] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (6, N'Р’С‚РѕСЂР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-22T11:19:50.780' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-22T11:19:50.780' AS DateTime), 1)
 GO
-INSERT [dbo].[News_towardsbackwards] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (8, N'Третья новость', CAST(N'2020-11-22T11:20:42.337' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-22T11:20:42.337' AS DateTime), 1)
+INSERT [dbo].[News_towardsbackwards] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (8, N'РўСЂРµС‚СЊСЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-22T11:20:42.337' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-22T11:20:42.337' AS DateTime), 1)
 GO
-INSERT [dbo].[News_towardsbackwards] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (9, N'Новость о распродаже', CAST(N'2020-11-22T11:20:47.420' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-22T11:20:47.420' AS DateTime), 1)
+INSERT [dbo].[News_towardsbackwards] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (9, N'РќРѕРІРѕСЃС‚СЊ Рѕ СЂР°СЃРїСЂРѕРґР°Р¶Рµ', CAST(N'2020-11-22T11:20:47.420' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-22T11:20:47.420' AS DateTime), 1)
 GO
-INSERT [dbo].[News_towardsbackwards] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (10, N'Новость о новых фичах', CAST(N'2020-11-22T11:21:03.617' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-22T11:21:03.617' AS DateTime), 1)
+INSERT [dbo].[News_towardsbackwards] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (10, N'РќРѕРІРѕСЃС‚СЊ Рѕ РЅРѕРІС‹С… С„РёС‡Р°С…', CAST(N'2020-11-22T11:21:03.617' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-22T11:21:03.617' AS DateTime), 1)
 GO
-INSERT [dbo].[News_towardsbackwards] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (11, N'Новость о новых поступлениях', CAST(N'2020-11-22T11:21:19.057' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-22T11:21:19.057' AS DateTime), 1)
+INSERT [dbo].[News_towardsbackwards] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (11, N'РќРѕРІРѕСЃС‚СЊ Рѕ РЅРѕРІС‹С… РїРѕСЃС‚СѓРїР»РµРЅРёСЏС…', CAST(N'2020-11-22T11:21:19.057' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-22T11:21:19.057' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[News_towardsbackwards] OFF
 GO
 SET IDENTITY_INSERT [dbo].[NewsAlexPigalyov] ON 
 GO
-INSERT [dbo].[NewsAlexPigalyov] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'Первая новость', CAST(N'2020-11-25T02:20:46.660' AS DateTime), N'c4977904-dd9f-4404-aacf-e30c39f22a18', CAST(N'2020-11-25T02:20:46.660' AS DateTime), NULL)
+INSERT [dbo].[NewsAlexPigalyov] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'РџРµСЂРІР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-25T02:20:46.660' AS DateTime), N'c4977904-dd9f-4404-aacf-e30c39f22a18', CAST(N'2020-11-25T02:20:46.660' AS DateTime), NULL)
 GO
-INSERT [dbo].[NewsAlexPigalyov] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'Вторая новость', CAST(N'2020-11-25T02:21:34.603' AS DateTime), N'c4977904-dd9f-4404-aacf-e30c39f22a18', CAST(N'2020-11-25T02:21:34.603' AS DateTime), NULL)
+INSERT [dbo].[NewsAlexPigalyov] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'Р’С‚РѕСЂР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-25T02:21:34.603' AS DateTime), N'c4977904-dd9f-4404-aacf-e30c39f22a18', CAST(N'2020-11-25T02:21:34.603' AS DateTime), NULL)
 GO
-INSERT [dbo].[NewsAlexPigalyov] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (4, N'Первая активная новость', CAST(N'2020-11-25T03:08:26.740' AS DateTime), N'c4977904-dd9f-4404-aacf-e30c39f22a18', CAST(N'2020-11-25T03:08:26.740' AS DateTime), 1)
+INSERT [dbo].[NewsAlexPigalyov] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (4, N'РџРµСЂРІР°СЏ Р°РєС‚РёРІРЅР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-25T03:08:26.740' AS DateTime), N'c4977904-dd9f-4404-aacf-e30c39f22a18', CAST(N'2020-11-25T03:08:26.740' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsAlexPigalyov] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (5, N'Вторая активная новость', CAST(N'2020-11-25T02:21:34.603' AS DateTime), N'c4977904-dd9f-4404-aacf-e30c39f22a18', CAST(N'2020-11-25T03:11:27.967' AS DateTime), 1)
+INSERT [dbo].[NewsAlexPigalyov] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (5, N'Р’С‚РѕСЂР°СЏ Р°РєС‚РёРІРЅР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-25T02:21:34.603' AS DateTime), N'c4977904-dd9f-4404-aacf-e30c39f22a18', CAST(N'2020-11-25T03:11:27.967' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsAlexPigalyov] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (6, N'Третья активная новость', CAST(N'2020-11-25T03:11:39.077' AS DateTime), N'c4977904-dd9f-4404-aacf-e30c39f22a18', CAST(N'2020-11-25T03:11:39.077' AS DateTime), 1)
+INSERT [dbo].[NewsAlexPigalyov] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (6, N'РўСЂРµС‚СЊСЏ Р°РєС‚РёРІРЅР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-25T03:11:39.077' AS DateTime), N'c4977904-dd9f-4404-aacf-e30c39f22a18', CAST(N'2020-11-25T03:11:39.077' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsAlexPigalyov] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (7, N'Новость которую мы создали на фронте', CAST(N'2020-11-26T00:57:35.000' AS DateTime), N'c4977904-dd9f-4404-aacf-e30c39f22a18', CAST(N'2020-11-26T00:57:35.347' AS DateTime), 1)
+INSERT [dbo].[NewsAlexPigalyov] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (7, N'РќРѕРІРѕСЃС‚СЊ РєРѕС‚РѕСЂСѓСЋ РјС‹ СЃРѕР·РґР°Р»Рё РЅР° С„СЂРѕРЅС‚Рµ', CAST(N'2020-11-26T00:57:35.000' AS DateTime), N'c4977904-dd9f-4404-aacf-e30c39f22a18', CAST(N'2020-11-26T00:57:35.347' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[NewsAlexPigalyov] OFF
 GO
 SET IDENTITY_INSERT [dbo].[NewsAntares] ON 
 GO
-INSERT [dbo].[NewsAntares] ([Id], [text], [date], [authorId], [createDate], [active]) VALUES (1, N'Первая новость', CAST(N'2020-11-21T14:57:38.277' AS DateTime), N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', CAST(N'2020-11-21T14:57:38.277' AS DateTime), 1)
+INSERT [dbo].[NewsAntares] ([Id], [text], [date], [authorId], [createDate], [active]) VALUES (1, N'РџРµСЂРІР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-21T14:57:38.277' AS DateTime), N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', CAST(N'2020-11-21T14:57:38.277' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsAntares] ([Id], [text], [date], [authorId], [createDate], [active]) VALUES (2, N'Вторая новость ', CAST(N'2020-11-21T19:06:56.203' AS DateTime), N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', CAST(N'2020-11-21T19:06:56.203' AS DateTime), 1)
+INSERT [dbo].[NewsAntares] ([Id], [text], [date], [authorId], [createDate], [active]) VALUES (2, N'Р’С‚РѕСЂР°СЏ РЅРѕРІРѕСЃС‚СЊ ', CAST(N'2020-11-21T19:06:56.203' AS DateTime), N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', CAST(N'2020-11-21T19:06:56.203' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsAntares] ([Id], [text], [date], [authorId], [createDate], [active]) VALUES (3, N'Третья запись ', CAST(N'2020-11-21T19:07:15.953' AS DateTime), N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', CAST(N'2020-11-21T19:07:15.953' AS DateTime), 1)
+INSERT [dbo].[NewsAntares] ([Id], [text], [date], [authorId], [createDate], [active]) VALUES (3, N'РўСЂРµС‚СЊСЏ Р·Р°РїРёСЃСЊ ', CAST(N'2020-11-21T19:07:15.953' AS DateTime), N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', CAST(N'2020-11-21T19:07:15.953' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[NewsAntares] OFF
 GO
 SET IDENTITY_INSERT [dbo].[NewsAzizjan] ON 
 GO
-INSERT [dbo].[NewsAzizjan] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'Первая новость', CAST(N'2020-11-12T18:17:12.530' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-12T18:17:12.530' AS DateTime), 1)
+INSERT [dbo].[NewsAzizjan] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'РџРµСЂРІР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-12T18:17:12.530' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-12T18:17:12.530' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsAzizjan] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (2, N'Вторая новость', CAST(N'2020-11-12T18:17:27.233' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-12T18:17:27.233' AS DateTime), 1)
+INSERT [dbo].[NewsAzizjan] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (2, N'Р’С‚РѕСЂР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-12T18:17:27.233' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-12T18:17:27.233' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsAzizjan] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'Котик ест блинчики', CAST(N'2020-11-12T18:20:41.443' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-12T18:20:41.443' AS DateTime), 1)
+INSERT [dbo].[NewsAzizjan] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'РљРѕС‚РёРє РµСЃС‚ Р±Р»РёРЅС‡РёРєРё', CAST(N'2020-11-12T18:20:41.443' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-12T18:20:41.443' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[NewsAzizjan] OFF
 GO
 SET IDENTITY_INSERT [dbo].[NewsBatrebleSs] ON 
 GO
-INSERT [dbo].[NewsBatrebleSs] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'Первая новость', CAST(N'2020-11-23T21:20:39.080' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-23T21:20:39.080' AS DateTime), 1)
+INSERT [dbo].[NewsBatrebleSs] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'РџРµСЂРІР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-23T21:20:39.080' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-23T21:20:39.080' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsBatrebleSs] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'Вторвая новость', CAST(N'2020-11-23T21:43:05.380' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-23T21:43:05.380' AS DateTime), 1)
+INSERT [dbo].[NewsBatrebleSs] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'Р’С‚РѕСЂРІР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-23T21:43:05.380' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-23T21:43:05.380' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsBatrebleSs] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (4, N'НиЧЕго не поНяТно', CAST(N'2020-11-23T21:48:19.857' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-23T21:48:19.857' AS DateTime), 1)
+INSERT [dbo].[NewsBatrebleSs] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (4, N'РќРёР§Р•РіРѕ РЅРµ РїРѕРќСЏРўРЅРѕ', CAST(N'2020-11-23T21:48:19.857' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-23T21:48:19.857' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsBatrebleSs] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (5, N'Физика для мудаков', CAST(N'2020-11-23T21:49:34.063' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-23T21:49:34.063' AS DateTime), 1)
+INSERT [dbo].[NewsBatrebleSs] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (5, N'Р¤РёР·РёРєР° РґР»СЏ РјСѓРґР°РєРѕРІ', CAST(N'2020-11-23T21:49:34.063' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-23T21:49:34.063' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsBatrebleSs] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (6, N'бездарный ахах', CAST(N'2020-11-23T21:51:47.693' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-23T21:51:47.693' AS DateTime), 1)
+INSERT [dbo].[NewsBatrebleSs] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (6, N'Р±РµР·РґР°СЂРЅС‹Р№ Р°С…Р°С…', CAST(N'2020-11-23T21:51:47.693' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-23T21:51:47.693' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[NewsBatrebleSs] OFF
 GO
 SET IDENTITY_INSERT [dbo].[NewsEducation] ON 
 GO
-INSERT [dbo].[NewsEducation] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'Первая новость', CAST(N'2020-11-10T13:00:07.760' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-10T13:00:07.760' AS DateTime), 1)
+INSERT [dbo].[NewsEducation] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'РџРµСЂРІР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-10T13:00:07.760' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-10T13:00:07.760' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsEducation] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (2, N'Вторая новость', CAST(N'2020-11-10T13:16:19.970' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-10T13:16:19.970' AS DateTime), 1)
+INSERT [dbo].[NewsEducation] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (2, N'Р’С‚РѕСЂР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-10T13:16:19.970' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-10T13:16:19.970' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[NewsEducation] OFF
 GO
@@ -3578,9 +3577,9 @@ SET IDENTITY_INSERT [dbo].[NewsEoll73] OFF
 GO
 SET IDENTITY_INSERT [dbo].[NewsGGdotNET] ON 
 GO
-INSERT [dbo].[NewsGGdotNET] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (2, N'Первая новость', CAST(N'2020-11-12T16:59:59.230' AS DateTime), N'0082479a-19e3-4846-a681-60666b4c9860', CAST(N'2020-11-12T16:59:59.230' AS DateTime), 1)
+INSERT [dbo].[NewsGGdotNET] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (2, N'РџРµСЂРІР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-12T16:59:59.230' AS DateTime), N'0082479a-19e3-4846-a681-60666b4c9860', CAST(N'2020-11-12T16:59:59.230' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsGGdotNET] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'Вторая новость', CAST(N'2020-11-12T17:46:56.160' AS DateTime), N'0082479a-19e3-4846-a681-60666b4c9860', CAST(N'2020-11-12T17:46:56.160' AS DateTime), 1)
+INSERT [dbo].[NewsGGdotNET] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'Р’С‚РѕСЂР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-12T17:46:56.160' AS DateTime), N'0082479a-19e3-4846-a681-60666b4c9860', CAST(N'2020-11-12T17:46:56.160' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[NewsGGdotNET] OFF
 GO
@@ -3594,592 +3593,592 @@ SET IDENTITY_INSERT [dbo].[NewsMrshkVV] ON
 GO
 INSERT [dbo].[NewsMrshkVV] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (11, N'Initial', CAST(N'2020-11-20T11:34:50.970' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-20T11:34:50.970' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsMrshkVV] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (14, N'Свежайшая новость', CAST(N'2020-11-20T12:22:06.913' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-20T12:22:06.913' AS DateTime), 1)
+INSERT [dbo].[NewsMrshkVV] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (14, N'РЎРІРµР¶Р°Р№С€Р°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-11-20T12:22:06.913' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-20T12:22:06.913' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsMrshkVV] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (15, N'Еще свежее. Прямо с магазина', CAST(N'2020-11-20T12:22:30.980' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-20T12:22:30.980' AS DateTime), 1)
+INSERT [dbo].[NewsMrshkVV] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (15, N'Р•С‰Рµ СЃРІРµР¶РµРµ. РџСЂСЏРјРѕ СЃ РјР°РіР°Р·РёРЅР°', CAST(N'2020-11-20T12:22:30.980' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-20T12:22:30.980' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[NewsMrshkVV] OFF
 GO
 SET IDENTITY_INSERT [dbo].[NewsRaspel] ON 
 GO
-INSERT [dbo].[NewsRaspel] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'Новость 1', CAST(N'2020-10-11T18:00:38.063' AS DateTime), N'a08d3f83-1ac9-4b75-bfba-0c5a84e178c4', CAST(N'2020-10-11T18:00:38.063' AS DateTime), 1)
+INSERT [dbo].[NewsRaspel] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'РќРѕРІРѕСЃС‚СЊ 1', CAST(N'2020-10-11T18:00:38.063' AS DateTime), N'a08d3f83-1ac9-4b75-bfba-0c5a84e178c4', CAST(N'2020-10-11T18:00:38.063' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsRaspel] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (2, N'Новость 2', CAST(N'2020-10-11T18:00:55.317' AS DateTime), N'a08d3f83-1ac9-4b75-bfba-0c5a84e178c4', CAST(N'2020-10-11T18:00:55.317' AS DateTime), 1)
+INSERT [dbo].[NewsRaspel] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (2, N'РќРѕРІРѕСЃС‚СЊ 2', CAST(N'2020-10-11T18:00:55.317' AS DateTime), N'a08d3f83-1ac9-4b75-bfba-0c5a84e178c4', CAST(N'2020-10-11T18:00:55.317' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsRaspel] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'Новость 3', CAST(N'2020-10-11T18:01:23.377' AS DateTime), N'a08d3f83-1ac9-4b75-bfba-0c5a84e178c4', CAST(N'2020-10-11T18:01:23.377' AS DateTime), 1)
+INSERT [dbo].[NewsRaspel] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'РќРѕРІРѕСЃС‚СЊ 3', CAST(N'2020-10-11T18:01:23.377' AS DateTime), N'a08d3f83-1ac9-4b75-bfba-0c5a84e178c4', CAST(N'2020-10-11T18:01:23.377' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsRaspel] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (4, N'Тестовая Новость', CAST(N'2020-10-11T19:58:29.980' AS DateTime), N'a08d3f83-1ac9-4b75-bfba-0c5a84e178c4', CAST(N'2020-10-11T19:58:29.980' AS DateTime), 1)
+INSERT [dbo].[NewsRaspel] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (4, N'РўРµСЃС‚РѕРІР°СЏ РќРѕРІРѕСЃС‚СЊ', CAST(N'2020-10-11T19:58:29.980' AS DateTime), N'a08d3f83-1ac9-4b75-bfba-0c5a84e178c4', CAST(N'2020-10-11T19:58:29.980' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[NewsRaspel] OFF
 GO
 SET IDENTITY_INSERT [dbo].[NewsShCodder] ON 
 GO
-INSERT [dbo].[NewsShCodder] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (2, N'Добавлена страница новостей', CAST(N'2020-11-16T01:04:44.317' AS DateTime), N'1e256f7a-97fc-453a-9f0b-957c99c75b06', CAST(N'2020-11-16T01:04:44.317' AS DateTime), 1)
+INSERT [dbo].[NewsShCodder] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (2, N'Р”РѕР±Р°РІР»РµРЅР° СЃС‚СЂР°РЅРёС†Р° РЅРѕРІРѕСЃС‚РµР№', CAST(N'2020-11-16T01:04:44.317' AS DateTime), N'1e256f7a-97fc-453a-9f0b-957c99c75b06', CAST(N'2020-11-16T01:04:44.317' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsShCodder] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'Выгружен инит скрипт', CAST(N'2020-11-16T01:05:20.073' AS DateTime), N'5b976a52-96f6-4645-95ac-a77abb4c3a5a', CAST(N'2020-11-16T01:05:20.073' AS DateTime), 1)
+INSERT [dbo].[NewsShCodder] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'Р’С‹РіСЂСѓР¶РµРЅ РёРЅРёС‚ СЃРєСЂРёРїС‚', CAST(N'2020-11-16T01:05:20.073' AS DateTime), N'5b976a52-96f6-4645-95ac-a77abb4c3a5a', CAST(N'2020-11-16T01:05:20.073' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[NewsShCodder] OFF
 GO
 SET IDENTITY_INSERT [dbo].[NewsVark] ON 
 GO
-INSERT [dbo].[NewsVark] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'ЦБ РФ принял решение сохранить ключевую ставку на уровне 4,25% годовых. Инфляция складывается в соответствии с прогнозом и по итогам 2020 года ожидается в интервале 3,9–4,2%, но инфляционные ожидания выросли, ухудшается эпидемиологическая обстановка, и ситуация на внешних рынках остается неустойчивой.', CAST(N'2020-11-08T08:30:00.000' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2020-11-08T20:43:27.313' AS DateTime), 1)
+INSERT [dbo].[NewsVark] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'Р¦Р‘ Р Р¤ РїСЂРёРЅСЏР» СЂРµС€РµРЅРёРµ СЃРѕС…СЂР°РЅРёС‚СЊ РєР»СЋС‡РµРІСѓСЋ СЃС‚Р°РІРєСѓ РЅР° СѓСЂРѕРІРЅРµ 4,25% РіРѕРґРѕРІС‹С…. РРЅС„Р»СЏС†РёСЏ СЃРєР»Р°РґС‹РІР°РµС‚СЃСЏ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ РїСЂРѕРіРЅРѕР·РѕРј Рё РїРѕ РёС‚РѕРіР°Рј 2020 РіРѕРґР° РѕР¶РёРґР°РµС‚СЃСЏ РІ РёРЅС‚РµСЂРІР°Р»Рµ 3,9вЂ“4,2%, РЅРѕ РёРЅС„Р»СЏС†РёРѕРЅРЅС‹Рµ РѕР¶РёРґР°РЅРёСЏ РІС‹СЂРѕСЃР»Рё, СѓС…СѓРґС€Р°РµС‚СЃСЏ СЌРїРёРґРµРјРёРѕР»РѕРіРёС‡РµСЃРєР°СЏ РѕР±СЃС‚Р°РЅРѕРІРєР°, Рё СЃРёС‚СѓР°С†РёСЏ РЅР° РІРЅРµС€РЅРёС… СЂС‹РЅРєР°С… РѕСЃС‚Р°РµС‚СЃСЏ РЅРµСѓСЃС‚РѕР№С‡РёРІРѕР№.', CAST(N'2020-11-08T08:30:00.000' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2020-11-08T20:43:27.313' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsVark] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (7, N'Американские СМИ объявили о победе Байдена на выборах. Он получил 273 голоса выборщиков', CAST(N'2020-11-08T07:49:13.000' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2020-11-08T20:46:11.093' AS DateTime), 1)
+INSERT [dbo].[NewsVark] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (7, N'РђРјРµСЂРёРєР°РЅСЃРєРёРµ РЎРњР РѕР±СЉСЏРІРёР»Рё Рѕ РїРѕР±РµРґРµ Р‘Р°Р№РґРµРЅР° РЅР° РІС‹Р±РѕСЂР°С…. РћРЅ РїРѕР»СѓС‡РёР» 273 РіРѕР»РѕСЃР° РІС‹Р±РѕСЂС‰РёРєРѕРІ', CAST(N'2020-11-08T07:49:13.000' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2020-11-08T20:46:11.093' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsVark] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (9, N'Разработчик BioWare в субботу заявил о том, что намеревается перезапустить трилогию Mass Effect, а также добавить к ней четвертую игру, работа над которой идет полным ходом. Теперь коллекция игр с улучшенной графикой выйдет под названием Mass Effect Legendary Edition.
-Источник: https://discover24.ru/2020/11/bioware-anonsirovala-mass-effect-legendary-edition-i-novuyu-mass-effect/', CAST(N'2020-11-08T20:50:19.557' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2020-11-08T20:50:19.557' AS DateTime), 1)
+INSERT [dbo].[NewsVark] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (9, N'Р Р°Р·СЂР°Р±РѕС‚С‡РёРє BioWare РІ СЃСѓР±Р±РѕС‚Сѓ Р·Р°СЏРІРёР» Рѕ С‚РѕРј, С‡С‚Рѕ РЅР°РјРµСЂРµРІР°РµС‚СЃСЏ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ С‚СЂРёР»РѕРіРёСЋ Mass Effect, Р° С‚Р°РєР¶Рµ РґРѕР±Р°РІРёС‚СЊ Рє РЅРµР№ С‡РµС‚РІРµСЂС‚СѓСЋ РёРіСЂСѓ, СЂР°Р±РѕС‚Р° РЅР°Рґ РєРѕС‚РѕСЂРѕР№ РёРґРµС‚ РїРѕР»РЅС‹Рј С…РѕРґРѕРј. РўРµРїРµСЂСЊ РєРѕР»Р»РµРєС†РёСЏ РёРіСЂ СЃ СѓР»СѓС‡С€РµРЅРЅРѕР№ РіСЂР°С„РёРєРѕР№ РІС‹Р№РґРµС‚ РїРѕРґ РЅР°Р·РІР°РЅРёРµРј Mass Effect Legendary Edition.
+РСЃС‚РѕС‡РЅРёРє: https://discover24.ru/2020/11/bioware-anonsirovala-mass-effect-legendary-edition-i-novuyu-mass-effect/', CAST(N'2020-11-08T20:50:19.557' AS DateTime), N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', CAST(N'2020-11-08T20:50:19.557' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[NewsVark] OFF
 GO
 SET IDENTITY_INSERT [dbo].[NewsVlad] ON 
 GO
-INSERT [dbo].[NewsVlad] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'Первая новость', CAST(N'2020-12-03T09:14:02.320' AS DateTime), N'bf6840b7-dc4d-4c1e-8ab5-32c86bb084c5', CAST(N'2020-12-03T09:14:02.320' AS DateTime), 1)
+INSERT [dbo].[NewsVlad] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'РџРµСЂРІР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-12-03T09:14:02.320' AS DateTime), N'bf6840b7-dc4d-4c1e-8ab5-32c86bb084c5', CAST(N'2020-12-03T09:14:02.320' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsVlad] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (16, N'Вторая новость', CAST(N'2020-12-03T11:15:43.233' AS DateTime), N'bf6840b7-dc4d-4c1e-8ab5-32c86bb084c5', CAST(N'2020-12-03T11:15:43.233' AS DateTime), 1)
+INSERT [dbo].[NewsVlad] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (16, N'Р’С‚РѕСЂР°СЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-12-03T11:15:43.233' AS DateTime), N'bf6840b7-dc4d-4c1e-8ab5-32c86bb084c5', CAST(N'2020-12-03T11:15:43.233' AS DateTime), 1)
 GO
-INSERT [dbo].[NewsVlad] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (17, N'Третья новость', CAST(N'2020-12-03T11:18:02.503' AS DateTime), N'bf6840b7-dc4d-4c1e-8ab5-32c86bb084c5', CAST(N'2020-12-03T11:18:02.503' AS DateTime), 1)
+INSERT [dbo].[NewsVlad] ([id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (17, N'РўСЂРµС‚СЊСЏ РЅРѕРІРѕСЃС‚СЊ', CAST(N'2020-12-03T11:18:02.503' AS DateTime), N'bf6840b7-dc4d-4c1e-8ab5-32c86bb084c5', CAST(N'2020-12-03T11:18:02.503' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[NewsVlad] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Operations] ON 
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (3, N'a52f6fd5-0b77-4345-b7e1-ce1ede063d64', 0, 14, N'Учетная запись создана.', CAST(N'2019-05-20T00:31:49.747' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (3, N'a52f6fd5-0b77-4345-b7e1-ce1ede063d64', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-05-20T00:31:49.747' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (4, N'c11636fe-d0d9-4a60-8647-6f00f6154c29', 0, 14, N'Учетная запись создана.', CAST(N'2019-05-30T02:27:42.690' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (4, N'c11636fe-d0d9-4a60-8647-6f00f6154c29', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-05-30T02:27:42.690' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (5, N'b98b7ebc-4d5e-405b-88d8-087421c50b8e', 0, 14, N'Учетная запись создана.', CAST(N'2019-06-01T19:02:48.493' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (5, N'b98b7ebc-4d5e-405b-88d8-087421c50b8e', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-06-01T19:02:48.493' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (6, N'4f8e9d04-5c62-405a-8011-b207702f3b54', 0, 14, N'Учетная запись создана.', CAST(N'2019-07-09T22:52:43.370' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (6, N'4f8e9d04-5c62-405a-8011-b207702f3b54', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-07-09T22:52:43.370' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (7, N'90553147-77ee-4561-b0f7-1f239afac377', 0, 14, N'Учетная запись создана.', CAST(N'2019-07-09T23:09:44.237' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (7, N'90553147-77ee-4561-b0f7-1f239afac377', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-07-09T23:09:44.237' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (8, N'20a94868-76d0-456d-8268-e7c1318f03d3', 0, 14, N'Учетная запись создана.', CAST(N'2019-07-26T17:15:03.763' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (8, N'20a94868-76d0-456d-8268-e7c1318f03d3', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-07-26T17:15:03.763' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (9, N'd9112c68-192f-40f5-b678-ad25e61d092e', 0, 14, N'Учетная запись создана.', CAST(N'2019-08-24T02:28:22.043' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (9, N'd9112c68-192f-40f5-b678-ad25e61d092e', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-08-24T02:28:22.043' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (10, N'f42ba606-48bf-45ef-9ea4-1ee8c44add71', 0, 14, N'Учетная запись создана.', CAST(N'2019-08-24T02:32:27.477' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (10, N'f42ba606-48bf-45ef-9ea4-1ee8c44add71', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-08-24T02:32:27.477' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (11, N'b1e3c30f-91b1-48c1-a2e4-5c8cc7b75dc7', 0, 14, N'Учетная запись создана.', CAST(N'2019-08-24T15:44:52.577' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (11, N'b1e3c30f-91b1-48c1-a2e4-5c8cc7b75dc7', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-08-24T15:44:52.577' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (12, N'9350b6bd-62dc-4e69-86fc-abd4fdfed066', 0, 14, N'Учетная запись создана.', CAST(N'2019-08-24T15:50:19.357' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (12, N'9350b6bd-62dc-4e69-86fc-abd4fdfed066', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-08-24T15:50:19.357' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (13, N'cad96d26-bfd4-48a3-8999-8e18a4d02357', 0, 14, N'Учетная запись создана.', CAST(N'2019-08-24T22:38:18.253' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (13, N'cad96d26-bfd4-48a3-8999-8e18a4d02357', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-08-24T22:38:18.253' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (14, N'3b767454-13e2-4213-a8d4-51d5b07b5fb1', 0, 14, N'Учетная запись создана.', CAST(N'2019-09-16T10:48:57.470' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (14, N'3b767454-13e2-4213-a8d4-51d5b07b5fb1', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-09-16T10:48:57.470' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (15, N'cddd0879-5144-4527-a449-d39c7642aac5', 0, 14, N'Учетная запись создана.', CAST(N'2019-09-21T17:38:40.900' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (15, N'cddd0879-5144-4527-a449-d39c7642aac5', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-09-21T17:38:40.900' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (16, N'a4dbb6d6-0937-49ca-a2dc-83c522007c61', 0, 14, N'Учетная запись создана.', CAST(N'2019-09-23T19:26:06.647' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (16, N'a4dbb6d6-0937-49ca-a2dc-83c522007c61', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-09-23T19:26:06.647' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (17, N'f574ce33-7829-4678-81cb-d7daa7fe550b', 0, 14, N'Учетная запись создана.', CAST(N'2019-09-27T16:36:12.683' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (17, N'f574ce33-7829-4678-81cb-d7daa7fe550b', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-09-27T16:36:12.683' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (18, N'dc40c4f1-f346-48fe-b4b3-fc629df690ff', 0, 14, N'Учетная запись создана.', CAST(N'2019-10-02T22:18:04.197' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (18, N'dc40c4f1-f346-48fe-b4b3-fc629df690ff', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-10-02T22:18:04.197' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (19, N'f95dea8f-3fae-4c54-be1d-572e5dfe9116', 0, 14, N'Учетная запись создана.', CAST(N'2019-10-03T00:34:45.037' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (19, N'f95dea8f-3fae-4c54-be1d-572e5dfe9116', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-10-03T00:34:45.037' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (20, N'91dc9014-911a-43cf-b55f-dd4ace944035', 0, 14, N'Учетная запись создана.', CAST(N'2019-10-03T12:49:00.247' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (20, N'91dc9014-911a-43cf-b55f-dd4ace944035', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-10-03T12:49:00.247' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (21, N'314bd290-5fc5-4a93-8131-db644b83aaed', 0, 14, N'Учетная запись создана.', CAST(N'2019-10-08T19:16:37.297' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (21, N'314bd290-5fc5-4a93-8131-db644b83aaed', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-10-08T19:16:37.297' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (22, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100.', CAST(N'2019-10-28T05:10:59.307' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (22, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2019-10-28T05:10:59.307' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (23, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100.', CAST(N'2019-10-28T05:11:02.130' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (23, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2019-10-28T05:11:02.130' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (24, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 500, 14, N'Покупка 500 токенов на сумму 50.', CAST(N'2019-10-28T05:11:10.727' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (24, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 500, 14, N'РџРѕРєСѓРїРєР° 500 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 50.', CAST(N'2019-10-28T05:11:10.727' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (25, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 14, N'Покупка 100 токенов на сумму 10.', CAST(N'2019-10-28T05:11:36.043' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (25, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 14, N'РџРѕРєСѓРїРєР° 100 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 10.', CAST(N'2019-10-28T05:11:36.043' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (26, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100.', CAST(N'2019-10-28T05:11:37.230' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (26, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2019-10-28T05:11:37.230' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (27, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100.', CAST(N'2019-10-28T05:11:46.513' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (27, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2019-10-28T05:11:46.513' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (28, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10, 14, N'Продажа 10 токенов на сумму 1.', CAST(N'2019-10-28T05:11:50.990' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (28, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10, 14, N'РџСЂРѕРґР°Р¶Р° 10 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1.', CAST(N'2019-10-28T05:11:50.990' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (29, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Продажа 1000 токенов на сумму 100.', CAST(N'2019-10-28T05:11:56.870' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (29, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџСЂРѕРґР°Р¶Р° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2019-10-28T05:11:56.870' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (30, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Продажа 1000 токенов на сумму 100.', CAST(N'2019-10-28T05:12:04.357' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (30, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџСЂРѕРґР°Р¶Р° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2019-10-28T05:12:04.357' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1019, N'709c2b20-4bb0-4369-bd80-b53ed855eb19', 0, 14, N'Учетная запись создана.', CAST(N'2019-11-16T15:48:33.407' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1019, N'709c2b20-4bb0-4369-bd80-b53ed855eb19', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2019-11-16T15:48:33.407' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1020, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100.', CAST(N'2019-11-16T16:47:39.187' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1020, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2019-11-16T16:47:39.187' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1021, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Продажа 1000 токенов на сумму 100.', CAST(N'2019-11-16T16:47:52.090' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1021, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџСЂРѕРґР°Р¶Р° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2019-11-16T16:47:52.090' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1022, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 14, N'Продажа 100 токенов на сумму 10.', CAST(N'2019-11-16T16:47:57.487' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1022, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 14, N'РџСЂРѕРґР°Р¶Р° 100 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 10.', CAST(N'2019-11-16T16:47:57.487' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1023, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Продажа 1000 токенов на сумму 100.', CAST(N'2019-11-16T16:48:02.730' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1023, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџСЂРѕРґР°Р¶Р° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2019-11-16T16:48:02.730' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1024, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100.', CAST(N'2019-11-16T16:48:05.740' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1024, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2019-11-16T16:48:05.740' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1025, N'709c2b20-4bb0-4369-bd80-b53ed855eb19', 2, 1, N'Пополнение баланса на сумму 2 р. Способ: ''Qiwi''.', CAST(N'2019-12-29T00:34:32.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1025, N'709c2b20-4bb0-4369-bd80-b53ed855eb19', 2, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 2 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2019-12-29T00:34:32.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1026, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 4, 1, N'Пополнение баланса на сумму 4 р. Способ: ''Qiwi''.', CAST(N'2019-12-29T00:52:13.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1026, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 4, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 4 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2019-12-29T00:52:13.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1027, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100.', CAST(N'2019-12-29T01:07:00.667' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1027, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2019-12-29T01:07:00.667' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1028, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100.', CAST(N'2019-12-29T01:07:04.137' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1028, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2019-12-29T01:07:04.137' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1029, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 14, N'Покупка 100 токенов на сумму 10.', CAST(N'2019-12-29T01:07:38.277' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1029, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 14, N'РџРѕРєСѓРїРєР° 100 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 10.', CAST(N'2019-12-29T01:07:38.277' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1030, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Продажа 1000 токенов на сумму 100.', CAST(N'2019-12-29T01:07:44.223' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1030, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџСЂРѕРґР°Р¶Р° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2019-12-29T01:07:44.223' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1031, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100.', CAST(N'2020-01-03T21:45:23.123' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1031, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2020-01-03T21:45:23.123' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1032, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100.', CAST(N'2020-01-03T21:45:25.103' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1032, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2020-01-03T21:45:25.103' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1033, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -200, 15, N'Запрос вывода на сумму 200 р. Способ: Qiwi. Номер (счет): +79686399088', CAST(N'2020-01-07T23:06:23.363' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1033, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -200, 15, N'Р—Р°РїСЂРѕСЃ РІС‹РІРѕРґР° РЅР° СЃСѓРјРјСѓ 200 СЂ. РЎРїРѕСЃРѕР±: Qiwi. РќРѕРјРµСЂ (СЃС‡РµС‚): +79686399088', CAST(N'2020-01-07T23:06:23.363' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1034, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -10, 15, N'Запрос вывода на сумму 10 р. Способ: Qiwi. Номер (счет): +79686399088', CAST(N'2020-01-07T23:09:28.823' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1034, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -10, 15, N'Р—Р°РїСЂРѕСЃ РІС‹РІРѕРґР° РЅР° СЃСѓРјРјСѓ 10 СЂ. РЎРїРѕСЃРѕР±: Qiwi. РќРѕРјРµСЂ (СЃС‡РµС‚): +79686399088', CAST(N'2020-01-07T23:09:28.823' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1035, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -2, 15, N'Запрос вывода на сумму 2 р. Способ: Qiwi. Номер (счет): +79686399088', CAST(N'2020-01-07T23:12:19.387' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1035, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -2, 15, N'Р—Р°РїСЂРѕСЃ РІС‹РІРѕРґР° РЅР° СЃСѓРјРјСѓ 2 СЂ. РЎРїРѕСЃРѕР±: Qiwi. РќРѕРјРµСЂ (СЃС‡РµС‚): +79686399088', CAST(N'2020-01-07T23:12:19.387' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1036, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -1, 15, N'Запрос вывода на сумму 1 р. Способ: Qiwi. Номер (счет): +79779393722', CAST(N'2020-01-08T00:06:41.380' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1036, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -1, 15, N'Р—Р°РїСЂРѕСЃ РІС‹РІРѕРґР° РЅР° СЃСѓРјРјСѓ 1 СЂ. РЎРїРѕСЃРѕР±: Qiwi. РќРѕРјРµСЂ (СЃС‡РµС‚): +79779393722', CAST(N'2020-01-08T00:06:41.380' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1037, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10, 14, N'Покупка 10 токенов на сумму 1.', CAST(N'2020-01-08T02:32:20.143' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1037, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10, 14, N'РџРѕРєСѓРїРєР° 10 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1.', CAST(N'2020-01-08T02:32:20.143' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1038, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10, 14, N'Покупка 10 токенов на сумму 1.', CAST(N'2020-01-08T02:33:52.300' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1038, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10, 14, N'РџРѕРєСѓРїРєР° 10 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1.', CAST(N'2020-01-08T02:33:52.300' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1039, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10, 14, N'Покупка 10 токенов на сумму 1.', CAST(N'2020-01-08T02:34:03.257' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1039, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10, 14, N'РџРѕРєСѓРїРєР° 10 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1.', CAST(N'2020-01-08T02:34:03.257' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1040, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Продажа 1000 токенов на сумму 100.', CAST(N'2020-01-08T02:34:11.397' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1040, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџСЂРѕРґР°Р¶Р° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2020-01-08T02:34:11.397' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1041, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 50, 14, N'Продажа 50 токенов на сумму 5.', CAST(N'2020-01-08T02:34:17.763' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1041, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 50, 14, N'РџСЂРѕРґР°Р¶Р° 50 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 5.', CAST(N'2020-01-08T02:34:17.763' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1042, N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-12T01:52:01.573' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1042, N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-12T01:52:01.573' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1043, N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', 200, 1, N'Пополнение баланса на сумму 200 р. Способ: ''Qiwi''.', CAST(N'2020-01-12T01:54:19.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1043, N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', 200, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 200 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-01-12T01:54:19.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1044, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100.', CAST(N'2020-01-14T00:20:17.110' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1044, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2020-01-14T00:20:17.110' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1045, N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-14T00:42:57.337' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1045, N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-14T00:42:57.337' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1046, N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', 100, 1, N'Пополнение баланса на сумму 100 р. Способ: ''Qiwi''.', CAST(N'2020-01-14T00:44:17.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1046, N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', 100, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 100 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-01-14T00:44:17.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1047, N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', 100, 1, N'Пополнение баланса на сумму 100 р. Способ: ''Qiwi''.', CAST(N'2020-01-14T00:44:17.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1047, N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', 100, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 100 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-01-14T00:44:17.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1048, N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', 200, 1, N'Пополнение баланса на сумму 200 р. Способ: ''Qiwi''.', CAST(N'2020-01-12T01:54:19.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1048, N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', 200, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 200 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-01-12T01:54:19.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1049, N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', 200, 1, N'Пополнение баланса на сумму 200 р. Способ: ''Qiwi''.', CAST(N'2020-01-12T01:54:19.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1049, N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', 200, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 200 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-01-12T01:54:19.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1050, N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', 100, 1, N'Пополнение баланса на сумму 100 р. Способ: ''Qiwi''.', CAST(N'2020-01-14T00:44:17.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1050, N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', 100, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 100 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-01-14T00:44:17.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1051, N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', 200, 1, N'Пополнение баланса на сумму 200 р. Способ: ''Qiwi''.', CAST(N'2020-01-12T01:54:19.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1051, N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', 200, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 200 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-01-12T01:54:19.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1052, N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', 100, 1, N'Пополнение баланса на сумму 100 р. Способ: ''Qiwi''.', CAST(N'2020-01-14T00:44:17.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1052, N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', 100, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 100 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-01-14T00:44:17.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1053, N'2e416d84-4e86-468a-8088-4d9a70ffb0de', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-14T01:26:27.060' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1053, N'2e416d84-4e86-468a-8088-4d9a70ffb0de', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-14T01:26:27.060' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1054, N'69c917b6-c2a7-4fc6-9b13-310ce4b09d33', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-14T01:27:20.257' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1054, N'69c917b6-c2a7-4fc6-9b13-310ce4b09d33', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-14T01:27:20.257' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1055, N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', 1000, 14, N'Покупка 1000 токенов на сумму 100.', CAST(N'2020-01-14T01:39:34.657' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1055, N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100.', CAST(N'2020-01-14T01:39:34.657' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1056, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -2, 15, N'Запрос вывода на сумму 2 р. Способ: Qiwi. Номер (счет): +79779393722', CAST(N'2020-01-14T03:06:36.040' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1056, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -2, 15, N'Р—Р°РїСЂРѕСЃ РІС‹РІРѕРґР° РЅР° СЃСѓРјРјСѓ 2 СЂ. РЎРїРѕСЃРѕР±: Qiwi. РќРѕРјРµСЂ (СЃС‡РµС‚): +79779393722', CAST(N'2020-01-14T03:06:36.040' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1057, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 20, 14, N'Покупка 20 токенов на сумму 2.', CAST(N'2020-01-14T08:33:17.050' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1057, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 20, 14, N'РџРѕРєСѓРїРєР° 20 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 2.', CAST(N'2020-01-14T08:33:17.050' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1058, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1000.', CAST(N'2020-01-16T00:11:41.537' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1058, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1000.', CAST(N'2020-01-16T00:11:41.537' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1059, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1000.', CAST(N'2020-01-16T00:11:46.280' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1059, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1000.', CAST(N'2020-01-16T00:11:46.280' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1060, N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', 2000, 14, N'Покупка 2000 токенов на сумму 200.', CAST(N'2020-01-16T00:13:25.870' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1060, N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', 2000, 14, N'РџРѕРєСѓРїРєР° 2000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 200.', CAST(N'2020-01-16T00:13:25.870' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1061, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1000,7191.', CAST(N'2020-01-19T07:21:27.920' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1061, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1000,7191.', CAST(N'2020-01-19T07:21:27.920' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1062, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 500,35955.', CAST(N'2020-01-19T20:32:58.513' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1062, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 500,35955.', CAST(N'2020-01-19T20:32:58.513' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1063, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 20000, 14, N'Покупка 20000 токенов на сумму 2001,4382.', CAST(N'2020-01-19T20:33:07.983' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1063, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 20000, 14, N'РџРѕРєСѓРїРєР° 20000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 2001,4382.', CAST(N'2020-01-19T20:33:07.983' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1064, N'16b1177f-e2c5-494d-bc58-fc6646a4b17f', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-20T16:11:32.373' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1064, N'16b1177f-e2c5-494d-bc58-fc6646a4b17f', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-20T16:11:32.373' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1065, N'16b1177f-e2c5-494d-bc58-fc6646a4b17f', 300, 1, N'Пополнение баланса на сумму 300 р. Способ: ''Qiwi''.', CAST(N'2020-01-20T16:14:15.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1065, N'16b1177f-e2c5-494d-bc58-fc6646a4b17f', 300, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 300 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-01-20T16:14:15.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1066, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100,287950411653.', CAST(N'2020-01-22T08:00:09.540' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1066, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100,287950411653.', CAST(N'2020-01-22T08:00:09.540' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1067, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 501,439752058264.', CAST(N'2020-01-22T08:00:21.350' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1067, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 501,439752058264.', CAST(N'2020-01-22T08:00:21.350' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1068, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1002,87950411653.', CAST(N'2020-01-22T08:00:37.213' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1068, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1002,87950411653.', CAST(N'2020-01-22T08:00:37.213' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1069, N'd605cfec-b531-4b21-a58c-074b035402af', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-22T10:56:14.877' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1069, N'd605cfec-b531-4b21-a58c-074b035402af', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-22T10:56:14.877' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1070, N'd605cfec-b531-4b21-a58c-074b035402af', 100, 1, N'Пополнение баланса на сумму 100 р. Способ: ''Qiwi''.', CAST(N'2020-01-22T11:03:38.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1070, N'd605cfec-b531-4b21-a58c-074b035402af', 100, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 100 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-01-22T11:03:38.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1071, N'd605cfec-b531-4b21-a58c-074b035402af', 996, 14, N'Покупка 996 токенов на сумму 99,8867986100062.', CAST(N'2020-01-22T11:32:56.987' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1071, N'd605cfec-b531-4b21-a58c-074b035402af', 996, 14, N'РџРѕРєСѓРїРєР° 996 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 99,8867986100062.', CAST(N'2020-01-22T11:32:56.987' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1072, N'16b1177f-e2c5-494d-bc58-fc6646a4b17f', 2990, 14, N'Покупка 2990 токенов на сумму 299,860971730842.', CAST(N'2020-01-22T13:38:11.927' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1072, N'16b1177f-e2c5-494d-bc58-fc6646a4b17f', 2990, 14, N'РџРѕРєСѓРїРєР° 2990 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 299,860971730842.', CAST(N'2020-01-22T13:38:11.927' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1073, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100,383423876644.', CAST(N'2020-01-23T08:02:20.363' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1073, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100,383423876644.', CAST(N'2020-01-23T08:02:20.363' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1074, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Продажа 1000 токенов на сумму 100,383590319982.', CAST(N'2020-01-23T08:05:17.910' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1074, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџСЂРѕРґР°Р¶Р° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100,383590319982.', CAST(N'2020-01-23T08:05:17.910' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1075, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 14, N'Продажа 100 токенов на сумму 10,0383600015711.', CAST(N'2020-01-23T08:05:36.280' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1075, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 14, N'РџСЂРѕРґР°Р¶Р° 100 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 10,0383600015711.', CAST(N'2020-01-23T08:05:36.280' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1076, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 501,918117235272.', CAST(N'2020-01-23T08:06:01.927' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1076, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 501,918117235272.', CAST(N'2020-01-23T08:06:01.927' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1077, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100,45256626981.', CAST(N'2020-01-24T06:59:07.923' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1077, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100,45256626981.', CAST(N'2020-01-24T06:59:07.923' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1078, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 2000, 14, N'Покупка 2000 токенов на сумму 200,90516973115.', CAST(N'2020-01-24T06:59:30.280' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1078, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 2000, 14, N'РџРѕРєСѓРїРєР° 2000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 200,90516973115.', CAST(N'2020-01-24T06:59:30.280' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1079, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 502,263017306702.', CAST(N'2020-01-24T06:59:53.413' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1079, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 502,263017306702.', CAST(N'2020-01-24T06:59:53.413' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1080, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 200, 14, N'Покупка 200 токенов на сумму 20,0905224710122.', CAST(N'2020-01-24T07:00:04.787' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1080, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 200, 14, N'РџРѕРєСѓРїРєР° 200 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 20,0905224710122.', CAST(N'2020-01-24T07:00:04.787' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1081, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1004,5262205748.', CAST(N'2020-01-24T07:00:16.457' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1081, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1004,5262205748.', CAST(N'2020-01-24T07:00:16.457' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1082, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 4000, 14, N'Покупка 4000 токенов на сумму 401,810637000354.', CAST(N'2020-01-24T07:01:02.817' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1082, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 4000, 14, N'РџРѕРєСѓРїРєР° 4000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 401,810637000354.', CAST(N'2020-01-24T07:01:02.817' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1083, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1, 14, N'Покупка 1 токенов на сумму 0,100452669761043.', CAST(N'2020-01-24T07:01:15.110' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1083, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1, 14, N'РџРѕРєСѓРїРєР° 1 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 0,100452669761043.', CAST(N'2020-01-24T07:01:15.110' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1084, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 2000, 14, N'Покупка 2000 токенов на сумму 200,90545109991.', CAST(N'2020-01-24T07:02:24.327' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1084, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 2000, 14, N'РџРѕРєСѓРїРєР° 2000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 200,90545109991.', CAST(N'2020-01-24T07:02:24.327' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1085, N'5b976a52-96f6-4645-95ac-a77abb4c3a5a', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-24T17:11:52.117' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1085, N'5b976a52-96f6-4645-95ac-a77abb4c3a5a', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-24T17:11:52.117' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1086, N'5b976a52-96f6-4645-95ac-a77abb4c3a5a', 100, 1, N'Пополнение баланса на сумму 100 р. Способ: ''Qiwi''.', CAST(N'2020-01-24T17:13:57.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1086, N'5b976a52-96f6-4645-95ac-a77abb4c3a5a', 100, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 100 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-01-24T17:13:57.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1087, N'5b976a52-96f6-4645-95ac-a77abb4c3a5a', 995, 14, N'Покупка 995 токенов на сумму 99,9875014876541.', CAST(N'2020-01-24T19:49:37.463' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1087, N'5b976a52-96f6-4645-95ac-a77abb4c3a5a', 995, 14, N'РџРѕРєСѓРїРєР° 995 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 99,9875014876541.', CAST(N'2020-01-24T19:49:37.463' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1088, N'0677b5f2-2ec7-4bbe-89f7-c6ed48cb9dca', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-24T22:05:33.097' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1088, N'0677b5f2-2ec7-4bbe-89f7-c6ed48cb9dca', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-24T22:05:33.097' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1089, N'e407837f-efe8-4ac8-bf50-4fcf3674c9c6', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-24T22:42:41.183' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1089, N'e407837f-efe8-4ac8-bf50-4fcf3674c9c6', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-24T22:42:41.183' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1090, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1005,29693682687.', CAST(N'2020-01-25T08:39:53.977' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1090, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1005,29693682687.', CAST(N'2020-01-25T08:39:53.977' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1091, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 50000, 14, N'Покупка 50000 токенов на сумму 5026,48525053223.', CAST(N'2020-01-25T08:40:07.610' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1091, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 50000, 14, N'РџРѕРєСѓРїРєР° 50000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 5026,48525053223.', CAST(N'2020-01-25T08:40:07.610' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1092, N'023461b1-28b3-4e5b-b5bc-e2a179b1b032', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-25T10:00:07.653' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1092, N'023461b1-28b3-4e5b-b5bc-e2a179b1b032', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-25T10:00:07.653' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1093, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-25T10:23:32.010' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1093, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-25T10:23:32.010' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1094, N'17dd7a4a-66e6-47a2-ad13-89dba1ccadb7', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-25T11:05:31.020' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1094, N'17dd7a4a-66e6-47a2-ad13-89dba1ccadb7', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-25T11:05:31.020' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1095, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 200, 1, N'Пополнение баланса на сумму 200 р. Способ: ''Qiwi''.', CAST(N'2020-01-25T12:32:45.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1095, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 200, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 200 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-01-25T12:32:45.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1096, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'Покупка 1989 токенов на сумму 199,976370266703.', CAST(N'2020-01-25T12:36:05.280' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1096, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'РџРѕРєСѓРїРєР° 1989 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,976370266703.', CAST(N'2020-01-25T12:36:05.280' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1097, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'Продажа 1989 токенов на сумму 199,976391191057.', CAST(N'2020-01-25T12:36:18.620' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1097, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'РџСЂРѕРґР°Р¶Р° 1989 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,976391191057.', CAST(N'2020-01-25T12:36:18.620' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1098, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', -200, 15, N'Запрос вывода на сумму 200 р. Способ: Qiwi. Номер (счет): +79508631455', CAST(N'2020-01-25T12:37:56.057' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1098, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', -200, 15, N'Р—Р°РїСЂРѕСЃ РІС‹РІРѕРґР° РЅР° СЃСѓРјРјСѓ 200 СЂ. РЎРїРѕСЃРѕР±: Qiwi. РќРѕРјРµСЂ (СЃС‡РµС‚): +79508631455', CAST(N'2020-01-25T12:37:56.057' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1099, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 200, 1, N'Пополнение баланса на сумму 200 р. Способ: ''Qiwi''.', CAST(N'2020-01-25T12:40:08.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1099, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 200, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 200 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-01-25T12:40:08.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1100, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'Покупка 1989 токенов на сумму 199,976824164216.', CAST(N'2020-01-25T12:40:47.860' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1100, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'РџРѕРєСѓРїРєР° 1989 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,976824164216.', CAST(N'2020-01-25T12:40:47.860' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1101, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'Продажа 1989 токенов на сумму 199,976835431175.', CAST(N'2020-01-25T12:40:54.473' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1101, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'РџСЂРѕРґР°Р¶Р° 1989 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,976835431175.', CAST(N'2020-01-25T12:40:54.473' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1102, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'Покупка 1989 токенов на сумму 199,976851526832.', CAST(N'2020-01-25T12:41:04.943' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1102, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'РџРѕРєСѓРїРєР° 1989 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,976851526832.', CAST(N'2020-01-25T12:41:04.943' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1103, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'Продажа 1989 токенов на сумму 199,976861184226.', CAST(N'2020-01-25T12:41:10.200' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1103, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'РџСЂРѕРґР°Р¶Р° 1989 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,976861184226.', CAST(N'2020-01-25T12:41:10.200' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1104, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'Покупка 1989 токенов на сумму 199,97688532771.', CAST(N'2020-01-25T12:41:25.690' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1104, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'РџРѕРєСѓРїРєР° 1989 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,97688532771.', CAST(N'2020-01-25T12:41:25.690' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1105, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'Продажа 1989 токенов на сумму 199,976894985104.', CAST(N'2020-01-25T12:41:31.947' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1105, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'РџСЂРѕРґР°Р¶Р° 1989 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,976894985104.', CAST(N'2020-01-25T12:41:31.947' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1106, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'Покупка 1989 токенов на сумму 199,976904642498.', CAST(N'2020-01-25T12:41:37.763' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1106, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'РџРѕРєСѓРїРєР° 1989 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,976904642498.', CAST(N'2020-01-25T12:41:37.763' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1107, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'Продажа 1989 токенов на сумму 199,976915909458.', CAST(N'2020-01-25T12:41:44.940' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1107, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'РџСЂРѕРґР°Р¶Р° 1989 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,976915909458.', CAST(N'2020-01-25T12:41:44.940' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1108, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'Покупка 1989 токенов на сумму 199,976925566852.', CAST(N'2020-01-25T12:41:50.337' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1108, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'РџРѕРєСѓРїРєР° 1989 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,976925566852.', CAST(N'2020-01-25T12:41:50.337' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1109, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'Продажа 1989 токенов на сумму 199,97693361468.', CAST(N'2020-01-25T12:41:55.533' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1109, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'РџСЂРѕРґР°Р¶Р° 1989 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,97693361468.', CAST(N'2020-01-25T12:41:55.533' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1110, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'Покупка 1989 токенов на сумму 199,976951319902.', CAST(N'2020-01-25T12:42:06.750' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1110, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'РџРѕРєСѓРїРєР° 1989 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,976951319902.', CAST(N'2020-01-25T12:42:06.750' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1111, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'Продажа 1989 токенов на сумму 199,976957758165.', CAST(N'2020-01-25T12:42:10.947' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1111, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 1989, 14, N'РџСЂРѕРґР°Р¶Р° 1989 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,976957758165.', CAST(N'2020-01-25T12:42:10.947' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1112, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', -100, 15, N'Запрос вывода на сумму 100 р. Способ: Qiwi. Номер (счет): +79508631455', CAST(N'2020-01-25T12:42:58.073' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1112, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', -100, 15, N'Р—Р°РїСЂРѕСЃ РІС‹РІРѕРґР° РЅР° СЃСѓРјРјСѓ 100 СЂ. РЎРїРѕСЃРѕР±: Qiwi. РќРѕРјРµСЂ (СЃС‡РµС‚): +79508631455', CAST(N'2020-01-25T12:42:58.073' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1113, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', -99.98, 15, N'Запрос вывода на сумму 49 р. Способ: BankCard. Номер (счет): 5321300345885532', CAST(N'2020-01-25T12:46:04.243' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1113, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', -99.98, 15, N'Р—Р°РїСЂРѕСЃ РІС‹РІРѕРґР° РЅР° СЃСѓРјРјСѓ 49 СЂ. РЎРїРѕСЃРѕР±: BankCard. РќРѕРјРµСЂ (СЃС‡РµС‚): 5321300345885532', CAST(N'2020-01-25T12:46:04.243' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1114, N'037bc9a7-a702-4f15-9695-830d47fc9197', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-25T17:00:24.727' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1114, N'037bc9a7-a702-4f15-9695-830d47fc9197', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-25T17:00:24.727' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1115, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100,562542992702.', CAST(N'2020-01-25T19:56:24.473' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1115, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100,562542992702.', CAST(N'2020-01-25T19:56:24.473' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1116, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 3000, 14, N'Покупка 3000 токенов на сумму 301,687641119072.', CAST(N'2020-01-25T19:56:29.107' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1116, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 3000, 14, N'РџРѕРєСѓРїРєР° 3000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 301,687641119072.', CAST(N'2020-01-25T19:56:29.107' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1117, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1005,64381992636.', CAST(N'2020-01-25T20:34:16.660' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1117, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1005,64381992636.', CAST(N'2020-01-25T20:34:16.660' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1118, N'78642b4e-de5a-4b81-9cf4-723cae3ff5eb', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-25T20:43:11.617' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1118, N'78642b4e-de5a-4b81-9cf4-723cae3ff5eb', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-25T20:43:11.617' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1119, N'5ff870c8-71e7-4738-b7c0-81a3162a3cb0', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-25T20:53:36.897' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1119, N'5ff870c8-71e7-4738-b7c0-81a3162a3cb0', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-25T20:53:36.897' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1120, N'8c335406-4e98-462f-90ca-ac158cdd1142', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-25T20:53:52.153' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1120, N'8c335406-4e98-462f-90ca-ac158cdd1142', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-25T20:53:52.153' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1121, N'26edc365-d524-48d2-b456-88abff129efd', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-25T23:14:14.123' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1121, N'26edc365-d524-48d2-b456-88abff129efd', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-25T23:14:14.123' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1122, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 503,023862547997.', CAST(N'2020-01-26T09:37:16.967' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1122, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 503,023862547997.', CAST(N'2020-01-26T09:37:16.967' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1123, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 2000, 14, N'Покупка 2000 токенов на сумму 201,209588745436.', CAST(N'2020-01-26T09:37:43.657' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1123, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 2000, 14, N'РџРѕРєСѓРїРєР° 2000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 201,209588745436.', CAST(N'2020-01-26T09:37:43.657' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1124, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1006,20286849819.', CAST(N'2020-01-26T14:56:34.997' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1124, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1006,20286849819.', CAST(N'2020-01-26T14:56:34.997' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1125, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 503,101466643591.', CAST(N'2020-01-26T14:56:42.317' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1125, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 503,101466643591.', CAST(N'2020-01-26T14:56:42.317' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1126, N'f7db8012-d9f1-4cfd-b8c3-ce067edd6d19', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-26T15:26:56.830' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1126, N'f7db8012-d9f1-4cfd-b8c3-ce067edd6d19', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-26T15:26:56.830' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1127, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100,621905806951.', CAST(N'2020-01-26T15:29:53.827' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1127, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100,621905806951.', CAST(N'2020-01-26T15:29:53.827' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1128, N'78642b4e-de5a-4b81-9cf4-723cae3ff5eb', 2000, 1, N'Пополнение баланса на сумму 2000 р. Способ: ''Qiwi''.', CAST(N'2020-01-26T18:14:11.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1128, N'78642b4e-de5a-4b81-9cf4-723cae3ff5eb', 2000, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 2000 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-01-26T18:14:11.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1129, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100,630730710445.', CAST(N'2020-01-26T18:31:29.413' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1129, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100,630730710445.', CAST(N'2020-01-26T18:31:29.413' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1130, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 500, 14, N'Покупка 500 токенов на сумму 50,3153681900697.', CAST(N'2020-01-26T18:31:36.713' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1130, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 500, 14, N'РџРѕРєСѓРїРєР° 500 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 50,3153681900697.', CAST(N'2020-01-26T18:31:36.713' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1131, N'78642b4e-de5a-4b81-9cf4-723cae3ff5eb', 19874, 14, N'Покупка 19874 токенов на сумму 1999,93886056304.', CAST(N'2020-01-26T18:35:20.417' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1131, N'78642b4e-de5a-4b81-9cf4-723cae3ff5eb', 19874, 14, N'РџРѕРєСѓРїРєР° 19874 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1999,93886056304.', CAST(N'2020-01-26T18:35:20.417' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1132, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 500, 14, N'Покупка 500 токенов на сумму 50,3162911420554.', CAST(N'2020-01-26T19:09:35.267' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1132, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 500, 14, N'РџРѕРєСѓРїРєР° 500 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 50,3162911420554.', CAST(N'2020-01-26T19:09:35.267' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1133, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 50000, 14, N'Покупка 50000 токенов на сумму 5031,97810290212.', CAST(N'2020-01-26T21:33:13.070' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1133, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 50000, 14, N'РџРѕРєСѓРїРєР° 50000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 5031,97810290212.', CAST(N'2020-01-26T21:33:13.070' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1134, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100,641798568935.', CAST(N'2020-01-26T22:19:13.217' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1134, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100,641798568935.', CAST(N'2020-01-26T22:19:13.217' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1135, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100,642179292535.', CAST(N'2020-01-26T22:27:03.417' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1135, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100,642179292535.', CAST(N'2020-01-26T22:27:03.417' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1136, N'9891d3d6-e7eb-4911-98f5-fdde0c32b9cf', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-26T22:51:52.877' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1136, N'9891d3d6-e7eb-4911-98f5-fdde0c32b9cf', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-26T22:51:52.877' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1137, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1006,59081066006.', CAST(N'2020-01-27T03:26:16.507' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1137, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1006,59081066006.', CAST(N'2020-01-27T03:26:16.507' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1138, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 100,680481946438.', CAST(N'2020-01-27T10:46:28.493' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1138, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 100,680481946438.', CAST(N'2020-01-27T10:46:28.493' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1139, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9930, 14, N'Покупка 9930 токенов на сумму 999,814014195307.', CAST(N'2020-01-27T12:44:11.080' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1139, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9930, 14, N'РџРѕРєСѓРїРєР° 9930 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 999,814014195307.', CAST(N'2020-01-27T12:44:11.080' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1140, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9931, 14, N'Покупка 9931 токенов на сумму 999,915980041893.', CAST(N'2020-01-27T12:46:49.687' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1140, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9931, 14, N'РџРѕРєСѓРїРєР° 9931 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 999,915980041893.', CAST(N'2020-01-27T12:46:49.687' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1141, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1006,91405348834.', CAST(N'2020-01-27T14:31:07.487' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1141, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1006,91405348834.', CAST(N'2020-01-27T14:31:07.487' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1142, N'996da0e7-d189-47a3-8436-e54b1572872d', 0, 14, N'Учетная запись создана.', CAST(N'2020-01-27T17:21:37.293' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1142, N'996da0e7-d189-47a3-8436-e54b1572872d', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-01-27T17:21:37.293' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1143, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9928, 14, N'Покупка 9928 токенов на сумму 999,896421211375.', CAST(N'2020-01-27T22:31:56.517' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1143, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9928, 14, N'РџРѕРєСѓРїРєР° 9928 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 999,896421211375.', CAST(N'2020-01-27T22:31:56.517' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1144, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1985, 14, N'Покупка 1985 токенов на сумму 199,955725613077.', CAST(N'2020-01-28T04:05:17.560' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1144, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1985, 14, N'РџРѕРєСѓРїРєР° 1985 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,955725613077.', CAST(N'2020-01-28T04:05:17.560' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1145, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 503,742929122675.', CAST(N'2020-01-28T09:18:11.160' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1145, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 503,742929122675.', CAST(N'2020-01-28T09:18:11.160' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1146, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1985, 14, N'Покупка 1985 токенов на сумму 199,989033402392.', CAST(N'2020-01-28T09:50:11.507' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1146, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1985, 14, N'РџРѕРєСѓРїРєР° 1985 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,989033402392.', CAST(N'2020-01-28T09:50:11.507' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1147, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9915, 14, N'Покупка 9915 токенов на сумму 999,973460064836.', CAST(N'2020-01-29T20:47:40.277' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1147, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9915, 14, N'РџРѕРєСѓРїРєР° 9915 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 999,973460064836.', CAST(N'2020-01-29T20:47:40.277' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1148, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 504,275441575109.', CAST(N'2020-01-29T20:57:29.770' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1148, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 504,275441575109.', CAST(N'2020-01-29T20:57:29.770' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1149, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1983, 14, N'Покупка 1983 токенов на сумму 199,997956552979.', CAST(N'2020-01-29T21:21:28.900' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1149, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1983, 14, N'РџРѕРєСѓРїРєР° 1983 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,997956552979.', CAST(N'2020-01-29T21:21:28.900' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1150, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9911, 14, N'Покупка 9911 токенов на сумму 999,946959419907.', CAST(N'2020-01-30T08:59:50.173' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1150, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9911, 14, N'РџРѕРєСѓРїРєР° 9911 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 999,946959419907.', CAST(N'2020-01-30T08:59:50.173' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1151, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9907, 14, N'Покупка 9907 токенов на сумму 1000,00432304221.', CAST(N'2020-01-31T00:06:00.293' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1151, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9907, 14, N'РџРѕРєСѓРїРєР° 9907 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1000,00432304221.', CAST(N'2020-01-31T00:06:00.293' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1152, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1979, 14, N'Покупка 1979 токенов на сумму 199,959079575156.', CAST(N'2020-02-01T09:54:31.603' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1152, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1979, 14, N'РџРѕРєСѓРїРєР° 1979 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,959079575156.', CAST(N'2020-02-01T09:54:31.603' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1153, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 4946, 14, N'Покупка 4946 токенов на сумму 499,938114001568.', CAST(N'2020-02-01T23:09:49.680' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1153, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 4946, 14, N'РџРѕРєСѓРїРєР° 4946 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 499,938114001568.', CAST(N'2020-02-01T23:09:49.680' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1154, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 4946, 14, N'Продажа 4946 токенов на сумму 499,938234719844.', CAST(N'2020-02-01T23:10:19.880' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1154, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 4946, 14, N'РџСЂРѕРґР°Р¶Р° 4946 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 499,938234719844.', CAST(N'2020-02-01T23:10:19.880' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1155, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 4946, 14, N'Покупка 4946 токенов на сумму 499,938254839557.', CAST(N'2020-02-01T23:10:24.733' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1155, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 4946, 14, N'РџРѕРєСѓРїРєР° 4946 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 499,938254839557.', CAST(N'2020-02-01T23:10:24.733' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1156, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9844, 14, N'Покупка 9844 токенов на сумму 999,966304368552.', CAST(N'2020-02-08T20:29:09.550' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1156, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9844, 14, N'РџРѕРєСѓРїРєР° 9844 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 999,966304368552.', CAST(N'2020-02-08T20:29:09.550' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1157, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 19683, 14, N'Покупка 19683 токенов на сумму 1999,9305744109.', CAST(N'2020-02-09T04:24:29.707' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1157, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 19683, 14, N'РџРѕРєСѓРїРєР° 19683 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1999,9305744109.', CAST(N'2020-02-09T04:24:29.707' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1158, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 29525, 14, N'Покупка 29525 токенов на сумму 2999,94878996801.', CAST(N'2020-02-09T04:25:57.610' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1158, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 29525, 14, N'РџРѕРєСѓРїРєР° 29525 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 2999,94878996801.', CAST(N'2020-02-09T04:25:57.610' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1159, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 14, N'Продажа 100 токенов на сумму 10,1607090442913.', CAST(N'2020-02-09T04:26:20.760' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1159, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 14, N'РџСЂРѕРґР°Р¶Р° 100 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 10,1607090442913.', CAST(N'2020-02-09T04:26:20.760' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1160, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 14, N'Покупка 100 токенов на сумму 10,1607106799251.', CAST(N'2020-02-09T04:26:40.323' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1160, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 14, N'РџРѕРєСѓРїРєР° 100 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 10,1607106799251.', CAST(N'2020-02-09T04:26:40.323' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1161, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 49183, 14, N'Покупка 49183 токенов на сумму 4999,95503338227.', CAST(N'2020-02-09T22:28:59.987' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1161, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 49183, 14, N'РџРѕРєСѓРїРєР° 49183 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 4999,95503338227.', CAST(N'2020-02-09T22:28:59.987' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1162, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 983, 14, N'Покупка 983 токенов на сумму 99,9338219150579.', CAST(N'2020-02-09T23:06:38.120' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1162, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 983, 14, N'РџРѕРєСѓРїРєР° 983 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 99,9338219150579.', CAST(N'2020-02-09T23:06:38.120' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1163, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 19659, 14, N'Покупка 19659 токенов на сумму 1999,90353633248.', CAST(N'2020-02-10T21:14:23.933' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1163, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 19659, 14, N'РџРѕРєСѓРїРєР° 19659 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1999,90353633248.', CAST(N'2020-02-10T21:14:23.933' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1164, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 49149, 14, N'Покупка 49149 токенов на сумму 4999,97763606263.', CAST(N'2020-02-10T21:41:48.347' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1164, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 49149, 14, N'РџРѕРєСѓРїРєР° 49149 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 4999,97763606263.', CAST(N'2020-02-10T21:41:48.347' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1165, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 982, 14, N'Покупка 982 токенов на сумму 99,9274538542123.', CAST(N'2020-02-11T06:25:15.687' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1165, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 982, 14, N'РџРѕРєСѓРїРєР° 982 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 99,9274538542123.', CAST(N'2020-02-11T06:25:15.687' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1166, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 982, 14, N'Покупка 982 токенов на сумму 99,9274643100891.', CAST(N'2020-02-11T06:25:28.870' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1166, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 982, 14, N'РџРѕРєСѓРїРєР° 982 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 99,9274643100891.', CAST(N'2020-02-11T06:25:28.870' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1167, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 982, 14, N'Покупка 982 токенов на сумму 99,9274707444749.', CAST(N'2020-02-11T06:25:36.687' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1167, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 982, 14, N'РџРѕРєСѓРїРєР° 982 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 99,9274707444749.', CAST(N'2020-02-11T06:25:36.687' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1168, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 15000, 14, N'Покупка 15000 токенов на сумму 1526,76264419737.', CAST(N'2020-02-11T14:55:06.847' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1168, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 15000, 14, N'РџРѕРєСѓРїРєР° 15000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1526,76264419737.', CAST(N'2020-02-11T14:55:06.847' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1169, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 49116, 14, N'Покупка 49116 токенов на сумму 4999,97875375617.', CAST(N'2020-02-11T20:04:33.547' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1169, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 49116, 14, N'РџРѕРєСѓРїРєР° 49116 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 4999,97875375617.', CAST(N'2020-02-11T20:04:33.547' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1170, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 982, 14, N'Покупка 982 токенов на сумму 99,9678497590362.', CAST(N'2020-02-11T20:22:10.600' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1170, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 982, 14, N'РџРѕРєСѓРїРєР° 982 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 99,9678497590362.', CAST(N'2020-02-11T20:22:10.600' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1171, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 3500, 14, N'Покупка 3500 токенов на сумму 356,953529566495.', CAST(N'2020-02-14T09:06:07.050' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1171, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 3500, 14, N'РџРѕРєСѓРїРєР° 3500 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 356,953529566495.', CAST(N'2020-02-14T09:06:07.050' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1172, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1956, 14, N'Покупка 1956 токенов на сумму 199,905789136877.', CAST(N'2020-02-17T07:13:11.867' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1172, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1956, 14, N'РџРѕРєСѓРїРєР° 1956 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 199,905789136877.', CAST(N'2020-02-17T07:13:11.867' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1173, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9665, 14, N'Покупка 9665 токенов на сумму 999,986392047109.', CAST(N'2020-03-05T09:29:04.797' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1173, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9665, 14, N'РџРѕРєСѓРїРєР° 9665 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 999,986392047109.', CAST(N'2020-03-05T09:29:04.797' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1174, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9665, 14, N'Покупка 9665 токенов на сумму 999,986448387987.', CAST(N'2020-03-05T09:29:11.567' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1174, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9665, 14, N'РџРѕРєСѓРїРєР° 9665 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 999,986448387987.', CAST(N'2020-03-05T09:29:11.567' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1175, N'4d54d89b-7e4c-40a6-8638-739bdd618947', 0, 14, N'Учетная запись создана.', CAST(N'2020-03-08T14:19:37.600' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1175, N'4d54d89b-7e4c-40a6-8638-739bdd618947', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-03-08T14:19:37.600' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1176, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 2000, 14, N'Покупка 2000 токенов на сумму 207,8562079169.', CAST(N'2020-03-11T14:51:34.373' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1176, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 2000, 14, N'РџРѕРєСѓРїРєР° 2000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 207,8562079169.', CAST(N'2020-03-11T14:51:34.373' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1177, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9609, 14, N'Покупка 9609 токенов на сумму 999,569529762112.', CAST(N'2020-03-12T21:58:53.323' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1177, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9609, 14, N'РџРѕРєСѓРїРєР° 9609 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 999,569529762112.', CAST(N'2020-03-12T21:58:53.323' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1178, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 520,129315452462.', CAST(N'2020-03-12T22:29:56.430' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1178, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 520,129315452462.', CAST(N'2020-03-12T22:29:56.430' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1179, N'ff342ff7-3798-4f20-8c15-bb16ad9e3100', 0, 14, N'Учетная запись создана.', CAST(N'2020-03-18T22:07:35.073' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1179, N'ff342ff7-3798-4f20-8c15-bb16ad9e3100', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-03-18T22:07:35.073' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1180, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 0, 14, N'Учетная запись создана.', CAST(N'2020-03-18T22:58:18.120' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1180, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-03-18T22:58:18.120' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1181, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 2510, 1, N'Пополнение баланса на сумму 2510 р. Способ: ''Qiwi''.', CAST(N'2020-03-18T23:02:35.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1181, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 2510, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 2510 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-03-18T23:02:35.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1182, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 24024, 14, N'Покупка 24024 токенов на сумму 2509,96264166638.', CAST(N'2020-03-18T23:05:35.220' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1182, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 24024, 14, N'РџРѕРєСѓРїРєР° 24024 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 2509,96264166638.', CAST(N'2020-03-18T23:05:35.220' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1183, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 104,477473508572.', CAST(N'2020-03-18T23:09:02.420' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1183, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 104,477473508572.', CAST(N'2020-03-18T23:09:02.420' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1184, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9567, 14, N'Покупка 9567 токенов на сумму 999,921079075672.', CAST(N'2020-03-19T11:38:09.590' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1184, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 9567, 14, N'РџРѕРєСѓРїРєР° 9567 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 999,921079075672.', CAST(N'2020-03-19T11:38:09.590' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1185, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 95428, 14, N'Покупка 95428 токенов на сумму 9999,96545094808.', CAST(N'2020-03-23T02:24:56.843' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1185, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 95428, 14, N'РџРѕРєСѓРїРєР° 95428 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 9999,96545094808.', CAST(N'2020-03-23T02:24:56.843' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1186, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 104,907815525533.', CAST(N'2020-03-24T16:09:42.060' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1186, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 104,907815525533.', CAST(N'2020-03-24T16:09:42.060' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1187, N'497b82eb-2f1f-410d-a71c-36b45111b74b', 0, 14, N'Учетная запись создана.', CAST(N'2020-03-31T12:56:45.880' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1187, N'497b82eb-2f1f-410d-a71c-36b45111b74b', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-03-31T12:56:45.880' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1188, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 94545, 14, N'Покупка 94545 токенов на сумму 9999,96037639762.', CAST(N'2020-04-05T00:42:49.083' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1188, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 94545, 14, N'РџРѕРєСѓРїРєР° 94545 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 9999,96037639762.', CAST(N'2020-04-05T00:42:49.083' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1189, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 50000, 14, N'Покупка 50000 токенов на сумму 5292,86162228865.', CAST(N'2020-04-06T04:34:41.793' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1189, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 50000, 14, N'РџРѕРєСѓРїРєР° 50000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 5292,86162228865.', CAST(N'2020-04-06T04:34:41.793' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1190, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1059,59165975243.', CAST(N'2020-04-07T12:59:10.683' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1190, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1059,59165975243.', CAST(N'2020-04-07T12:59:10.683' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1191, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 56000, 14, N'Покупка 56000 токенов на сумму 5934,01581009583.', CAST(N'2020-04-07T14:44:44.470' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1191, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 56000, 14, N'РџРѕРєСѓРїРєР° 56000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 5934,01581009583.', CAST(N'2020-04-07T14:44:44.470' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1192, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 94303, 14, N'Покупка 94303 токенов на сумму 9999,94918494895.', CAST(N'2020-04-08T14:41:59.420' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1192, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 94303, 14, N'РџРѕРєСѓРїРєР° 94303 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 9999,94918494895.', CAST(N'2020-04-08T14:41:59.420' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1193, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 106,041766607433.', CAST(N'2020-04-08T15:04:15.117' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1193, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 106,041766607433.', CAST(N'2020-04-08T15:04:15.117' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1194, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 106,041769167993.', CAST(N'2020-04-08T15:04:18.987' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1194, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 106,041769167993.', CAST(N'2020-04-08T15:04:18.987' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1195, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 530,360038282204.', CAST(N'2020-04-09T00:06:11.200' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1195, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 530,360038282204.', CAST(N'2020-04-09T00:06:11.200' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1196, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 94218, 14, N'Покупка 94218 токенов на сумму 9999,92707325255.', CAST(N'2020-04-09T20:56:10.420' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1196, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 94218, 14, N'РџРѕРєСѓРїРєР° 94218 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 9999,92707325255.', CAST(N'2020-04-09T20:56:10.420' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1197, N'd0672d7a-632f-4901-a9d1-8b72e6c35869', 0, 14, N'Учетная запись создана.', CAST(N'2020-04-17T11:28:05.850' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1197, N'd0672d7a-632f-4901-a9d1-8b72e6c35869', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-04-17T11:28:05.850' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1198, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 106,985456147045.', CAST(N'2020-04-20T23:08:18.903' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1198, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 106,985456147045.', CAST(N'2020-04-20T23:08:18.903' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1199, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 107,519919637626.', CAST(N'2020-04-27T21:27:32.870' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1199, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 107,519919637626.', CAST(N'2020-04-27T21:27:32.870' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1200, N'31c4e8bb-9c5b-45d7-8fa0-65c75f87e121', 0, 14, N'Учетная запись создана.', CAST(N'2020-04-27T23:01:54.890' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1200, N'31c4e8bb-9c5b-45d7-8fa0-65c75f87e121', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-04-27T23:01:54.890' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1201, N'61066082-72b4-477f-92dc-d1af87de7de9', 0, 14, N'Учетная запись создана.', CAST(N'2020-04-29T02:15:07.640' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1201, N'61066082-72b4-477f-92dc-d1af87de7de9', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-04-29T02:15:07.640' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1202, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 107,849210606706.', CAST(N'2020-05-02T02:57:03.517' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1202, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 107,849210606706.', CAST(N'2020-05-02T02:57:03.517' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1203, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 107,849213210843.', CAST(N'2020-05-02T02:57:06.650' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1203, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 107,849213210843.', CAST(N'2020-05-02T02:57:06.650' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1204, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 107,84921581498.', CAST(N'2020-05-02T02:57:09.740' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1204, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 107,84921581498.', CAST(N'2020-05-02T02:57:09.740' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1205, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 108,02962183435.', CAST(N'2020-05-04T11:01:02.877' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1205, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 108,02962183435.', CAST(N'2020-05-04T11:01:02.877' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1206, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 108,438503757972.', CAST(N'2020-05-09T17:21:07.633' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1206, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 108,438503757972.', CAST(N'2020-05-09T17:21:07.633' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1207, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 92135, 14, N'Покупка 92135 токенов на сумму 9999,9315565726.', CAST(N'2020-05-10T23:26:44.877' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1207, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 92135, 14, N'РџРѕРєСѓРїРєР° 92135 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 9999,9315565726.', CAST(N'2020-05-10T23:26:44.877' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1208, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 108,535698999204.', CAST(N'2020-05-10T23:27:47.417' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1208, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 108,535698999204.', CAST(N'2020-05-10T23:27:47.417' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1209, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 542,679425362317.', CAST(N'2020-05-10T23:31:21.023' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1209, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 542,679425362317.', CAST(N'2020-05-10T23:31:21.023' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1210, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 14, N'Покупка 100 токенов на сумму 10,8553638073539.', CAST(N'2020-05-11T04:21:30.333' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1210, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 14, N'РџРѕРєСѓРїРєР° 100 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 10,8553638073539.', CAST(N'2020-05-11T04:21:30.333' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1211, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 108,677888742928.', CAST(N'2020-05-12T19:01:46.837' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1211, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 108,677888742928.', CAST(N'2020-05-12T19:01:46.837' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1212, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 91926, 14, N'Покупка 91926 токенов на сумму 9999,94550589899.', CAST(N'2020-05-14T02:38:08.990' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1212, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 91926, 14, N'РџРѕРєСѓРїРєР° 91926 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 9999,94550589899.', CAST(N'2020-05-14T02:38:08.990' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1213, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Продажа 10000 токенов на сумму 1087,82604390893.', CAST(N'2020-05-14T02:39:00.783' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1213, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџСЂРѕРґР°Р¶Р° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1087,82604390893.', CAST(N'2020-05-14T02:39:00.783' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1214, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1087,82664804942.', CAST(N'2020-05-14T02:40:10.027' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1214, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1087,82664804942.', CAST(N'2020-05-14T02:40:10.027' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1215, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 109,912532740947.', CAST(N'2020-05-28T11:57:25.973' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1215, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 109,912532740947.', CAST(N'2020-05-28T11:57:25.973' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1216, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 90889, 14, N'Покупка 90889 токенов на сумму 9999,91215525576.', CAST(N'2020-05-29T21:55:35.183' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1216, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 90889, 14, N'РџРѕРєСѓРїРєР° 90889 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 9999,91215525576.', CAST(N'2020-05-29T21:55:35.183' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1217, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 2500, 14, N'Покупка 2500 токенов на сумму 275,058423088638.', CAST(N'2020-05-29T21:55:58.023' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1217, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 2500, 14, N'РџРѕРєСѓРїРєР° 2500 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 275,058423088638.', CAST(N'2020-05-29T21:55:58.023' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1218, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 550,442142456218.', CAST(N'2020-05-30T17:31:33.560' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1218, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 550,442142456218.', CAST(N'2020-05-30T17:31:33.560' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1219, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1100,88432921641.', CAST(N'2020-05-30T17:31:38.733' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1219, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1100,88432921641.', CAST(N'2020-05-30T17:31:38.733' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1220, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 550,467529201554.', CAST(N'2020-05-30T19:07:03.647' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1220, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 550,467529201554.', CAST(N'2020-05-30T19:07:03.647' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1221, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 90295, 14, N'Покупка 90295 токенов на сумму 9999,95727623321.', CAST(N'2020-06-08T00:17:14.837' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1221, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 90295, 14, N'РџРѕРєСѓРїРєР° 90295 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 9999,95727623321.', CAST(N'2020-06-08T00:17:14.837' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1222, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 111,51803510003.', CAST(N'2020-06-17T16:15:26.820' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1222, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 111,51803510003.', CAST(N'2020-06-17T16:15:26.820' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1223, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 89671, 14, N'Покупка 89671 токенов на сумму 9999,93662302499.', CAST(N'2020-06-17T16:16:02.250' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1223, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 89671, 14, N'РџРѕРєСѓРїРєР° 89671 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 9999,93662302499.', CAST(N'2020-06-17T16:16:02.250' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1224, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 557,599532907082.', CAST(N'2020-06-17T16:50:11.137' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1224, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 557,599532907082.', CAST(N'2020-06-17T16:50:11.137' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1225, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1116,03221101704.', CAST(N'2020-06-18T17:48:05.210' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1225, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1116,03221101704.', CAST(N'2020-06-18T17:48:05.210' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1226, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 24024, 14, N'Продажа 24024 токенов на сумму 2696,8966889863.', CAST(N'2020-06-26T21:21:28.067' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1226, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 24024, 14, N'РџСЂРѕРґР°Р¶Р° 24024 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 2696,8966889863.', CAST(N'2020-06-26T21:21:28.067' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1227, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -2, 15, N'Запрос вывода на сумму 2 р. Способ: Qiwi. Номер (счет): +79779393722', CAST(N'2020-06-28T05:34:03.063' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1227, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -2, 15, N'Р—Р°РїСЂРѕСЃ РІС‹РІРѕРґР° РЅР° СЃСѓРјРјСѓ 2 СЂ. РЎРїРѕСЃРѕР±: Qiwi. РќРѕРјРµСЂ (СЃС‡РµС‚): +79779393722', CAST(N'2020-06-28T05:34:03.063' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1228, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -2, 15, N'Запрос вывода на сумму 2 р. Способ: Qiwi. Номер (счет): +79779393722', CAST(N'2020-06-28T06:07:18.430' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1228, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -2, 15, N'Р—Р°РїСЂРѕСЃ РІС‹РІРѕРґР° РЅР° СЃСѓРјРјСѓ 2 СЂ. РЎРїРѕСЃРѕР±: Qiwi. РќРѕРјРµСЂ (СЃС‡РµС‚): +79779393722', CAST(N'2020-06-28T06:07:18.430' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1229, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -10, 15, N'Запрос вывода на сумму 10 р. Способ: Qiwi. Номер (счет): +79779393722', CAST(N'2020-06-28T16:09:12.027' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1229, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -10, 15, N'Р—Р°РїСЂРѕСЃ РІС‹РІРѕРґР° РЅР° СЃСѓРјРјСѓ 10 СЂ. РЎРїРѕСЃРѕР±: Qiwi. РќРѕРјРµСЂ (СЃС‡РµС‚): +79779393722', CAST(N'2020-06-28T16:09:12.027' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1230, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -10, 15, N'Запрос вывода на сумму 10 р. Способ: Qiwi. Номер (счет): +79779393722', CAST(N'2020-06-28T16:12:08.330' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1230, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -10, 15, N'Р—Р°РїСЂРѕСЃ РІС‹РІРѕРґР° РЅР° СЃСѓРјРјСѓ 10 СЂ. РЎРїРѕСЃРѕР±: Qiwi. РќРѕРјРµСЂ (СЃС‡РµС‚): +79779393722', CAST(N'2020-06-28T16:12:08.330' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1231, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -10, 15, N'Запрос вывода на сумму 10 р. Способ: Qiwi. Номер (счет): +79779393722', CAST(N'2020-06-28T17:53:35.087' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1231, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', -10, 15, N'Р—Р°РїСЂРѕСЃ РІС‹РІРѕРґР° РЅР° СЃСѓРјРјСѓ 10 СЂ. РЎРїРѕСЃРѕР±: Qiwi. РќРѕРјРµСЂ (СЃС‡РµС‚): +79779393722', CAST(N'2020-06-28T17:53:35.087' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1232, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 23978, 14, N'Покупка 23978 токенов на сумму 2696,85334765745.', CAST(N'2020-06-29T12:31:20.847' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1232, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 23978, 14, N'РџРѕРєСѓРїРєР° 23978 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 2696,85334765745.', CAST(N'2020-06-29T12:31:20.847' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1233, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 1, N'Пополнение баланса на сумму 100 р. Способ: ''Qiwi''.', CAST(N'2020-05-08T17:06:31.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1233, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 100, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 100 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-05-08T17:06:31.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1234, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 10, 1, N'Пополнение баланса на сумму 10 р. Способ: ''Qiwi''.', CAST(N'2020-06-28T18:49:48.000' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1234, N'e103ddb4-eae3-47d4-8db2-65cafa82fe07', 10, 1, N'РџРѕРїРѕР»РЅРµРЅРёРµ Р±Р°Р»Р°РЅСЃР° РЅР° СЃСѓРјРјСѓ 10 СЂ. РЎРїРѕСЃРѕР±: ''Qiwi''.', CAST(N'2020-06-28T18:49:48.000' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1235, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1126,74094125372.', CAST(N'2020-07-02T00:03:25.033' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1235, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1126,74094125372.', CAST(N'2020-07-02T00:03:25.033' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1236, N'ee678bfb-bf49-4050-aad3-6c5025d3f0e5', 0, 14, N'Учетная запись создана.', CAST(N'2020-07-08T11:35:06.813' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1236, N'ee678bfb-bf49-4050-aad3-6c5025d3f0e5', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-07-08T11:35:06.813' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1237, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 23978, 14, N'Продажа 23978 токенов на сумму 2718,90063120408.', CAST(N'2020-07-10T20:37:19.463' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1237, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', 23978, 14, N'РџСЂРѕРґР°Р¶Р° 23978 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 2718,90063120408.', CAST(N'2020-07-10T20:37:19.463' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1238, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', -2718.98, 15, N'Запрос вывода на сумму 2718,98 р. Способ: Qiwi. Номер (счет): +79821395919', CAST(N'2020-07-10T20:38:51.160' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1238, N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', -2718.98, 15, N'Р—Р°РїСЂРѕСЃ РІС‹РІРѕРґР° РЅР° СЃСѓРјРјСѓ 2718,98 СЂ. РЎРїРѕСЃРѕР±: Qiwi. РќРѕРјРµСЂ (СЃС‡РµС‚): +79821395919', CAST(N'2020-07-10T20:38:51.160' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1239, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 42000, 14, N'Покупка 42000 токенов на сумму 4783,16227327443.', CAST(N'2020-07-16T21:36:01.407' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (1239, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 42000, 14, N'РџРѕРєСѓРїРєР° 42000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 4783,16227327443.', CAST(N'2020-07-16T21:36:01.407' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2239, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1140,32567016682.', CAST(N'2020-07-18T16:43:44.877' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2239, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1140,32567016682.', CAST(N'2020-07-18T16:43:44.877' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2240, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 570,162867207097.', CAST(N'2020-07-18T16:43:51.367' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2240, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 570,162867207097.', CAST(N'2020-07-18T16:43:51.367' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2241, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'Покупка 1000 токенов на сумму 114,032761594429.', CAST(N'2020-07-18T16:47:16.647' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2241, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 1000, 14, N'РџРѕРєСѓРїРєР° 1000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 114,032761594429.', CAST(N'2020-07-18T16:47:16.647' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2242, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 87694, 14, N'Покупка 87694 токенов на сумму 9999,99221475264.', CAST(N'2020-07-18T16:47:56.393' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2242, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 87694, 14, N'РџРѕРєСѓРїРєР° 87694 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 9999,99221475264.', CAST(N'2020-07-18T16:47:56.393' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2243, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 50000, 14, N'Покупка 50000 токенов на сумму 5719,59963983731.', CAST(N'2020-07-23T01:17:42.203' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2243, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 50000, 14, N'РџРѕРєСѓРїРєР° 50000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 5719,59963983731.', CAST(N'2020-07-23T01:17:42.203' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2244, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'Покупка 10000 токенов на сумму 1146,92837627834.', CAST(N'2020-07-26T17:30:52.610' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2244, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 10000, 14, N'РџРѕРєСѓРїРєР° 10000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 1146,92837627834.', CAST(N'2020-07-26T17:30:52.610' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2245, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 87114, 14, N'Покупка 87114 токенов на сумму 9999,98153274037.', CAST(N'2020-07-27T22:30:05.817' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2245, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 87114, 14, N'РџРѕРєСѓРїРєР° 87114 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 9999,98153274037.', CAST(N'2020-07-27T22:30:05.817' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2246, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'Покупка 5000 токенов на сумму 574,594287088901.', CAST(N'2020-07-29T11:01:58.753' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2246, N'8b79ff6c-f4a8-452d-b5ac-756ddf0d6c59', 5000, 14, N'РџРѕРєСѓРїРєР° 5000 С‚РѕРєРµРЅРѕРІ РЅР° СЃСѓРјРјСѓ 574,594287088901.', CAST(N'2020-07-29T11:01:58.753' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2247, N'53446782-b6e0-43cf-a718-4e445e853160', 0, 14, N'Учетная запись создана.', CAST(N'2020-09-11T00:23:44.883' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2247, N'53446782-b6e0-43cf-a718-4e445e853160', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-09-11T00:23:44.883' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2248, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 0, 14, N'Учетная запись создана.', CAST(N'2020-09-14T20:57:53.863' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (2248, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-09-14T20:57:53.863' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (3248, N'eb192af4-6fa7-4f34-ac02-5058cc5d424b', 0, 14, N'Учетная запись создана.', CAST(N'2020-10-08T23:19:05.957' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (3248, N'eb192af4-6fa7-4f34-ac02-5058cc5d424b', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-10-08T23:19:05.957' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (3249, N'bd4551af-fc28-4b85-b147-20a051676b21', 0, 14, N'Учетная запись создана.', CAST(N'2020-11-02T13:49:39.767' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (3249, N'bd4551af-fc28-4b85-b147-20a051676b21', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-11-02T13:49:39.767' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (3250, N'92cfb222-e607-4103-8d48-02826604aa12', 0, 14, N'Учетная запись создана.', CAST(N'2020-11-13T18:28:06.830' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (3250, N'92cfb222-e607-4103-8d48-02826604aa12', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-11-13T18:28:06.830' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (3251, N'eb8da0bb-1d3b-4324-a4cd-e0387266fe8e', 0, 14, N'Учетная запись создана.', CAST(N'2020-11-28T00:52:39.963' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (3251, N'eb8da0bb-1d3b-4324-a4cd-e0387266fe8e', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-11-28T00:52:39.963' AS DateTime))
 GO
-INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (3252, N'bf6840b7-dc4d-4c1e-8ab5-32c86bb084c5', 0, 14, N'Учетная запись создана.', CAST(N'2020-12-03T10:35:07.353' AS DateTime))
+INSERT [dbo].[Operations] ([Id], [UserId], [Value], [Type], [Comment], [WhenDate]) VALUES (3252, N'bf6840b7-dc4d-4c1e-8ab5-32c86bb084c5', 0, 14, N'РЈС‡РµС‚РЅР°СЏ Р·Р°РїРёСЃСЊ СЃРѕР·РґР°РЅР°.', CAST(N'2020-12-03T10:35:07.353' AS DateTime))
 GO
 SET IDENTITY_INSERT [dbo].[Operations] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Recipes] ON 
 GO
-INSERT [dbo].[Recipes] ([Id], [Name], [Discription], [Created], [ImgUrl], [CountLikes], [TimeMinutesToCook], [UserId]) VALUES (1, N'Окрошка', N'Готовится из огурцов , вареной картошки, яиц и кваса', CAST(N'2020-08-11T00:38:48.257' AS DateTime), NULL, 74151, 30, 1)
+INSERT [dbo].[Recipes] ([Id], [Name], [Discription], [Created], [ImgUrl], [CountLikes], [TimeMinutesToCook], [UserId]) VALUES (1, N'РћРєСЂРѕС€РєР°', N'Р“РѕС‚РѕРІРёС‚СЃСЏ РёР· РѕРіСѓСЂС†РѕРІ , РІР°СЂРµРЅРѕР№ РєР°СЂС‚РѕС€РєРё, СЏРёС† Рё РєРІР°СЃР°', CAST(N'2020-08-11T00:38:48.257' AS DateTime), NULL, 74151, 30, 1)
 GO
-INSERT [dbo].[Recipes] ([Id], [Name], [Discription], [Created], [ImgUrl], [CountLikes], [TimeMinutesToCook], [UserId]) VALUES (2, N'Блины', N'На молоке', CAST(N'2020-08-11T00:39:23.613' AS DateTime), NULL, 5548, 15, 1)
+INSERT [dbo].[Recipes] ([Id], [Name], [Discription], [Created], [ImgUrl], [CountLikes], [TimeMinutesToCook], [UserId]) VALUES (2, N'Р‘Р»РёРЅС‹', N'РќР° РјРѕР»РѕРєРµ', CAST(N'2020-08-11T00:39:23.613' AS DateTime), NULL, 5548, 15, 1)
 GO
-INSERT [dbo].[Recipes] ([Id], [Name], [Discription], [Created], [ImgUrl], [CountLikes], [TimeMinutesToCook], [UserId]) VALUES (3, N'Суп пюре ', N'Овощной суп пюре ', CAST(N'2020-08-11T00:40:07.530' AS DateTime), NULL, 3541, 45, 1)
+INSERT [dbo].[Recipes] ([Id], [Name], [Discription], [Created], [ImgUrl], [CountLikes], [TimeMinutesToCook], [UserId]) VALUES (3, N'РЎСѓРї РїСЋСЂРµ ', N'РћРІРѕС‰РЅРѕР№ СЃСѓРї РїСЋСЂРµ ', CAST(N'2020-08-11T00:40:07.530' AS DateTime), NULL, 3541, 45, 1)
 GO
 SET IDENTITY_INSERT [dbo].[Recipes] OFF
 GO
@@ -4193,23 +4192,23 @@ INSERT [dbo].[Roles] ([ApplicationId], [RoleId], [RoleName], [Description]) VALU
 GO
 SET IDENTITY_INSERT [dbo].[Settings] ON 
 GO
-INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (2, 1, N'HoursDifference', N'0', N'Разница во времени с сервером', CAST(N'2018-06-22T14:33:37.840' AS DateTime))
+INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (2, 1, N'HoursDifference', N'0', N'Р Р°Р·РЅРёС†Р° РІРѕ РІСЂРµРјРµРЅРё СЃ СЃРµСЂРІРµСЂРѕРј', CAST(N'2018-06-22T14:33:37.840' AS DateTime))
 GO
-INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (3, 2, N'ReferralPercent', N'10', N'Реферальные проценты 1го уровня', CAST(N'2018-06-22T14:33:37.840' AS DateTime))
+INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (3, 2, N'ReferralPercent', N'10', N'Р РµС„РµСЂР°Р»СЊРЅС‹Рµ РїСЂРѕС†РµРЅС‚С‹ 1РіРѕ СѓСЂРѕРІРЅСЏ', CAST(N'2018-06-22T14:33:37.840' AS DateTime))
 GO
-INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (7, 3, N'ReferralPercent2', N'5', N'Реферальный процент 2го уровня', CAST(N'2018-06-22T14:33:37.840' AS DateTime))
+INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (7, 3, N'ReferralPercent2', N'5', N'Р РµС„РµСЂР°Р»СЊРЅС‹Р№ РїСЂРѕС†РµРЅС‚ 2РіРѕ СѓСЂРѕРІРЅСЏ', CAST(N'2018-06-22T14:33:37.840' AS DateTime))
 GO
-INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (9, 4, N'ReferralPercent3', N'5', N'Реферальный процент 3го уровня', CAST(N'2018-06-22T14:33:37.840' AS DateTime))
+INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (9, 4, N'ReferralPercent3', N'5', N'Р РµС„РµСЂР°Р»СЊРЅС‹Р№ РїСЂРѕС†РµРЅС‚ 3РіРѕ СѓСЂРѕРІРЅСЏ', CAST(N'2018-06-22T14:33:37.840' AS DateTime))
 GO
-INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (11, 20, N'UsersCount', N'5', N'Количество пользователей в системе, отображаемое на главной странице', CAST(N'2018-11-17T23:51:02.053' AS DateTime))
+INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (11, 20, N'UsersCount', N'5', N'РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІ СЃРёСЃС‚РµРјРµ, РѕС‚РѕР±СЂР°Р¶Р°РµРјРѕРµ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ', CAST(N'2018-11-17T23:51:02.053' AS DateTime))
 GO
-INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (12, 21, N'UsersCountRegisteredToday', N'2', N'Количество пользователей зарегистрированных за 24 часа', CAST(N'2018-11-17T23:51:02.057' AS DateTime))
+INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (12, 21, N'UsersCountRegisteredToday', N'2', N'РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹С… Р·Р° 24 С‡Р°СЃР°', CAST(N'2018-11-17T23:51:02.057' AS DateTime))
 GO
-INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (13, 22, N'UsersCountOnline', N'2', N'Количество пользователей онлайн', CAST(N'2018-11-17T23:51:02.057' AS DateTime))
+INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (13, 22, N'UsersCountOnline', N'2', N'РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РѕРЅР»Р°Р№РЅ', CAST(N'2018-11-17T23:51:02.057' AS DateTime))
 GO
-INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (18, 24, N'TokenTodayCost', N'0,1', N'Цена токена сегодня', CAST(N'2019-09-29T18:30:13.920' AS DateTime))
+INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (18, 24, N'TokenTodayCost', N'0,1', N'Р¦РµРЅР° С‚РѕРєРµРЅР° СЃРµРіРѕРґРЅСЏ', CAST(N'2019-09-29T18:30:13.920' AS DateTime))
 GO
-INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (19, 25, N'AvailableTokensCount', N'4897995214', N'Количество доступных токенов', CAST(N'2020-01-08T01:35:25.490' AS DateTime))
+INSERT [dbo].[Settings] ([Id], [Order], [Name], [Value], [Description], [UpdateDate]) VALUES (19, 25, N'AvailableTokensCount', N'4897995214', N'РљРѕР»РёС‡РµСЃС‚РІРѕ РґРѕСЃС‚СѓРїРЅС‹С… С‚РѕРєРµРЅРѕРІ', CAST(N'2020-01-08T01:35:25.490' AS DateTime))
 GO
 SET IDENTITY_INSERT [dbo].[Settings] OFF
 GO
@@ -4217,7 +4216,7 @@ SET IDENTITY_INSERT [dbo].[TenderRequest] ON
 GO
 INSERT [dbo].[TenderRequest] ([Id], [Description], [ProviderId], [ProviderName], [Cost], [CustomerId], [DateStart], [DateCompleted], [DateDelivered], [DateWin], [TenderId]) VALUES (1, N'Zavtra viezhau', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'qqq', 301, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', NULL, NULL, NULL, NULL, 1)
 GO
-INSERT [dbo].[TenderRequest] ([Id], [Description], [ProviderId], [ProviderName], [Cost], [CustomerId], [DateStart], [DateCompleted], [DateDelivered], [DateWin], [TenderId]) VALUES (2, N'заберу с адмиралтейской', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'qqq', 200, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', NULL, NULL, NULL, NULL, 1)
+INSERT [dbo].[TenderRequest] ([Id], [Description], [ProviderId], [ProviderName], [Cost], [CustomerId], [DateStart], [DateCompleted], [DateDelivered], [DateWin], [TenderId]) VALUES (2, N'Р·Р°Р±РµСЂСѓ СЃ Р°РґРјРёСЂР°Р»С‚РµР№СЃРєРѕР№', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'qqq', 200, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', NULL, NULL, NULL, NULL, 1)
 GO
 INSERT [dbo].[TenderRequest] ([Id], [Description], [ProviderId], [ProviderName], [Cost], [CustomerId], [DateStart], [DateCompleted], [DateDelivered], [DateWin], [TenderId]) VALUES (3, N'beru', N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', N'qqq', 101, N'a55a7415-80e3-4dfd-93a1-3ea9d8d88329', NULL, NULL, NULL, NULL, 1)
 GO
@@ -6607,7 +6606,7 @@ INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous]
 GO
 INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (2, N'234ee901-21d6-4952-b871-b815b148fe46', N'b98b7ebc-4d5e-405b-88d8-087421c50b8e', N'hhh', 0, CAST(N'2019-06-01T16:02:48.657' AS DateTime), N'', 704037, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (3, N'234ee901-21d6-4952-b871-b815b148fe46', N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', N'Маким', 0, CAST(N'2020-07-26T13:29:17.657' AS DateTime), NULL, 751789, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (3, N'234ee901-21d6-4952-b871-b815b148fe46', N'4bb6fe84-b80e-4b7a-a62e-1d2cb44a014e', N'РњР°РєРёРј', 0, CAST(N'2020-07-26T13:29:17.657' AS DateTime), NULL, 751789, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
 INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (4, N'234ee901-21d6-4952-b871-b815b148fe46', N'f42ba606-48bf-45ef-9ea4-1ee8c44add71', N'kkkr', 0, CAST(N'2019-08-23T23:32:27.873' AS DateTime), N'', 906826, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
@@ -6645,7 +6644,7 @@ INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous]
 GO
 INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (19, N'234ee901-21d6-4952-b871-b815b148fe46', N'c11636fe-d0d9-4a60-8647-6f00f6154c29', N'dddddd', 0, CAST(N'2019-05-29T23:30:27.900' AS DateTime), N'', 826476, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (20, N'234ee901-21d6-4952-b871-b815b148fe46', N'78642b4e-de5a-4b81-9cf4-723cae3ff5eb', N'Николай', 0, CAST(N'2020-01-26T20:08:41.400' AS DateTime), NULL, 774826, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (20, N'234ee901-21d6-4952-b871-b815b148fe46', N'78642b4e-de5a-4b81-9cf4-723cae3ff5eb', N'РќРёРєРѕР»Р°Р№', 0, CAST(N'2020-01-26T20:08:41.400' AS DateTime), NULL, 774826, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
 INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (21, N'234ee901-21d6-4952-b871-b815b148fe46', N'4d54d89b-7e4c-40a6-8638-739bdd618947', N'lll', 0, CAST(N'2020-03-08T11:21:14.627' AS DateTime), NULL, 354503, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
@@ -6679,13 +6678,13 @@ INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous]
 GO
 INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (36, N'234ee901-21d6-4952-b871-b815b148fe46', N'709c2b20-4bb0-4369-bd80-b53ed855eb19', N'mmrrr', 0, CAST(N'2019-12-28T21:52:00.770' AS DateTime), NULL, 613952, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (37, N'234ee901-21d6-4952-b871-b815b148fe46', N'ff342ff7-3798-4f20-8c15-bb16ad9e3100', N'Макстм', 0, CAST(N'2020-03-19T14:41:49.413' AS DateTime), NULL, 231639, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (37, N'234ee901-21d6-4952-b871-b815b148fe46', N'ff342ff7-3798-4f20-8c15-bb16ad9e3100', N'РњР°РєСЃС‚Рј', 0, CAST(N'2020-03-19T14:41:49.413' AS DateTime), NULL, 231639, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
 INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (57, N'234ee901-21d6-4952-b871-b815b148fe46', N'e7bc0057-d3b9-4791-a9ea-c4589500ace9', N'Matthew Rentoolo', 0, CAST(N'2020-11-20T20:59:40.820' AS DateTime), N'qwerty123', 659468, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'@', NULL)
 GO
 INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (38, N'234ee901-21d6-4952-b871-b815b148fe46', N'0677b5f2-2ec7-4bbe-89f7-c6ed48cb9dca', N'freebar4ik', 0, CAST(N'2020-01-24T19:05:33.550' AS DateTime), NULL, 132866, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (39, N'234ee901-21d6-4952-b871-b815b148fe46', N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', N'Павел Суворов', 0, CAST(N'2020-01-23T19:29:33.030' AS DateTime), NULL, 123043, N' 79286664808', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (39, N'234ee901-21d6-4952-b871-b815b148fe46', N'7849bd5d-c3e5-4aed-9248-cd9ad30284ef', N'РџР°РІРµР» РЎСѓРІРѕСЂРѕРІ', 0, CAST(N'2020-01-23T19:29:33.030' AS DateTime), NULL, 123043, N' 79286664808', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
 INSERT [dbo].[Users] ([Id], [ApplicationId], [UserId], [UserName], [IsAnonymous], [LastActivityDate], [Pwd], [PublicId], [Communication], [ReffAdd], [LastGeoposition], [Language], [Sex], [Interests], [WorkPlace], [AboutUser], [BirthDay], [UniqueUserName], [SelectedCity]) VALUES (40, N'234ee901-21d6-4952-b871-b815b148fe46', N'c94e32bb-d742-4f1e-b4b4-cddf599472b8', N'Maksimrentoolo', 0, CAST(N'2020-01-14T19:30:06.837' AS DateTime), NULL, 529238, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
@@ -7611,7 +7610,7 @@ INSERT [dbo].[WatchedByCookies] ([Id], [UserCookiesId], [AdvertId], [Created]) V
 GO
 SET IDENTITY_INSERT [dbo].[WatchedByCookies] OFF
 GO
-/****** Object:  Index [IX_Referrals]    Script Date: 03.12.2020 11:34:42 ******/
+/****** Object:  Index [IX_Referrals]    Script Date: 09.12.2020 2:03:51 ******/
 ALTER TABLE [dbo].[Referrals] ADD  CONSTRAINT [IX_Referrals] UNIQUE NONCLUSTERED 
 (
 	[ReferralUserId] ASC
@@ -7797,8 +7796,6 @@ ALTER TABLE [dbo].[Recipes] ADD  CONSTRAINT [DF_Recipes_UserId]  DEFAULT ((1)) F
 GO
 ALTER TABLE [dbo].[Referrals] ADD  CONSTRAINT [DF_Refferals_WhenDate]  DEFAULT (getdate()) FOR [WhenDate]
 GO
-ALTER TABLE [dbo].[Rent] ADD  CONSTRAINT [DF_Rent_RentType]  DEFAULT ((1)) FOR [RentType]
-GO
 ALTER TABLE [dbo].[Settings] ADD  CONSTRAINT [DF_Settings_UpdateDate]  DEFAULT (getdate()) FOR [UpdateDate]
 GO
 ALTER TABLE [dbo].[TenderRequest] ADD  CONSTRAINT [DF_TenderRequest_Cost]  DEFAULT ((0)) FOR [Cost]
@@ -7921,7 +7918,7 @@ REFERENCES [dbo].[Users] ([UserId])
 GO
 ALTER TABLE [dbo].[Watched] CHECK CONSTRAINT [FK_Watched_Users]
 GO
-/****** Object:  StoredProcedure [dbo].[spAddAdvert]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spAddAdvert]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7965,7 +7962,7 @@ BEGIN
 	@YouTubeUrl)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spAddFavorites]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spAddFavorites]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7983,7 +7980,7 @@ BEGIN
    END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spAddFavoritesByCookies]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spAddFavoritesByCookies]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8001,7 +7998,7 @@ BEGIN
    END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spAddWatched]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spAddWatched]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8014,7 +8011,7 @@ BEGIN
     VALUES (@UserId, @advertId)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spAddWatchedByCookies]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spAddWatchedByCookies]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8027,7 +8024,7 @@ BEGIN
     VALUES (@uid, @advertId)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetChats]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetChats]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8055,7 +8052,7 @@ LEFT JOIN [dbo].ChatUsers AS chatUsers ON (chatUsers.ChatId = chats.Id) WHERE ch
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[spGetChatsForUser]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetChatsForUser]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8083,7 +8080,7 @@ LEFT JOIN [dbo].ChatUsers AS chatUsers ON (chatUsers.ChatId = chats.Id) WHERE ch
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[spGetComments]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetComments]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8105,7 +8102,7 @@ BEGIN
 	ORDER BY [Date] ASC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetCommentsForUser]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetCommentsForUser]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8143,7 +8140,7 @@ GRANT EXECUTE
     ON OBJECT::[dbo].[spGetCommentsForUser] TO PUBLIC
     AS [dbo];
 GO
-/****** Object:  StoredProcedure [dbo].[spGetComplaintsByRecipier]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetComplaintsByRecipier]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8156,7 +8153,7 @@ BEGIN
 
 SELECT cpts.[Id]
       ,[Message]
-      ,[СomplaintType]
+      ,[РЎomplaintType]
       ,[ObjectId]
       ,[ObjectType]
       ,[UserSender]
@@ -8170,7 +8167,7 @@ SELECT cpts.[Id]
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[spGetComplaintsBySender]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetComplaintsBySender]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8183,7 +8180,7 @@ BEGIN
 
 SELECT cpts.[Id]
       ,[Message]
-      ,[СomplaintType]
+      ,[РЎomplaintType]
       ,[ObjectId]
       ,[ObjectType]
       ,[UserSender]
@@ -8197,7 +8194,7 @@ SELECT cpts.[Id]
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[spGetExchangeItemRequests]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetExchangeItemRequests]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8222,7 +8219,7 @@ SELECT exr.id
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[spGetExchangeProducts]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetExchangeProducts]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8259,7 +8256,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[spGetFavorites]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetFavorites]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8289,7 +8286,7 @@ BEGIN
 	ORDER BY CreatedFavorites DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetFavoritesByCookies]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetFavoritesByCookies]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8319,7 +8316,7 @@ BEGIN
 	ORDER BY CreatedFavorites DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetLast200TokensOperations]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetLast200TokensOperations]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8351,7 +8348,7 @@ BEGIN
     ORDER BY [WhenDate] desc
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetLoginStatisticLastDayActive]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetLoginStatisticLastDayActive]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8370,7 +8367,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[spGetLoginStatisticLastHourActive]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetLoginStatisticLastHourActive]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8389,7 +8386,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[spGetTokenCostToday]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetTokenCostToday]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8404,7 +8401,7 @@ BEGIN
   WHERE CONVERT(date, [Date]) = CONVERT(date, getdate())
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetUserAdverts]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetUserAdverts]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8430,7 +8427,7 @@ BEGIN
 	ORDER BY a.[Created] DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetWatched]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetWatched]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8460,7 +8457,7 @@ BEGIN
 	ORDER BY CreatedFavorites DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetWatchedByCookies]    Script Date: 03.12.2020 11:34:43 ******/
+/****** Object:  StoredProcedure [dbo].[spGetWatchedByCookies]    Script Date: 09.12.2020 2:03:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
