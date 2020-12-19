@@ -2068,7 +2068,7 @@ namespace Rentoolo.Model
         {
             using (var dc = new RentooloEntities())
             {
-                return dc.Complaints.FirstOrDefault(x => x.СomplaintType == complaintType && x.ObjectType == complaintObjectType);
+                return dc.Complaints.FirstOrDefault(x => x.ComplaintType == complaintType && x.ObjectType == complaintObjectType);
             }
         }
 

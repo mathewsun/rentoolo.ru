@@ -19,9 +19,12 @@ namespace Rentoolo.Model
         public string Description { get; set; }
         public System.DateTime DateStart { get; set; }
         public Nullable<System.DateTime> DateEnd { get; set; }
+        public System.DateTime Created { get; set; }
+        public System.Guid UserOwnerId { get; set; }
         public int RentType { get; set; }
         public int DayRentPrice { get; set; }
         public Nullable<int> HourRentPrice { get; set; }
         public Nullable<int> MinuteRentPrice { get; set; }
+        public string ImgUrls { get; set; }
     }
 }

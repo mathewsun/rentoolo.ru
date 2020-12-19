@@ -16,7 +16,7 @@ namespace Rentoolo.Model
     {
         public int Id { get; set; }
         public string Message { get; set; }
-        public int СomplaintType { get; set; }
+        public int ComplaintType { get; set; }
         public int ObjectId { get; set; }
         public int ObjectType { get; set; }
         public System.Guid UserSender { get; set; }

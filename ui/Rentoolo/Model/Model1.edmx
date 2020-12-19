@@ -182,7 +182,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Message" Type="nvarchar(max)" />
-          <Property Name="СomplaintType" Type="int" Nullable="false" />
+          <Property Name="ComplaintType" Type="int" Nullable="false" />
           <Property Name="ObjectId" Type="int" Nullable="false" />
           <Property Name="ObjectType" Type="int" Nullable="false" />
           <Property Name="UserSender" Type="uniqueidentifier" Nullable="false" />
@@ -196,7 +196,7 @@
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Category" Type="int" Nullable="false" />
-          <Property Name="Сraft" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Craft" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="4000" Nullable="false" />
           <Property Name="Created" Type="datetime" Nullable="false" />
           <Property Name="Price" Type="float" Nullable="false" />
@@ -697,10 +697,13 @@
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DateStart" Type="date" Nullable="false" />
           <Property Name="DateEnd" Type="date" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="UserOwnerId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="RentType" Type="int" Nullable="false" />
           <Property Name="DayRentPrice" Type="int" Nullable="false" />
           <Property Name="HourRentPrice" Type="int" />
           <Property Name="MinuteRentPrice" Type="int" />
+          <Property Name="ImgUrls" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "Rentoolo.dbo.RentedTime" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
@@ -1666,7 +1669,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="СomplaintType" Type="Int32" Nullable="false" />
+          <Property Name="ComplaintType" Type="Int32" Nullable="false" />
           <Property Name="ObjectId" Type="Int32" Nullable="false" />
           <Property Name="ObjectType" Type="Int32" Nullable="false" />
           <Property Name="UserSender" Type="Guid" Nullable="false" />
@@ -1680,7 +1683,7 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Category" Type="Int32" Nullable="false" />
-          <Property Name="Сraft" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Craft" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Price" Type="Double" Nullable="false" />
@@ -2171,10 +2174,13 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DateEnd" Type="DateTime" Precision="0" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserOwnerId" Type="Guid" Nullable="false" />
           <Property Name="RentType" Type="Int32" Nullable="false" />
           <Property Name="DayRentPrice" Type="Int32" Nullable="false" />
           <Property Name="HourRentPrice" Type="Int32" />
           <Property Name="MinuteRentPrice" Type="Int32" />
+          <Property Name="ImgUrls" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -2887,7 +2893,7 @@
         <ComplexType Name="spGetComplaintsByRecipier_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Message" Nullable="true" />
-          <Property Type="Int32" Name="СomplaintType" Nullable="false" />
+          <Property Type="Int32" Name="ComplaintType" Nullable="false" />
           <Property Type="Int32" Name="ObjectId" Nullable="false" />
           <Property Type="Int32" Name="ObjectType" Nullable="false" />
           <Property Type="Guid" Name="UserSender" Nullable="false" />
@@ -2899,7 +2905,7 @@
         <ComplexType Name="spGetComplaintsBySender_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Message" Nullable="true" />
-          <Property Type="Int32" Name="СomplaintType" Nullable="false" />
+          <Property Type="Int32" Name="ComplaintType" Nullable="false" />
           <Property Type="Int32" Name="ObjectId" Nullable="false" />
           <Property Type="Int32" Name="ObjectType" Nullable="false" />
           <Property Type="Guid" Name="UserSender" Nullable="false" />
@@ -3201,7 +3207,7 @@
               <MappingFragment StoreEntitySet="Complaints">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="СomplaintType" ColumnName="СomplaintType" />
+                <ScalarProperty Name="ComplaintType" ColumnName="ComplaintType" />
                 <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
                 <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
                 <ScalarProperty Name="UserSender" ColumnName="UserSender" />
@@ -3216,7 +3222,7 @@
               <MappingFragment StoreEntitySet="CraftsMan">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
-                <ScalarProperty Name="Сraft" ColumnName="Сraft" />
+                <ScalarProperty Name="Craft" ColumnName="Craft" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
@@ -3740,10 +3746,13 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="DateStart" ColumnName="DateStart" />
                 <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="UserOwnerId" ColumnName="UserOwnerId" />
                 <ScalarProperty Name="RentType" ColumnName="RentType" />
                 <ScalarProperty Name="DayRentPrice" ColumnName="DayRentPrice" />
                 <ScalarProperty Name="HourRentPrice" ColumnName="HourRentPrice" />
                 <ScalarProperty Name="MinuteRentPrice" ColumnName="MinuteRentPrice" />
+                <ScalarProperty Name="ImgUrls" ColumnName="ImgUrls" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4119,7 +4128,7 @@
               <ComplexTypeMapping TypeName="RentooloModel.spGetComplaintsByRecipier_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="СomplaintType" ColumnName="СomplaintType" />
+                <ScalarProperty Name="ComplaintType" ColumnName="ComplaintType" />
                 <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
                 <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
                 <ScalarProperty Name="UserSender" ColumnName="UserSender" />
@@ -4135,7 +4144,7 @@
               <ComplexTypeMapping TypeName="RentooloModel.spGetComplaintsBySender_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="СomplaintType" ColumnName="СomplaintType" />
+                <ScalarProperty Name="ComplaintType" ColumnName="ComplaintType" />
                 <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
                 <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
                 <ScalarProperty Name="UserSender" ColumnName="UserSender" />

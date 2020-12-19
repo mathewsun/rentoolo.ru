@@ -64,12 +64,12 @@ namespace Rentoolo.Model
                     if (filter.OnlyInName)
                     {
                         //result = result.filterAdverts(filter.Search,true);
-                        result = result.Where(x => x.Сraft.Contains(filter.Search));
+                        result = result.Where(x => x.Craft.Contains(filter.Search));
                     }
                     else
                     {
                         //result = result.filterAdverts(filter.Search, false);
-                        result = result.Where(x => x.Сraft.Contains(filter.Search) || x.Description.Contains(filter.Search));
+                        result = result.Where(x => x.Craft.Contains(filter.Search) || x.Description.Contains(filter.Search));
                     }
                 }
 
@@ -132,7 +132,7 @@ namespace Rentoolo.Model
             {
                 if (!string.IsNullOrEmpty(filter.Search))
                 {
-                    int count = ctx.CraftsMan.Where(x => x.Сraft.Contains(filter.Search) || x.Description.Contains(filter.Search)).Count();
+                    int count = ctx.CraftsMan.Where(x => x.Craft.Contains(filter.Search) || x.Description.Contains(filter.Search)).Count();
 
                     return count;
                 }
