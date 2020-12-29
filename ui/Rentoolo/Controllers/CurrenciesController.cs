@@ -32,12 +32,11 @@ namespace Rentoolo.Controllers
             _hb = new HtmlWeb();
         }
 
-        [HttpGet]
-        public List<Currency> GetCurrencies()
+        public IHttpActionResult GetCurrencies()
         {
             List<Currency> currencies = GetMetalCurrencies(_hb);
             currencies.AddRange(GetValuteCurrencies(_hb));
-            return currencies;
+            return Json(currencies);
         }
         private List<Currency> GetMetalCurrencies(HtmlWeb hb)
         {
