@@ -13,7 +13,7 @@ namespace Rentoolo.Controllers
         public class Currency
         {
             public CurrencyTypeEnum Type { get; set; }
-            public float Price { get; set; }
+            public double Price { get; set; }
         }
 
         public enum CurrencyTypeEnum
@@ -53,7 +53,7 @@ namespace Rentoolo.Controllers
                     currencies.Add(new Currency()
                     {
                         Type = CurrencyTypeEnum.Gold,
-                        Price = float.Parse(node.ChildNodes[1].InnerText)
+                        Price = double.Parse(node.ChildNodes[1].InnerText)
                     });
                 }
                 else if (index == 5)
@@ -61,7 +61,7 @@ namespace Rentoolo.Controllers
                     currencies.Add(new Currency()
                     {
                         Type = CurrencyTypeEnum.Palladium,
-                        Price = float.Parse(node.ChildNodes[1].InnerText)
+                        Price = double.Parse(node.ChildNodes[1].InnerText)
                     });
                 }
                 else if (index == 7)
@@ -69,7 +69,7 @@ namespace Rentoolo.Controllers
                     currencies.Add(new Currency()
                     {
                         Type = CurrencyTypeEnum.Platinum,
-                        Price = float.Parse(node.ChildNodes[1].InnerText)
+                        Price = double.Parse(node.ChildNodes[1].InnerText)
                     });
                 }
                 else if (index == 9)
@@ -77,7 +77,7 @@ namespace Rentoolo.Controllers
                     currencies.Add(new Currency()
                     {
                         Type = CurrencyTypeEnum.Silver,
-                        Price = float.Parse(node.ChildNodes[1].InnerText)
+                        Price = double.Parse(node.ChildNodes[1].InnerText)
                     });
                 }
             }
@@ -89,15 +89,14 @@ namespace Rentoolo.Controllers
             List<Currency> currencies = new List<Currency>();
             int index = 0;
             HtmlDocument doc = hb.Load("https://www.banki.ru/products/currency/cb/");
-            var nodes = doc.DocumentNode.SelectNodes("//table[contains(@class, 'standard-table standard-table--row-highlight')]").FirstOrDefault().ChildNodes[3].ChildNodes;
             foreach (var node in doc.DocumentNode.SelectNodes("//table[contains(@class, 'standard-table standard-table--row-highlight')]").FirstOrDefault().ChildNodes[3].ChildNodes)
             {
                 if (index == 1)
-                {
+                { 
                     currencies.Add(new Currency()
                     {
                         Type = CurrencyTypeEnum.Dollar,
-                        Price = float.Parse(node.ChildNodes[7].InnerText)
+                        Price = Convert.ToDouble(node.ChildNodes[7].InnerText.Replace(".", ","))
                     });
                 }
                 if (index == 3)
@@ -105,7 +104,7 @@ namespace Rentoolo.Controllers
                     currencies.Add(new Currency()
                     {
                         Type = CurrencyTypeEnum.Euro,
-                        Price = float.Parse(node.ChildNodes[7].InnerText)
+                        Price = Convert.ToDouble(node.ChildNodes[7].InnerText.Replace(".", ","))
                     });
                     break;
                 }
