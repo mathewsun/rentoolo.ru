@@ -222,7 +222,10 @@
                 </table>
                 <div style="padding-top: 15px;">
                     <a href="MyAdverts.aspx" class="button-changePassword settingButton">Мои объявления</a>
-                </divа
+                </div>
+                <div style="padding-top: 15px;">
+                    <a href="MyRents.aspx" class="button-changePassword settingButton">Мои аренды</a>
+                </div>
                 <div style="padding-top: 15px;">
                     <a href="MyAuctions.aspx" class="button-changePassword settingButton">Мои аукционы</a>
                 </div>
