@@ -76,11 +76,16 @@ namespace Rentoolo.Controllers
             {
                 foreach(KeyValuePair<string, double> valuteCurrency in valuteCurrencies)
                 {
+                    if(valuteCurrency.Key == currencyOfValute)
+                    {
+                        currencies.Rates.Add("USD", valuteCurrency.Value);
+                    }
                     currencies.Rates.Add(valuteCurrency.Key, Math.Round(selectedValuteCurrency / valuteCurrency.Value, 5));
                 }
             }
             else
             {
+                currencies.Rates.Add("USD", 1);
                 foreach (KeyValuePair<string, double> valuteCurrency in valuteCurrencies)
                 {
                     currencies.Rates.Add(valuteCurrency.Key, valuteCurrency.Value);
