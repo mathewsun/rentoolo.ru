@@ -1264,6 +1264,7 @@
     <Compile Include="BatrebleSs\NewsBatrebleSs.aspx.designer.cs">
       <DependentUpon>NewsBatrebleSs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BLL\ParsingHelper.cs" />
     <Compile Include="Business.aspx.cs">
       <DependentUpon>Business.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1651,6 +1652,10 @@
     <Compile Include="Model\Phones.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Rates.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RatesDataHelper.cs" />
     <Compile Include="Model\Recipes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
