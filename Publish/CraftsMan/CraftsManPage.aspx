@@ -203,7 +203,9 @@
         <div class="card">
             <div class="card-body">
                 <a href="CraftsManProfile.aspx?id=<%= item.Id %>">
-                    <img class="card-img-top" src="<%=item.ImgUrls %>" alt="Card image">
+                    <div class="media-body-inline-grid" data-grid="images">
+                        <div class="photoContainer" data='<%=item.ImgUrls%>'></div>
+                    </div>
                     <h4 class="card-title"><%= item.Сraft %></h4>
                     <p class="card-text"><%= item.Description %></p>
                     <p class="card-text"><%= item.Id %></p>

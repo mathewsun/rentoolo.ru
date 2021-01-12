@@ -4,6 +4,79 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+
+
+    <style>
+
+        body {
+	        padding: 0;
+	        margin: 0;
+	        display: flex;
+	        justify-content: center;
+	        align-items: center;
+	        min-height: 100vh;
+        }
+
+        #upload-container {
+	        display: flex;
+	        justify-content: center;
+	        align-items: center;
+	        flex-direction: column;
+	        width: 100px;
+	        height: 100px;
+	        outline: 2px dashed #5d5d5d;
+	        outline-offset: -12px;
+	        background-color: #e0f2f7;
+	        font-family: 'Segoe UI';
+	        color: #1f3c44;
+        }
+
+        #upload-container img {
+	        width: 70%;
+            height: 70%;
+	        margin-bottom: -30px;
+	        user-select: none;
+        }
+
+        #upload-container label {
+	        font-weight: bold;
+        }
+
+        #upload-container label:hover {
+	        cursor: pointer;
+	        text-decoration: underline;
+        }
+
+        #upload-container div {
+	        position: relative;
+	        z-index: 10;
+        }
+
+        #upload-container input[type=file] {
+	        width: 0.1px;
+	        height: 0.1px;
+	        opacity: 0;
+	        position: absolute;
+	        z-index: -10;
+        }
+
+        #upload-container label.focus {
+	        outline: 1px solid #0078d7;
+	        outline: -webkit-focus-ring-color auto 5px;
+        }
+
+        #upload-container.dragover {
+	        background-color: #fafafa;
+	        outline-offset: -17px;
+        }
+
+        #imgContainer{
+            visibility: hidden;
+        }
+
+    </style>
+
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="additem">
@@ -15,18 +88,66 @@
 
 
             <br />
+                <%--<div>
+                    <img title="загрузить аватарку"  width="200px" height="200px" src="/assets/img/avatars/<%=User.UserId %>.png" onerror="this.src = '/assets/img/addphoto.png'" />
 
-                <img src="/assets/img/avatars/<%=User.UserId %>.png" />
+                </div>--%>
+                <div id="upload-container">
+                    <img  id="upload-image" onerror="onErrorAvatarHandler(this)"    src="/assets/img/avatars/<%=User.UserId %>.png"/>
+		            <div>
+			            <input id="file-input" type="file" name="file">
+                        <div id="imgContainer" >
+                            <label style="padding-left: 16px;" for="file-input">Выберите файл</label>
+			                
+                        </div>
+			            
+		            </div>
+                    
+                </div>
 
-            <div>
+                <%--<div id="upload-container">
+                    <img id="upload-image" onload="onErrorAvatarHandler()"    src="https://habrastorage.org/webt/dr/qg/cs/drqgcsoh1mosho2swyk3kk_mtwi.png"/>
+		            <div>
+			            <input id="file-input" type="file" name="file">
+                        <div id="imgContainer">
+                            <label style="padding-left: 16px;" for="file-input">Выберите файл</label>
+			                <span>или перетащите его сюда</span>
+                        </div>
+			            
+		            </div>
+                    
+                </div>--%>
+                
+            <%--<div>
                 <input type="file" id="f" />
-            </div>
+            </div>--%>
 
             <script type="text/javascript">
 
+
+                var imgContainer;
+
+
+                function onErrorAvatarHandler(img) {
+
+                    let uploadImg = 'https://habrastorage.org/webt/dr/qg/cs/drqgcsoh1mosho2swyk3kk_mtwi.png';
+
+
+                    imgContainer = document.getElementById('imgContainer');
+                    imgContainer.style.visibility = "inherit";
+                    img.src = uploadImg;
+                    console.log("error avatar load not");
+                    
+                }
+
+
+
                 window.onload = function () {
 
-                    let finput = document.getElementById('f');
+                    imgContainer = document.getElementById('imgContainer');
+
+
+                    let finput = document.getElementById('file-input');
                     finput.onchange = function (e) {
 
                         let f = e.target.files[0];
@@ -80,23 +201,7 @@
 
 
 
-
-
-
-
             </script>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                 <table class="marginTable cabinetTable">
@@ -117,6 +222,12 @@
                 </table>
                 <div style="padding-top: 15px;">
                     <a href="MyAdverts.aspx" class="button-changePassword settingButton">Мои объявления</a>
+                </div>
+                <div style="padding-top: 15px;">
+                    <a href="MyRents.aspx" class="button-changePassword settingButton">Мои аренды</a>
+                </div>
+                <div style="padding-top: 15px;">
+                    <a href="MyAuctions.aspx" class="button-changePassword settingButton">Мои аукционы</a>
                 </div>
                 <div style="padding-top: 15px;">
                     <a href="MyAdverts.aspx" class="button-changePassword settingButton">Вы смотрели</a>
