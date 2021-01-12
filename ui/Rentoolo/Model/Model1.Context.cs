@@ -80,6 +80,7 @@ namespace Rentoolo.Model
         public virtual DbSet<Operations> Operations { get; set; }
         public virtual DbSet<Payments> Payments { get; set; }
         public virtual DbSet<Phones> Phones { get; set; }
+        public virtual DbSet<Rates> Rates { get; set; }
         public virtual DbSet<Recipes> Recipes { get; set; }
         public virtual DbSet<Referrals> Referrals { get; set; }
         public virtual DbSet<Rent> Rent { get; set; }

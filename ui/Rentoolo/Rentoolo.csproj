@@ -1264,7 +1264,6 @@
     <Compile Include="BatrebleSs\NewsBatrebleSs.aspx.designer.cs">
       <DependentUpon>NewsBatrebleSs.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BLL\ParsingHelper.cs" />
     <Compile Include="Business.aspx.cs">
       <DependentUpon>Business.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

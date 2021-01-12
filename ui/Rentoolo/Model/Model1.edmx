@@ -666,6 +666,14 @@
           <Property Name="IdentificateStatus" Type="int" Nullable="false" />
           <Property Name="Commision" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Rates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Recipes">
           <Key>
             <PropertyRef Name="Id" />
@@ -1342,6 +1350,7 @@
           <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Phones" EntityType="Self.Phones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rates" EntityType="Self.Rates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recipes" EntityType="Self.Recipes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Referrals" EntityType="Self.Referrals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rent" EntityType="Self.Rent" Schema="dbo" store:Type="Tables" />
@@ -2141,6 +2150,14 @@
           <Property Name="IdentificateStatus" Type="Int32" Nullable="false" />
           <Property Name="Commision" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="Rates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="Recipes">
           <Key>
             <PropertyRef Name="Id" />
@@ -2686,6 +2703,7 @@
           <EntitySet Name="Operations" EntityType="Self.Operations" />
           <EntitySet Name="Payments" EntityType="Self.Payments" />
           <EntitySet Name="Phones" EntityType="Self.Phones" />
+          <EntitySet Name="Rates" EntityType="Self.Rates" />
           <EntitySet Name="Recipes" EntityType="Self.Recipes" />
           <EntitySet Name="Referrals" EntityType="Self.Referrals" />
           <EntitySet Name="Rent" EntityType="Self.Rent" />
@@ -3711,6 +3729,15 @@
                 <ScalarProperty Name="BalanceUpdatePerMonthUpdateDate" ColumnName="BalanceUpdatePerMonthUpdateDate" />
                 <ScalarProperty Name="IdentificateStatus" ColumnName="IdentificateStatus" />
                 <ScalarProperty Name="Commision" ColumnName="Commision" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rates">
+            <EntityTypeMapping TypeName="RentooloModel.Rates">
+              <MappingFragment StoreEntitySet="Rates">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
