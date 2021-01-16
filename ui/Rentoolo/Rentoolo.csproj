@@ -438,6 +438,7 @@
     <Content Include="Help.aspx" />
     <Content Include="HobbyRest.aspx" />
     <Content Include="HomeGarden.aspx" />
+    <Content Include="illfyar\Newsillfyar.aspx" />
     <Content Include="Ilya\News.aspx" />
     <Content Include="img\a\noPhoto.png" />
     <Content Include="img\kitchen\avatars\69179930_736853823483887_5740857891485646848_n.jpg" />
@@ -1423,6 +1424,13 @@
     </Compile>
     <Compile Include="HelperModels\RusCities.cs" />
     <Compile Include="HelperModels\StateStructs.cs" />
+    <Compile Include="illfyar\Newsillfyar.aspx.cs">
+      <DependentUpon>Newsillfyar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="illfyar\Newsillfyar.aspx.designer.cs">
+      <DependentUpon>Newsillfyar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Ilya\News.aspx.cs">
       <DependentUpon>News.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1494,6 +1502,7 @@
     </Compile>
     <Compile Include="Model\DataHelperAlexPigalyov.cs" />
     <Compile Include="Model\DataHelperBatrebleSs.cs" />
+    <Compile Include="Model\DataHelperillfyar.cs" />
     <Compile Include="Model\DataHelperTowardsbackwards.cs" />
     <Compile Include="Model\CommentForUser.cs" />
     <Compile Include="Model\ComplaintsFilter.cs" />
@@ -1619,6 +1628,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsGGdotNET.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Newsillfyar.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsIlya.cs">
