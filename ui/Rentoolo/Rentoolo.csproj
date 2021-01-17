@@ -438,6 +438,7 @@
     <Content Include="Help.aspx" />
     <Content Include="HobbyRest.aspx" />
     <Content Include="HomeGarden.aspx" />
+    <Content Include="illfyar\AddNewsillfyar.aspx" />
     <Content Include="illfyar\Newsillfyar.aspx" />
     <Content Include="Ilya\News.aspx" />
     <Content Include="img\a\noPhoto.png" />
@@ -546,6 +547,9 @@
     </EntityDeploy>
     <Content Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="illfyar\Web.config">
+      <SubType>Designer</SubType>
     </Content>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -1424,6 +1428,13 @@
     </Compile>
     <Compile Include="HelperModels\RusCities.cs" />
     <Compile Include="HelperModels\StateStructs.cs" />
+    <Compile Include="illfyar\AddNewsillfyar.aspx.cs">
+      <DependentUpon>AddNewsillfyar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="illfyar\AddNewsillfyar.aspx.designer.cs">
+      <DependentUpon>AddNewsillfyar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="illfyar\Newsillfyar.aspx.cs">
       <DependentUpon>Newsillfyar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
