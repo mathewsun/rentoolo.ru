@@ -1030,6 +1030,23 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+CREATE TABLE [dbo].[Newsillfyar](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Text] [nvarchar](max) NOT NULL,
+	[Date] [datetime] NOT NULL,
+	[AuthorId] [uniqueidentifier] NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[Active] [bit] NOT NULL,
+ CONSTRAINT [PK_Newsillfyar] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[NewsIlya](
 	[Id] [int] NOT NULL,
 	[Text] [nvarchar](max) NOT NULL,
@@ -3516,6 +3533,16 @@ GO
 INSERT [dbo].[NewsGGdotNET] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'Вторая новость', CAST(N'2020-11-12T17:46:56.160' AS DateTime), N'0082479a-19e3-4846-a681-60666b4c9860', CAST(N'2020-11-12T17:46:56.160' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[NewsGGdotNET] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Newsillfyar] ON 
+GO
+INSERT [dbo].[Newsillfyar] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'новость1', CAST(N'2021-01-16T19:34:38.680' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2021-01-16T19:34:38.680' AS DateTime), 1)
+GO
+INSERT [dbo].[Newsillfyar] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (3, N'новость2', CAST(N'2021-01-16T20:19:57.900' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2021-01-16T20:19:57.900' AS DateTime), 1)
+GO
+INSERT [dbo].[Newsillfyar] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (4, N'новость3', CAST(N'2021-01-16T20:20:04.290' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2021-01-16T20:20:04.290' AS DateTime), 1)
+GO
+SET IDENTITY_INSERT [dbo].[Newsillfyar] OFF
 GO
 INSERT [dbo].[NewsIlya] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'1', CAST(N'2020-11-12T22:21:31.977' AS DateTime), N'd605cfec-b531-4b21-a58c-074b035402af', CAST(N'2020-11-12T22:21:31.977' AS DateTime), 1)
 GO
@@ -7724,6 +7751,12 @@ GO
 ALTER TABLE [dbo].[NewsGGdotNET] ADD  DEFAULT (getdate()) FOR [Date]
 GO
 ALTER TABLE [dbo].[NewsGGdotNET] ADD  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[Newsillfyar] ADD  CONSTRAINT [DF_Newsillfyar_Date]  DEFAULT (getdate()) FOR [Date]
+GO
+ALTER TABLE [dbo].[Newsillfyar] ADD  CONSTRAINT [DF_Newsillfyar_CreateDate]  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[Newsillfyar] ADD  CONSTRAINT [DF_Newsillfyar_Active]  DEFAULT ((1)) FOR [Active]
 GO
 ALTER TABLE [dbo].[NewsIlya] ADD  DEFAULT (getdate()) FOR [Date]
 GO
