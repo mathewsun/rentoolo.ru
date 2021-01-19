@@ -4,5 +4,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
 
+        <div>
+            <div>
+                <%= AnotherUser.UserName %>
+            </div>
+        </div>
+        <div>
+            <a href="">перейти к диалогу: </a>
+        </div>
+
     </div>
 </asp:Content>
