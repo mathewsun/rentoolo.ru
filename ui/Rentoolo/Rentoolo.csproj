@@ -551,6 +551,8 @@
     <Content Include="illfyar\Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="assets\json\countries.json" />
+    <Content Include="assets\json\rus_cities2.json" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tropal.pubxml" />
