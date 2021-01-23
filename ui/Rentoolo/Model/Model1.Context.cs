@@ -105,6 +105,7 @@ namespace Rentoolo.Model
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<NewsShCodder> NewsShCodder { get; set; }
         public virtual DbSet<RentedTime> RentedTime { get; set; }
+        public virtual DbSet<GeographyDPD> GeographyDPD { get; set; }
     
         [DbFunction("RentooloEntities", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()
@@ -392,6 +393,15 @@ namespace Rentoolo.Model
                 new ObjectParameter("uid", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetWatchedByCookies_Result>("spGetWatchedByCookies", uidParameter);
+        }
+    
+        public virtual ObjectResult<spGeographyDPDTop10_Result> spGeographyDPDTop10(string text)
+        {
+            var textParameter = text != null ?
+                new ObjectParameter("text", text) :
+                new ObjectParameter("text", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGeographyDPDTop10_Result>("spGeographyDPDTop10", textParameter);
         }
     }
 }

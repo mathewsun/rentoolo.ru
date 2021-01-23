@@ -1334,6 +1334,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AllCitiesController.cs" />
     <Compile Include="Controllers\AvatarsController.cs" />
     <Compile Include="Controllers\ChatsController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
@@ -1576,6 +1577,10 @@
     <Compile Include="Model\fnGetUserWallets_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\GeographyDPD.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GeographyDPDHelper.cs" />
     <Compile Include="Model\HelperStructs\StructsHelper.cs" />
     <Compile Include="Model\ItemDislikes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -1699,6 +1704,9 @@
     </Compile>
     <Compile Include="Model\SelIItem.cs" />
     <Compile Include="Model\Settings.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spGeographyDPDTop10_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetChatsForUser_Result.cs">
@@ -2154,6 +2162,7 @@
     <Folder Include="NewFolder1\" />
     <Folder Include="Rent\" />
     <Folder Include="Sell\" />
+    <Folder Include="Views\AllCities\" />
     <Folder Include="Views\Dialog\" />
   </ItemGroup>
   <ItemGroup>

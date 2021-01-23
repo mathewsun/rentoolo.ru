@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RentooloModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RentooloModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adverts">
           <Key>
             <PropertyRef Name="Id" />
@@ -354,6 +354,23 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="UserCookiesId" Type="nvarchar" MaxLength="36" Nullable="false" />
           <Property Name="AdvertId" Type="bigint" Nullable="false" />
           <Property Name="Created" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Rentoolo.dbo.GeographyDPD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GeographyDPD">
+          <Key>
+            <PropertyRef Name="CityCode" />
+            <PropertyRef Name="Abbreviation" />
+            <PropertyRef Name="CityName" />
+            <PropertyRef Name="RegionName" />
+            <PropertyRef Name="CountryName" />
+          </Key>
+          <Property Name="CityCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Abbreviation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RegionName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id" Type="bigint" />
         </EntityType>
         <EntityType Name="ItemDislikes">
           <Key>
@@ -1262,6 +1279,9 @@ warning 6002: The table/view 'Rentoolo.dbo.RentedTime' does not have a primary k
           <Parameter Name="uid" Type="nvarchar" Mode="In" />
           <Parameter Name="advertId" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="spGeographyDPDTop10" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="text" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="spGetChats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
         </Function>
@@ -1393,6 +1413,16 @@ warning 6002: The table/view 'Rentoolo.dbo.RentedTime' does not have a primary k
     [Categories].[ParentCategoryId] AS [ParentCategoryId]
     FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="GeographyDPD" EntityType="Self.GeographyDPD" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GeographyDPD].[CityCode] AS [CityCode], 
+    [GeographyDPD].[Abbreviation] AS [Abbreviation], 
+    [GeographyDPD].[CityName] AS [CityName], 
+    [GeographyDPD].[RegionName] AS [RegionName], 
+    [GeographyDPD].[CountryName] AS [CountryName], 
+    [GeographyDPD].[Id] AS [Id]
+    FROM [dbo].[GeographyDPD] AS [GeographyDPD]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="NewsShCodder" EntityType="Self.NewsShCodder" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [NewsShCodder].[Id] AS [Id], 
@@ -1480,8 +1510,7 @@ warning 6002: The table/view 'Rentoolo.dbo.RentedTime' does not have a primary k
             <End Role="UsersInRoles" EntitySet="UsersInRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RentooloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2818,13 +2847,13 @@ warning 6002: The table/view 'Rentoolo.dbo.RentedTime' does not have a primary k
           <FunctionImport Name="fnGetAllUsers" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetAllUsers_Result)" />
           <FunctionImport Name="fnGetTablesRows" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetTablesRows_Result)" />
           <FunctionImport Name="fnGetUserReferralsSecondLevel" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserReferralsSecondLevel_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="fnGetUserReferralsThirdLevel" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserReferralsThirdLevel_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="fnGetUserWallets" IsComposable="true" ReturnType="Collection(RentooloModel.fnGetUserWallets_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spAddAdvert">
             <Parameter Name="Category" Mode="In" Type="Int32" />
@@ -2856,10 +2885,10 @@ warning 6002: The table/view 'Rentoolo.dbo.RentedTime' does not have a primary k
             <Parameter Name="advertId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="spGetChats" ReturnType="Collection(RentooloModel.spGetChats_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spGetChatsForUser" ReturnType="Collection(RentooloModel.spGetChatsForUser_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spGetComments" ReturnType="Collection(RentooloModel.spGetComments_Result)">
             <Parameter Name="objectId" Mode="In" Type="Int64" />
@@ -2870,35 +2899,39 @@ warning 6002: The table/view 'Rentoolo.dbo.RentedTime' does not have a primary k
             <Parameter Name="advertId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetComplaintsByRecipier" ReturnType="Collection(RentooloModel.spGetComplaintsByRecipier_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spGetComplaintsBySender" ReturnType="Collection(RentooloModel.spGetComplaintsBySender_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spGetExchangeItemRequests" ReturnType="Collection(RentooloModel.spGetExchangeItemRequests_Result)">
-            <Parameter Name="exchangeItemId" Mode="In" Type="Int64" />
+          <Parameter Name="exchangeItemId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="spGetExchangeProducts" ReturnType="Collection(RentooloModel.spGetExchangeProducts_Result)">
-            <Parameter Name="query" Mode="In" Type="String" />
+          <Parameter Name="query" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spGetFavorites" ReturnType="Collection(RentooloModel.spGetFavorites_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spGetFavoritesByCookies" ReturnType="Collection(RentooloModel.spGetFavoritesByCookies_Result)">
-            <Parameter Name="uid" Mode="In" Type="String" />
+          <Parameter Name="uid" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spGetLast200TokensOperations" ReturnType="Collection(RentooloModel.spGetLast200TokensOperations_Result)" />
           <FunctionImport Name="spGetLoginStatisticLastDayActive" />
           <FunctionImport Name="spGetLoginStatisticLastHourActive" />
           <FunctionImport Name="spGetTokenCostToday" ReturnType="Collection(RentooloModel.spGetTokenCostToday_Result)" />
           <FunctionImport Name="spGetUserAdverts" ReturnType="Collection(RentooloModel.spGetUserAdverts_Result)">
-            <Parameter Name="UserId" Mode="In" Type="Guid" />
+          <Parameter Name="UserId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spGetWatched" ReturnType="Collection(RentooloModel.spGetWatched_Result)">
-            <Parameter Name="userId" Mode="In" Type="Guid" />
+          <Parameter Name="userId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="spGetWatchedByCookies" ReturnType="Collection(RentooloModel.spGetWatchedByCookies_Result)">
-            <Parameter Name="uid" Mode="In" Type="String" />
+          <Parameter Name="uid" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="GeographyDPD" EntityType="RentooloModel.GeographyDPD" />
+          <FunctionImport Name="spGeographyDPDTop10" ReturnType="Collection(RentooloModel.spGeographyDPDTop10_Result)">
+            <Parameter Name="text" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spGetChats_Result">
@@ -3068,6 +3101,29 @@ warning 6002: The table/view 'Rentoolo.dbo.RentedTime' does not have a primary k
           <Property Type="Int32" Name="MessageType" Nullable="true" />
           <Property Type="String" Name="ImgUrls" Nullable="true" />
           <Property Type="String" Name="PositionString" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="GeographyDPD">
+          <Key>
+            <PropertyRef Name="CityCode" />
+            <PropertyRef Name="Abbreviation" />
+            <PropertyRef Name="CityName" />
+            <PropertyRef Name="RegionName" />
+            <PropertyRef Name="CountryName" />
+          </Key>
+          <Property Name="CityCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Abbreviation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RegionName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int64" />
+        </EntityType>
+        <ComplexType Name="spGeographyDPDTop10_Result">
+          <Property Type="String" Name="CityCode" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Abbreviation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="RegionName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="50" />
+          <Property Type="Int64" Name="Id" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4366,6 +4422,30 @@ warning 6002: The table/view 'Rentoolo.dbo.RentedTime' does not have a primary k
                 <ScalarProperty Name="MessageType" ColumnName="MessageType" />
                 <ScalarProperty Name="ImgUrls" ColumnName="ImgUrls" />
                 <ScalarProperty Name="PositionString" ColumnName="PositionString" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="GeographyDPD">
+            <EntityTypeMapping TypeName="RentooloModel.GeographyDPD">
+              <MappingFragment StoreEntitySet="GeographyDPD">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spGeographyDPDTop10" FunctionName="RentooloModel.Store.spGeographyDPDTop10">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentooloModel.spGeographyDPDTop10_Result">
+                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

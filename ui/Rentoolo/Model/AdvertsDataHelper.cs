@@ -10,15 +10,15 @@ namespace Rentoolo.Model
     {
         #region Объявления
 
-        public static TEntity Get<TEntity>(long id) where TEntity : class
-        {
-            using (var dc = new RentooloEntities())
-            {
-                var items = (DbSet<TEntity>)dc.GetType().GetProperty(typeof(TEntity).Name).GetValue(dc);
-                var item = items.AsEnumerable().FirstOrDefault(x => Convert.ToInt64(typeof(TEntity).GetProperty("Id").GetValue(x)) == id);
-                return item;
-            }
-        }
+        //public static TEntity Get<TEntity>(long id) where TEntity : class
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        var items = (DbSet<TEntity>)dc.GetType().GetProperty(typeof(TEntity).Name).GetValue(dc);
+        //        var item = items.AsEnumerable().FirstOrDefault(x => Convert.ToInt64(typeof(TEntity).GetProperty("Id").GetValue(x)) == id);
+        //        return item;
+        //    }
+        //}
         public static List<Adverts> GetAdverts()
         {
             using (var ctx = new RentooloEntities())
