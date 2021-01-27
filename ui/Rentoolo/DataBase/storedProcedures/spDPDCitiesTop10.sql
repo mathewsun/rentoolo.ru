@@ -1,4 +1,4 @@
-CREATE PROCEDURE [spDPDCitiesTop10]
+ALTER PROCEDURE [spDPDCitiesTop10]
 @text nvarchar(50)
 AS
 BEGIN
@@ -16,9 +16,15 @@ SELECT TOP (10) [cityId]
 ,[indexMax]
 ,[Population]
 ,[Settled]
-FROM [Rentoolo222].[dbo].[DpdCities]
+,[lat]
+,[lng]
+FROM [DpdCities]
 Where 
 [cityName] like '%'+@text+'%'
 Order by Population desc
 END
 GO
+
+GRANT EXECUTE
+    ON OBJECT::[dbo].[spDPDCitiesTop10] TO PUBLIC
+    AS [dbo];
