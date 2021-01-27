@@ -28,5 +28,7 @@ namespace Rentoolo.Model
         public string indexMax { get; set; }
         public Nullable<long> Population { get; set; }
         public string Settled { get; set; }
+        public Nullable<double> lat { get; set; }
+        public Nullable<double> lng { get; set; }
     }
 }

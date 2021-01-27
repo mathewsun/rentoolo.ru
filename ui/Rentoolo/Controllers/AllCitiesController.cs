@@ -13,9 +13,16 @@ namespace Rentoolo.Controllers
         // GET: top 10 DPD cities
         public IHttpActionResult Get(string text = null)
         {
-            List<spDPDCitiesTop10_Result> top10cities = GeographyDPDHelper.GetDPDCitiesTop10(text);
+            try
+            {
+                List<spDPDCitiesTop10_Result> top10cities = GeographyDPDHelper.GetDPDCitiesTop10(text);
 
-            return Json(top10cities);
+                return Json(top10cities);
+            }
+            catch (Exception e)
+            {
+                return Json(e.Message);
+            }
         }
     }
 }

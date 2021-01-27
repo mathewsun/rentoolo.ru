@@ -326,6 +326,8 @@ warning 6002: The table/view 'Rentoolo.dbo.Categories' does not have a primary k
           <Property Name="indexMax" Type="nvarchar" MaxLength="50" />
           <Property Name="Population" Type="bigint" />
           <Property Name="Settled" Type="nchar" MaxLength="20" />
+          <Property Name="lat" Type="float" />
+          <Property Name="lng" Type="float" />
         </EntityType>
         <EntityType Name="Exceptions">
           <Key>
@@ -1888,6 +1890,8 @@ warning 6002: The table/view 'Rentoolo.dbo.RentedTime' does not have a primary k
           <Property Name="indexMax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Population" Type="Int64" />
           <Property Name="Settled" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="lat" Type="Double" />
+          <Property Name="lng" Type="Double" />
         </EntityType>
         <EntityType Name="Exceptions">
           <Key>
@@ -3522,6 +3526,8 @@ warning 6002: The table/view 'Rentoolo.dbo.RentedTime' does not have a primary k
                 <ScalarProperty Name="indexMax" ColumnName="indexMax" />
                 <ScalarProperty Name="Population" ColumnName="Population" />
                 <ScalarProperty Name="Settled" ColumnName="Settled" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="lng" ColumnName="lng" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
