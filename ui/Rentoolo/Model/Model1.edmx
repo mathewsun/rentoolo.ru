@@ -3015,6 +3015,8 @@ warning 6002: The table/view 'Rentoolo.dbo.RentedTime' does not have a primary k
           <Property Type="String" Name="indexMax" Nullable="true" MaxLength="50" />
           <Property Type="Int64" Name="Population" Nullable="true" />
           <Property Type="String" Name="Settled" Nullable="true" MaxLength="20" />
+          <Property Type="Double" Name="lat" Nullable="true" />
+          <Property Type="Double" Name="lng" Nullable="true" />
         </ComplexType>
         <ComplexType Name="spGeographyDPDTop10_Result">
           <Property Type="String" Name="CityCode" Nullable="false" MaxLength="50" />
@@ -4313,6 +4315,8 @@ warning 6002: The table/view 'Rentoolo.dbo.RentedTime' does not have a primary k
                 <ScalarProperty Name="indexMax" ColumnName="indexMax" />
                 <ScalarProperty Name="Population" ColumnName="Population" />
                 <ScalarProperty Name="Settled" ColumnName="Settled" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="lng" ColumnName="lng" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
