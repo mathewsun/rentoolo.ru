@@ -50,6 +50,7 @@ namespace Rentoolo.Model
         public virtual DbSet<DialogMessages> DialogMessages { get; set; }
         public virtual DbSet<DialogsInfo> DialogsInfo { get; set; }
         public virtual DbSet<DisLikes> DisLikes { get; set; }
+        public virtual DbSet<DpdCities> DpdCities { get; set; }
         public virtual DbSet<Exceptions> Exceptions { get; set; }
         public virtual DbSet<ExchangeItemRequests> ExchangeItemRequests { get; set; }
         public virtual DbSet<ExchangeProducts> ExchangeProducts { get; set; }
@@ -103,9 +104,9 @@ namespace Rentoolo.Model
         public virtual DbSet<Watched> Watched { get; set; }
         public virtual DbSet<WatchedByCookies> WatchedByCookies { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<GeographyDPD> GeographyDPD { get; set; }
         public virtual DbSet<NewsShCodder> NewsShCodder { get; set; }
         public virtual DbSet<RentedTime> RentedTime { get; set; }
-        public virtual DbSet<GeographyDPD> GeographyDPD { get; set; }
     
         [DbFunction("RentooloEntities", "fnGetAllUsers")]
         public virtual IQueryable<fnGetAllUsers_Result> fnGetAllUsers()
@@ -248,6 +249,24 @@ namespace Rentoolo.Model
                 new ObjectParameter("advertId", typeof(long));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddWatchedByCookies", uidParameter, advertIdParameter);
+        }
+    
+        public virtual ObjectResult<spDPDCitiesTop10_Result> spDPDCitiesTop10(string text)
+        {
+            var textParameter = text != null ?
+                new ObjectParameter("text", text) :
+                new ObjectParameter("text", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spDPDCitiesTop10_Result>("spDPDCitiesTop10", textParameter);
+        }
+    
+        public virtual ObjectResult<spGeographyDPDTop10_Result> spGeographyDPDTop10(string text)
+        {
+            var textParameter = text != null ?
+                new ObjectParameter("text", text) :
+                new ObjectParameter("text", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGeographyDPDTop10_Result>("spGeographyDPDTop10", textParameter);
         }
     
         public virtual ObjectResult<spGetChats_Result> spGetChats(Nullable<System.Guid> userId)
@@ -393,15 +412,6 @@ namespace Rentoolo.Model
                 new ObjectParameter("uid", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetWatchedByCookies_Result>("spGetWatchedByCookies", uidParameter);
-        }
-    
-        public virtual ObjectResult<spGeographyDPDTop10_Result> spGeographyDPDTop10(string text)
-        {
-            var textParameter = text != null ?
-                new ObjectParameter("text", text) :
-                new ObjectParameter("text", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGeographyDPDTop10_Result>("spGeographyDPDTop10", textParameter);
         }
     }
 }

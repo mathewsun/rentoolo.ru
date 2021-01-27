@@ -10,10 +10,10 @@ namespace Rentoolo.Controllers
 {
     public class AllCitiesController : ApiController
     {
-        // GET: top 10 GeographyDPD cities
+        // GET: top 10 DPD cities
         public IHttpActionResult Get(string text = null)
         {
-            List<spGeographyDPDTop10_Result> top10cities = GeographyDPDHelper.GetGeographyDPDTop10(text);
+            List<spDPDCitiesTop10_Result> top10cities = GeographyDPDHelper.GetDPDCitiesTop10(text);
 
             return Json(top10cities);
         }

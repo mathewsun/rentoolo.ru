@@ -28,7 +28,7 @@ namespace Rentoolo
             AuthConfig.RegisterOpenAuth();
             WSServer.Serve();
 
-            RusCities.InitAllCities();
+            //RusCities.InitAllCities();
 
             RegisterRoutes(RouteTable.Routes);
 
