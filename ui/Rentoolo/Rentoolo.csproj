@@ -426,6 +426,7 @@
     <Content Include="DataBase\CurrentSQLInit\init.sql" />
     <Content Include="DataBase\Init\init_161120.sql" />
     <Content Include="docs\index.html" />
+    <Content Include="EducationBlacklake\NewsBlacklake.aspx" />
     <Content Include="Education\AddNewsEducation.aspx" />
     <Content Include="Education\NewsEducation.aspx" />
     <Content Include="Empty.aspx" />
@@ -1394,6 +1395,13 @@
     <Compile Include="CreateComplaint.aspx.designer.cs">
       <DependentUpon>CreateComplaint.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EducationBlacklake\NewsBlacklake.aspx.cs">
+      <DependentUpon>NewsBlacklake.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EducationBlacklake\NewsBlacklake.aspx.designer.cs">
+      <DependentUpon>NewsBlacklake.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Education\AddNewsEducation.aspx.cs">
       <DependentUpon>AddNewsEducation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1516,6 +1524,7 @@
     </Compile>
     <Compile Include="Model\DataHelperAlexPigalyov.cs" />
     <Compile Include="Model\DataHelperBatrebleSs.cs" />
+    <Compile Include="Model\DataHelperBlacklake.cs" />
     <Compile Include="Model\DataHelperillfyar.cs" />
     <Compile Include="Model\DataHelperTowardsbackwards.cs" />
     <Compile Include="Model\CommentForUser.cs" />
@@ -1547,9 +1556,6 @@
     <Compile Include="Model\DisLikes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DpdCities.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Exceptions.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1578,9 +1584,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\fnGetUserWallets_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\GeographyDPD.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GeographyDPDHelper.cs" />
@@ -1645,6 +1648,9 @@
     <Compile Include="Model\NewsEducation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\NewsEducationBlacklake.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\NewsEoll73.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1707,12 +1713,6 @@
     </Compile>
     <Compile Include="Model\SelIItem.cs" />
     <Compile Include="Model\Settings.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\spDPDCitiesTop10_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\spGeographyDPDTop10_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetChatsForUser_Result.cs">
