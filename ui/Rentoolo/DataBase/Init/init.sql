@@ -1,4 +1,3 @@
-USE [Rentoolo]
 GO
 SET ANSI_NULLS ON
 GO
@@ -18,6 +17,7 @@ BEGIN
 END;
 
 
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -33,6 +33,7 @@ BEGIN
 	--FROM [dbo].[Users] 
 	--WHERE UserName = @UserName)
 END;
+
 
 
 GO
@@ -117,6 +118,7 @@ RETURN
 	LEFT JOIN [Memberships] m
 	ON u.[UserId] = m.[UserId]
 );
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -152,6 +154,7 @@ where rup1lvl.ReferrerUserId = @userId
 );
 
 
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -172,6 +175,7 @@ left join Users u
 on u.UserId = r.ReferralUserId
 where rup2lvl.ReferrerUserId = @userId
 );
+
 
 
 GO
@@ -227,6 +231,7 @@ RETURN
 	WHERE w.[UserId] = @userId
 );
 
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -253,6 +258,7 @@ RETURN
 		  , sOBJ.name
 	--ORDER BY [RowCount] desc
 );
+
 
 
 GO
@@ -987,6 +993,23 @@ CREATE TABLE [dbo].[NewsEducation](
 	[CreateDate] [datetime] NOT NULL,
 	[Active] [bit] NOT NULL,
  CONSTRAINT [PK_NewsEducation] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[NewsEducationBlacklake](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Text] [nvarchar](max) NOT NULL,
+	[Date] [datetime] NOT NULL,
+	[AuthorId] [uniqueidentifier] NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[Active] [bit] NOT NULL,
+ CONSTRAINT [PK_NewsEducationBlacklake] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -3513,6 +3536,12 @@ GO
 INSERT [dbo].[NewsEducation] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (2, N'Вторая новость', CAST(N'2020-11-10T13:16:19.970' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2020-11-10T13:16:19.970' AS DateTime), 1)
 GO
 SET IDENTITY_INSERT [dbo].[NewsEducation] OFF
+GO
+SET IDENTITY_INSERT [dbo].[NewsEducationBlacklake] ON 
+GO
+INSERT [dbo].[NewsEducationBlacklake] ([Id], [Text], [Date], [AuthorId], [CreateDate], [Active]) VALUES (1, N'первая новость', CAST(N'2021-01-29T01:23:50.663' AS DateTime), N'bd4551af-fc28-4b85-b147-20a051676b21', CAST(N'2021-01-29T01:23:50.663' AS DateTime), 1)
+GO
+SET IDENTITY_INSERT [dbo].[NewsEducationBlacklake] OFF
 GO
 SET IDENTITY_INSERT [dbo].[NewsEoll73] ON 
 GO
@@ -7742,6 +7771,12 @@ ALTER TABLE [dbo].[NewsEducation] ADD  CONSTRAINT [DF_NewsEducation_CreateDate] 
 GO
 ALTER TABLE [dbo].[NewsEducation] ADD  CONSTRAINT [DF_NewsEducation_Active]  DEFAULT ((1)) FOR [Active]
 GO
+ALTER TABLE [dbo].[NewsEducationBlacklake] ADD  CONSTRAINT [DF_NewsEducationBlacklake_Date]  DEFAULT (getdate()) FOR [Date]
+GO
+ALTER TABLE [dbo].[NewsEducationBlacklake] ADD  CONSTRAINT [DF_NewsEducationBlacklake_CreateDate]  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[NewsEducationBlacklake] ADD  CONSTRAINT [DF_NewsEducationBlacklake_Active]  DEFAULT ((1)) FOR [Active]
+GO
 ALTER TABLE [dbo].[NewsEoll73] ADD  CONSTRAINT [DF_NewsEoll73_Date]  DEFAULT (getdate()) FOR [Date]
 GO
 ALTER TABLE [dbo].[NewsEoll73] ADD  CONSTRAINT [DF_NewsEoll73_CreateDate]  DEFAULT (getdate()) FOR [CreateDate]
@@ -7988,6 +8023,7 @@ BEGIN
 	@ImgUrls,
 	@YouTubeUrl)
 END
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8005,6 +8041,7 @@ BEGIN
        VALUES (@UserId, @advertId)
    END
 END
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8022,6 +8059,7 @@ BEGIN
        VALUES (@uid, @advertId)
    END
 END
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8034,6 +8072,7 @@ BEGIN
     INSERT INTO Watched (UserId, AdvertId)
     VALUES (@UserId, @advertId)
 END
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8046,6 +8085,7 @@ BEGIN
     INSERT INTO WatchedByCookies (UserCookiesId, AdvertId)
     VALUES (@uid, @advertId)
 END
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8072,6 +8112,7 @@ FROM [dbo].[Chats] AS chats
 LEFT JOIN [dbo].ChatUsers AS chatUsers ON (chatUsers.ChatId = chats.Id) WHERE chatUsers.UserId = @userId
 
 END
+
 
 GO
 SET ANSI_NULLS ON
@@ -8100,6 +8141,7 @@ LEFT JOIN [dbo].ChatUsers AS chatUsers ON (chatUsers.ChatId = chats.Id) WHERE ch
 
 END
 
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8121,6 +8163,7 @@ BEGIN
 	where [UserId] = @userId
 	ORDER BY [Date] ASC
 END
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8158,6 +8201,7 @@ END
 GRANT EXECUTE
     ON OBJECT::[dbo].[spGetCommentsForUser] TO PUBLIC
     AS [dbo];
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8183,6 +8227,7 @@ SELECT cpts.[Id]
   LEFT JOIN [dbo].[Users] as usrs ON( cpts.UserRecipier = usrs.UserId) WHERE cpts.UserRecipier = @userId 
 
 END
+
 
 GO
 SET ANSI_NULLS ON
@@ -8210,6 +8255,7 @@ SELECT cpts.[Id]
 
 END
 
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8233,6 +8279,7 @@ SELECT exr.id
 	
 
 END
+
 
 GO
 SET ANSI_NULLS ON
@@ -8270,6 +8317,7 @@ BEGIN
 
 END
 
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8299,6 +8347,7 @@ BEGIN
 	where f.[UserId] = @userId
 	ORDER BY CreatedFavorites DESC
 END
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8328,6 +8377,7 @@ BEGIN
 	where f.[UserCookiesId] = @uid
 	ORDER BY CreatedFavorites DESC
 END
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8359,6 +8409,7 @@ BEGIN
       ) AS a
     ORDER BY [WhenDate] desc
 END
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8375,6 +8426,7 @@ BEGIN
 	 );
      RETURN(@Result);
 END
+
 
 
 GO
@@ -8395,6 +8447,7 @@ BEGIN
 END
 
 
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8409,6 +8462,7 @@ BEGIN
   FROM [Rentoolo].[dbo].[TokensCost]
   WHERE CONVERT(date, [Date]) = CONVERT(date, getdate())
 END
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8434,6 +8488,7 @@ BEGIN
 	WHERE a.[CreatedUserId] = @UserId
 	ORDER BY a.[Created] DESC
 END
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8463,6 +8518,7 @@ BEGIN
 	where w.[UserId] = @userId
 	ORDER BY CreatedFavorites DESC
 END
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -8492,4 +8548,5 @@ BEGIN
 	where w.[UserCookiesId] = @uid
 	ORDER BY CreatedFavorites DESC
 END
+
 GO
