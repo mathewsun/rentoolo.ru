@@ -7,6 +7,7 @@ namespace Rentoolo.Model
 {
     public static class DPDCitiesDataHelper
     {
+        /*
         public static List<spGetDPDCities_Result> spGetDPDCitiesByQuery(string query)
         {
             using (RentooloEntities ctx = new RentooloEntities())
@@ -16,5 +17,6 @@ namespace Rentoolo.Model
                 return cities;
             }
         }
+        */
     }
 }

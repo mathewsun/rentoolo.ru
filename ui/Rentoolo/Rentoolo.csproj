@@ -1629,9 +1629,6 @@
     <Compile Include="Model\fnGetUserWallets_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\GeographyDPD.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\GeographyDPDHelper.cs" />
     <Compile Include="Model\HelperStructs\StructsHelper.cs" />
     <Compile Include="Model\ItemDislikes.cs">
@@ -1761,6 +1758,9 @@
     <Compile Include="Model\Settings.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\spDPDCitiesTop10_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\spGetChatsForUser_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1777,9 +1777,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetComplaintsBySender_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\spGetDPDCities_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\spGetExchangeItemRequests_Result.cs">
