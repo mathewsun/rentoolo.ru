@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <NameOfLastUsedPublishProfile>FolderProfile</NameOfLastUsedPublishProfile>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort>
     </IISExpressSSLPort>
@@ -10,7 +10,7 @@
     <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <LastActiveSolutionConfig>Release|Any CPU</LastActiveSolutionConfig>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
     <Use64BitIISExpress />
     <Controller_SelectedScaffolderID>MvcControllerWithActionsScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Common/MVC/Controller</Controller_SelectedScaffolderCategoryPath>
