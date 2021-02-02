@@ -22,8 +22,8 @@ namespace Rentoolo.Controllers
         {
             try
             {
-                var deliveryCity = DPDCitiesDataHelper.spGetDPDCitiesByQuery(request.DeliveryCityName);
-                var pickupCity = DPDCitiesDataHelper.spGetDPDCitiesByQuery(request.PickupCityName);
+                var deliveryCity = GeographyDPDHelper.GetDPDCitiesTop10(request.DeliveryCityName);
+                var pickupCity = GeographyDPDHelper.GetDPDCitiesTop10(request.PickupCityName);
 
                 var serviceCosts = _calcClient.getServiceCost2(new DPDCalc.serviceCostRequest()
                 {
@@ -34,12 +34,12 @@ namespace Rentoolo.Controllers
                     },
                     delivery = new DPDCalc.cityRequest()
                     {
-                        cityId = deliveryCity.FirstOrDefault().Id.GetValueOrDefault(),
+                        cityId = deliveryCity.FirstOrDefault().cityId,
                         cityIdSpecified = true,
                     },
                     pickup = new DPDCalc.cityRequest()
                     {
-                        cityId = pickupCity.FirstOrDefault().Id.GetValueOrDefault(),
+                        cityId = pickupCity.FirstOrDefault().cityId,
                         cityIdSpecified = true,
                     },
                     declaredValue = request.DeclaredValue,

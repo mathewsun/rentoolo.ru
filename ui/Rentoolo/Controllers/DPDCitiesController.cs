@@ -6,6 +6,7 @@ namespace Rentoolo.Controllers
 {
     public class DPDCitiesController : ApiController
     {
+        /*
         public IHttpActionResult GetLocation(string query)
         {
             if (string.IsNullOrEmpty(query))
@@ -16,6 +17,6 @@ namespace Rentoolo.Controllers
             var cities = DPDCitiesDataHelper.spGetDPDCitiesByQuery(query);
 
             return Json(cities);
-        }
+        }*/
     }
 }
