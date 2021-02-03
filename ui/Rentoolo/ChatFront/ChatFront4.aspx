@@ -4,10 +4,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 
-    <link rel="stylesheet" href="/assets/css/chat.css" />
+    <link rel="stylesheet" href="/assets/css/chat2.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
     
@@ -263,7 +264,7 @@
 
                     if (this.startChat != "") {
                         console.log("chat redirect");
-                        getMessages(this.startChat);
+                        this.getMessages(this.startChat);
                     }
 
                 },
