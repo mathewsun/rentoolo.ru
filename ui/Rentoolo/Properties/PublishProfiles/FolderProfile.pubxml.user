@@ -145,7 +145,7 @@
       <publishTime>11/15/2020 11:12:19</publishTime>
     </File>
     <File Include="Account/SignUp.aspx">
-      <publishTime>11/15/2020 11:12:19</publishTime>
+      <publishTime>02/04/2021 18:55:48</publishTime>
     </File>
     <File Include="Account/Tender.aspx">
       <publishTime>05/03/2020 23:41:52</publishTime>
@@ -199,7 +199,7 @@
       <publishTime>11/15/2020 11:12:19</publishTime>
     </File>
     <File Include="Account/UserProfile.aspx">
-      <publishTime>11/15/2020 11:12:19</publishTime>
+      <publishTime>02/04/2021 18:55:48</publishTime>
     </File>
     <File Include="Account/Vacancy.aspx">
       <publishTime>11/15/2020 11:12:19</publishTime>
@@ -347,6 +347,9 @@
     </File>
     <File Include="assets/css/application.css">
       <publishTime>11/15/2020 11:12:20</publishTime>
+    </File>
+    <File Include="assets/css/chat2.css">
+      <publishTime>02/04/2021 18:55:48</publishTime>
     </File>
     <File Include="assets/css/docs.css">
       <publishTime>11/15/2020 11:12:20</publishTime>
@@ -760,10 +763,10 @@
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Rentoolo.dll">
-      <publishTime>02/04/2021 18:50:22</publishTime>
+      <publishTime>02/04/2021 19:26:04</publishTime>
     </File>
     <File Include="bin/Rentoolo.pdb">
-      <publishTime>02/04/2021 18:50:22</publishTime>
+      <publishTime>02/04/2021 19:26:04</publishTime>
     </File>
     <File Include="bin/ru/EntityFramework.resources.dll">
       <publishTime>10/23/2017 13:15:34</publishTime>
@@ -884,6 +887,9 @@
     </File>
     <File Include="ChatFront/Chat3.html">
       <publishTime>11/15/2020 11:12:19</publishTime>
+    </File>
+    <File Include="ChatFront/ChatFront4.aspx">
+      <publishTime>02/04/2021 18:55:48</publishTime>
     </File>
     <File Include="ChatFront/ChatPage.aspx">
       <publishTime>12/04/2020 01:35:07</publishTime>
@@ -1043,6 +1049,9 @@
     </File>
     <File Include="DataBase/Init/Init.sql">
       <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="DataBase/Init/init_030221_2.sql">
+      <publishTime>02/04/2021 18:55:48</publishTime>
     </File>
     <File Include="DataBase/Init/init_161120.sql">
       <publishTime>11/18/2020 18:48:10</publishTime>
@@ -1690,7 +1699,7 @@
       <publishTime>07/09/2019 20:36:14</publishTime>
     </File>
     <File Include="Model/Model1.edmx.diagram">
-      <publishTime>02/02/2021 23:49:01</publishTime>
+      <publishTime>02/04/2021 19:24:42</publishTime>
     </File>
     <File Include="MrshkVV/NewsMrshkVV.aspx">
       <publishTime>11/21/2020 00:06:50</publishTime>
@@ -1921,7 +1930,7 @@
       <publishTime>12/06/2020 21:13:32</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/04/2021 18:50:22</publishTime>
+      <publishTime>02/04/2021 19:26:05</publishTime>
     </File>
     <File Include="WebForm1.aspx">
       <publishTime>07/03/2019 22:00:51</publishTime>
