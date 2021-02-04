@@ -1998,7 +1998,7 @@ namespace Rentoolo.Model
 
 
 
-        public static void CreateChat(Chats chatInfo)
+        public static long CreateChat(Chats chatInfo)
         {
             using (var dc = new RentooloEntities())
             {
@@ -2008,7 +2008,18 @@ namespace Rentoolo.Model
 
                 long chatId = dc.Chats.First(x => x.Id == chatInfo.Id).Id;
                 dc.ChatUsers.Add(new ChatUsers() { UserId = chatInfo.OwnerId, ChatId = chatId });
+                //dc.SaveChanges();
+
+                dc.ChatInviteTokens.Add(new ChatInviteTokens()
+                {
+                    ChatId = chatId,
+                    Token = Guid.NewGuid(),
+                    Status = 0
+                });
+
                 dc.SaveChanges();
+
+                return chatId;
             }
         }
 

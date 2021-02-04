@@ -38,6 +38,9 @@ namespace Rentoolo.ChatFront
                 });
             }
 
+
+            Response.Redirect("/ChatFront/ChatFront4.aspx?chatId="+chat.Id);
+
         }
     }
 }
