@@ -2013,6 +2013,25 @@ namespace Rentoolo.Model
         }
 
 
+        public static Chats GetChatByToken(Guid token)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                long chatId = dc.ChatInviteTokens.First(x => x.Token == token).ChatId;
+                var chat = dc.Chats.First(x => x.Id == chatId);
+
+                return chat;
+            }
+        }
+
+        public static ChatInviteTokens GetChatTokenInfo(Guid token)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.ChatInviteTokens.First(x => x.Token == token);
+            }
+        }
+
 
         public static List<Chats> GetChats(Guid userId, int skipCount = 0)
         {
