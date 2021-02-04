@@ -2216,7 +2216,6 @@
     <Folder Include="assets\img\avatars\" />
     <Folder Include="bin\" />
     <Folder Include="Data\" />
-    <Folder Include="EducationBlacklake\" />
     <Folder Include="NewFolder1\" />
     <Folder Include="Rent\" />
     <Folder Include="Sell\" />
