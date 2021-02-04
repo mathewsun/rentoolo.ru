@@ -6,22 +6,24 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
 
-        <div>
+        <div class="container">
 
             <h4>Профиль пользователя <%= CurUser.UserName %>
             </h4>
             <div>
-                <div>
-                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Cоздать диалог" />
+                <div class="col">
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" class="btn-info" Text="перейти к диалогу" />
                 </div>
 
-                текущий ник - <%= CurUser.UniqueUserName %>
-                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                <asp:Button ID="Button3" runat="server" Text="Задать уникальное имя" OnClick="Button3_Click" />
+                <div class="col">
+                    текущий ник - <%= CurUser.UniqueUserName %>
+                    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    <asp:Button ID="Button3" runat="server" Text="Задать уникальное имя" OnClick="Button3_Click" />
+                </div>
+                
 
 
-
-                <div>
+                <div class="col">
                     <div>
                         <h6>Добавить в чат из списка:
                         <p>
