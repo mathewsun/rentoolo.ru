@@ -1874,6 +1874,52 @@ namespace Rentoolo.Model
 
         #region Chats
 
+        public static long CreateChatDialog(Guid userId1, Guid userId2)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.Chats.Add(new Chats()
+                {
+                    ChatType = 1,
+                    OwnerId = userId1,
+                    AnotherOwnerId = userId2
+                });
+                dc.SaveChanges();
+
+                long chatId = dc.Chats.First(x => (x.OwnerId == userId1 && x.AnotherOwnerId == userId2)
+                    || (x.OwnerId == userId2 && x.AnotherOwnerId == userId1)).Id;
+
+                dc.ChatUsers.Add(new ChatUsers() { UserId = userId1, ChatId = chatId });
+                dc.ChatUsers.Add(new ChatUsers() { UserId = userId2, ChatId = chatId });
+
+                dc.SaveChanges();
+
+                return chatId;
+            }
+        }
+
+
+
+        public static bool CheckDialogExistance(Guid userId1, Guid userId2)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Chats
+                    .FirstOrDefault(x => (x.OwnerId == userId1 && x.AnotherOwnerId == userId2)
+                    || (x.OwnerId == userId2 && x.AnotherOwnerId == userId1)) != null;
+            }
+        }
+
+
+        public static long GetDialogId(Guid userId1, Guid userId2)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                return dc.Chats
+                    .FirstOrDefault(x => (x.OwnerId == userId1 && x.AnotherOwnerId == userId2)
+                    || (x.OwnerId == userId2 && x.AnotherOwnerId == userId1)).Id;
+            }
+        }
 
         public static List<spGetChatsForUser_Result> GetChatsForUser(Guid userId, int skipCount = 0)
         {

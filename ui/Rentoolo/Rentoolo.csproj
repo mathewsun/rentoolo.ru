@@ -322,6 +322,7 @@
     <Content Include="Articles.aspx" />
     <Content Include="assets\css\additional.css" />
     <Content Include="assets\css\application.css" />
+    <Content Include="assets\css\chat2.css" />
     <Content Include="assets\css\docs.css" />
     <Content Include="assets\css\jQuery.Brazzers-Carousel.css" />
     <Content Include="assets\css\photoSlider.css" />
@@ -409,6 +410,7 @@
     <Content Include="Business.aspx" />
     <Content Include="Category.aspx" />
     <Content Include="ChatFront\Chat3.html" />
+    <Content Include="ChatFront\ChatFront4.aspx" />
     <Content Include="ChatFront\ChatPage2.aspx" />
     <Content Include="ChatFront\ChatPage.aspx" />
     <Content Include="ChatFront\Chats.aspx" />
@@ -430,6 +432,7 @@
     <Content Include="CraftsMan\CraftsManTasks.aspx" />
     <Content Include="CreateComplaint.aspx" />
     <Content Include="DataBase\CurrentSQLInit\init.sql" />
+    <Content Include="DataBase\Init\init_030221_2.sql" />
     <Content Include="DataBase\Init\init_161120.sql" />
     <Content Include="docs\index.html" />
     <Content Include="EducationBlacklake\NewsBlacklake.aspx" />
@@ -1317,6 +1320,13 @@
     </Compile>
     <Compile Include="Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatFront\ChatFront4.aspx.cs">
+      <DependentUpon>ChatFront4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChatFront\ChatFront4.aspx.designer.cs">
+      <DependentUpon>ChatFront4.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChatFront\ChatPage2.aspx.cs">
       <DependentUpon>ChatPage2.aspx</DependentUpon>
@@ -2216,7 +2226,6 @@
     <Folder Include="assets\img\avatars\" />
     <Folder Include="bin\" />
     <Folder Include="Data\" />
-    <Folder Include="EducationBlacklake\" />
     <Folder Include="NewFolder1\" />
     <Folder Include="Rent\" />
     <Folder Include="Sell\" />
