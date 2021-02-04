@@ -414,6 +414,7 @@
     <Content Include="ChatFront\ChatPage2.aspx" />
     <Content Include="ChatFront\ChatPage.aspx" />
     <Content Include="ChatFront\Chats.aspx" />
+    <Content Include="ChatFront\JoinChat.aspx" />
     <Content Include="ComplaintPage.aspx" />
     <Content Include="ComplaintsPage.aspx" />
     <None Include="Connected Services\DPDCalc\configuration91.svcinfo" />
@@ -433,6 +434,7 @@
     <Content Include="CreateComplaint.aspx" />
     <Content Include="DataBase\CurrentSQLInit\init.sql" />
     <Content Include="DataBase\Init\init_030221_2.sql" />
+    <Content Include="DataBase\Init\init_040221.sql" />
     <Content Include="DataBase\Init\init_161120.sql" />
     <Content Include="docs\index.html" />
     <Content Include="EducationBlacklake\NewsBlacklake.aspx" />
@@ -1348,6 +1350,13 @@
     </Compile>
     <Compile Include="ChatFront\Chats.aspx.designer.cs">
       <DependentUpon>Chats.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatFront\JoinChat.aspx.cs">
+      <DependentUpon>JoinChat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChatFront\JoinChat.aspx.designer.cs">
+      <DependentUpon>JoinChat.aspx</DependentUpon>
     </Compile>
     <Compile Include="ComplaintPage.aspx.cs">
       <DependentUpon>ComplaintPage.aspx</DependentUpon>
