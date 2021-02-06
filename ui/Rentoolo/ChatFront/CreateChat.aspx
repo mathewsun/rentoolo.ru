@@ -105,6 +105,29 @@
 
                     getUserId(userName) {
                         return this.users.filter(x => x.UserName == userName)[0].UserId;
+                    },
+
+                    addUsersInChat() {
+                        let url = '';
+                        let userIdList = this.addedUsers;
+                        let data = {
+                            userIds: userIdList
+                        };
+
+                        const response = await fetch(url, {
+                            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                           headers: {
+                                'Content-Type': 'application/json'
+                                // 'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: JSON.stringify(data)
+                        }).then((response) => {
+                            return response.json();
+                        })
+                            .then((data) => {
+                                console.log(data);
+                            });
+
                     }
 
                 },

@@ -44,6 +44,16 @@ namespace Rentoolo.Controllers.MVC
 
 
 
+
+
+
+        
+
+
+
+
+
+
         // GET: Dialog/Details/5
         public ActionResult Details(int id)
         {

@@ -1412,6 +1412,7 @@
     <Compile Include="Controllers\KitchenModel\Recipe.cs" />
     <Compile Include="Controllers\LikesDislikesController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\MVC\ChatsController.cs" />
     <Compile Include="Controllers\MVC\DefaultController.cs" />
     <Compile Include="Controllers\MVC\DialogController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
@@ -2249,6 +2250,7 @@
     <Folder Include="Rent\" />
     <Folder Include="Sell\" />
     <Folder Include="Views\AllCities\" />
+    <Folder Include="Views\Chats\" />
     <Folder Include="Views\Dialog\" />
     <Folder Include="Views\DPDCitiesDeliveryCost\" />
   </ItemGroup>

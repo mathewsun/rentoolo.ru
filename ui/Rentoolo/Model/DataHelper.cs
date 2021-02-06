@@ -2091,6 +2091,15 @@ namespace Rentoolo.Model
         }
 
 
+        public static void AddChatUsers(IEnumerable<ChatUsers> chatUsers)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                dc.ChatUsers.AddRange(chatUsers);
+                dc.SaveChanges();
+            }
+        }
+
 
 
         public static List<ChatMessages> GetChatMessages(long chatId)
