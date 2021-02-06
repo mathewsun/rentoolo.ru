@@ -1997,6 +1997,30 @@ namespace Rentoolo.Model
         }
 
 
+        // get collection of users that have dialogs with this user
+        public static List<Users> GetDialogUsers(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var userDialogs = dc.Chats.Where(x => x.ChatType == 1)
+                    .Where(x => x.OwnerId == userId || x.AnotherOwnerId == userId);
+
+                //var companions1 = userDialogs.Where(x => x.OwnerId == userId).Select(x => x.AnotherOwnerId);
+                //var companions2 = userDialogs.Where(x => x.AnotherOwnerId == userId).Select(x => x.OwnerId);
+
+
+                var companionIds = from d in userDialogs
+                                 select d.AnotherOwnerId == userId ?
+                                 d.AnotherOwnerId : d.OwnerId;
+
+                var users = dc.Users.Where(x => companionIds.Contains(x.UserId));
+
+
+                return users.ToList();
+            }
+        }
+
+
 
         public static long CreateChat(Chats chatInfo)
         {

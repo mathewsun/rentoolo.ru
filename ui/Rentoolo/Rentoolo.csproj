@@ -414,6 +414,7 @@
     <Content Include="ChatFront\ChatPage2.aspx" />
     <Content Include="ChatFront\ChatPage.aspx" />
     <Content Include="ChatFront\Chats.aspx" />
+    <Content Include="ChatFront\CreateChat.aspx" />
     <Content Include="ChatFront\JoinChat.aspx" />
     <Content Include="ComplaintPage.aspx" />
     <Content Include="ComplaintsPage.aspx" />
@@ -1350,6 +1351,12 @@
     </Compile>
     <Compile Include="ChatFront\Chats.aspx.designer.cs">
       <DependentUpon>Chats.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatFront\CreateChat.aspx.cs">
+      <DependentUpon>CreateChat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatFront\CreateChat.aspx.designer.cs">
+      <DependentUpon>CreateChat.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChatFront\JoinChat.aspx.cs">
       <DependentUpon>JoinChat.aspx</DependentUpon>
