@@ -58,7 +58,7 @@ namespace Rentoolo.Controllers.MVC
         [System.Web.Mvc.HttpPost]
         public string CreateChat([FromBody]Chats chatInfo)
         {
-            var r = Request;
+            //HttpContext.Current.Request
 
             long chatId = DataHelper.CreateChat(chatInfo);
 
@@ -78,6 +78,11 @@ namespace Rentoolo.Controllers.MVC
         public ActionResult Index()
         {
             return View();
+        }
+
+        protected override void ExecuteCore()
+        {
+            throw new NotImplementedException();
         }
     }
 }

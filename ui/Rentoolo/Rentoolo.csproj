@@ -416,6 +416,7 @@
     <Content Include="ChatFront\Chats.aspx" />
     <Content Include="ChatFront\CreateChat.aspx" />
     <Content Include="ChatFront\JoinChat.aspx" />
+    <Content Include="ChatFront\ManageChat.aspx" />
     <Content Include="ComplaintPage.aspx" />
     <Content Include="ComplaintsPage.aspx" />
     <None Include="Connected Services\DPDCalc\configuration91.svcinfo" />
@@ -1365,6 +1366,12 @@
     <Compile Include="ChatFront\JoinChat.aspx.designer.cs">
       <DependentUpon>JoinChat.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ChatFront\ManageChat.aspx.cs">
+      <DependentUpon>ManageChat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatFront\ManageChat.aspx.designer.cs">
+      <DependentUpon>ManageChat.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ComplaintPage.aspx.cs">
       <DependentUpon>ComplaintPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1400,6 +1407,7 @@
     </Compile>
     <Compile Include="Controllers\AllCitiesController.cs" />
     <Compile Include="Controllers\AvatarsController.cs" />
+    <Compile Include="Controllers\ChatManageController.cs" />
     <Compile Include="Controllers\ChatsController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
@@ -1558,6 +1566,7 @@
     <Compile Include="Model\ChatActiveUsers.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ChatCreationInfo.cs" />
     <Compile Include="Model\ChatInviteTokens.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

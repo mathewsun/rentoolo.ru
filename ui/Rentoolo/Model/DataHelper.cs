@@ -1996,8 +1996,11 @@ namespace Rentoolo.Model
             }
         }
 
-
-        // get collection of users that have dialogs with this user
+        /// <summary>
+        /// get collection of users that have dialogs with this user
+        /// </summary>
+        /// <param name="userId"> user id that has dialogs</param>
+        /// <returns>collection of users that have dialogs with this user</returns>
         public static List<Users> GetDialogUsers(Guid userId)
         {
             using (var dc = new RentooloEntities())
@@ -2007,11 +2010,13 @@ namespace Rentoolo.Model
 
                 //var companions1 = userDialogs.Where(x => x.OwnerId == userId).Select(x => x.AnotherOwnerId);
                 //var companions2 = userDialogs.Where(x => x.AnotherOwnerId == userId).Select(x => x.OwnerId);
-
+                var udl = userDialogs.ToList();
 
                 var companionIds = from d in userDialogs
                                  select d.AnotherOwnerId == userId ?
-                                 d.AnotherOwnerId : d.OwnerId;
+                                  d.OwnerId : d.AnotherOwnerId;
+
+                var cpd = companionIds.ToList();
 
                 var users = dc.Users.Where(x => companionIds.Contains(x.UserId));
 
@@ -2068,12 +2073,58 @@ namespace Rentoolo.Model
         }
 
 
-        public static List<Chats> GetChats(Guid userId, int skipCount = 0)
+        public static List<Chats> GetChats(Guid userId)
         {
             using (var dc = new RentooloEntities())
             {
                 var chatIds = dc.ChatUsers.Where(x => x.UserId == userId).Select(x => x.Id).ToList();
                 var chats = dc.Chats.Where(x => chatIds.Contains(x.Id));
+                return chats.ToList();
+            }
+        }
+
+
+        public static List<Chats> GetGroupChats(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var chatIds = dc.ChatUsers
+                    .Where(x => x.UserId == userId)
+                    .Select(x => x.Id).ToList();
+
+                var chats = dc.Chats.Where(x=>x.ChatType == 0)
+                    .Where(x => chatIds.Contains(x.Id));
+
+                return chats.ToList();
+            }
+        }
+
+
+        public static List<Chats> GetOwnerChats(Guid userOwnerId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var chats = dc.Chats.Where(x=>x.ChatType == 0)
+                    .Where(x => x.OwnerId == userOwnerId);
+
+                return chats.ToList();
+            }
+        }
+
+
+
+
+        public static List<Chats> GetDialogChats(Guid userId)
+        {
+            using (var dc = new RentooloEntities())
+            {
+                var chatIds = dc.ChatUsers
+                    .Where(x => x.UserId == userId)
+                    .Select(x => x.Id).ToList();
+
+                var chats = dc.Chats.Where(x => x.ChatType == 1)
+                    .Where(x => chatIds.Contains(x.Id));
+
                 return chats.ToList();
             }
         }

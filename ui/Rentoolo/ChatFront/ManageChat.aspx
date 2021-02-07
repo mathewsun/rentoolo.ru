@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CreateChat.aspx.cs" Inherits="Rentoolo.ChatFront.CreateChat" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageChat.aspx.cs" Inherits="Rentoolo.ChatFront.ManageChat" %>
 
 <!DOCTYPE html>
 
@@ -22,7 +22,7 @@
 
 </head>
 <body>
-    
+
     <div>
         <div>
             
@@ -36,34 +36,23 @@
             <div class="row">
                 <div class="col">
                     
-                    <input v-model="chatName" placeholder="название чата" />
+                    
+
+                    <select @change="onChange">
+                        <option v-for="chat in chats">
+                            {{ chat.ChatName }}
+                        </option>
+                    </select> 
+                    <p>Selected index: {{ selectedIndex }}</p>
+
+
+
                     <br />
                     <div>
-                        <table>
-                            <tr>
-                                <td>
-                                    <input v-model="addingUser" list="users" />
+                        
 
-                                    <datalist id="users">
-                                        <option v-for="user in unusedUsers">
-                                            {{user.UserName}}
-                                        </option>
-                                    </datalist>
-
-
-
-                                </td>
-                                <td>
-                                    <button @click="addUser">add</button>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <button class="btn-info" @click="createChat">create chat</button>
                         <div>
-                            <div v-for="user in usedUsers">
-                                {{user.UserName}}
-                            </div>
+                            
                         </div>
 
 
@@ -80,24 +69,33 @@
 
         <script>
 
-            let userList = <%= StrDU %>;
+            let groupChats = <%= GroupChats %>;
+
+            let dialogUsers = <%= DialogUsers %>;
 
             var app = new Vue({
                 el: '#app',
                 data: {
                     userId: "<%= User.UserId %>",
-                    users: <%= StrDU %>,
-                    addedUsers: [],
-                    addingUser: "",
-                    chatName: ""
+                    chats: [],
+                    selectedIndex: 0,
                     
                 },
                 created: function () {
-                    console.log(userList);
-                    console.log(this.users);
+                    console.log(groupChats);
+                    console.log(this.userId);
+                    console.log(dialogUsers);
+
+                    this.chats = groupChats;
 
                 },
                 methods: {
+
+                    onChange: function (event) {
+                        let index = event.target.selectedIndex; // this selectedIndex is from event.
+                        this.selectedIndex = index;
+
+                    },
                     addUser() {
                         this.addedUsers.push(this.getUserId(this.addingUser));
                         console.log(this.addingUser);
@@ -163,9 +161,5 @@
 
         </div>
      </div>
-
-
-
 </body>
 </html>
-
