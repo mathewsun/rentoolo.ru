@@ -31,14 +31,10 @@ namespace Rentoolo.Controllers.MVC
 
 
         [HttpGet] // id - chat id
-        public string AddUsersInChat(long id,HttpRequestBase req = null)
+        public string AddUsersInChat(long id)
         {
-            if (req == null)
-            {
-                req = Request;
-            }
 
-            JObject json = GetJsonBody(req);
+            JObject json = GetJsonBody(Request);
             JArray userIds = new JArray(json["userIds"]);
 
             
@@ -62,11 +58,12 @@ namespace Rentoolo.Controllers.MVC
         [System.Web.Mvc.HttpPost]
         public string CreateChat([FromBody]Chats chatInfo)
         {
+            var r = Request;
 
             long chatId = DataHelper.CreateChat(chatInfo);
 
 
-            AddUsersInChat(chatId, Request);
+            AddUsersInChat(chatId);
 
 
 

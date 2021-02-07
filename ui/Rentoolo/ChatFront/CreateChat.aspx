@@ -59,6 +59,7 @@
                             </tr>
                         </table>
 
+                        <button class="btn-info" @click="createChat">create chat</button>
                         <div>
                             <div v-for="user in usedUsers">
                                 {{user.UserName}}
@@ -107,14 +108,14 @@
                         return this.users.filter(x => x.UserName == userName)[0].UserId;
                     },
 
-                    addUsersInChat() {
-                        let url = '';
+                    createChat() {
+                        let url = '/mvc/Chats/CreateChat';
                         let userIdList = this.addedUsers;
                         let data = {
                             userIds: userIdList
                         };
 
-                        const response = await fetch(url, {
+                        fetch(url, {
                             method: 'POST', // *GET, POST, PUT, DELETE, etc.
                            headers: {
                                 'Content-Type': 'application/json'
