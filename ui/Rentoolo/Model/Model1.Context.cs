@@ -36,6 +36,7 @@ namespace Rentoolo.Model
         public virtual DbSet<CashIns> CashIns { get; set; }
         public virtual DbSet<CashOuts> CashOuts { get; set; }
         public virtual DbSet<ChatActiveUsers> ChatActiveUsers { get; set; }
+        public virtual DbSet<ChatInviteTokens> ChatInviteTokens { get; set; }
         public virtual DbSet<ChatMessages> ChatMessages { get; set; }
         public virtual DbSet<Chats> Chats { get; set; }
         public virtual DbSet<ChatUsers> ChatUsers { get; set; }
