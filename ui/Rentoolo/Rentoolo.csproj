@@ -419,12 +419,6 @@
     <Content Include="ChatFront\ManageChat.aspx" />
     <Content Include="ComplaintPage.aspx" />
     <Content Include="ComplaintsPage.aspx" />
-    <None Include="Connected Services\DPDCalc\configuration91.svcinfo" />
-    <None Include="Connected Services\DPDCalc\configuration.svcinfo" />
-    <None Include="Connected Services\DPDCalc\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="ConsumerElectronics.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\Site.css" />
@@ -561,31 +555,6 @@
     <Content Include="assets\json\countries.json" />
     <Content Include="assets\json\rus_cities2.json" />
     <Content Include="libman.json" />
-    <None Include="Connected Services\DPDCalc\calculator2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\DPDCalc\DPDCalculatorService.wsdl" />
-    <Content Include="Connected Services\DPDCalc\Rentoolo.DPDCalc.getServiceCost2Response.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\DPDCalc\Rentoolo.DPDCalc.getServiceCostByParcels2Response.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\DPDCalc\Rentoolo.DPDCalc.getServiceCostByParcelsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\DPDCalc\Rentoolo.DPDCalc.getServiceCostInternationalResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\DPDCalc\Rentoolo.DPDCalc.getServiceCostResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\DPDCalc\Rentoolo.DPDCalc.serviceCost.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\DPDCalc\Rentoolo.DPDCalc.serviceCostInternational.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -1386,11 +1355,6 @@
     <Compile Include="ComplaintsPage.aspx.designer.cs">
       <DependentUpon>ComplaintsPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\DPDCalc\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="ConsumerElectronics.aspx.cs">
       <DependentUpon>ConsumerElectronics.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1405,14 +1369,11 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\AllCitiesController.cs" />
     <Compile Include="Controllers\AvatarsController.cs" />
     <Compile Include="Controllers\ChatManageController.cs" />
     <Compile Include="Controllers\ChatsController.cs" />
-    <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\CurrenciesController.cs" />
-    <Compile Include="Controllers\DPDCitiesDeliveryCostController.cs" />
     <Compile Include="Controllers\GetTokensCostController.cs" />
     <Compile Include="Controllers\InstructionController.cs" />
     <Compile Include="Controllers\InstructionsController.cs" />
@@ -1637,7 +1598,6 @@
     <Compile Include="Model\DpdCities.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DPDCitiesDataHelper.cs" />
     <Compile Include="Model\Exceptions.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1668,7 +1628,6 @@
     <Compile Include="Model\fnGetUserWallets_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\GeographyDPDHelper.cs" />
     <Compile Include="Model\HelperStructs\StructsHelper.cs" />
     <Compile Include="Model\ItemDislikes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -2303,9 +2262,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\DPDCalc\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
