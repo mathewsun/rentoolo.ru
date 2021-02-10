@@ -322,6 +322,7 @@
     <Content Include="Articles.aspx" />
     <Content Include="assets\css\additional.css" />
     <Content Include="assets\css\application.css" />
+    <Content Include="assets\css\chat2.css" />
     <Content Include="assets\css\docs.css" />
     <Content Include="assets\css\jQuery.Brazzers-Carousel.css" />
     <Content Include="assets\css\photoSlider.css" />
@@ -409,9 +410,13 @@
     <Content Include="Business.aspx" />
     <Content Include="Category.aspx" />
     <Content Include="ChatFront\Chat3.html" />
+    <Content Include="ChatFront\ChatFront4.aspx" />
     <Content Include="ChatFront\ChatPage2.aspx" />
     <Content Include="ChatFront\ChatPage.aspx" />
     <Content Include="ChatFront\Chats.aspx" />
+    <Content Include="ChatFront\CreateChat.aspx" />
+    <Content Include="ChatFront\JoinChat.aspx" />
+    <Content Include="ChatFront\ManageChat.aspx" />
     <Content Include="ComplaintPage.aspx" />
     <Content Include="ComplaintsPage.aspx" />
     <None Include="Connected Services\DPDCalc\configuration91.svcinfo" />
@@ -430,6 +435,8 @@
     <Content Include="CraftsMan\CraftsManTasks.aspx" />
     <Content Include="CreateComplaint.aspx" />
     <Content Include="DataBase\CurrentSQLInit\init.sql" />
+    <Content Include="DataBase\Init\init_030221_2.sql" />
+    <Content Include="DataBase\Init\init_040221.sql" />
     <Content Include="DataBase\Init\init_161120.sql" />
     <Content Include="docs\index.html" />
     <Content Include="EducationBlacklake\NewsBlacklake.aspx" />
@@ -1318,6 +1325,13 @@
     <Compile Include="Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ChatFront\ChatFront4.aspx.cs">
+      <DependentUpon>ChatFront4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChatFront\ChatFront4.aspx.designer.cs">
+      <DependentUpon>ChatFront4.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ChatFront\ChatPage2.aspx.cs">
       <DependentUpon>ChatPage2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1338,6 +1352,25 @@
     </Compile>
     <Compile Include="ChatFront\Chats.aspx.designer.cs">
       <DependentUpon>Chats.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatFront\CreateChat.aspx.cs">
+      <DependentUpon>CreateChat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatFront\CreateChat.aspx.designer.cs">
+      <DependentUpon>CreateChat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatFront\JoinChat.aspx.cs">
+      <DependentUpon>JoinChat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChatFront\JoinChat.aspx.designer.cs">
+      <DependentUpon>JoinChat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatFront\ManageChat.aspx.cs">
+      <DependentUpon>ManageChat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatFront\ManageChat.aspx.designer.cs">
+      <DependentUpon>ManageChat.aspx</DependentUpon>
     </Compile>
     <Compile Include="ComplaintPage.aspx.cs">
       <DependentUpon>ComplaintPage.aspx</DependentUpon>
@@ -1374,6 +1407,7 @@
     </Compile>
     <Compile Include="Controllers\AllCitiesController.cs" />
     <Compile Include="Controllers\AvatarsController.cs" />
+    <Compile Include="Controllers\ChatManageController.cs" />
     <Compile Include="Controllers\ChatsController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
@@ -1386,6 +1420,7 @@
     <Compile Include="Controllers\KitchenModel\Recipe.cs" />
     <Compile Include="Controllers\LikesDislikesController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\MVC\ChatsController.cs" />
     <Compile Include="Controllers\MVC\DefaultController.cs" />
     <Compile Include="Controllers\MVC\DialogController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
@@ -1529,6 +1564,10 @@
     </Compile>
     <Compile Include="Model\ChartsDates.cs" />
     <Compile Include="Model\ChatActiveUsers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChatCreationInfo.cs" />
+    <Compile Include="Model\ChatInviteTokens.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ChatMessages.cs">
@@ -2216,11 +2255,11 @@
     <Folder Include="assets\img\avatars\" />
     <Folder Include="bin\" />
     <Folder Include="Data\" />
-    <Folder Include="EducationBlacklake\" />
     <Folder Include="NewFolder1\" />
     <Folder Include="Rent\" />
     <Folder Include="Sell\" />
     <Folder Include="Views\AllCities\" />
+    <Folder Include="Views\Chats\" />
     <Folder Include="Views\Dialog\" />
     <Folder Include="Views\DPDCitiesDeliveryCost\" />
   </ItemGroup>

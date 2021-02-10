@@ -99,7 +99,7 @@
                                     <div class="g-recaptcha" data-sitekey="6Lf4W6QUAAAAAPK2AR7Ms8SsI9_KuJ0l8XZWaTWD"></div>
                                 </div>
 
-                                <div class="mb-5">
+                                <div class="mb-5" style="margin-top: 70px">
                                     <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" CommandName="MoveNext" Text="Зарегистрироваться" />
                                 </div>
 
