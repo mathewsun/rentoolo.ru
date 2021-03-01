@@ -23,7 +23,7 @@ namespace Rentoolo.ChatFront
 
             
 
-            DialogUsers = DataHelper.GetDialogUsers(User.UserId);
+            //DialogUsers = DataHelper.GetDialogUsers(User.UserId);
 
             
 

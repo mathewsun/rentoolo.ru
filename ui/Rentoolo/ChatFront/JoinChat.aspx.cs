@@ -25,21 +25,21 @@ namespace Rentoolo.ChatFront
             string token = Request.QueryString["token"];
             Guid gtoken = Guid.Parse(token);
 
-            ChatInviteTokens tokenInfo = DataHelper.GetChatTokenInfo(gtoken);
+            //ChatInviteTokens tokenInfo = DataHelper.GetChatTokenInfo(gtoken);
 
-            Model.Chats chat = DataHelper.GetChatByToken(gtoken);
+            //Model.Chats chat = DataHelper.GetChatByToken(gtoken);
 
-            if(tokenInfo.Status == 0)
-            {
-                DataHelper.AddChatUser(new ChatUsers()
-                {
-                    ChatId = chat.Id,
-                    UserId = User.UserId
-                });
-            }
+            //if(tokenInfo.Status == 0)
+            //{
+            //    DataHelper.AddChatUser(new ChatUsers()
+            //    {
+            //        ChatId = chat.Id,
+            //        UserId = User.UserId
+            //    });
+            //}
 
 
-            Response.Redirect("/ChatFront/ChatFront4.aspx?chatId="+chat.Id);
+            //Response.Redirect("/ChatFront/ChatFront4.aspx?chatId="+chat.Id);
 
         }
     }

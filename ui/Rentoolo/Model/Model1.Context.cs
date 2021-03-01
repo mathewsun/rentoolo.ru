@@ -36,7 +36,6 @@ namespace Rentoolo.Model
         public virtual DbSet<CashIns> CashIns { get; set; }
         public virtual DbSet<CashOuts> CashOuts { get; set; }
         public virtual DbSet<ChatActiveUsers> ChatActiveUsers { get; set; }
-        public virtual DbSet<ChatInviteTokens> ChatInviteTokens { get; set; }
         public virtual DbSet<ChatMessages> ChatMessages { get; set; }
         public virtual DbSet<Chats> Chats { get; set; }
         public virtual DbSet<ChatUsers> ChatUsers { get; set; }
@@ -75,6 +74,7 @@ namespace Rentoolo.Model
         public virtual DbSet<NewsEducationBlacklake> NewsEducationBlacklake { get; set; }
         public virtual DbSet<NewsEoll73> NewsEoll73 { get; set; }
         public virtual DbSet<NewsGGdotNET> NewsGGdotNET { get; set; }
+        public virtual DbSet<NewsGodnebeles> NewsGodnebeles { get; set; }
         public virtual DbSet<Newsillfyar> Newsillfyar { get; set; }
         public virtual DbSet<NewsIlya> NewsIlya { get; set; }
         public virtual DbSet<NewsMrshkVV> NewsMrshkVV { get; set; }

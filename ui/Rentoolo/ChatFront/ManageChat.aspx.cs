@@ -28,16 +28,16 @@ namespace Rentoolo.ChatFront
 
             List<LightUser> lightUsers = new List<LightUser>();
 
-            var users = DataHelper.GetDialogUsers(User.UserId);
+            //var users = DataHelper.GetDialogUsers(User.UserId);
 
-            foreach(var user in users)
-            {
-                lightUsers.Add(new LightUser()
-                {
-                    UserId = user.UserId,
-                    UserName = user.UserName
-                });
-            }
+            //foreach(var user in users)
+            //{
+            //    lightUsers.Add(new LightUser()
+            //    {
+            //        UserId = user.UserId,
+            //        UserName = user.UserName
+            //    });
+            //}
 
 
             DialogUsers = JsonConvert.SerializeObject(lightUsers);

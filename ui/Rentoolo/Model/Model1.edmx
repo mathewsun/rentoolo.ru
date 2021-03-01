@@ -135,15 +135,6 @@
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ChatId" Type="bigint" Nullable="false" />
         </EntityType>
-        <EntityType Name="ChatInviteTokens">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ChatId" Type="bigint" Nullable="false" />
-          <Property Name="Token" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Status" Type="smallint" Nullable="false" />
-        </EntityType>
         <EntityType Name="ChatMessages">
           <Key>
             <PropertyRef Name="Id" />
@@ -162,7 +153,6 @@
           <Property Name="OwnerId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ChatName" Type="nvarchar" MaxLength="50" />
           <Property Name="ChatType" Type="smallint" Nullable="false" />
-          <Property Name="AnotherOwnerId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="ChatUsers">
           <Key>
@@ -586,6 +576,17 @@
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="NewsGGdotNET">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="AuthorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsGodnebeles">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -1362,7 +1363,6 @@
           <EntitySet Name="CashIns" EntityType="Self.CashIns" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashOuts" EntityType="Self.CashOuts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChatActiveUsers" EntityType="Self.ChatActiveUsers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ChatInviteTokens" EntityType="Self.ChatInviteTokens" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChatMessages" EntityType="Self.ChatMessages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Chats" EntityType="Self.Chats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChatUsers" EntityType="Self.ChatUsers" Schema="dbo" store:Type="Tables" />
@@ -1401,6 +1401,7 @@
           <EntitySet Name="NewsEducationBlacklake" EntityType="Self.NewsEducationBlacklake" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsEoll73" EntityType="Self.NewsEoll73" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsGGdotNET" EntityType="Self.NewsGGdotNET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsGodnebeles" EntityType="Self.NewsGodnebeles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Newsillfyar" EntityType="Self.Newsillfyar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsIlya" EntityType="Self.NewsIlya" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsMrshkVV" EntityType="Self.NewsMrshkVV" Schema="dbo" store:Type="Tables" />
@@ -1691,15 +1692,6 @@
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="ChatId" Type="Int64" Nullable="false" />
         </EntityType>
-        <EntityType Name="ChatInviteTokens">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ChatId" Type="Int64" Nullable="false" />
-          <Property Name="Token" Type="Guid" Nullable="false" />
-          <Property Name="Status" Type="Int16" Nullable="false" />
-        </EntityType>
         <EntityType Name="ChatMessages">
           <Key>
             <PropertyRef Name="Id" />
@@ -1718,7 +1710,6 @@
           <Property Name="OwnerId" Type="Guid" Nullable="false" />
           <Property Name="ChatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ChatType" Type="Int16" Nullable="false" />
-          <Property Name="AnotherOwnerId" Type="Guid" />
         </EntityType>
         <EntityType Name="ChatUsers">
           <Key>
@@ -2147,6 +2138,17 @@
           <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="NewsGGdotNET">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuthorId" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsGodnebeles">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -2772,7 +2774,6 @@
           <EntitySet Name="CashIns" EntityType="Self.CashIns" />
           <EntitySet Name="CashOuts" EntityType="Self.CashOuts" />
           <EntitySet Name="ChatActiveUsers" EntityType="Self.ChatActiveUsers" />
-          <EntitySet Name="ChatInviteTokens" EntityType="Self.ChatInviteTokens" />
           <EntitySet Name="ChatMessages" EntityType="Self.ChatMessages" />
           <EntitySet Name="Chats" EntityType="Self.Chats" />
           <EntitySet Name="ChatUsers" EntityType="Self.ChatUsers" />
@@ -2811,6 +2812,7 @@
           <EntitySet Name="NewsEducationBlacklake" EntityType="Self.NewsEducationBlacklake" />
           <EntitySet Name="NewsEoll73" EntityType="Self.NewsEoll73" />
           <EntitySet Name="NewsGGdotNET" EntityType="Self.NewsGGdotNET" />
+          <EntitySet Name="NewsGodnebeles" EntityType="Self.NewsGodnebeles" />
           <EntitySet Name="Newsillfyar" EntityType="Self.Newsillfyar" />
           <EntitySet Name="NewsIlya" EntityType="Self.NewsIlya" />
           <EntitySet Name="NewsMrshkVV" EntityType="Self.NewsMrshkVV" />
@@ -3313,16 +3315,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ChatInviteTokens">
-            <EntityTypeMapping TypeName="RentooloModel.ChatInviteTokens">
-              <MappingFragment StoreEntitySet="ChatInviteTokens">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
-                <ScalarProperty Name="Token" ColumnName="Token" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ChatMessages">
             <EntityTypeMapping TypeName="RentooloModel.ChatMessages">
               <MappingFragment StoreEntitySet="ChatMessages">
@@ -3341,7 +3333,6 @@
                 <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
                 <ScalarProperty Name="ChatName" ColumnName="ChatName" />
                 <ScalarProperty Name="ChatType" ColumnName="ChatType" />
-                <ScalarProperty Name="AnotherOwnerId" ColumnName="AnotherOwnerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3804,6 +3795,18 @@
           <EntitySetMapping Name="NewsGGdotNET">
             <EntityTypeMapping TypeName="RentooloModel.NewsGGdotNET">
               <MappingFragment StoreEntitySet="NewsGGdotNET">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsGodnebeles">
+            <EntityTypeMapping TypeName="RentooloModel.NewsGodnebeles">
+              <MappingFragment StoreEntitySet="NewsGodnebeles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
