@@ -1874,52 +1874,52 @@ namespace Rentoolo.Model
 
         #region Chats
 
-        public static long CreateChatDialog(Guid userId1, Guid userId2)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                dc.Chats.Add(new Chats()
-                {
-                    ChatType = 1,
-                    OwnerId = userId1,
-                    AnotherOwnerId = userId2
-                });
-                dc.SaveChanges();
+        //public static long CreateChatDialog(Guid userId1, Guid userId2)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        dc.Chats.Add(new Chats()
+        //        {
+        //            ChatType = 1,
+        //            OwnerId = userId1,
+        //            AnotherOwnerId = userId2
+        //        });
+        //        dc.SaveChanges();
 
-                long chatId = dc.Chats.First(x => (x.OwnerId == userId1 && x.AnotherOwnerId == userId2)
-                    || (x.OwnerId == userId2 && x.AnotherOwnerId == userId1)).Id;
+        //        long chatId = dc.Chats.First(x => (x.OwnerId == userId1 && x.AnotherOwnerId == userId2)
+        //            || (x.OwnerId == userId2 && x.AnotherOwnerId == userId1)).Id;
 
-                dc.ChatUsers.Add(new ChatUsers() { UserId = userId1, ChatId = chatId });
-                dc.ChatUsers.Add(new ChatUsers() { UserId = userId2, ChatId = chatId });
+        //        dc.ChatUsers.Add(new ChatUsers() { UserId = userId1, ChatId = chatId });
+        //        dc.ChatUsers.Add(new ChatUsers() { UserId = userId2, ChatId = chatId });
 
-                dc.SaveChanges();
+        //        dc.SaveChanges();
 
-                return chatId;
-            }
-        }
-
-
-
-        public static bool CheckDialogExistance(Guid userId1, Guid userId2)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                return dc.Chats
-                    .FirstOrDefault(x => (x.OwnerId == userId1 && x.AnotherOwnerId == userId2)
-                    || (x.OwnerId == userId2 && x.AnotherOwnerId == userId1)) != null;
-            }
-        }
+        //        return chatId;
+        //    }
+        //}
 
 
-        public static long GetDialogId(Guid userId1, Guid userId2)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                return dc.Chats
-                    .FirstOrDefault(x => (x.OwnerId == userId1 && x.AnotherOwnerId == userId2)
-                    || (x.OwnerId == userId2 && x.AnotherOwnerId == userId1)).Id;
-            }
-        }
+
+        //public static bool CheckDialogExistance(Guid userId1, Guid userId2)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        return dc.Chats
+        //            .FirstOrDefault(x => (x.OwnerId == userId1 && x.AnotherOwnerId == userId2)
+        //            || (x.OwnerId == userId2 && x.AnotherOwnerId == userId1)) != null;
+        //    }
+        //}
+
+
+        //public static long GetDialogId(Guid userId1, Guid userId2)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        return dc.Chats
+        //            .FirstOrDefault(x => (x.OwnerId == userId1 && x.AnotherOwnerId == userId2)
+        //            || (x.OwnerId == userId2 && x.AnotherOwnerId == userId1)).Id;
+        //    }
+        //}
 
         public static List<spGetChatsForUser_Result> GetChatsForUser(Guid userId, int skipCount = 0)
         {
@@ -2001,76 +2001,76 @@ namespace Rentoolo.Model
         /// </summary>
         /// <param name="userId"> user id that has dialogs</param>
         /// <returns>collection of users that have dialogs with this user</returns>
-        public static List<Users> GetDialogUsers(Guid userId)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                var userDialogs = dc.Chats.Where(x => x.ChatType == 1)
-                    .Where(x => x.OwnerId == userId || x.AnotherOwnerId == userId);
+        //public static List<Users> GetDialogUsers(Guid userId)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        var userDialogs = dc.Chats.Where(x => x.ChatType == 1)
+        //            .Where(x => x.OwnerId == userId || x.AnotherOwnerId == userId);
 
-                //var companions1 = userDialogs.Where(x => x.OwnerId == userId).Select(x => x.AnotherOwnerId);
-                //var companions2 = userDialogs.Where(x => x.AnotherOwnerId == userId).Select(x => x.OwnerId);
-                var udl = userDialogs.ToList();
+        //        //var companions1 = userDialogs.Where(x => x.OwnerId == userId).Select(x => x.AnotherOwnerId);
+        //        //var companions2 = userDialogs.Where(x => x.AnotherOwnerId == userId).Select(x => x.OwnerId);
+        //        var udl = userDialogs.ToList();
 
-                var companionIds = from d in userDialogs
-                                 select d.AnotherOwnerId == userId ?
-                                  d.OwnerId : d.AnotherOwnerId;
+        //        var companionIds = from d in userDialogs
+        //                         select d.AnotherOwnerId == userId ?
+        //                          d.OwnerId : d.AnotherOwnerId;
 
-                var cpd = companionIds.ToList();
+        //        var cpd = companionIds.ToList();
 
-                var users = dc.Users.Where(x => companionIds.Contains(x.UserId));
-
-
-                return users.ToList();
-            }
-        }
+        //        var users = dc.Users.Where(x => companionIds.Contains(x.UserId));
 
 
-
-        public static long CreateChat(Chats chatInfo)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                dc.Chats.Add(chatInfo);
-                dc.ChatUsers.Add(new ChatUsers() { UserId = chatInfo.OwnerId, ChatId = chatInfo.Id });
-                dc.SaveChanges();
-
-                long chatId = dc.Chats.First(x => x.Id == chatInfo.Id).Id;
-                dc.ChatUsers.Add(new ChatUsers() { UserId = chatInfo.OwnerId, ChatId = chatId });
-                //dc.SaveChanges();
-
-                dc.ChatInviteTokens.Add(new ChatInviteTokens()
-                {
-                    ChatId = chatId,
-                    Token = Guid.NewGuid(),
-                    Status = 0
-                });
-
-                dc.SaveChanges();
-
-                return chatId;
-            }
-        }
+        //        return users.ToList();
+        //    }
+        //}
 
 
-        public static Chats GetChatByToken(Guid token)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                long chatId = dc.ChatInviteTokens.First(x => x.Token == token).ChatId;
-                var chat = dc.Chats.First(x => x.Id == chatId);
 
-                return chat;
-            }
-        }
+        //public static long CreateChat(Chats chatInfo)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        dc.Chats.Add(chatInfo);
+        //        dc.ChatUsers.Add(new ChatUsers() { UserId = chatInfo.OwnerId, ChatId = chatInfo.Id });
+        //        dc.SaveChanges();
 
-        public static ChatInviteTokens GetChatTokenInfo(Guid token)
-        {
-            using (var dc = new RentooloEntities())
-            {
-                return dc.ChatInviteTokens.First(x => x.Token == token);
-            }
-        }
+        //        long chatId = dc.Chats.First(x => x.Id == chatInfo.Id).Id;
+        //        dc.ChatUsers.Add(new ChatUsers() { UserId = chatInfo.OwnerId, ChatId = chatId });
+        //        //dc.SaveChanges();
+
+        //        dc.ChatInviteTokens.Add(new ChatInviteTokens()
+        //        {
+        //            ChatId = chatId,
+        //            Token = Guid.NewGuid(),
+        //            Status = 0
+        //        });
+
+        //        dc.SaveChanges();
+
+        //        return chatId;
+        //    }
+        //}
+
+
+        //public static Chats GetChatByToken(Guid token)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        long chatId = dc.ChatInviteTokens.First(x => x.Token == token).ChatId;
+        //        var chat = dc.Chats.First(x => x.Id == chatId);
+
+        //        return chat;
+        //    }
+        //}
+
+        //public static ChatInviteTokens GetChatTokenInfo(Guid token)
+        //{
+        //    using (var dc = new RentooloEntities())
+        //    {
+        //        return dc.ChatInviteTokens.First(x => x.Token == token);
+        //    }
+        //}
 
 
         public static List<Chats> GetChats(Guid userId)

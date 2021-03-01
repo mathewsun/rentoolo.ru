@@ -60,10 +60,10 @@ namespace Rentoolo.Controllers.MVC
         {
             //HttpContext.Current.Request
 
-            long chatId = DataHelper.CreateChat(chatInfo);
+            //long chatId = DataHelper.CreateChat(chatInfo);
 
 
-            AddUsersInChat(chatId);
+            //AddUsersInChat(chatId);
 
 
 

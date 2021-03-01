@@ -88,22 +88,22 @@ namespace Rentoolo.Account
             //    ChatName = CurUser.UserName
             //}, CurUser.UserId);
 
-            bool dialogExists = DataHelper.CheckDialogExistance(User.UserId, CurUser.UserId);
+            //bool dialogExists = DataHelper.CheckDialogExistance(User.UserId, CurUser.UserId);
 
             long chatId;
 
-            if (dialogExists)
-            {
-                chatId = (long)DataHelper.GetDialogId(User.UserId, CurUser.UserId);
+            //if (dialogExists)
+            //{
+            //    chatId = (long)DataHelper.GetDialogId(User.UserId, CurUser.UserId);
 
-            }
-            else
-            {
-                chatId = DataHelper.CreateChatDialog(User.UserId, CurUser.UserId);
-            }
+            //}
+            //else
+            //{
+            //    chatId = DataHelper.CreateChatDialog(User.UserId, CurUser.UserId);
+            //}
 
 
-            Response.Redirect("/ChatFront/ChatFront4.aspx?chatId=" + chatId.ToString());
+            //Response.Redirect("/ChatFront/ChatFront4.aspx?chatId=" + chatId.ToString());
         }
 
         protected void ChatList_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)

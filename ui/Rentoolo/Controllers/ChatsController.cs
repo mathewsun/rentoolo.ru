@@ -30,7 +30,7 @@ namespace Rentoolo.Controllers
         {
             if (anotherUser == null)
             {
-                DataHelper.CreateChat(chatInfo);
+                //DataHelper.CreateChat(chatInfo);
             }
             else
             {

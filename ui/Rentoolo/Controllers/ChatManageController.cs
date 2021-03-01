@@ -30,13 +30,13 @@ namespace Rentoolo.Controllers
         // Create chat
         public void Post([FromBody] ChatCreationInfo chatInfo)
         {
-            long chatId = DataHelper.CreateChat(new Chats() 
-            { OwnerId = chatInfo.OwnerId, 
-                ChatName = chatInfo.ChatName, 
-                ChatType = 0 
-            });
+            //long chatId = DataHelper.CreateChat(new Chats() 
+            //{ OwnerId = chatInfo.OwnerId, 
+            //    ChatName = chatInfo.ChatName, 
+            //    ChatType = 0 
+            //});
 
-            Put(chatId, chatInfo.UserIds);
+            //Put(chatId, chatInfo.UserIds);
         }
 
         JObject GetJsonBody(Task<Stream> stream)

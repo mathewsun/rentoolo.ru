@@ -18,6 +18,5 @@ namespace Rentoolo.Model
         public System.Guid OwnerId { get; set; }
         public string ChatName { get; set; }
         public short ChatType { get; set; }
-        public Nullable<System.Guid> AnotherOwnerId { get; set; }
     }
 }
