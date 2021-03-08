@@ -12,20 +12,20 @@ namespace Rentoolo.Controllers
     {
 
 
-        [Route(Name = "ChatsApi")]
-        [HttpPost]
-        public void CreateMessage(ChatMessages msg)
-        {
-            DataHelper.SaveChatMessage(msg);
-        }
+        //[Route(Name = "ChatsApi")]
+        //[HttpPost]
+        //public void CreateMessage(ChatMessages msg)
+        //{
+        //    DataHelper.SaveChatMessage(msg);
+        //}
 
 
-        [Route(Name = "ChatsApi")]
-        [HttpGet]
-        public IHttpActionResult Messages(int id)
-        {
-            return Json(DataHelper.GetChatMessages(id));
-        }
+        //[Route(Name = "ChatsApi")]
+        //[HttpGet]
+        //public IHttpActionResult Messages(int id)
+        //{
+        //    return Json(DataHelper.GetChatMessages(id));
+        //}
 
         
     }

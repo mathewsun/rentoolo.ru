@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace Rentoolo.Controllers
 {
-    [Route(Name = "ChatsApi")]
+    //[Route(Name = "ChatsApi")]
     public class ChatsController : ApiController
     {
 

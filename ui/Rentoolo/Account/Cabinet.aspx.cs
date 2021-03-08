@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Rentoolo.HelperModels;
 using Rentoolo.Model;
 
 namespace Rentoolo.Account
@@ -14,7 +13,7 @@ namespace Rentoolo.Account
 
         public Users CurrentUser;
 
-        public string[] AllCities = RusCities.AllRusCities;
+        //public string[] AllCities = RusCities.AllRusCities;
 
         protected void Page_Load(object sender, EventArgs e)
         {

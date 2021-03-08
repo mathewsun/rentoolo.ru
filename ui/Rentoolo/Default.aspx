@@ -539,17 +539,7 @@
                                         <span style="float: left;">Город:</span>&nbsp;
                                         <input type="text" name="city" list="cities" value="<%= PreviousFilter.City %>" />
                                         <br />
-                                        <datalist id="cities">
-
-                                            <% foreach (var city in AllCities)
-                                                { %>
-
-                                            <option>
-                                                <%=city %>
-                                            </option>
-
-                                            <%} %>
-                                        </datalist>
+                                        
                                     </div>
                                     <%-- citys end--%>
 

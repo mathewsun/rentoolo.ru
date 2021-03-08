@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{99CE1B25-3F5F-4B1F-B7A1-12DB8F1C6498}</ProjectGuid>
+    <ProjectGuid>{DC1367C6-B237-474D-A2F6-EECE8365F468}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -15,14 +16,12 @@
     <AssemblyName>Rentoolo</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode />
-    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
-    <TargetFrameworkProfile />
-    <UseGlobalApplicationHostFile />
     <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -34,21 +33,17 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="DotNetOpenAuth.AspNet, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetOpenAuth.AspNet.4.3.4.13329\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
     </Reference>
@@ -130,86 +125,35 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Fleck, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fleck.1.1.0\lib\net45\Fleck.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Membership.OpenAuth, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Membership.OpenAuth.2.0.1\lib\net45\Microsoft.AspNet.Membership.OpenAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
-    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data.Linq" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -217,35 +161,104 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.4.1\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.4.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="403.aspx" />
     <Content Include="404.aspx" />
     <Content Include="500.aspx" />
-    <Content Include="About.aspx" />
-    <Content Include="Account\AddRent.aspx" />
-    <Content Include="Account\CaptchaUserControl.ascx" />
-    <Content Include="Account\MyRents.aspx" />
-    <Content Include="Account\UpdateItem.aspx" />
     <Content Include="Account\AddItem.aspx" />
     <Content Include="Account\AddItemCar.aspx" />
+    <Content Include="Account\AddRent.aspx" />
     <Content Include="Account\Auction.aspx" />
     <Content Include="Account\AuctionInfo.aspx" />
+    <Content Include="Account\AuctionRequests.aspx" />
     <Content Include="Account\Auctions.aspx" />
     <Content Include="Account\Auto.aspx" />
     <Content Include="Account\Cabinet.aspx" />
+    <Content Include="Account\CaptchaUserControl.ascx" />
     <Content Include="Account\CashIn.aspx" />
     <Content Include="Account\CashOut.aspx" />
     <Content Include="Account\Category.aspx" />
+    <Content Include="Account\CreateExchangeItem.aspx" />
     <Content Include="Account\DeviceSettings.aspx" />
     <Content Include="Account\Exchange.aspx" />
+    <Content Include="Account\ExchangeItemRequest.aspx" />
+    <Content Include="Account\ExchangeItemRequests.aspx" />
     <Content Include="Account\ExchangeItemView.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\LoginStatistics.aspx" />
@@ -255,6 +268,7 @@
     <Content Include="Account\Moto.aspx" />
     <Content Include="Account\MyAdverts.aspx" />
     <Content Include="Account\MyAuctions.aspx" />
+    <Content Include="Account\MyRents.aspx" />
     <Content Include="Account\OkResult.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Operations.aspx" />
@@ -262,6 +276,7 @@
     <Content Include="Account\Profit.aspx" />
     <Content Include="Account\Referrals.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Account\SelectAdvertToExchange.aspx" />
     <Content Include="Account\SelectCategory.aspx" />
     <Content Include="Account\SellCategory.aspx" />
     <Content Include="Account\Sell\Business.aspx" />
@@ -269,6 +284,7 @@
     <Content Include="Account\Settings.aspx" />
     <Content Include="Account\Shop.aspx" />
     <Content Include="Account\SignUp.aspx" />
+    <Content Include="Account\TechSupport.aspx" />
     <Content Include="Account\TenderViews\CreateTender.aspx" />
     <Content Include="Account\TenderViews\Tender.aspx" />
     <Content Include="Account\TenderViews\TenderInfo.aspx" />
@@ -280,6 +296,7 @@
     <Content Include="Account\TokensBuying.aspx" />
     <Content Include="Account\TokensSelling.aspx" />
     <Content Include="Account\Transport.aspx" />
+    <Content Include="Account\UpdateItem.aspx" />
     <Content Include="Account\UserComplaints.aspx" />
     <Content Include="Account\UserComplaintView.aspx" />
     <Content Include="Account\UserProfile.aspx" />
@@ -314,10 +331,6 @@
     <Content Include="Admin\Users.aspx" />
     <Content Include="Advert.aspx" />
     <Content Include="AdvertCar.aspx" />
-    <Content Include="Aezakmi128\AddNewsAezakmi.aspx" />
-    <Content Include="Aezakmi128\NewsAezakmi.aspx" />
-    <Content Include="AlexPigalyov\AddNewsAlexPigalyov.aspx" />
-    <Content Include="AlexPigalyov\NewsAlexPigalyov.aspx" />
     <Content Include="Article.aspx" />
     <Content Include="Articles.aspx" />
     <Content Include="assets\css\additional.css" />
@@ -401,19 +414,16 @@
     <Content Include="assets\js\sweet-alert.min.js" />
     <Content Include="assets\js\toolkit.js" />
     <Content Include="assets\js\utils.js" />
-    <Content Include="Account\AuctionRequests.aspx" />
     <Content Include="Auctions.aspx" />
-    <Content Include="Azizjan\NewsAzizjan.aspx" />
-    <Content Include="BatrebleSs\AddNewsBatrebleSs.aspx" />
-    <Content Include="BatrebleSs\NewsBatrebleSs.aspx" />
-    <Content Include="bootstrap\index.html" />
     <Content Include="Business.aspx" />
     <Content Include="Category.aspx" />
     <Content Include="ChatFront\Chat3.html" />
     <Content Include="ChatFront\ChatFront4.aspx" />
-    <Content Include="ChatFront\ChatPage2.aspx" />
     <Content Include="ChatFront\ChatPage.aspx" />
+    <Content Include="ChatFront\ChatPage2.aspx" />
     <Content Include="ChatFront\Chats.aspx" />
+    <Content Include="ChatFront\ChatTest.html" />
+    <Content Include="ChatFront\ChatTest2.html" />
     <Content Include="ChatFront\CreateChat.aspx" />
     <Content Include="ChatFront\JoinChat.aspx" />
     <Content Include="ChatFront\ManageChat.aspx" />
@@ -421,36 +431,72 @@
     <Content Include="ComplaintsPage.aspx" />
     <Content Include="ConsumerElectronics.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="CraftsMan\CraftsManConnection.aspx" />
     <Content Include="CraftsMan\CraftsManOrder.aspx" />
     <Content Include="CraftsMan\CraftsManPage.aspx" />
     <Content Include="CraftsMan\CraftsManProfile.aspx" />
     <Content Include="CraftsMan\CraftsManResume.aspx" />
+    <Content Include="CraftsMan\CraftsManStartPage.aspx" />
+    <Content Include="CraftsMan\CraftsManTaskDetails.aspx" />
     <Content Include="CraftsMan\CraftsManTasks.aspx" />
     <Content Include="CreateComplaint.aspx" />
-    <Content Include="DataBase\CurrentSQLInit\init.sql" />
-    <Content Include="DataBase\Init\init_030221_2.sql" />
-    <Content Include="DataBase\Init\init_040221.sql" />
-    <Content Include="DataBase\Init\init_161120.sql" />
-    <Content Include="docs\index.html" />
-    <Content Include="EducationBlacklake\NewsBlacklake.aspx" />
-    <Content Include="Education\AddNewsEducation.aspx" />
-    <Content Include="Education\NewsEducation.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="Empty.aspx" />
-    <Content Include="Eoll73\NewsEoll73.aspx" />
     <Content Include="ExchangeProductsPage.aspx" />
     <Content Include="Fail.aspx" />
     <Content Include="FAQ.aspx" />
     <Content Include="Favorites.aspx" />
-    <Content Include="GGdotNET\NewsGGdotNET.aspx" />
-    <Content Include="Godnebeles\AddNewsGodnebeles.aspx" />
-    <Content Include="Godnebeles\NewsGodnebeles.aspx" />
-    <Content Include="Help.aspx" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Account\Result.ashx" />
+    <Content Include="Account\Web.config" />
+    <Content Include="Admin\Result.ashx" />
+    <Content Include="Admin\Web.config" />
+    <Content Include="assets\fonts\toolkit-entypo.eot" />
+    <Content Include="assets\fonts\toolkit-entypo.ttf" />
+    <Content Include="assets\fonts\toolkit-entypo.woff" />
+    <Content Include="assets\fonts\toolkit-entypo.woff2" />
+    <Content Include="assets\json\categories.json" />
+    <Content Include="assets\json\categories_ru.json" />
+    <Content Include="assets\json\countries.json" />
+    <Content Include="assets\json\rus_cities2.json" />
     <Content Include="HobbyRest.aspx" />
     <Content Include="HomeGarden.aspx" />
-    <Content Include="illfyar\AddNewsillfyar.aspx" />
-    <Content Include="illfyar\Newsillfyar.aspx" />
-    <Content Include="Ilya\News.aspx" />
+    <Content Include="Job.aspx" />
+    <Content Include="Manager\Web.config" />
+    <Content Include="News.aspx" />
+    <Content Include="PersonalGoods.aspx" />
+    <Content Include="Pets.aspx" />
+    <Content Include="Realty.aspx" />
+    <Content Include="Services.aspx" />
+    <Content Include="Success.aspx" />
+    <Content Include="yandex_f9c03f80c16c0af8.html" />
+    <EntityDeploy Include="Model\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="AdminMaster.Master" />
+    <Content Include="Events.ashx" />
+    <Content Include="CraftsMan\assetsCM\categoriesCraftsMan_ru.json" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="img\avatars\noPhoto.png" />
+    <Content Include="img\a\jq7zG55bw0eBi3zo5cLr7A.jpg" />
     <Content Include="img\a\noPhoto.png" />
     <Content Include="img\kitchen\avatars\69179930_736853823483887_5740857891485646848_n.jpg" />
     <Content Include="img\kitchen\avatars\69527679_631739310686765_4819614499147350016_n.jpg" />
@@ -461,121 +507,60 @@
     <Content Include="img\kitchen\sushi-set-i-rolli.jpg" />
     <Content Include="img\kitchen\venskie-vafli.jpg" />
     <Content Include="img\kitchen\vozdushnie-blini-na-pahte.jpg" />
-    <Content Include="Job.aspx" />
-    <Content Include="login\index.html" />
     <Content Include="Manager\ManageAdvert.aspx" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="Model\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="MrshkVV\NewsMrshkVV.aspx" />
-    <Content Include="News.aspx" />
-    <Content Include="NewsAntares\NewsAntares.aspx" />
-    <Content Include="notifications\index.html" />
-    <Content Include="Admin\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="PersonalGoods.aspx" />
-    <Content Include="Pets.aspx" />
-    <Content Include="profile\index.html" />
-    <Content Include="Raspel\NewsRaspel.aspx" />
-    <Content Include="Realty.aspx" />
     <Content Include="Rent.aspx" />
-    <Content Include="AlexPigalyov\Web.config" />
-    <Content Include="Services.aspx" />
-    <Content Include="ShCodder\NewShCodder.aspx" />
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Success.aspx" />
-    <Content Include="Template.aspx" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Site.Master" />
     <Content Include="Tender.aspx" />
     <Content Include="Tenders.aspx" />
-    <Content Include="Admin\Result.ashx" />
-    <Content Include="Account\Result.ashx" />
-    <Content Include="AdminMaster.Master" />
-    <Content Include="assets\fonts\toolkit-entypo.eot" />
-    <Content Include="assets\fonts\toolkit-entypo.ttf" />
-    <Content Include="assets\fonts\toolkit-entypo.woff" />
-    <Content Include="assets\fonts\toolkit-entypo.woff2" />
-    <Content Include="Events.ashx" />
-    <Content Include="TestDir\TestPage.html" />
-    <Content Include="Test\Antares.aspx" />
-    <Content Include="Test\dmitriyraspel.aspx" />
-    <Content Include="Test\eoll73.aspx" />
-    <Content Include="Test\FormTest.html" />
-    <Content Include="Test\GG-dotNET.aspx" />
-    <Content Include="Test\Konstantin.aspx" />
-    <Content Include="Test\matheweducation.aspx" />
-    <Content Include="Test\Varkentin.aspx" />
-    <Content Include="ChatFront\ChatTest2.html" />
-    <Content Include="Test\VueTest.aspx" />
-    <Content Include="TokensCost.aspx" />
-    <Content Include="TokensOperations.aspx" />
-    <Content Include="towardsbackwards\NewsTowardsbackwards.aspx" />
-    <Content Include="Transport.aspx" />
-    <Content Include="UserProfile.aspx" />
-    <Content Include="Vark\NewsVark.aspx" />
-    <Content Include="Vlad\AddNewsVlad.aspx" />
-    <Content Include="Vlad\NewsVlad.aspx" />
-    <Content Include="yandex_f9c03f80c16c0af8.html" />
-    <Content Include="assets\json\categories.json" />
-    <Content Include="assets\json\categories_ru.json" />
-    <Content Include="Manager\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="AdditionalData\rus_cities.json" />
-    <Content Include="HelperModels\rus_cities2.json" />
-    <Content Include="Education\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Aezakmi128\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="BatrebleSs\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="illfyar\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="assets\json\countries.json" />
-    <Content Include="assets\json\rus_cities2.json" />
-    <Content Include="libman.json" />
-    <EntityDeploy Include="Model\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
-    <None Include="packages.config" />
-    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
-    <None Include="Properties\PublishProfiles\tropal.pubxml" />
-    <Content Include="Default.aspx" />
-    <Content Include="Global.asax" />
     <Content Include="Tokens.aspx" />
     <Content Include="TokensBuying.aspx" />
+    <Content Include="TokensCost.aspx" />
+    <Content Include="TokensOperations.aspx" />
     <Content Include="TokensSelling.aspx" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Transport.aspx" />
+    <Content Include="UserProfile.aspx" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config" />
     <Content Include="Bundle.config" />
+    <Content Include="Views\web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="403.aspx.cs">
@@ -599,34 +584,6 @@
     <Compile Include="500.aspx.designer.cs">
       <DependentUpon>500.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\AddRent.aspx.cs">
-      <DependentUpon>AddRent.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\AddRent.aspx.designer.cs">
-      <DependentUpon>AddRent.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\CaptchaUserControl.ascx.cs">
-      <DependentUpon>CaptchaUserControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\CaptchaUserControl.ascx.designer.cs">
-      <DependentUpon>CaptchaUserControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\MyRents.aspx.cs">
-      <DependentUpon>MyRents.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\MyRents.aspx.designer.cs">
-      <DependentUpon>MyRents.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\UpdateItem.aspx.cs">
-      <DependentUpon>UpdateItem.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\UpdateItem.aspx.designer.cs">
-      <DependentUpon>UpdateItem.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Account\AddItem.aspx.cs">
       <DependentUpon>AddItem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -641,6 +598,13 @@
     <Compile Include="Account\AddItemCar.aspx.designer.cs">
       <DependentUpon>AddItemCar.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\AddRent.aspx.cs">
+      <DependentUpon>AddRent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AddRent.aspx.designer.cs">
+      <DependentUpon>AddRent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Auction.aspx.cs">
       <DependentUpon>Auction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -654,6 +618,13 @@
     </Compile>
     <Compile Include="Account\AuctionInfo.aspx.designer.cs">
       <DependentUpon>AuctionInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\AuctionRequests.aspx.cs">
+      <DependentUpon>AuctionRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AuctionRequests.aspx.designer.cs">
+      <DependentUpon>AuctionRequests.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Auctions.aspx.cs">
       <DependentUpon>Auctions.aspx</DependentUpon>
@@ -676,6 +647,13 @@
     <Compile Include="Account\Cabinet.aspx.designer.cs">
       <DependentUpon>Cabinet.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\CaptchaUserControl.ascx.cs">
+      <DependentUpon>CaptchaUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\CaptchaUserControl.ascx.designer.cs">
+      <DependentUpon>CaptchaUserControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Account\CashIn.aspx.cs">
       <DependentUpon>CashIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -697,6 +675,13 @@
     <Compile Include="Account\Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\CreateExchangeItem.aspx.cs">
+      <DependentUpon>CreateExchangeItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\CreateExchangeItem.aspx.designer.cs">
+      <DependentUpon>CreateExchangeItem.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\DeviceSettings.aspx.cs">
       <DependentUpon>DeviceSettings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -711,6 +696,20 @@
     <Compile Include="Account\Exchange.aspx.designer.cs">
       <DependentUpon>Exchange.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\ExchangeItemRequest.aspx.cs">
+      <DependentUpon>ExchangeItemRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ExchangeItemRequest.aspx.designer.cs">
+      <DependentUpon>ExchangeItemRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ExchangeItemRequests.aspx.cs">
+      <DependentUpon>ExchangeItemRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ExchangeItemRequests.aspx.designer.cs">
+      <DependentUpon>ExchangeItemRequests.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\ExchangeItemView.aspx.cs">
       <DependentUpon>ExchangeItemView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -718,12 +717,26 @@
     <Compile Include="Account\ExchangeItemView.aspx.designer.cs">
       <DependentUpon>ExchangeItemView.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\LoginStatistics.aspx.cs">
       <DependentUpon>LoginStatistics.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Account\LoginStatistics.aspx.designer.cs">
       <DependentUpon>LoginStatistics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\ManageTopUserControl.ascx.cs">
       <DependentUpon>ManageTopUserControl.ascx</DependentUpon>
@@ -760,12 +773,26 @@
     <Compile Include="Account\MyAuctions.aspx.designer.cs">
       <DependentUpon>MyAuctions.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\MyRents.aspx.cs">
+      <DependentUpon>MyRents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\MyRents.aspx.designer.cs">
+      <DependentUpon>MyRents.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\OkResult.aspx.cs">
       <DependentUpon>OkResult.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Account\OkResult.aspx.designer.cs">
       <DependentUpon>OkResult.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.designer.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
     </Compile>
     <Compile Include="Account\Operations.aspx.cs">
       <DependentUpon>Operations.aspx</DependentUpon>
@@ -795,8 +822,22 @@
     <Compile Include="Account\Referrals.aspx.designer.cs">
       <DependentUpon>Referrals.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Result.ashx.cs">
       <DependentUpon>Result.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SelectAdvertToExchange.aspx.cs">
+      <DependentUpon>SelectAdvertToExchange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SelectAdvertToExchange.aspx.designer.cs">
+      <DependentUpon>SelectAdvertToExchange.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SelectCategory.aspx.cs">
       <DependentUpon>SelectCategory.aspx</DependentUpon>
@@ -846,6 +887,13 @@
     </Compile>
     <Compile Include="Account\SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TechSupport.aspx.cs">
+      <DependentUpon>TechSupport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TechSupport.aspx.designer.cs">
+      <DependentUpon>TechSupport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\TenderViews\CreateTender.aspx.cs">
       <DependentUpon>CreateTender.aspx</DependentUpon>
@@ -923,6 +971,13 @@
     </Compile>
     <Compile Include="Account\Transport.aspx.designer.cs">
       <DependentUpon>Transport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\UpdateItem.aspx.cs">
+      <DependentUpon>UpdateItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\UpdateItem.aspx.designer.cs">
+      <DependentUpon>UpdateItem.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\UserComplaints.aspx.cs">
       <DependentUpon>UserComplaints.aspx</DependentUpon>
@@ -1165,74 +1220,10 @@
     <Compile Include="AdvertCar.aspx.designer.cs">
       <DependentUpon>AdvertCar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Aezakmi128\AddNewsAezakmi.aspx.cs">
-      <DependentUpon>AddNewsAezakmi.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Aezakmi128\AddNewsAezakmi.aspx.designer.cs">
-      <DependentUpon>AddNewsAezakmi.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Aezakmi128\NewsAezakmi.aspx.cs">
-      <DependentUpon>NewsAezakmi.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Aezakmi128\NewsAezakmi.aspx.designer.cs">
-      <DependentUpon>NewsAezakmi.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AlexPigalyov\AddNewsAlexPigalyov.aspx.cs">
-      <DependentUpon>AddNewsAlexPigalyov.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AlexPigalyov\AddNewsAlexPigalyov.aspx.designer.cs">
-      <DependentUpon>AddNewsAlexPigalyov.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AlexPigalyov\NewsAlexPigalyov.aspx.cs">
-      <DependentUpon>NewsAlexPigalyov.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AlexPigalyov\NewsAlexPigalyov.aspx.designer.cs">
-      <DependentUpon>NewsAlexPigalyov.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Manage.aspx.cs">
-      <DependentUpon>Manage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\Manage.aspx.designer.cs">
-      <DependentUpon>Manage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\OpenAuthProviders.ascx.cs">
-      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\OpenAuthProviders.ascx.designer.cs">
-      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\RegisterExternalLogin.aspx.cs">
-      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
-      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\BundleConfig2.cs" />
-    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Article.aspx.cs">
       <DependentUpon>Article.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1247,40 +1238,12 @@
     <Compile Include="Articles.aspx.designer.cs">
       <DependentUpon>Articles.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\AuctionRequests.aspx.cs">
-      <DependentUpon>AuctionRequests.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\AuctionRequests.aspx.designer.cs">
-      <DependentUpon>AuctionRequests.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Auctions.aspx.cs">
       <DependentUpon>Auctions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Auctions.aspx.designer.cs">
       <DependentUpon>Auctions.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Azizjan\NewsAzizjan.aspx.cs">
-      <DependentUpon>NewsAzizjan.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Azizjan\NewsAzizjan.aspx.designer.cs">
-      <DependentUpon>NewsAzizjan.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BatrebleSs\AddNewsBatrebleSs.aspx.cs">
-      <DependentUpon>AddNewsBatrebleSs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BatrebleSs\AddNewsBatrebleSs.aspx.designer.cs">
-      <DependentUpon>AddNewsBatrebleSs.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BatrebleSs\NewsBatrebleSs.aspx.cs">
-      <DependentUpon>NewsBatrebleSs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BatrebleSs\NewsBatrebleSs.aspx.designer.cs">
-      <DependentUpon>NewsBatrebleSs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Business.aspx.cs">
       <DependentUpon>Business.aspx</DependentUpon>
@@ -1303,19 +1266,19 @@
     <Compile Include="ChatFront\ChatFront4.aspx.designer.cs">
       <DependentUpon>ChatFront4.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ChatFront\ChatPage2.aspx.cs">
-      <DependentUpon>ChatPage2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ChatFront\ChatPage2.aspx.designer.cs">
-      <DependentUpon>ChatPage2.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ChatFront\ChatPage.aspx.cs">
       <DependentUpon>ChatPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ChatFront\ChatPage.aspx.designer.cs">
       <DependentUpon>ChatPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChatFront\ChatPage2.aspx.cs">
+      <DependentUpon>ChatPage2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChatFront\ChatPage2.aspx.designer.cs">
+      <DependentUpon>ChatPage2.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChatFront\Chats.aspx.cs">
       <DependentUpon>Chats.aspx</DependentUpon>
@@ -1375,6 +1338,7 @@
     <Compile Include="Controllers\ChatManageController.cs" />
     <Compile Include="Controllers\ChatsController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\DialogsController.cs" />
     <Compile Include="Controllers\GetTokensCostController.cs" />
     <Compile Include="Controllers\InstructionController.cs" />
     <Compile Include="Controllers\InstructionsController.cs" />
@@ -1388,6 +1352,13 @@
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TopRecipesController.cs" />
+    <Compile Include="CraftsMan\CraftsManConnection.aspx.cs">
+      <DependentUpon>CraftsManConnection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CraftsMan\CraftsManConnection.aspx.designer.cs">
+      <DependentUpon>CraftsManConnection.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CraftsMan\CraftsManOrder.aspx.cs">
       <DependentUpon>CraftsManOrder.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1416,6 +1387,20 @@
     <Compile Include="CraftsMan\CraftsManResume.aspx.designer.cs">
       <DependentUpon>CraftsManResume.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CraftsMan\CraftsManStartPage.aspx.cs">
+      <DependentUpon>CraftsManStartPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CraftsMan\CraftsManStartPage.aspx.designer.cs">
+      <DependentUpon>CraftsManStartPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CraftsMan\CraftsManTaskDetails.aspx.cs">
+      <DependentUpon>CraftsManTaskDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CraftsMan\CraftsManTaskDetails.aspx.designer.cs">
+      <DependentUpon>CraftsManTaskDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CraftsMan\CraftsManTasks.aspx.cs">
       <DependentUpon>CraftsManTasks.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1429,85 +1414,6 @@
     </Compile>
     <Compile Include="CreateComplaint.aspx.designer.cs">
       <DependentUpon>CreateComplaint.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="EducationBlacklake\NewsBlacklake.aspx.cs">
-      <DependentUpon>NewsBlacklake.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EducationBlacklake\NewsBlacklake.aspx.designer.cs">
-      <DependentUpon>NewsBlacklake.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Education\AddNewsEducation.aspx.cs">
-      <DependentUpon>AddNewsEducation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Education\AddNewsEducation.aspx.designer.cs">
-      <DependentUpon>AddNewsEducation.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Education\NewsEducation.aspx.cs">
-      <DependentUpon>NewsEducation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Education\NewsEducation.aspx.designer.cs">
-      <DependentUpon>NewsEducation.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Eoll73\NewsEoll73.aspx.cs">
-      <DependentUpon>NewsEoll73.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Eoll73\NewsEoll73.aspx.designer.cs">
-      <DependentUpon>NewsEoll73.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ExchangeProductsPage.aspx.cs">
-      <DependentUpon>ExchangeProductsPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ExchangeProductsPage.aspx.designer.cs">
-      <DependentUpon>ExchangeProductsPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GGdotNET\NewsGGdotNET.aspx.cs">
-      <DependentUpon>NewsGGdotNET.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GGdotNET\NewsGGdotNET.aspx.designer.cs">
-      <DependentUpon>NewsGGdotNET.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Godnebeles\AddNewsGodnebeles.aspx.cs">
-      <DependentUpon>AddNewsGodnebeles.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Godnebeles\AddNewsGodnebeles.aspx.designer.cs">
-      <DependentUpon>AddNewsGodnebeles.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Godnebeles\NewsGodnebeles.aspx.cs">
-      <DependentUpon>NewsGodnebeles.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Godnebeles\NewsGodnebeles.aspx.designer.cs">
-      <DependentUpon>NewsGodnebeles.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="HelperModels\RusCities.cs" />
-    <Compile Include="HelperModels\StateStructs.cs" />
-    <Compile Include="illfyar\AddNewsillfyar.aspx.cs">
-      <DependentUpon>AddNewsillfyar.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="illfyar\AddNewsillfyar.aspx.designer.cs">
-      <DependentUpon>AddNewsillfyar.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="illfyar\Newsillfyar.aspx.cs">
-      <DependentUpon>Newsillfyar.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="illfyar\Newsillfyar.aspx.designer.cs">
-      <DependentUpon>Newsillfyar.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Ilya\News.aspx.cs">
-      <DependentUpon>News.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ilya\News.aspx.designer.cs">
-      <DependentUpon>News.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -1527,6 +1433,13 @@
       <DependentUpon>Events.ashx</DependentUpon>
     </Compile>
     <Compile Include="EventsController.cs" />
+    <Compile Include="ExchangeProductsPage.aspx.cs">
+      <DependentUpon>ExchangeProductsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExchangeProductsPage.aspx.designer.cs">
+      <DependentUpon>ExchangeProductsPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Fail.aspx.cs">
       <DependentUpon>Fail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1550,13 +1463,6 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Help.aspx.cs">
-      <DependentUpon>Help.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Help.aspx.designer.cs">
-      <DependentUpon>Help.aspx</DependentUpon>
     </Compile>
     <Compile Include="HobbyRest.aspx.cs">
       <DependentUpon>HobbyRest.aspx</DependentUpon>
@@ -1628,6 +1534,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ChatCreationInfo.cs" />
+    <Compile Include="Model\ChatInviteTokens.cs" />
     <Compile Include="Model\ChatMessages.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1696,9 +1603,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DPDCalcRequestModel.cs" />
-    <Compile Include="Model\DpdCities.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Exceptions.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1871,9 +1775,6 @@
     <Compile Include="Model\Settings.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\spDPDCitiesTop10_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\spGetChatsForUser_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1973,26 +1874,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\WatchedHelper.cs" />
-    <Compile Include="MrshkVV\NewsMrshkVV.aspx.cs">
-      <DependentUpon>NewsMrshkVV.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MrshkVV\NewsMrshkVV.aspx.designer.cs">
-      <DependentUpon>NewsMrshkVV.aspx</DependentUpon>
-    </Compile>
     <Compile Include="News.aspx.cs">
       <DependentUpon>News.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="News.aspx.designer.cs">
       <DependentUpon>News.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NewsAntares\NewsAntares.aspx.cs">
-      <DependentUpon>NewsAntares.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NewsAntares\NewsAntares.aspx.designer.cs">
-      <DependentUpon>NewsAntares.aspx</DependentUpon>
     </Compile>
     <Compile Include="PersonalGoods.aspx.cs">
       <DependentUpon>PersonalGoods.aspx</DependentUpon>
@@ -2009,18 +1896,6 @@
       <DependentUpon>Pets.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Raspel\NewsRaspel.aspx.cs">
-      <DependentUpon>NewsRaspel.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Raspel\NewsRaspel.aspx.designer.cs">
-      <DependentUpon>NewsRaspel.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Realty.aspx.cs">
       <DependentUpon>Realty.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2042,13 +1917,6 @@
     <Compile Include="Services.aspx.designer.cs">
       <DependentUpon>Services.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ShCodder\NewShCodder.aspx.cs">
-      <DependentUpon>NewShCodder.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ShCodder\NewShCodder.aspx.designer.cs">
-      <DependentUpon>NewShCodder.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2056,20 +1924,12 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Success.aspx.cs">
       <DependentUpon>Success.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Success.aspx.designer.cs">
       <DependentUpon>Success.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Template.aspx.cs">
-      <DependentUpon>Template.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Template.aspx.designer.cs">
-      <DependentUpon>Template.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tender.aspx.cs">
       <DependentUpon>Tender.aspx</DependentUpon>
@@ -2084,63 +1944,6 @@
     </Compile>
     <Compile Include="Tenders.aspx.designer.cs">
       <DependentUpon>Tenders.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TestDir\WSServer.cs" />
-    <Compile Include="Test\Antares.aspx.cs">
-      <DependentUpon>Antares.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test\Antares.aspx.designer.cs">
-      <DependentUpon>Antares.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Test\dmitriyraspel.aspx.cs">
-      <DependentUpon>dmitriyraspel.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test\dmitriyraspel.aspx.designer.cs">
-      <DependentUpon>dmitriyraspel.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Test\eoll73.aspx.cs">
-      <DependentUpon>eoll73.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test\eoll73.aspx.designer.cs">
-      <DependentUpon>eoll73.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Test\GG-dotNET.aspx.cs">
-      <DependentUpon>GG-dotNET.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test\GG-dotNET.aspx.designer.cs">
-      <DependentUpon>GG-dotNET.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Test\Konstantin.aspx.cs">
-      <DependentUpon>Konstantin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test\Konstantin.aspx.designer.cs">
-      <DependentUpon>Konstantin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Test\matheweducation.aspx.cs">
-      <DependentUpon>matheweducation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test\matheweducation.aspx.designer.cs">
-      <DependentUpon>matheweducation.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Test\Varkentin.aspx.cs">
-      <DependentUpon>Varkentin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test\Varkentin.aspx.designer.cs">
-      <DependentUpon>Varkentin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Test\VueTest.aspx.cs">
-      <DependentUpon>VueTest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test\VueTest.aspx.designer.cs">
-      <DependentUpon>VueTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tokens.aspx.cs">
       <DependentUpon>Tokens.aspx</DependentUpon>
@@ -2177,13 +1980,6 @@
     <Compile Include="TokensSelling.aspx.designer.cs">
       <DependentUpon>TokensSelling.aspx</DependentUpon>
     </Compile>
-    <Compile Include="towardsbackwards\NewsTowardsbackwards.aspx.cs">
-      <DependentUpon>NewsTowardsbackwards.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="towardsbackwards\NewsTowardsbackwards.aspx.designer.cs">
-      <DependentUpon>NewsTowardsbackwards.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Transport.aspx.cs">
       <DependentUpon>Transport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2192,7 +1988,6 @@
       <DependentUpon>Transport.aspx</DependentUpon>
     </Compile>
     <Compile Include="UpiController.cs" />
-    <Compile Include="UpiTestController.cs" />
     <Compile Include="UserProfile.aspx.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2200,64 +1995,21 @@
     <Compile Include="UserProfile.aspx.designer.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vark\NewsVark.aspx.cs">
-      <DependentUpon>NewsVark.aspx</DependentUpon>
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vark\NewsVark.aspx.designer.cs">
-      <DependentUpon>NewsVark.aspx</DependentUpon>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Vlad\AddNewsVlad.aspx.cs">
-      <DependentUpon>AddNewsVlad.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vlad\AddNewsVlad.aspx.designer.cs">
-      <DependentUpon>AddNewsVlad.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vlad\NewsVlad.aspx.cs">
-      <DependentUpon>NewsVlad.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vlad\NewsVlad.aspx.designer.cs">
-      <DependentUpon>NewsVlad.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Workers\AuctionsChecker.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Account\Rent\" />
     <Folder Include="App_Data\" />
-    <Folder Include="assets\img\avatars\" />
-    <Folder Include="bin\" />
-    <Folder Include="Data\" />
-    <Folder Include="NewFolder1\" />
-    <Folder Include="Rent\" />
-    <Folder Include="Sell\" />
-    <Folder Include="Views\AllCities\" />
-    <Folder Include="Views\Chats\" />
-    <Folder Include="Views\Dialog\" />
-    <Folder Include="Views\DPDCitiesDeliveryCost\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Account\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Site.Master" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\web.config" />
-    <Content Include="Views\Test\Index.cshtml" />
-    <Content Include="Views\Shared\SiteMaster.cshtml" />
-    <Content Include="Views\Default\Index.cshtml" />
-    <Content Include="Vlad\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2266,7 +2018,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
@@ -2274,9 +2025,6 @@
       <Project>{5d25d06e-0d35-42ef-bba2-d5de6e06cd04}</Project>
       <Name>xNet</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -2291,9 +2039,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>53205</DevelopmentServerPort>
+          <DevelopmentServerPort>49805</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53222/</IISUrl>
+          <IISUrl>http://localhost:49805/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -2303,12 +2051,11 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

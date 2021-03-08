@@ -21,7 +21,7 @@ namespace Rentoolo.ChatFront
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            var groupChats = DataHelper.GetOwnerChats(User.UserId);
+            //var groupChats = DataHelper.GetOwnerChats(User.UserId);
 
             GroupChats = JsonConvert.SerializeObject(GroupChats);
 

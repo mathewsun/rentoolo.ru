@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
-using Rentoolo.HelperModels;
 using Rentoolo.Model;
 
 namespace Rentoolo
@@ -15,7 +14,7 @@ namespace Rentoolo
 
         public string AdvertsCount;
 
-        public string[] AllCities = RusCities.AllRusCities;
+        //public string[] AllCities = RusCities.AllRusCities;
 
         public StrSellFilter PreviousFilter = new StrSellFilter();
 

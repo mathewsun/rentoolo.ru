@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Rentoolo.HelperModels;
 using Rentoolo.Model;
 using System;
 
@@ -7,7 +6,7 @@ namespace Rentoolo.CraftsMan
 {
     public partial class CraftsManOrder : System.Web.UI.Page
     {
-        public string[] AllCities = RusCities.AllRusCities;
+        //public string[] AllCities = RusCities.AllRusCities;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,8 +32,8 @@ namespace Rentoolo.CraftsMan
 
             Rentoolo.Model.CraftsManOrder order = new Model.CraftsManOrder();
 
-             if (objPhotos != null)
-             {
+            if (objPhotos != null)
+            {
                 String[] listPhotos = objPhotos.Split(',');
 
                 var jsonPhotos = JsonConvert.SerializeObject(listPhotos);

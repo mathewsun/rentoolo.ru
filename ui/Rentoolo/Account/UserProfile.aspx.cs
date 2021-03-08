@@ -62,10 +62,10 @@ namespace Rentoolo.Account
             }
 
 
-            if (CurUser.UserId != User.UserId)
-            {
-                ChatList = DataHelper.GetChats(User.UserId);
-            }
+            //if (CurUser.UserId != User.UserId)
+            //{
+            //    ChatList = DataHelper.GetChats(User.UserId);
+            //}
 
 
             //RptrComments.DataSource = ChatList;
@@ -147,7 +147,7 @@ namespace Rentoolo.Account
             string chatName = Request.Form["chatName"];
             //Chats chat = ChatList.FirstOrDefault(x => x.ChatName == TextBox1.Text);
             Chats chat = ChatList.FirstOrDefault(x => x.ChatName == chatName);
-            DataHelper.AddChatUser(new ChatUsers() { ChatId = chat.Id, UserId = CurUser.UserId });
+           // DataHelper.AddChatUser(new ChatUsers() { ChatId = chat.Id, UserId = CurUser.UserId });
         }
 
         protected void Button3_Click(object sender, EventArgs e)

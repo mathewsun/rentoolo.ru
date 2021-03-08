@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Rentoolo.HelperModels;
 using Rentoolo.Model;
 using System;
 using System.Collections.Generic;
@@ -16,7 +15,6 @@ namespace Rentoolo.CraftsMan
 
         public string CraftsManCount;
 
-        public string[] AllCities = RusCities.AllRusCities;
 
         public SellFilter PreviousFilter = new SellFilter();
         protected void Page_Load(object sender, EventArgs e)

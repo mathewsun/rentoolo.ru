@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Rentoolo.HelperModels;
 using Rentoolo.Model;
 using System;
 
@@ -7,7 +6,7 @@ namespace Rentoolo
 {
     public partial class CraftsManResume : System.Web.UI.Page
     {
-        public string[] AllCities = RusCities.AllRusCities;
+        //public string[] AllCities = RusCities.AllRusCities;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,15 +16,15 @@ namespace Rentoolo
         protected void ButtonResume_Click(object sender, EventArgs e)
         {
             string craft = Request.Form["input_craft"];
-            string description =Request.Form["input_description"];
+            string description = Request.Form["input_description"];
             string price = Request.Form["input_price"];
             string phone = Request.Form["phone"];
             string firstName = Request.Form["input_firstName"];
             string lastName = Request.Form["input_lastName"];
             string address = Request.Form["address"];
             string email = Request.Form["email"];
-            string city =  Request.Form["city"];
-            
+            string city = Request.Form["city"];
+
             var objPhotos = Request.Form["ResumePhotos"];
 
             Rentoolo.Model.CraftsMan resume = new Model.CraftsMan();
