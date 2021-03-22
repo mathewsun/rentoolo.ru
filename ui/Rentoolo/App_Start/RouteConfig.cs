@@ -120,8 +120,8 @@ namespace Rentoolo
 
 
             routes.MapRoute(
-                    name: "Default",
-                    url: "{controller}/{action}/{id}",
+                    name: "DefaultMVC",
+                    url: "mvc/{controller}/{action}/{id}",
                     defaults: new { action = "Index", id = UrlParameter.Optional }
                 );
         }
