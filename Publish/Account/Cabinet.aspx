@@ -4,76 +4,72 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-
-
     <style>
-
         body {
-	        padding: 0;
-	        margin: 0;
-	        display: flex;
-	        justify-content: center;
-	        align-items: center;
-	        min-height: 100vh;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
         #upload-container {
-	        display: flex;
-	        justify-content: center;
-	        align-items: center;
-	        flex-direction: column;
-	        width: 100px;
-	        height: 100px;
-	        outline: 2px dashed #5d5d5d;
-	        outline-offset: -12px;
-	        background-color: #e0f2f7;
-	        font-family: 'Segoe UI';
-	        color: #1f3c44;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100px;
+            height: 100px;
+            outline: 2px dashed #5d5d5d;
+            outline-offset: -12px;
+            background-color: #e0f2f7;
+            font-family: 'Segoe UI';
+            color: #1f3c44;
         }
 
-        #upload-container img {
-	        width: 70%;
-            height: 70%;
-	        margin-bottom: -30px;
-	        user-select: none;
-        }
+            #upload-container img {
+                width: 30%;
+                height: 30%;
+                margin-bottom: 0px;
+                user-select: none;
+            }
 
-        #upload-container label {
-	        font-weight: bold;
-        }
+            #upload-container label {
+                font-weight: bold;
+            }
 
-        #upload-container label:hover {
-	        cursor: pointer;
-	        text-decoration: underline;
-        }
+                #upload-container label:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
 
-        #upload-container div {
-	        position: relative;
-	        z-index: 10;
-        }
+            #upload-container div {
+                position: relative;
+                z-index: 10;
+            }
 
-        #upload-container input[type=file] {
-	        width: 0.1px;
-	        height: 0.1px;
-	        opacity: 0;
-	        position: absolute;
-	        z-index: -10;
-        }
+            #upload-container input[type=file] {
+                width: 0.1px;
+                height: 0.1px;
+                opacity: 0;
+                position: absolute;
+                z-index: -10;
+            }
 
-        #upload-container label.focus {
-	        outline: 1px solid #0078d7;
-	        outline: -webkit-focus-ring-color auto 5px;
-        }
+            #upload-container label.focus {
+                outline: 1px solid #0078d7;
+                outline: -webkit-focus-ring-color auto 5px;
+            }
 
-        #upload-container.dragover {
-	        background-color: #fafafa;
-	        outline-offset: -17px;
-        }
+            #upload-container.dragover {
+                background-color: #fafafa;
+                outline-offset: -17px;
+            }
 
-        #imgContainer{
+        #imgContainer {
             visibility: hidden;
         }
-
     </style>
 
 
@@ -85,24 +81,17 @@
         </div>
         <div class="additem-category">
             <div class="additem-right additem__way" cid="1001">
-
-
-            <br />
                 <%--<div>
                     <img title="загрузить аватарку"  width="200px" height="200px" src="/assets/img/avatars/<%=User.UserId %>.png" onerror="this.src = '/assets/img/addphoto.png'" />
 
                 </div>--%>
                 <div id="upload-container">
-                    <img  id="upload-image" onerror="onErrorAvatarHandler(this)"    src="/assets/img/avatars/<%=User.UserId %>.png"/>
-		            <div>
-			            <input id="file-input" type="file" name="file">
-                        <div id="imgContainer" >
-                            <label style="padding-left: 16px;" for="file-input">Выберите файл</label>
-			                
+                    <img id="upload-image" onerror="onErrorAvatarHandler(this)" src="/assets/img/avatars/<%=User.UserId %>.png" />
+                    <div>
+                        <input id="file-input" type="file" name="file">
+                        <div id="imgContainer">
                         </div>
-			            
-		            </div>
-                    
+                    </div>
                 </div>
 
                 <%--<div id="upload-container">
@@ -117,91 +106,91 @@
 		            </div>
                     
                 </div>--%>
-                
-            <%--<div>
+
+                <%--<div>
                 <input type="file" id="f" />
             </div>--%>
 
-            <script type="text/javascript">
+                <script type="text/javascript">
 
 
-                var imgContainer;
+                    var imgContainer;
 
 
-                function onErrorAvatarHandler(img) {
+                    function onErrorAvatarHandler(img) {
 
-                    let uploadImg = 'https://habrastorage.org/webt/dr/qg/cs/drqgcsoh1mosho2swyk3kk_mtwi.png';
-
-
-                    imgContainer = document.getElementById('imgContainer');
-                    imgContainer.style.visibility = "inherit";
-                    img.src = uploadImg;
-                    console.log("error avatar load not");
-                    
-                }
+                        let uploadImg = 'https://habrastorage.org/webt/dr/qg/cs/drqgcsoh1mosho2swyk3kk_mtwi.png';
 
 
+                        imgContainer = document.getElementById('imgContainer');
+                        imgContainer.style.visibility = "inherit";
+                        img.src = uploadImg;
+                        console.log("error avatar load not");
 
-                window.onload = function () {
-
-                    imgContainer = document.getElementById('imgContainer');
+                    }
 
 
-                    let finput = document.getElementById('file-input');
-                    finput.onchange = function (e) {
 
-                        let f = e.target.files[0];
+                    window.onload = function () {
 
-                        let img = new Image();
+                        imgContainer = document.getElementById('imgContainer');
 
-                        let reader = new FileReader();
 
-                        img.onload = function (e) {
-                            
-                            reader.readAsArrayBuffer(f);
-                        }
+                        let finput = document.getElementById('file-input');
+                        finput.onchange = function (e) {
 
-                        img.src = URL.createObjectURL(f);
+                            let f = e.target.files[0];
 
-                        reader.onloadend = function (e) {
+                            let img = new Image();
 
-                            let buf = reader.result;
-                            let uintbuf = new Uint8Array(buf);
+                            let reader = new FileReader();
 
-                            sendFile(uintbuf);
+                            img.onload = function (e) {
+
+                                reader.readAsArrayBuffer(f);
+                            }
+
+                            img.src = URL.createObjectURL(f);
+
+                            reader.onloadend = function (e) {
+
+                                let buf = reader.result;
+                                let uintbuf = new Uint8Array(buf);
+
+                                sendFile(uintbuf);
+                            }
+
                         }
 
                     }
 
-                }
+                    function sendFile(buffer) {
 
-                function sendFile(buffer) {
+                        let url = "/api/Avatars";
 
-                    let url = "/api/Avatars";
+                        let data = {
+                            Buffer: buffer.toString(),
+                            FileName: "some.jpg",
+                            UserId: "<%=User.UserId %>"
+                        };
 
-                    let data = {
-                        Buffer: buffer.toString(),
-                        FileName: "some.jpg",
-                        UserId: "<%=User.UserId %>"
-                    };
-
-                    fetch(url, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data)
-                    }).then((data) => {
-                        console.log(data);
-                    });
+                        fetch(url, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data)
+                        }).then((data) => {
+                            console.log(data);
+                        });
 
 
-                }
+                    }
 
 
 
 
-            </script>
+                </script>
 
 
                 <table class="marginTable cabinetTable">
@@ -285,17 +274,6 @@
                     Выбранный город:<%-- <%=// User.SelectedCity %>--%>
                     <input name="selectedCity" type="text" list="cities" />
 
-                    <datalist id="cities">
-                        <% foreach (var city in AllCities)
-                            { %>
-
-                        <option>
-                            <%=city %>
-                        </option>
-
-                        <%} %>
-                    </datalist>
-
                     <asp:Button ID="ButtonCity" runat="server" Text="выбрать город" OnClick="ButtonCity_Click" />
 
 
@@ -319,16 +297,16 @@
 
     <script type="text/javascript">
 
-        function copyToClipboardUrl() {
-            var copyText = document.getElementById("refferalLink");
-            copyText.select();
-            document.execCommand("copy");
-        }
+                         function copyToClipboardUrl() {
+                             var copyText = document.getElementById("refferalLink");
+                             copyText.select();
+                             document.execCommand("copy");
+                         }
 
-        function copyToClipboardAccountId() {
-            var copyText = document.getElementById("accountId");
-            copyText.select();
-            document.execCommand("copy");
-        }
+                         function copyToClipboardAccountId() {
+                             var copyText = document.getElementById("accountId");
+                             copyText.select();
+                             document.execCommand("copy");
+                         }
     </script>
 </asp:Content>
