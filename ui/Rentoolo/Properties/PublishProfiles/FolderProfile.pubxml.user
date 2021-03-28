@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>C:\old\rentoolo.ru\Publish</_PublishTargetUrl>
-    <History>True|2021-03-28T10:57:03.8869365Z;</History>
+    <History>False|2021-03-28T15:32:04.5915825Z;False|2021-03-28T15:31:12.6559924+00:00;True|2021-03-28T10:57:03.8869365+00:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="403.aspx">
