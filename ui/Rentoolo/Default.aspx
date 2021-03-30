@@ -519,6 +519,26 @@
                                     <span>Только в названии</span>
                                 </div>
 
+                                 <div class="city-sortby__wrap">
+                                    <div>
+                                        <span style="float: left;">Город:</span>&nbsp;
+                                        <input type="text" name="city" list="cities" value="<%= PreviousFilter.City %>" />
+                                        <br />
+                                        
+                                    </div>
+                                    <%-- citys end--%>
+
+                                    <div class="sortby">
+                                        <select name="sortBy" id="sortBy">
+                                            <option value="date">По дате</option>
+                                            <option value="price">По цене (дешевле)</option>
+                                            <option value="pricemax">По цене (дороже)</option>
+                                            <option value="radius">По удаленности</option>
+                                        </select>
+                                    </div>
+                                    <%-- sortby end--%>
+                                </div>
+
                                 <div class="main-find_price">
                                     <span>Цена:</span>
                                     <input type="number" name="startPrice" placeholder="От" value="<%= PreviousFilter.StartPrice %>" />
@@ -534,25 +554,7 @@
          51a73fc4667aa3e6c7e3a45ccc1c5b82545a2ee0 --%>
 
 
-                                <div class="city-sortby__wrap">
-                                    <div>
-                                        <span style="float: left;">Город:</span>&nbsp;
-                                        <input type="text" name="city" list="cities" value="<%= PreviousFilter.City %>" />
-                                        <br />
-                                        
-                                    </div>
-                                    <%-- citys end--%>
-
-                                    <div class="sortby">
-                                        <select name="sortBy" id="sortBy">
-                                            <option value="date">По дате</option>
-                                            <option value="price">По цене</option>
-                                            <option value="radius">По удаленности</option>
-                                        </select>
-                                    </div>
-                                    <%-- sortby end--%>
-                                </div>
-                                <%-- city-sortby__wrap end--%>
+                               
                             </div>
                             <%-- end search-input-group--%>
 
