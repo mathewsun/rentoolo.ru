@@ -14,13 +14,6 @@ namespace Rentoolo.Account
     public partial class OpenAuthProviders
     {
 
-        /// <summary>
-        /// providerDetails элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView providerDetails;
+        
     }
 }

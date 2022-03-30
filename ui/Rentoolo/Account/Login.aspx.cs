@@ -4,10 +4,11 @@ using System.Web.UI;
 using System.Net;
 using System.Collections.Specialized;
 using System.IO;
-using System.Web.Script.Serialization;
 using System.Web.Security;
 using Rentoolo.Model;
 using System.Text.RegularExpressions;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Rentoolo.Account
 {
@@ -60,8 +61,7 @@ namespace Rentoolo.Account
                     {
                         string jsonResponse = readStream.ReadToEnd();
 
-                        JavaScriptSerializer js = new JavaScriptSerializer();
-                        MyObject data = js.Deserialize<MyObject>(jsonResponse);// Deserialize Json
+                        MyObject data = JsonSerializer.Deserialize<MyObject>(jsonResponse);// Deserialize Json
 
                         Valid = Convert.ToBoolean(data.success);
                     }

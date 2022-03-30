@@ -6,9 +6,9 @@ using Microsoft.AspNet.Membership.OpenAuth;
 using Rentoolo.Model;
 using System.Net;
 using System.IO;
-using System.Web.Script.Serialization;
 using System.ServiceModel.Channels;
 using System.Runtime.Remoting.Messaging;
+using System.Text.Json;
 
 namespace Rentoolo.Account
 {
@@ -193,7 +193,7 @@ namespace Rentoolo.Account
 
         public class MyObject
         {
-            public string success { get; set; }
+            public bool success { get; set; }
         }
 
         public bool ValidateCaptcha()
@@ -213,8 +213,7 @@ namespace Rentoolo.Account
                     {
                         string jsonResponse = readStream.ReadToEnd();
 
-                        JavaScriptSerializer js = new JavaScriptSerializer();
-                        MyObject data = js.Deserialize<MyObject>(jsonResponse);// Deserialize Json
+                        MyObject data = JsonSerializer.Deserialize<MyObject>(jsonResponse);// Deserialize Json
 
                         Valid = Convert.ToBoolean(data.success);
                     }
