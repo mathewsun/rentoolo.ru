@@ -1,6 +1,7 @@
 Если призапуске ошибка,
 надо выполнить в терминале Средства->Диспетчер пакетов NuGet->Консоль диспетчера пакетов
 следующую команду:
+
 Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
 
 # rentoolo.ru
