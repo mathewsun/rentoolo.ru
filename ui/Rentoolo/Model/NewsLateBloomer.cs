@@ -12,7 +12,7 @@ namespace Rentoolo.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class NewsEducationBlacklake
+    public partial class NewsLateBloomer
     {
         public int Id { get; set; }
         public string Text { get; set; }
