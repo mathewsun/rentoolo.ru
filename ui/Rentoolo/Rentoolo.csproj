@@ -501,6 +501,7 @@
     <Content Include="HomeGarden.aspx" />
     <Content Include="Job.aspx" />
     <Content Include="LateBloomer\NewsLateBloomer.aspx" />
+    <Content Include="LateBloomer\AddNewsLateBloomer.aspx" />
     <Content Include="Manager\Web.config" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -529,6 +530,7 @@
     <Content Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="LateBloomer\Web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="img\avatars\noPhoto.png" />
     <Content Include="img\a\noPhoto.png" />
@@ -1515,6 +1517,13 @@
     </Compile>
     <Compile Include="LateBloomer\NewsLateBloomer.aspx.designer.cs">
       <DependentUpon>NewsLateBloomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LateBloomer\AddNewsLateBloomer.aspx.cs">
+      <DependentUpon>AddNewsLateBloomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LateBloomer\AddNewsLateBloomer.aspx.designer.cs">
+      <DependentUpon>AddNewsLateBloomer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manager\ManageAdvert.aspx.cs">
       <DependentUpon>ManageAdvert.aspx</DependentUpon>
